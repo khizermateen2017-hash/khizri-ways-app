@@ -1454,3 +1454,56 @@ window.filterCustomerStories = function(category, btnElement) {
     }
   });
 };
+
+// ==========================================
+// 2-Minute Continuous Engagement Review Popup
+// ==========================================
+let engagementTimer = null;
+const TWO_MINUTES_MS = 120000; // 2 minutes (120 seconds)
+
+function initReviewEngagementTracker() {
+  // Check if already shown or dismissed in current session
+  if (sessionStorage.getItem('khizri_review_prompt_shown')) {
+    return;
+  }
+
+  // Set timeout for 2 minutes of continuous app usage
+  engagementTimer = setTimeout(() => {
+    // Only show if user hasn't reviewed yet and hasn't closed it in this session
+    if (!sessionStorage.getItem('khizri_review_prompt_shown') && !localStorage.getItem('khizri_user_reviewed')) {
+      if (typeof window.openModal === 'function') {
+        window.openModal('modalReviewPrompt');
+        sessionStorage.setItem('khizri_review_prompt_shown', 'true');
+      }
+    }
+  }, TWO_MINUTES_MS);
+}
+
+window.dismissReviewPrompt = function() {
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalReviewPrompt');
+  }
+  sessionStorage.setItem('khizri_review_prompt_shown', 'true');
+};
+
+window.handleGoogleReviewClick = function() {
+  localStorage.setItem('khizri_user_reviewed', 'true');
+  sessionStorage.setItem('khizri_review_prompt_shown', 'true');
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalReviewPrompt');
+  }
+};
+
+// Global helper for manual test trigger
+window.showReviewPopup = function() {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalReviewPrompt');
+  }
+};
+
+// Start tracker when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initReviewEngagementTracker);
+} else {
+  initReviewEngagementTracker();
+}

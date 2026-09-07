@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Custom Stylesheet with Cache Buster -->
-  <link rel="stylesheet" href="/css/app.css?v=khizri-navy-19.0">
+  <link rel="stylesheet" href="/css/app.css?v=khizri-navy-20.0">
 </head>
 <body class="deen-app-body khizri-theme">
 
@@ -347,27 +347,6 @@
                 </div>
               </div>
               <button class="btn-hft-go">دیکھیں <i class="fa-solid fa-arrow-left"></i></button>
-            </div>
-
-            <!-- Customer Stories & Google Review Banner -->
-            <div class="home-reviews-banner">
-              <div class="hrb-left">
-                <div class="hrb-stars-row">
-                  <span class="hrb-stars">★★★★★</span>
-                  <span class="hrb-score">4.9 / 5.0</span>
-                  <span class="hrb-badge-verified"><i class="fa-solid fa-circle-check"></i> 500+ تصدیق شدہ کہانیاں</span>
-                </div>
-                <h4>Customer Stories &amp; Google Reviews</h4>
-                <p>خضریٰ ویز سے شفایاب سائلین کے سچے تاثرات اور تجربات پڑھیں</p>
-              </div>
-              <div class="hrb-actions">
-                <button class="btn-hrb-stories" data-open="tabCustomerStories">
-                  <i class="fa-solid fa-comments"></i> کہانیاں دیکھیں
-                </button>
-                <a href="https://share.google/B26uoDyw9iDKQcQFk" target="_blank" rel="noopener" class="btn-hrb-google">
-                  <i class="fa-brands fa-google"></i> ریویو دیں
-                </a>
-              </div>
             </div>
 
             <!-- Official YouTube Channel Videos Strip -->
@@ -2625,6 +2604,43 @@
     </div>
   </div>
 
+  <!-- 2-Minute Engagement Review & Stories Popup Modal -->
+  <div class="modal-dialog-layer" id="modalReviewPrompt">
+    <div class="modal-card-container review-popup-card">
+      <div class="modal-card-top-bar" style="border-bottom:none; padding-bottom:0;">
+        <span style="font-size:0.8rem; color:#94A3B8; font-weight:600;"><i class="fa-solid fa-heart text-gold"></i> آپ کی رائے ہمارے لیے اہم ہے</span>
+        <button class="btn-modal-x" onclick="dismissReviewPrompt()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-card-body" style="text-align:center; padding: 12px 20px 24px 20px;">
+        
+        <div class="rp-stars-wrapper">
+          <div class="rp-stars">★★★★★</div>
+          <div class="rp-rating-pill">4.9 / 5.0 • 500+ تصدیق شدہ کہانیاں</div>
+        </div>
+
+        <h3 class="rp-title">آپ کا خضریٰ ویز کے ساتھ تجربہ کیسا رہا؟</h3>
+        <p class="rp-subtitle">
+          اگر آپ کو خضریٰ ویز کی رہنمائی، وظائف یا روحانی علاج سے فائدہ حاصل ہوا ہے تو گوگل پر اپنی قیمتی رائے ضرور دیں، یا شفایاب سائلین کے سچے تاثرات پڑھیں۔
+        </p>
+
+        <div class="rp-buttons-col">
+          <a href="https://share.google/B26uoDyw9iDKQcQFk" target="_blank" rel="noopener" class="btn-rp-google" onclick="handleGoogleReviewClick()">
+            <i class="fa-brands fa-google"></i> گوگل پر 5 سٹار ریویو دیں
+          </a>
+
+          <button class="btn-rp-stories" onclick="closeModal('modalReviewPrompt'); window.switchTab('tabCustomerStories');">
+            <i class="fa-solid fa-comments"></i> شفایاب افراد کی کہانیاں دیکھیں
+          </button>
+
+          <button class="btn-rp-later" onclick="dismissReviewPrompt()">
+            بعد میں یاد دلائیں (Maybe Later)
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- Istikhara Guide Modal Dialog -->
   <div class="modal-dialog-layer" id="modalIstikharaGuide">
     <div class="modal-card-container" style="max-height: 85vh; overflow-y: auto;">
@@ -2726,6 +2742,6 @@
   </div>
 
   <!-- Exact App Logic with Cache Buster -->
-  <script src="/js/app.js?v=khizri-navy-19.0"></script>
+  <script src="/js/app.js?v=khizri-navy-20.0"></script>
 </body>
 </html>
