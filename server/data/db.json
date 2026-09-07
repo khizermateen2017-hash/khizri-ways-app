@@ -12,6 +12,45 @@
   },
   "resources": [
     {
+      "id": "res-hizb-ul-bahr",
+      "title": "حزب البحر شریف مع اردو ترجمہ و شرائط (Hizb-ul-Bahr)",
+      "description": "حضرت امام ابو الحسن شاذلیؒ کا مشہور و مجرب حرزِ مبارک۔ تالیف: حضرت حاجی امداد اللہ مہاجر مکیؒ مع اجازت حضرت مولانا اشرف علی تھانویؒ۔",
+      "category": "Wazaif Booklets",
+      "author": "حاجی امداد اللہ مہاجر مکیؒ / مولانا اشرف علی تھانویؒ",
+      "fileName": "hizb_ul_bahr_shazli.pdf",
+      "fileUrl": "/uploads/pdfs/hizb_ul_bahr_shazli.pdf",
+      "fileSize": "2.5 MB",
+      "pages": 33,
+      "downloads": 5420,
+      "createdAt": "2026-09-07T11:00:00.000Z"
+    },
+    {
+      "id": "res-azkar-shazliya",
+      "title": "اذکارِ شاذلیہ و وظائفِ مسنونہ (نصابِ اوراد)",
+      "description": "نماز کے بعد مسنون اذکار، آیت الکرسی، سورہ یٰسین، کہف، رحمن، ملک اور 42 مجرب قرآنی اعمال و اوراد کا مکمل شیڈول۔",
+      "category": "Wazaif Booklets",
+      "author": "سلسلہ عالیہ شاذلیہ و خضریہ",
+      "fileName": "azkar_e_shazliya_wazaif.pdf",
+      "fileUrl": "/uploads/pdfs/azkar_e_shazliya_wazaif.pdf",
+      "fileSize": "7.9 MB",
+      "pages": 24,
+      "downloads": 4890,
+      "createdAt": "2026-09-07T11:00:00.000Z"
+    },
+    {
+      "id": "res-manzil-dua",
+      "title": "منزل شریف مع فضائل و مسنون رقیہ شرعیہ (Manzil)",
+      "description": "سحر، جادو، جنات اور سخت نظرِ بد سے حفاظت و شفا کے لیے 33 مسنون قرآنی آیات کا مجرب مجموعہ مع فضائل۔",
+      "category": "Rohani Ilaj",
+      "author": "شیخ الحدیث مولانا محمد زکریا کاندھلویؒ",
+      "fileName": "manzil_dua_shifa.pdf",
+      "fileUrl": "/uploads/pdfs/manzil_dua_shifa.pdf",
+      "fileSize": "945 KB",
+      "pages": 15,
+      "downloads": 7310,
+      "createdAt": "2026-09-07T11:00:00.000Z"
+    },
+    {
       "id": "res-1",
       "title": "مجموعہ وظائف خضری (Khizri Ways Daily Wazaif Guide)",
       "description": "روزمرہ کے مستند وظائف، حفاظت اور برکت کے لیے مکمل خضری گائیڈ مع طریقہ کار۔",
