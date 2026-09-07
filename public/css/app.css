@@ -3064,3 +3064,131 @@ body.lang-ur .sub-screen-title {
   border-left: 3px solid #10B981;
   color: #065F46;
 }
+
+/* =========================================================
+   OFFICIAL KHIZRI WAYS SERVICES (POSTER INTEGRATION)
+   ========================================================= */
+.khizri-services-card {
+  background: linear-gradient(145deg, #181C4E 0%, #111438 100%);
+  border: 1.5px solid #D4AF37;
+  border-radius: 20px;
+  padding: 16px 14px;
+  margin-top: 18px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 28px rgba(24, 28, 78, 0.28);
+  position: relative;
+  overflow: hidden;
+  color: #FFFFFF;
+}
+
+.ksc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.ksc-title-col h3 {
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+
+.ksc-title-col p {
+  font-size: 0.74rem;
+  color: #FDE047;
+  margin: 3px 0 0;
+}
+
+.ksc-services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.ksc-service-item {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 9px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ksc-service-item:hover {
+  background: rgba(212, 175, 55, 0.18);
+  border-color: #D4AF37;
+  transform: translateY(-2px);
+}
+
+.ksc-service-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(212, 175, 55, 0.22);
+  color: #FDE047;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  flex-shrink: 0;
+}
+
+.ksc-service-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.25;
+}
+
+.ksc-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 9999px;
+  padding: 6px 12px 6px 6px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.ksc-wa-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366;
+  color: #FFFFFF;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.ksc-wa-pill:hover {
+  transform: scale(1.03);
+}
+
+.ksc-checkup-tag {
+  background: #111438;
+  color: #FDE047;
+  border: 1px solid #D4AF37;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+}
