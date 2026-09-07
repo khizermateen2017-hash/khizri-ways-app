@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180" width="100%" height="100%" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="sunsetGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FDE8CB"/>
+      <stop offset="50%" stop-color="#F9CD90"/>
+      <stop offset="100%" stop-color="#F5B65B"/>
+    </linearGradient>
+    <linearGradient id="mosqueGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.55)"/>
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.25)"/>
+    </linearGradient>
+    <linearGradient id="mosqueGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.75)"/>
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.4)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Warm Sky -->
+  <rect width="400" height="180" fill="url(#sunsetGrad)"/>
+
+  <!-- Background Mosque Silhouette Layer (Distant) -->
+  <path fill="url(#mosqueGrad1)" d="
+    M 0 180 
+    L 0 145 
+    L 35 145 
+    L 35 70 
+    L 38 70 
+    L 38 50 
+    L 41 50 
+    L 38 30 
+    L 38 70 
+    L 45 145 
+    L 80 145 
+    Q 110 100 140 145 
+    L 170 145 
+    L 170 50 
+    L 173 30 
+    L 176 50 
+    L 176 145 
+    L 224 145 
+    L 224 50 
+    L 227 30 
+    L 230 50 
+    L 230 145 
+    L 260 145 
+    Q 290 100 320 145 
+    L 355 145 
+    L 355 70 
+    L 358 30 
+    L 361 70 
+    L 361 145 
+    L 400 145 
+    L 400 180 
+    Z"/>
+
+  <!-- Foreground Mosque Silhouette Layer (Main Domes & Minarets) -->
+  <g fill="url(#mosqueGrad2)">
+    <!-- Left Minaret -->
+    <rect x="70" y="70" width="10" height="110"/>
+    <rect x="67" y="65" width="16" height="5"/>
+    <polygon points="75,25 71,65 79,65"/>
+    <circle cx="75" cy="22" r="2.5"/>
+
+    <!-- Right Minaret -->
+    <rect x="320" y="70" width="10" height="110"/>
+    <rect x="317" y="65" width="16" height="5"/>
+    <polygon points="325,25 321,65 329,65"/>
+    <circle cx="325" cy="22" r="2.5"/>
+
+    <!-- Central Grand Dome -->
+    <path d="M 140 180 L 140 140 C 140 85, 260 85, 260 140 L 260 180 Z"/>
+    <!-- Dome Spire & Crescent -->
+    <rect x="198" y="68" width="4" height="25"/>
+    <circle cx="200" cy="64" r="3.5"/>
+    <path d="M 200 58 A 6 6 0 1 0 205 64 A 4.5 4.5 0 1 1 200 58 Z"/>
+
+    <!-- Left Small Dome -->
+    <path d="M 105 180 L 105 145 C 105 115, 145 115, 145 145 L 145 180 Z"/>
+    <rect x="123" y="105" width="3" height="15"/>
+    <circle cx="124.5" cy="102" r="2"/>
+
+    <!-- Right Small Dome -->
+    <path d="M 255 180 L 255 145 C 255 115, 295 115, 295 145 L 295 180 Z"/>
+    <rect x="273" y="105" width="3" height="15"/>
+    <circle cx="274.5" cy="102" r="2"/>
+
+    <!-- Base Walls -->
+    <rect x="0" y="150" width="400" height="30"/>
+  </g>
+</svg>
