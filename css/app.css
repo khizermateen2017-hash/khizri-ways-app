@@ -3192,3 +3192,182 @@ body.lang-ur .sub-screen-title {
   font-weight: 700;
   cursor: pointer;
 }
+
+/* =========================================================
+   INDIVIDUAL SERVICE CARDS (POSTER SERVICES ONE BY ONE)
+   ========================================================= */
+.official-services-strip {
+  background: linear-gradient(135deg, #181C4E 0%, #2A3178 50%, #151842 100%);
+  border-radius: 18px;
+  padding: 16px 14px;
+  margin-bottom: 20px;
+  color: #FFFFFF;
+  border: 1.5px solid #D4AF37;
+  box-shadow: 0 8px 24px rgba(24, 28, 78, 0.25);
+}
+
+.oss-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.oss-badge {
+  background: rgba(253, 224, 71, 0.2);
+  border: 1px solid #FDE047;
+  color: #FDE047;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.oss-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 4px 0 2px;
+}
+
+.oss-sub {
+  font-size: 0.78rem;
+  color: #E2E8F0;
+  line-height: 1.45;
+  margin-bottom: 4px;
+}
+
+.service-card-item {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+  border-left: 4px solid var(--khizri-navy-primary);
+}
+
+.service-card-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(24, 28, 78, 0.12);
+}
+
+.sci-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.sci-icon-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sci-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #F1F5F9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.sci-icon.icon-magic { background: #FDF2F8; color: #DB2777; }
+.sci-icon.icon-eye { background: #EFF6FF; color: #2563EB; }
+.sci-icon.icon-jinn { background: #FAF5FF; color: #7C3AED; }
+.sci-icon.icon-brain { background: #ECFDF5; color: #059669; }
+.sci-icon.icon-house { background: #FFFBEB; color: #D97706; }
+.sci-icon.icon-cancer { background: #FEF2F2; color: #DC2626; }
+.sci-icon.icon-healing { background: #F0FDF4; color: #16A34A; }
+.sci-icon.icon-counsel { background: #F0F9FF; color: #0284C7; }
+
+.sci-title-box h4 {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--khizri-navy-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.sci-title-box .sci-urdu-title {
+  font-size: 0.8rem;
+  color: #64748B;
+  font-weight: 600;
+}
+
+.sci-checkup-badge {
+  background: #FEF3C7;
+  color: #92400E;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.sci-desc {
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: #334155;
+  margin-bottom: 10px;
+}
+
+.sci-method-box {
+  background: #F8FAFC;
+  border: 1px dashed #CBD5E1;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  color: #475569;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.sci-method-box strong {
+  color: var(--khizri-navy-primary);
+}
+
+.sci-btn-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid #F1F5F9;
+  padding-top: 10px;
+}
+
+.btn-book-checkup {
+  background: #25D366;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 9999px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+  transition: transform 0.15s;
+}
+
+.btn-book-checkup:hover {
+  transform: scale(1.02);
+}
+
+.sci-direct-phone {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #64748B;
+}
