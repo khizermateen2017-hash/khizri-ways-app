@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Custom Stylesheet with Cache Buster -->
-  <link rel="stylesheet" href="/css/app.css?v=khizri-navy-17.0">
+  <link rel="stylesheet" href="/css/app.css?v=khizri-navy-18.0">
 </head>
 <body class="deen-app-body khizri-theme">
 
@@ -170,6 +170,12 @@
                 <button class="btn-about-chip" data-open="tabAboutUs" title="About Khizri Ways (ہمارا تعارف)">
                   <i class="fa-solid fa-circle-info"></i> <span>About</span>
                 </button>
+                <button class="btn-about-chip" data-open="tabCustomerStories" title="Customer Stories (کسٹمر کی کہانیاں)" style="border-color:rgba(16, 185, 129, 0.4); color:#6EE7B7;">
+                  <i class="fa-solid fa-comments text-gold"></i> <span>Stories</span>
+                </button>
+                <a href="https://share.google/B26uoDyw9iDKQcQFk" target="_blank" rel="noopener" class="btn-about-chip" title="Google Review (گوگل ریویو)" style="border-color:rgba(234, 67, 53, 0.4); color:#FCA5A5; text-decoration:none;">
+                  <i class="fa-brands fa-google" style="color:#EA4335;"></i> <span>Review</span>
+                </a>
                 <button class="btn-lang-toggle" id="btnLangToggle" onclick="toggleAppLanguage()" title="Switch Language (English / اردو)">
                   <i class="fa-solid fa-language"></i>
                   <span class="lang-label-text" id="langToggleText">اردو</span>
@@ -343,69 +349,24 @@
               <button class="btn-hft-go">دیکھیں <i class="fa-solid fa-arrow-left"></i></button>
             </div>
 
-            <!-- Official Services Include Card (From Official Poster) -->
-            <div class="khizri-services-card">
-              <div class="ksc-header">
-                <div class="ksc-title-col">
-                  <h3><i class="fa-solid fa-star-and-crescent text-gold"></i> Khizri Ways Services</h3>
-                  <p>خدمات و روحانی علاج • Checkup &amp; Treatment</p>
+            <!-- Customer Stories & Google Review Banner -->
+            <div class="home-reviews-banner">
+              <div class="hrb-left">
+                <div class="hrb-stars-row">
+                  <span class="hrb-stars">★★★★★</span>
+                  <span class="hrb-score">4.9 / 5.0</span>
+                  <span class="hrb-badge-verified"><i class="fa-solid fa-circle-check"></i> 500+ تصدیق شدہ کہانیاں</span>
                 </div>
-                <div class="ksc-badge">
-                  <span class="ksc-checkup-tag" data-open="tabServices" style="cursor:pointer;"><i class="fa-solid fa-layer-group"></i> تمام 12 خدمات دیکھیں</span>
-                </div>
+                <h4>Customer Stories &amp; Google Reviews</h4>
+                <p>خضریٰ ویز سے شفایاب سائلین کے سچے تاثرات اور تجربات پڑھیں</p>
               </div>
-
-              <!-- 8 Services Grid -->
-              <div class="ksc-services-grid">
-                
-                <div class="ksc-service-item" onclick="openWhatsAppConsult('السلام علیکم، مجھے Black Magic Treatment (جادو کا علاج) کے حوالے سے چیک اپ کروانا ہے۔')">
-                  <div class="ksc-service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                  <div class="ksc-service-text">Black Magic Treatment<br><span style="font-size:0.68rem; color:#FDE047;">جادو کا علاج</span></div>
-                </div>
-
-                <div class="ksc-service-item" onclick="openWhatsAppConsult('السلام علیکم، مجھے Jinn Problems (آسیب و جنات کے مسائل) کے علاج کے لیے وقت چاہیے۔')">
-                  <div class="ksc-service-icon"><i class="fa-solid fa-ghost"></i></div>
-                  <div class="ksc-service-text">Jinn Problems<br><span style="font-size:0.68rem; color:#FDE047;">آسیب و جنات</span></div>
-                </div>
-
-                <div class="ksc-service-item" onclick="openWhatsAppConsult('السلام علیکم، مجھے Evil Eyes Issues (نظرِ بد اور حاسدین کے شر) کا چیک اپ کروانا ہے۔')">
-                  <div class="ksc-service-icon"><i class="fa-solid fa-eye-slash"></i></div>
-                  <div class="ksc-service-text">Evil Eyes Issues<br><span style="font-size:0.68rem; color:#FDE047;">نظرِ بد کا علاج</span></div>
-                </div>
-
-                <div class="ksc-service-item" onclick="openWhatsAppConsult('السلام علیکم، مجھے Depression اور ذہنی دباؤ کے روحانی علاج کی رہنمائی چاہیے۔')">
-                  <div class="ksc-service-icon"><i class="fa-solid fa-brain"></i></div>
-                  <div class="ksc-service-text">Depression<br><span style="font-size:0.68rem; color:#FDE047;">ڈپریشن و تناؤ</span></div>
-                </div>
-
-                <div class="ksc-service-item" onclick="openWhatsAppConsult('السلام علیکم، مجھے Domestic Issues (گھریلو مسائل) کے حل کے لیے کونسلنگ چاہیے۔')">
-                  <div class="ksc-service-icon"><i class="fa-solid fa-house-chimney-crack"></i></div>
-                  <div class="ksc-service-text">Domestic Issues<br><span style="font-size:0.68rem; color:#FDE047;">گھریلو ناچاقی</span></div>
-                </div>
-
-                <div class="ksc-service-item" onclick="openWhatsAppConsult('السلام علیکم، مجھے Cancer / لاعلاج بیماری کے لیے روحانی دم و علاج کی رہنمائی چاہیے۔')">
-                  <div class="ksc-service-icon"><i class="fa-solid fa-ribbon"></i></div>
-                  <div class="ksc-service-text">Cancer Treatment<br><span style="font-size:0.68rem; color:#FDE047;">کینسر و امراض</span></div>
-                </div>
-
-                <div class="ksc-service-item" onclick="openWhatsAppConsult('السلام علیکم، مجھے Healing Sessions کی بکنگ کروانی ہے۔')">
-                  <div class="ksc-service-icon"><i class="fa-solid fa-spa"></i></div>
-                  <div class="ksc-service-text">Healing Sessions<br><span style="font-size:0.68rem; color:#FDE047;">ہیلنگ سیشنز</span></div>
-                </div>
-
-                <div class="ksc-service-item" onclick="openWhatsAppConsult('السلام علیکم، مجھے Counselling Sessions کے لیے وقت چاہیے۔')">
-                  <div class="ksc-service-icon"><i class="fa-solid fa-comments"></i></div>
-                  <div class="ksc-service-text">Counselling Sessions<br><span style="font-size:0.68rem; color:#FDE047;">روحانی کونسلنگ</span></div>
-                </div>
-
-              </div>
-
-              <!-- Footer with WhatsApp Button -->
-              <div class="ksc-footer-row">
-                <a class="ksc-wa-pill" onclick="openWhatsAppConsult('السلام علیکم، مجھے Khizri Ways سے Checkup / Treatment کی رہنمائی چاہیے۔')">
-                  <i class="fa-brands fa-whatsapp"></i> 0331 7704807
+              <div class="hrb-actions">
+                <button class="btn-hrb-stories" data-open="tabCustomerStories">
+                  <i class="fa-solid fa-comments"></i> کہانیاں دیکھیں
+                </button>
+                <a href="https://share.google/B26uoDyw9iDKQcQFk" target="_blank" rel="noopener" class="btn-hrb-google">
+                  <i class="fa-brands fa-google"></i> ریویو دیں
                 </a>
-                <span style="font-size:0.75rem; color:#E2E8F0; font-weight:600;">Book Checkup / Treatment</span>
               </div>
             </div>
 
@@ -532,6 +493,9 @@
               <p id="rcbDesc">Direct WhatsApp consultation with Khizri Ways spiritual scholars for illness, evil eye, anxiety, and family matters.</p>
               <button class="btn-rcb-whatsapp" onclick="openWhatsAppConsult()">
                 <i class="fa-brands fa-whatsapp"></i> <span id="rcbBtnText">WhatsApp: +92 331 7704807</span>
+              </button>
+              <button class="btn-rcb-guide" onclick="openModal('modalIstikharaGuide')">
+                <i class="fa-solid fa-book-open"></i> استخارہ کے شرعی اصول، شرائط و حدیث پڑھیں
               </button>
             </div>
 
@@ -1510,7 +1474,7 @@
               </div>
 
               <!-- 9. Online Istikhara & Taskhees -->
-              <div class="detailed-service-card" data-service-cat="istikhara-taweez" data-keywords="istikhara taskhees شادی رشتہ کاروبار استخارہ تشخیص رہنمائی">
+              <div class="detailed-service-card" data-service-cat="istikhara-taweez" data-keywords="istikhara taskhees شادی رشتہ کاروبار استخارہ تشخیص رہنمائی حدیث اصول">
                 <div class="dsc-top-row">
                   <div class="dsc-id-icon">
                     <span class="dsc-num-badge">09</span>
@@ -1519,22 +1483,59 @@
                     </div>
                     <div class="dsc-title-group">
                       <h4>Online Istikhara &amp; Taskhees</h4>
-                      <div class="dsc-urdu">آن لائن شرعی استخارہ و روحانی تشخیص</div>
+                      <div class="dsc-urdu">آن لائن شرعی استخارہ و مستند رہنمائی</div>
                     </div>
                   </div>
-                  <span class="dsc-tag">Free Guidance</span>
+                  <span class="dsc-tag">مسنون رہنمائی</span>
                 </div>
                 <div class="dsc-desc">
-                  رشتہ، شادی، کاروبار، سفر، نوکری یا کسی بھی اہم معاملے میں خیر و برکت معلوم کرنے کے لیے شرعی استخارہ اور بیماری کی صحیح روحانی و جسمانی تشخیص۔
+                  استخارہ کا لغوی معنی ہے <strong>"اللہ تعالیٰ سے خیر طلب کرنا"</strong>۔ جب بھی کسی جائز و مباح کام میں دو راستوں میں سے کسی ایک کا انتخاب کرنا ہو تو مسنون طریقے سے اللہ کے حضور رجوع کیا جاتا ہے۔
                 </div>
+
+                <!-- Allowed vs Not Allowed Rules Grid -->
+                <div class="istikhara-rules-container">
+                  <div class="istikhara-rule-col istikhara-allowed-box">
+                    <h5><i class="fa-solid fa-circle-check text-green"></i> کن چیزوں کیلئے استخارہ ہوتا ہے؟ (جائز امور)</h5>
+                    <ul class="istikhara-list">
+                      <li><strong>شادی و رشتہ:</strong> رشتہ طے کرنے یا نکاح کے معاملے میں خیر و بھلائی معلوم کرنا۔</li>
+                      <li><strong>کاروبار و ملازمت:</strong> نیا کاروبار شروع کرنے، پارٹنرشپ یا ملازمت کے انتخاب میں۔</li>
+                      <li><strong>سفر و رہائش:</strong> سفر پر روانگی، ویزہ یا نیا مکان و رہائش اختیار کرنے میں۔</li>
+                      <li><strong>مباح دینی و دنیاوی فیصلے:</strong> جہاں دو جائز راستوں میں سے بہتر کا انتخاب مقصود ہو۔</li>
+                    </ul>
+                  </div>
+
+                  <div class="istikhara-rule-col istikhara-forbidden-box">
+                    <h5><i class="fa-solid fa-circle-xmark text-danger"></i> کن چیزوں کیلئے استخارہ نہیں ہوتا؟ (غلط فہمیاں)</h5>
+                    <ul class="istikhara-list">
+                      <li><strong>چوری کس نے کی؟</strong> چور کا نام معلوم کرنا یا چوری شدہ مال کا غیبی سراغ لگانا (استخارہ علمِ غیب نہیں ہے)۔</li>
+                      <li><strong>جادو کس نے کروایا؟</strong> کسی پر شک کرنا یا دشمن و جادوگر کا پتہ لگانا (شرعاً ممنوع اور ناجائز ہے)۔</li>
+                      <li><strong>کسی گناہ یا حرام کام کیلئے:</strong> ناجائز تعلقات، دھوکہ یا قطع رحمی کے معاملات میں۔</li>
+                      <li><strong>فرائض و واجبات میں:</strong> نماز، روزہ، حج وغیرہ میں استخارہ نہیں ہوتا کیونکہ وہ لازمی فرض ہیں۔</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Authentic Hadith Box -->
+                <div class="istikhara-hadith-box">
+                  <div class="ihb-title"><i class="fa-solid fa-book-quran text-gold"></i> استخارہ کے بارے میں مستند حدیثِ نبوی ﷺ</div>
+                  <div class="ihb-arabic">
+                    عَنْ جَابِرِ بْنِ عَبْدِ اللَّهِ رَضِيَ اللَّهُ عَنْهُمَا قَالَ: «كَانَ رَسُولُ اللَّهِ ﷺ يُعَلِّمُنَا الِاسْتِخَارَةَ فِي الأُمُورِ كُلِّهَا كَمَا يُعَلِّمُنَا السُّورَةَ مِنَ القُرْآنِ، يَقُولُ: إِذَا هَمَّ أَحَدُكُمْ بِالأَمْرِ فَلْيَرْكَعْ رَكْعَتَيْنِ مِنْ غَيْرِ الفَرِيضَةِ، ثُمَّ لِيَقُلْ: اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ وَأَسْأَلُكَ مِنْ فَضْلِكَ العَظِيمِ، فَإِنَّكَ تَقْدِرُ وَلاَ أَقْدِرُ، وَتَعْلَمُ وَلاَ أَعْلَمُ، وَأَنْتَ عَلاَّمُ الغُيُوبِ...»
+                  </div>
+                  <div class="ihb-ref"><strong>حوالہ:</strong> صحیح البخاری (حدیث نمبر: 1162)</div>
+                  <div class="ihb-urdu">
+                    <strong>ترجمہ:</strong> حضرت جابر بن عبداللہ رضی اللہ عنہما فرماتے ہیں کہ رسول اللہ ﷺ ہمیں تمام معاملات میں استخارہ کی تعلیم اس طرح دیا کرتے تھے جیسے قرآنِ مجید کی کوئی سورت سکھاتے تھے، آپ ﷺ فرماتے تھے: "جب تم میں سے کوئی کسی کام کا ارادہ کرے تو فرض کے علاوہ دو رکعت (نفل) پڑھے اور پھر یہ مسنون دعا مانگے..."
+                  </div>
+                </div>
+
                 <div class="dsc-points-box">
-                  <div class="dsc-point-item"><strong>ضروری معلومات:</strong> سائل کا نام، والدہ کا نام، اور اصل مسئلہ کی مختصر تفصیل۔</div>
-                  <div class="dsc-point-item"><strong>طریقۂ کار:</strong> مسنون دعائے استخارہ، روحانی حساب، اور واٹس ایپ پر مستند جواب۔</div>
+                  <div class="dsc-point-item"><strong>اہم شرعی نکتہ:</strong> استخارہ میں خواب کا آنا شرط یا لازمی نہیں ہے، بلکہ دعا کے بعد اللہ تعالیٰ دل کا میلان اور اسباب خیر کی طرف موڑ دیتے ہیں۔</div>
+                  <div class="dsc-point-item"><strong>ضروری معلومات برائے آن لائن استخارہ:</strong> سائل کا نام، والدہ کا نام، اور معاملے کی مختصر نوعیت۔</div>
                 </div>
+
                 <div class="dsc-bottom-row">
                   <span class="dsc-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
-                  <button class="btn-dsc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے آن لائن استخارہ / تشخیص کروانی ہے۔')">
-                    <i class="fa-brands fa-whatsapp"></i> Request Free Istikhara
+                  <button class="btn-dsc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے شرعی استخارہ کروانا ہے (شادی/کاروبار/سفر)۔')">
+                    <i class="fa-brands fa-whatsapp"></i> آن لائن استخارہ کروائیں
                   </button>
                 </div>
               </div>
@@ -1969,7 +1970,7 @@
                 Comprehensive Spiritual Healing, Tasawwuf &amp; Authentic Islamic Guidance
               </p>
               <div class="about-stats-row">
-                <span class="about-stat-item"><i class="fa-solid fa-certificate text-gold"></i> 12+ سالہ تجربہ</span>
+                <span class="about-stat-item"><i class="fa-solid fa-certificate text-gold"></i> 16 سالہ تجربہ</span>
                 <span class="about-stat-item"><i class="fa-solid fa-book-quran text-gold"></i> قرآن و سنت کی روشنی میں</span>
                 <span class="about-stat-item"><i class="fa-solid fa-globe text-gold"></i> عالمی رسائی</span>
               </div>
@@ -2036,6 +2037,33 @@
                   <i class="fa-brands fa-whatsapp"></i> مفتی صاحب سے براہِ راست رابطہ کریں
                 </button>
               </div>
+            </div>
+
+            <!-- Google Review Card in About Us -->
+            <div class="about-google-review-box">
+              <div class="agrb-header">
+                <div class="agrb-icon"><i class="fa-brands fa-google"></i></div>
+                <div>
+                  <h4>گوگل پر ریویو دیں (Rate Us on Google)</h4>
+                  <div class="agrb-stars">★★★★★ <span>5.0 Star Rating</span></div>
+                </div>
+              </div>
+              <p>اگر آپ کو خضریٰ ویز سے شفاء یا رہنمائی حاصل ہوئی ہے تو گوگل پر اپنا مبارک ریویو ضرور شیئر فرمائیں۔</p>
+              <a href="https://share.google/B26uoDyw9iDKQcQFk" target="_blank" rel="noopener" class="btn-agrb-link">
+                <i class="fa-solid fa-star"></i> گوگل پر 5 سٹار ریویو دیں <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+
+            <!-- Customer Stories Link Card in About Us -->
+            <div class="about-stories-link-box" data-open="tabCustomerStories">
+              <div class="aslb-left">
+                <div class="aslb-icon"><i class="fa-solid fa-comments"></i></div>
+                <div>
+                  <h4>کسٹمر کے تاثرات و کہانیاں (Customer Stories)</h4>
+                  <p>شفایاب سائلین کے مصدقہ تجربات اور کہانیاں پڑھیں</p>
+                </div>
+              </div>
+              <div class="aslb-btn">کہانیاں دیکھیں <i class="fa-solid fa-arrow-left"></i></div>
             </div>
 
             <!-- Section 4: Quick Navigation to App Features -->
@@ -2128,7 +2156,227 @@
           </div>
         </section>
 
-        <section class="tab-screen" id="tabProfile">
+                <!-- ====================================================
+             TAB: CUSTOMER STORIES (کسٹمر کی کہانیاں و تاثرات)
+             ==================================================== -->
+        <section class="tab-screen" id="tabCustomerStories">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title">Customer Stories</h3>
+            <button class="btn-icon-sub" onclick="openWhatsAppConsult('السلام علیکم، میں خضریٰ ویز کے ساتھ اپنی شفاء کی کہانی شیئر کرنا چاہتا ہوں۔')" title="Share Story">
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+          <div class="sub-screen-scroll">
+
+            <!-- Hero Banner with 4.9 Stars & Google Review CTA -->
+            <div class="cs-hero-card">
+              <div class="csh-top">
+                <div class="csh-stars-wrap">
+                  <div class="csh-stars">★★★★★</div>
+                  <span class="csh-score">4.9 / 5.0</span>
+                </div>
+                <span class="csh-badge"><i class="fa-solid fa-shield-halved"></i> 100% تصدیق شدہ کہانیاں</span>
+              </div>
+              <h3>کسٹمرز کے تاثرات و سچی کہانیاں</h3>
+              <p>خضریٰ ویز کی قرآنی و روحانی رہنمائی سے اللہ کے فضل و کرم سے شفایاب ہونے والے افراد کے مصدقہ تاثرات</p>
+
+              <div class="csh-actions-row">
+                <a href="https://share.google/B26uoDyw9iDKQcQFk" target="_blank" rel="noopener" class="btn-csh-google">
+                  <i class="fa-brands fa-google"></i> گوگل پر ریویو دیں
+                </a>
+                <button class="btn-csh-share" onclick="openWhatsAppConsult('السلام علیکم، میں خضریٰ ویز کے ساتھ اپنی شفاء کی کہانی شیئر کرنا چاہتا ہوں۔')">
+                  <i class="fa-brands fa-whatsapp"></i> اپنی کہانی بھیجیں
+                </button>
+              </div>
+            </div>
+
+            <!-- Category Filter Chips for Stories -->
+            <div class="cs-category-chips">
+              <button class="cs-chip active" onclick="filterCustomerStories('all', this)">تمام کہانیاں</button>
+              <button class="cs-chip" onclick="filterCustomerStories('jadu', this)">جادو و جنات کا توڑ</button>
+              <button class="cs-chip" onclick="filterCustomerStories('shifa', this)">امراض و کینسر سے شفاء</button>
+              <button class="cs-chip" onclick="filterCustomerStories('rishta', this)">شادی و گھریلو مسائل</button>
+              <button class="cs-chip" onclick="filterCustomerStories('karobar', this)">کاروبار و رزق</button>
+            </div>
+
+            <!-- Stories List Container -->
+            <div class="cs-cards-list" id="csCardsList">
+              
+              <!-- Story 1 -->
+              <div class="cs-card-item" data-story-cat="jadu">
+                <div class="cs-card-top">
+                  <div class="cs-user-group">
+                    <div class="cs-avatar">مس</div>
+                    <div class="cs-user-meta">
+                      <h4>مسز ساجد علی</h4>
+                      <span>لاہور (Lahore)</span>
+                    </div>
+                  </div>
+                  <span class="cs-verified-badge"><i class="fa-solid fa-circle-check"></i> تصدیق شدہ سائل</span>
+                </div>
+                <div class="cs-rating-line">
+                  <div class="cs-stars-gold">★★★★★</div>
+                  <span class="cs-cat-tag">جادو و جنات کا توڑ</span>
+                </div>
+                <h4 class="cs-story-title">8 سال پرانے سخت کالے جادو اور جناتی اثرات کا مکمل خاتمہ</h4>
+                <p class="cs-story-body">
+                  "ہمارے گھر میں خون کے چھینٹے، ہر وقت چیخ و پکار، اور مجھے شدید سر درد اور گھبراہٹ رہتی تھی۔ بڑے بڑے عاملین کو لاکھوں روپے دیے لیکن کچھ افاقہ نہ ہوا۔ مفتی خضر متین صاحب نے حصارِ خضریٰ، عملِ مرغی اور خاص قرآنی کاٹ فرمائی۔ الحمدللہ صرف 21 دنوں میں گھر کا ماحول بالکل پرسکون ہو گیا اور تمام کالے اثرات جڑ سے ختم ہو گئے۔ مفتی صاحب کا بے حد شکریہ!"
+                </p>
+                <div class="cs-treatment-tagbox">
+                  <strong>علاج موصول ہوا:</strong> حصارِ خضریٰ، عملِ مرغی و کاٹ، دم شدہ حفاظتی پانی
+                </div>
+                <button class="btn-cs-wa-chat" onclick="openWhatsAppConsult('السلام علیکم، مجھے مسز ساجد علی جیسے کیس (جادو و جنات کے توڑ) کے سلسلے میں رہنمائی چاہیے۔')">
+                  <i class="fa-brands fa-whatsapp"></i> اس طریقہ علاج کے متعلق بات کریں
+                </button>
+              </div>
+
+              <!-- Story 2 -->
+              <div class="cs-card-item" data-story-cat="shifa">
+                <div class="cs-card-top">
+                  <div class="cs-user-group">
+                    <div class="cs-avatar" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">حاج</div>
+                    <div class="cs-user-meta">
+                      <h4>حاجی عبد الرشید</h4>
+                      <span>کراچی (Karachi)</span>
+                    </div>
+                  </div>
+                  <span class="cs-verified-badge"><i class="fa-solid fa-circle-check"></i> تصدیق شدہ مریض</span>
+                </div>
+                <div class="cs-rating-line">
+                  <div class="cs-stars-gold">★★★★★</div>
+                  <span class="cs-cat-tag">امراض و کینسر سے شفاء</span>
+                </div>
+                <h4 class="cs-story-title">لاعلاج جسمانی بیماری اور کینسر کی علامات میں حیران کن افاقہ</h4>
+                <p class="cs-story-body">
+                  "ڈاکٹرز نے مایوس کن جواب دے دیا تھا اور جسم میں شدید درد اور گلٹیاں بڑھ رہی تھیں۔ مفتی صاحب کے دم شدہ خاص تیل، سورت رحمن کا دم اور خاص شفاء کے وظائف شروع کیے۔ اللہ کے فضل سے اگلے ہی مہینے رپورٹس میں 80 فیصد بہتری آئی اور درد سے نجات مل گئی۔ یہ خالص اللہ کے کلام کا معجزہ ہے۔"
+                </p>
+                <div class="cs-treatment-tagbox">
+                  <strong>علاج موصول ہوا:</strong> خضریٰ دم شدہ تیل، سورۃ الرحمٰن تھیراپی، آیاتِ شفاء
+                </div>
+                <button class="btn-cs-wa-chat" onclick="openWhatsAppConsult('السلام علیکم، مجھے لاعلاج بیماری / کینسر کے روحانی علاج اور دم شدہ تیل کی معلومات چاہیے۔')">
+                  <i class="fa-brands fa-whatsapp"></i> دم شدہ تیل و شفاء کا پوچھیں
+                </button>
+              </div>
+
+              <!-- Story 3 -->
+              <div class="cs-card-item" data-story-cat="rishta">
+                <div class="cs-card-top">
+                  <div class="cs-user-group">
+                    <div class="cs-avatar" style="background: linear-gradient(135deg, #D97706 0%, #B45309 100%);">فاط</div>
+                    <div class="cs-user-meta">
+                      <h4>فاطمہ زہرا</h4>
+                      <span>راولپنڈی (Rawalpindi)</span>
+                    </div>
+                  </div>
+                  <span class="cs-verified-badge"><i class="fa-solid fa-circle-check"></i> تصدیق شدہ سائل</span>
+                </div>
+                <div class="cs-rating-line">
+                  <div class="cs-stars-gold">★★★★★</div>
+                  <span class="cs-cat-tag">شادی و رشتہ کی بندش</span>
+                </div>
+                <h4 class="cs-story-title">6 سال سے رشتہ کی سخت بندش اور گھریلو جھگڑوں کا حل</h4>
+                <p class="cs-story-body">
+                  "میری بیٹی کا رشتہ جہاں بھی بات چلتی، آخری وقت پر بغیر کسی وجہ کے ختم ہو جاتی تھی۔ گھر میں بھی ہر وقت ناچاقی رہتی تھی۔ خضریٰ ویز سے شرعی استخارہ اور قرآنی نقوش و دم کروایا۔ ماشاءاللہ دو مہینے کے اندر بیٹی کا ایک انتہائی دیندار اور باعزت گھرانے میں رشتہ طے پا گیا۔ گھر میں بھی امن و محبت قائم ہو گئی۔"
+                </p>
+                <div class="cs-treatment-tagbox">
+                  <strong>علاج موصول ہوا:</strong> مسنون استخارہ، بندشِ رشتہ کا قرآنی توڑ، نقوشِ محبت و اتفاق
+                </div>
+                <button class="btn-cs-wa-chat" onclick="openWhatsAppConsult('السلام علیکم، مجھے رشتہ کی بندش اور گھریلو مسائل کے حل کے متعلق مشورہ چاہیے۔')">
+                  <i class="fa-brands fa-whatsapp"></i> رشتہ کی بندش کے حل کا پوچھیں
+                </button>
+              </div>
+
+              <!-- Story 4 -->
+              <div class="cs-card-item" data-story-cat="karobar">
+                <div class="cs-card-top">
+                  <div class="cs-user-group">
+                    <div class="cs-avatar" style="background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);">عث</div>
+                    <div class="cs-user-meta">
+                      <h4>محمد عثمان ملک</h4>
+                      <span>فیصل آباد (Faisalabad)</span>
+                    </div>
+                  </div>
+                  <span class="cs-verified-badge"><i class="fa-solid fa-circle-check"></i> تصدیق شدہ کلائنٹ</span>
+                </div>
+                <div class="cs-rating-line">
+                  <div class="cs-stars-gold">★★★★★</div>
+                  <span class="cs-cat-tag">کاروبار و رزق</span>
+                </div>
+                <h4 class="cs-story-title">کروڑوں کا نقصان، دکان پر بندش اور قرضوں سے نجات</h4>
+                <p class="cs-story-body">
+                  "چلتا ہوا کاروبار اچانک بیٹھ گیا، گاہک آنا بند ہو گئے اور کروڑوں کا قرضہ سر پر چڑھ گیا تھا۔ مفتی صاحب نے تشخیص کر کے کاروباری بندش کا توڑ (عملِ کڑاہی و صدقہ) اور سورۃ الواقعہ کا خاص معمول بتایا۔ اللہ کے کرم سے تین مہینوں میں دکان کا رش دوبارہ بحال ہوا اور تمام قرضے باآسانی ادا ہو گئے۔"
+                </p>
+                <div class="cs-treatment-tagbox">
+                  <strong>علاج موصول ہوا:</strong> کاروباری بندش کا توڑ (عملِ کڑاہی)، وسعتِ رزق کا وظیفہ
+                </div>
+                <button class="btn-cs-wa-chat" onclick="openWhatsAppConsult('السلام علیکم، مجھے کاروبار کی بندش اور وسعتِ رزق کے علاج کے بارے میں معلوم کرنا ہے۔')">
+                  <i class="fa-brands fa-whatsapp"></i> کاروباری بندش کے توڑ کا پوچھیں
+                </button>
+              </div>
+
+              <!-- Story 5 -->
+              <div class="cs-card-item" data-story-cat="shifa">
+                <div class="cs-card-top">
+                  <div class="cs-user-group">
+                    <div class="cs-avatar" style="background: linear-gradient(135deg, #EA580C 0%, #C2410C 100%);">زین</div>
+                    <div class="cs-user-meta">
+                      <h4>سیدہ زینب نقوی</h4>
+                      <span>ملتان (Multan)</span>
+                    </div>
+                  </div>
+                  <span class="cs-verified-badge"><i class="fa-solid fa-circle-check"></i> تصدیق شدہ سائل</span>
+                </div>
+                <div class="cs-rating-line">
+                  <div class="cs-stars-gold">★★★★★</div>
+                  <span class="cs-cat-tag">ڈپریشن و تناؤ</span>
+                </div>
+                <h4 class="cs-story-title">شدید ڈپریشن، پینک اٹیکس اور وسوسوں سے مستقل نجات</h4>
+                <p class="cs-story-body">
+                  "ہر وقت موت کا خوف، دل کی تیز دھڑکن اور وسوسے مجھے بے چین رکھتے تھے، نیند کی گولیاں کھا کھا کر تھک چکی تھی۔ خضریٰ ویز کے روحانی کونسلنگ سیشنز اور مسنون اذکار و مراقبہ اختیار کیا۔ اب میری دوائیں چھوٹ چکی ہیں اور دل کو ایسا اطمینان حاصل ہوا ہے جو پہلے کبھی محسوس نہیں ہوا تھا۔"
+                </p>
+                <div class="cs-treatment-tagbox">
+                  <strong>علاج موصول ہوا:</strong> روحانی کونسلنگ سیشنز، ذکرِ الٰہی و قلبی مراقبہ
+                </div>
+                <button class="btn-cs-wa-chat" onclick="openWhatsAppConsult('السلام علیکم، مجھے ڈپریشن اور وسوسوں کے روحانی علاج اور کونسلنگ کی رہنمائی چاہیے۔')">
+                  <i class="fa-brands fa-whatsapp"></i> کونسلنگ سیشن کا وقت لیں
+                </button>
+              </div>
+
+              <!-- Story 6 -->
+              <div class="cs-card-item" data-story-cat="jadu">
+                <div class="cs-card-top">
+                  <div class="cs-user-group">
+                    <div class="cs-avatar" style="background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);">طا</div>
+                    <div class="cs-user-meta">
+                      <h4>طارق محمود</h4>
+                      <span>مانچسٹر، یوکے (Manchester, UK)</span>
+                    </div>
+                  </div>
+                  <span class="cs-verified-badge"><i class="fa-solid fa-circle-check"></i> اوورسیز پاکستانی</span>
+                </div>
+                <div class="cs-rating-line">
+                  <div class="cs-stars-gold">★★★★★</div>
+                  <span class="cs-cat-tag">حفاظت و تعویذات</span>
+                </div>
+                <h4 class="cs-story-title">حسد، حاسدین کے شر اور نظرِ بد سے مکمل حفاظت</h4>
+                <p class="cs-story-body">
+                  "ہمیں یوکے میں رہتے ہوئے بھی دشمنوں اور حسد کا سامنا تھا، جس سے خاندان میں تفرقہ پھیل رہا تھا۔ خضریٰ ویز کے مجرب تعویذاتِ حفاظت بذریعہ ڈاک منگوائے اور رہنمائی حاصل کی۔ الحمدللہ ہم سب اب بالکل محفوظ ہیں اور باقاعدگی سے خضریٰ ویز کی ویڈیوز اور وظائف سے مستفید ہوتے ہیں۔"
+                </p>
+                <div class="cs-treatment-tagbox">
+                  <strong>علاج موصول ہوا:</strong> مجرب تعویذاتِ حفاظت، گولی بند/تیغ بند تعویذ
+                </div>
+                <button class="btn-cs-wa-chat" onclick="openWhatsAppConsult('السلام علیکم، مجھے اوورسیز ڈیلیوری اور تعویذاتِ حفاظت کے بارے میں رہنمائی چاہیے۔')">
+                  <i class="fa-brands fa-whatsapp"></i> تعویذات و حفاظت کا پوچھیں
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+<section class="tab-screen" id="tabProfile">
           <div class="sub-screen-header">
             <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
             <h3 class="sub-screen-title" data-i18n="titleProfile">Profile & Settings</h3>
@@ -2164,6 +2412,28 @@
                   <div>
                     <strong>Admin Management Dashboard</strong>
                     <p>Upload PDFs, manage videos, articles & wazaif</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+
+              <div class="p-link-item" data-open="tabCustomerStories" style="cursor:pointer;">
+                <div class="p-link-left">
+                  <div class="p-icon-box" style="background:#10B981; color:#FFFFFF;"><i class="fa-solid fa-comments"></i></div>
+                  <div>
+                    <strong>Customer Stories (کسٹمر کے تاثرات)</strong>
+                    <p>Verified healing experiences & testimonials</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+
+              <a href="https://share.google/B26uoDyw9iDKQcQFk" target="_blank" rel="noopener" class="p-link-item">
+                <div class="p-link-left">
+                  <div class="p-icon-box" style="background:#EA4335; color:#FFFFFF;"><i class="fa-brands fa-google"></i></div>
+                  <div>
+                    <strong>Rate Us on Google (گوگل ریویو دیں)</strong>
+                    <p>Share your review & 5-star rating on Google</p>
                   </div>
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -2234,7 +2504,7 @@
                   </div>
                   <div>
                     <h5 style="margin:0; font-size:0.88rem; font-weight:800; color:var(--khizri-navy-primary);">Founder: Mufti Khizer Mateen</h5>
-                    <p style="margin:0; font-size:0.72rem; color:#64748B;">جامعہ فاروقیہ و جامعہ تراث السلام • 12+ سالہ تجربہ</p>
+                    <p style="margin:0; font-size:0.72rem; color:#64748B;">جامعہ فاروقیہ و جامعہ تراث السلام • 16 سالہ تجربہ</p>
                   </div>
                 </div>
                 <p style="font-size:0.78rem; line-height:1.5; color:#334155; margin:0;">
@@ -2357,6 +2627,67 @@
     </div>
   </div>
 
+  <!-- Istikhara Guide Modal Dialog -->
+  <div class="modal-dialog-layer" id="modalIstikharaGuide">
+    <div class="modal-card-container" style="max-height: 85vh; overflow-y: auto;">
+      <div class="modal-card-top-bar">
+        <span>شرعی استخارہ: اصول، شرائط و مستند حدیث</span>
+        <button class="btn-modal-x" onclick="closeModal('modalIstikharaGuide')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-card-body" style="padding: 16px;">
+        
+        <div style="text-align:center; margin-bottom:12px;">
+          <h4 style="margin:0 0 4px 0; color:#0284C7; font-size:1.1rem;">آن لائن شرعی استخارہ و مسنون رہنمائی</h4>
+          <p style="margin:0; font-size:0.78rem; color:#64748B;">جامعہ فاروقیہ و جامعہ تراث السلام سے تصدیق شدہ شرعی اصول</p>
+        </div>
+
+        <!-- Rules Grid -->
+        <div class="istikhara-rules-container">
+          <div class="istikhara-rule-col istikhara-allowed-box">
+            <h5><i class="fa-solid fa-circle-check text-green"></i> کن چیزوں کیلئے استخارہ ہوتا ہے؟ (جائز امور)</h5>
+            <ul class="istikhara-list">
+              <li><strong>شادی و رشتہ:</strong> رشتہ طے کرنے یا نکاح کے معاملے میں خیر و برکت معلوم کرنا۔</li>
+              <li><strong>کاروبار و شراکت:</strong> نیا کاروبار، سرمایہ کاری یا نئی ملازمت کا انتخاب۔</li>
+              <li><strong>سفر و رہائش:</strong> بیرونِ ملک سفر، ویزہ یا نئی جگہ سکونت اختیار کرنا۔</li>
+              <li><strong>مباح دینی و دنیاوی فیصلے:</strong> جہاں دو جائز راستوں میں سے کسی ایک کو چننا ہو۔</li>
+            </ul>
+          </div>
+
+          <div class="istikhara-rule-col istikhara-forbidden-box">
+            <h5><i class="fa-solid fa-circle-xmark text-danger"></i> کن چیزوں کیلئے استخارہ نہیں ہوتا؟ (سخت غلط فہمیاں)</h5>
+            <ul class="istikhara-list">
+              <li><strong>چوری کس نے کی؟</strong> چور کا نام معلوم کرنا یا چوری شدہ مال کا غیبی پتہ لگانا (استخارہ علمِ غیب نہیں ہے)۔</li>
+              <li><strong>جادو کس نے کروایا؟</strong> کسی پر شک کرنا یا دشمن و حاسد کا پتہ لگانا (شرعاً ممنوع اور ناجائز ہے)۔</li>
+              <li><strong>کسی گناہ یا حرام کام کیلئے:</strong> ناجائز تعلقات، دھوکہ یا قطع رحمی کے معاملات میں۔</li>
+              <li><strong>فرائض و واجبات میں:</strong> نماز، روزہ، حج وغیرہ میں استخارہ نہیں ہوتا کیونکہ وہ لازمی فرض ہیں۔</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Authentic Hadith Box -->
+        <div class="istikhara-hadith-box">
+          <div class="ihb-title"><i class="fa-solid fa-book-quran text-gold"></i> استخارہ کے بارے میں مستند حدیثِ نبوی ﷺ</div>
+          <div class="ihb-arabic">
+            عَنْ جَابِرِ بْنِ عَبْدِ اللَّهِ رَضِيَ اللَّهُ عَنْهُمَا قَالَ: «كَانَ رَسُولُ اللَّهِ ﷺ يُعَلِّمُنَا الِاسْتِخَارَةَ فِي الأُمُورِ كُلِّهَا كَمَا يُعَلِّمُنَا السُّورَةَ مِنَ القُرْآنِ، يَقُولُ: إِذَا هَمَّ أَحَدُكُمْ بِالأَمْرِ فَلْيَرْكَعْ رَكْعَتَيْنِ مِنْ غَيْرِ الفَرِيضَةِ، ثُمَّ لِيَقُلْ: اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ وَأَسْأَلُكَ مِنْ فَضْلِكَ العَظِيمِ، فَإِنَّكَ تَقْدِرُ وَلاَ أَقْدِرُ، وَتَعْلَمُ وَلاَ أَعْلَمُ، وَأَنْتَ عَلاَّمُ الغُيُوبِ...»
+          </div>
+          <div class="ihb-ref"><strong>حوالہ:</strong> صحیح البخاری (حدیث نمبر: 1162)</div>
+          <div class="ihb-urdu">
+            <strong>ترجمہ:</strong> حضرت جابر بن عبداللہ رضی اللہ عنہما فرماتے ہیں کہ رسول اللہ ﷺ ہمیں تمام معاملات میں استخارہ کی تعلیم اس طرح دیا کرتے تھے جیسے قرآنِ مجید کی کوئی سورت سکھاتے تھے، آپ ﷺ فرماتے تھے: "جب تم میں سے کوئی کسی کام کا ارادہ کرے تو فرض کے علاوہ دو رکعت (نفل) پڑھے اور پھر یہ مسنون دعا مانگے..."
+          </div>
+        </div>
+
+        <div style="background:#F8FAFC; border-radius:10px; padding:10px; margin:10px 0; font-size:0.78rem; color:#334155; line-height:1.5;">
+          <strong>اہم نکتہ:</strong> استخارہ کے بعد خواب دیکھنا یا سبز و سفید رنگ نظر آنا قطعی شرط نہیں ہے۔ اصل مقصد یہ ہے کہ دعا کے بعد جس کام میں خیر ہوگی، اللہ تعالیٰ دل میں اس کا اطمینان ڈال دیں گے اور اسباب آسان کر دیں گے۔
+        </div>
+
+        <button class="btn-dsc-whatsapp" style="width:100%; margin-top:8px;" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے شرعی استخارہ کروانا ہے (شادی/کاروبار/سفر)۔'); closeModal('modalIstikharaGuide');">
+          <i class="fa-brands fa-whatsapp"></i> واٹس ایپ پر استخارہ کی درخواست بھیجیں
+        </button>
+
+      </div>
+    </div>
+  </div>
+
   <!-- Zakat Modal -->
   <div class="modal-dialog-layer" id="modalZakat">
     <div class="modal-card-container">
@@ -2397,6 +2728,6 @@
   </div>
 
   <!-- Exact App Logic with Cache Buster -->
-  <script src="/js/app.js?v=khizri-navy-17.0"></script>
+  <script src="/js/app.js?v=khizri-navy-18.0"></script>
 </body>
 </html>

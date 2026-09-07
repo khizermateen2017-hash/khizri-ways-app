@@ -1434,3 +1434,23 @@ window.filterFastTreatment = function(cat, btn) {
     }
   });
 };
+
+// ==========================================
+// Customer Stories Filtering
+// ==========================================
+window.filterCustomerStories = function(category, btnElement) {
+  // Update active chip
+  const chips = document.querySelectorAll('.cs-category-chips .cs-chip');
+  chips.forEach(c => c.classList.remove('active'));
+  if (btnElement) btnElement.classList.add('active');
+
+  const cards = document.querySelectorAll('#csCardsList .cs-card-item');
+  cards.forEach(card => {
+    const cardCat = card.getAttribute('data-story-cat');
+    if (category === 'all' || cardCat === category) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+};
