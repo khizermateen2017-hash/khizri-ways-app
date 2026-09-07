@@ -5796,3 +5796,102 @@ body.lang-ur .sub-screen-title {
 .btn-rp-later:hover {
   color: #CBD5E1;
 }
+
+/* Customer Stories Main Screen Button & Feature Accent */
+.feature-accent-stories {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4) !important;
+}
+
+.home-stories-action-btn {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #064E3B 100%);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin: 8px 0 14px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.home-stories-action-btn:hover {
+  transform: translateY(-2px);
+  border-color: #34D399;
+}
+
+.home-stories-action-btn:active {
+  transform: scale(0.99);
+}
+
+.hsa-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hsa-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.hsa-badge {
+  display: inline-block;
+  background: rgba(16, 185, 129, 0.2);
+  border: 0.5px solid rgba(16, 185, 129, 0.5);
+  color: #6EE7B7;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 1px 7px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+}
+
+.hsa-left h4 {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 2px;
+}
+
+.hsa-left p {
+  font-size: 0.72rem;
+  color: #94A3B8;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.btn-hsa-go {
+  background: #10B981;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+  transition: background 0.15s;
+}
+
+.btn-hsa-go:hover {
+  background: #059669;
+}
