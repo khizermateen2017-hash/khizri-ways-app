@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Custom Stylesheet with Cache Buster -->
-  <link rel="stylesheet" href="/css/app.css?v=khizri-navy-12.0">
+  <link rel="stylesheet" href="/css/app.css?v=khizri-navy-13.0">
 </head>
 <body class="deen-app-body khizri-theme">
 
@@ -245,12 +245,12 @@
                 <span class="feature-title" data-i18n="featDuroodKhizri">Durood<br>Khizri</span>
               </div>
 
-              <!-- 7. Online Istikhara & Guidance -->
-              <div class="feature-cell" onclick="openWhatsAppConsult()" title="Online Istikhara &amp; Consultation">
-                <div class="feature-icon-circle">
-                  <i class="fa-solid fa-shield-halved"></i>
+              <!-- 7. Khizri Services (All Services) -->
+              <div class="feature-cell" data-open="tabServices" title="All Khizri Services &amp; Treatments">
+                <div class="feature-icon-circle feature-accent-services">
+                  <i class="fa-solid fa-layer-group"></i>
                 </div>
-                <span class="feature-title" data-i18n="featIstikhara">Online<br>Istikhara</span>
+                <span class="feature-title" data-i18n="featServices">Our<br>Services</span>
               </div>
 
               <!-- 8. PDF Books & Resources -->
@@ -335,7 +335,7 @@
                   <p>خدمات و روحانی علاج • Checkup &amp; Treatment</p>
                 </div>
                 <div class="ksc-badge">
-                  <span class="ksc-checkup-tag" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سروسز (Checkup / Treatment) کے بارے میں رہنمائی چاہیے۔')">Checkup / Treatment</span>
+                  <span class="ksc-checkup-tag" data-open="tabServices" style="cursor:pointer;"><i class="fa-solid fa-layer-group"></i> تمام 12 خدمات دیکھیں</span>
                 </div>
               </div>
 
@@ -520,230 +520,18 @@
             </div>
 
             
-            <!-- ====================================================
-                 OUR OFFICIAL SERVICES (POSTER SERVICES ONE BY ONE)
-                 ==================================================== -->
-            <div class="official-services-strip">
-              <div class="oss-header">
-                <span class="oss-badge"><i class="fa-solid fa-star-and-crescent"></i> Official Services</span>
-                <span style="font-size:0.75rem; color:#FDE047; font-weight:700;">Checkup &amp; Treatment</span>
+            <!-- Link to Dedicated Services Screen (Separated from Spiritual Healing as requested) -->
+            <div class="rohani-services-link-card" data-open="tabServices" title="View All Services with Details">
+              <div class="rsl-left">
+                <div class="rsl-icon"><i class="fa-solid fa-layer-group"></i></div>
+                <div>
+                  <h4>ہماری تمام 12 خدمات و چیک اپ کی تفصیلات</h4>
+                  <p>جادو، نظرِ بد، جنات، ڈپریشن، کینسر سمیت تمام خدمات کی علیحدہ تفصیلی فہرست دیکھیں</p>
+                </div>
               </div>
-              <h3 class="oss-title">ہماری خصوصی خدمات و شرعی علاج</h3>
-              <p class="oss-sub">خضریٰ ویز کے زیرِ اہتمام پیش کی جانے والی تمام 8 مستند روحانی و طبی خدمات ذیل میں درج ہیں۔ ہر مسئلے کے لیے ماہرین سے فوری چیک اپ کروائیں۔</p>
+              <div class="rsl-btn">دیکھیں <i class="fa-solid fa-arrow-left"></i></div>
             </div>
 
-            <!-- List of 8 Services One-by-One -->
-            <div class="services-cards-wrapper">
-              
-              <!-- 1. Black Magic Treatment -->
-              <div class="service-card-item">
-                <div class="sci-top-row">
-                  <div class="sci-icon-title">
-                    <div class="sci-icon icon-magic"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                    <div class="sci-title-box">
-                      <h4>Black Magic Treatment</h4>
-                      <div class="sci-urdu-title">سحر، جادو اور سفلی بندشوں کا مکمل خاتمہ</div>
-                    </div>
-                  </div>
-                  <span class="sci-checkup-badge">Checkup/Treatment</span>
-                </div>
-                <div class="sci-desc">
-                  پرانے سے پرانے جادو، سحرِ تفریق (جدائی)، سفلی اثرات، خون یا ہڈیوں کے جادو کا قرآن و سنت کے مطابق قطعی علاج اور مریض و گھر کی مکمل حفاظت۔
-                </div>
-                <div class="sci-method-box">
-                  <strong>طریقۂ علاج:</strong> استخارہ و تشخیص، سحر شکن آیاتِ قرآنیہ کا دم، دم شدہ پانی اور تاحیات حفاظتی حصار۔
-                </div>
-                <div class="sci-btn-row">
-                  <span class="sci-direct-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
-                  <button class="btn-book-checkup" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے Black Magic Treatment (جادو کے علاج) کے حوالے سے چیک اپ کروانا ہے۔')">
-                    <i class="fa-brands fa-whatsapp"></i> Book Checkup / Treatment
-                  </button>
-                </div>
-              </div>
-
-              <!-- 2. Evil Eyes Issues -->
-              <div class="service-card-item">
-                <div class="sci-top-row">
-                  <div class="sci-icon-title">
-                    <div class="sci-icon icon-eye"><i class="fa-solid fa-eye-slash"></i></div>
-                    <div class="sci-title-box">
-                      <h4>Evil Eyes Issues</h4>
-                      <div class="sci-urdu-title">نظرِ بد، حسد اور حاسدین کے شر کا علاج</div>
-                    </div>
-                  </div>
-                  <span class="sci-checkup-badge">Checkup/Treatment</span>
-                </div>
-                <div class="sci-desc">
-                  حاسدین کی سخت نظر، کاروبار یا صحت کا اچانک برباد ہونا، بچوں کا بلاوجہ رونا یا چڑچڑاپن—نظرِ بد کا فوری مسنون توڑ اور شفا۔
-                </div>
-                <div class="sci-method-box">
-                  <strong>طریقۂ علاج:</strong> مسنون رقیہ شرعیہ، دم شدہ زیتون کے تیل اور عرقِ گلاب کا استعمال، اور حفاظتی دعائیں مع عوذات۔
-                </div>
-                <div class="sci-btn-row">
-                  <span class="sci-direct-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
-                  <button class="btn-book-checkup" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے Evil Eyes Issues (نظرِ بد کے علاج) کے لیے رہنمائی اور چیک اپ چاہیے۔')">
-                    <i class="fa-brands fa-whatsapp"></i> Book Checkup / Treatment
-                  </button>
-                </div>
-              </div>
-
-              <!-- 3. Jinn Problems -->
-              <div class="service-card-item">
-                <div class="sci-top-row">
-                  <div class="sci-icon-title">
-                    <div class="sci-icon icon-jinn"><i class="fa-solid fa-ghost"></i></div>
-                    <div class="sci-title-box">
-                      <h4>Jinn Problems</h4>
-                      <div class="sci-urdu-title">آسیب، جنات اور خبیث اثرات سے نجات</div>
-                    </div>
-                  </div>
-                  <span class="sci-checkup-badge">Checkup/Treatment</span>
-                </div>
-                <div class="sci-desc">
-                  مکان یا جسم پر جنات کا اثر، رات کو ڈراؤنے سائے، نیند میں دم گھٹنا، بلاوجہ بدبو یا خوف کا احساس—جنات کے شر کا مستقل شرعی سدِباب۔
-                </div>
-                <div class="sci-method-box">
-                  <strong>طریقۂ علاج:</strong> آیاتِ حرق و عذاب کی تلاوت، خاص خضری دم، اور گھر و دکان کی مستقل روحانی بندش۔
-                </div>
-                <div class="sci-btn-row">
-                  <span class="sci-direct-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
-                  <button class="btn-book-checkup" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے Jinn Problems (آسیب و جنات کے مسائل) کے لیے رہنمائی اور چیک اپ چاہیے۔')">
-                    <i class="fa-brands fa-whatsapp"></i> Book Checkup / Treatment
-                  </button>
-                </div>
-              </div>
-
-              <!-- 4. Depression -->
-              <div class="service-card-item">
-                <div class="sci-top-row">
-                  <div class="sci-icon-title">
-                    <div class="sci-icon icon-brain"><i class="fa-solid fa-brain"></i></div>
-                    <div class="sci-title-box">
-                      <h4>Depression &amp; Anxiety</h4>
-                      <div class="sci-urdu-title">ڈپریشن، وہم، خوف اور ذہنی تناؤ کا روحانی حل</div>
-                    </div>
-                  </div>
-                  <span class="sci-checkup-badge">Checkup/Treatment</span>
-                </div>
-                <div class="sci-desc">
-                  شدید ذہنی دباؤ، دل کا بیٹھنا، موت کا خوف، وسوسے اور زندگی سے مایوسی—دل کو سکون اور اطمینان بخشنے کے لیے خاص روحانی علاج۔
-                </div>
-                <div class="sci-method-box">
-                  <strong>طریقۂ علاج:</strong> ذکرِ قلبی، پاسِ انفاس، تسکینِ قلب کے وظائف، اور ذاتی روحانی و نفسیاتی کونسلنگ۔
-                </div>
-                <div class="sci-btn-row">
-                  <span class="sci-direct-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
-                  <button class="btn-book-checkup" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے Depression اور ذہنی دباؤ کے روحانی علاج کے لیے سیشن لینا ہے۔')">
-                    <i class="fa-brands fa-whatsapp"></i> Book Checkup / Treatment
-                  </button>
-                </div>
-              </div>
-
-              <!-- 5. Domestic Issues -->
-              <div class="service-card-item">
-                <div class="sci-top-row">
-                  <div class="sci-icon-title">
-                    <div class="sci-icon icon-house"><i class="fa-solid fa-house-chimney-crack"></i></div>
-                    <div class="sci-title-box">
-                      <h4>Domestic Issues</h4>
-                      <div class="sci-urdu-title">گھریلو ناچاقی، سسرالی جھگڑے اور ازدواجی مسائل</div>
-                    </div>
-                  </div>
-                  <span class="sci-checkup-badge">Checkup/Treatment</span>
-                </div>
-                <div class="sci-desc">
-                  میاں بیوی میں بلاوجہ نفرت و بدگمانی، طلاق کی نوبت، رشتوں کی بندش اور گھریلو بے سکونی کا حل—گھر میں الفت و برکت لانے کا مجرب عمل۔
-                </div>
-                <div class="sci-method-box">
-                  <strong>طریقۂ علاج:</strong> قلوب میں الفت پیدا کرنے کے مسنون قرآنی اعمال، اور رازداری کے ساتھ فریقین کی رہنمائی۔
-                </div>
-                <div class="sci-btn-row">
-                  <span class="sci-direct-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
-                  <button class="btn-book-checkup" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے Domestic Issues (گھریلو مسائل) کے حل کے لیے کونسلنگ اور چیک اپ چاہیے۔')">
-                    <i class="fa-brands fa-whatsapp"></i> Book Checkup / Treatment
-                  </button>
-                </div>
-              </div>
-
-              <!-- 6. Cancer -->
-              <div class="service-card-item">
-                <div class="sci-top-row">
-                  <div class="sci-icon-title">
-                    <div class="sci-icon icon-cancer"><i class="fa-solid fa-ribbon"></i></div>
-                    <div class="sci-title-box">
-                      <h4>Cancer &amp; Chronic Illness</h4>
-                      <div class="sci-urdu-title">کینسر، رسولیاں اور پیچیدہ لاعلاج امراض</div>
-                    </div>
-                  </div>
-                  <span class="sci-checkup-badge">Checkup/Treatment</span>
-                </div>
-                <div class="sci-desc">
-                  کینسر، رسولی، جگر اور گردوں کے امراض—میڈیکل علاج کے ساتھ اللہ کے کلام کی قوی شفا اور روحانی توجہ سے مریض کے لیے خصوصی دعائیں اور دم۔
-                </div>
-                <div class="sci-method-box">
-                  <strong>طریقۂ علاج:</strong> آیاتِ شفا کا متواتر دم، آبِ زمزم پر سورۂ فاتحہ کا اکسیر عمل، اور مریض کے لیے مستقل روحانی سیشنز۔
-                </div>
-                <div class="sci-btn-row">
-                  <span class="sci-direct-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
-                  <button class="btn-book-checkup" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے Cancer / پیچیدہ مرض کے لیے روحانی دم و شفا کے سیشن کے لیے رہنمائی چاہیے۔')">
-                    <i class="fa-brands fa-whatsapp"></i> Book Checkup / Treatment
-                  </button>
-                </div>
-              </div>
-
-              <!-- 7. Healing Sessions -->
-              <div class="service-card-item">
-                <div class="sci-top-row">
-                  <div class="sci-icon-title">
-                    <div class="sci-icon icon-healing"><i class="fa-solid fa-spa"></i></div>
-                    <div class="sci-title-box">
-                      <h4>Healing Sessions</h4>
-                      <div class="sci-urdu-title">خصوصی روحانی ہیلنگ و باطنی صفائی کے سیشنز</div>
-                    </div>
-                  </div>
-                  <span class="sci-checkup-badge">Checkup/Treatment</span>
-                </div>
-                <div class="sci-desc">
-                  بالمشافہ یا آن لائن ون آن ون مکمل ہیلنگ سیشنز، جن میں مریض پر روحانی توجہ، اوراد اور تلاوت کے ذریعے منفی لہروں اور بیماریوں کا خاتمہ کیا جاتا ہے۔
-                </div>
-                <div class="sci-method-box">
-                  <strong>طریقۂ کار:</strong> پیشگی وقت کا تعین، آن لائن لائیو دعا و دم، اور ہر سیشن کے بعد باقاعدہ فالو اپ۔
-                </div>
-                <div class="sci-btn-row">
-                  <span class="sci-direct-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
-                  <button class="btn-book-checkup" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے Healing Sessions کی بکنگ کے حوالے سے معلومات اور وقت چاہیے۔')">
-                    <i class="fa-brands fa-whatsapp"></i> Book Checkup / Treatment
-                  </button>
-                </div>
-              </div>
-
-              <!-- 8. Counselling Sessions -->
-              <div class="service-card-item">
-                <div class="sci-top-row">
-                  <div class="sci-icon-title">
-                    <div class="sci-icon icon-counsel"><i class="fa-solid fa-comments"></i></div>
-                    <div class="sci-title-box">
-                      <h4>Counselling Sessions</h4>
-                      <div class="sci-urdu-title">روحانی، اخلاقی و فکری کونسلنگ سیشنز</div>
-                    </div>
-                  </div>
-                  <span class="sci-checkup-badge">Checkup/Treatment</span>
-                </div>
-                <div class="sci-desc">
-                  ذاتی الجھنوں، خوف، خاندانی یا کیریئر کے فیصلوں میں شریعت و طریقت کی روشنی میں مخلصانہ رہنمائی اور مکمل رازداری کے ساتھ کونسلنگ۔
-                </div>
-                <div class="sci-method-box">
-                  <strong>طریقۂ کار:</strong> پرائیویٹ مشاورت، ذہنی و روحانی کشمکش کا خاتمہ، اور پرامن زندگی کا عملی لائحۂ عمل۔
-                </div>
-                <div class="sci-btn-row">
-                  <span class="sci-direct-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
-                  <button class="btn-book-checkup" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے Counselling Sessions کے لیے وقت چاہیے۔')">
-                    <i class="fa-brands fa-whatsapp"></i> Book Checkup / Treatment
-                  </button>
-                </div>
-              </div>
-
-            </div>
 
             <!-- Rohani Ilaj Modules Grid -->
             <div class="rohani-modules-list">
@@ -1415,6 +1203,421 @@
 <!-- ====================================================
              TAB: KHIZRI VIDEO LIBRARY (YOUTUBE CHANNEL)
              ==================================================== -->
+        <!-- ====================================================
+             TAB: OUR SERVICES (DEDICATED COMPREHENSIVE SERVICES LIST)
+             ==================================================== -->
+        <section class="tab-screen" id="tabServices">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titleServices">Our Services</h3>
+            <button class="btn-icon-sub" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سروسز کے بارے میں معلومات اور رہنمائی چاہیے۔')" title="WhatsApp Services Consultation">
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+          <div class="sub-screen-scroll">
+            
+            <!-- Services Screen Hero Banner -->
+            <div class="services-hero-banner">
+              <div class="shb-badge"><i class="fa-solid fa-star-and-crescent"></i> Khizri Ways Official Services</div>
+              <h3 class="shb-title">ہماری تمام مستند خدمات و طریقہ علاج</h3>
+              <p class="shb-desc">
+                خضریٰ ویز کے زیرِ اہتمام قرآن و سنت کی روشنی میں پیش کی جانے والی تمام 12 روحانی، طبی اور کونسلنگ خدمات کی مختصر تفصیلات ذیل میں ملاحظہ فرمائیں۔ کسی بھی مسئلے کے لیے فوری چیک اپ اور مشاورت کروائیں۔
+              </p>
+              <div class="shb-cta-row">
+                <button class="btn-shb-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے تمام خدمات کی رہنمائی اور چیک اپ چاہیے۔')">
+                  <i class="fa-brands fa-whatsapp"></i> براہِ راست رابطہ کریں
+                </button>
+                <span class="shb-phone-tag"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+              </div>
+            </div>
+
+            <!-- Services Search & Category Filter -->
+            <div class="services-search-card">
+              <div class="services-input-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="servicesSearchInput" class="services-search-input" placeholder="خدمت تلاش کریں (مثلاً: جادو، جنات، کینسر، ڈپریشن، استخارہ...)" oninput="handleServicesSearch(this.value)">
+                <button class="btn-clear-search" id="btnClearServicesSearch" onclick="clearServicesSearch()" style="display:none;"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+
+              <!-- Category Chips -->
+              <div class="services-category-scroll" id="servicesCategoryChips">
+                <button class="scat-chip active" onclick="filterServicesCategory('all', this)">تمام خدمات (12)</button>
+                <button class="scat-chip" onclick="filterServicesCategory('magic-jinn', this)">سحر و جنات</button>
+                <button class="scat-chip" onclick="filterServicesCategory('health-mind', this)">صحت و ڈپریشن</button>
+                <button class="scat-chip" onclick="filterServicesCategory('counsel-family', this)">کونسلنگ و گھریلو</button>
+                <button class="scat-chip" onclick="filterServicesCategory('istikhara-taweez', this)">استخارہ و تعویذات</button>
+                <button class="scat-chip" onclick="filterServicesCategory('tasawwuf-spiritual', this)">تصوف و طریقت</button>
+              </div>
+            </div>
+
+            <!-- Detailed Services List (All 12 with short details) -->
+            <div class="services-detailed-list" id="servicesDetailedList">
+              
+              <!-- 1. Black Magic Treatment -->
+              <div class="detailed-service-card" data-service-cat="magic-jinn" data-keywords="black magic jadu sihr safli bandish علاج سحر جادو سفلی بندش">
+                <div class="dsc-top-row">
+                  <div class="dsc-id-icon">
+                    <span class="dsc-num-badge">01</span>
+                    <div class="dsc-icon-box" style="background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);">
+                      <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div class="dsc-title-group">
+                      <h4>Black Magic Treatment</h4>
+                      <div class="dsc-urdu">سحر، جادو اور سفلی بندشوں کا شرعی خاتمہ</div>
+                    </div>
+                  </div>
+                  <span class="dsc-tag">Checkup &amp; Cure</span>
+                </div>
+                <div class="dsc-desc">
+                  پرانے سے پرانے سحر، سفلی اثرات، سحرِ تفریق (جدائی)، خون و ہڈیوں کے جادو اور کاروبار یا رشتوں کی بندش کا قرآن و سنت کے مطابق مستقل خاتمہ اور مریض و گھر کی مکمل حفاظت۔
+                </div>
+                <div class="dsc-points-box">
+                  <div class="dsc-point-item"><strong>مسئلہ و علامات:</strong> کاموں میں ناگہانی بندش، بلاوجہ خوف، خواب میں اونچائی یا غلاظت دیکھنا، اور میڈیکل رپورٹس کا نارمل آنا۔</div>
+                  <div class="dsc-point-item"><strong>طریقۂ علاج:</strong> قرآنی استخارہ و تشخیص، آیاتِ سحر شکن کا دم، دم شدہ پانی اور حفاظتی حصار۔</div>
+                </div>
+                <div class="dsc-bottom-row">
+                  <span class="dsc-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-dsc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے Black Magic Treatment (جادو کے علاج) کے حوالے سے چیک اپ کروانا ہے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> Book Checkup / Treatment
+                  </button>
+                </div>
+              </div>
+
+              <!-- 2. Evil Eyes Issues -->
+              <div class="detailed-service-card" data-service-cat="magic-jinn" data-keywords="evil eye nazar bad hasad نظر بد حسد حاسدین شر حفاظت">
+                <div class="dsc-top-row">
+                  <div class="dsc-id-icon">
+                    <span class="dsc-num-badge">02</span>
+                    <div class="dsc-icon-box" style="background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);">
+                      <i class="fa-solid fa-eye-slash"></i>
+                    </div>
+                    <div class="dsc-title-group">
+                      <h4>Evil Eyes Issues</h4>
+                      <div class="dsc-urdu">نظرِ بد، حسد اور حاسدین کے شر کا فوری توڑ</div>
+                    </div>
+                  </div>
+                  <span class="dsc-tag">Protection</span>
+                </div>
+                <div class="dsc-desc">
+                  حاسدین کی سخت نظر، کاروبار، مال یا صحت کا اچانک تباہ ہونا، بچوں کا بلاوجہ رونا، چڑچڑاپن اور حسن یا صلاحیت پر لگنے والی نظر کا مسنون علاج۔
+                </div>
+                <div class="dsc-points-box">
+                  <div class="dsc-point-item"><strong>مسئلہ و علامات:</strong> سر میں شدید بھاری پن، جمائیاں کثرت سے آنا، کندھوں پر بوجھ، اور کام کا اچانک بگڑ جانا۔</div>
+                  <div class="dsc-point-item"><strong>طریقۂ علاج:</strong> مسنون رقیہ شرعیہ، دم شدہ زیتون کے تیل اور عرقِ گلاب کا استعمال، اور معوذتین کا حصار۔</div>
+                </div>
+                <div class="dsc-bottom-row">
+                  <span class="dsc-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-dsc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے Evil Eyes Issues (نظرِ بد کے علاج) کے لیے رہنمائی اور چیک اپ چاہیے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> Book Checkup / Treatment
+                  </button>
+                </div>
+              </div>
+
+              <!-- 3. Jinn Problems -->
+              <div class="detailed-service-card" data-service-cat="magic-jinn" data-keywords="jinnat aseb ghost saye جنات آسیب سائے اثرات نجات">
+                <div class="dsc-top-row">
+                  <div class="dsc-id-icon">
+                    <span class="dsc-num-badge">03</span>
+                    <div class="dsc-icon-box" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                      <i class="fa-solid fa-ghost"></i>
+                    </div>
+                    <div class="dsc-title-group">
+                      <h4>Jinn Problems</h4>
+                      <div class="dsc-urdu">آسیب، جنات اور خبیث ارواح کے اثرات سے نجات</div>
+                    </div>
+                  </div>
+                  <span class="dsc-tag">Deliverance</span>
+                </div>
+                <div class="dsc-desc">
+                  مکان، دکان یا جسم پر جنات کا اثر، رات کو ڈراؤنے سائے، نیند میں دم گھٹنا (کابوس)، بلاوجہ بدبو، اور غیر فطری حرکات و کیفیات کا مستقل شرعی سدِباب۔
+                </div>
+                <div class="dsc-points-box">
+                  <div class="dsc-point-item"><strong>مسئلہ و علامات:</strong> تنہائی میں کسی کی موجودگی کا احساس، جسم پر نیلے نشانات، بلاوجہ خوف اور عبادت میں تنگی۔</div>
+                  <div class="dsc-point-item"><strong>طریقۂ علاج:</strong> آیاتِ حرق و عذاب، خاص خضری دم، اور گھر و دکان کی مستقل روحانی باؤنڈری (حصار)۔</div>
+                </div>
+                <div class="dsc-bottom-row">
+                  <span class="dsc-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-dsc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے Jinn Problems (آسیب و جنات کے مسائل) کے علاج کے لیے وقت چاہیے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> Book Checkup / Treatment
+                  </button>
+                </div>
+              </div>
+
+              <!-- 4. Depression & Anxiety -->
+              <div class="detailed-service-card" data-service-cat="health-mind" data-keywords="depression anxiety stress tension وسوسے وہم ڈپریشن پریشانی تناؤ">
+                <div class="dsc-top-row">
+                  <div class="dsc-id-icon">
+                    <span class="dsc-num-badge">04</span>
+                    <div class="dsc-icon-box" style="background: linear-gradient(135deg, #D97706 0%, #B45309 100%);">
+                      <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div class="dsc-title-group">
+                      <h4>Depression &amp; Anxiety</h4>
+                      <div class="dsc-urdu">ڈپریشن، وہم، خوف اور ذہنی تناؤ کا روحانی حل</div>
+                    </div>
+                  </div>
+                  <span class="dsc-tag">Mind &amp; Heart</span>
+                </div>
+                <div class="dsc-desc">
+                  شدید ذہنی دباؤ، دل کا بیٹھنا، موت کا خوف، خودکشی کے وسوسے، اور زندگی سے مایوسی—دل کو سکون اور اطمینان بخشنے کے لیے خاص روحانی و اذکار پر مبنی طریقہ علاج۔
+                </div>
+                <div class="dsc-points-box">
+                  <div class="dsc-point-item"><strong>مسئلہ و علامات:</strong> نیند نہ آنا، بے چینی، دل کی دھڑکن تیز ہونا، اور منفی خیالات کا ہر وقت حاوی رہنا۔</div>
+                  <div class="dsc-point-item"><strong>طریقۂ علاج:</strong> ذکرِ قلبی، پاسِ انفاس، تسکینِ قلب کے وظائف، اور ذاتی روحانی و نفسیاتی کونسلنگ سیشنز۔</div>
+                </div>
+                <div class="dsc-bottom-row">
+                  <span class="dsc-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-dsc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے Depression اور ذہنی دباؤ کے روحانی علاج کے لیے سیشن لینا ہے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> Book Session / Treatment
+                  </button>
+                </div>
+              </div>
+
+              <!-- 5. Domestic Issues -->
+              <div class="detailed-service-card" data-service-cat="counsel-family" data-keywords="domestic issues family marriage divorce گھریلو ناچاقی طلاق جھگڑے سسرال میاں بیوی">
+                <div class="dsc-top-row">
+                  <div class="dsc-id-icon">
+                    <span class="dsc-num-badge">05</span>
+                    <div class="dsc-icon-box" style="background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);">
+                      <i class="fa-solid fa-house-chimney-crack"></i>
+                    </div>
+                    <div class="dsc-title-group">
+                      <h4>Domestic Issues</h4>
+                      <div class="dsc-urdu">گھریلو ناچاقی، سسرالی جھگڑے اور ازدواجی مسائل</div>
+                    </div>
+                  </div>
+                  <span class="dsc-tag">Family Harmony</span>
+                </div>
+                <div class="dsc-desc">
+                  میاں بیوی میں بلاوجہ نفرت، بدگمانی، طلاق کی نوبت، رشتوں کی بندش، اور گھر میں ہر وقت لڑائی جھگڑے کا ماحول—گھر میں محبت اور امن لانے کے شرعی اعمال۔
+                </div>
+                <div class="dsc-points-box">
+                  <div class="dsc-point-item"><strong>مسئلہ و علامات:</strong> چھوٹی بات پر بڑا طوفان کھڑا ہونا، شوہر یا بیوی کی ایک دوسرے سے دوری، اور سسرالی الجھنیں۔</div>
+                  <div class="dsc-point-item"><strong>طریقۂ علاج:</strong> قلوب میں الفت پیدا کرنے کے قرآنی اعمال، اور رازداری کے ساتھ فریقین کی مخلصانہ کونسلنگ۔</div>
+                </div>
+                <div class="dsc-bottom-row">
+                  <span class="dsc-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-dsc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے Domestic Issues (گھریلو مسائل) کے حل کے لیے کونسلنگ اور چیک اپ چاہیے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> Book Family Counselling
+                  </button>
+                </div>
+              </div>
+
+              <!-- 6. Cancer & Chronic Illness -->
+              <div class="detailed-service-card" data-service-cat="health-mind" data-keywords="cancer chronic illness tumor disease کینسر رسولی لاعلاج امراض شفا">
+                <div class="dsc-top-row">
+                  <div class="dsc-id-icon">
+                    <span class="dsc-num-badge">06</span>
+                    <div class="dsc-icon-box" style="background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);">
+                      <i class="fa-solid fa-ribbon"></i>
+                    </div>
+                    <div class="dsc-title-group">
+                      <h4>Cancer &amp; Chronic Illness</h4>
+                      <div class="dsc-urdu">کینسر، رسولیاں اور پیچیدہ لاعلاج امراض کی شفا</div>
+                    </div>
+                  </div>
+                  <span class="dsc-tag">Spiritual Shifa</span>
+                </div>
+                <div class="dsc-desc">
+                  کینسر، رسولیاں، جگر و گردوں کے امراض اور لاعلاج بیماریاں—میڈیکل علاج کے ساتھ ساتھ اللہ کے کلام کی قوی شفا اور روحانی توجہ سے مریض کے لیے خصوصی دعائیں اور دم۔
+                </div>
+                <div class="dsc-points-box">
+                  <div class="dsc-point-item"><strong>مسئلہ و علامات:</strong> طویل بیماری، دوائی کا اثر نہ ہونا، شدید جسمانی تکلیف اور مایوسی کی کیفیت۔</div>
+                  <div class="dsc-point-item"><strong>طریقۂ علاج:</strong> آیاتِ شفا کا متواتر دم، آبِ زمزم پر سورۂ فاتحہ کا اکسیر عمل، اور مریض کے لیے باقاعدہ دعائیہ سیشنز۔</div>
+                </div>
+                <div class="dsc-bottom-row">
+                  <span class="dsc-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-dsc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے Cancer / لاعلاج بیماری کے لیے روحانی دم و علاج کی رہنمائی چاہیے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> Book Consultation / Shifa
+                  </button>
+                </div>
+              </div>
+
+              <!-- 7. Healing Sessions -->
+              <div class="detailed-service-card" data-service-cat="health-mind" data-keywords="healing sessions online direct دم علاج ہیلنگ سیشنز باطنی صفائی">
+                <div class="dsc-top-row">
+                  <div class="dsc-id-icon">
+                    <span class="dsc-num-badge">07</span>
+                    <div class="dsc-icon-box" style="background: linear-gradient(135deg, #0D9488 0%, #0F766E 100%);">
+                      <i class="fa-solid fa-spa"></i>
+                    </div>
+                    <div class="dsc-title-group">
+                      <h4>Healing Sessions</h4>
+                      <div class="dsc-urdu">خصوصی روحانی ہیلنگ و باطنی صفائی کے سیشنز</div>
+                    </div>
+                  </div>
+                  <span class="dsc-tag">1-on-1 Sessions</span>
+                </div>
+                <div class="dsc-desc">
+                  بالمشافہ یا آن لائن ون آن ون مکمل ہیلنگ سیشنز، جن میں مریض پر روحانی توجہ، اوراد اور قرآنی تلاوت کے ذریعے منفی لہروں اور بیماریوں کا خاتمہ کیا جاتا ہے۔
+                </div>
+                <div class="dsc-points-box">
+                  <div class="dsc-point-item"><strong>سہولت:</strong> بیرونِ ملک اور دور دراز کے مریضوں کے لیے واٹس ایپ / فون پر لائیو سیشن۔</div>
+                  <div class="dsc-point-item"><strong>طریقۂ کار:</strong> پیشگی وقت کا تعین، آن لائن لائیو دعا و دم، اور ہر سیشن کے بعد باقاعدہ فالو اپ۔</div>
+                </div>
+                <div class="dsc-bottom-row">
+                  <span class="dsc-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-dsc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے Healing Sessions کی بکنگ کے حوالے سے معلومات اور وقت چاہیے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> Book Healing Session
+                  </button>
+                </div>
+              </div>
+
+              <!-- 8. Counselling Sessions -->
+              <div class="detailed-service-card" data-service-cat="counsel-family" data-keywords="counselling advice مشاورت کونسلنگ رہنمائی الجھن فیصلہ">
+                <div class="dsc-top-row">
+                  <div class="dsc-id-icon">
+                    <span class="dsc-num-badge">08</span>
+                    <div class="dsc-icon-box" style="background: linear-gradient(135deg, #4F46E5 0%, #4338CA 100%);">
+                      <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <div class="dsc-title-group">
+                      <h4>Counselling Sessions</h4>
+                      <div class="dsc-urdu">روحانی، اخلاقی و فکری کونسلنگ سیشنز</div>
+                    </div>
+                  </div>
+                  <span class="dsc-tag">Private Advice</span>
+                </div>
+                <div class="dsc-desc">
+                  ذاتی الجھنوں، خوف، خاندانی تنازعات اور کیریئر کے اہم فیصلوں میں شریعت و طریقت کی روشنی میں مخلصانہ رہنمائی اور مکمل رازداری کے ساتھ کونسلنگ۔
+                </div>
+                <div class="dsc-points-box">
+                  <div class="dsc-point-item"><strong>خصوصیت:</strong> 100% راز داری، مخلصانہ ہمدردی، اور فکری انتشار کا خاتمہ۔</div>
+                  <div class="dsc-point-item"><strong>طریقۂ کار:</strong> پرائیویٹ مشاورت، الجھنوں کا تفصیلی جائزہ، اور پرامن زندگی کا عملی لائحۂ عمل۔</div>
+                </div>
+                <div class="dsc-bottom-row">
+                  <span class="dsc-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-dsc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے Counselling Sessions کے لیے وقت چاہیے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> Book Counselling Session
+                  </button>
+                </div>
+              </div>
+
+              <!-- 9. Online Istikhara & Taskhees -->
+              <div class="detailed-service-card" data-service-cat="istikhara-taweez" data-keywords="istikhara taskhees شادی رشتہ کاروبار استخارہ تشخیص رہنمائی">
+                <div class="dsc-top-row">
+                  <div class="dsc-id-icon">
+                    <span class="dsc-num-badge">09</span>
+                    <div class="dsc-icon-box" style="background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);">
+                      <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div class="dsc-title-group">
+                      <h4>Online Istikhara &amp; Taskhees</h4>
+                      <div class="dsc-urdu">آن لائن شرعی استخارہ و روحانی تشخیص</div>
+                    </div>
+                  </div>
+                  <span class="dsc-tag">Free Guidance</span>
+                </div>
+                <div class="dsc-desc">
+                  رشتہ، شادی، کاروبار، سفر، نوکری یا کسی بھی اہم معاملے میں خیر و برکت معلوم کرنے کے لیے شرعی استخارہ اور بیماری کی صحیح روحانی و جسمانی تشخیص۔
+                </div>
+                <div class="dsc-points-box">
+                  <div class="dsc-point-item"><strong>ضروری معلومات:</strong> سائل کا نام، والدہ کا نام، اور اصل مسئلہ کی مختصر تفصیل۔</div>
+                  <div class="dsc-point-item"><strong>طریقۂ کار:</strong> مسنون دعائے استخارہ، روحانی حساب، اور واٹس ایپ پر مستند جواب۔</div>
+                </div>
+                <div class="dsc-bottom-row">
+                  <span class="dsc-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-dsc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے آن لائن استخارہ / تشخیص کروانی ہے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> Request Free Istikhara
+                  </button>
+                </div>
+              </div>
+
+              <!-- 10. Mujarab Taweezat & Naqsh -->
+              <div class="detailed-service-card" data-service-cat="istikhara-taweez" data-keywords="taweez naqsh تعویذات نقوش حفاظت برکت شفا محبت">
+                <div class="dsc-top-row">
+                  <div class="dsc-id-icon">
+                    <span class="dsc-num-badge">10</span>
+                    <div class="dsc-icon-box" style="background: linear-gradient(135deg, #B45309 0%, #78350F 100%);">
+                      <i class="fa-solid fa-scroll"></i>
+                    </div>
+                    <div class="dsc-title-group">
+                      <h4>Mujarab Taweezat &amp; Naqsh</h4>
+                      <div class="dsc-urdu">مجرب قرآنی تعویذات و شرعی نقوش</div>
+                    </div>
+                  </div>
+                  <span class="dsc-tag">Authorized</span>
+                </div>
+                <div class="dsc-desc">
+                  سحر کے توڑ، حفاظت، بچوں کے خوف، امراضِ لاعلاج، رزق میں وسعت اور حلال الفت کے لیے سلسلہ عالیہ کے مجرب و شرعی قرآنی نقوش۔
+                </div>
+                <div class="dsc-points-box">
+                  <div class="dsc-point-item"><strong>شرائط:</strong> باوضو زعفران و عرقِ گلاب سے تحریر، گلے میں پہننے یا پینے کے شرعی آداب۔</div>
+                  <div class="dsc-point-item"><strong>دستیابی:</strong> آن لائن پرنٹ ایبل یا ڈاک / ٹی سی ایس کے ذریعے براہِ راست ترسیل۔</div>
+                </div>
+                <div class="dsc-bottom-row">
+                  <span class="dsc-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-dsc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے مجرب قرآنی تعویذات کے حوالے سے رہنمائی چاہیے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> Inquire Taweezat / Naqsh
+                  </button>
+                </div>
+              </div>
+
+              <!-- 11. Dream Interpretation (Khawab Ki Tabeer) -->
+              <div class="detailed-service-card" data-service-cat="counsel-family" data-keywords="dream interpretation khawab tabeer خوابوں کی تعبیر ابن سیرین">
+                <div class="dsc-top-row">
+                  <div class="dsc-id-icon">
+                    <span class="dsc-num-badge">11</span>
+                    <div class="dsc-icon-box" style="background: linear-gradient(135deg, #6366F1 0%, #4338CA 100%);">
+                      <i class="fa-solid fa-cloud-moon"></i>
+                    </div>
+                    <div class="dsc-title-group">
+                      <h4>Dream Interpretation</h4>
+                      <div class="dsc-urdu">تعبیر الروءیا - خوابوں کی مستند تعبیر</div>
+                    </div>
+                  </div>
+                  <span class="dsc-tag">Islamic Tabeer</span>
+                </div>
+                <div class="dsc-desc">
+                  علامہ ابن سیرینؒ، امام جعفر صادقؒ اور آئمہ تفسیر کے مستند اصولوں پر خوابوں کی تفصیلی شرعی تعبیر اور ڈراؤنے خوابوں کا نبوی مسنون تدارک۔
+                </div>
+                <div class="dsc-points-box">
+                  <div class="dsc-point-item"><strong>اصول:</strong> خواب صرف خیر خواہ اور باعمل عالم سے بیان کرنا چاہیے تاکہ درست تعبیر مل سکے۔</div>
+                  <div class="dsc-point-item"><strong>سہولت:</strong> ایپ میں لائیو سرچ کے علاوہ مفتی صاحب سے براہِ راست ذاتی تعبیر پوچھنے کی سہولت۔</div>
+                </div>
+                <div class="dsc-bottom-row">
+                  <span class="dsc-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-dsc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے اپنے ایک خواب کی شرعی تعبیر مفتی صاحب سے معلوم کرنی ہے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> Ask Dream Interpretation
+                  </button>
+                </div>
+              </div>
+
+              <!-- 12. Tasawwuf & Spiritual Mentorship -->
+              <div class="detailed-service-card" data-service-cat="tasawwuf-spiritual" data-keywords="tasawwuf sufism bayah zikr muraqaba تصوف سلوک بیعت ذکر مراقبہ تزکیہ">
+                <div class="dsc-top-row">
+                  <div class="dsc-id-icon">
+                    <span class="dsc-num-badge">12</span>
+                    <div class="dsc-icon-box" style="background: linear-gradient(135deg, #059669 0%, #065F46 100%);">
+                      <i class="fa-solid fa-kaaba"></i>
+                    </div>
+                    <div class="dsc-title-group">
+                      <h4>Tasawwuf &amp; Tazkiya-e-Nafs</h4>
+                      <div class="dsc-urdu">سلوک و تصوف، بیعت، ذکرِ قلبی و مراقبہ</div>
+                    </div>
+                  </div>
+                  <span class="dsc-tag">Sufism / Tariqat</span>
+                </div>
+                <div class="dsc-desc">
+                  سلسلہ عالیہ شاذلیہ و نقشبندیہ کے تحت تزکیۂ باطن، لطائفِ ستہ کی بیداری، مراقبۂ موت و شکر، اور شیخِ کامل کی زیرِ نگرانی روحانی سلوک کی تربیت۔
+                </div>
+                <div class="dsc-points-box">
+                  <div class="dsc-point-item"><strong>نصاب:</strong> اذکارِ شاذلیہ، حزب البحر شریف، اور روزانہ 5 منٹ کا مسنون مراقبہ۔</div>
+                  <div class="dsc-point-item"><strong>رہنمائی:</strong> مفتی خضر متین (خلیفہ مجاز حضرت شیخ سید نور الزماں نقشبندی شاذلیؒ)۔</div>
+                </div>
+                <div class="dsc-bottom-row">
+                  <span class="dsc-phone"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-dsc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے سلسلہ عالیہ میں بیعت / تصوف و سلوک کے حوالے سے رہنمائی چاہیے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> Join Tasawwuf Mentorship
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
         <section class="tab-screen" id="tabVideos">
           <div class="sub-screen-header">
             <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
@@ -1594,7 +1797,7 @@
              1. Home | 2. Quran | 3. Prayer | 4. Profile
              ==================================================== -->
         <nav class="exact-bottom-nav">
-          <!-- 1. Home (Active: Royal Navy Pill Capsule) -->
+          <!-- 1. Home -->
           <button class="bottom-nav-cell active" data-open="tabHome">
             <div class="nav-active-pill">
               <i class="fa-solid fa-house"></i>
@@ -1602,19 +1805,25 @@
             <span class="nav-cell-label" data-i18n="navHome">Home</span>
           </button>
 
-          <!-- 2. Spiritual Healing -->
+          <!-- 2. Services (Dedicated Option as requested) -->
+          <button class="bottom-nav-cell" data-open="tabServices">
+            <div class="nav-cell-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <span class="nav-cell-label" data-i18n="navServices">Services</span>
+          </button>
+
+          <!-- 3. Spiritual Healing -->
           <button class="bottom-nav-cell" data-open="tabRohaniIlaj">
             <div class="nav-cell-icon"><i class="fa-solid fa-shield-heart"></i></div>
             <span class="nav-cell-label" data-i18n="navHealing">Healing</span>
           </button>
 
-          <!-- 3. Prayer -->
+          <!-- 4. Prayer -->
           <button class="bottom-nav-cell" data-open="tabPrayerTimes">
             <div class="nav-cell-icon"><i class="fa-regular fa-clock"></i></div>
             <span class="nav-cell-label" data-i18n="navPrayer">Prayer</span>
           </button>
 
-          <!-- 4. Profile -->
+          <!-- 5. Profile -->
           <button class="bottom-nav-cell" data-open="tabProfile">
             <div class="nav-cell-icon"><i class="fa-regular fa-user"></i></div>
             <span class="nav-cell-label" data-i18n="navProfile">Profile</span>
@@ -1735,6 +1944,6 @@
   </div>
 
   <!-- Exact App Logic with Cache Buster -->
-  <script src="/js/app.js?v=khizri-navy-12.0"></script>
+  <script src="/js/app.js?v=khizri-navy-13.0"></script>
 </body>
 </html>

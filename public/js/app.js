@@ -68,6 +68,9 @@ const i18n = {
     featBabyNames: 'Islamic<br>Name',
     featMosque: 'Find<br>Mosque',
     navHome: 'Home',
+    navServices: 'Services',
+    featServices: 'Our<br>Services',
+    titleServices: 'Khizri Ways Services',
     navHealing: 'Healing',
     navQuran: 'Quran',
     navPrayer: 'Prayer',
@@ -130,6 +133,9 @@ const i18n = {
     featBabyNames: 'اسلامی<br>نام',
     featMosque: 'قریبی<br>مسجد',
     navHome: 'ہوم',
+    navServices: 'خدمات',
+    featServices: 'ہماری<br>خدمات',
+    titleServices: 'ہماری خدمات و علاج',
     navHealing: 'روحانی علاج',
     navQuran: 'قرآن',
     navPrayer: 'نماز',
@@ -1340,3 +1346,63 @@ window.filterKhawabAlpha = function(letter, btn) {
     }
   });
 };
+
+
+// ====================================================
+// SERVICES SCREEN INTERACTIVITY (CATEGORY & SEARCH)
+// ====================================================
+window.filterServicesCategory = function(cat, btn) {
+  const chips = document.querySelectorAll('#servicesCategoryChips .scat-chip');
+  chips.forEach(c => c.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const search = (document.getElementById('servicesSearchInput')?.value || '').trim().toLowerCase();
+  applyServicesFilter(cat, search);
+};
+
+window.handleServicesSearch = function(query) {
+  const clearBtn = document.getElementById('btnClearServicesSearch');
+  if (clearBtn) {
+    clearBtn.style.display = query.trim() ? 'block' : 'none';
+  }
+  const activeChip = document.querySelector('#servicesCategoryChips .scat-chip.active');
+  let currentCat = 'all';
+  if (activeChip) {
+    const match = activeChip.getAttribute('onclick')?.match(/'([^']+)'/);
+    if (match) currentCat = match[1];
+  }
+  applyServicesFilter(currentCat, query.trim().toLowerCase());
+};
+
+window.clearServicesSearch = function() {
+  const input = document.getElementById('servicesSearchInput');
+  if (input) input.value = '';
+  const clearBtn = document.getElementById('btnClearServicesSearch');
+  if (clearBtn) clearBtn.style.display = 'none';
+  const activeChip = document.querySelector('#servicesCategoryChips .scat-chip.active');
+  let currentCat = 'all';
+  if (activeChip) {
+    const match = activeChip.getAttribute('onclick')?.match(/'([^']+)'/);
+    if (match) currentCat = match[1];
+  }
+  applyServicesFilter(currentCat, '');
+};
+
+function applyServicesFilter(cat, search) {
+  const cards = document.querySelectorAll('#servicesDetailedList .detailed-service-card');
+  cards.forEach(card => {
+    const cardCat = card.getAttribute('data-service-cat') || '';
+    const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+    const title = (card.querySelector('.dsc-title-group')?.textContent || '').toLowerCase();
+    const desc = (card.querySelector('.dsc-desc')?.textContent || '').toLowerCase();
+
+    let matchesCat = (cat === 'all') || (cardCat === cat);
+    let matchesSearch = !search || keywords.includes(search) || title.includes(search) || desc.includes(search);
+
+    if (matchesCat && matchesSearch) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
