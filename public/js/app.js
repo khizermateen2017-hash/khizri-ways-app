@@ -64,7 +64,7 @@ const i18n = {
     featRamadan: 'Ramadan<br>Planner',
     featHajj: 'Hajj &<br>Umrah',
     featMakkah: 'Makkah &<br>Madina',
-    featVideo: 'Islamic<br>Video',
+    featVideo: 'Khizri<br>Videos',
     featBabyNames: 'Islamic<br>Name',
     featMosque: 'Find<br>Mosque',
     navHome: 'Home',
@@ -82,6 +82,7 @@ const i18n = {
     titleHadith: 'Hadith Collection',
     titleAllahNames: 'Asma-ul-Husna (99 Names)',
     titleMakkahLive: 'Makkah & Madina Live',
+    titleVideos: 'Khizri Video Library',
     titleProfile: 'Profile & Settings',
     rcbHeading: 'Online Istikhara & Spiritual Guidance',
     rcbDesc: 'Direct WhatsApp consultation with Khizri Ways spiritual scholars for illness, evil eye, anxiety, and family matters.',
@@ -125,7 +126,7 @@ const i18n = {
     featRamadan: 'رمضان<br>پلانر',
     featHajj: 'حج و<br>عمرہ',
     featMakkah: 'مکہ و<br>مدینہ',
-    featVideo: 'اسلامی<br>ویڈیوز',
+    featVideo: 'ویڈیو<br>بیانات',
     featBabyNames: 'اسلامی<br>نام',
     featMosque: 'قریبی<br>مسجد',
     navHome: 'ہوم',
@@ -138,6 +139,7 @@ const i18n = {
     titleQibla: 'قبلہ نما کمپاس',
     titleTasbeeh: 'ڈیجیٹل تسبیح',
     titleRohaniIlaj: 'روحانی علاج و شفا',
+    titleVideos: 'خضری ویڈیو لائبریری',
     titleWazaif: 'مستند وظائف خضری',
     titlePdfBooks: 'کتب و رسائل لائبریری',
     titleHadith: 'مجموعہ احادیث نبویہ',
@@ -968,32 +970,178 @@ function initPdfFilters() {
   });
 }
 
-// Render Video Library
-function renderVideos() {
-  const container = document.getElementById('videosStack');
-  if (!container) return;
+// ====================================================
+// RENDER VIDEO LIBRARY & HOME FEATURED STRIP
+// ====================================================
+let currentVideoCategory = 'all';
 
-  if (!state.videos.length) {
-    container.innerHTML = `<p style="text-align:center; color:#8A9993; padding:20px;">No videos available.</p>`;
-    return;
+function renderVideos(filterCategory = null, searchQuery = null) {
+  if (filterCategory !== null) currentVideoCategory = filterCategory;
+  const search = (searchQuery !== null ? searchQuery : (document.getElementById('videoSearchInput')?.value || '')).trim().toLowerCase();
+
+  const libContainer = document.getElementById('videosLibraryGrid');
+  const homeContainer = document.getElementById('homeFeaturedVideosGrid');
+
+  // Filter video list for Library
+  let filtered = state.videos || [];
+  if (currentVideoCategory && currentVideoCategory !== 'all') {
+    filtered = filtered.filter(v => {
+      const cat = (v.category || '').toLowerCase();
+      const targetCat = currentVideoCategory.toLowerCase();
+      if (targetCat.includes('magic')) return cat.includes('magic') || cat.includes('jadu');
+      if (targetCat.includes('jinn')) return cat.includes('jinn') || cat.includes('aseb');
+      if (targetCat.includes('rohani') || targetCat.includes('ilaj')) return cat.includes('rohani') || cat.includes('ilaj');
+      if (targetCat.includes('tasawwuf') || targetCat.includes('irfan')) return cat.includes('tasawwuf') || cat.includes('irfan');
+      if (targetCat.includes('wazaif') || targetCat.includes('durood')) return cat.includes('wazaif') || cat.includes('durood');
+      if (targetCat.includes('bayan')) return cat.includes('bayan');
+      return cat.includes(targetCat);
+    });
   }
 
-  container.innerHTML = state.videos.map(v => {
-    let embedUrl = v.youtubeId ? `https://www.youtube-nocookie.com/embed/${v.youtubeId}` : '';
-    return `
-      <div class="live-stream-card" style="margin-bottom:12px;" onclick="openLiveStream('${v.title}', '${embedUrl}')">
-        <div class="live-stream-banner" style="background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%), #14221E;">
-          <div class="live-tag" style="background:#0D5C46;"><i class="fa-solid fa-play"></i> VIDEO</div>
-          <div class="play-circle-center"><i class="fa-solid fa-play"></i></div>
-          <div class="live-stream-details">
-            <h4>${v.title}</h4>
-            <p>${v.speaker || 'Islamic Lecture'}</p>
-          </div>
+  if (search) {
+    filtered = filtered.filter(v => {
+      const t = (v.title || '').toLowerCase();
+      const d = (v.description || '').toLowerCase();
+      const c = (v.category || '').toLowerCase();
+      return t.includes(search) || d.includes(search) || c.includes(search);
+    });
+  }
+
+  // 1. Render Library Screen (tabVideos)
+  if (libContainer) {
+    if (!filtered.length) {
+      libContainer.innerHTML = `
+        <div style="text-align:center; padding:36px 16px; color:#64748B;">
+          <i class="fa-solid fa-film" style="font-size:2.4rem; color:#CBD5E1; margin-bottom:12px;"></i>
+          <p style="font-size:0.92rem; font-weight:700; margin:0 0 6px;">کوئی ویڈیو نہیں ملی</p>
+          <p style="font-size:0.78rem; color:#94A3B8; margin:0;">براہ کرم کوئی دوسرا لفظ تلاش کریں یا تمام ویڈیوز منتخب کریں۔</p>
+          <button class="vcat-chip active" style="margin-top:14px;" onclick="filterVideosCategory('all', null)">تمام ویڈیوز دیکھیں</button>
         </div>
-      </div>
-    `;
-  }).join('');
+      `;
+    } else {
+      libContainer.innerHTML = filtered.map(v => {
+        const safeTitle = (v.title || '').replace(/"/g, '&quot;').replace(/'/g, "\'");
+        const safeDesc = (v.description || safeTitle).replace(/"/g, '&quot;').replace(/'/g, "\'");
+        const safeSpeaker = (v.speaker || 'Mufti Khizer Mateen').replace(/"/g, '&quot;').replace(/'/g, "\'");
+        const catBadge = v.category || 'Khizri Bayan';
+        const dur = v.duration || '5:00';
+        const thumb = v.thumbnailUrl || `https://img.youtube.com/vi/${v.youtubeId}/hqdefault.jpg`;
+        const ytUrl = v.youtubeUrl || `https://www.youtube.com/watch?v=${v.youtubeId}`;
+
+        return `
+          <div class="khizri-video-card">
+            <div class="kvc-thumb-container" onclick="openInAppVideo('${v.youtubeId}', '${safeTitle}', '${safeSpeaker}', '${safeDesc}')">
+              <img src="${thumb}" alt="${safeTitle}" loading="lazy">
+              <span class="kvc-category-pill">${catBadge}</span>
+              <span class="kvc-duration-pill"><i class="fa-regular fa-clock"></i> ${dur}</span>
+              <div class="kvc-play-button-center">
+                <i class="fa-solid fa-play"></i>
+              </div>
+            </div>
+            <div class="kvc-content">
+              <h4 class="kvc-title" onclick="openInAppVideo('${v.youtubeId}', '${safeTitle}', '${safeSpeaker}', '${safeDesc}')" style="cursor:pointer;">${v.title}</h4>
+              <div class="kvc-meta-row">
+                <span class="kvc-speaker"><i class="fa-solid fa-circle-check text-gold"></i> ${v.speaker || 'Mufti Khizer Mateen'}</span>
+                <span style="color:#64748B;"><i class="fa-brands fa-youtube text-red"></i> YouTube</span>
+              </div>
+              <div class="kvc-actions-row">
+                <button class="btn-kvc-play" onclick="openInAppVideo('${v.youtubeId}', '${safeTitle}', '${safeSpeaker}', '${safeDesc}')">
+                  <i class="fa-solid fa-play"></i> ایپ میں سنیں
+                </button>
+                <a href="${ytUrl}" target="_blank" class="btn-kvc-yt" title="Open in YouTube App">
+                  <i class="fa-brands fa-youtube"></i> یوٹیوب
+                </a>
+                <button class="btn-kvc-share" onclick="shareVideoWhatsApp('${safeTitle}', '${ytUrl}')" title="Share Video">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
+  // 2. Render Home Strip (Top 4 videos)
+  if (homeContainer && state.videos && state.videos.length) {
+    const featuredList = state.videos.slice(0, 4);
+    homeContainer.innerHTML = featuredList.map(v => {
+      const safeTitle = (v.title || '').replace(/"/g, '&quot;').replace(/'/g, "\'");
+      const safeDesc = (v.description || safeTitle).replace(/"/g, '&quot;').replace(/'/g, "\'");
+      const safeSpeaker = (v.speaker || 'Mufti Khizer Mateen').replace(/"/g, '&quot;').replace(/'/g, "\'");
+      const dur = v.duration || '5:00';
+      const thumb = v.thumbnailUrl || `https://img.youtube.com/vi/${v.youtubeId}/hqdefault.jpg`;
+
+      return `
+        <div class="hyt-card-item" onclick="openInAppVideo('${v.youtubeId}', '${safeTitle}', '${safeSpeaker}', '${safeDesc}')">
+          <div class="hyt-thumb-box">
+            <img src="${thumb}" alt="${safeTitle}" loading="lazy">
+            <span class="hyt-dur-pill">${dur}</span>
+            <div class="hyt-play-icon"><i class="fa-solid fa-play"></i></div>
+          </div>
+          <div class="hyt-card-title">${v.title}</div>
+        </div>
+      `;
+    }).join('');
+  }
 }
+
+// In-App Video Playback in modalVideoPlayer
+window.openInAppVideo = function(youtubeId, title, speaker = 'Mufti Khizer Mateen', desc = '') {
+  const frame = document.getElementById('videoPlayerFrame');
+  const titleEl = document.getElementById('videoPlayerTitle');
+  const speakerEl = document.getElementById('videoPlayerSpeaker');
+  const descEl = document.getElementById('videoPlayerDesc');
+
+  if (frame) {
+    frame.src = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0`;
+  }
+  if (titleEl) titleEl.textContent = title;
+  if (speakerEl) speakerEl.textContent = speaker;
+  if (descEl) descEl.textContent = desc || title;
+
+  openModal('modalVideoPlayer');
+};
+
+// Filter Category
+window.filterVideosCategory = function(cat, btn) {
+  const chips = document.querySelectorAll('#videoCatFilters .vcat-chip');
+  chips.forEach(c => c.classList.remove('active'));
+  if (btn) {
+    btn.classList.add('active');
+  } else {
+    document.querySelector(`#videoCatFilters .vcat-chip[onclick*="${cat}"]`)?.classList.add('active');
+  }
+  renderVideos(cat);
+};
+
+// Live Video Search
+window.handleVideoSearch = function(query) {
+  const clearBtn = document.getElementById('btnClearVideoSearch');
+  if (clearBtn) {
+    clearBtn.style.display = query.trim() ? 'block' : 'none';
+  }
+  renderVideos(currentVideoCategory, query);
+};
+
+window.clearVideoSearch = function() {
+  const input = document.getElementById('videoSearchInput');
+  if (input) input.value = '';
+  const clearBtn = document.getElementById('btnClearVideoSearch');
+  if (clearBtn) clearBtn.style.display = 'none';
+  renderVideos(currentVideoCategory, '');
+};
+
+// Share WhatsApp
+window.shareVideoWhatsApp = function(title, url) {
+  const msg = encodeURIComponent(`*${title}*\nبیان و رہنمائی از مفتی خضر متین (خضری ویز):\n${url}\n\nخضری ویز موبائل ایپ`);
+  window.open(`https://api.whatsapp.com/send?text=${msg}`, '_blank');
+};
+
+window.shareChannelWhatsApp = function() {
+  const msg = encodeURIComponent(`*خضری ویز آفیشل یوٹیوب چینل*\nمفتی خضر متین کے تمام قرآنی بیانات، روحانی علاج اور وظائف دیکھیے:\nhttps://www.youtube.com/@KhizriWays`);
+  window.open(`https://api.whatsapp.com/send?text=${msg}`, '_blank');
+};
 
 // Render Wazaif with Interactive In-Card Counters and Category Filtering
 function renderWazaif(filterCategory = 'all') {
