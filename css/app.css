@@ -6577,3 +6577,83 @@ body.lang-ur .sub-screen-title {
   border-color: #334155;
   color: #CBD5E1;
 }
+
+/* ====================================================
+   SERVICE TREATMENT OPTIONS BOX (3 Pathways)
+   ==================================================== */
+.dsc-treatment-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-top: 10px;
+}
+
+.dtb-header {
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dtb-header i {
+  color: #D97706;
+}
+
+.dtb-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dtb-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #334155;
+}
+
+.dtb-badge {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.dtb-badge.opt-1 {
+  background: #1E3A8A; /* navy */
+}
+
+.dtb-badge.opt-2 {
+  background: #B45309; /* amber */
+}
+
+.dtb-badge.opt-3 {
+  background: #059669; /* emerald */
+}
+
+.dtb-item.highlight-wazaif {
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.dtb-text strong {
+  color: #0F172A;
+  display: block;
+  font-size: 0.82rem;
+  margin-bottom: 1px;
+}
