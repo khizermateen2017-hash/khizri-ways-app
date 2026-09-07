@@ -1,0 +1,284 @@
+const fs = require('fs');
+const path = require('path');
+
+const DATA_DIR = path.join(__dirname, 'data');
+const DB_FILE = path.join(DATA_DIR, 'db.json');
+
+// Ensure data directory exists
+if (!fs.existsSync(DATA_DIR)) {
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+}
+
+// Initial seed data reflecting Khizri Ways (Rohani Ilaj, Wazaif, Durood-e-Khizri, Articles, Videos, PDFs)
+const defaultData = {
+  settings: {
+    appName: "Khizri Ways",
+    tagline: "روحانی علاج اور اسلامی رہنمائی | Spiritual Healing & Islamic Knowledge",
+    description: "Official mobile companion for Khizri Ways - Rohani Ilaj, Authentic Wazaif, Durood-e-Khizri, Islamic Articles, Videos, and downloadable PDF books.",
+    whatsapp: "+923000000000",
+    youtubeChannel: "https://www.youtube.com/@KhizriWays",
+    facebookPage: "https://www.facebook.com/KhizriWays",
+    email: "contact@khizriways.com",
+    prayerCity: "Karachi",
+    prayerCountry: "Pakistan"
+  },
+  resources: [
+    {
+      id: "res-1",
+      title: "مجموعہ وظائف خضری (Khizri Ways Daily Wazaif Guide)",
+      description: "روزمرہ کے مستند وظائف، حفاظت اور برکت کے لیے مکمل خضری گائیڈ مع طریقہ کار۔",
+      category: "Wazaif Booklets",
+      author: "Khizri Ways Research",
+      fileName: "khizri_daily_wazaif.pdf",
+      fileUrl: "/uploads/pdfs/khizri_daily_wazaif.pdf",
+      fileSize: "2.4 MB",
+      pages: 32,
+      downloads: 1420,
+      createdAt: "2026-08-15T10:00:00.000Z"
+    },
+    {
+      id: "res-2",
+      title: "درود خضری - فضائل، برکات اور طریقہ تلاوت",
+      description: "درود خضری کی فضیلت، روحانی اثرات اور روزانہ پڑھنے کا خاص طریقہ اور اوقات۔",
+      category: "Durood Sharif",
+      author: "Khizri Ways",
+      fileName: "durood_e_khizri_fazail.pdf",
+      fileUrl: "/uploads/pdfs/durood_e_khizri_fazail.pdf",
+      fileSize: "1.8 MB",
+      pages: 18,
+      downloads: 2890,
+      createdAt: "2026-08-20T12:30:00.000Z"
+    },
+    {
+      id: "res-3",
+      title: "روحانی حصار اور نظرِ بد کا علاج",
+      description: "جادو، نظرِ بد اور منفی اثرات سے بچاؤ کے لیے نبوی حصار اور حفاظتی مسنون دعائیں۔",
+      category: "Rohani Ilaj",
+      author: "Khizri Ways",
+      fileName: "khizri_hisar_hifazat.pdf",
+      fileUrl: "/uploads/pdfs/khizri_hisar_hifazat.pdf",
+      fileSize: "3.1 MB",
+      pages: 24,
+      downloads: 1980,
+      createdAt: "2026-08-25T14:00:00.000Z"
+    },
+    {
+      id: "res-4",
+      title: "رزق میں برکت اور کشادگی کے قرآنی اعمال",
+      description: "تنگدستی اور قرض سے نجات کے لیے مستند مجرب قرآنی سورتیں اور اذکار۔",
+      category: "Rizq & Barkat",
+      author: "Khizri Ways",
+      fileName: "rizq_barkat_amal.pdf",
+      fileUrl: "/uploads/pdfs/rizq_barkat_amal.pdf",
+      fileSize: "1.5 MB",
+      pages: 16,
+      downloads: 3210,
+      createdAt: "2026-09-01T09:15:00.000Z"
+    }
+  ],
+  articles: [
+    {
+      id: "art-1",
+      title: "درود خضری کی برکات اور روحانی کشائش کا راز",
+      slug: "barakaat-e-durood-e-khizri",
+      category: "Durood Sharif",
+      readTime: "4 منٹ",
+      author: "خضری ویز ریسرچ",
+      publishedDate: "2026-08-28",
+      featured: true,
+      excerpt: "درود شریف کی کثرت انسان کے دل کو منور کرتی ہے اور روحانی پریشانیوں کو فوری زائل کرتی ہے۔ درود خضری کے فضائل اور طریقہ پڑھیے۔",
+      content: `بسم الله الرحمن الرحيم
+
+درود شریف حضور نبی کریم ﷺ کی بارگاہ اقدس میں محبت اور عقیدت کا نذرانہ ہے۔ خضری ویز کے تحت درود خضری کو خاص روحانی تقویت اور برکت کا ذریعہ سمجھا جاتا ہے۔
+
+**درود خضری کے مبارک الفاظ:**
+« صَلَّى اللهُ عَلَى حَبِيْبِهِ مُحَمَّدٍ وَّآلِهِ وَسَلَّمَ »
+
+**فضائل و فوائد:**
+1. دل کو روحانی سکون اور قلبی طمأنینت عطا ہوتی ہے۔
+2. روزمرہ کے کاموں میں برکت اور رزق میں وسعت پیدا ہوتی ہے۔
+3. بلاؤں اور ناگہانی آفات سے حفاظت کا سبب بنتا ہے۔
+
+**طریقہ ورد:**
+صبح و شام کم از کم 100 مرتبہ یا بعد نماز عشاء 313 مرتبہ باوضو پڑھنے سے خصوصی روحانی فیض حاصل ہوتا ہے۔`
+    },
+    {
+      id: "art-2",
+      title: "روحانی حصار: گھر اور اہل و عیال کی حفاظت کا مسنون طریقہ",
+      slug: "rohani-hisar-tariqa",
+      category: "Rohani Ilaj",
+      readTime: "6 منٹ",
+      author: "خضری ویز",
+      publishedDate: "2026-09-02",
+      featured: true,
+      excerpt: "گھر میں شیطانی اثرات، وسوسوں اور نظرِ بد کے خاتمے کے لیے روحانی حصار قائم کرنے کا نبوی مسنون طریقہ۔",
+      content: `بسم الله الرحمن الرحيم
+
+روحانی حصار سے مراد وہ مسنون حفاظتی دعائیں اور قرآنی آیات ہیں جن کے پڑھنے سے انسان اللہ تعالیٰ کی خصوصی امان اور فرشتوں کی نگرانی میں آ جاتا ہے۔
+
+**حصار کے اجزاء:**
+- آیت الکرسی (ایک مرتبہ)
+- معوذتین (سورۃ الفلق اور سورۃ الناس تین تین مرتبہ)
+- «بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ» (3 بار)
+
+**طریقہ:**
+صبح فجر کے بعد اور شام مغرب کے بعد ان اذکار کو پڑھ کر دونوں ہاتھوں پر دم کریں اور سر سے پاؤں تک اپنے پورے جسم پر پھیر لیں۔ اپنے بچوں اور گھر کے چاروں کونوں پر بھی تصوراً دم کریں۔`
+    },
+    {
+      id: "art-3",
+      title: "اسمِ اعظم کی پہچان اور دعاؤں کی فوری قبولیت",
+      slug: "ism-e-azam-dua-qabooliyat",
+      category: "Islamic Knowledge",
+      readTime: "5 منٹ",
+      author: "خضری ویز",
+      publishedDate: "2026-09-04",
+      featured: false,
+      excerpt: "حدیث مبارکہ کی روشنی میں اسمِ اعظم کی برکات، جب اس کے وسیلے سے دعا مانگی جائے تو اللہ تعالیٰ ضرور قبول فرماتا ہے۔",
+      content: `بسم الله الرحمن الرحيم
+
+اسمِ اعظم اللہ تعالیٰ کے وہ پاکیزہ مبارک نام ہیں جن کے واسطے سے مانگی گئی دعا رد نہیں ہوتی۔
+
+احادیث نبویہ میں آتا ہے کہ جس نے «يَا حَيُّ يَا قَيُّومُ» یا «اللَّهُمَّ إِنِّي أَسْأَلُكَ بِأَنَّ لَكَ الْحَمْدَ لَا إِلَهَ إِلَّا أَنْتَ الْمَنَّانُ بَدِيعُ السَّمَاوَاتِ وَالْأَرْضِ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ» کے ساتھ دعا مانگی، اس کی پکار بارگاہ الٰہی میں شرف قبولیت پاتی ہے۔
+
+روحانی علاج کے دوران اس دعا کو اول و آخر درود شریف کے ساتھ معمول بنائیں۔`
+    }
+  ],
+  videos: [
+    {
+      id: "vid-1",
+      title: "درود خضری کا خاص وظیفہ اور طریقہ تلاوت | Khizri Ways",
+      youtubeId: "aI4wMvTzF0g",
+      youtubeUrl: "https://www.youtube.com/watch?v=aI4wMvTzF0g",
+      category: "Durood Sharif",
+      duration: "12:45",
+      speaker: "Khizri Ways",
+      description: "درود خضری کے خاص فضائل اور روحانی تجربات کی تفصیلی روشنی۔"
+    },
+    {
+      id: "vid-2",
+      title: "روحانی علاج اور بندش توڑنے کا طاقتور قرآنی عمل | Rohani Ilaj",
+      youtubeId: "vB0S62M4i44",
+      youtubeUrl: "https://www.youtube.com/watch?v=vB0S62M4i44",
+      category: "Rohani Ilaj",
+      duration: "18:20",
+      speaker: "Khizri Ways Guide",
+      description: "گھر اور کاروبار میں رکاوٹوں کے خاتمے کے لیے خاص خضری طریقہ علاج۔"
+    },
+    {
+      id: "vid-3",
+      title: "نظر بد اور جادو کے اثرات کی علامات اور فوری روحانی حل",
+      youtubeId: "7X8v_gW3Gso",
+      youtubeUrl: "https://www.youtube.com/watch?v=7X8v_gW3Gso",
+      category: "Protection / Hifazat",
+      duration: "15:10",
+      speaker: "Khizri Ways",
+      description: "بچوں اور بڑوں پر نظر بد کے اثرات کو پہچاننے کا طریقہ اور قرآنی دم۔"
+    },
+    {
+      id: "vid-4",
+      title: "اسمِ اعظم اور سورتوں کے ذریعے رزق و برکت حاصل کرنا",
+      youtubeId: "kLqW6qG4k8I",
+      youtubeUrl: "https://www.youtube.com/watch?v=kLqW6qG4k8I",
+      category: "Wazaif",
+      duration: "14:30",
+      speaker: "Khizri Ways",
+      description: "تنگدستی اور مالی پریشانیوں سے نجات کے لیے خاص قرآنی وظیفہ۔"
+    }
+  ],
+  wazaif: [
+    {
+      id: "waz-1",
+      title: "درود خضری شریف (Durood-e-Khizri)",
+      arabicText: "صَلَّى اللهُ عَلَى حَبِيْبِهِ مُحَمَّدٍ وَّآلِهِ وَسَلَّمَ",
+      transliteration: "Sallallahu 'ala Habeebihi Muhammadinw wa Aalihi wa Sallam",
+      urduTranslation: "اللہ تعالیٰ رحمت و سلامتی نازل فرمائے اپنے حبیب حضرت محمد ﷺ اور ان کی آل پر۔",
+      repetitions: "100 یا 313 مرتبہ",
+      timing: "صبح و شام بعد نماز فجر و عشاء",
+      category: "Durood Sharif",
+      benefits: "قلبی سکون، گناہوں کی معافی، بلاؤں سے امان، روحانی ترقی اور رزق میں برکت۔"
+    },
+    {
+      id: "waz-2",
+      title: "خضری حصار برائے حفاظت و دفعِ بلا",
+      arabicText: "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+      transliteration: "Bismillahil ladhi la yadurru ma'asmihi shay'un fil-ardi wala fis-sama'i wa huwas-Samee'ul 'Aleem",
+      urduTranslation: "اللہ کے نام کے ساتھ جس کے نام کی برکت سے زمین اور آسمان میں کوئی چیز نقصان نہیں پہنچا سکتی اور وہی خوب سننے اور جاننے والا ہے۔",
+      repetitions: "3 مرتبہ صبح و شام",
+      timing: "ہر نماز کے بعد اور گھر سے نکلتے وقت",
+      category: "Protection / Hifazat",
+      benefits: "ہر قسم کے جادو، نظر بد، زہریلے جانوروں اور اچانک حادثات سے کامل حفاظت۔"
+    },
+    {
+      id: "waz-3",
+      title: "وظیفہ شفائے امراض (Shifa for Illness)",
+      arabicText: "اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَاسَ اشْفِ أَنْتَ الشَّافِي لَا شِفَاءَ إِلَّا شِفَاؤُكَ شِفَاءً لَا يُغَادِرُ سَقَمًا",
+      transliteration: "Allahumma Rabban-nasi adhhibil-ba'sa, ishfi antash-Shafi, la shifa'a illa shifa'uk, shifa'an la yughadiru saqama",
+      urduTranslation: "اے اللہ! لوگوں کے پالنے والے، تکلیف کو دور فرما، شفا عطا فرما، تو ہی شفا دینے والا ہے، تیری شفا کے سوا کوئی شفا نہیں، ایسی شفا جو کسی بیماری کو باقی نہ چھوڑے۔",
+      repetitions: "7 یا 11 مرتبہ",
+      timing: "پانی پر دم کر کے مریض کو پلائیں",
+      category: "Shifa / Health",
+      benefits: "جسمانی اور روحانی امراض، لا علاج بیماریوں اور درد سے شفایابی کے لیے مجرب۔"
+    },
+    {
+      id: "waz-4",
+      title: "وظیفہ کشادگیِ رزق و برکت",
+      arabicText: "يَا فَتَّاحُ يَا رَزَّاقُ يَا كَرِيمُ يَا غَنِيُّ",
+      transliteration: "Ya Fattahu Ya Razzaqu Ya Kareemu Ya Ghaniyyu",
+      urduTranslation: "اے کھولنے والے، اے رزق دینے والے، اے کرم فرمانے والے، اے بے نیاز۔",
+      repetitions: "300 مرتبہ",
+      timing: "بعد نمازِ فجر یا بعد نمازِ عشاء",
+      category: "Rizq & Wealth",
+      benefits: "تنگدستی کا خاتمہ، روزگار کے بند دروازے کھلنا، قرض کی با عزت ادائیگی۔"
+    },
+    {
+      id: "waz-5",
+      title: "آیتِ کریمہ برائے حل مشکلات",
+      arabicText: "لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ",
+      transliteration: "La ilaha illa Anta Subhanaka inni kuntu minaz-zalimeen",
+      urduTranslation: "تیرے سوا کوئی معبود نہیں، تو پاک ہے، بے شک میں ہی قصورواروں میں سے تھا۔",
+      repetitions: "100 یا 1000 مرتبہ",
+      timing: "مشکل اور اضطراب کے وقت سجدے میں یا باوضو بیٹھ کر",
+      category: "Problem Solving",
+      benefits: "ہر شدید ترین غم، قانونی پریشانی، قید اور مصیبت سے نجات کا نبوی نسخہ۔"
+    }
+  ]
+};
+
+// Read DB helper
+function readDB() {
+  try {
+    if (!fs.existsSync(DB_FILE)) {
+      writeDB(defaultData);
+      return defaultData;
+    }
+    const raw = fs.readFileSync(DB_FILE, 'utf-8');
+    return JSON.parse(raw);
+  } catch (err) {
+    console.error("Error reading database:", err);
+    return defaultData;
+  }
+}
+
+// Write DB helper (atomic file save)
+function writeDB(data) {
+  try {
+    const tempFile = `${DB_FILE}.tmp`;
+    fs.writeFileSync(tempFile, JSON.stringify(data, null, 2), 'utf-8');
+    fs.renameSync(tempFile, DB_FILE);
+    return true;
+  } catch (err) {
+    console.error("Error writing database:", err);
+    return false;
+  }
+}
+
+// Initialize on require
+if (!fs.existsSync(DB_FILE)) {
+  writeDB(defaultData);
+}
+
+module.exports = {
+  readDB,
+  writeDB,
+  defaultData
+};

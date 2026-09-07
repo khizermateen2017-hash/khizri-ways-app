@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khizri Ways Admin Dashboard | Management Portal</title>
+  
+  <link rel="icon" type="image/png" href="/assets/khizri-ways-logo.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Admin Stylesheet -->
+  <link rel="stylesheet" href="/css/admin.css?v=khizri-en-2.0">
+</head>
+<body class="admin-theme">
+
+  <div class="admin-layout">
+    
+    <!-- Sidebar Navigation (LTR) -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-brand">
+        <img src="/assets/khizri-ways-logo.png" alt="Khizri Ways" class="sidebar-logo">
+        <div class="sidebar-brand-text">
+          <span class="brand-title">Khizri Ways</span>
+          <span class="brand-badge">ADMIN PORTAL</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-btn active" data-view="viewOverview">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Overview & Stats</span>
+        </button>
+        <button class="nav-btn" data-view="viewPdfs">
+          <i class="fa-solid fa-file-pdf"></i>
+          <span>PDF Resources</span>
+        </button>
+        <button class="nav-btn" data-view="viewArticles">
+          <i class="fa-solid fa-newspaper"></i>
+          <span>Islamic Articles</span>
+        </button>
+        <button class="nav-btn" data-view="viewVideos">
+          <i class="fa-solid fa-video"></i>
+          <span>Video Library</span>
+        </button>
+        <button class="nav-btn" data-view="viewWazaif">
+          <i class="fa-solid fa-book-quran"></i>
+          <span>Wazaif & Healing</span>
+        </button>
+        <button class="nav-btn" data-view="viewMobileTesting">
+          <i class="fa-brands fa-apple"></i>
+          <span>iPhone & Mobile Testing</span>
+        </button>
+        <button class="nav-btn" data-view="viewSettings">
+          <i class="fa-solid fa-sliders"></i>
+          <span>App Settings</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="/download/apk" class="btn-sidebar-apk" title="Direct Download Android APK">
+          <i class="fa-brands fa-android"></i>
+          <span>Download Android APK</span>
+        </a>
+        <a href="/" target="_blank" class="btn-sidebar-app">
+          <i class="fa-solid fa-mobile-screen"></i>
+          <span>Open Web App</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      
+      <!-- Top Bar -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <h2 class="page-title" id="pageTitle">Dashboard Overview</h2>
+        </div>
+
+        <div class="topbar-right">
+          <span class="status-indicator">
+            <span class="status-dot"></span> Server Active (:5000)
+          </span>
+          <a href="/download/apk" class="btn-topbar-apk">
+            <i class="fa-brands fa-android"></i> Download APK
+          </a>
+          <button class="btn-topbar-ios" onclick="switchAdminView('viewMobileTesting')">
+            <i class="fa-brands fa-apple"></i> Test on iPhone
+          </button>
+          <a href="/" target="_blank" class="btn-topbar-preview">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
+          </a>
+        </div>
+      </header>
+
+      <!-- Dashboard Views Container -->
+      <div class="view-content-wrapper">
+
+        <!-- =======================================================
+             VIEW 1: OVERVIEW & STATS
+             ======================================================= -->
+        <section class="admin-view active" id="viewOverview">
+          
+          <!-- Welcome Hero Banner (Matching Mobile App Hero Card) -->
+          <div class="admin-hero-banner">
+            <div class="hero-banner-content">
+              <div class="hero-badge"><i class="fa-solid fa-kaaba"></i> Khizri Ways Admin Dashboard</div>
+              <h2>Islamic App Management & Distribution Portal</h2>
+              <p>Easily upload PDF booklets, manage authentic Durood Sharif, daily wazaif, spiritual healing remedies, articles, and video lectures with instant updates for mobile users.</p>
+              <div class="hero-actions">
+                <button class="btn-hero-primary" onclick="openUploadPdfModal()">
+                  <i class="fa-solid fa-cloud-arrow-up"></i> Upload PDF Book
+                </button>
+                <a href="/download/apk" class="btn-hero-apk">
+                  <i class="fa-brands fa-android"></i> Download APK (v1.0)
+                </a>
+                <button class="btn-hero-ios" onclick="switchAdminView('viewMobileTesting')">
+                  <i class="fa-brands fa-apple"></i> iPhone Testing Guide
+                </button>
+                <button class="btn-hero-glass" onclick="switchAdminView('viewWazaif')">
+                  <i class="fa-solid fa-book-quran"></i> Manage Wazaif
+                </button>
+              </div>
+            </div>
+            <div class="hero-banner-illustration">
+              <div class="hero-circle-accent">
+                <img src="/assets/khizri-ways-logo.png" alt="Khizri Ways Logo" class="hero-logo-large">
+              </div>
+            </div>
+          </div>
+
+          <!-- Stat Cards Grid -->
+          <div class="stats-cards-grid">
+            <div class="stat-card">
+              <div class="stat-icon icon-red"><i class="fa-solid fa-file-pdf"></i></div>
+              <div class="stat-details">
+                <span class="stat-num" id="statPdfs">0</span>
+                <span class="stat-label">PDF Books & Guides</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon icon-blue"><i class="fa-solid fa-newspaper"></i></div>
+              <div class="stat-details">
+                <span class="stat-num" id="statArticles">0</span>
+                <span class="stat-label">Published Articles</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon icon-gold"><i class="fa-solid fa-video"></i></div>
+              <div class="stat-details">
+                <span class="stat-num" id="statVideos">0</span>
+                <span class="stat-label">YouTube Videos</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon icon-emerald"><i class="fa-solid fa-book-quran"></i></div>
+              <div class="stat-details">
+                <span class="stat-num" id="statWazaif">0</span>
+                <span class="stat-label">Daily Wazaif</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon icon-green"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+              <div class="stat-details">
+                <span class="stat-num" id="statDownloads">0</span>
+                <span class="stat-label">Total Downloads</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Overview Grid -->
+          <div class="overview-grid">
+            
+            <!-- Card 1: Quick PDF Upload -->
+            <div class="admin-card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-upload"></i> Quick PDF Upload</h3>
+                <button class="btn-text-gold" onclick="switchAdminView('viewPdfs')">Full Manager <i class="fa-solid fa-angle-right"></i></button>
+              </div>
+              <div class="card-body">
+                <p class="guide-text">Upload new Islamic booklets, wazaif guides, or Rohani Ilaj manuscripts in PDF format. Files are immediately available for reading and download in the app.</p>
+                <button class="btn-primary-gold" onclick="openUploadPdfModal()">
+                  <i class="fa-solid fa-cloud-arrow-up"></i> Upload New PDF File
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 2: Android APK Download & Specs -->
+            <div class="admin-card">
+              <div class="card-head">
+                <h3><i class="fa-brands fa-android" style="color:#10B981;"></i> Android APK Release (v1.0.0)</h3>
+                <span class="badge-tag" style="background:#ECFDF5; color:#059669; border-color:#A7F3D0;">Ready for Install</span>
+              </div>
+              <div class="card-body">
+                <p class="guide-text">Download the compiled Android APK package directly to install on any Android smartphone, tablet, or smart TV running Android 8.0 or newer.</p>
+                <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+                  <a href="/download/apk" class="btn-primary-emerald">
+                    <i class="fa-solid fa-download"></i> Download APK File (18 MB)
+                  </a>
+                  <button class="btn-text-gold" onclick="openModal('modalApkDetails')">
+                    <i class="fa-solid fa-circle-info"></i> Install Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: iPhone & Mobile Testing Card -->
+            <div class="admin-card">
+              <div class="card-head">
+                <h3><i class="fa-brands fa-apple"></i> iPhone & iPad Live Testing</h3>
+                <button class="btn-text-gold" onclick="switchAdminView('viewMobileTesting')">Step-by-step Guide <i class="fa-solid fa-angle-right"></i></button>
+              </div>
+              <div class="card-body testing-card-body">
+                <p class="guide-text">To test the app directly on your iPhone without any app store download, connect your iPhone to the same Wi-Fi network and open this link in <strong>Safari</strong>:</p>
+                
+                <div class="url-copy-pill">
+                  <input type="text" value="http://192.168.100.4:5000" id="overviewIphoneUrl" readonly>
+                  <button class="btn-copy-url" onclick="copyIphoneUrl('overviewIphoneUrl')">
+                    <i class="fa-regular fa-copy"></i> Copy Link
+                  </button>
+                </div>
+
+                <div class="qr-preview-box">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://192.168.100.4:5000" alt="iPhone QR Code" class="qr-code-img">
+                  <div class="qr-desc">
+                    <h4>Scan with iPhone Camera</h4>
+                    <p>Open your iPhone Camera app, point at this QR code, and tap the yellow link to open the app instantly in Safari!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4: System & Network Information -->
+            <div class="admin-card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-circle-info"></i> System & Network Info</h3>
+              </div>
+              <div class="card-body system-info-box">
+                <div class="info-row">
+                  <span>Server Port:</span>
+                  <code>5000 (Active)</code>
+                </div>
+                <div class="info-row">
+                  <span>Local Wi-Fi IP:</span>
+                  <code>192.168.100.4:5000</code>
+                </div>
+                <div class="info-row">
+                  <span>Database Engine:</span>
+                  <span class="badge-tag">Zero-Config JSON (server/data/db.json)</span>
+                </div>
+                <div class="info-row">
+                  <span>PWA & iOS Offline Mode:</span>
+                  <span class="badge-tag" style="background:#ECFDF5; color:#059669;">Enabled (sw.js & manifest.json)</span>
+                </div>
+                <div class="info-row">
+                  <span>Storage Directory:</span>
+                  <span>server/uploads/pdfs/</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- =======================================================
+             VIEW 2: PDF RESOURCES MANAGER
+             ======================================================= -->
+        <section class="admin-view" id="viewPdfs">
+          <div class="section-toolbar">
+            <div>
+              <h3>PDF Books & Booklets Manager</h3>
+              <p class="sub-text">Upload, inspect, download, or delete PDF publications available to users in the app</p>
+            </div>
+            <button class="btn-primary-gold" onclick="openUploadPdfModal()">
+              <i class="fa-solid fa-plus"></i> Upload New PDF
+            </button>
+          </div>
+
+          <div class="table-container">
+            <table class="admin-table" id="pdfTable">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Pages</th>
+                  <th>File Size</th>
+                  <th>Downloads</th>
+                  <th>Upload Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="pdfTableBody">
+                <!-- Populated dynamically via JS -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             VIEW 3: ARTICLES MANAGER
+             ======================================================= -->
+        <section class="admin-view" id="viewArticles">
+          <div class="section-toolbar">
+            <div>
+              <h3>Islamic Articles & Guides Manager</h3>
+              <p class="sub-text">Publish and manage spiritual articles on Durood Sharif, Sunnah remedies, and virtues</p>
+            </div>
+            <button class="btn-primary-gold" onclick="openAddArticleModal()">
+              <i class="fa-solid fa-pen-nib"></i> Write New Article
+            </button>
+          </div>
+
+          <div class="table-container">
+            <table class="admin-table" id="articlesTable">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Author</th>
+                  <th>Reading Time</th>
+                  <th>Published Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="articlesTableBody">
+                <!-- Populated dynamically via JS -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             VIEW 4: VIDEOS MANAGER
+             ======================================================= -->
+        <section class="admin-view" id="viewVideos">
+          <div class="section-toolbar">
+            <div>
+              <h3>Islamic Video Library Manager</h3>
+              <p class="sub-text">Curate YouTube lectures, bayanaat, and spiritual guidance videos for app users</p>
+            </div>
+            <button class="btn-primary-gold" onclick="openAddVideoModal()">
+              <i class="fa-solid fa-plus"></i> Add New Video
+            </button>
+          </div>
+
+          <div class="table-container">
+            <table class="admin-table" id="videosTable">
+              <thead>
+                <tr>
+                  <th>Thumbnail</th>
+                  <th>Video Title</th>
+                  <th>Category</th>
+                  <th>Speaker</th>
+                  <th>Duration</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="videosTableBody">
+                <!-- Populated dynamically via JS -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             VIEW 5: WAZAIF & ROHANI ILAJ MANAGER
+             ======================================================= -->
+        <section class="admin-view" id="viewWazaif">
+          <div class="section-toolbar">
+            <div>
+              <h3>Daily Wazaif & Spiritual Remedies Manager</h3>
+              <p class="sub-text">Add Quranic verses, authentic Durood Sharif, and masnoon duas with in-app tap counters</p>
+            </div>
+            <button class="btn-primary-gold" onclick="openAddWazifaModal()">
+              <i class="fa-solid fa-plus"></i> Add New Wazifa
+            </button>
+          </div>
+
+          <div class="table-container">
+            <table class="admin-table" id="wazaifTable">
+              <thead>
+                <tr>
+                  <th>Wazifa Title</th>
+                  <th>Arabic Text</th>
+                  <th>Target Repetitions</th>
+                  <th>Category</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="wazaifTableBody">
+                <!-- Populated dynamically via JS -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             VIEW 6: IPHONE & MOBILE DEVICE TESTING
+             ======================================================= -->
+        <section class="admin-view" id="viewMobileTesting">
+          <div class="section-toolbar">
+            <div>
+              <h3>iPhone & Mobile Device Testing Guide</h3>
+              <p class="sub-text">How to test and run Khizri Ways natively on an iPhone, iPad, or Android phone</p>
+            </div>
+            <a href="/download/apk" class="btn-primary-emerald">
+              <i class="fa-brands fa-android"></i> Download APK
+            </a>
+          </div>
+
+          <div class="device-testing-grid">
+            
+            <!-- Step 1: Testing on Local Wi-Fi -->
+            <div class="admin-card">
+              <div class="card-head">
+                <h3><i class="fa-brands fa-apple" style="color:var(--khizri-navy-primary);"></i> Method 1: Local Wi-Fi Testing (Instant & Free)</h3>
+              </div>
+              <div class="card-body testing-card-body">
+                <p class="guide-text">When your iPhone and this computer are connected to the same Wi-Fi router, you can test the full app immediately with zero setup:</p>
+                
+                <div class="qr-preview-box">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=http://192.168.100.4:5000" alt="iPhone QR Code" style="width:110px; height:110px; border-radius:8px; border:1px solid #DFE4F7;">
+                  <div class="qr-desc">
+                    <h4 style="font-size:1rem; color:var(--khizri-navy-primary); font-weight:800; margin-bottom:4px;">1-Scan with iPhone Camera</h4>
+                    <p>Open the Camera on your iPhone, point it at the QR code, and tap the yellow banner to launch Safari!</p>
+                  </div>
+                </div>
+
+                <div class="url-copy-pill">
+                  <input type="text" value="http://192.168.100.4:5000" id="step1IphoneUrl" readonly>
+                  <button class="btn-copy-url" onclick="copyIphoneUrl('step1IphoneUrl')">
+                    <i class="fa-regular fa-copy"></i> Copy URL
+                  </button>
+                </div>
+
+                <div class="testing-step-list">
+                  <div class="step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-text">
+                      <h5>Open in Safari</h5>
+                      <p>Always use <strong>Safari</strong> on iOS because Apple restricts native home screen web app installation in Chrome or other browsers.</p>
+                    </div>
+                  </div>
+
+                  <div class="step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-text">
+                      <h5>Tap the Share Button</h5>
+                      <p>In Safari, tap the <strong>Share</strong> button at the bottom bar (the square icon with an arrow pointing upward <i class="fa-solid fa-arrow-up-from-bracket"></i>).</p>
+                    </div>
+                  </div>
+
+                  <div class="step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-text">
+                      <h5>Tap "Add to Home Screen"</h5>
+                      <p>Scroll down the share sheet and select <strong>"Add to Home Screen"</strong> (ہوم اسکرین پر شامل کریں). Tap <strong>"Add"</strong> in the top right.</p>
+                    </div>
+                  </div>
+
+                  <div class="step-item">
+                    <div class="step-num">4</div>
+                    <div class="step-text">
+                      <h5>Enjoy as a Native iPhone App!</h5>
+                      <p>The Khizri Ways icon appears on your iPhone's home screen. When you tap it, it launches in <strong>standalone full-screen</strong> without any browser address bars!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: Testing Online (Anywhere in the World / 4G / 5G) -->
+            <div class="admin-card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-globe" style="color:var(--accent-blue);"></i> Method 2: Testing Online (Outside Home Wi-Fi / 4G / 5G)</h3>
+              </div>
+              <div class="card-body">
+                <p class="guide-text">If you want to test on an iPhone while outside your house, on cellular mobile data (4G/5G), or send the link to friends and clients anywhere in the world:</p>
+
+                <div class="testing-step-list">
+                  <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="step-text">
+                      <h5>Option A: Instant Free Public Tunnel (1 Command)</h5>
+                      <p>Run Cloudflare Tunnel or Localtunnel in PowerShell to generate an instant secure HTTPS public URL:</p>
+                      <code style="display:block; background:#EEF1FA; color:#22265D; padding:8px 12px; border-radius:6px; margin-top:6px; font-weight:700;">npx localtunnel --port 5000</code>
+                      <p style="margin-top:6px; font-size:0.8rem; color:#6B76A5;">This provides an online URL like <code>https://khizri-ways.loca.lt</code> that opens on any iPhone globally!</p>
+                    </div>
+                  </div>
+
+                  <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-cloud"></i></div>
+                    <div class="step-text">
+                      <h5>Option B: Free 24/7 Cloud Hosting (Render / Vercel)</h5>
+                      <p>For a permanent 24/7 public address (e.g. <code>https://khizri-ways.onrender.com</code>), push this project to GitHub and deploy to Render or Railway with 1 click.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="margin-top:20px; padding:16px; background:#F8FAFD; border-radius:12px; border:1px solid #DFE4F7;">
+                  <h4 style="color:var(--khizri-navy-primary); font-size:0.95rem; font-weight:700; margin-bottom:6px;">
+                    <i class="fa-solid fa-shield-halved" style="color:#10B981;"></i> iPhone Security Note:
+                  </h4>
+                  <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.5;">
+                    Apple iPhones do not allow direct installation of <code>.apk</code> files (APKs are exclusively for Android devices). For iPhone users, the Progressive Web App (PWA) "Add to Home Screen" method is the official Apple standard and gives the exact native app experience.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- =======================================================
+             VIEW 7: APPLICATION SETTINGS
+             ======================================================= -->
+        <section class="admin-view" id="viewSettings">
+          <div class="section-toolbar">
+            <div>
+              <h3>Application Settings</h3>
+              <p class="sub-text">Configure app identity, contact numbers, social media links, and organization details</p>
+            </div>
+          </div>
+
+          <div class="settings-card">
+            <form id="settingsForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>App Name</label>
+                  <input type="text" id="setAppName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label>Tagline</label>
+                  <input type="text" id="setTagline" class="form-control" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label>WhatsApp Consultation Number (Istikhara & Guidance)</label>
+                  <input type="text" id="setWhatsApp" class="form-control" placeholder="+923000000000">
+                </div>
+                <div class="form-group">
+                  <label>Official Contact Email</label>
+                  <input type="email" id="setEmail" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label>YouTube Channel URL</label>
+                  <input type="url" id="setYoutube" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Facebook Page URL</label>
+                  <input type="url" id="setFacebook" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Description & About Organization</label>
+                <textarea id="setDescription" rows="3" class="form-control"></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn-primary-gold">
+                  <i class="fa-solid fa-floppy-disk"></i> Save Settings
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- =======================================================
+       ADMIN MODALS
+       ======================================================= -->
+
+  <!-- Modal: Upload PDF -->
+  <div class="admin-modal-backdrop" id="modalUploadPdf">
+    <div class="admin-modal">
+      <div class="modal-head">
+        <h4><i class="fa-solid fa-file-pdf"></i> Upload New PDF Publication</h4>
+        <button class="modal-close" onclick="closeModal('modalUploadPdf')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="uploadPdfForm" enctype="multipart/form-data">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Publication Title *</label>
+            <input type="text" name="title" class="form-control" placeholder="e.g. Daily Khizri Wazaif Guide" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Category *</label>
+              <select name="category" class="form-control">
+                <option value="Wazaif Booklets">Wazaif Booklets</option>
+                <option value="Durood Sharif">Durood Sharif</option>
+                <option value="Rohani Ilaj">Rohani Ilaj (Spiritual Healing)</option>
+                <option value="Rizq & Barkat">Rizq & Barkat</option>
+                <option value="General Resources">General Resources</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Author / Organization</label>
+              <input type="text" name="author" class="form-control" value="Khizri Ways">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Total Pages</label>
+              <input type="number" name="pages" class="form-control" value="10" min="1">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Short Description</label>
+            <textarea name="description" class="form-control" rows="2" placeholder="Brief overview of contents..."></textarea>
+          </div>
+
+          <!-- Drag and drop / file selector -->
+          <div class="form-group">
+            <label>Select PDF File (.pdf) *</label>
+            <div class="file-drop-area" id="pdfDropArea">
+              <i class="fa-solid fa-cloud-arrow-up drop-icon"></i>
+              <p class="drop-text">Drag and drop your PDF file here, or click to browse</p>
+              <span class="file-name-display" id="selectedFileName">No file selected</span>
+              <input type="file" name="pdfFile" id="pdfFileInput" accept="application/pdf,.pdf" required class="hidden-file-input">
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-foot">
+          <button type="button" class="btn-cancel" onclick="closeModal('modalUploadPdf')">Cancel</button>
+          <button type="submit" class="btn-primary-gold" id="btnSubmitPdf">
+            <i class="fa-solid fa-upload"></i> Upload Now
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add Article -->
+  <div class="admin-modal-backdrop" id="modalAddArticle">
+    <div class="admin-modal modal-lg">
+      <div class="modal-head">
+        <h4><i class="fa-solid fa-pen-nib"></i> Compose New Islamic Article</h4>
+        <button class="modal-close" onclick="closeModal('modalAddArticle')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="addArticleForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Article Title *</label>
+            <input type="text" id="artTitle" class="form-control" required placeholder="e.g. Virtues and Blessings of Durood-e-Khizri">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Category *</label>
+              <select id="artCategory" class="form-control">
+                <option value="Durood Sharif">Durood Sharif</option>
+                <option value="Rohani Ilaj">Rohani Ilaj (Spiritual Healing)</option>
+                <option value="Islamic Knowledge">Islamic Knowledge</option>
+                <option value="Wazaif Guide">Wazaif Guide</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Author</label>
+              <input type="text" id="artAuthor" class="form-control" value="Khizri Ways">
+            </div>
+            <div class="form-group">
+              <label>Reading Time</label>
+              <input type="text" id="artReadTime" class="form-control" value="5 min read">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Short Excerpt</label>
+            <textarea id="artExcerpt" class="form-control" rows="2" placeholder="Brief summary of the article..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Full Content *</label>
+            <textarea id="artContent" class="form-control" rows="8" required placeholder="Write full article body here..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-foot">
+          <button type="button" class="btn-cancel" onclick="closeModal('modalAddArticle')">Cancel</button>
+          <button type="submit" class="btn-primary-gold">
+            <i class="fa-solid fa-floppy-disk"></i> Publish Article
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add Video -->
+  <div class="admin-modal-backdrop" id="modalAddVideo">
+    <div class="admin-modal">
+      <div class="modal-head">
+        <h4><i class="fa-solid fa-video"></i> Add Video to Library</h4>
+        <button class="modal-close" onclick="closeModal('modalAddVideo')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="addVideoForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Video Title *</label>
+            <input type="text" id="vidTitle" class="form-control" required placeholder="e.g. Method of Reciting Durood-e-Khizri">
+          </div>
+
+          <div class="form-group">
+            <label>YouTube URL or Video ID *</label>
+            <input type="text" id="vidUrl" class="form-control" required placeholder="https://www.youtube.com/watch?v=... or videoId">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Category</label>
+              <select id="vidCategory" class="form-control">
+                <option value="Rohani Ilaj">Rohani Ilaj</option>
+                <option value="Durood Sharif">Durood Sharif</option>
+                <option value="Protection / Hifazat">Protection & Hisar</option>
+                <option value="Wazaif">Quranic Wazaif</option>
+                <option value="Bayanaat">Lectures & Bayanaat</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Duration</label>
+              <input type="text" id="vidDuration" class="form-control" value="12:00">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Speaker / Presenter</label>
+            <input type="text" id="vidSpeaker" class="form-control" value="Khizri Ways">
+          </div>
+
+          <div class="form-group">
+            <label>Description</label>
+            <textarea id="vidDesc" class="form-control" rows="2"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-foot">
+          <button type="button" class="btn-cancel" onclick="closeModal('modalAddVideo')">Cancel</button>
+          <button type="submit" class="btn-primary-gold">
+            <i class="fa-solid fa-plus"></i> Save Video
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add Wazifa -->
+  <div class="admin-modal-backdrop" id="modalAddWazifa">
+    <div class="admin-modal">
+      <div class="modal-head">
+        <h4><i class="fa-solid fa-book-quran"></i> Add New Wazifa / Supplication</h4>
+        <button class="modal-close" onclick="closeModal('modalAddWazifa')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="addWazifaForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Wazifa Title *</label>
+            <input type="text" id="wazTitle" class="form-control" required placeholder="e.g. Wazifa for Health & Shifa">
+          </div>
+
+          <div class="form-group">
+            <label>Arabic Text (عربی متن) *</label>
+            <textarea id="wazArabic" class="form-control arabic-input" rows="2" required placeholder="أعوذ بكلمات الله التامات..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>English Transliteration</label>
+            <input type="text" id="wazTranslit" class="form-control" placeholder="e.g. Allahumma Salli Ala...">
+          </div>
+
+          <div class="form-group">
+            <label>Urdu / English Translation</label>
+            <textarea id="wazUrdu" class="form-control" rows="2" placeholder="Translation and meaning..."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Target Repetitions</label>
+              <input type="text" id="wazRepetitions" class="form-control" value="100 times">
+            </div>
+            <div class="form-group">
+              <label>Category</label>
+              <select id="wazCategory" class="form-control">
+                <option value="Durood Sharif">Durood Sharif</option>
+                <option value="Protection / Hifazat">Protection & Hisar</option>
+                <option value="Shifa / Health">Shifa & Health</option>
+                <option value="Rizq & Wealth">Rizq & Wealth</option>
+                <option value="Problem Solving">Problem Solving</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Virtues & Benefits</label>
+            <textarea id="wazBenefits" class="form-control" rows="2" placeholder="Benefits of regular recitation..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-foot">
+          <button type="button" class="btn-cancel" onclick="closeModal('modalAddWazifa')">Cancel</button>
+          <button type="submit" class="btn-primary-gold">
+            <i class="fa-solid fa-plus"></i> Save Wazifa
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: APK Details & Installation Guide -->
+  <div class="admin-modal-backdrop" id="modalApkDetails">
+    <div class="admin-modal">
+      <div class="modal-head">
+        <h4><i class="fa-brands fa-android" style="color:#10B981;"></i> Android APK Installation Guide</h4>
+        <button class="modal-close" onclick="closeModal('modalApkDetails')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div style="background:#F8FAFD; border:1px solid #DFE4F7; padding:16px; border-radius:12px; margin-bottom:18px;">
+          <div class="info-row">
+            <span>Package Name:</span>
+            <code>com.khizriways.app</code>
+          </div>
+          <div class="info-row">
+            <span>Version:</span>
+            <strong>v1.0.0 (Release Build)</strong>
+          </div>
+          <div class="info-row">
+            <span>Compatibility:</span>
+            <span>Android 8.0 to Android 15</span>
+          </div>
+          <div class="info-row">
+            <span>Architecture:</span>
+            <span>Universal (arm64-v8a, armeabi-v7a, x86_64)</span>
+          </div>
+        </div>
+
+        <h5 style="color:var(--khizri-navy-primary); font-size:0.95rem; font-weight:800; margin-bottom:8px;">How to Install on Android Phone:</h5>
+        <ol style="margin-left:20px; font-size:0.88rem; color:var(--text-secondary); line-height:1.6; display:flex; flex-direction:column; gap:6px;">
+          <li>Click the <strong>"Download APK File"</strong> button below.</li>
+          <li>Once downloaded, tap on the completed file notification in your status bar.</li>
+          <li>If your phone prompts <em>"Install unknown apps"</em>, toggle <strong>"Allow from this source"</strong>.</li>
+          <li>Tap <strong>Install</strong>. Once done, tap <strong>Open</strong> to start Khizri Ways!</li>
+        </ol>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn-cancel" onclick="closeModal('modalApkDetails')">Close</button>
+        <a href="/download/apk" class="btn-primary-emerald">
+          <i class="fa-solid fa-download"></i> Download APK Now
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Popup -->
+  <div class="admin-toast" id="adminToast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="adminToastMsg">Success!</span>
+  </div>
+
+  <!-- Admin Logic Script -->
+  <script src="/js/admin.js?v=khizri-en-2.0"></script>
+  <script>
+    function copyIphoneUrl(inputId) {
+      const el = document.getElementById(inputId);
+      if (el) {
+        navigator.clipboard.writeText(el.value).then(() => {
+          showAdminToast('URL copied to clipboard!');
+        }).catch(() => {
+          el.select();
+          document.execCommand('copy');
+          showAdminToast('URL copied to clipboard!');
+        });
+      }
+    }
+  </script>
+</body>
+</html>

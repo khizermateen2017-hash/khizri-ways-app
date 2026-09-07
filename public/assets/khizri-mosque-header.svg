@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 250" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Royal Navy Twilight Atmosphere Sky -->
+    <linearGradient id="skyAtmosphere" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#22265D"/>
+      <stop offset="28%" stop-color="#3D4678"/>
+      <stop offset="65%" stop-color="#6F7CA8"/>
+      <stop offset="100%" stop-color="#CCD4EC"/>
+    </linearGradient>
+
+    <!-- Faint Distant Fog Silhouette -->
+    <linearGradient id="distantFog" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#282E66" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#1B204D" stop-opacity="0.45"/>
+    </linearGradient>
+
+    <!-- Midground Mosque Silhouette -->
+    <linearGradient id="midMosque" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E2356" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#141840" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <!-- Foreground Deep Charcoal Navy Silhouette -->
+    <linearGradient id="foreMosqueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#13163A"/>
+      <stop offset="100%" stop-color="#0B0D24"/>
+    </linearGradient>
+
+    <!-- Glowing Silver Moon Halo -->
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(238, 242, 255, 0.55)"/>
+      <stop offset="40%" stop-color="rgba(238, 242, 255, 0.2)"/>
+      <stop offset="100%" stop-color="rgba(238, 242, 255, 0)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Sky Gradient -->
+  <rect width="450" height="250" fill="url(#skyAtmosphere)"/>
+
+  <!-- Silver Glowing Crescent Moon in Top Right -->
+  <circle cx="385" cy="65" r="55" fill="url(#moonGlow)"/>
+  <path d="M 395 32 A 44 44 0 1 0 395 98 A 37 37 0 1 1 395 32 Z" fill="#EEF2FA" opacity="0.88"/>
+
+  <!-- Flying Birds Swarm -->
+  <!-- Swarm Leader -->
+  <path d="M 230 62 Q 236 56 242 62 Q 248 56 254 62 Q 248 60 242 64 Q 236 60 230 62 Z" fill="#151942" opacity="0.7"/>
+  <!-- Bird 2 -->
+  <path d="M 258 52 Q 262 47 266 52 Q 270 47 274 52 Q 270 50 266 53 Q 262 50 258 52 Z" fill="#151942" opacity="0.6"/>
+  <!-- Bird 3 -->
+  <path d="M 345 56 Q 349 51 353 56 Q 357 51 361 56 Q 357 54 353 57 Q 349 54 345 56 Z" fill="#151942" opacity="0.65"/>
+  <!-- Bird 4 -->
+  <path d="M 328 66 Q 331 62 334 66 Q 337 62 340 66 Q 337 64 334 67 Q 331 64 328 66 Z" fill="#151942" opacity="0.55"/>
+  <!-- Bird 5 -->
+  <path d="M 210 76 Q 213 72 216 76 Q 219 72 222 76 Q 219 74 216 77 Q 213 74 210 76 Z" fill="#151942" opacity="0.55"/>
+  <!-- Bird 6 -->
+  <path d="M 285 70 Q 288 67 291 70 Q 294 67 297 70 Q 294 68 291 71 Q 288 68 285 70 Z" fill="#151942" opacity="0.5"/>
+
+  <!-- Distant Background Domes & Hills -->
+  <path fill="url(#distantFog)" d="
+    M 0 250 
+    L 0 160 
+    Q 50 145 100 160 
+    L 135 160 
+    L 135 110 
+    L 137 95 
+    L 139 110 
+    L 139 160 
+    Q 180 135 225 160 
+    L 300 160 
+    L 300 115 
+    L 302 100 
+    L 304 115 
+    L 304 160 
+    Q 360 140 410 160 
+    L 450 155 
+    L 450 250 
+    Z"/>
+
+  <!-- Midground Layer -->
+  <g fill="url(#midMosque)">
+    <!-- Minaret Mid-Left -->
+    <rect x="95" y="85" width="7" height="165"/>
+    <rect x="93" y="105" width="11" height="3" rx="1"/>
+    <polygon points="98.5,60 95,85 102,85"/>
+    <circle cx="98.5" cy="58" r="1.5"/>
+
+    <!-- Mid Dome Left -->
+    <path d="M 30 250 L 30 180 Q 65 140 100 180 L 100 250 Z"/>
+
+    <!-- Minaret Mid-Right -->
+    <rect x="330" y="80" width="7" height="170"/>
+    <rect x="328" y="100" width="11" height="3" rx="1"/>
+    <polygon points="333.5,55 330,80 337,80"/>
+    <circle cx="333.5" cy="53" r="1.5"/>
+
+    <!-- Mid Dome Right -->
+    <path d="M 335 250 L 335 185 Q 370 145 405 185 L 405 250 Z"/>
+  </g>
+
+  <!-- Foreground Crisp Mosque Skyline in Deep Charcoal Navy -->
+  <g fill="url(#foreMosqueGrad)">
+    <!-- Tall Minaret 1 (Far Left) -->
+    <rect x="58" y="68" width="9" height="182"/>
+    <rect x="55" y="95" width="15" height="4" rx="1"/>
+    <rect x="55" y="132" width="15" height="4" rx="1"/>
+    <rect x="55" y="65" width="15" height="5" rx="1"/>
+    <polygon points="62.5,35 59,65 66,65"/>
+    <circle cx="62.5" cy="33" r="2"/>
+
+    <!-- Left Small Dome -->
+    <path d="M 0 250 L 0 175 Q 32 140 64 175 L 64 250 Z"/>
+    <rect x="31" y="125" width="2" height="18"/>
+    <circle cx="32" cy="123" r="1.5"/>
+
+    <!-- Left Secondary Dome -->
+    <path d="M 72 250 L 72 178 Q 105 142 138 178 L 138 250 Z"/>
+    <rect x="104" y="130" width="2" height="16"/>
+    <circle cx="105" cy="128" r="1.5"/>
+
+    <!-- Tall Central-Right Minaret -->
+    <rect x="298" y="58" width="10" height="192"/>
+    <rect x="295" y="88" width="16" height="4" rx="1"/>
+    <rect x="295" y="125" width="16" height="4" rx="1"/>
+    <rect x="295" y="55" width="16" height="5" rx="1"/>
+    <polygon points="303,24 299,55 307,55"/>
+    <circle cx="303" cy="22" r="2"/>
+
+    <!-- Second Tall Minaret Beside It -->
+    <rect x="316" y="68" width="8" height="182"/>
+    <rect x="314" y="96" width="12" height="4" rx="1"/>
+    <rect x="314" y="65" width="12" height="4" rx="1"/>
+    <polygon points="320,38 317,65 323,65"/>
+    <circle cx="320,36" r="1.8"/>
+
+    <!-- Grand Central Ottoman Dome -->
+    <path d="M 172 250 L 172 165 C 172 95, 278 95, 278 165 L 278 250 Z"/>
+    <!-- Grand Spire & Crescent -->
+    <rect x="224" y="75" width="2.5" height="26"/>
+    <circle cx="225" cy="72" r="2.8"/>
+    <path d="M 225 66 A 4.5 4.5 0 1 0 228 71 A 3.2 3.2 0 1 1 225 66 Z" fill="#CCD4EC"/>
+
+    <!-- Secondary Dome Right -->
+    <path d="M 330 250 L 330 176 Q 368 138 406 176 L 406 250 Z"/>
+    <rect x="367" y="126" width="2" height="16"/>
+    <circle cx="368" cy="124" r="1.5"/>
+
+    <!-- Far Right Edge Dome & Minaret -->
+    <rect x="418" y="85" width="8" height="165"/>
+    <rect x="416" y="110" width="12" height="4" rx="1"/>
+    <polygon points="422,58 419,85 425,85"/>
+    <circle cx="422,56" r="1.6"/>
+  </g>
+</svg>

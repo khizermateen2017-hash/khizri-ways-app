@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Khizri Ways - خضری ویز | Islamic & Rohani Ilaj App</title>
+  
+  <meta name="theme-color" content="#22265D">
+  <link rel="icon" type="image/png" href="/assets/khizri-ways-logo.png?v=clean-9.0">
+
+  <!-- Google Fonts: Plus Jakarta Sans for UI, Amiri for Arabic/Urdu -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Scheherazade+New:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet with Cache Buster -->
+  <link rel="stylesheet" href="/css/app.css?v=khizri-navy-11.0">
+</head>
+<body class="deen-app-body khizri-theme">
+
+  <!-- Minimal Floating Glassmorphic Top Controls -->
+  <header class="floating-control-bar">
+    <div class="brand-chip">
+      <img src="/assets/khizri-ways-logo.png?v=clean-9.0" alt="Khizri Ways" class="chip-logo">
+      <div>
+        <span class="chip-title">Khizri Ways</span>
+        <span class="chip-urdu">خضری ویز</span>
+      </div>
+      <span class="chip-badge">Official App</span>
+    </div>
+
+    <div class="view-mode-group">
+      <button class="mode-btn active" id="btnModeDual" title="Show Dual Phone Showcase matching screenshot">
+        <i class="fa-solid fa-clone"></i> <span>Dual Phones</span>
+      </button>
+      <button class="mode-btn" id="btnModeSingle" title="Focus Single Interactive Phone">
+        <i class="fa-solid fa-mobile-screen"></i> <span>Single App</span>
+      </button>
+      <button class="mode-btn" id="btnModeFull" title="Full Screen Edge-to-Edge">
+        <i class="fa-solid fa-expand"></i> <span>Full Screen</span>
+      </button>
+    </div>
+
+    <div class="quick-links-group">
+      <button class="mode-btn btn-lang-desktop" id="btnLangDesktop" onclick="toggleAppLanguage()" title="Switch Language (English / اردو)">
+        <i class="fa-solid fa-language"></i> <span id="desktopLangText">اردو</span>
+      </button>
+      <a href="/download/apk" class="mode-btn" title="Download Android APK" style="background:#ECFDF5; color:#059669; border-color:#A7F3D0; font-weight:700;">
+        <i class="fa-brands fa-android"></i> <span>Download APK</span>
+      </a>
+      <button class="mode-btn" id="btnShowWifi" title="Connect on Phone via Wi-Fi">
+        <i class="fa-solid fa-qrcode"></i> <span>Phone Wi-Fi</span>
+      </button>
+      <a href="/admin" target="_blank" class="mode-btn btn-admin-accent" title="Manage PDFs, Videos & Content">
+        <i class="fa-solid fa-sliders"></i> <span>Admin Portal</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       PRESENTATION STAGE: DUAL IPHONE MOCKUPS
+       Left: Splash Screen (Royal Midnight Navy with Khizri Ways Logo)
+       Right: Main App Screen (Royal Navy Mosque Skyline, 16 Features)
+       ======================================================== -->
+  <main class="presentation-stage mode-dual-view" id="presentationStage">
+    
+    <!-- ======================================================
+         LEFT PHONE: SPLASH SCREEN (ROYAL MIDNIGHT NAVY THEME)
+         ====================================================== -->
+    <div class="phone-mockup-frame splash-mockup-frame" id="phoneMockupSplash" title="Khizri Ways Splash Screen">
+      
+      <!-- Dynamic Island Notch -->
+      <div class="iphone-island">
+        <div class="island-lens"></div>
+        <div class="island-dot"></div>
+      </div>
+
+      <!-- Phone Status Bar -->
+      <div class="phone-status-strip status-white">
+        <span class="status-clock">9:41</span>
+        <div class="status-indicators">
+          <i class="fa-solid fa-signal"></i>
+          <i class="fa-solid fa-wifi"></i>
+          <i class="fa-solid fa-battery-full"></i>
+        </div>
+      </div>
+
+      <!-- Splash Screen Content (Royal Navy Background) -->
+      <div class="splash-screen-canvas">
+        <div class="splash-center-content">
+          <div class="splash-logo-wrap">
+            <img src="/assets/khizri-ways-logo.png?v=clean-9.0" alt="Khizri Ways Logo" class="splash-logo-img khizri-circle-logo">
+          </div>
+          <div class="splash-urdu-title">خضریٰ ویز</div>
+          <h1 class="splash-brand-text">Khizri Ways</h1>
+          <p class="splash-sub-text">Spiritual Healing & Islamic Guidance<br><span class="urdu-sub">روحانی علاج اور اسلامی رہنمائی</span></p>
+        </div>
+
+        <!-- Interactive button to open main app -->
+        <div class="splash-bottom-bar">
+          <button class="btn-splash-tap" id="btnSplashTap">
+            Explore Application <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Virtual iPhone Home Bar -->
+        <div class="iphone-home-bar-area">
+          <div class="home-bar-pill bar-white"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ======================================================
+         RIGHT PHONE: MAIN INTERACTIVE APP (16 FEATURES)
+         ====================================================== -->
+    <div class="phone-mockup-frame main-mockup-frame" id="phoneMockupApp">
+      
+      <!-- Dynamic Island Notch -->
+      <div class="iphone-island">
+        <div class="island-lens"></div>
+        <div class="island-dot"></div>
+      </div>
+
+      <!-- Phone Status Bar -->
+      <div class="phone-status-strip status-dark">
+        <span class="status-clock" id="statusClock">9:41</span>
+        <div class="status-indicators">
+          <i class="fa-solid fa-signal"></i>
+          <i class="fa-solid fa-wifi"></i>
+          <i class="fa-solid fa-battery-full"></i>
+        </div>
+      </div>
+
+      <!-- Main App Body Wrapper -->
+      <div class="main-app-container">
+
+        <!-- ====================================================
+             TAB 1: HOME (ROYAL NAVY THEMED SCREENSHOT LAYOUT)
+             ==================================================== -->
+        <section class="tab-screen active" id="tabHome">
+          
+          <!-- Top Hero Section with Royal Navy Mosque Skyline -->
+          <div class="hero-mosque-section">
+            
+            <!-- Greeting, IP Location, Date, Live Time & Top-Right Language Switcher -->
+            <div class="hero-top-row">
+              <div class="greeting-col">
+                <div class="header-greeting-line">
+                  <span class="greeting-small" id="headerGreetingText" data-i18n="greeting">Assalamu'alaikum</span>
+                  <span class="location-badge" id="headerLocationBadge" title="Current Location by IP">
+                    <i class="fa-solid fa-location-dot"></i> <span id="headerCityName">Pakistan</span>
+                  </span>
+                </div>
+                <div class="header-live-clock-row">
+                  <span class="header-time-live" id="headerLiveTime">09:30</span>
+                  <span class="time-ampm" id="headerTimeAmpm">PM</span>
+                </div>
+                <div class="header-date-line" id="headerLiveDate">Sunday, 06 Sep 2026</div>
+              </div>
+
+              <!-- Top-Right Language Toggle Button (English <-> اردو) -->
+              <div class="hero-lang-col">
+                <button class="btn-lang-toggle" id="btnLangToggle" onclick="toggleAppLanguage()" title="Switch Language (English / اردو)">
+                  <i class="fa-solid fa-language"></i>
+                  <span class="lang-label-text" id="langToggleText">اردو</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Floating Deep Royal Midnight Navy Prayer Card -->
+            <div class="hero-prayer-floating-card">
+              <div class="prayer-col-left">
+                <span class="p-status-label" id="currentPrayerLabel" data-i18n="nowPrayer">Now prayer is</span>
+                <span class="p-current-name" id="currentPrayerName">Dhuhr</span>
+              </div>
+
+              <div class="prayer-col-divider"></div>
+
+              <div class="prayer-col-right">
+                <span class="p-status-label" id="nextPrayerLabel" data-i18n="nextPrayer">Next prayer is Asr</span>
+                <span class="p-next-time" id="nextPrayerTime">04:04 <span class="pm-unit">PM</span></span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 16 Circular Feature Icons (4x4 Grid in Royal Navy Theme) -->
+          <div class="sixteen-grid-section">
+
+            <!-- 16 Features Grid with Dedicated Rohani Ilaj, Wazaif, and PDF Books -->
+            <div class="sixteen-features-grid">
+              
+              <!-- 1. AL Quran -->
+              <div class="feature-cell" data-open="tabQuran" title="Al Quran Al Kareem">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-book-quran"></i>
+                </div>
+                <span class="feature-title" data-i18n="featQuran">AL Quran</span>
+              </div>
+
+              <!-- 2. Hadith -->
+              <div class="feature-cell" data-open="tabHadith" title="Hadith Collection">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-book-bookmark"></i>
+                </div>
+                <span class="feature-title" data-i18n="featHadith">Hadith</span>
+              </div>
+
+              <!-- 3. Spiritual Healing (Rohani Ilaj) -->
+              <div class="feature-cell" data-open="tabRohaniIlaj" title="Spiritual Healing & Rohani Ilaj">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-hand-holding-heart"></i>
+                </div>
+                <span class="feature-title" data-i18n="featRohaniIlaj">Spiritual<br>Healing</span>
+              </div>
+
+              <!-- 4. Khas Wazaif (Wazaif Library) -->
+              <div class="feature-cell" data-open="tabWazaif" title="Khizri Wazaif & Azkar">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-hands-praying"></i>
+                </div>
+                <span class="feature-title" data-i18n="featWazaif">Khas<br>Wazaif</span>
+              </div>
+
+              <!-- 5. PDF Books & Resources -->
+              <div class="feature-cell" data-open="tabPdfBooks" title="Downloadable PDF Books & Guides">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-file-pdf"></i>
+                </div>
+                <span class="feature-title" data-i18n="featPdfBooks">PDF<br>Books</span>
+              </div>
+
+              <!-- 6. Prayer Schedule -->
+              <div class="feature-cell" data-open="tabPrayerTimes" title="Prayer Schedule & Timings">
+                <div class="feature-icon-circle">
+                  <i class="fa-regular fa-clock"></i>
+                </div>
+                <span class="feature-title" data-i18n="featPrayer">Prayer</span>
+              </div>
+
+              <!-- 7. Qibla Compass -->
+              <div class="feature-cell" data-open="tabQibla" title="Qibla Direction">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-compass"></i>
+                </div>
+                <span class="feature-title" data-i18n="featQibla">Qibla</span>
+              </div>
+
+              <!-- 8. Digital Tasbeeh -->
+              <div class="feature-cell" data-open="tabTasbeeh" title="Digital Tasbeeh & Durood-e-Khizri">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-ellipsis-vertical" style="transform: rotate(45deg); font-size: 1.5rem;"></i>
+                </div>
+                <span class="feature-title" data-i18n="featTasbeeh">Tasbeeh</span>
+              </div>
+
+              <!-- 9. 99 Names of Allah -->
+              <div class="feature-cell" data-open="tabAllahNames" title="99 Names of Allah (Asma-ul-Husna)">
+                <div class="feature-icon-circle">
+                  <span class="arabic-allah-text">الله</span>
+                </div>
+                <span class="feature-title" data-i18n="featName">Name</span>
+              </div>
+
+              <!-- 10. Zakat Calculator -->
+              <div class="feature-cell" data-open="modalZakat" title="Zakat Calculator">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-hand-holding-dollar"></i>
+                </div>
+                <span class="feature-title" data-i18n="featZakat">Zakat</span>
+              </div>
+
+              <!-- 11. Ramadan Planner -->
+              <div class="feature-cell" data-open="modalRamadan" title="Ramadan Planner & Timings">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-moon"></i>
+                </div>
+                <span class="feature-title" data-i18n="featRamadan">Ramadan<br>Planner</span>
+              </div>
+
+              <!-- 12. Hajj & Umrah -->
+              <div class="feature-cell" data-open="modalHajj" title="Hajj & Umrah Step-by-Step">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-kaaba"></i>
+                </div>
+                <span class="feature-title" data-i18n="featHajj">Hajj &<br>Umrah</span>
+              </div>
+
+              <!-- 13. Makkah & Madina Live -->
+              <div class="feature-cell" data-open="tabMakkahLive" title="Makkah & Madina Live Transmission">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-tv"></i>
+                </div>
+                <span class="feature-title" data-i18n="featMakkah">Makkah &<br>Madina</span>
+              </div>
+
+              <!-- 14. Islamic Video Library -->
+              <div class="feature-cell" data-open="tabVideos" title="Islamic Videos & Bayans">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-circle-play"></i>
+                </div>
+                <span class="feature-title" data-i18n="featVideo">Islamic<br>Video</span>
+              </div>
+
+              <!-- 15. Islamic Baby Names -->
+              <div class="feature-cell" data-open="modalNames" title="Islamic Baby Names">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-baby"></i>
+                </div>
+                <span class="feature-title" data-i18n="featBabyNames">Islamic<br>Name</span>
+              </div>
+
+              <!-- 16. Find Mosque -->
+              <div class="feature-cell" data-open="modalMosque" title="Find Nearby Mosque">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <span class="feature-title" data-i18n="featMosque">Find<br>Mosque</span>
+              </div>
+
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ====================================================
+             TAB 2: QURAN SCREEN
+             ==================================================== -->
+        <section class="tab-screen" id="tabQuran">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titleQuran">Al Quran Al Kareem</h3>
+            <div class="sub-header-spacer"></div>
+          </div>
+          <div class="sub-screen-scroll">
+            <div class="surah-list-wrap" id="quranSurahList">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             TAB 3: PRAYER TIMES SCREEN
+             ==================================================== -->
+        <section class="tab-screen" id="tabPrayerTimes">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titlePrayer">Prayer Schedule</h3>
+            <div class="sub-header-spacer"></div>
+          </div>
+          <div class="sub-screen-scroll">
+            <div class="prayer-times-schedule-cards" id="prayerTimesSchedule">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             TAB 4: QIBLA SCREEN
+             ==================================================== -->
+        <section class="tab-screen" id="tabQibla">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titleQibla">Qibla Direction</h3>
+            <div class="sub-header-spacer"></div>
+          </div>
+          <div class="sub-screen-scroll flex-center-scroll">
+            <div class="qibla-compass-circle" id="qiblaCompassCircle">
+              <div class="compass-kaaba-top-icon"><i class="fa-solid fa-kaaba"></i></div>
+              <span class="cardinal-letter c-n">N</span>
+              <span class="cardinal-letter c-e">E</span>
+              <span class="cardinal-letter c-s">S</span>
+              <span class="cardinal-letter c-w">W</span>
+              <div class="compass-needle-stick" id="compassNeedleStick"></div>
+            </div>
+            <div class="qibla-heading-deg" id="qiblaDegreeNumber">257°</div>
+            <div class="qibla-heading-desc">Device's angle to Kaaba (Makkah)</div>
+            <div class="qibla-pill-instruction" id="qiblaPillInstruction">
+              Rotate the phone 135° to the left
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             TAB 5: TASBEEH SCREEN (DUROOD-E-KHIZRI & AZKAR)
+             ==================================================== -->
+        <section class="tab-screen" id="tabTasbeeh">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titleTasbeeh">Digital Tasbeeh</h3>
+            <button class="btn-icon-sub" id="btnResetTasbeeh"><i class="fa-solid fa-rotate-right"></i></button>
+          </div>
+          <div class="sub-screen-scroll flex-center-scroll">
+            <div class="tasbeeh-preset-box">
+              <select id="tasbeehDhikrPicker" class="form-select-dhikr">
+                <option value="صَلَّى اللهُ عَلَى حَبِيْبِهِ مُحَمَّدٍ وَّآلِهِ وَسَلَّمَ" data-target="313">Durood-e-Khizri (313x)</option>
+                <option value="سُبْحَانَ اللَّهِ" data-target="33">SubhanAllah (33x)</option>
+                <option value="الْحَمْدُ لِلَّهِ" data-target="33">Alhamdulillah (33x)</option>
+                <option value="اللَّهُ أَكْبَرُ" data-target="34">Allahu Akbar (34x)</option>
+                <option value="أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ" data-target="100">Astaghfirullah (100x)</option>
+                <option value="لَا إِلَهَ إِلَّا اللَّهُ" data-target="100">La Ilaha Illallah (100x)</option>
+                <option value="حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ" data-target="100">Hasbunallahu Wa Ni'mal Wakeel (100x)</option>
+              </select>
+            </div>
+            <div class="tasbeeh-arabic-banner" id="tasbeehArabicBanner">
+              صَلَّى اللهُ عَلَى حَبِيْبِهِ مُحَمَّدٍ وَّآلِهِ وَسَلَّمَ
+            </div>
+            <div class="tasbeeh-big-button-wrap">
+              <button class="btn-tasbeeh-dial" id="btnTasbeehDial">
+                <span class="tasbeeh-count-value" id="tasbeehCountValue">0</span>
+                <span class="tasbeeh-target-hint">Target: <span id="tasbeehTargetHint">313</span></span>
+                <span class="tasbeeh-finger-hint"><i class="fa-solid fa-fingerprint"></i> Tap to Count</span>
+              </button>
+            </div>
+            <div class="tasbeeh-toggle-chips">
+              <button class="toggle-chip active" id="btnSoundChip"><i class="fa-solid fa-volume-high"></i> Sound</button>
+              <button class="toggle-chip active" id="btnVibrateChip"><i class="fa-solid fa-mobile-screen"></i> Haptic</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             TAB: SPIRITUAL HEALING (ROHANI ILAJ)
+             ==================================================== -->
+        <section class="tab-screen" id="tabRohaniIlaj">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titleRohaniIlaj">Spiritual Healing</h3>
+            <button class="btn-icon-sub" onclick="openWhatsAppConsult()" title="WhatsApp Rohani Consultation">
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+          <div class="sub-screen-scroll">
+            
+            <!-- Online Istikhara & Consultation Banner -->
+            <div class="rohani-consult-banner">
+              <div class="rcb-badge" id="rcbBadge"><i class="fa-solid fa-shield-halved"></i> Khizri Ways Guidance</div>
+              <h4 id="rcbHeading">Online Istikhara & Spiritual Guidance</h4>
+              <p id="rcbDesc">Direct WhatsApp consultation with Khizri Ways spiritual scholars for illness, evil eye, anxiety, and family matters.</p>
+              <button class="btn-rcb-whatsapp" onclick="openWhatsAppConsult()">
+                <i class="fa-brands fa-whatsapp"></i> <span id="rcbBtnText">Consult on WhatsApp</span>
+              </button>
+            </div>
+
+            <!-- Rohani Ilaj Modules Grid -->
+            <div class="rohani-modules-list">
+              
+              <!-- Module 1: Hisar-e-Khizri -->
+              <div class="rohani-module-card">
+                <div class="rmc-header">
+                  <div class="rmc-icon bg-navy"><i class="fa-solid fa-shield-heart"></i></div>
+                  <div>
+                    <span class="rmc-category">حفاظت و امان</span>
+                    <h4 class="rmc-title">حصارِ خضریٰ (Khizri Spiritual Shield)</h4>
+                  </div>
+                </div>
+                <p class="rmc-desc">جادو، جنات، نظرِ بد اور دشمنوں کے شر سے مکمل حفاظت کے لیے صبح و شام کا خاص نبوی حصار۔</p>
+                <div class="rmc-arabic-box">
+                  بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ
+                </div>
+                <div class="rmc-instructions">
+                  <strong>طریقہ:</strong> صبح بعد نمازِ فجر اور شام بعد نمازِ مغرب 3 مرتبہ پڑھ کر دونوں ہاتھوں پر دم کریں اور سر سے پاؤں تک اپنے پورے جسم پر پھیر لیں۔
+                </div>
+                <div class="rmc-counter-row">
+                  <span class="rmc-target-tag">تعداد: 3 بار</span>
+                  <button class="btn-module-count" onclick="countModuleWazifa(this, 3)">
+                    <i class="fa-solid fa-fingerprint"></i> <span class="m-count-val">0</span> / 3
+                  </button>
+                </div>
+              </div>
+
+              <!-- Module 2: Nazar-e-Bad Cure -->
+              <div class="rohani-module-card">
+                <div class="rmc-header">
+                  <div class="rmc-icon bg-soft-blue"><i class="fa-solid fa-eye-slash"></i></div>
+                  <div>
+                    <span class="rmc-category">نظرِ بد کا علاج</span>
+                    <h4 class="rmc-title">نظرِ بد اور حاسدین کے شر کا خاتمہ</h4>
+                  </div>
+                </div>
+                <p class="rmc-desc">بچوں یا بڑوں پر اچانک بیماری، کمزوری، بلاوجہ رونا یا چڑچڑاپن نظرِ بد کی علامات ہیں۔ اس کا مسنون دم درج ذیل ہے:</p>
+                <div class="rmc-arabic-box">
+                  أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ
+                </div>
+                <div class="rmc-instructions">
+                  <strong>طریقہ:</strong> اول و آخر 3 بار درود خضری پڑھیں، پھر 7 بار یہ دعا پڑھ کر مریض پر دم کریں اور پانی پر دم کر کے پلائیں۔
+                </div>
+                <div class="rmc-counter-row">
+                  <span class="rmc-target-tag">تعداد: 7 بار</span>
+                  <button class="btn-module-count" onclick="countModuleWazifa(this, 7)">
+                    <i class="fa-solid fa-fingerprint"></i> <span class="m-count-val">0</span> / 7
+                  </button>
+                </div>
+              </div>
+
+              <!-- Module 3: Dam o Shifa Water Guide -->
+              <div class="rohani-module-card">
+                <div class="rmc-header">
+                  <div class="rmc-icon bg-green"><i class="fa-solid fa-faucet-drip"></i></div>
+                  <div>
+                    <span class="rmc-category">شفائے امراض</span>
+                    <h4 class="rmc-title">روحانی دم اور دم شدہ پانی پینے کا طریقہ</h4>
+                  </div>
+                </div>
+                <p class="rmc-desc">جسمانی و لا علاج امراض میں قرآنی شفا حاصل کرنے کا مجرب خضری طریقہ کار۔</p>
+                <div class="rmc-steps-box">
+                  <div class="rmc-step-item"><span>1</span> اول و آخر 3 بار درود خضری پڑھیں۔</div>
+                  <div class="rmc-step-item"><span>2</span> 7 مرتبہ سورۃ الفاتحہ مکمل اعوذ اور تسمیہ کے ساتھ تلاوت کریں۔</div>
+                  <div class="rmc-step-item"><span>3</span> آیت شفا: <em>« وَإِذَا مَرِضْتُ فَهُوَ يَشْفِينِ »</em> 11 مرتبہ پڑھیں۔</div>
+                  <div class="rmc-step-item"><span>4</span> پینے کے صاف پانی کی بوتل پر 3 پھونکیں ماریں اور مریض کو دن میں 3 بار پلائیں۔</div>
+                </div>
+              </div>
+
+              <!-- Module 4: Anxiety & Mental Peace -->
+              <div class="rohani-module-card">
+                <div class="rmc-header">
+                  <div class="rmc-icon bg-navy"><i class="fa-solid fa-brain"></i></div>
+                  <div>
+                    <span class="rmc-category">سکونِ قلب</span>
+                    <h4 class="rmc-title">بے خوابی، ڈپریشن اور گھبراہٹ کا علاج</h4>
+                  </div>
+                </div>
+                <p class="rmc-desc">دل کے سکون اور منفی وسوسوں کو دور کرنے کے لیے قرآن کریم کا اکسیری نسخہ۔</p>
+                <div class="rmc-arabic-box">
+                  الَّذِينَ آمَنُوا وَتَطْمَئِنُّ قُلُوبُهُمْ بِذِكْرِ اللَّهِ ۗ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ
+                </div>
+                <div class="rmc-instructions">
+                  <strong>طریقہ:</strong> رات کو سوتے وقت دائیں ہاتھ دل پر رکھ کر 101 مرتبہ پڑھیں، پرسکون نیند آئے گی اور دل مضبوط ہوگا۔
+                </div>
+                <div class="rmc-counter-row">
+                  <span class="rmc-target-tag">تعداد: 101 بار</span>
+                  <button class="btn-module-count" onclick="countModuleWazifa(this, 101)">
+                    <i class="fa-solid fa-fingerprint"></i> <span class="m-count-val">0</span> / 101
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ====================================================
+             TAB: KHIZRI WAZAIF (مستند وظائف مع کاؤنٹر)
+             ==================================================== -->
+        <section class="tab-screen" id="tabWazaif">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titleWazaif">Khizri Wazaif</h3>
+            <button class="btn-icon-sub" data-open="tabPdfBooks" title="PDF Books"><i class="fa-solid fa-file-pdf"></i></button>
+          </div>
+          <div class="sub-screen-scroll">
+            
+            <!-- Category Filter Chips -->
+            <div class="wazaif-filter-chips" id="wazaifFilterChips">
+              <button class="w-chip active" data-filter="all">All Wazaif</button>
+              <button class="w-chip" data-filter="Durood Sharif">Durood-e-Khizri</button>
+              <button class="w-chip" data-filter="Rizq & Barkat">Rizq & Barkat</button>
+              <button class="w-chip" data-filter="Rohani Ilaj">Rohani Ilaj</button>
+              <button class="w-chip" data-filter="Hifazat">Protection & Hisar</button>
+            </div>
+
+            <!-- Dynamic Wazaif Cards Container -->
+            <div class="wazaif-interactive-stack" id="wazaifInteractiveStack">
+              <!-- Rendered via JS -->
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ====================================================
+             TAB: PDF BOOKS & GUIDES (کتب و رسائل لائبریری)
+             ==================================================== -->
+        <section class="tab-screen" id="tabPdfBooks">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titlePdfBooks">PDF Library</h3>
+            <a href="/admin" target="_blank" class="btn-icon-sub" title="Admin Upload New PDF"><i class="fa-solid fa-cloud-arrow-up"></i></a>
+          </div>
+          <div class="sub-screen-scroll">
+            
+            <!-- PDF Library Intro Banner -->
+            <div class="pdf-library-banner">
+              <div class="plb-left">
+                <h4 id="plbHeading">Khizri Ways PDF Library</h4>
+                <p id="plbDesc">Read and download authentic Islamic booklets, wazaif collections, and spiritual healing guides for free.</p>
+              </div>
+              <div class="plb-icon"><i class="fa-solid fa-book-bookmark"></i></div>
+            </div>
+
+            <!-- Category Filter Chips for Books -->
+            <div class="pdf-filter-chips" id="pdfFilterChips">
+              <button class="p-chip active" data-pdf-filter="all">All Books</button>
+              <button class="p-chip" data-pdf-filter="Wazaif Booklets">Wazaif</button>
+              <button class="p-chip" data-pdf-filter="Rohani Ilaj">Rohani Ilaj</button>
+              <button class="p-chip" data-pdf-filter="Durood Sharif">Durood Sharif</button>
+              <button class="p-chip" data-pdf-filter="Rizq & Barkat">Rizq & Barkat</button>
+            </div>
+
+            <!-- PDF Resources Grid / Stack -->
+            <div class="pdf-resources-stack" id="pdfResourcesStack">
+              <!-- Populated via JS / Backend REST API -->
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ====================================================
+             TAB 9: HADITH
+             ==================================================== -->
+        <section class="tab-screen" id="tabHadith">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titleHadith">Hadith Collection</h3>
+            <div class="sub-header-spacer"></div>
+          </div>
+          <div class="sub-screen-scroll">
+            <div class="hadith-stack" id="hadithStack">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             TAB 10: 99 NAMES OF ALLAH (NAME)
+             ==================================================== -->
+        <section class="tab-screen" id="tabAllahNames">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titleAllahNames">Asma-ul-Husna (99 Names)</h3>
+            <div class="sub-header-spacer"></div>
+          </div>
+          <div class="sub-screen-scroll">
+            <div class="allah-names-grid" id="allahNamesGrid">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             TAB 11: MAKKAH & MADINA LIVE
+             ==================================================== -->
+        <section class="tab-screen" id="tabMakkahLive">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titleMakkahLive">Makkah & Madina Live</h3>
+            <div class="sub-header-spacer"></div>
+          </div>
+          <div class="sub-screen-scroll">
+            <div class="live-stream-card" onclick="openLiveStream('Makkah Live', 'https://www.youtube-nocookie.com/embed/live_stream?channel=UC4g1H78wLg7qD0jVp1W0Pxg')">
+              <div class="live-stream-banner makkah-banner">
+                <div class="live-tag"><i class="fa-solid fa-circle"></i> LIVE 24/7</div>
+                <div class="play-circle-center"><i class="fa-solid fa-play"></i></div>
+                <div class="live-stream-details">
+                  <h4>Makkah Live • Masjid Al Haram</h4>
+                  <p>Holy Kaaba Live HD Transmission</p>
+                </div>
+              </div>
+            </div>
+            <div class="live-stream-card mt-14" onclick="openLiveStream('Madina Live', 'https://www.youtube-nocookie.com/embed/live_stream?channel=UCaG4P4rWkKx_r6eG41dJk-w')">
+              <div class="live-stream-banner madina-banner">
+                <div class="live-tag"><i class="fa-solid fa-circle"></i> LIVE 24/7</div>
+                <div class="play-circle-center"><i class="fa-solid fa-play"></i></div>
+                <div class="live-stream-details">
+                  <h4>Madina Live • Al Masjid An Nabawi</h4>
+                  <p>Roza-e-Rasool ﷺ Live Transmission</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             TAB 12: PROFILE & SETTINGS
+             ==================================================== -->
+        <section class="tab-screen" id="tabProfile">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titleProfile">Profile & Settings</h3>
+            <div class="sub-header-spacer"></div>
+          </div>
+          <div class="sub-screen-scroll">
+            <div class="profile-card-top">
+              <div class="profile-avatar">
+                <img src="/assets/khizri-ways-logo.png?v=clean-9.0" alt="Khizri Ways" class="avatar-logo-img">
+              </div>
+              <h3 id="profileNameHeading">Khizri Ways</h3>
+              <p>خضری ویز • Rohani Ilaj & Guidance</p>
+              <div class="name-edit-box">
+                <input type="text" id="inputCustomName" class="profile-name-input" value="Khizri Ways" placeholder="Your Display Name">
+                <button class="btn-save-name" id="btnSaveDisplayName">Save</button>
+              </div>
+            </div>
+
+            <div class="profile-links-list">
+              <a href="/admin" target="_blank" class="p-link-item p-link-admin">
+                <div class="p-link-left">
+                  <div class="p-icon-box bg-navy"><i class="fa-solid fa-sliders"></i></div>
+                  <div>
+                    <strong>Admin Management Dashboard</strong>
+                    <p>Upload PDFs, manage videos, articles & wazaif</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+
+              <div class="p-link-item" onclick="openModal('modalZakat')">
+                <div class="p-link-left">
+                  <div class="p-icon-box bg-soft-blue"><i class="fa-solid fa-calculator"></i></div>
+                  <div>
+                    <strong>Zakat Calculator</strong>
+                    <p>Calculate your annual Zakat easily</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+
+              <div class="p-link-item" onclick="openModal('modalWifiDialog')">
+                <div class="p-link-left">
+                  <div class="p-icon-box bg-blue"><i class="fa-solid fa-wifi"></i></div>
+                  <div>
+                    <strong>Install on Mobile via Wi-Fi</strong>
+                    <p>Open on your phone with local Wi-Fi IP</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+
+              <div class="p-link-item" onclick="openWhatsAppConsult()">
+                <div class="p-link-left">
+                  <div class="p-icon-box bg-green"><i class="fa-brands fa-whatsapp"></i></div>
+                  <div>
+                    <strong>Rohani Ilaj Consultation</strong>
+                    <p>Direct Istikhara & spiritual guidance via WhatsApp</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             4 BOTTOM NAVIGATION ITEMS (MATCHING SCREENSHOT)
+             1. Home | 2. Quran | 3. Prayer | 4. Profile
+             ==================================================== -->
+        <nav class="exact-bottom-nav">
+          <!-- 1. Home (Active: Royal Navy Pill Capsule) -->
+          <button class="bottom-nav-cell active" data-open="tabHome">
+            <div class="nav-active-pill">
+              <i class="fa-solid fa-house"></i>
+            </div>
+            <span class="nav-cell-label" data-i18n="navHome">Home</span>
+          </button>
+
+          <!-- 2. Quran -->
+          <button class="bottom-nav-cell" data-open="tabQuran">
+            <div class="nav-cell-icon"><i class="fa-regular fa-book-open"></i></div>
+            <span class="nav-cell-label" data-i18n="navQuran">Quran</span>
+          </button>
+
+          <!-- 3. Prayer -->
+          <button class="bottom-nav-cell" data-open="tabPrayerTimes">
+            <div class="nav-cell-icon"><i class="fa-regular fa-clock"></i></div>
+            <span class="nav-cell-label" data-i18n="navPrayer">Prayer</span>
+          </button>
+
+          <!-- 4. Profile -->
+          <button class="bottom-nav-cell" data-open="tabProfile">
+            <div class="nav-cell-icon"><i class="fa-regular fa-user"></i></div>
+            <span class="nav-cell-label" data-i18n="navProfile">Profile</span>
+          </button>
+        </nav>
+
+        <!-- iPhone Virtual Home Bar -->
+        <div class="iphone-home-bar-area">
+          <div class="home-bar-pill bar-dark"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================================
+       MODALS: PDF Reader, Video Player, Wi-Fi Link, Dialogs
+       ======================================================== -->
+  
+  <!-- PDF Reader Modal -->
+  <div class="modal-dialog-layer" id="modalPdfReader">
+    <div class="modal-card-container modal-pdf-size">
+      <div class="modal-card-top-bar">
+        <div class="m-title"><i class="fa-solid fa-file-pdf"></i> <span id="pdfModalTitle">PDF Reader</span></div>
+        <div class="m-actions">
+          <a href="#" id="pdfModalDownloadLink" class="btn-pdf-dl" download><i class="fa-solid fa-download"></i> Download</a>
+          <button class="btn-modal-x" onclick="closeModal('modalPdfReader')"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+      <div class="modal-card-body p-0">
+        <iframe id="pdfModalFrame" src="" title="PDF Viewer"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Player Modal -->
+  <div class="modal-dialog-layer" id="modalVideoPlayer">
+    <div class="modal-card-container">
+      <div class="modal-card-top-bar">
+        <span id="videoPlayerTitle">Watch Video</span>
+        <button class="btn-modal-x" onclick="closeModal('modalVideoPlayer')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-card-body">
+        <div class="video-ratio-box">
+          <iframe id="videoPlayerFrame" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+        </div>
+        <div class="video-details-box">
+          <h4 id="videoPlayerSpeaker">Khizri Ways</h4>
+          <p id="videoPlayerDesc"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wi-Fi QR / IP Modal -->
+  <div class="modal-dialog-layer" id="modalWifiDialog">
+    <div class="modal-card-container">
+      <div class="modal-card-top-bar">
+        <span>Connect on Android Phone (Wi-Fi)</span>
+        <button class="btn-modal-x" onclick="closeModal('modalWifiDialog')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-card-body">
+        <p class="wifi-p">Make sure your phone is connected to the same Wi-Fi as this PC, then open in Chrome or Safari:</p>
+        <div class="ip-copy-box">
+          <code id="wifiLocalIp">http://192.168.100.4:5000</code>
+          <button class="btn-ip-copy" id="btnCopyWifiIp">Copy</button>
+        </div>
+        <div class="pwa-install-banner">
+          <i class="fa-brands fa-android"></i>
+          <div>
+            <strong>Install on Phone as Standalone App:</strong>
+            <p>In Chrome on your phone, tap the 3 dots menu and select <b>"Add to Home screen"</b> or <b>"Install App"</b>. It will install with the Khizri Ways app icon!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zakat Modal -->
+  <div class="modal-dialog-layer" id="modalZakat">
+    <div class="modal-card-container">
+      <div class="modal-card-top-bar">
+        <span>Zakat Calculator (2.5%)</span>
+        <button class="btn-modal-x" onclick="closeModal('modalZakat')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-card-body">
+        <div class="form-group-zakat">
+          <label>Total Wealth / Savings / Assets (Rs / USD):</label>
+          <input type="number" id="inputWealth" class="zakat-input" placeholder="e.g. 200000" value="100000">
+        </div>
+        <button class="btn-calculate-zakat" onclick="calcZakat()">Calculate Zakat (2.5%)</button>
+        <div class="zakat-result-box" id="zakatResultBox">
+          Your Payable Zakat: <strong>2,500</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Generic Information Dialog (Ramadan, Hajj, Names, Mosque, Events) -->
+  <div class="modal-dialog-layer" id="modalInfoGeneric">
+    <div class="modal-card-container">
+      <div class="modal-card-top-bar">
+        <span id="genericInfoTitle">Feature</span>
+        <button class="btn-modal-x" onclick="closeModal('modalInfoGeneric')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-card-body" id="genericInfoBody">
+        <p>Loading...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast -->
+  <div class="deen-toast" id="deenToast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="deenToastMsg">Action done</span>
+  </div>
+
+  <!-- Exact App Logic with Cache Buster -->
+  <script src="/js/app.js?v=khizri-navy-11.0"></script>
+</body>
+</html>

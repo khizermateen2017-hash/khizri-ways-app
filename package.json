@@ -1,0 +1,25 @@
+{
+  "name": "khizri-ways-app",
+  "version": "1.0.0",
+  "description": "Khizri Ways - Islamic Mobile App & Portable Easy Admin Backend",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js"
+  },
+  "keywords": [
+    "islamic",
+    "khizri-ways",
+    "rohani-ilaj",
+    "wazaif",
+    "pdf-resources",
+    "android-app"
+  ],
+  "author": "Khizri Ways",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}
