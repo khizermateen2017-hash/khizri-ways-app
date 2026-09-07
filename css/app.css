@@ -4609,3 +4609,320 @@ body.lang-ur .sub-screen-title {
   color: #FDE047 !important;
   box-shadow: 0 4px 12px rgba(67, 56, 202, 0.35) !important;
 }
+
+
+/* ====================================================
+   FAST TREATMENT SCREEN & HOME BANNER STYLES
+   ==================================================== */
+.feature-accent-fast {
+  background: linear-gradient(135deg, #EA580C 0%, #C2410C 100%) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35) !important;
+}
+
+/* Home Screen Fast Treatment Banner */
+.home-fast-treatment-banner {
+  background: linear-gradient(135deg, #1C1917 0%, #292524 50%, #431407 100%);
+  border: 1px solid rgba(251, 146, 60, 0.4);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin: 14px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.home-fast-treatment-banner:hover {
+  transform: translateY(-2px);
+  border-color: #FB923C;
+}
+
+.hft-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hft-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #F97316 0%, #C2410C 100%);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+}
+
+.hft-badge {
+  display: inline-block;
+  background: rgba(249, 115, 22, 0.2);
+  border: 0.5px solid rgba(249, 115, 22, 0.5);
+  color: #FDBA74;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 1px 7px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+}
+
+.hft-left h4 {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 2px;
+}
+
+.hft-left p {
+  font-size: 0.72rem;
+  color: #D6D3D1;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.btn-hft-go {
+  background: #F97316;
+  color: #FFFFFF;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(249, 115, 22, 0.35);
+}
+
+/* Fast Treatment Hero Screen */
+.ft-hero-banner {
+  background: linear-gradient(135deg, #1C1917 0%, #292524 50%, #431407 100%);
+  border: 1px solid rgba(251, 146, 60, 0.35);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 16px;
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.ft-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(249, 115, 22, 0.2);
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  color: #FDBA74;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  margin-bottom: 8px;
+}
+
+.ft-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 6px;
+}
+
+.ft-desc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #E7E5E4;
+  margin: 0 0 12px;
+}
+
+.ft-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-ft-whatsapp {
+  flex: 1;
+  background: #25D366;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 9999px;
+  padding: 9px 14px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  box-shadow: 0 3px 12px rgba(37, 211, 102, 0.35);
+}
+
+.ft-phone-tag {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #FDBA74;
+}
+
+/* Fast Treatment Category Scroll */
+.ft-category-scroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  scrollbar-width: none;
+}
+
+.ft-category-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.ft-chip {
+  flex-shrink: 0;
+  background: #F5F5F4;
+  border: 1px solid #D6D3D1;
+  color: #57534E;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ft-chip.active {
+  background: #C2410C;
+  border-color: #F97316;
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(194, 65, 12, 0.3);
+}
+
+/* Fast Treatment Short Cards Grid */
+.fast-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ft-card-short {
+  background: #FFFFFF;
+  border: 1px solid #E7E5E4;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.ft-card-short:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.ftc-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.ftc-left-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ftc-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.ftc-title-box h4 {
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: #1C1917;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.ftc-title-box .ftc-subtitle {
+  font-size: 0.74rem;
+  color: #EA580C;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.ftc-tag {
+  background: #FFEDD5;
+  color: #C2410C;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.ftc-tag-price {
+  background: #DCFCE7;
+  color: #15803D;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.ftc-desc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #44403C;
+  margin-bottom: 10px;
+}
+
+.ftc-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #F5F5F4;
+  padding-top: 8px;
+  gap: 8px;
+}
+
+.ftc-phone-hint {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #78716C;
+}
+
+.btn-ftc-book {
+  background: #25D366;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 9999px;
+  padding: 7px 14px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 3px 8px rgba(37, 211, 102, 0.28);
+  transition: transform 0.15s;
+}
+
+.btn-ftc-book:hover {
+  transform: scale(1.02);
+}
