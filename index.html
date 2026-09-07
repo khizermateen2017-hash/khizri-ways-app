@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Custom Stylesheet with Cache Buster -->
-  <link rel="stylesheet" href="/css/app.css?v=khizri-navy-13.0">
+  <link rel="stylesheet" href="/css/app.css?v=khizri-navy-14.0">
 </head>
 <body class="deen-app-body khizri-theme">
 
@@ -165,8 +165,11 @@
                 <div class="header-date-line" id="headerLiveDate">Sunday, 06 Sep 2026</div>
               </div>
 
-              <!-- Top-Right Language Toggle Button (English <-> اردو) -->
-              <div class="hero-lang-col">
+              <!-- Top-Right About & Language Toggle Buttons -->
+              <div class="hero-lang-col" style="display:flex; align-items:center; gap:6px;">
+                <button class="btn-about-chip" data-open="tabAboutUs" title="About Khizri Ways (ہمارا تعارف)">
+                  <i class="fa-solid fa-circle-info"></i> <span>About</span>
+                </button>
                 <button class="btn-lang-toggle" id="btnLangToggle" onclick="toggleAppLanguage()" title="Switch Language (English / اردو)">
                   <i class="fa-solid fa-language"></i>
                   <span class="lang-label-text" id="langToggleText">اردو</span>
@@ -277,12 +280,12 @@
                 <span class="feature-title" data-i18n="featQibla">Qibla</span>
               </div>
 
-              <!-- 11. Digital Tasbeeh -->
-              <div class="feature-cell" data-open="tabTasbeeh" title="Digital Tasbeeh &amp; Durood-e-Khizri">
-                <div class="feature-icon-circle">
-                  <i class="fa-solid fa-ellipsis-vertical" style="transform: rotate(45deg); font-size: 1.5rem;"></i>
+              <!-- 11. About Us -->
+              <div class="feature-cell" data-open="tabAboutUs" title="About Khizri Ways &amp; Founder">
+                <div class="feature-icon-circle feature-accent-about">
+                  <i class="fa-solid fa-circle-info"></i>
                 </div>
-                <span class="feature-title" data-i18n="featTasbeeh">Tasbeeh</span>
+                <span class="feature-title" data-i18n="featAbout">About<br>Us</span>
               </div>
 
               <!-- 12. 99 Names of Allah -->
@@ -1685,6 +1688,189 @@
           </div>
         </section>
 
+        <!-- ====================================================
+             TAB: ABOUT US (KHIZRI WAYS & FOUNDER PROFILE)
+             ==================================================== -->
+        <section class="tab-screen" id="tabAboutUs">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titleAbout">About Us</h3>
+            <button class="btn-icon-sub" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز کے بارے میں معلومات اور رہنمائی چاہیے۔')" title="WhatsApp Contact">
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+          <div class="sub-screen-scroll">
+            
+            <!-- Hero Header Card -->
+            <div class="about-hero-card">
+              <div class="about-logo-wrap">
+                <img src="/assets/khizri-ways-logo.png?v=clean-9.0" alt="Khizri Ways" class="about-logo-img">
+              </div>
+              <h3 class="about-hero-title">Khizri Ways</h3>
+              <div class="about-hero-urdu">خضریٰ ویز • مرکزِ روحانی علاج و رہنمائی</div>
+              <p class="about-hero-tagline">
+                Comprehensive Spiritual Healing, Tasawwuf &amp; Authentic Islamic Guidance
+              </p>
+              <div class="about-stats-row">
+                <span class="about-stat-item"><i class="fa-solid fa-certificate text-gold"></i> 12+ سالہ تجربہ</span>
+                <span class="about-stat-item"><i class="fa-solid fa-book-quran text-gold"></i> قرآن و سنت کی روشنی میں</span>
+                <span class="about-stat-item"><i class="fa-solid fa-globe text-gold"></i> عالمی رسائی</span>
+              </div>
+            </div>
+
+            <!-- Section 1: Who We Are -->
+            <div class="about-section-card">
+              <div class="about-sec-header">
+                <div class="about-sec-icon"><i class="fa-solid fa-compass"></i></div>
+                <h4>ہم کون ہیں؟ (Who We Are)</h4>
+              </div>
+              <div class="about-sec-body">
+                <p>
+                  <strong>خضریٰ ویز (Khizri Ways)</strong> مستند شرعی اور روحانی رہنمائی کا ایک معتبر اور معروف پلیٹ فارم ہے۔ ہمارا مقصد قرآنِ مجید اور سنتِ نبوی ﷺ کے عین مطابق انسانوں کی روحانی، قلبی اور جسمانی بیماریوں (سحر و جادو، آسیب، نظرِ بد، ڈپریشن اور گھریلو ناچاقی) کا خالص شرعی علاج فراہم کرنا ہے۔
+                </p>
+                <p>
+                  ہم غیر شرعی اعمال، نجوم، بدعات اور توہم پرستی سے مکمل اجتناب کرتے ہوئے صرف اللہ تعالیٰ کے پاک کلام، ادعیہ ماثورہ اور اسلاف و اولیاء کے مجرب طریقے کو اپناتے ہیں۔
+                </p>
+              </div>
+            </div>
+
+            <!-- Section 2: Mission Statement (From Official Website) -->
+            <div class="about-section-card">
+              <div class="about-sec-header">
+                <div class="about-sec-icon" style="background:#ECFDF5; color:#059669;"><i class="fa-solid fa-bullseye"></i></div>
+                <h4>ہمارا مشن (Our Mission)</h4>
+              </div>
+              <div class="about-sec-body">
+                <p style="font-weight:600; color:#0F172A;">
+                  At Khizriways, our mission is to provide compassionate and effective spiritual healing services rooted in the teachings of the Quran and Sunnah:
+                </p>
+                <ul class="mission-bullets-list">
+                  <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span><strong>قرآنی تعلیمات سے قلبی سکون:</strong> ہر فرد کو قرآن و سنت کے ذریعے اندرونی اطمینان اور روحانی توانائی بحال کرنے کے قابل بنانا۔</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span><strong>مستند رقیہ شرعیہ کا فروغ:</strong> قرآنی علاج اور نبوی حفاظتی حصار کے مستند طریقوں کو علمی بنیادوں پر عام کرنا۔</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span><strong>روحانی صحت کا شعور:</strong> اسلامی فریم ورک کے اندر رہتے ہوئے ذہنی اور روحانی امراض کی درست تشخیص اور شعور بیدار کرنا۔</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Section 3: Founder Profile -->
+            <div class="founder-card">
+              <div class="founder-top">
+                <div class="founder-seal"><i class="fa-solid fa-user-graduate"></i></div>
+                <div class="founder-info">
+                  <h4>حضرت مولانا مفتی خضر متین صاحب</h4>
+                  <div class="founder-title">Founder &amp; Spiritual Director (بانی و سرپرستِ اعلیٰ)</div>
+                  <div class="founder-lineage">فاضل و مفتی جامعہ فاروقیہ کراچی و جامعہ تراث السلام</div>
+                </div>
+              </div>
+              <p class="founder-bio-text">
+                مفتی خضر متین صاحب <strong>خلیفہ مجاز ہیں حضرت شیخ سید نور الزماں نقشبندی شاذلیؒ</strong> کے۔ آپ گزشتہ 12 سال سے زائد عرصے سے تصوف و سلوک، رقیہ شرعیہ، خوابوں کی تعبیر اور روحانی علاج کے شعبے میں ہزاروں افراد کو مستند رہنمائی فراہم کر رہے ہیں۔
+              </p>
+              <div style="margin-top:10px; display:flex; gap:8px;">
+                <button class="btn-dsc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے مفتی خضر متین صاحب سے رہنمائی اور چیک اپ چاہیے۔')" style="width:100%; justify-content:center;">
+                  <i class="fa-brands fa-whatsapp"></i> مفتی صاحب سے براہِ راست رابطہ کریں
+                </button>
+              </div>
+            </div>
+
+            <!-- Section 4: Quick Navigation to App Features -->
+            <div class="about-section-card">
+              <div class="about-sec-header">
+                <div class="about-sec-icon" style="background:#FEF3C7; color:#B45309;"><i class="fa-solid fa-layer-group"></i></div>
+                <h4>ایپ کے اہم شعبہ جات (Core Modules)</h4>
+              </div>
+              <div class="about-shortcuts-grid">
+                <button class="about-shortcut-btn" data-open="tabServices">
+                  <i class="fa-solid fa-hand-holding-heart text-gold"></i>
+                  <span>ہماری 12 خدمات</span>
+                </button>
+                <button class="about-shortcut-btn" data-open="tabVideos">
+                  <i class="fa-brands fa-youtube" style="color:#EF4444;"></i>
+                  <span>ویڈیو بیانات (24)</span>
+                </button>
+                <button class="about-shortcut-btn" data-open="tabPdfBooks">
+                  <i class="fa-solid fa-file-pdf" style="color:#DC2626;"></i>
+                  <span>پی ڈی ایف کتب</span>
+                </button>
+                <button class="about-shortcut-btn" data-open="tabTaweezat">
+                  <i class="fa-solid fa-scroll text-gold"></i>
+                  <span>مجرب تعویذات</span>
+                </button>
+                <button class="about-shortcut-btn" data-open="tabTasawwuf">
+                  <i class="fa-solid fa-spa" style="color:#10B981;"></i>
+                  <span>تصوف و مراقبہ</span>
+                </button>
+                <button class="about-shortcut-btn" data-open="tabKhawab">
+                  <i class="fa-solid fa-cloud-moon" style="color:#6366F1;"></i>
+                  <span>خوابوں کی تعبیر</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Section 5: Official Contact & Verification -->
+            <div class="about-contact-box">
+              <div class="about-sec-header" style="margin-bottom:6px;">
+                <div class="about-sec-icon" style="background:#F0FDF4; color:#16A34A;"><i class="fa-solid fa-headset"></i></div>
+                <h4>رابطہ و آفیشل لنکس (Contact Details)</h4>
+              </div>
+
+              <a href="https://wa.me/923317704807" target="_blank" class="acb-item">
+                <div class="acb-left">
+                  <div class="acb-icon" style="background:#25D366;"><i class="fa-brands fa-whatsapp"></i></div>
+                  <div>
+                    <div class="acb-label">Official WhatsApp / Call</div>
+                    <div class="acb-val">+92 331 7704807 (0331 7704807)</div>
+                  </div>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+              </a>
+
+              <a href="https://khizriways.com" target="_blank" class="acb-item">
+                <div class="acb-left">
+                  <div class="acb-icon" style="background:var(--khizri-navy-primary);"><i class="fa-solid fa-globe"></i></div>
+                  <div>
+                    <div class="acb-label">Official Website</div>
+                    <div class="acb-val">https://khizriways.com</div>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+
+              <a href="https://www.youtube.com/@KhizriWays" target="_blank" class="acb-item">
+                <div class="acb-left">
+                  <div class="acb-icon" style="background:#EF4444;"><i class="fa-brands fa-youtube"></i></div>
+                  <div>
+                    <div class="acb-label">YouTube Channel</div>
+                    <div class="acb-val">@KhizriWays (Mufti Khizer Mateen)</div>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+
+              <a href="mailto:contact@khizriways.com" class="acb-item">
+                <div class="acb-left">
+                  <div class="acb-icon" style="background:#3B82F6;"><i class="fa-solid fa-envelope"></i></div>
+                  <div>
+                    <div class="acb-label">Email Support</div>
+                    <div class="acb-val">contact@khizriways.com</div>
+                  </div>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+              </a>
+
+            </div>
+
+          </div>
+        </section>
+
         <section class="tab-screen" id="tabProfile">
           <div class="sub-screen-header">
             <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
@@ -1705,6 +1891,16 @@
             </div>
 
             <div class="profile-links-list">
+              <div class="p-link-item" data-open="tabAboutUs" style="cursor:pointer;">
+                <div class="p-link-left">
+                  <div class="p-icon-box" style="background:#0284C7; color:#FFFFFF;"><i class="fa-solid fa-circle-info"></i></div>
+                  <div>
+                    <strong>About Us (ہمارا تعارف و مشن)</strong>
+                    <p>Khizri Ways vision, founder bio &amp; credentials</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
               <a href="/admin" target="_blank" class="p-link-item p-link-admin">
                 <div class="p-link-left">
                   <div class="p-icon-box bg-navy"><i class="fa-solid fa-sliders"></i></div>
@@ -1944,6 +2140,6 @@
   </div>
 
   <!-- Exact App Logic with Cache Buster -->
-  <script src="/js/app.js?v=khizri-navy-13.0"></script>
+  <script src="/js/app.js?v=khizri-navy-14.0"></script>
 </body>
 </html>
