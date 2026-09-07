@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Custom Stylesheet with Cache Buster -->
-  <link rel="stylesheet" href="/css/app.css?v=khizri-navy-16.0">
+  <link rel="stylesheet" href="/css/app.css?v=khizri-navy-17.0">
 </head>
 <body class="deen-app-body khizri-theme">
 
@@ -304,12 +304,12 @@
                 <span class="feature-title" data-i18n="featZakat">Zakat</span>
               </div>
 
-              <!-- 14. Online Istikhara & Guidance -->
-              <div class="feature-cell" onclick="openWhatsAppConsult('السلام علیکم، مجھے خضریٰ ویز سے آن لائن استخارہ و رہنمائی چاہیے')" title="Online Istikhara &amp; Consultation">
-                <div class="feature-icon-circle feature-accent-istikhara">
-                  <i class="fa-solid fa-shield-halved"></i>
+              <!-- 14. Fast Treatment -->
+              <div class="feature-cell" data-open="tabFastTreatment" title="Fast Treatment &amp; Emergency Spiritual Cures">
+                <div class="feature-icon-circle feature-accent-fast">
+                  <i class="fa-solid fa-bolt-lightning"></i>
                 </div>
-                <span class="feature-title" data-i18n="featIstikhara">Online<br>Istikhara</span>
+                <span class="feature-title" data-i18n="featFastTreatment">Fast<br>Treatment</span>
               </div>
 
               <!-- 15. Khizri Videos & Bayanat -->
@@ -328,6 +328,19 @@
                 <span class="feature-title" data-i18n="featMakkah">Makkah &amp;<br>Madina</span>
               </div>
 
+            </div>
+
+            <!-- Fast Treatment Emergency Banner -->
+            <div class="home-fast-treatment-banner" data-open="tabFastTreatment" title="Open Fast Treatment Healing Methods">
+              <div class="hft-left">
+                <div class="hft-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                <div>
+                  <span class="hft-badge">Emergency Fast Cures</span>
+                  <h4>Fast Treatment (فاسٹ ٹریٹمنٹ و فوری توڑ)</h4>
+                  <p>مرغی، بکرے، گائے اور کڑاہی کا عمل، دم شدہ تیل اور گولی بند تعویذ</p>
+                </div>
+              </div>
+              <button class="btn-hft-go">دیکھیں <i class="fa-solid fa-arrow-left"></i></button>
             </div>
 
             <!-- Official Services Include Card (From Official Poster) -->
@@ -1691,6 +1704,250 @@
         <!-- ====================================================
              TAB: ABOUT US (KHIZRI WAYS & FOUNDER PROFILE)
              ==================================================== -->
+        <!-- ====================================================
+             TAB: FAST TREATMENT (EMERGENCY HEALING METHODS & RITUALS)
+             ==================================================== -->
+        <section class="tab-screen" id="tabFastTreatment">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titleFastTreatment">Fast Treatment</h3>
+            <button class="btn-icon-sub" onclick="openWhatsAppConsult('السلام علیکم، مجھے Fast Treatment (فوری روحانی علاج) کے حوالے سے رہنمائی اور بکنگ کروانی ہے۔')" title="WhatsApp Fast Treatment Consultation">
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+          <div class="sub-screen-scroll">
+            
+            <!-- Fast Treatment Hero Banner -->
+            <div class="ft-hero-banner">
+              <div class="ft-badge"><i class="fa-solid fa-bolt-lightning"></i> Fast &amp; Emergency Spiritual Cures</div>
+              <h3 class="ft-title">فاسٹ ٹریٹمنٹ و فوری شرعی اعمال</h3>
+              <p class="ft-desc">
+                سخت ترین سحر، خطرناک جنات، پرانے تعویذات اور لاعلاج بیماریوں کی فوری کاٹ اور دفعیہ کے لیے خضریٰ ویز کے مجرب و تیر بہدف اعمال۔
+              </p>
+              <div class="ft-cta-row">
+                <button class="btn-ft-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے Fast Treatment کے فوری علاج کے لیے وقت اور رہنمائی چاہیے۔')">
+                  <i class="fa-brands fa-whatsapp"></i> ایمرجنسی رابطہ / بکنگ
+                </button>
+                <span class="ft-phone-tag"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+              </div>
+            </div>
+
+            <!-- Fast Treatment Category Chips -->
+            <div class="ft-category-scroll" id="ftCategoryChips">
+              <button class="ft-chip active" onclick="filterFastTreatment('all', this)">تمام اعمال (8)</button>
+              <button class="ft-chip" onclick="filterFastTreatment('sacrifice', this)">حیوانات و صدقات</button>
+              <button class="ft-chip" onclick="filterFastTreatment('taweez-oil', this)">تعویذ و دم شدہ تیل</button>
+              <button class="ft-chip" onclick="filterFastTreatment('form-learning', this)">فارم و اسباق</button>
+            </div>
+
+            <!-- Fast Treatment Cards Stack (8 Short Cards matching screenshot) -->
+            <div class="fast-cards-grid" id="fastCardsGrid">
+              
+              <!-- 1. Goli Band / Tegh Band Taweez -->
+              <div class="ft-card-short" data-ft-cat="taweez-oil">
+                <div class="ftc-top-row">
+                  <div class="ftc-left-group">
+                    <div class="ftc-icon-circle" style="background: linear-gradient(135deg, #B45309 0%, #78350F 100%);">
+                      <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div class="ftc-title-box">
+                      <h4>گولی بند / تیغ بند تعویذ</h4>
+                      <div class="ftc-subtitle">Goli Band &amp; Weapon Protection Taweez</div>
+                    </div>
+                  </div>
+                  <span class="ftc-tag">حفاظتِ جان</span>
+                </div>
+                <div class="ftc-desc">
+                  جس کے پہننے یا پاس رکھنے سے گولی، خنجر، ہتھیار اور دشمن کے سخت سے سخت وار سے بھی کامل حفاظت رہتی ہے اور شدید خطرات سے امان حاصل ہوتی ہے۔
+                </div>
+                <div class="ftc-footer-row">
+                  <span class="ftc-phone-hint"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-ftc-book" onclick="openWhatsAppConsult('السلام علیکم، مجھے گولی بند / تیغ بند تعویذ کے بارے میں معلومات اور طلب کروانا ہے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> تعویذ حاصل کریں
+                  </button>
+                </div>
+              </div>
+
+              <!-- 2. Murghi Ka Amal -->
+              <div class="ft-card-short" data-ft-cat="sacrifice">
+                <div class="ftc-top-row">
+                  <div class="ftc-left-group">
+                    <div class="ftc-icon-circle" style="background: linear-gradient(135deg, #EA580C 0%, #9A3412 100%);">
+                      <i class="fa-solid fa-feather"></i>
+                    </div>
+                    <div class="ftc-title-box">
+                      <h4>مرغی کا عمل</h4>
+                      <div class="ftc-subtitle">Murghi Ka Amal • Negative Energy Extraction</div>
+                    </div>
+                  </div>
+                  <span class="ftc-tag">فوری اثر و کاٹ</span>
+                </div>
+                <div class="ftc-desc">
+                  ہر قسم کے برے اثرات، خطرناک جادو، جنات اور سفلی بندشوں وغیرہ کے فوری خاتمے اور مریض کے وجود سے اثر کھینچنے کیلئے نہایت مجرب ترین عمل۔
+                </div>
+                <div class="ftc-footer-row">
+                  <span class="ftc-phone-hint"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-ftc-book" onclick="openWhatsAppConsult('السلام علیکم، مجھے مرغی کا عمل کروانے کے حوالے سے رہنمائی اور وقت چاہیے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> عمل بک کروائیں
+                  </button>
+                </div>
+              </div>
+
+              <!-- 3. Gaye Ka Amal -->
+              <div class="ft-card-short" data-ft-cat="sacrifice">
+                <div class="ftc-top-row">
+                  <div class="ftc-left-group">
+                    <div class="ftc-icon-circle" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                      <i class="fa-solid fa-shield-virus"></i>
+                    </div>
+                    <div class="ftc-title-box">
+                      <h4>گائے کا عمل</h4>
+                      <div class="ftc-subtitle">Gaye Ka Amal • Grand Magic Destroyer</div>
+                    </div>
+                  </div>
+                  <span class="ftc-tag">سخت ترین سحر توڑ</span>
+                </div>
+                <div class="ftc-desc">
+                  ہر قسم کے سخت جادو، جنات، تعویذات اور تمام پیچیدہ روحانی اور جسمانی لاعلاج بیماریوں کی جڑ کاٹنے اور پورے خاندان کی حفاظت کیلئے بڑا اکسیر عمل۔
+                </div>
+                <div class="ftc-footer-row">
+                  <span class="ftc-phone-hint"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-ftc-book" onclick="openWhatsAppConsult('السلام علیکم، مجھے گائے کا عمل کروانے کے سلسلے میں رہنمائی اور بکنگ چاہیے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> عمل بک کروائیں
+                  </button>
+                </div>
+              </div>
+
+              <!-- 4. Bakray Ka Amal -->
+              <div class="ft-card-short" data-ft-cat="sacrifice">
+                <div class="ftc-top-row">
+                  <div class="ftc-left-group">
+                    <div class="ftc-icon-circle" style="background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);">
+                      <i class="fa-solid fa-hand-holding-medical"></i>
+                    </div>
+                    <div class="ftc-title-box">
+                      <h4>بکرے کا عمل</h4>
+                      <div class="ftc-subtitle">Bakray Ka Amal • Sadqah &amp; Cleansing</div>
+                    </div>
+                  </div>
+                  <span class="ftc-tag">مسنون صدقہ و توڑ</span>
+                </div>
+                <div class="ftc-desc">
+                  ہر قسم کے سخت جادو، جنات، تعویذات اور تمام روحانی اور جسمانی بیماریوں کے دفعیہ کے لیے فوری مسنون صدقہ، فدیہ اور طاقتور روحانی کاٹ۔
+                </div>
+                <div class="ftc-footer-row">
+                  <span class="ftc-phone-hint"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-ftc-book" onclick="openWhatsAppConsult('السلام علیکم، مجھے بکرے کا عمل اور صدقہ کاٹ کے لیے رابطہ کرنا ہے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> عمل بک کروائیں
+                  </button>
+                </div>
+              </div>
+
+              <!-- 5. Tamam Rohani Bimariyon K Ilaj K Liye Form -->
+              <div class="ft-card-short" data-ft-cat="form-learning">
+                <div class="ftc-top-row">
+                  <div class="ftc-left-group">
+                    <div class="ftc-icon-circle" style="background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);">
+                      <i class="fa-solid fa-file-signature"></i>
+                    </div>
+                    <div class="ftc-title-box">
+                      <h4>تمام روحانی بیماریوں کے علاج کیلئے فارم</h4>
+                      <div class="ftc-subtitle">Complete Diagnosis &amp; Treatment Form</div>
+                    </div>
+                  </div>
+                  <span class="ftc-tag-price">Rs 1,000</span>
+                </div>
+                <div class="ftc-desc">
+                  توڑ (کاٹ)، جادو، جنات اور تمام روحانی بیماریوں کے مستقل علاج و تشخیص کیلئے باقاعدہ فارم اور مکمل تفصیلی شرعی لائحۂ عمل۔
+                </div>
+                <div class="ftc-footer-row">
+                  <span class="ftc-phone-hint"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-ftc-book" onclick="openWhatsAppConsult('السلام علیکم، مجھے تمام روحانی بیماریوں کے علاج کا فارم (Rs 1,000) حاصل کرنا ہے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> فارم حاصل کریں
+                  </button>
+                </div>
+              </div>
+
+              <!-- 6. Hamari Khidmaat (Amliyat & Tasawwuf) -->
+              <div class="ft-card-short" data-ft-cat="form-learning">
+                <div class="ftc-top-row">
+                  <div class="ftc-left-group">
+                    <div class="ftc-icon-circle" style="background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);">
+                      <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <div class="ftc-title-box">
+                      <h4>ہماری خدمات - عملیات و تصوف کے اسباق</h4>
+                      <div class="ftc-subtitle">Amliyat Learning &amp; Tasawwuf Lessons</div>
+                    </div>
+                  </div>
+                  <span class="ftc-tag">تربیت و اسباق</span>
+                </div>
+                <div class="ftc-desc">
+                  ہم سے شرعی عملیات سیکھنے کیلئے، مسنون وظائف و اوراد کی اجازت اور تصوف کے اسباق طے کرنے اور بیعت کیلئے مفتی صاحب سے باقاعدہ رہنمائی۔
+                </div>
+                <div class="ftc-footer-row">
+                  <span class="ftc-phone-hint"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-ftc-book" onclick="openWhatsAppConsult('السلام علیکم، مجھے عملیات سیکھنے / تصوف کے اسباق طے کرنے کے سلسلے میں رہنمائی چاہیے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> رہنمائی حاصل کریں
+                  </button>
+                </div>
+              </div>
+
+              <!-- 7. Dam Kiya Hua Tail -->
+              <div class="ft-card-short" data-ft-cat="taweez-oil">
+                <div class="ftc-top-row">
+                  <div class="ftc-left-group">
+                    <div class="ftc-icon-circle" style="background: linear-gradient(135deg, #D97706 0%, #B45309 100%);">
+                      <i class="fa-solid fa-bottle-droplet"></i>
+                    </div>
+                    <div class="ftc-title-box">
+                      <h4>دم کیا ہوا تیل</h4>
+                      <div class="ftc-subtitle">Blessed Ruqyah Treatment Oil</div>
+                    </div>
+                  </div>
+                  <span class="ftc-tag">دم شدہ دوا</span>
+                </div>
+                <div class="ftc-desc">
+                  تمام روحانی اور جسمانی بیماریوں، پٹھوں اور جوڑوں کے درد اور سحر کے جسمانی اثرات کے خاتمے کیلئے نہایت مؤثر دم کیا ہوا تیل۔
+                </div>
+                <div class="ftc-footer-row">
+                  <span class="ftc-phone-hint"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-ftc-book" onclick="openWhatsAppConsult('السلام علیکم، مجھے دم کیا ہوا تیل آرڈر کرنا ہے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> تیل آرڈر کریں
+                  </button>
+                </div>
+              </div>
+
+              <!-- 8. Karahi Ka Amal -->
+              <div class="ft-card-short" data-ft-cat="sacrifice">
+                <div class="ftc-top-row">
+                  <div class="ftc-left-group">
+                    <div class="ftc-icon-circle" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);">
+                      <i class="fa-solid fa-fire"></i>
+                    </div>
+                    <div class="ftc-title-box">
+                      <h4>کڑاہی کا عمل</h4>
+                      <div class="ftc-subtitle">Karahi Ka Amal • Magic Burning Ritual</div>
+                    </div>
+                  </div>
+                  <span class="ftc-tag">خطرناک اثرات کا توڑ</span>
+                </div>
+                <div class="ftc-desc">
+                  ہر قسم کے جادو، جنات، تعویذات، خطرناک اثرات اور تمام روحانی بیماریوں کے حتمی خاتمے اور شیاطین کو جلانے اور باندھنے کا قوی عمل۔
+                </div>
+                <div class="ftc-footer-row">
+                  <span class="ftc-phone-hint"><i class="fa-solid fa-phone"></i> 0331 7704807</span>
+                  <button class="btn-ftc-book" onclick="openWhatsAppConsult('السلام علیکم، مجھے کڑاہی کا عمل کروانے کے سلسلے میں رہنمائی اور وقت چاہیے۔')">
+                    <i class="fa-brands fa-whatsapp"></i> عمل بک کروائیں
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
         <section class="tab-screen" id="tabAboutUs">
           <div class="sub-screen-header">
             <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
@@ -2140,6 +2397,6 @@
   </div>
 
   <!-- Exact App Logic with Cache Buster -->
-  <script src="/js/app.js?v=khizri-navy-16.0"></script>
+  <script src="/js/app.js?v=khizri-navy-17.0"></script>
 </body>
 </html>

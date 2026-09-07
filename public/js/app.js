@@ -72,6 +72,8 @@ const i18n = {
     featServices: 'Our<br>Services',
     titleServices: 'Khizri Ways Services',
     titleAbout: 'About Khizri Ways',
+    titleFastTreatment: 'Fast Treatment',
+    featFastTreatment: 'Fast<br>Treatment',
     featAbout: 'About<br>Us',
     navHealing: 'Healing',
     navQuran: 'Quran',
@@ -139,6 +141,8 @@ const i18n = {
     featServices: 'ہماری<br>خدمات',
     titleServices: 'ہماری خدمات و علاج',
     titleAbout: 'ہمارا تعارف و مشن',
+    titleFastTreatment: 'فاسٹ ٹریٹمنٹ و فوری علاج',
+    featFastTreatment: 'فاسٹ<br>ٹریٹمنٹ',
     featAbout: 'ہمارا<br>تعارف',
     navHealing: 'روحانی علاج',
     navQuran: 'قرآن',
@@ -1410,3 +1414,23 @@ function applyServicesFilter(cat, search) {
     }
   });
 }
+
+
+// ====================================================
+// FAST TREATMENT CATEGORY FILTER
+// ====================================================
+window.filterFastTreatment = function(cat, btn) {
+  const chips = document.querySelectorAll('#ftCategoryChips .ft-chip');
+  chips.forEach(c => c.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const cards = document.querySelectorAll('#fastCardsGrid .ft-card-short');
+  cards.forEach(card => {
+    const cardCat = card.getAttribute('data-ft-cat') || '';
+    if (cat === 'all' || cardCat === cat) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+};
