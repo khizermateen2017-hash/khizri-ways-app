@@ -3371,3 +3371,537 @@ body.lang-ur .sub-screen-title {
   font-weight: 700;
   color: #64748B;
 }
+
+
+/* ====================================================
+   KHIZRI VIDEO LIBRARY & YOUTUBE INTEGRATION STYLES
+   ==================================================== */
+.feature-accent-video {
+  background: linear-gradient(135deg, #EF4444 0%, #B91C1C 100%) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35) !important;
+}
+
+/* Home YouTube Featured Strip */
+.home-yt-strip {
+  background: linear-gradient(135deg, #0F1230 0%, #1A1D4A 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 18px;
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.hyt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hyt-title-col h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.hyt-title-col p {
+  font-size: 0.72rem;
+  color: #CBD5E1;
+  margin: 2px 0 0;
+}
+
+.btn-view-all-videos {
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #FDE047;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s;
+}
+
+.btn-view-all-videos:hover {
+  background: rgba(212, 175, 55, 0.3);
+}
+
+.hyt-videos-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+}
+
+.hyt-card-item {
+  flex: 0 0 210px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.hyt-card-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+.hyt-thumb-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000000;
+  overflow: hidden;
+}
+
+.hyt-thumb-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.hyt-card-item:hover .hyt-thumb-box img {
+  transform: scale(1.05);
+}
+
+.hyt-dur-pill {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #FFFFFF;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.hyt-play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.9);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hyt-card-title {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  padding: 8px 10px;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ====================================================
+   DEDICATED VIDEOS SCREEN (tabVideos) STYLES
+   ==================================================== */
+.yt-channel-card {
+  background: linear-gradient(135deg, #151842 0%, #202660 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 16px;
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px rgba(21, 24, 66, 0.3);
+}
+
+.yt-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.yt-avatar-wrap {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+}
+
+.yt-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--khizri-gold);
+  background: #0B0E23;
+}
+
+.yt-badge-live {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  background: #EF4444;
+  color: #FFFFFF;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #FFFFFF;
+}
+
+.yt-meta h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  margin: 0;
+  color: #FFFFFF;
+}
+
+.yt-handle {
+  font-size: 0.74rem;
+  color: #FDE047;
+  margin: 2px 0 4px;
+}
+
+.yt-tags-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.yt-stat-pill {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+.yt-bio-text {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #E2E8F0;
+  margin: 8px 0 12px;
+}
+
+.yt-btn-row {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-visit-yt {
+  flex: 1;
+  background: #EF4444;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 3px 10px rgba(239, 68, 68, 0.4);
+  transition: all 0.2s;
+}
+
+.btn-visit-yt:hover {
+  background: #DC2626;
+  color: #FFFFFF;
+}
+
+.btn-share-channel {
+  background: #25D366;
+  color: #FFFFFF;
+  border: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+}
+
+/* Video Search & Filter */
+.video-search-wrap {
+  margin-bottom: 16px;
+}
+
+.video-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 2px 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.video-input-wrap i.fa-magnifying-glass {
+  color: #94A3B8;
+  font-size: 0.9rem;
+  margin-right: 8px;
+}
+
+.video-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1E293B;
+  outline: none;
+}
+
+.btn-clear-search {
+  border: none;
+  background: none;
+  color: #94A3B8;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 0.85rem;
+}
+
+.video-category-filters {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-top: 10px;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.video-category-filters::-webkit-scrollbar {
+  display: none;
+}
+
+.vcat-chip {
+  flex-shrink: 0;
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+  color: #475569;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vcat-chip.active {
+  background: var(--khizri-navy-primary);
+  border-color: var(--khizri-gold);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(34, 38, 93, 0.3);
+}
+
+/* Video Library Grid */
+.videos-library-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.khizri-video-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.khizri-video-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.09);
+}
+
+.kvc-thumb-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0F172A;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.kvc-thumb-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.khizri-video-card:hover .kvc-thumb-container img {
+  transform: scale(1.04);
+}
+
+.kvc-category-pill {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #FDE047;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  border: 0.5px solid rgba(253, 224, 71, 0.4);
+}
+
+.kvc-duration-pill {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #FFFFFF;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+
+.kvc-play-button-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.95);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.khizri-video-card:hover .kvc-play-button-center {
+  transform: translate(-50%, -50%) scale(1.12);
+  background: #DC2626;
+}
+
+.kvc-content {
+  padding: 12px 14px;
+}
+
+.kvc-title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.4;
+  margin: 0 0 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.kvc-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: #64748B;
+  margin-bottom: 10px;
+}
+
+.kvc-speaker {
+  font-weight: 700;
+  color: var(--khizri-navy-primary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.kvc-actions-row {
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid #F1F5F9;
+  padding-top: 10px;
+}
+
+.btn-kvc-play {
+  flex: 1;
+  background: var(--khizri-navy-primary);
+  color: #FFFFFF;
+  border: none;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.2s;
+}
+
+.btn-kvc-play:hover {
+  background: #1A1D4A;
+}
+
+.btn-kvc-yt {
+  background: #FEE2E2;
+  color: #B91C1C;
+  text-decoration: none;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background 0.2s;
+}
+
+.btn-kvc-yt:hover {
+  background: #FECACA;
+}
+
+.btn-kvc-share {
+  background: #DCFCE7;
+  color: #15803D;
+  border: none;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

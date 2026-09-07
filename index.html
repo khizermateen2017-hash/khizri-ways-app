@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Custom Stylesheet with Cache Buster -->
-  <link rel="stylesheet" href="/css/app.css?v=khizri-navy-11.0">
+  <link rel="stylesheet" href="/css/app.css?v=khizri-navy-12.0">
 </head>
 <body class="deen-app-body khizri-theme">
 
@@ -309,12 +309,12 @@
                 <span class="feature-title" data-i18n="featRamadan">Ramadan<br>Planner</span>
               </div>
 
-              <!-- 15. Hajj &amp; Umrah -->
-              <div class="feature-cell" data-open="modalHajj" title="Hajj &amp; Umrah Step-by-Step">
-                <div class="feature-icon-circle">
-                  <i class="fa-solid fa-kaaba"></i>
+              <!-- 15. Khizri Videos & Bayanat -->
+              <div class="feature-cell" data-open="tabVideos" title="Official YouTube Videos &amp; Lectures">
+                <div class="feature-icon-circle feature-accent-video">
+                  <i class="fa-solid fa-play"></i>
                 </div>
-                <span class="feature-title" data-i18n="featHajj">Hajj &amp;<br>Umrah</span>
+                <span class="feature-title" data-i18n="featVideo">Khizri<br>Videos</span>
               </div>
 
               <!-- 16. Makkah &amp; Madina Live -->
@@ -390,6 +390,22 @@
                   <i class="fa-brands fa-whatsapp"></i> 0331 7704807
                 </a>
                 <span style="font-size:0.75rem; color:#E2E8F0; font-weight:600;">Book Checkup / Treatment</span>
+              </div>
+            </div>
+
+            <!-- Official YouTube Channel Videos Strip -->
+            <div class="home-yt-strip">
+              <div class="hyt-header">
+                <div class="hyt-title-col">
+                  <h4><i class="fa-brands fa-youtube" style="color:#EF4444;"></i> Khizri Video Lectures</h4>
+                  <p>مفتی خضر متین کے اہم بیانات و علاج</p>
+                </div>
+                <button class="btn-view-all-videos" data-open="tabVideos">
+                  تمام ویڈیوز (24) <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+              <div class="hyt-videos-scroll" id="homeFeaturedVideosGrid">
+                <!-- Top 4 video cards dynamically populated -->
               </div>
             </div>
 
@@ -1396,7 +1412,77 @@
           </div>
         </section>
 
-<section class="tab-screen" id="tabProfile">
+<!-- ====================================================
+             TAB: KHIZRI VIDEO LIBRARY (YOUTUBE CHANNEL)
+             ==================================================== -->
+        <section class="tab-screen" id="tabVideos">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titleVideos">Khizri Video Library</h3>
+            <a href="https://www.youtube.com/@KhizriWays" target="_blank" class="btn-icon-sub" title="Visit YouTube Channel" style="color:#EF4444;">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </div>
+          <div class="sub-screen-scroll">
+            
+            <!-- YouTube Channel Official Header Banner -->
+            <div class="yt-channel-card">
+              <div class="yt-card-top">
+                <div class="yt-avatar-wrap">
+                  <img src="/assets/khizri-ways-logo.png?v=clean-9.0" alt="Khizri Ways Official" class="yt-avatar-img">
+                  <span class="yt-badge-live"><i class="fa-brands fa-youtube"></i></span>
+                </div>
+                <div class="yt-meta">
+                  <h4>Khizri Ways Official</h4>
+                  <p class="yt-handle">@KhizriWays • مفتی خضر متین</p>
+                  <div class="yt-tags-row">
+                    <span class="yt-stat-pill"><i class="fa-solid fa-video"></i> 24+ ویڈیوز</span>
+                    <span class="yt-stat-pill"><i class="fa-solid fa-circle-check text-gold"></i> مستند رہنمائی</span>
+                  </div>
+                </div>
+              </div>
+              <p class="yt-bio-text">
+                مفتی خضر متین کے قرآنی بیانات، سحر و جادو، آسیب، جنات، خوابوں کی تعبیر اور تصوف و سلوک کے مستند ویڈیوز براہِ راست دیکھیں۔
+              </p>
+              <div class="yt-btn-row">
+                <a href="https://www.youtube.com/@KhizriWays" target="_blank" class="btn-visit-yt">
+                  <i class="fa-brands fa-youtube"></i> یوٹیوب چینل دیکھیں
+                </a>
+                <button class="btn-share-channel" onclick="shareChannelWhatsApp()">
+                  <i class="fa-brands fa-whatsapp"></i> شیئر کریں
+                </button>
+              </div>
+            </div>
+
+            <!-- Video Search & Filter Row -->
+            <div class="video-search-wrap">
+              <div class="video-input-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="videoSearchInput" class="video-search-input" placeholder="ویڈیو تلاش کریں (مثلاً: جادو، جنات، بال، استخارہ...)" oninput="handleVideoSearch(this.value)">
+                <button class="btn-clear-search" id="btnClearVideoSearch" onclick="clearVideoSearch()" style="display:none;"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+
+              <!-- Category Filter Chips -->
+              <div class="video-category-filters" id="videoCatFilters">
+                <button class="vcat-chip active" onclick="filterVideosCategory('all', this)">تمام ویڈیوز (24)</button>
+                <button class="vcat-chip" onclick="filterVideosCategory('Black Magic', this)">سحر و جادو</button>
+                <button class="vcat-chip" onclick="filterVideosCategory('Jinnat / Aseb', this)">آسیب و جنات</button>
+                <button class="vcat-chip" onclick="filterVideosCategory('Rohani Ilaj', this)">روحانی علاج</button>
+                <button class="vcat-chip" onclick="filterVideosCategory('Tasawwuf & Irfan', this)">تصوف و معرفت</button>
+                <button class="vcat-chip" onclick="filterVideosCategory('Wazaif & Durood', this)">وظائف و درود</button>
+                <button class="vcat-chip" onclick="filterVideosCategory('Khizri Bayanat', this)">بیانات</button>
+              </div>
+            </div>
+
+            <!-- Videos Grid Stack (Rendered dynamically by renderVideos) -->
+            <div class="videos-library-grid" id="videosLibraryGrid">
+              <!-- Populated by JavaScript -->
+            </div>
+
+          </div>
+        </section>
+
+        <section class="tab-screen" id="tabProfile">
           <div class="sub-screen-header">
             <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
             <h3 class="sub-screen-title" data-i18n="titleProfile">Profile & Settings</h3>
@@ -1454,10 +1540,50 @@
                   <div class="p-icon-box bg-green"><i class="fa-brands fa-whatsapp"></i></div>
                   <div>
                     <strong>Rohani Ilaj Consultation</strong>
-                    <p>Direct Istikhara & spiritual guidance via WhatsApp</p>
+                    <p>Direct Istikhara & spiritual guidance via WhatsApp (+92 331 7704807)</p>
                   </div>
                 </div>
                 <i class="fa-solid fa-chevron-right"></i>
+              </div>
+
+              <!-- Official YouTube Channel Link -->
+              <a href="https://www.youtube.com/@KhizriWays" target="_blank" class="p-link-item">
+                <div class="p-link-left">
+                  <div class="p-icon-box" style="background:#EF4444; color:#FFFFFF;"><i class="fa-brands fa-youtube"></i></div>
+                  <div>
+                    <strong>Official YouTube Channel</strong>
+                    <p>24+ Lectures & Spiritual Guides by Mufti Khizer Mateen</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+
+              <!-- Official Website Link -->
+              <a href="https://khizriways.com" target="_blank" class="p-link-item">
+                <div class="p-link-left">
+                  <div class="p-icon-box bg-navy"><i class="fa-solid fa-globe"></i></div>
+                  <div>
+                    <strong>Official Website (khizriways.com)</strong>
+                    <p>Explore articles, courses & online spiritual services</p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+
+              <!-- Founder Bio Card -->
+              <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:14px; padding:14px; margin-top:10px;">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                  <div style="width:36px; height:36px; border-radius:50%; background:var(--khizri-navy-primary); color:#FDE047; display:flex; align-items:center; justify-content:center; font-size:1rem;">
+                    <i class="fa-solid fa-user-tie"></i>
+                  </div>
+                  <div>
+                    <h5 style="margin:0; font-size:0.88rem; font-weight:800; color:var(--khizri-navy-primary);">Founder: Mufti Khizer Mateen</h5>
+                    <p style="margin:0; font-size:0.72rem; color:#64748B;">جامعہ فاروقیہ و جامعہ تراث السلام • 12+ سالہ تجربہ</p>
+                  </div>
+                </div>
+                <p style="font-size:0.78rem; line-height:1.5; color:#334155; margin:0;">
+                  خلیفہ مجاز حضرت شیخ سید نور الزماں نقشبندی شاذلیؒ۔ قرآن و سنت کے مطابق روحانی علاج، اعمالِ صالحہ، تعویذات اور تصوف و تزکیہ کی مستند رہنمائی۔
+                </p>
               </div>
             </div>
           </div>
@@ -1609,6 +1735,6 @@
   </div>
 
   <!-- Exact App Logic with Cache Buster -->
-  <script src="/js/app.js?v=khizri-navy-11.0"></script>
+  <script src="/js/app.js?v=khizri-navy-12.0"></script>
 </body>
 </html>
