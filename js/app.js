@@ -48,6 +48,12 @@ const i18n = {
     featRohaniIlaj: 'Spiritual<br>Healing',
     featDuroodKhizri: 'Durood<br>Khizri',
     featIstikhara: 'Online<br>Istikhara',
+    featTaweezat: 'Mujarab<br>Taweezat',
+    featTasawwuf: 'Tasawwuf<br>& Irfan',
+    featKhawab: 'Khawab Ki<br>Tabeer',
+    titleTaweezat: 'Mujarab Taweezat',
+    titleTasawwuf: 'Tasawwuf & Irfan',
+    titleKhawab: 'Khawab Ki Tabeer',
     featWazaif: 'Khas<br>Wazaif',
     featPdfBooks: 'PDF<br>Books',
     featPrayer: 'Prayer',
@@ -103,6 +109,12 @@ const i18n = {
     featRohaniIlaj: 'روحانی<br>علاج',
     featDuroodKhizri: 'درودِ<br>خضریٰ',
     featIstikhara: 'استخارہ<br>آن لائن',
+    featTaweezat: 'مجرب<br>تعویذات',
+    featTasawwuf: 'تصوف و<br>طریقت',
+    featKhawab: 'خوابوں کی<br>تعبیر',
+    titleTaweezat: 'مجرب قرآنی تعویذات و نقوش',
+    titleTasawwuf: 'تصوف و تزکیۂ باطن',
+    titleKhawab: 'تعبیر الروءیا - خوابوں کی تعبیر',
     featWazaif: 'خاص<br>وظائف',
     featPdfBooks: 'پی ڈی ایف<br>کتب',
     featPrayer: 'اوقاتِ<br>نماز',
@@ -1071,4 +1083,111 @@ window.countModuleWazifa = function(btn, target) {
     }
     showToast(`MashaAllah! Target of ${target} completed!`);
   }
+};
+
+// =========================================================
+// INTERACTIVE FUNCTIONS: TAWEEZAT, TASAWWUF & KHAWAB
+// =========================================================
+
+// Taweezat Filter
+window.filterTaweez = function(cat, btn) {
+  document.querySelectorAll('#tabTaweezat .filter-chip-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const items = document.querySelectorAll('#tabTaweezat .taweez-item');
+  items.forEach(it => {
+    if (cat === 'all' || it.getAttribute('data-cat') === cat) {
+      it.style.display = 'block';
+    } else {
+      it.style.display = 'none';
+    }
+  });
+};
+
+// Tasawwuf Muraqaba Timer & Pulse
+let muraqabaInterval = null;
+let muraqabaRemaining = 300; // 5 minutes in seconds
+
+window.toggleMuraqaba = function() {
+  const circle = document.getElementById('muraqabaCircle');
+  const icon = document.getElementById('muraqabaIcon');
+  const label = document.getElementById('muraqabaBtnLabel');
+  const timerDisplay = document.getElementById('muraqabaTimer');
+  const breathText = document.getElementById('muraqabaBreathText');
+
+  if (muraqabaInterval) {
+    // Stop
+    clearInterval(muraqabaInterval);
+    muraqabaInterval = null;
+    circle?.classList.remove('pulsing');
+    if (icon) icon.className = 'fa-solid fa-play';
+    if (label) label.textContent = 'مراقبہ جاری رکھیں';
+    if (breathText) breathText.textContent = 'مراقبہ روکا گیا';
+    showToast('مراقبہ pause کر دیا گیا');
+  } else {
+    // Start
+    circle?.classList.add('pulsing');
+    if (icon) icon.className = 'fa-solid fa-pause';
+    if (label) label.textContent = 'مراقبہ روکیں (Pause)';
+    showToast('مراقبۂ خضریٰ شروع ہو گیا - دھیان اللہ کی طرف رکھیں');
+
+    muraqabaInterval = setInterval(() => {
+      if (muraqabaRemaining > 0) {
+        muraqabaRemaining--;
+        const mins = Math.floor(muraqabaRemaining / 60);
+        const secs = muraqabaRemaining % 60;
+        if (timerDisplay) {
+          timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }
+        if (breathText) {
+          breathText.textContent = muraqabaRemaining % 6 < 3 ? 'سانس لیں (اللہ)' : 'سانس چھوڑیں (ھُو)';
+        }
+      } else {
+        clearInterval(muraqabaInterval);
+        muraqabaInterval = null;
+        circle?.classList.remove('pulsing');
+        if (icon) icon.className = 'fa-solid fa-rotate-right';
+        if (label) label.textContent = 'دوبارہ شروع کریں';
+        if (breathText) breathText.textContent = 'مراقبہ مکمل ہوا - الحمد للہ';
+        muraqabaRemaining = 300;
+        showToast('ماشاء اللہ! مراقبہ مکمل ہوا۔');
+      }
+    }, 1000);
+  }
+};
+
+// Khawab ki Tabeer Live Search
+window.handleKhawabSearch = function(query) {
+  const q = query.trim().toLowerCase();
+  const cards = document.querySelectorAll('#tabeerCardsList .tabeer-card');
+  document.querySelectorAll('#khawabAlphaRow .alpha-btn').forEach(b => b.classList.remove('active'));
+
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const keywords = (card.getAttribute('data-keyword') || '').toLowerCase();
+    if (!q || text.includes(q) || keywords.includes(q)) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+};
+
+// Khawab Alphabet Filter
+window.filterKhawabAlpha = function(letter, btn) {
+  document.querySelectorAll('#khawabAlphaRow .alpha-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const searchInput = document.getElementById('khawabSearchInput');
+  if (searchInput) searchInput.value = '';
+
+  const cards = document.querySelectorAll('#tabeerCardsList .tabeer-card');
+  cards.forEach(card => {
+    const cardAlpha = card.getAttribute('data-alpha');
+    if (letter === 'all' || cardAlpha === letter) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
 };
