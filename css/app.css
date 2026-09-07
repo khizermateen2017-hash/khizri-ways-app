@@ -5895,3 +5895,678 @@ body.lang-ur .sub-screen-title {
 .btn-hsa-go:hover {
   background: #059669;
 }
+
+/* ====================================================
+   ISLAMIC MASAIL & BANURI TOWN FATWAS STYLES
+   ==================================================== */
+
+.feature-accent-masail {
+  background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4) !important;
+}
+
+/* Home Screen Islamic Masail Action Button */
+.home-masail-action-btn {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0369A1 100%);
+  border: 1px solid rgba(2, 132, 199, 0.45);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.home-masail-action-btn:hover {
+  transform: translateY(-2px);
+  border-color: #38BDF8;
+}
+
+.home-masail-action-btn:active {
+  transform: scale(0.99);
+}
+
+.hma-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hma-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+}
+
+.hma-badge {
+  display: inline-block;
+  background: rgba(2, 132, 199, 0.2);
+  border: 0.5px solid rgba(2, 132, 199, 0.5);
+  color: #7DD3FC;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 1px 7px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+}
+
+.hma-left h4 {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 2px;
+}
+
+.hma-left p {
+  font-size: 0.72rem;
+  color: #94A3B8;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.btn-hma-go {
+  background: #0284C7;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+  transition: background 0.15s;
+}
+
+.btn-hma-go:hover {
+  background: #0369A1;
+}
+
+/* Screen Hero Card */
+.masail-hero-card {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  border: 1px solid rgba(217, 119, 6, 0.35);
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.mhc-top-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #FDE047;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.masail-hero-card h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.4;
+}
+
+.masail-hero-card p {
+  margin: 0 0 12px 0;
+  font-size: 0.8rem;
+  color: #94A3B8;
+  line-height: 1.5;
+}
+
+.mhc-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mhc-stats span {
+  font-size: 0.7rem;
+  color: #E2E8F0;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Search Box */
+.masail-search-wrap {
+  margin-bottom: 12px;
+}
+
+.masail-search-box {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 12px;
+  padding: 8px 12px;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.dark-mode .masail-search-box {
+  background: #1E293B;
+  border-color: #334155;
+}
+
+.masail-search-box i {
+  color: #64748B;
+  font-size: 0.9rem;
+}
+
+.masail-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.85rem;
+  color: #0F172A;
+  direction: rtl;
+  font-family: inherit;
+}
+
+.dark-mode .masail-search-input {
+  color: #F8FAFC;
+}
+
+.btn-clear-search {
+  background: none;
+  border: none;
+  color: #94A3B8;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Filter Chips */
+.masail-chips-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  scrollbar-width: none;
+}
+
+.masail-chips-row::-webkit-scrollbar {
+  display: none;
+}
+
+.m-chip {
+  padding: 7px 13px;
+  border-radius: 20px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  color: #475569;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .m-chip {
+  background: #1E293B;
+  border-color: #334155;
+  color: #CBD5E1;
+}
+
+.m-chip.active {
+  background: #0284C7;
+  color: #FFFFFF;
+  border-color: #0284C7;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
+}
+
+.masail-hint-bar {
+  font-size: 0.75rem;
+  color: #64748B;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dark-mode .masail-hint-bar {
+  color: #94A3B8;
+}
+
+/* Small Small Buttons Grid (User requested layout) */
+.masail-buttons-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.fatwa-mini-btn {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-right: 4px solid #0284C7;
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  transition: all 0.18s ease;
+}
+
+.dark-mode .fatwa-mini-btn {
+  background: #1E293B;
+  border-color: #334155;
+  border-right-color: #38BDF8;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.fatwa-mini-btn:hover {
+  transform: translateY(-2px);
+  border-color: #0284C7;
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.15);
+}
+
+.fatwa-mini-btn:active {
+  transform: scale(0.99);
+}
+
+.fmb-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.fmb-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(2, 132, 199, 0.12);
+  color: #0284C7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.dark-mode .fmb-icon {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38BDF8;
+}
+
+.fmb-title-wrap {
+  flex: 1;
+}
+
+.fmb-title {
+  margin: 0 0 4px 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.45;
+  text-align: right;
+  direction: rtl;
+}
+
+.dark-mode .fmb-title {
+  color: #F8FAFC;
+}
+
+.fmb-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.fmb-cat-tag {
+  font-size: 0.66rem;
+  background: #F1F5F9;
+  color: #475569;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.dark-mode .fmb-cat-tag {
+  background: #334155;
+  color: #CBD5E1;
+}
+
+.fmb-no-tag {
+  font-size: 0.66rem;
+  color: #0284C7;
+  font-weight: 600;
+}
+
+.dark-mode .fmb-no-tag {
+  color: #7DD3FC;
+}
+
+.fmb-arrow {
+  color: #94A3B8;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  transition: transform 0.18s;
+}
+
+.fatwa-mini-btn:hover .fmb-arrow {
+  transform: translateX(-3px);
+  color: #0284C7;
+}
+
+/* Ask Fatwa Box */
+.ask-fatwa-card {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(2, 132, 199, 0.08) 100%);
+  border: 1px dashed rgba(16, 185, 129, 0.4);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 10px;
+  margin-bottom: 24px;
+}
+
+.afc-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #10B981;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.afc-content h4 {
+  margin: 0 0 4px 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.dark-mode .afc-content h4 {
+  color: #FFFFFF;
+}
+
+.afc-content p {
+  margin: 0 0 10px 0;
+  font-size: 0.78rem;
+  color: #475569;
+  line-height: 1.45;
+}
+
+.dark-mode .afc-content p {
+  color: #CBD5E1;
+}
+
+.btn-afc-whatsapp {
+  background: #10B981;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 3px 10px rgba(16, 185, 129, 0.3);
+  transition: all 0.2s;
+}
+
+.btn-afc-whatsapp:active {
+  transform: scale(0.98);
+}
+
+/* Fatwa Detail Modal Styles */
+.fatwa-modal-card {
+  max-width: 520px;
+  border-radius: 20px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .fatwa-modal-card {
+  background: #0F172A;
+  border-color: #334155;
+}
+
+.fmd-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.fmd-fatwa-no {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #0284C7;
+  background: rgba(2, 132, 199, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.fmd-cat-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #059669;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.fmd-title {
+  margin: 0 0 14px 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.5;
+  direction: rtl;
+  text-align: right;
+  border-bottom: 1px solid #F1F5F9;
+  padding-bottom: 10px;
+}
+
+.dark-mode .fmd-title {
+  color: #F8FAFC;
+  border-bottom-color: #1E293B;
+}
+
+.fmd-box {
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  direction: rtl;
+  text-align: right;
+}
+
+.fmd-question-box {
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.fmd-answer-box {
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.fmd-box-heading {
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dark-mode .fmd-box-heading {
+  color: #F8FAFC;
+}
+
+.fmd-box-text {
+  font-size: 0.83rem;
+  line-height: 1.7;
+  color: #334155;
+  white-space: pre-line;
+}
+
+.dark-mode .fmd-box-text {
+  color: #CBD5E1;
+}
+
+.fmd-ref-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  direction: rtl;
+  text-align: right;
+}
+
+.dark-mode .fmd-ref-box {
+  background: #1E293B;
+  border-color: #334155;
+}
+
+.fmd-ref-title {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #D97706;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.fmd-ref-text {
+  font-size: 0.74rem;
+  color: #64748B;
+  line-height: 1.5;
+}
+
+.dark-mode .fmd-ref-text {
+  color: #94A3B8;
+}
+
+.fmd-stamp-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(2, 132, 199, 0.06);
+  border: 1px dashed rgba(2, 132, 199, 0.35);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  direction: rtl;
+}
+
+.fmd-stamp-seal {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #0284C7;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.fmd-stamp-info strong {
+  font-size: 0.82rem;
+  color: #0284C7;
+  display: block;
+}
+
+.fmd-stamp-info p {
+  margin: 0;
+  font-size: 0.72rem;
+  color: #64748B;
+}
+
+.dark-mode .fmd-stamp-info p {
+  color: #94A3B8;
+}
+
+.fmd-actions-row {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-fmd-whatsapp {
+  flex: 1.5;
+  background: #10B981;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  padding: 11px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 3px 10px rgba(16, 185, 129, 0.3);
+  transition: all 0.2s;
+}
+
+.btn-fmd-whatsapp:active {
+  transform: scale(0.98);
+}
+
+.btn-fmd-close {
+  flex: 1;
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+  color: #475569;
+  border-radius: 12px;
+  padding: 11px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dark-mode .btn-fmd-close {
+  background: #1E293B;
+  border-color: #334155;
+  color: #CBD5E1;
+}

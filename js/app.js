@@ -74,6 +74,8 @@ const i18n = {
     titleAbout: 'About Khizri Ways',
     titleFastTreatment: 'Fast Treatment',
     featFastTreatment: 'Fast<br>Treatment',
+    featMasail: 'Islamic<br>Masail',
+    titleMasail: 'Islamic Masail & Fatwas',
     featStories: 'Customer<br>Stories',
     featAbout: 'About<br>Us',
     navHealing: 'Healing',
@@ -144,6 +146,8 @@ const i18n = {
     titleAbout: 'ہمارا تعارف و مشن',
     titleFastTreatment: 'فاسٹ ٹریٹمنٹ و فوری علاج',
     featFastTreatment: 'فاسٹ<br>ٹریٹمنٹ',
+    featMasail: 'اسلامی<br>مسائل',
+    titleMasail: 'اسلامی مسائل و فتاویٰ (بنوری ٹاؤن)',
     featStories: 'کسٹمر<br>کہانیاں',
     featAbout: 'ہمارا<br>تعارف',
     navHealing: 'روحانی علاج',
@@ -1509,3 +1513,125 @@ if (document.readyState === 'loading') {
 } else {
   initReviewEngagementTracker();
 }
+
+
+// ==========================================
+// Islamic Masail & Banuri Town Fatwas Module
+// ==========================================
+state.fatwas = [];
+let currentActiveFatwa = null;
+let currentMasailCat = 'all';
+let currentMasailQuery = '';
+
+async function fetchFatwas() {
+  try {
+    const res = await fetch('/api/fatwas').then(r => r.json());
+    if (res.success && res.data) {
+      state.fatwas = res.data;
+      renderMasailMiniButtons();
+    }
+  } catch (err) {
+    console.warn('Could not fetch fatwas from API, using fallback:', err);
+  }
+}
+
+function renderMasailMiniButtons() {
+  const container = document.getElementById('masailButtonsGrid');
+  if (!container) return;
+
+  let items = state.fatwas || [];
+
+  // Filter by category
+  if (currentMasailCat && currentMasailCat !== 'all') {
+    items = items.filter(f => f.category === currentMasailCat || f.categoryEn === currentMasailCat);
+  }
+
+  // Filter by search query
+  if (currentMasailQuery && currentMasailQuery.trim()) {
+    const q = currentMasailQuery.trim().toLowerCase();
+    items = items.filter(f => 
+      (f.title && f.title.toLowerCase().includes(q)) ||
+      (f.question && f.question.toLowerCase().includes(q)) ||
+      (f.answer && f.answer.toLowerCase().includes(q)) ||
+      (f.fatwaNumber && f.fatwaNumber.includes(q)) ||
+      (f.category && f.category.includes(q))
+    );
+  }
+
+  if (!items.length) {
+    container.innerHTML = `
+      <div style="text-align:center; padding:30px 16px; color:#94A3B8;">
+        <i class="fa-solid fa-file-circle-question" style="font-size:2.2rem; margin-bottom:8px; color:#CBD5E1;"></i>
+        <h4 style="margin:0 0 4px 0; color:#0F172A; font-size:0.95rem;">کوئی مسئلہ نہیں ملا</h4>
+        <p style="margin:0; font-size:0.8rem;">براہ کرم کوئی دوسرا لفظ لکھ کر تلاش کریں یا واٹس ایپ پر دریافت کریں۔</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = items.map((f, idx) => `
+    <div class="fatwa-mini-btn" onclick="openFatwaDetail('${f.id}')" title="فتویٰ دیکھیں: ${f.title}">
+      <div class="fmb-left">
+        <span class="fmb-icon"><i class="fa-solid fa-book-open"></i></span>
+        <div class="fmb-title-wrap">
+          <h4 class="fmb-title">${f.title}</h4>
+          <div class="fmb-tags">
+            <span class="fmb-cat-tag">${f.category}</span>
+            <span class="fmb-no-tag">فتویٰ نمبر: ${f.fatwaNumber}</span>
+          </div>
+        </div>
+      </div>
+      <i class="fa-solid fa-chevron-left fmb-arrow"></i>
+    </div>
+  `).join('');
+}
+
+window.filterMasailCategory = function(cat, btn) {
+  currentMasailCat = cat;
+  const chips = document.querySelectorAll('#masailFilterChips .m-chip');
+  chips.forEach(c => c.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderMasailMiniButtons();
+};
+
+window.handleMasailSearch = function(query) {
+  currentMasailQuery = query;
+  const clearBtn = document.getElementById('btnClearMasailSearch');
+  if (clearBtn) {
+    clearBtn.style.display = query.trim() ? 'block' : 'none';
+  }
+  renderMasailMiniButtons();
+};
+
+window.clearMasailSearch = function() {
+  const input = document.getElementById('masailSearchInput');
+  if (input) input.value = '';
+  window.handleMasailSearch('');
+};
+
+window.openFatwaDetail = function(fatwaId) {
+  const fatwa = (state.fatwas || []).find(f => f.id === fatwaId || f.fatwaNumber === fatwaId);
+  if (!fatwa) return;
+
+  currentActiveFatwa = fatwa;
+
+  document.getElementById('fmdFatwaNo').textContent = 'فتویٰ نمبر: ' + fatwa.fatwaNumber;
+  document.getElementById('fmdCategory').textContent = fatwa.category;
+  document.getElementById('fmdTitle').textContent = fatwa.title;
+  document.getElementById('fmdQuestion').textContent = fatwa.question;
+  document.getElementById('fmdAnswer').textContent = fatwa.answer;
+  document.getElementById('fmdReferences').textContent = fatwa.references || 'فتاویٰ شامی، عالمگیری، دار الافتاء بنوری ٹاؤن';
+
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalFatwaDetail');
+  }
+};
+
+window.askFatwaWhatsApp = function() {
+  if (currentActiveFatwa) {
+    const msg = `السلام علیکم مفتی صاحب، مجھے دار الافتاء بنوری ٹاؤن کے فتویٰ نمبر ${currentActiveFatwa.fatwaNumber} ("${currentActiveFatwa.title}") کے حوالے سے مزید مسئلہ پوچھنا ہے۔`;
+    openWhatsAppConsult(msg);
+  } else {
+    openWhatsAppConsult('السلام علیکم مفتی صاحب، مجھے ایک شرعی مسئلہ دریافت کرنا ہے۔');
+  }
+};

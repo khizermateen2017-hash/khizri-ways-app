@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Custom Stylesheet with Cache Buster -->
-  <link rel="stylesheet" href="/css/app.css?v=khizri-navy-21.0">
+  <link rel="stylesheet" href="/css/app.css?v=khizri-navy-22.0">
 </head>
 <body class="deen-app-body khizri-theme">
 
@@ -294,12 +294,12 @@
                 <span class="feature-title" data-i18n="featAbout">About<br>Us</span>
               </div>
 
-              <!-- 12. 99 Names of Allah -->
-              <div class="feature-cell" data-open="tabAllahNames" title="99 Names of Allah (Asma-ul-Husna)">
-                <div class="feature-icon-circle">
-                  <span class="arabic-allah-text">الله</span>
+              <!-- 12. Islamic Masail (Banuri Town Fatwas) -->
+              <div class="feature-cell" data-open="tabIslamicMasail" title="Islamic Masail &amp; Banuri Town Fatwas">
+                <div class="feature-icon-circle feature-accent-masail">
+                  <i class="fa-solid fa-scale-balanced"></i>
                 </div>
-                <span class="feature-title" data-i18n="featName">Name</span>
+                <span class="feature-title" data-i18n="featMasail">Islamic<br>Masail</span>
               </div>
 
               <!-- 13. Customer Stories -->
@@ -360,6 +360,19 @@
                 </div>
               </div>
               <button class="btn-hsa-go">کہانیاں دیکھیں <i class="fa-solid fa-arrow-left"></i></button>
+            </div>
+
+            <!-- Islamic Masail Action Button on Main Screen -->
+            <div class="home-masail-action-btn" data-open="tabIslamicMasail" title="Open Islamic Masail &amp; Banuri Town Fatwas">
+              <div class="hma-left">
+                <div class="hma-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div>
+                  <span class="hma-badge"><i class="fa-solid fa-building-columns"></i> دار الافتاء جامعہ بنوری ٹاؤن</span>
+                  <h4>Islamic Masail (اسلامی مسائل و فتاویٰ)</h4>
+                  <p>جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن کراچی کے مستند شرعی فتاویٰ</p>
+                </div>
+              </div>
+              <button class="btn-hma-go">مسائل دیکھیں <i class="fa-solid fa-arrow-left"></i></button>
             </div>
 
             <!-- Official YouTube Channel Videos Strip -->
@@ -2149,7 +2162,80 @@
                 <!-- ====================================================
              TAB: CUSTOMER STORIES (کسٹمر کی کہانیاں و تاثرات)
              ==================================================== -->
-        <section class="tab-screen" id="tabCustomerStories">
+                <!-- ====================================================
+             TAB: ISLAMIC MASAIL & BANURI TOWN FATWAS
+             ==================================================== -->
+        <section class="tab-screen" id="tabIslamicMasail">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 class="sub-screen-title" data-i18n="titleMasail">Islamic Masail &amp; Fatwas</h3>
+            <button class="btn-icon-sub" onclick="openWhatsAppConsult('السلام علیکم، مجھے ایک شرعی مسئلے کے بارے میں مفتی صاحب سے رہنمائی چاہیے:')" title="Ask Shariah Question">
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+          <div class="sub-screen-scroll">
+
+            <!-- Banuri Town Accreditation Banner -->
+            <div class="masail-hero-card">
+              <div class="mhc-top-badge">
+                <i class="fa-solid fa-building-columns text-gold"></i> مستند دار الافتاء
+              </div>
+              <h3>جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی</h3>
+              <p>روزمرہ اسلامی مسائل، طہارت، نماز، نکاح، تجارت اور تعویذات کے مستند شرعی فتاویٰ جات</p>
+              <div class="mhc-stats">
+                <span><i class="fa-solid fa-certificate text-gold"></i> فتاویٰ دار الافتاء</span>
+                <span><i class="fa-solid fa-book-bookmark text-gold"></i> فقہ حنفی کے مطابق</span>
+                <span><i class="fa-solid fa-scale-balanced text-gold"></i> دلائل و کتب حوالہ</span>
+              </div>
+            </div>
+
+            <!-- Search Bar for Masail -->
+            <div class="masail-search-wrap">
+              <div class="masail-search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="masailSearchInput" class="masail-search-input" placeholder="مسئلہ تلاش کریں (مثلاً: تعویذ، وضو، طلاق، سود، جادو، نماز...)" oninput="handleMasailSearch(this.value)">
+                <button class="btn-clear-search" onclick="clearMasailSearch()" id="btnClearMasailSearch" style="display:none;">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Category Filter Chips -->
+            <div class="masail-chips-row" id="masailFilterChips">
+              <button class="m-chip active" onclick="filterMasailCategory('all', this)">تمام مسائل (All)</button>
+              <button class="m-chip" onclick="filterMasailCategory('تعویذات و جادو', this)">تعویذات و جادو</button>
+              <button class="m-chip" onclick="filterMasailCategory('طہارت و عبادات', this)">طہارت و عبادات</button>
+              <button class="m-chip" onclick="filterMasailCategory('نکاح و گھریلو', this)">نکاح و گھریلو</button>
+              <button class="m-chip" onclick="filterMasailCategory('کاروبار و مال', this)">کاروبار و مال</button>
+              <button class="m-chip" onclick="filterMasailCategory('متفرق مسائل', this)">متفرق مسائل</button>
+            </div>
+
+            <!-- Hint text -->
+            <div class="masail-hint-bar">
+              <span><i class="fa-solid fa-hand-pointer text-gold"></i> کسی بھی مسئلے پر کلک کریں تاکہ مکمل فتویٰ و دلائل کھلیں:</span>
+            </div>
+
+            <!-- Mini Buttons Grid (Small small buttons with titles as requested) -->
+            <div class="masail-buttons-grid" id="masailButtonsGrid">
+              <!-- Populated dynamically via JS -->
+            </div>
+
+            <!-- Ask New Question Card -->
+            <div class="ask-fatwa-card">
+              <div class="afc-icon"><i class="fa-solid fa-circle-question"></i></div>
+              <div class="afc-content">
+                <h4>کیا آپ کا کوئی ذاتی شرعی مسئلہ ہے؟</h4>
+                <p>مفتی خضر متین صاحب سے براہِ راست واٹس ایپ پر اپنا شرعی مسئلہ پوچھیں اور مستند جواب حاصل کریں۔</p>
+                <button class="btn-afc-whatsapp" onclick="openWhatsAppConsult('السلام علیکم، مجھے ایک شرعی مسئلہ پوچھنا ہے:')">
+                  <i class="fa-brands fa-whatsapp"></i> واٹس ایپ پر مسئلہ دریافت کریں
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+<section class="tab-screen" id="tabCustomerStories">
           <div class="sub-screen-header">
             <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
             <h3 class="sub-screen-title">Customer Stories</h3>
@@ -2617,6 +2703,70 @@
     </div>
   </div>
 
+  <!-- Full Fatwa Detail Modal Dialog (Banuri Town) -->
+  <div class="modal-dialog-layer" id="modalFatwaDetail">
+    <div class="modal-card-container fatwa-modal-card" style="max-height: 88vh; overflow-y: auto;">
+      
+      <div class="modal-card-top-bar" style="border-bottom: 1px solid rgba(245, 158, 11, 0.25);">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <i class="fa-solid fa-scale-balanced text-gold"></i>
+          <span id="fatwaModalHeaderBadge" style="font-size:0.82rem; font-weight:700; color:#FDE047;">دار الافتاء جامعہ بنوری ٹاؤن</span>
+        </div>
+        <button class="btn-modal-x" onclick="closeModal('modalFatwaDetail')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="modal-card-body" style="padding: 16px 18px 24px 18px;">
+        
+        <!-- Fatwa Meta Header -->
+        <div class="fmd-meta-bar">
+          <span class="fmd-fatwa-no" id="fmdFatwaNo">فتویٰ نمبر: 144208200155</span>
+          <span class="fmd-cat-badge" id="fmdCategory">تعویذات و جادو</span>
+        </div>
+
+        <!-- Title -->
+        <h3 class="fmd-title" id="fmdTitle">مسئلہ کا عنوان</h3>
+
+        <!-- Question Box -->
+        <div class="fmd-box fmd-question-box">
+          <div class="fmd-box-heading"><i class="fa-solid fa-circle-question text-danger"></i> سوال (سائل کی طرف سے):</div>
+          <div class="fmd-box-text" id="fmdQuestion">سوال یہاں ظاہر ہوگا...</div>
+        </div>
+
+        <!-- Answer Box -->
+        <div class="fmd-box fmd-answer-box">
+          <div class="fmd-box-heading"><i class="fa-solid fa-circle-check text-green"></i> الجواب حامداً ومصلیاً (شرعی فتویٰ):</div>
+          <div class="fmd-box-text" id="fmdAnswer">جواب یہاں ظاہر ہوگا...</div>
+        </div>
+
+        <!-- References Box -->
+        <div class="fmd-ref-box">
+          <div class="fmd-ref-title"><i class="fa-solid fa-book-bookmark text-gold"></i> فتاویٰ و کتبِ فقہ کے مستند حوالے:</div>
+          <div class="fmd-ref-text" id="fmdReferences">حوالہ جات...</div>
+        </div>
+
+        <!-- Official Stamp / Verification -->
+        <div class="fmd-stamp-box">
+          <div class="fmd-stamp-seal"><i class="fa-solid fa-stamp"></i></div>
+          <div class="fmd-stamp-info">
+            <strong>واللہ تعالٰی اعلم بالصواب</strong>
+            <p>دار الافتاء جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی</p>
+          </div>
+        </div>
+
+        <!-- Actions Row -->
+        <div class="fmd-actions-row">
+          <button class="btn-fmd-whatsapp" onclick="askFatwaWhatsApp()">
+            <i class="fa-brands fa-whatsapp"></i> اس مسئلے پر مزید رہنمائی لیں
+          </button>
+          <button class="btn-fmd-close" onclick="closeModal('modalFatwaDetail')">
+            بند کریں
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- 2-Minute Engagement Review & Stories Popup Modal -->
   <div class="modal-dialog-layer" id="modalReviewPrompt">
     <div class="modal-card-container review-popup-card">
@@ -2755,6 +2905,6 @@
   </div>
 
   <!-- Exact App Logic with Cache Buster -->
-  <script src="/js/app.js?v=khizri-navy-21.0"></script>
+  <script src="/js/app.js?v=khizri-navy-22.0"></script>
 </body>
 </html>
