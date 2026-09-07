@@ -630,9 +630,10 @@ window.calcZakat = function() {
 };
 
 // WhatsApp Consult Link
-window.openWhatsAppConsult = function() {
-  const phone = '923001234567';
-  const text = encodeURIComponent('Assalamu Alaikum, I would like to consult regarding Rohani Ilaj and Istikhara guidance.');
+window.openWhatsAppConsult = function(customMsg) {
+  const phone = (state.settings && state.settings.whatsapp ? state.settings.whatsapp.replace(/[^0-9]/g, '') : '') || '923317704807';
+  const defaultMsg = 'السلام علیکم، مجھے خضریٰ ویز سے روحانی علاج، وظائف، اور استخارہ کے بارے میں رہنمائی چاہیے۔';
+  const text = encodeURIComponent(customMsg || defaultMsg);
   window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
 };
 
