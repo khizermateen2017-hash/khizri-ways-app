@@ -197,36 +197,36 @@
             <!-- 16 Features Grid with Dedicated Rohani Ilaj, Wazaif, and PDF Books -->
             <div class="sixteen-features-grid">
               
-              <!-- 1. AL Quran -->
-              <div class="feature-cell" data-open="tabQuran" title="Al Quran Al Kareem">
-                <div class="feature-icon-circle">
-                  <i class="fa-solid fa-book-quran"></i>
-                </div>
-                <span class="feature-title" data-i18n="featQuran">AL Quran</span>
-              </div>
-
-              <!-- 2. Hadith -->
-              <div class="feature-cell" data-open="tabHadith" title="Hadith Collection">
-                <div class="feature-icon-circle">
-                  <i class="fa-solid fa-book-bookmark"></i>
-                </div>
-                <span class="feature-title" data-i18n="featHadith">Hadith</span>
-              </div>
-
-              <!-- 3. Spiritual Healing (Rohani Ilaj) -->
-              <div class="feature-cell" data-open="tabRohaniIlaj" title="Spiritual Healing & Rohani Ilaj">
-                <div class="feature-icon-circle">
+              <!-- 1. Spiritual Healing (Rohani Ilaj) -->
+              <div class="feature-cell" data-open="tabRohaniIlaj" title="Spiritual Healing &amp; Rohani Ilaj">
+                <div class="feature-icon-circle feature-accent-healing">
                   <i class="fa-solid fa-hand-holding-heart"></i>
                 </div>
                 <span class="feature-title" data-i18n="featRohaniIlaj">Spiritual<br>Healing</span>
               </div>
 
-              <!-- 4. Khas Wazaif (Wazaif Library) -->
-              <div class="feature-cell" data-open="tabWazaif" title="Khizri Wazaif & Azkar">
-                <div class="feature-icon-circle">
+              <!-- 2. Khas Wazaif (Wazaif Library) -->
+              <div class="feature-cell" data-open="tabWazaif" title="Khizri Wazaif &amp; Azkar">
+                <div class="feature-icon-circle feature-accent-wazaif">
                   <i class="fa-solid fa-hands-praying"></i>
                 </div>
                 <span class="feature-title" data-i18n="featWazaif">Khas<br>Wazaif</span>
+              </div>
+
+              <!-- 3. Durood-e-Khizri -->
+              <div class="feature-cell" data-open="tabTasbeeh" title="Durood-e-Khizri Counter">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <span class="feature-title" data-i18n="featDuroodKhizri">Durood<br>Khizri</span>
+              </div>
+
+              <!-- 4. Online Istikhara & Guidance -->
+              <div class="feature-cell" onclick="openWhatsAppConsult()" title="Online Istikhara &amp; Consultation">
+                <div class="feature-icon-circle">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <span class="feature-title" data-i18n="featIstikhara">Online<br>Istikhara</span>
               </div>
 
               <!-- 5. PDF Books & Resources -->
@@ -330,21 +330,7 @@
 
         </section>
 
-        <!-- ====================================================
-             TAB 2: QURAN SCREEN
-             ==================================================== -->
-        <section class="tab-screen" id="tabQuran">
-          <div class="sub-screen-header">
-            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
-            <h3 class="sub-screen-title" data-i18n="titleQuran">Al Quran Al Kareem</h3>
-            <div class="sub-header-spacer"></div>
-          </div>
-          <div class="sub-screen-scroll">
-            <div class="surah-list-wrap" id="quranSurahList">
-              <!-- Populated via JS -->
-            </div>
-          </div>
-        </section>
+        
 
         <!-- ====================================================
              TAB 3: PRAYER TIMES SCREEN
@@ -612,21 +598,7 @@
           </div>
         </section>
 
-        <!-- ====================================================
-             TAB 9: HADITH
-             ==================================================== -->
-        <section class="tab-screen" id="tabHadith">
-          <div class="sub-screen-header">
-            <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
-            <h3 class="sub-screen-title" data-i18n="titleHadith">Hadith Collection</h3>
-            <div class="sub-header-spacer"></div>
-          </div>
-          <div class="sub-screen-scroll">
-            <div class="hadith-stack" id="hadithStack">
-              <!-- Populated via JS -->
-            </div>
-          </div>
-        </section>
+        
 
         <!-- ====================================================
              TAB 10: 99 NAMES OF ALLAH (NAME)
@@ -760,10 +732,10 @@
             <span class="nav-cell-label" data-i18n="navHome">Home</span>
           </button>
 
-          <!-- 2. Quran -->
-          <button class="bottom-nav-cell" data-open="tabQuran">
-            <div class="nav-cell-icon"><i class="fa-regular fa-book-open"></i></div>
-            <span class="nav-cell-label" data-i18n="navQuran">Quran</span>
+          <!-- 2. Spiritual Healing -->
+          <button class="bottom-nav-cell" data-open="tabRohaniIlaj">
+            <div class="nav-cell-icon"><i class="fa-solid fa-shield-heart"></i></div>
+            <span class="nav-cell-label" data-i18n="navHealing">Healing</span>
           </button>
 
           <!-- 3. Prayer -->
