@@ -43,7 +43,7 @@ const i18n = {
     greeting: "Assalamu'alaikum",
     nowPrayer: 'Now prayer is',
     nextPrayerPrefix: 'Next prayer is',
-    featQuran: 'Quran<br>Majeed',
+    featQuran: 'AL Quran',
     featHadith: 'Hadith',
     featRohaniIlaj: 'Spiritual<br>Healing',
     featDuroodKhizri: 'Durood<br>Khizri',
@@ -74,7 +74,7 @@ const i18n = {
     titleAbout: 'About Khizri Ways',
     titleFastTreatment: 'Fast Treatment',
     featFastTreatment: 'Fast<br>Treatment',
-    featMasail: 'Deeni<br>Masail',
+    featMasail: 'Islamic<br>Masail',
     titleMasail: 'Islamic Masail & Fatwas',
     featStories: 'Customer<br>Stories',
     featAbout: 'About<br>Us',
@@ -146,7 +146,7 @@ const i18n = {
     titleAbout: 'ہمارا تعارف و مشن',
     titleFastTreatment: 'فاسٹ ٹریٹمنٹ و فوری علاج',
     featFastTreatment: 'فاسٹ<br>ٹریٹمنٹ',
-    featMasail: 'دینی<br>مسائل',
+    featMasail: 'اسلامی<br>مسائل',
     titleMasail: 'اسلامی مسائل و فتاویٰ (بنوری ٹاؤن)',
     featStories: 'کسٹمر<br>کہانیاں',
     featAbout: 'ہمارا<br>تعارف',
@@ -205,7 +205,24 @@ function playClickSound() {
   } catch (e) {}
 }
 
-// (startApp moved to bottom of file)
+// Dom Ready Initialization
+document.addEventListener('DOMContentLoaded', () => {
+  initLanguage();
+  initClock();
+  initLocation();
+  initViewModes();
+  initNavigation();
+  initTasbeeh();
+  initQibla();
+  initUserName();
+  initWazaifFilters();
+  initPdfFilters();
+  fetchAllData();
+  populateSurahs();
+  populateHadith();
+  populateAllahNames();
+  populatePrayerTimes();
+});
 
 // Language Initialization & Switching Engine
 function initLanguage() {
@@ -276,15 +293,7 @@ function setAppLanguage(lang) {
 
   // Dynamic lists re-render for active language
   if (typeof renderWazaif === 'function') {
-  // Update Wazaif Filter Chips text
-  document.querySelectorAll('#wazaifFilterChips .w-chip').forEach(chip => {
-    const ur = chip.getAttribute('data-ur');
-    const en = chip.getAttribute('data-en');
-    if (lang === 'ur' && ur) chip.textContent = ur;
-    else if (lang === 'en' && en) chip.textContent = en;
-  });
-
-    renderWazaif(state.activeWazaifFilter || 'all_folders');
+    renderWazaif(state.activeWazaifFilter || 'all');
   }
   if (typeof populatePrayerTimes === 'function') {
     populatePrayerTimes();
@@ -374,9 +383,6 @@ function initLocation() {
         const locStr = `${data.city || data.region || 'Pakistan'}, ${data.country_code || 'PK'}`;
         if (cityEl) cityEl.textContent = locStr;
         localStorage.setItem('khizri_user_city', locStr);
-        if (typeof window.initCountryDropdowns === 'function' && data.country) {
-          window.initCountryDropdowns(data.country);
-        }
       } else {
         // Alternative free IP geolocation fallback
         fetch('https://ipapi.co/json/')
@@ -520,8 +526,6 @@ function initNavigation() {
     const targetTab = document.getElementById(targetId);
     if (targetTab) targetTab.classList.add('active');
     if (targetId === 'tabIslamicMasail') { renderMasailMiniButtons(); }
-    if (targetId === 'tabQuran') { if (typeof populateSurahs === 'function') populateSurahs(); }
-    if (targetId === 'tabWazaif') { renderWazaif(state.activeWazaifFilter || 'all_folders'); }
 
     const activeCell = document.querySelector(`.exact-bottom-nav .bottom-nav-cell[data-open="${targetId}"]`);
     if (activeCell) activeCell.classList.add('active');
@@ -787,448 +791,43 @@ document.addEventListener('click', (e) => {
 });
 
 // Quran Surahs Data
-// =========================================================================
-// COMPLETE 114 SURAHS & 30 PARAS INTERACTIVE QURAN ENGINE
-// =========================================================================
-
-let quranCurrentSurahNum = 1;
-let quranArabicFontSize = 1.45; // in rem
-let quranCurrentAudio = null;
-let quranIsAudioPlaying = false;
-let quranCurrentTabFilter = 'all';
-
-function populateSurahs(filteredList) {
+function populateSurahs() {
   const container = document.getElementById('quranSurahList');
   if (!container) return;
 
-  const list = filteredList || window.QURAN_SURAHS;
-  if (!list || !list.length) {
-    if (!filteredList && (!window.QURAN_SURAHS || !window.QURAN_SURAHS.length)) {
-      if (!window._surahRetryCount) window._surahRetryCount = 0;
-      if (window._surahRetryCount++ < 10) {
-        setTimeout(() => populateSurahs(), 150);
-      }
-      return;
-    }
-    container.innerHTML = '<div style="text-align:center; padding:30px; color:#64748B;">کوئی سورت نہیں ملی (No Surah found)</div>';
-    return;
-  }
+  const surahs = [
+    { num: 1, name: 'Al-Fatihah', meaning: 'The Opening', verses: 7, ar: 'الفاتحة' },
+    { num: 2, name: 'Al-Baqarah', meaning: 'The Cow', verses: 286, ar: 'البقرة' },
+    { num: 3, name: 'Ali \'Imran', meaning: 'Family of Imran', verses: 200, ar: 'آل عمران' },
+    { num: 18, name: 'Al-Kahf', meaning: 'The Cave', verses: 110, ar: 'الكهف' },
+    { num: 36, name: 'Ya-Sin', meaning: 'Ya-Sin (Heart of Quran)', verses: 83, ar: 'يس' },
+    { num: 55, name: 'Ar-Rahman', meaning: 'The Most Merciful', verses: 78, ar: 'الرحمن' },
+    { num: 56, name: 'Al-Waqi\'ah', meaning: 'The Inevitable', verses: 96, ar: 'الواقعة' },
+    { num: 67, name: 'Al-Mulk', meaning: 'The Sovereignty', verses: 30, ar: 'الملك' },
+    { num: 112, name: 'Al-Ikhlas', meaning: 'The Sincerity', verses: 4, ar: 'الإخلاص' },
+    { num: 113, name: 'Al-Falaq', meaning: 'The Daybreak', verses: 5, ar: 'الفلق' },
+    { num: 114, name: 'An-Nas', meaning: 'Mankind', verses: 6, ar: 'الناس' }
+  ];
 
-  container.innerHTML = list.map(s => {
-    const isPlaying = (quranCurrentSurahNum === s.num && quranIsAudioPlaying);
-    const typeBadge = s.type === 'Makki' 
-      ? '<span class="surah-type-tag tag-makki">مکی</span>' 
-      : '<span class="surah-type-tag tag-madani">مدنی</span>';
-
-    return `
-      <div class="surah-card-row" onclick="openSurahReader(${s.num})">
-        <div class="surah-card-left">
-          <div class="surah-num-badge">${s.num}</div>
-          <div class="surah-info-col">
-            <div class="surah-eng-name">
-              ${s.name} ${typeBadge}
-            </div>
-            <div class="surah-meaning">${s.meaning} • ${s.verses} Verses</div>
-          </div>
-        </div>
-        <div class="surah-card-right">
-          <div class="surah-arabic-title">${s.ar}</div>
-          <button class="btn-card-action btn-surah-play" onclick="event.stopPropagation(); playSurahTilawat(${s.num})" title="Listen Tilawat">
-            <i class="fa-solid ${isPlaying ? 'fa-pause text-emerald' : 'fa-play'}"></i>
-          </button>
-          <button class="btn-card-action btn-surah-read" onclick="event.stopPropagation(); openSurahReader(${s.num})" title="Read Surah">
-            <i class="fa-solid fa-book-open"></i>
-          </button>
+  container.innerHTML = surahs.map(s => `
+    <div class="surah-card-row" onclick="playSurahRecitation('${s.num}', '${s.name}')">
+      <div style="display:flex; align-items:center;">
+        <div class="surah-num-badge">${s.num}</div>
+        <div class="surah-info-col">
+          <div class="surah-eng-name">${s.name}</div>
+          <div class="surah-meaning">${s.meaning} • ${s.verses} Verses</div>
         </div>
       </div>
-    `;
-  }).join('');
-}
-
-function populateParas() {
-  const container = document.getElementById('quranParasList');
-  if (!container) return;
-
-  const list = window.QURAN_PARAS || [];
-  container.innerHTML = list.map(p => `
-    <div class="para-card-row" onclick="jumpToParaStart('${p.start}')">
-      <div style="display:flex; align-items:center; gap:12px;">
-        <div class="surah-num-badge" style="background:#FEF9C3; color:#854D0E; border-color:#FDE047;">${p.num}</div>
-        <div>
-          <div style="font-weight:800; font-size:0.92rem; color:#0F172A;">Juz ${p.num}: ${p.engName}</div>
-          <div style="font-size:0.72rem; color:#64748B; margin-top:2px;">${p.start} ➔ ${p.end}</div>
-        </div>
-      </div>
-      <div class="para-arabic-title">${p.name}</div>
+      <div class="surah-arabic-title">${s.ar}</div>
     </div>
   `).join('');
 }
 
-window.jumpToParaStart = function(startDesc) {
-  // Switch back to all surahs tab and filter/scroll
-  filterQuranTab('all', document.getElementById('chipAllSurahs'));
-  showToast(`Juz start: ${startDesc}`);
-};
-
-window.filterQuranTab = function(tab, btn) {
-  quranCurrentTabFilter = tab;
-  document.querySelectorAll('.quran-chip').forEach(c => c.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-
-  const surahList = document.getElementById('quranSurahList');
-  const parasList = document.getElementById('quranParasList');
-
-  if (tab === 'paras') {
-    if (surahList) surahList.style.display = 'none';
-    if (parasList) {
-      parasList.style.display = 'block';
-      populateParas();
-    }
-  } else {
-    if (parasList) parasList.style.display = 'none';
-    if (surahList) surahList.style.display = 'flex';
-
-    if (tab === 'all') {
-      populateSurahs(window.QURAN_SURAHS);
-    } else if (tab === 'Makki' || tab === 'Madani') {
-      const filtered = (window.QURAN_SURAHS || []).filter(s => s.type === tab);
-      populateSurahs(filtered);
-    }
-  }
-};
-
-window.handleQuranSearch = function(query) {
-  const q = (query || '').trim().toLowerCase();
-  const clearBtn = document.getElementById('btnClearQuranSearch');
-  if (clearBtn) clearBtn.style.display = q ? 'inline-block' : 'none';
-
-  if (!q) {
-    filterQuranTab(quranCurrentTabFilter, document.querySelector('.quran-chip.active'));
-    return;
-  }
-
-  // Switch to surah list
-  const surahList = document.getElementById('quranSurahList');
-  const parasList = document.getElementById('quranParasList');
-  if (surahList) surahList.style.display = 'flex';
-  if (parasList) parasList.style.display = 'none';
-
-  const numQ = parseInt(q, 10);
-  const matched = (window.QURAN_SURAHS || []).filter(s => {
-    if (!isNaN(numQ) && s.num === numQ) return true;
-    return s.name.toLowerCase().includes(q) ||
-      s.ar.includes(q) ||
-      (s.urName && s.urName.includes(q)) ||
-      (s.meaning && s.meaning.toLowerCase().includes(q));
-  });
-
-  populateSurahs(matched);
-};
-
-window.clearQuranSearch = function() {
-  const input = document.getElementById('quranSearchInput');
-  if (input) input.value = '';
-  handleQuranSearch('');
-};
-
-// =========================================================================
-// QURAN AUDIO TILAWAT PLAYBACK (Mishary Rashid Alafasy)
-// =========================================================================
-
-window.playSurahTilawat = function(num) {
-  const surah = (window.QURAN_SURAHS || []).find(s => s.num === num);
-  if (!surah) return;
-
+window.playSurahRecitation = function(num, name) {
   const pad = String(num).padStart(3, '0');
   const audioUrl = `https://server8.mp3quran.net/afs/${pad}.mp3`;
-
-  // If already playing this surah, toggle play/pause
-  if (quranCurrentSurahNum === num && quranCurrentAudio) {
-    if (quranIsAudioPlaying) {
-      quranCurrentAudio.pause();
-      quranIsAudioPlaying = false;
-      updateAudioUiStates(false, surah);
-      return;
-    } else {
-      quranCurrentAudio.play().catch(e => console.log(e));
-      quranIsAudioPlaying = true;
-      updateAudioUiStates(true, surah);
-      return;
-    }
-  }
-
-  // Stop old audio if playing
-  if (quranCurrentAudio) {
-    quranCurrentAudio.pause();
-    quranCurrentAudio = null;
-  }
-
-  quranCurrentSurahNum = num;
-  const audio = new Audio(audioUrl);
-  quranCurrentAudio = audio;
-  quranIsAudioPlaying = true;
-
-  audio.play().then(() => {
-    updateAudioUiStates(true, surah);
-    showToast(`تلاوت سورة ${surah.ar} - مشاری راشد العفاسی`);
-  }).catch(err => {
-    console.log('Audio autoplay prevented:', err);
-    updateAudioUiStates(false, surah);
-  });
-
-  audio.ontimeupdate = function() {
-    const cur = formatAudioTime(audio.currentTime);
-    const dur = formatAudioTime(audio.duration || 0);
-    const timeEl = document.getElementById('readerAudioTime');
-    if (timeEl) timeEl.textContent = `${cur} / ${dur}`;
-  };
-
-  audio.onended = function() {
-    quranIsAudioPlaying = false;
-    updateAudioUiStates(false, surah);
-    // Auto advance to next surah
-    if (num < 114) {
-      playSurahTilawat(num + 1);
-    }
-  };
-
-  audio.onerror = function() {
-    quranIsAudioPlaying = false;
-    updateAudioUiStates(false, surah);
-    showToast('آڈیو لوڈ کرنے میں دشواری، براہِ کرم انٹرنیٹ کنکشن چیک کریں۔');
-  };
+  openLiveStream(`Surah ${name} - Mishary Alafasy`, `https://quran.com/${num}`);
 };
-
-function formatAudioTime(sec) {
-  if (isNaN(sec) || sec === Infinity) return '00:00';
-  const m = Math.floor(sec / 60);
-  const s = Math.floor(sec % 60);
-  return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
-}
-
-function updateAudioUiStates(isPlaying, surah) {
-  // 1. Floating Mini Bar
-  const floatingBar = document.getElementById('quranFloatingPlayer');
-  const qfbTitle = document.getElementById('qfbSurahTitle');
-  const iconQfbPlay = document.getElementById('iconQfbPlay');
-
-  if (floatingBar && surah) {
-    floatingBar.style.display = 'flex';
-    if (qfbTitle) qfbTitle.textContent = `Surah ${surah.name} (${surah.ar})`;
-    if (iconQfbPlay) {
-      iconQfbPlay.className = isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
-    }
-  }
-
-  // 2. Reader Modal Audio Strip
-  const iconReader = document.getElementById('iconReaderAudio');
-  if (iconReader) {
-    iconReader.className = isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
-  }
-
-  // 3. Update Surah card list button state
-  populateSurahs();
-}
-
-window.toggleGlobalQuranAudio = function() {
-  if (!quranCurrentAudio) {
-    playSurahTilawat(quranCurrentSurahNum);
-    return;
-  }
-  if (quranIsAudioPlaying) {
-    quranCurrentAudio.pause();
-    quranIsAudioPlaying = false;
-  } else {
-    quranCurrentAudio.play().catch(e => console.log(e));
-    quranIsAudioPlaying = true;
-  }
-  const surah = (window.QURAN_SURAHS || []).find(s => s.num === quranCurrentSurahNum);
-  updateAudioUiStates(quranIsAudioPlaying, surah);
-};
-
-window.stopGlobalQuranAudio = function() {
-  if (quranCurrentAudio) {
-    quranCurrentAudio.pause();
-    quranCurrentAudio.currentTime = 0;
-    quranCurrentAudio = null;
-  }
-  quranIsAudioPlaying = false;
-  const floatingBar = document.getElementById('quranFloatingPlayer');
-  if (floatingBar) floatingBar.style.display = 'none';
-  const surah = (window.QURAN_SURAHS || []).find(s => s.num === quranCurrentSurahNum);
-  updateAudioUiStates(false, surah);
-};
-
-window.toggleReaderAudio = function() {
-  toggleGlobalQuranAudio();
-};
-
-window.downloadSurahMp3 = function() {
-  const pad = String(quranCurrentSurahNum).padStart(3, '0');
-  const url = `https://server8.mp3quran.net/afs/${pad}.mp3`;
-  window.open(url, '_blank');
-};
-
-// =========================================================================
-// SURAH READER (Interactive Modal with Arabic Uthmani & Urdu Translation)
-// =========================================================================
-
-window.openSurahReader = function(num) {
-  quranCurrentSurahNum = num;
-  const surah = (window.QURAN_SURAHS || []).find(s => s.num === num);
-  if (!surah) return;
-
-  const modal = document.getElementById('modalSurahReader');
-  if (modal) modal.classList.add('active');
-
-  // Set titles
-  const titleEl = document.getElementById('readerSurahTitle');
-  const subEl = document.getElementById('readerSurahSub');
-  if (titleEl) titleEl.textContent = `Surah ${surah.name} (${surah.ar})`;
-  if (subEl) subEl.textContent = `${surah.meaning} • ${surah.verses} Verses • ${surah.type === 'Makki' ? 'مکی (Makki)' : 'مدنی (Madani)'}`;
-
-  // Update audio controls in reader
-  updateAudioUiStates(quranIsAudioPlaying, surah);
-
-  // Load Ayahs
-  loadSurahAyahs(num, surah);
-};
-
-window.closeSurahReader = function() {
-  const modal = document.getElementById('modalSurahReader');
-  if (modal) modal.classList.remove('active');
-};
-
-window.reopenCurrentSurahReader = function() {
-  openSurahReader(quranCurrentSurahNum);
-};
-
-window.changeArabicFontSize = function(delta) {
-  quranArabicFontSize = Math.max(1.1, Math.min(2.5, quranArabicFontSize + (delta * 0.1)));
-  document.querySelectorAll('.ayah-arabic-text').forEach(el => {
-    el.style.fontSize = `${quranArabicFontSize}rem`;
-  });
-};
-
-function loadSurahAyahs(num, surah) {
-  const container = document.getElementById('readerAyahsContainer');
-  if (!container) return;
-
-  // Show loading spinner
-  container.innerHTML = `
-    <div style="text-align:center; padding:50px 20px;">
-      <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem; color:#059669;"></i>
-      <p style="margin-top:12px; font-weight:700; color:#0F172A;">سورة ${surah.ar} کے آیات و ترجمہ لوڈ ہو رہے ہیں...</p>
-      <span style="font-size:0.75rem; color:#64748B;">Al-Quran Cloud Uthmani & Jalandhry Translation</span>
-    </div>
-  `;
-
-  // Check LocalStorage cache
-  const cacheKey = 'khizri_surah_cache_' + num;
-  const cached = localStorage.getItem(cacheKey);
-  if (cached) {
-    try {
-      const data = JSON.parse(cached);
-      renderAyahs(container, num, surah, data.arabic, data.urdu, data.english);
-      return;
-    } catch(e) {
-      console.log('Cache parse error, refetching...');
-    }
-  }
-
-  // Fetch from AlQuran Cloud API (Uthmani Arabic + Fateh Muhammad Jalandhry Urdu + Sahih English)
-  const apiUrl = `https://api.alquran.cloud/v1/surah/${num}/editions/quran-uthmani,ur.jalandhry,en.sahih`;
-
-  fetch(apiUrl)
-    .then(r => r.json())
-    .then(res => {
-      if (res.code === 200 && res.data && res.data.length >= 2) {
-        const arabic = res.data[0].ayahs;
-        const urdu = res.data[1].ayahs;
-        const english = res.data[2] ? res.data[2].ayahs : [];
-
-        // Cache response in localStorage
-        try {
-          localStorage.setItem(cacheKey, JSON.stringify({ arabic, urdu, english }));
-        } catch(e) { /* storage full, ignore */ }
-
-        renderAyahs(container, num, surah, arabic, urdu, english);
-      } else {
-        throw new Error('Invalid API response');
-      }
-    })
-    .catch(err => {
-      console.error('Failed to load surah ayahs:', err);
-      container.innerHTML = `
-        <div style="text-align:center; padding:40px 20px; color:#DC2626;">
-          <i class="fa-solid fa-circle-exclamation" style="font-size:2rem; margin-bottom:10px;"></i>
-          <p style="font-weight:700;">آیات لوڈ نہیں ہو سکیں۔ براہِ کرم انٹرنیٹ کنکشن چیک کریں۔</p>
-          <button onclick="loadSurahAyahs(${num}, window.QURAN_SURAHS[${num - 1}])" style="background:#047857; color:#FFF; border:none; border-radius:8px; padding:8px 16px; font-weight:700; cursor:pointer; margin-top:8px;">دوبارہ کوشش کریں (Retry)</button>
-        </div>
-      `;
-    });
-}
-
-function renderAyahs(container, num, surah, arabicAyahs, urduAyahs, englishAyahs) {
-  let html = '';
-
-  // Show Bismillah except for Surah At-Tawbah (9)
-  if (num !== 9) {
-    html += `
-      <div class="reader-bismillah-box">
-        بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
-      </div>
-    `;
-  }
-
-  html += arabicAyahs.map((ayah, i) => {
-    const ayahNum = ayah.numberInSurah;
-    let arText = ayah.text;
-
-    // For Surah 1, Bismillah is Ayah 1. For other surahs, remove prefix Bismillah from Ayah 1 if present
-    if (num !== 1 && ayahNum === 1 && arText.startsWith('بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ')) {
-      arText = arText.replace('بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ', '').trim();
-    }
-
-    const urText = urduAyahs && urduAyahs[i] ? urduAyahs[i].text : '';
-    const enText = englishAyahs && englishAyahs[i] ? englishAyahs[i].text : '';
-
-    return `
-      <div class="ayah-card" id="ayahRow_${ayahNum}">
-        <div class="ayah-top-row">
-          <div class="ayah-badge">${ayahNum}</div>
-          <div class="ayah-actions">
-            <button class="btn-ayah-copy" onclick="copyAyahText(${num}, ${ayahNum})" title="Copy Ayah">
-              <i class="fa-regular fa-copy"></i> نقل
-            </button>
-          </div>
-        </div>
-        <div class="ayah-arabic-text" style="font-size:${quranArabicFontSize}rem;">
-          ${arText} <span style="font-size:0.9rem; color:#047857;">۝${ayahNum}</span>
-        </div>
-        <div class="ayah-urdu-text">${urText}</div>
-        <div class="ayah-eng-text lang-en-only">${enText}</div>
-      </div>
-    `;
-  }).join('');
-
-  container.innerHTML = html;
-}
-
-window.copyAyahText = function(surahNum, ayahNum) {
-  const row = document.getElementById('ayahRow_' + ayahNum);
-  const ar = row ? (row.querySelector('.ayah-arabic-text') ? row.querySelector('.ayah-arabic-text').innerText : '').replace(/\s*۝\d+\s*/g, '').trim() : '';
-  const ur = row ? (row.querySelector('.ayah-urdu-text') ? row.querySelector('.ayah-urdu-text').innerText : '').trim() : '';
-  const fullText = ar + '\n\n' + 'ترجمہ: ' + ur + '\n' + '[القرآن - سورة ' + surahNum + '، آیت ' + ayahNum + ']';
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(fullText).then(function() {
-      showToast('آیت نمبر ' + ayahNum + ' کاپی کرلی گئی!');
-    });
-  } else {
-    showToast('آیت منتخب کرلی گئی');
-  }
-};
-
 
 // Hadith Collection Data
 function populateHadith() {
@@ -1583,222 +1182,36 @@ window.shareChannelWhatsApp = function() {
   window.open(`https://api.whatsapp.com/send?text=${msg}`, '_blank');
 };
 
-// Wazaif Category Folders Definition (8 Folders - Balanced 2-Column Grid)
-const WAZAIF_FOLDERS = [
-  {
-    id: 'manzil',
-    titleUr: 'منزل شریف (۳۳ آیات)',
-    titleEn: 'Manzil Sharif (33 Verses)',
-    subtitleUr: 'آیاتِ شفا و تلاوت',
-    subtitleEn: 'Healing Verses & Audio',
-    icon: 'fa-book-quran',
-    iconBg: '#FEF9C3',
-    iconColor: '#CA8A04',
-    badgeUr: 'پی ڈی ایف و قاری آڈیو',
-    badgeEn: 'PDF & Qari Audio',
-    filterFn: (w) => (w.id === 'waz-manzil' || (w.title || '').includes('منزل'))
-  },
-  {
-    id: 'hizb-bahr',
-    titleUr: 'حزب البحر الشریف',
-    titleEn: 'Hizb-ul-Bahr Al-Sharif',
-    subtitleUr: 'کامل حصار و پی ڈی ایف',
-    subtitleEn: 'Shield & PDF',
-    icon: 'fa-shield-halved',
-    iconBg: '#E0F2FE',
-    iconColor: '#0284C7',
-    badgeUr: 'پی ڈی ایف و تلاوت',
-    badgeEn: 'PDF & Audio',
-    filterFn: (w) => (w.id === 'waz-hizb-bahr' || (w.title || '').includes('حزب البحر'))
-  },
-  {
-    id: 'hizb-nasr',
-    titleUr: 'دعائے حزب النصر',
-    titleEn: 'Hizb-un-Nasr',
-    subtitleUr: 'نصرت و فتحِ عظیم',
-    subtitleEn: 'Victory & Triumph',
-    icon: 'fa-shield-heart',
-    iconBg: '#CCFBF1',
-    iconColor: '#0F766E',
-    badgeUr: 'فتح و نصرت',
-    badgeEn: 'Divine Victory',
-    filterFn: (w) => (w.id === 'waz-hizb-nasr' || (w.title || '').includes('حزب النصر'))
-  },
-  {
-    id: 'chehal-kaaf',
-    titleUr: 'دعائے چہل کاف',
-    titleEn: 'Dua-e-Chehal Kaaf',
-    subtitleUr: '۱۱۰۴ طریقہ و اجازت',
-    subtitleEn: 'Count & Ijazah 1104',
-    icon: 'fa-stamp',
-    iconBg: '#EDE9FE',
-    iconColor: '#7C3AED',
-    badgeUr: 'طریقہ و اجازت فارم',
-    badgeEn: 'Method & Ijazah',
-    filterFn: (w) => (w.id === 'waz-chehal-kaaf' || (w.title || '').includes('چہل کاف'))
-  },
-  {
-    id: 'nadi-ali',
-    titleUr: 'نادِ علی جل جلالہ',
-    titleEn: 'Dua-e-Nadi Ali',
-    subtitleUr: 'حلِ جمیع مشکلات',
-    subtitleEn: 'Problem Solving',
-    icon: 'fa-hand-holding-heart',
-    iconBg: '#FFEDD5',
-    iconColor: '#EA580C',
-    badgeUr: 'حلِ مشکلات و نصرت',
-    badgeEn: 'Problem Solving',
-    filterFn: (w) => (w.id === 'waz-nadi-ali' || (w.title || '').includes('نادِ علی'))
-  },
-  {
-    id: 'muharram',
-    titleUr: 'وظائفِ محرم الحرام',
-    titleEn: 'Muharram Litanies',
-    subtitleUr: '۵ اکسیری اعمال و شفا',
-    subtitleEn: '5 Muharram Practices',
-    icon: 'fa-mosque',
-    iconBg: '#FEE2E2',
-    iconColor: '#DC2626',
-    badgeUr: '۵ اکسیری اعمال',
-    badgeEn: '5 Special Acts',
-    filterFn: (w) => (w.id === 'waz-khas-muharram' || (w.title || '').includes('محرم'))
-  },
-  {
-    id: 'shab-17-ramadan',
-    titleUr: 'شبِ ۱۷ رمضان (بدر)',
-    titleEn: '17th Ramadan (Badr)',
-    subtitleUr: '۴۴ سورتیں و تسبیحات',
-    subtitleEn: 'Surahs Litany 44',
-    icon: 'fa-moon',
-    iconBg: '#EEF2FF',
-    iconColor: '#4F46E5',
-    badgeUr: '۴۴ سورتیں و تسبیحات',
-    badgeEn: '44 Surahs List',
-    filterFn: (w) => (w.id === 'waz-khas-17-ramadan' || (w.title || '').includes('۱۷ رمضان'))
-  },
-  {
-    id: 'ramadan',
-    titleUr: 'رمضان و آخری عشرہ',
-    titleEn: 'Ramadan & Last 10 Days',
-    subtitleUr: 'سحر، افطار و شبِ قدر',
-    subtitleEn: 'Iftar & Laylatul Qadr',
-    icon: 'fa-star-and-crescent',
-    iconBg: '#FEF3C7',
-    iconColor: '#D97706',
-    badgeUr: '۲ مسنون اعمال',
-    badgeEn: '2 Essential Acts',
-    filterFn: (w) => (w.id === 'waz-khas-ramadan' || w.id === 'waz-khas-aakhri-ashra')
-  }
-];
-
-// Render Wazaif Folders and In-Card Interactive Wazaif
-function renderWazaif(filterCategory = 'all_folders') {
+// Render Wazaif with Interactive In-Card Counters and Category Filtering
+function renderWazaif(filterCategory = 'all') {
   const container = document.getElementById('wazaifInteractiveStack');
   if (!container) return;
 
   state.activeWazaifFilter = filterCategory;
   const isEn = state.currentLang === 'en';
-  const allItems = (state.wazaif && state.wazaif.length) ? state.wazaif : [];
 
-  // Sync active chip
-  const activeFilterVal = (filterCategory === 'all' || !filterCategory) ? 'all_folders' : filterCategory;
-  document.querySelectorAll('#wazaifFilterChips .w-chip').forEach(c => {
-    if (c.getAttribute('data-filter') === activeFilterVal) {
-      c.classList.add('active');
-      c.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    } else {
-      c.classList.remove('active');
-    }
-  });
-
-  // Scroll to top of tab
-  const scrollArea = document.querySelector('#tabWazaif .sub-screen-scroll');
-  if (scrollArea) scrollArea.scrollTop = 0;
-
-  // CASE 1: RENDER FOLDERS GRID (فولڈرز مین ویو - 2-Column Grid matching Healing)
-  if (filterCategory === 'all_folders' || filterCategory === 'all' || !filterCategory) {
-    const foldersHtml = WAZAIF_FOLDERS.map(f => {
-      const title = isEn ? f.titleEn : f.titleUr;
-      const subtitle = isEn ? f.subtitleEn : f.subtitleUr;
-
-      return `
-        <div class="wazaif-folder-card ${isEn ? 'ltr-card' : 'rtl-card'}" onclick="renderWazaif('${f.id}')" role="button" tabindex="0">
-          <div class="wfc-icon-wrap" style="background: ${f.iconBg}; color: ${f.iconColor};">
-            <i class="fa-solid ${f.icon}"></i>
-          </div>
-          <div class="wfc-content-wrap">
-            <div class="wfc-title">${title}</div>
-            <div class="wfc-subtitle">${subtitle}</div>
-          </div>
-        </div>
-      `;
-    }).join('');
-
-    const flatListBanner = `
-      <div style="grid-column: 1 / -1; margin-top: 10px; text-align: center;">
-        <button type="button" class="btn-view-all-flat" onclick="renderWazaif('flat_all')" style="background: #F8FAFC; border: 1px dashed #CBD5E1; color: #475569; padding: 10px 18px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
-          <i class="fa-solid fa-list-ul"></i>
-          <span>${isEn ? 'View all 19 wazaif in single list' : 'تمام ۱۹ وظائف کی مکمل فہرست ایک ساتھ دیکھیں'}</span>
-        </button>
-      </div>
-    `;
-
-    container.innerHTML = `<div class="wazaif-folders-grid">${foldersHtml}${flatListBanner}</div>`;
-    return;
-  }
-
-  // CASE 2: RENDER SPECIFIC FOLDER ITEMS WITH STICKY HEADER & BACK BUTTON
-  const selectedFolder = WAZAIF_FOLDERS.find(f => f.id === filterCategory);
-  let items = [];
-  let headerTitle = '';
-  let headerBadge = '';
-
-  if (filterCategory === 'flat_all') {
-    items = allItems;
-    headerTitle = isEn ? 'All Wazaif (Complete Collection)' : 'تمام وظائف (مکمل ۱۹ وظائف)';
-    headerBadge = isEn ? `${items.length} Wazaif` : `${items.length} وظائف`;
-  } else if (selectedFolder) {
-    items = allItems.filter(selectedFolder.filterFn);
-    headerTitle = isEn ? selectedFolder.titleEn : selectedFolder.titleUr;
-    headerBadge = isEn ? selectedFolder.badgeEn : selectedFolder.badgeUr;
-  } else {
-    // Fallback search
-    items = allItems.filter(w => {
-      const cat = (w.category || '').toLowerCase();
-      const title = (w.title || '').toLowerCase();
-      const fc = filterCategory.toLowerCase();
-      return cat.includes(fc) || title.includes(fc);
+  let items = state.wazaif || [];
+  if (filterCategory && filterCategory !== 'all') {
+    items = items.filter(w => {
+      if (filterCategory === 'Durood Sharif') return w.category && w.category.includes('Durood');
+      if (filterCategory === 'Rizq & Barkat') return (w.category && (w.category.includes('Rizq') || w.category.includes('Wealth'))) || w.title.includes('رزق');
+      if (filterCategory === 'Rohani Ilaj') return (w.category && (w.category.includes('Shifa') || w.category.includes('Health') || w.category.includes('Rohani'))) || w.title.includes('شفا');
+      if (filterCategory === 'Hifazat') return (w.category && (w.category.includes('Hifazat') || w.category.includes('Protection') || w.category.includes('Problem'))) || w.title.includes('حصار');
+      return true;
     });
-    headerTitle = filterCategory;
-    headerBadge = `${items.length} ${isEn ? 'items' : 'وظائف'}`;
   }
-
-  const backBtnText = isEn ? '← Back to Folders' : '← تمام فولڈرز پر واپس جائیں';
-
-  const headerBarHtml = `
-    <div class="wazaif-folder-header-bar">
-      <button type="button" class="btn-back-folders" onclick="renderWazaif('all_folders')">
-        <span>${backBtnText}</span>
-      </button>
-      <div class="wfh-meta">
-        <div class="wfh-title">${headerTitle}</div>
-        <div class="wfh-count">${headerBadge} (${items.length} ${isEn ? 'items' : 'وظائف'})</div>
-      </div>
-    </div>
-  `;
 
   if (!items.length) {
-    container.innerHTML = headerBarHtml + `
-      <div style="text-align:center; padding:32px 16px; color:#64748B;">
-        <i class="fa-solid fa-hands-praying" style="font-size:2.4rem; color:#CBD5E1; margin-bottom:12px;"></i>
-        <p style="font-size:0.95rem; font-weight:700; margin-bottom:6px;">${isEn ? 'No Wazaif found in this folder' : 'اس فولڈر میں وظائف جلد شامل کیے جائیں گے۔'}</p>
-        <p style="font-size:0.8rem; color:#94A3B8;">${isEn ? 'Click "Back to Folders" above to browse all folders.' : 'دیگر وظائف دیکھنے کے لیے اوپر دیے گئے بٹن سے تمام فولڈرز پر تشریف لے جائیں۔'}</p>
+    container.innerHTML = `
+      <div style="text-align:center; padding:28px 16px; color:#64748B;">
+        <i class="fa-solid fa-hands-praying" style="font-size:2.2rem; color:#CBD5E1; margin-bottom:10px;"></i>
+        <p style="font-size:0.9rem; font-weight:600;">${isEn ? 'Wazaif for this category will be added soon.' : 'اس کیٹیگری میں وظائف جلد شامل کیے جائیں گے۔'}</p>
       </div>
     `;
     return;
   }
 
-  const cardsHtml = items.map((w, index) => {
+  container.innerHTML = items.map(w => {
     const targetReps = parseInt(w.repetitions) || 100;
     const catLabel = isEn ? (w.categoryEn || w.category || 'Khas Wazifa') : (w.category || 'خاص وظیفہ');
     const timingLabel = isEn ? (w.timingEn || (w.timing === 'صبح و شام' ? 'Morning & Evening' : w.timing || 'Daily')) : (w.timing || 'صبح و شام');
@@ -1806,134 +1219,29 @@ function renderWazaif(filterCategory = 'all_folders') {
     const transText = isEn ? (w.englishTranslation || w.urduTranslation || '') : (w.urduTranslation || '');
     const benefitsLabel = isEn ? 'Virtues & Benefits:' : 'فضیلت و فوائد:';
     const benefitsText = isEn ? (w.benefitsEn || w.benefits || 'Authentic practice for spiritual peace and divine protection.') : (w.benefits || 'قلبی سکون اور روحانی برکات کے لیے مجرب عمل۔');
-    const repsLabel = isEn ? `Count: ${w.repetitions || targetReps + ' times'}` : `تعداد: ${w.repetitions || targetReps + ' مرتبہ'}`;
+    const repsLabel = isEn ? `Count: ${targetReps} times` : `تعداد: ${w.repetitions || targetReps + ' مرتبہ'}`;
     const tapHint = isEn ? 'Tap to Count' : 'شمار کریں';
 
-    const safeTitle = (w.title || '').replace(/'/g, "\\'");
-    const isLongText = (w.arabicText || '').length > 240;
-    const cardElId = 'waz-item-' + (w.id ? w.id.replace(/[^a-zA-Z0-9_-]/g, '') : index);
-
     return `
-      <div class="wazifa-interactive-card ${isEn ? 'ltr-card' : 'rtl-card'}" id="${cardElId}">
+      <div class="wazifa-interactive-card ${isEn ? 'ltr-card' : 'rtl-card'}">
         <div class="wic-header">
           <span class="wic-category-tag"><i class="fa-solid fa-star-and-crescent"></i> ${catLabel}</span>
           <span class="wic-timing-tag"><i class="fa-regular fa-clock"></i> ${timingLabel}</span>
         </div>
         <h4 class="wic-title">${w.title}</h4>
-        
-        <!-- Media Actions (PDF Open, Download, Audio Play) -->
-        ${(w.pdfUrl || w.hasAudio) ? `
-          <div class="wic-media-actions">
-            ${w.pdfUrl ? `
-              <a href="${w.pdfUrl}" target="_blank" class="btn-wic-action btn-wic-open">
-                <i class="fa-solid fa-book-open-reader"></i> <span>${isEn ? 'Read PDF' : 'پی ڈی ایف پڑھیں'}</span>
-              </a>
-              <a href="${w.pdfUrl}" download="${w.pdfDownloadName || 'wazifa.pdf'}" class="btn-wic-action btn-wic-download">
-                <i class="fa-solid fa-file-arrow-down"></i> <span>${isEn ? 'Download PDF' : 'ڈاؤنلوڈ پی ڈی ایف'}</span>
-              </a>
-            ` : ''}
-            ${w.hasAudio ? `
-              <button type="button" class="btn-wic-action btn-wic-audio" onclick="playWazifaAudio(this, '${w.id}')">
-                <i class="fa-solid fa-volume-high"></i> <span class="audio-btn-txt">${isEn ? 'Listen Recitation (Qari)' : 'تلاوت سنیں (قاری صاحب)'}</span>
-              </button>
-            ` : ''}
-          </div>
-        ` : ''}
-
-        <!-- Prominent Method Box (طریقہ و معمول) -->
-        ${w.methodInstructions ? `
-          <div class="wic-method-box">
-            ${(w.methodInstructions || '').replace(/\n/g, '<br>')}
-          </div>
-        ` : ''}
-
-        <!-- 3-Step Reading Counter Tracker for Manzil Sharif -->
-        ${w.id === 'waz-manzil' ? `
-          <div class="manzil-reading-tracker" data-current-step="0">
-            <div class="mrt-header">
-              <i class="fa-solid fa-list-check"></i>
-              <span>${isEn ? '3-Times Recitation Progress Tracker' : '۳ مرتبہ تلاوت کا کاؤنٹر ٹریکر'}</span>
-            </div>
-            <div class="mrt-steps">
-              <div class="mrt-step-pill" data-step="1">
-                <span>${isEn ? '1st Time' : 'پہلی مرتبہ'}</span>
-                <span class="mrt-status" style="font-size:0.68rem;">${isEn ? 'Pending' : 'باقی'}</span>
-              </div>
-              <div class="mrt-step-pill" data-step="2">
-                <span>${isEn ? '2nd Time' : 'دوسری مرتبہ'}</span>
-                <span class="mrt-status" style="font-size:0.68rem;">${isEn ? 'Pending' : 'باقی'}</span>
-              </div>
-              <div class="mrt-step-pill" data-step="3">
-                <span>${isEn ? '3rd Time' : 'تیسری مرتبہ'}</span>
-                <span class="mrt-status" style="font-size:0.68rem;">${isEn ? 'Pending' : 'باقی'}</span>
-              </div>
-            </div>
-            <button type="button" class="btn-mrt-action" onclick="trackManzilStep(this)">
-              <i class="fa-solid fa-fingerprint"></i>
-              <span class="mrt-btn-text">${isEn ? 'Mark 1st Recitation Done' : 'پہلی مرتبہ مکمل (یہاں کلک کریں)'}</span>
-            </button>
-          </div>
-        ` : ''}
-
-        <div class="wic-arabic ${isLongText ? 'wic-arabic-collapsible' : ''}" id="${cardElId}-arabic">
-          ${(w.itemsList && w.itemsList.length) ? `
-            <div class="wazifa-items-grid">
-              ${w.itemsList.map(item => `
-                <div class="wazifa-grid-item">
-                  <div class="wgi-top">
-                    <span class="wgi-badge">${item.num}</span>
-                    <span class="wgi-count">${item.count}</span>
-                  </div>
-                  <div class="wgi-arabic">${item.text}</div>
-                </div>
-              `).join('')}
-            </div>
-          ` : (w.arabicText || '').replace(/\n/g, '<br>')}
-        </div>
-
-        ${isLongText ? `
-          <button type="button" class="btn-wic-expand" onclick="toggleWazifaLongText('${cardElId}-arabic', this)">
-            <i class="fa-solid fa-book-open"></i> <span>${isEn ? 'Read Complete Litany / Supplication' : 'مکمل تلاوت و دعا دیکھیں'}</span>
-          </button>
-        ` : ''}
-
+        <div class="wic-arabic">${w.arabicText || ''}</div>
         <div class="wic-urdu"><strong>${transLabel}</strong> ${transText}</div>
         <div class="wic-benefits"><strong>${benefitsLabel}</strong> ${benefitsText}</div>
-
-        <!-- Request Ijazah Button (for Chehal Kaaf, Hizb-ul-Bahr & Special Litanies) -->
-        ${w.requiresIjazah ? `
-          <button type="button" class="btn-request-ijazah" onclick="openIjazahModal('${safeTitle}')">
-            <i class="fa-solid fa-stamp"></i> <span>${isEn ? 'Request Wazifa Ijazah (Permission)' : 'وظیفہ کی اجازت حاصل کریں'}</span>
-          </button>
-        ` : ''}
-        
         <div class="wic-footer">
           <span class="wic-reps-text">${repsLabel}</span>
-          <div style="display:inline-flex; align-items:center; gap:8px;">
-            <button class="btn-wazifa-tap-counter" onclick="countModuleWazifa(this, ${targetReps})" title="${tapHint}">
-              <i class="fa-solid fa-fingerprint"></i> <span class="m-count-val">0</span> / ${targetReps}
-            </button>
-            <button class="btn-wazifa-consult" onclick="openWazifaConsult('${safeTitle}')" title="${isEn ? 'Ask Guidance / Ijazah on WhatsApp' : 'رہنمائی و اجازت حاصل کریں'}">
-              <i class="fa-brands fa-whatsapp"></i>
-            </button>
-          </div>
+          <button class="btn-wazifa-tap-counter" onclick="countModuleWazifa(this, ${targetReps})">
+            <i class="fa-solid fa-fingerprint"></i> <span class="m-count-val">0</span> / ${targetReps}
+          </button>
         </div>
       </div>
     `;
   }).join('');
-
-  container.innerHTML = headerBarHtml + cardsHtml;
 }
-
-// Global function to open a wazifa folder directly from anywhere (e.g. Healing screen)
-window.openWazifaFolder = function(folderId) {
-  if (typeof window.switchTab === 'function') {
-    window.switchTab('tabWazaif');
-  }
-  setTimeout(() => {
-    renderWazaif(folderId);
-  }, 50);
-};
 
 // Wazaif Category Filter Buttons
 function initWazaifFilters() {
@@ -1947,161 +1255,10 @@ function initWazaifFilters() {
     container.querySelectorAll('.w-chip').forEach(c => c.classList.remove('active'));
     chip.classList.add('active');
 
-    const filter = chip.getAttribute('data-filter') || 'all_folders';
+    const filter = chip.getAttribute('data-filter') || 'all';
     renderWazaif(filter);
   });
 }
-
-// Expand/Collapse Long Wazifa Prayer Text
-window.toggleWazifaLongText = function(arabicElId, btn) {
-  const el = document.getElementById(arabicElId);
-  if (!el) return;
-  const isExpanded = el.classList.toggle('is-expanded');
-  const isEn = state.currentLang === 'en';
-  if (btn) {
-    const span = btn.querySelector('span');
-    const icon = btn.querySelector('i');
-    if (isExpanded) {
-      if (span) span.textContent = isEn ? 'Collapse View' : 'مختصر کریں';
-      if (icon) icon.className = 'fa-solid fa-chevron-up';
-      btn.classList.add('active');
-    } else {
-      if (span) span.textContent = isEn ? 'Read Complete Litany / Supplication' : 'مکمل تلاوت و دعا دیکھیں';
-      if (icon) icon.className = 'fa-solid fa-book-open';
-      btn.classList.remove('active');
-      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  }
-};
-
-// Open Wazifa Ijazah Request Modal
-window.openIjazahModal = function(wazifaTitle) {
-  const modal = document.getElementById('modalWazifaIjazah');
-  if (!modal) return;
-  const titleInput = document.getElementById('ijazahWazifaTitle');
-  if (titleInput) titleInput.value = wazifaTitle || 'منزل شریف';
-  if (typeof window.initCountryDropdowns === 'function') {
-    window.initCountryDropdowns('Pakistan');
-  }
-  if (typeof openModal === 'function') {
-    openModal('modalWazifaIjazah');
-  } else {
-    modal.classList.add('active');
-  }
-};
-
-// Submit Wazifa Ijazah Request to WhatsApp
-window.submitWazifaIjazah = function() {
-  const isEn = state.currentLang === 'en';
-  const wazifa = (document.getElementById('ijazahWazifaTitle')?.value || 'منزل شریف').trim();
-  const name = (document.getElementById('ijazahFullName')?.value || '').trim();
-  const fatherName = (document.getElementById('ijazahFatherName')?.value || '').trim();
-  const issue = (document.getElementById('ijazahIssue')?.value || '').trim();
-  const city = (document.getElementById('ijazahCity')?.value || '').trim();
-  const country = (document.getElementById('wazifaIjazahCountry')?.value || 'Pakistan').trim();
-  const prof = (document.getElementById('ijazahProfession')?.value || '').trim();
-  const purpose = (document.getElementById('ijazahPurpose')?.value || '').trim();
-  const phone = (document.getElementById('ijazahWhatsApp')?.value || '').trim();
-
-  if (!name) {
-    alert(isEn ? 'Please enter your full name.' : 'براہِ کرم سائل / مریض کا مکمل نام درج فرمائیں۔');
-    document.getElementById('ijazahFullName')?.focus();
-    return;
-  }
-  if (!phone) {
-    alert(isEn ? 'Please enter your WhatsApp mobile number.' : 'براہِ کرم واٹس ایپ موبائل نمبر ضرور درج فرمائیں۔');
-    document.getElementById('ijazahWhatsApp')?.focus();
-    return;
-  }
-
-  let text = `*درخواستِ شرعی و روحانی اجازت (Khizri Ways)*\n\n`;
-  text += `📋 *وظیفہ:* ${wazifa}\n`;
-  text += `👤 *سائل / مریض کا نام:* ${name}\n`;
-  if (fatherName) text += `👨‍👩‍👧 *والد / والدہ کا نام:* ${fatherName}\n`;
-  if (issue) text += `⚠️ *مسئلہ / بیماری کی نوعیت:* ${issue}\n`;
-  if (city) text += `🏙️ *شہر و پتہ:* ${city}\n`;
-  if (country) text += `🌍 *ملک:* ${country}\n`;
-  if (prof) text += `💼 *پیشہ / کام:* ${prof}\n`;
-  if (purpose) text += `🎯 *خاص مقصد / نیت:* ${purpose}\n`;
-  text += `📱 *واٹس ایپ نمبر:* ${phone}\n`;
-  text += `\nحضرت مفتی صاحب! مجھے اس وظیفے کی باقاعدہ شرعی و روحانی اجازت اور دعاؤں سے نوازیں۔ جزاک اللہ خیراً!`;
-
-  const encoded = encodeURIComponent(text);
-  window.open(`https://wa.me/923136224339?text=${encoded}`, '_blank');
-  
-  if (typeof closeModal === 'function') {
-    closeModal('modalWazifaIjazah');
-  } else {
-    const modal = document.getElementById('modalWazifaIjazah');
-    if (modal) modal.classList.remove('active');
-  }
-}
-
-// Global Audio Player instance for authentic Qari MP3 recitations
-let currentWazifaAudio = null;
-
-window.playWazifaAudio = function(btn, wazifaId) {
-  const isEn = state.currentLang === 'en';
-  const txtSpan = btn.querySelector('.audio-btn-txt');
-  const icon = btn.querySelector('i');
-
-  // If already playing this button, pause/stop it
-  if (btn.classList.contains('playing')) {
-    if (currentWazifaAudio) {
-      currentWazifaAudio.pause();
-      currentWazifaAudio.currentTime = 0;
-    }
-    btn.classList.remove('playing');
-    if (txtSpan) txtSpan.textContent = isEn ? 'Listen Recitation (Qari)' : 'تلاوت سنیں (قاری صاحب)';
-    if (icon) icon.className = 'fa-solid fa-volume-high';
-    return;
-  }
-
-  // Stop any other active playing audio buttons
-  document.querySelectorAll('.btn-wic-audio.playing').forEach(b => {
-    b.classList.remove('playing');
-    const s = b.querySelector('.audio-btn-txt');
-    const ic = b.querySelector('i');
-    if (s) s.textContent = isEn ? 'Listen Recitation (Qari)' : 'تلاوت سنیں (قاری صاحب)';
-    if (ic) ic.className = 'fa-solid fa-volume-high';
-  });
-  if (currentWazifaAudio) {
-    currentWazifaAudio.pause();
-    currentWazifaAudio.currentTime = 0;
-  }
-
-  // Find item audioUrl from state.wazaif or fallback to downloaded Qari recitations
-  const item = (state.wazaif || []).find(w => w.id === wazifaId);
-  const audioSrc = item?.audioUrl || (wazifaId === 'waz-manzil' ? '/uploads/manzil-qari-recitation.mp3' : (wazifaId === 'waz-hizb-bahr' ? '/uploads/hizb-ul-bahr-recitation.mp3' : null));
-
-  if (audioSrc) {
-    btn.classList.add('playing');
-    if (txtSpan) txtSpan.textContent = isEn ? 'Playing Recitation...' : 'تلاوت جاری ہے...';
-    if (icon) icon.className = 'fa-solid fa-pause';
-
-    currentWazifaAudio = new Audio(audioSrc);
-    currentWazifaAudio.play().catch(e => {
-      console.error('Audio play error:', e);
-      btn.classList.remove('playing');
-      if (txtSpan) txtSpan.textContent = isEn ? 'Listen Recitation (Qari)' : 'تلاوت سنیں (قاری صاحب)';
-      if (icon) icon.className = 'fa-solid fa-volume-high';
-    });
-
-    currentWazifaAudio.onended = function() {
-      btn.classList.remove('playing');
-      if (txtSpan) txtSpan.textContent = isEn ? 'Listen Recitation (Qari)' : 'تلاوت سنیں (قاری صاحب)';
-      if (icon) icon.className = 'fa-solid fa-volume-high';
-    };
-  } else {
-    alert(isEn ? 'Audio recitation by professional Qari will be available shortly.' : 'اس وظیفے کی مستند قاری کی تلاوت جلد اپ لوڈ کی جا رہی ہے۔');
-  }
-};
-
-// WhatsApp Consultation for Specific Wazifa
-window.openWazifaConsult = function(wazifaTitle) {
-  const msg = encodeURIComponent(`السلام علیکم حضرت! مجھے "${wazifaTitle}" کے وظیفہ کے متعلق رہنمائی اور اجازت درکار ہے۔`);
-  window.open(`https://wa.me/923136224339?text=${msg}`, '_blank');
-};
 
 // Interactive In-Card Counter Function for Spiritual Healing & Wazaif
 window.countModuleWazifa = function(btn, target) {
@@ -2200,227 +1357,41 @@ window.toggleMuraqaba = function() {
 };
 
 // Khawab ki Tabeer Live Search
-// ==========================================
-// KHAWAB KI TABEER MODULE (HAROOF-E-TAHAJJI & ACCORDION)
-// ==========================================
-let currentKhawabAlpha = 'all';
-let currentKhawabQuery = '';
-const expandedKhawabIds = new Set();
-let areAllKhawabExpanded = false;
+window.handleKhawabSearch = function(query) {
+  const q = query.trim().toLowerCase();
+  const cards = document.querySelectorAll('#tabeerCardsList .tabeer-card');
+  document.querySelectorAll('#khawabAlphaRow .alpha-btn').forEach(b => b.classList.remove('active'));
 
-window.renderKhawabCards = function() {
-  const container = document.getElementById('tabeerCardsList');
-  if (!container) return;
-
-  const db = (window.KHAWAB_DATABASE && window.KHAWAB_DATABASE.length > 0) ? window.KHAWAB_DATABASE : [];
-  let items = [...db];
-
-  // 1. Filter by Harf (letter)
-  if (currentKhawabAlpha && currentKhawabAlpha !== 'all') {
-    items = items.filter(item => {
-      if (currentKhawabAlpha === 'ا') {
-        return item.alpha === 'ا' || item.alpha === 'آ';
-      }
-      return item.alpha === currentKhawabAlpha;
-    });
-  }
-
-  // 2. Filter by search query
-  if (currentKhawabQuery && currentKhawabQuery.trim()) {
-    const q = currentKhawabQuery.trim().toLowerCase();
-    items = items.filter(item => 
-      (item.title && item.title.toLowerCase().includes(q)) ||
-      (item.meaning && item.meaning.toLowerCase().includes(q)) ||
-      (item.scholar && item.scholar.toLowerCase().includes(q)) ||
-      (item.keywords && item.keywords.toLowerCase().includes(q)) ||
-      (item.subtitle && item.subtitle.toLowerCase().includes(q))
-    );
-  }
-
-  // Update count badge
-  const countEl = document.getElementById('khawabCountBadge');
-  if (countEl) countEl.textContent = items.length;
-
-  if (!items.length) {
-    container.innerHTML = `
-      <div style="text-align:center; padding:35px 16px; background:#F8FAFC; border-radius:14px; border:1px solid #E2E8F0; color:#94A3B8;">
-        <i class="fa-solid fa-cloud-moon" style="font-size:2.4rem; margin-bottom:10px; color:#CBD5E1;"></i>
-        <h4 style="margin:0 0 6px 0; color:#0F172A; font-size:0.98rem; font-weight:800;">کوئی تعبیر نہیں ملی</h4>
-        <p style="margin:0 0 12px 0; font-size:0.82rem;">براہ کرم کوئی دوسرا لفظ تلاش کریں یا فارم کے ذریعے دریافت فرمائیں۔</p>
-        <button onclick="clearKhawabSearch()" style="background:#6D28D9; color:#FFF; border:none; border-radius:6px; padding:6px 14px; font-size:0.78rem; font-weight:700; cursor:pointer;">
-          تمام تعبیرات دیکھیں
-        </button>
-      </div>
-    `;
-    return;
-  }
-
-  container.innerHTML = items.map((item, idx) => {
-    const isOpen = expandedKhawabIds.has(item.id);
-    const openClass = isOpen ? 'is-open' : '';
-
-    return `
-      <div class="tabeer-card ${openClass}" id="tabeerCard_${item.id}">
-        <!-- Clickable Header: Title, Letter & Scholar -->
-        <div class="tabeer-header" onclick="toggleKhawabCard('${item.id}')" role="button" tabindex="0" title="تعبیر پڑھنے کے لیے کلک کریں">
-          <div class="tabeer-header-main">
-            <span class="tabeer-alpha-badge">${item.alpha}</span>
-            <div class="tabeer-title-wrap">
-              <h4 class="tabeer-title">${item.title}</h4>
-              <span class="tabeer-scholar-badge"><i class="fa-solid fa-user-graduate text-purple"></i> ${item.scholar}</span>
-            </div>
-          </div>
-          <div class="tabeer-header-meta">
-            <span class="tabeer-tag-badge">${item.tag}</span>
-            <span class="tabeer-chevron-wrap">
-              <i class="fa-solid fa-chevron-down tabeer-chevron"></i>
-            </span>
-          </div>
-        </div>
-
-        <!-- Body: Detailed Interpretation & Guidance -->
-        <div class="tabeer-body" id="tabeerBody_${item.id}">
-          <div class="tabeer-meaning-box">
-            <div class="tabeer-box-title">
-              <i class="fa-solid fa-book-open-reader text-purple"></i>
-              <strong>تعبیر و مفہوم:</strong>
-            </div>
-            <p class="tabeer-meaning-text">${item.meaning}</p>
-          </div>
-
-          <div class="tabeer-advice-box">
-            <i class="fa-solid fa-lightbulb text-gold"></i>
-            <span><strong>شرعی ہدایت:</strong> ${item.advice}</span>
-          </div>
-
-          <div class="tabeer-card-footer">
-            <button class="btn-tabeer-collapse" onclick="toggleKhawabCard('${item.id}')">
-              <i class="fa-solid fa-chevron-up"></i> تعبیر بند کریں
-            </button>
-            <button class="btn-tabeer-wa" onclick="askSpecificKhawabWhatsApp('${item.id}')">
-              <i class="fa-solid fa-file-pen"></i> مفتی صاحب سے تعبیر پوچھیں (فارم پُر کریں)
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-  }).join('');
-};
-
-window.toggleKhawabCard = function(id) {
-  const card = document.getElementById('tabeerCard_' + id);
-  if (!card) return;
-
-  if (expandedKhawabIds.has(id)) {
-    expandedKhawabIds.delete(id);
-    card.classList.remove('is-open');
-  } else {
-    expandedKhawabIds.add(id);
-    card.classList.add('is-open');
-  }
-
-  const totalCards = document.querySelectorAll('.tabeer-card').length;
-  const btnAll = document.getElementById('btnToggleAllKhawab');
-  if (btnAll) {
-    if (expandedKhawabIds.size === totalCards && totalCards > 0) {
-      areAllKhawabExpanded = true;
-      btnAll.innerHTML = '<i class="fa-solid fa-chevron-up"></i> تمام تعبیرات سمیٹیں';
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const keywords = (card.getAttribute('data-keyword') || '').toLowerCase();
+    if (!q || text.includes(q) || keywords.includes(q)) {
+      card.style.display = 'block';
     } else {
-      areAllKhawabExpanded = false;
-      btnAll.innerHTML = '<i class="fa-solid fa-chevron-down"></i> تمام تعبیرات کھولیں';
+      card.style.display = 'none';
     }
-  }
+  });
 };
 
-window.toggleAllKhawab = function() {
-  const db = (window.KHAWAB_DATABASE && window.KHAWAB_DATABASE.length > 0) ? window.KHAWAB_DATABASE : [];
-  const cards = document.querySelectorAll('.tabeer-card');
-  const anyClosed = Array.from(cards).some(c => !c.classList.contains('is-open'));
-
-  if (anyClosed) {
-    db.forEach(item => expandedKhawabIds.add(item.id));
-    cards.forEach(c => c.classList.add('is-open'));
-    areAllKhawabExpanded = true;
-  } else {
-    expandedKhawabIds.clear();
-    cards.forEach(c => c.classList.remove('is-open'));
-    areAllKhawabExpanded = false;
-  }
-
-  const btnAll = document.getElementById('btnToggleAllKhawab');
-  if (btnAll) {
-    btnAll.innerHTML = areAllKhawabExpanded
-      ? '<i class="fa-solid fa-chevron-up"></i> تمام تعبیرات سمیٹیں'
-      : '<i class="fa-solid fa-chevron-down"></i> تمام تعبیرات کھولیں';
-  }
-};
-
+// Khawab Alphabet Filter
 window.filterKhawabAlpha = function(letter, btn) {
-  currentKhawabAlpha = letter;
   document.querySelectorAll('#khawabAlphaRow .alpha-btn').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
 
   const searchInput = document.getElementById('khawabSearchInput');
   if (searchInput) searchInput.value = '';
-  currentKhawabQuery = '';
 
-  const btnClear = document.getElementById('btnClearKhawabSearch');
-  if (btnClear) btnClear.style.display = 'none';
-
-  renderKhawabCards();
-};
-
-window.handleKhawabSearch = function(query) {
-  currentKhawabQuery = query || '';
-  if (currentKhawabQuery.trim()) {
-    currentKhawabAlpha = 'all';
-    document.querySelectorAll('#khawabAlphaRow .alpha-btn').forEach(b => {
-      b.classList.toggle('active', b.getAttribute('data-alpha') === 'all');
-    });
-  }
-  const btnClear = document.getElementById('btnClearKhawabSearch');
-  if (btnClear) {
-    btnClear.style.display = query && query.trim() ? 'block' : 'none';
-  }
-  renderKhawabCards();
-};
-
-window.clearKhawabSearch = function() {
-  const searchInput = document.getElementById('khawabSearchInput');
-  if (searchInput) searchInput.value = '';
-  currentKhawabQuery = '';
-  currentKhawabAlpha = 'all';
-
-  const btnClear = document.getElementById('btnClearKhawabSearch');
-  if (btnClear) btnClear.style.display = 'none';
-
-  document.querySelectorAll('#khawabAlphaRow .alpha-btn').forEach(b => {
-    b.classList.toggle('active', b.getAttribute('data-alpha') === 'all');
+  const cards = document.querySelectorAll('#tabeerCardsList .tabeer-card');
+  cards.forEach(card => {
+    const cardAlpha = card.getAttribute('data-alpha');
+    if (letter === 'all' || cardAlpha === letter) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
   });
-
-  renderKhawabCards();
 };
 
-window.askSpecificKhawabWhatsApp = function(id) {
-  const db = (window.KHAWAB_DATABASE && window.KHAWAB_DATABASE.length > 0) ? window.KHAWAB_DATABASE : [];
-  const item = db.find(d => d.id === id);
-  const title = item ? item.title : '';
-
-  // Open the Khawab Consultation Form modal (Not direct WhatsApp)
-  openModal('modalKhawabConsult');
-
-  // Pre-fill the dream description field with this specific dream's title
-  const dreamInput = document.getElementById('khawabDreamText');
-  if (dreamInput) {
-    dreamInput.value = title ? `${title}: ` : '';
-    setTimeout(() => {
-      dreamInput.focus();
-      try {
-        dreamInput.setSelectionRange(dreamInput.value.length, dreamInput.value.length);
-      } catch (e) {}
-    }, 250);
-  }
-};
 
 // ====================================================
 // SERVICES SCREEN INTERACTIVITY (CATEGORY & SEARCH)
@@ -2528,23 +1499,20 @@ let engagementTimer = null;
 const TWO_MINUTES_MS = 120000; // 2 minutes (120 seconds)
 
 function initReviewEngagementTracker() {
-  try {
-    if (typeof window !== 'undefined' && window.sessionStorage && sessionStorage.getItem('khizri_review_prompt_shown')) {
-      return;
-    }
-  } catch(e) { return; }
+  // Check if already shown or dismissed in current session
+  if (sessionStorage.getItem('khizri_review_prompt_shown')) {
+    return;
+  }
 
+  // Set timeout for 2 minutes of continuous app usage
   engagementTimer = setTimeout(() => {
-    try {
-      const shown = typeof window !== 'undefined' && window.sessionStorage && sessionStorage.getItem('khizri_review_prompt_shown');
-      const reviewed = typeof window !== 'undefined' && window.localStorage && localStorage.getItem('khizri_user_reviewed');
-      if (!shown && !reviewed) {
-        if (typeof window.openModal === 'function') {
-          window.openModal('modalReviewPrompt');
-          if (window.sessionStorage) sessionStorage.setItem('khizri_review_prompt_shown', 'true');
-        }
+    // Only show if user hasn't reviewed yet and hasn't closed it in this session
+    if (!sessionStorage.getItem('khizri_review_prompt_shown') && !localStorage.getItem('khizri_user_reviewed')) {
+      if (typeof window.openModal === 'function') {
+        window.openModal('modalReviewPrompt');
+        sessionStorage.setItem('khizri_review_prompt_shown', 'true');
       }
-    } catch(e) {}
+    }
   }, TWO_MINUTES_MS);
 }
 
@@ -2552,14 +1520,12 @@ window.dismissReviewPrompt = function() {
   if (typeof window.closeModal === 'function') {
     window.closeModal('modalReviewPrompt');
   }
-  try { if (typeof window !== 'undefined' && window.sessionStorage) sessionStorage.setItem('khizri_review_prompt_shown', 'true'); } catch(e) {}
+  sessionStorage.setItem('khizri_review_prompt_shown', 'true');
 };
 
 window.handleGoogleReviewClick = function() {
-  try {
-    if (typeof window !== 'undefined' && window.localStorage) localStorage.setItem('khizri_user_reviewed', 'true');
-    if (typeof window !== 'undefined' && window.sessionStorage) sessionStorage.setItem('khizri_review_prompt_shown', 'true');
-  } catch(e) {}
+  localStorage.setItem('khizri_user_reviewed', 'true');
+  sessionStorage.setItem('khizri_review_prompt_shown', 'true');
   if (typeof window.closeModal === 'function') {
     window.closeModal('modalReviewPrompt');
   }
@@ -2746,16 +1712,8 @@ async function fetchFatwas() {
   }
 }
 
-const expandedFatwaIds = new Set();
-let areAllFatwasExpanded = false;
-
 function renderMasailMiniButtons() {
-  renderMasailCards();
-      if (window.renderKhawabCards) window.renderKhawabCards();
-}
-
-function renderMasailCards() {
-  const container = document.getElementById('masailCardsContainer') || document.getElementById('masailButtonsGrid');
+  const container = document.getElementById('masailButtonsGrid');
   if (!container) return;
 
   let items = (state.fatwas && state.fatwas.length > 0) ? state.fatwas : DEFAULT_BANURI_FATWAS;
@@ -2779,223 +1737,76 @@ function renderMasailCards() {
 
   if (!items.length) {
     container.innerHTML = `
-      <div style="text-align:center; padding:35px 16px; background:#F8FAFC; border-radius:14px; border:1px solid #E2E8F0; color:#94A3B8;">
-        <i class="fa-solid fa-file-circle-question" style="font-size:2.4rem; margin-bottom:10px; color:#CBD5E1;"></i>
-        <h4 style="margin:0 0 6px 0; color:#0F172A; font-size:0.98rem; font-weight:800;">کوئی مسئلہ نہیں ملا</h4>
-        <p style="margin:0 0 12px 0; font-size:0.82rem;">براہ کرم کوئی دوسرا لفظ تلاش کریں یا فارم کے ذریعے دریافت فرمائیں۔</p>
-        <button onclick="clearMasailSearch()" style="background:#0284C7; color:#FFF; border:none; border-radius:6px; padding:6px 14px; font-size:0.78rem; font-weight:700; cursor:pointer;">
-          تمام مسائل دیکھیں
-        </button>
+      <div style="text-align:center; padding:30px 16px; color:#94A3B8;">
+        <i class="fa-solid fa-file-circle-question" style="font-size:2.2rem; margin-bottom:8px; color:#CBD5E1;"></i>
+        <h4 style="margin:0 0 4px 0; color:#0F172A; font-size:0.95rem;">کوئی مسئلہ نہیں ملا</h4>
+        <p style="margin:0; font-size:0.8rem;">براہ کرم کوئی دوسرا لفظ لکھ کر تلاش کریں یا واٹس ایپ پر دریافت کریں۔</p>
       </div>
     `;
     return;
   }
 
-  container.innerHTML = items.map((f, idx) => {
-    const isOpen = expandedFatwaIds.has(f.id);
-    const formattedAnswer = (f.answer || '').replace(/\n/g, '<br>');
-    const openClass = isOpen ? 'is-open' : '';
-
-    return `
-      <div class="fatwa-screen-card ${openClass}" id="fatwaCard_${f.id}">
-        <!-- Clickable Header: ONLY Masala Title shown initially -->
-        <div class="fsc-header" onclick="toggleFatwaCard('${f.id}')" role="button" tabindex="0" title="جواب دیکھنے کے لیے کلک کریں">
-          <div class="fsc-header-main">
-            <span class="fsc-index-badge">${idx + 1}</span>
-            <h3 class="fsc-title">${f.title}</h3>
-          </div>
-          <div class="fsc-header-meta">
-            <span class="fsc-cat-badge">${f.category}</span>
-            <span class="fsc-chevron-wrap" title="جواب کھولیں / بند کریں">
-              <i class="fa-solid fa-chevron-down fsc-chevron"></i>
-            </span>
-          </div>
-        </div>
-
-        <!-- Body: Contains Sawaal & Jawaab, shown ONLY upon click -->
-        <div class="fsc-body" id="fatwaBody_${f.id}">
-          <!-- Meta details: Fatwa Number & Darul Ifta -->
-          <div class="fsc-top-bar">
-            <div class="fsc-meta-left">
-              <span class="fsc-no-badge"><i class="fa-solid fa-stamp text-gold"></i> فتویٰ نمبر: ${f.fatwaNumber}</span>
-              <span class="fsc-darulifta-tag">
-                <i class="fa-solid fa-building-columns text-gold"></i> دار الافتاء بنوری ٹاؤن کراچی
-              </span>
-            </div>
-            <span class="fsc-verified-stamp">
-              <i class="fa-solid fa-certificate text-gold"></i> تصدیق شدہ
-            </span>
-          </div>
-
-          <!-- Question Box -->
-          <div class="fsc-question-box">
-            <div class="fsc-box-header">
-              <i class="fa-solid fa-circle-question text-danger"></i>
-              <strong>سوال (سائل کی طرف سے):</strong>
-            </div>
-            <p class="fsc-question-text">${f.question}</p>
-          </div>
-
-          <!-- Answer Box (الجواب حامداً ومصلیاً) -->
-          <div class="fsc-answer-box">
-            <div class="fsc-box-header">
-              <i class="fa-solid fa-scale-balanced text-gold"></i>
-              <strong>الجواب حامداً ومصلیاً (شرعی فتویٰ):</strong>
-            </div>
-            <div class="fsc-answer-text">${formattedAnswer}</div>
-          </div>
-
-          <!-- Reference Citation -->
-          <div class="fsc-ref-box">
-            <i class="fa-solid fa-book-bookmark text-gold"></i>
-            <strong>کتبِ حوالہ / مراجع:</strong> ${f.references || 'رد المحتار علی الدر المختار (فتاویٰ شامی)، الفتاویٰ الہندیہ (عالمگیری)'}
-          </div>
-
-          <!-- Card Footer Actions -->
-          <div class="fsc-footer">
-            <button class="btn-fsc-collapse" onclick="toggleFatwaCard('${f.id}')" title="جواب بند کریں">
-              <i class="fa-solid fa-chevron-up"></i> جواب بند کریں
-            </button>
-            <div class="fsc-actions">
-              <button class="btn-fsc-copy" onclick="copyFatwaText('${f.id}')" title="فتویٰ نقل کریں">
-                <i class="fa-regular fa-copy"></i> نقل / کاپی
-              </button>
-              <button class="btn-fsc-wa" onclick="askSpecificFatwaWhatsApp('${f.id}')" title="اس پر مزید رہنمائی لیں">
-                <i class="fa-brands fa-whatsapp"></i> مسئلہ پوچھیں
-              </button>
-            </div>
+  container.innerHTML = items.map((f, idx) => `
+    <div class="fatwa-mini-btn" onclick="openFatwaDetail('${f.id}')" title="فتویٰ دیکھیں: ${f.title}">
+      <div class="fmb-left">
+        <span class="fmb-icon"><i class="fa-solid fa-book-open"></i></span>
+        <div class="fmb-title-wrap">
+          <h4 class="fmb-title">${f.title}</h4>
+          <div class="fmb-tags">
+            <span class="fmb-cat-tag">${f.category}</span>
+            <span class="fmb-no-tag">فتویٰ نمبر: ${f.fatwaNumber}</span>
           </div>
         </div>
       </div>
-    `;
-  }).join('');
+      <i class="fa-solid fa-chevron-left fmb-arrow"></i>
+    </div>
+  `).join('');
 }
 
-window.toggleFatwaCard = function(fatwaId) {
-  const card = document.getElementById('fatwaCard_' + fatwaId);
-  if (!card) return;
-
-  if (expandedFatwaIds.has(fatwaId)) {
-    expandedFatwaIds.delete(fatwaId);
-    card.classList.remove('is-open');
-  } else {
-    expandedFatwaIds.add(fatwaId);
-    card.classList.add('is-open');
-  }
-
-  // Update master toggle button state
-  const totalCards = document.querySelectorAll('.fatwa-screen-card').length;
-  const btnAll = document.getElementById('btnToggleAllFatwas');
-  if (btnAll) {
-    if (expandedFatwaIds.size === totalCards && totalCards > 0) {
-      areAllFatwasExpanded = true;
-      btnAll.innerHTML = '<i class="fa-solid fa-chevron-up"></i> تمام جوابات بند کریں';
-    } else {
-      areAllFatwasExpanded = false;
-      btnAll.innerHTML = '<i class="fa-solid fa-chevron-down"></i> تمام جوابات کھولیں';
-    }
-  }
+window.filterMasailCategory = function(cat, btn) {
+  currentMasailCat = cat;
+  const chips = document.querySelectorAll('#masailFilterChips .m-chip');
+  chips.forEach(c => c.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderMasailMiniButtons();
 };
 
-window.toggleFatwaAnswer = window.toggleFatwaCard;
-
-window.toggleAllFatwas = function() {
-  const allFatwas = (state.fatwas && state.fatwas.length > 0) ? state.fatwas : DEFAULT_BANURI_FATWAS;
-  const cards = document.querySelectorAll('.fatwa-screen-card');
-  const anyClosed = Array.from(cards).some(c => !c.classList.contains('is-open'));
-
-  if (anyClosed) {
-    allFatwas.forEach(f => expandedFatwaIds.add(f.id));
-    cards.forEach(c => c.classList.add('is-open'));
-    areAllFatwasExpanded = true;
-  } else {
-    expandedFatwaIds.clear();
-    cards.forEach(c => c.classList.remove('is-open'));
-    areAllFatwasExpanded = false;
+window.handleMasailSearch = function(query) {
+  currentMasailQuery = query;
+  const clearBtn = document.getElementById('btnClearMasailSearch');
+  if (clearBtn) {
+    clearBtn.style.display = query.trim() ? 'block' : 'none';
   }
-
-  const btnAll = document.getElementById('btnToggleAllFatwas');
-  if (btnAll) {
-    btnAll.innerHTML = areAllFatwasExpanded
-      ? '<i class="fa-solid fa-chevron-up"></i> تمام جوابات بند کریں'
-      : '<i class="fa-solid fa-chevron-down"></i> تمام جوابات کھولیں';
-  }
+  renderMasailMiniButtons();
 };
 
-window.copyFatwaText = function(fatwaId) {
-  const allFatwas = (state.fatwas && state.fatwas.length > 0) ? state.fatwas : DEFAULT_BANURI_FATWAS;
-  const f = allFatwas.find(item => item.id === fatwaId || item.fatwaNumber === fatwaId);
-  if (!f) return;
-
-  const text = `📜 *دار الافتاء جامعہ بنوری ٹاؤن کراچی — فتویٰ نمبر ${f.fatwaNumber}* 📜\n` +
-    `━━━━━━━━━━━━━━━━━━━━\n` +
-    `📌 *عنوان:* ${f.title}\n` +
-    `📂 *شعبہ:* ${f.category}\n\n` +
-    `❓ *سوال:*\n${f.question}\n\n` +
-    `⚖️ *الجواب حامداً ومصلیاً:*\n${f.answer}\n\n` +
-    `📚 *مراجع و حوالہ جات:* ${f.references || 'کتبِ فقہ حنفی'}\n` +
-    `━━━━━━━━━━━━━━━━━━━━\n` +
-    `خضریٰ ویز — دینی مسائل و روحانی رہنمائی ایپ`;
-
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(() => {
-      showToast(`فتویٰ نمبر ${f.fatwaNumber} کاپی کر لیا گیا!`);
-    });
-  } else {
-    showToast('فتویٰ منتخب کر لیا گیا');
-  }
-};
-
-window.askSpecificFatwaWhatsApp = function(fatwaId) {
-  const allFatwas = (state.fatwas && state.fatwas.length > 0) ? state.fatwas : DEFAULT_BANURI_FATWAS;
-  const f = allFatwas.find(item => item.id === fatwaId || item.fatwaNumber === fatwaId);
-
-  // Open Shariah Consultation Form modal
-  openModal('modalMasailConsult');
-
-  const qInput = document.getElementById('masailQuestionText');
-  if (qInput && f) {
-    qInput.value = `فتویٰ نمبر ${f.fatwaNumber} ("${f.title}") کے حوالے سے شرعی مسئلہ: `;
-    setTimeout(() => {
-      qInput.focus();
-      try {
-        qInput.setSelectionRange(qInput.value.length, qInput.value.length);
-      } catch (e) {}
-    }, 250);
-  }
+window.clearMasailSearch = function() {
+  const input = document.getElementById('masailSearchInput');
+  if (input) input.value = '';
+  window.handleMasailSearch('');
 };
 
 window.openFatwaDetail = function(fatwaId) {
-  // Directly scroll into view of the fatwa card on screen and expand it!
-  const card = document.getElementById('fatwaCard_' + fatwaId);
-  if (card) {
-    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    const ansEl = document.getElementById('fatwaAns_' + fatwaId);
-    if (ansEl && ansEl.classList.contains('collapsed')) {
-      window.toggleFatwaAnswer(fatwaId);
-    }
-    card.style.outline = '2px solid #0284C7';
-    setTimeout(() => card.style.outline = 'none', 1800);
-    return;
-  }
-
-  // Fallback modal if card element not found
   const allFatwas = (state.fatwas && state.fatwas.length > 0) ? state.fatwas : DEFAULT_BANURI_FATWAS;
   const fatwa = allFatwas.find(f => f.id === fatwaId || f.fatwaNumber === fatwaId);
   if (!fatwa) return;
+
   currentActiveFatwa = fatwa;
+
   const elNo = document.getElementById('fmdFatwaNo');
   const elCat = document.getElementById('fmdCategory');
   const elTitle = document.getElementById('fmdTitle');
   const elQ = document.getElementById('fmdQuestion');
   const elAns = document.getElementById('fmdAnswer');
   const elRef = document.getElementById('fmdReferences');
+
   if (elNo) elNo.textContent = 'فتویٰ نمبر: ' + fatwa.fatwaNumber;
   if (elCat) elCat.textContent = fatwa.category;
   if (elTitle) elTitle.textContent = fatwa.title;
   if (elQ) elQ.textContent = fatwa.question;
   if (elAns) elAns.textContent = fatwa.answer;
   if (elRef) elRef.textContent = fatwa.references || 'فتاویٰ شامی، عالمگیری، دار الافتاء بنوری ٹاؤن';
+
   if (typeof window.openModal === 'function') {
     window.openModal('modalFatwaDetail');
   }
@@ -3023,105 +1834,6 @@ if (document.readyState === 'loading') {
 
 
 // =========================================================
-
-// =========================================================
-// COMPREHENSIVE GLOBAL COUNTRIES LIST & DROPDOWN INITIALIZER
-// =========================================================
-const TOP_PRIORITY_COUNTRIES = [
-  { name: 'Pakistan', flag: '🇵🇰' },
-  { name: 'Saudi Arabia', flag: '🇸🇦' },
-  { name: 'United Arab Emirates', flag: '🇦🇪' },
-  { name: 'United Kingdom', flag: '🇬🇧' },
-  { name: 'United States', flag: '🇺🇸' },
-  { name: 'Canada', flag: '🇨🇦' },
-  { name: 'Australia', flag: '🇦🇺' },
-  { name: 'Oman', flag: '🇴🇲' },
-  { name: 'Qatar', flag: '🇶🇦' },
-  { name: 'Kuwait', flag: '🇰🇼' },
-  { name: 'Bahrain', flag: '🇧🇭' },
-  { name: 'Turkey', flag: '🇹🇷' },
-  { name: 'Malaysia', flag: '🇲🇾' },
-  { name: 'India', flag: '🇮🇳' },
-  { name: 'Bangladesh', flag: '🇧🇩' },
-  { name: 'South Africa', flag: '🇿🇦' },
-  { name: 'Germany', flag: '🇩🇪' },
-  { name: 'France', flag: '🇫🇷' },
-  { name: 'Italy', flag: '🇮🇹' },
-  { name: 'Spain', flag: '🇪🇸' },
-  { name: 'Ireland', flag: '🇮🇪' },
-  { name: 'New Zealand', flag: '🇳🇿' }
-];
-
-const ALL_WORLD_COUNTRIES = [
-  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
-  "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan",
-  "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia",
-  "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Brazzaville)", "Congo (Kinshasa)",
-  "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador",
-  "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France",
-  "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau",
-  "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland",
-  "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan",
-  "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar",
-  "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia",
-  "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal",
-  "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan",
-  "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania",
-  "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal",
-  "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea",
-  "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania",
-  "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda",
-  "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam",
-  "Yemen", "Zambia", "Zimbabwe"
-];
-
-window.initCountryDropdowns = function(preferredCountry = 'Pakistan') {
-  const selects = document.querySelectorAll('.country-select');
-  if (!selects || !selects.length) return;
-
-  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
-  const defaultLabel = isEn ? '-- Select Country --' : '-- ملک منتخب کریں (Select Country) --';
-  const topGroupLabel = isEn ? '🌟 Popular Countries' : '🌟 مقبول ممالک (Popular)';
-  const allGroupLabel = isEn ? '🌐 All Countries (A to Z)' : '🌐 تمام ممالک (All Countries A-Z)';
-
-  selects.forEach(select => {
-    const currentVal = select.value;
-    if (select.options && select.options.length > 20) {
-      if (!currentVal && preferredCountry) select.value = preferredCountry;
-      return;
-    }
-
-    let html = `<option value="">${defaultLabel}</option>`;
-    
-    html += `<optgroup label="${topGroupLabel}">`;
-    TOP_PRIORITY_COUNTRIES.forEach(c => {
-      html += `<option value="${c.name}">${c.flag} ${c.name}</option>`;
-    });
-    html += `</optgroup>`;
-
-    html += `<optgroup label="${allGroupLabel}">`;
-    ALL_WORLD_COUNTRIES.forEach(cName => {
-      html += `<option value="${cName}">${cName}</option>`;
-    });
-    html += `</optgroup>`;
-
-    select.innerHTML = html;
-    if (currentVal) {
-      select.value = currentVal;
-    } else if (preferredCountry) {
-      select.value = preferredCountry;
-    }
-  });
-};
-
-// Auto-run on DOM ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => window.initCountryDropdowns('Pakistan'));
-} else {
-  window.initCountryDropdowns('Pakistan');
-}
-
-
 // VIP SERVICES: MONTHLY DAM, AMLIYAT SADQA, TAWEEZ COURIER
 // =========================================================
 
@@ -3266,7 +1978,6 @@ let uploadedSubProofBase64 = '';
 window.openTasawwufSubscription = function(sessionType = 'group') {
   const modal = document.getElementById('modalTasawwufSubscription');
   if (!modal) return;
-  if (typeof window.initCountryDropdowns === 'function') window.initCountryDropdowns();
 
   const typeSelect = document.getElementById('tasSubSessionType');
   if (typeSelect) {
@@ -3314,7 +2025,6 @@ window.submitTasawwufSubscription = function() {
   
   const name = (document.getElementById('tasSubName')?.value || '').trim();
   const phone = (document.getElementById('tasSubPhone')?.value || '').trim();
-  const country = (document.getElementById('tasSubCountry')?.value || 'Pakistan').trim();
   const address = (document.getElementById('tasSubAddress')?.value || '').trim();
   const profession = (document.getElementById('tasSubProfession')?.value || '').trim();
   const sessionType = document.getElementById('tasSubSessionType')?.value || 'group';
@@ -3329,13 +2039,8 @@ window.submitTasawwufSubscription = function() {
     document.getElementById('tasSubPhone')?.focus();
     return;
   }
-  if (!country) {
-    alert(isEn ? 'Please select your country.' : 'براہِ کرم فہرست سے اپنا ملک منتخب کریں۔');
-    document.getElementById('tasSubCountry')?.focus();
-    return;
-  }
   if (!address) {
-    alert(isEn ? 'Please enter your City & Address.' : 'براہِ کرم اپنا شہر و پتہ درج کریں۔');
+    alert(isEn ? 'Please enter your City / Country.' : 'براہِ کرم اپنا شہر و ملک درج کریں۔');
     document.getElementById('tasSubAddress')?.focus();
     return;
   }
@@ -3353,7 +2058,6 @@ window.submitTasawwufSubscription = function() {
     id: 'TAS_' + Date.now(),
     name,
     phone,
-    country,
     address,
     profession,
     sessionType,
@@ -3386,7 +2090,7 @@ window.sendTasSubWhatsAppConfirm = function() {
     msg = 'Assalamu Alaikum Mufti Sahib!\nI have submitted my registration for the Meditation & Lataif Subscription.\n\n';
     msg += '👤 Name: ' + (rec.name || '') + '\n';
     msg += '📱 WhatsApp: ' + (rec.phone || '') + '\n';
-    msg += '📍 Location: ' + (rec.country ? rec.country + ' — ' : '') + (rec.address || '') + '\n';
+    msg += '📍 Location: ' + (rec.address || '') + '\n';
     msg += '💼 Profession: ' + (rec.profession || '') + '\n';
     msg += '📦 Session Type: ' + (rec.sessionTitle || '') + '\n';
     msg += '🧾 Payment Slip: Attached / Transferred\n\n';
@@ -3395,7 +2099,7 @@ window.sendTasSubWhatsAppConfirm = function() {
     msg = 'السلام علیکم مفتی صاحب!\nمیں نے مراقبہ و اسباقِ لطائف سبسکرپشن کا فارم جمع کروا دیا ہے۔\n\n';
     msg += '👤 سائل کا نام: ' + (rec.name || '') + '\n';
     msg += '📱 واٹس ایپ: ' + (rec.phone || '') + '\n';
-    msg += '📍 ملک و پتہ: ' + (rec.country ? rec.country + ' — ' : '') + (rec.address || '') + '\n';
+    msg += '📍 شہر و ملک / پتہ: ' + (rec.address || '') + '\n';
     msg += '💼 پیشہ / شعبہ زندگی: ' + (rec.profession || '') + '\n';
     msg += '📦 سیشن کی نوعیت: ' + (rec.sessionTitle || '') + '\n';
     msg += '🧾 پیمنٹ سلپ: ٹرانسفر مکمل کر کے سکرین شاٹ منسلک ہے۔\n\n';
@@ -3410,7 +2114,6 @@ window.sendTasSubWhatsAppConfirm = function() {
 // AUTHENTIC IJAZAH MODAL & DYNAMIC PRICING HANDLERS
 // =========================================================
 window.openAuthenticIjazahModal = function() {
-  if (typeof window.initCountryDropdowns === 'function') window.initCountryDropdowns();
   if (typeof window.openModal === 'function') {
     window.openModal('modalAuthenticIjazah');
   }
@@ -3421,7 +2124,6 @@ window.submitAuthenticIjazahForm = function() {
 
   const name = (document.getElementById('ijazahName')?.value || '').trim();
   const phone = (document.getElementById('ijazahPhone')?.value || '').trim();
-  const country = (document.getElementById('ijazahCountry')?.value || 'Pakistan').trim();
   const address = (document.getElementById('ijazahAddress')?.value || '').trim();
   const profession = (document.getElementById('ijazahProfession')?.value || '').trim();
   const statusVal = document.getElementById('ijazahStatus')?.value || 'none';
@@ -3437,13 +2139,8 @@ window.submitAuthenticIjazahForm = function() {
     document.getElementById('ijazahPhone')?.focus();
     return;
   }
-  if (!country) {
-    alert(isEn ? 'Please select your country.' : 'براہِ کرم فہرست سے اپنا ملک منتخب کریں۔');
-    document.getElementById('ijazahCountry')?.focus();
-    return;
-  }
   if (!address) {
-    alert(isEn ? 'Please enter your City & Address.' : 'براہِ کرم اپنا شہر و پتہ درج کریں۔');
+    alert(isEn ? 'Please enter your City / Address.' : 'براہِ کرم اپنا شہر و پتہ درج کریں۔');
     document.getElementById('ijazahAddress')?.focus();
     return;
   }
@@ -3471,7 +2168,7 @@ window.submitAuthenticIjazahForm = function() {
     msg += '------------------------------------\n';
     msg += '👤 *Applicant Name:* ' + name + '\n';
     msg += '📱 *WhatsApp:* ' + phone + '\n';
-    msg += '📍 *Country & Address:* ' + country + ' — ' + address + '\n';
+    msg += '📍 *City & Address:* ' + address + '\n';
     msg += '💼 *Profession:* ' + profession + '\n';
     msg += '📿 *Spiritual Background:* ' + statusText + '\n';
     if (details) {
@@ -3485,7 +2182,7 @@ window.submitAuthenticIjazahForm = function() {
     msg += '------------------------------------\n';
     msg += '👤 *سائل کا نام:* ' + name + '\n';
     msg += '📱 *واٹس ایپ نمبر:* ' + phone + '\n';
-    msg += '📍 *ملک و پتہ:* ' + country + ' — ' + address + '\n';
+    msg += '📍 *شہر و پتہ:* ' + address + '\n';
     msg += '💼 *پیشہ / شعبہ زندگی:* ' + profession + '\n';
     msg += '📿 *سابقہ وظائف / بیعت کا تعلق:* ' + statusText + '\n';
     if (details) {
@@ -3536,13 +2233,10 @@ let uploadedSadqaProofBase64 = '';
 window.openAnimalSadqaModal = function(animal = 'murghi', hissaType = 'single', isEnglish = false) {
   const modal = document.getElementById('modalAnimalSadqaBooking');
   if (!modal) return;
-  if (typeof window.initCountryDropdowns === 'function') window.initCountryDropdowns();
 
   const select = document.getElementById('sadqaPackageSelect');
   if (select) {
-    if (animal === 'karhai' && hissaType === 'single') select.value = 'karhai_single';
-    else if (animal === 'karhai' && hissaType === 'full') select.value = 'karhai_full';
-    else if (animal === 'murghi') select.value = 'murghi_single';
+    if (animal === 'murghi') select.value = 'murghi_single';
     else if (animal === 'bakra' && hissaType === 'single') select.value = 'bakra_single';
     else if (animal === 'bakra' && hissaType === 'full') select.value = 'bakra_full';
     else if (animal === 'gaye' && hissaType === 'single') select.value = 'gaye_single';
@@ -3572,90 +2266,47 @@ window.updateSadqaNotice = function() {
   const title = document.getElementById('sadqaNoticeTitle');
   const detail = document.getElementById('sadqaNoticeDetail');
   const amount = document.getElementById('sadqaNoticeAmount');
-  const famBlock = document.getElementById('sadqaFamilyMembersBlock');
-  const famNote = document.getElementById('sadqaFamilyBlockNote');
+  const famRow = document.getElementById('sadqaFamilyRow');
   if (!select || !title) return;
 
   const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
   const val = select.value;
 
-  let maxMembers = 1;
-  if (val === 'karhai_single') {
-    title.textContent = isEn ? 'Amal-e-Karhai (Shared Share - 1 Person)' : 'کڑھائی کا خاص عمل (مشترکہ حصہ — ۱ فرد)';
-    detail.textContent = isEn ? 'Sacred Qur\'anic inscriptions incinerated in iron pot for complete relief' : 'سائل کے نام و امراض کے تعویذات کڑھائی میں جلا کر سخت سحر و جنات کی کاٹ';
-    amount.textContent = 'Rs. 5,000';
-    maxMembers = 1;
-  } else if (val === 'karhai_full') {
-    title.textContent = isEn ? 'Full Dedicated Amal-e-Karhai (Max 5 Persons)' : 'مکمل انفرادی کڑھائی کا عمل (زیادہ سے زیادہ ۵ افراد)';
-    detail.textContent = isEn ? 'Dedicated pot incineration for patient & family (up to 5 members)' : 'مریض یا فیملی کیلئے خصوصی سیپریٹ کڑھائی کا عمل (زیادہ سے زیادہ ۵ افراد)';
-    amount.textContent = 'Rs. 25,000';
-    maxMembers = 5;
-  } else if (val === 'murghi_single') {
-    title.textContent = isEn ? 'Rooster / Bird Kaat & Remedy (1 Person)' : 'مرغی کا خاص عمل و صدقہ (۱ فرد)';
+  if (val === 'murghi_single') {
+    title.textContent = isEn ? 'Rooster / Bird Kaat & Remedy' : 'مرغی کا خاص عمل و صدقہ';
     detail.textContent = isEn ? 'Instant spiritual cut for 1 person' : '۱ فرد کیلئے فوری کاٹ و دفعِ بلا';
     amount.textContent = 'Rs. 6,000';
-    maxMembers = 1;
+    if (famRow) famRow.style.display = 'none';
   } else if (val === 'bakra_single') {
-    title.textContent = isEn ? 'Goat Remedy (Shared — Max 7 Persons)' : 'بکرے کا عمل (۱ حصہ — زیادہ سے زیادہ ۷ افراد)';
-    detail.textContent = isEn ? 'Up to 7 family members included' : 'زیادہ سے زیادہ ۷ افراد کے نام شامل ہو سکتے ہیں';
-    amount.textContent = 'Rs. 15,000';
-    maxMembers = 7;
+    title.textContent = isEn ? 'Goat Remedy (Shared — 5 to 7 Persons)' : 'بکرے کا عمل (۱ حصہ — ۵ تا ۷ افراد)';
+    detail.textContent = isEn ? 'Up to 5 to 7 family members included' : '۵ سے ۷ افراد کے نام شامل ہو سکتے ہیں';
+    amount.textContent = 'Rs. 10,000';
+    if (famRow) famRow.style.display = 'block';
   } else if (val === 'bakra_full') {
-    title.textContent = isEn ? 'Full Goat Individual Remedy (Max 7 Persons)' : 'مکمل بکرا (سیپریٹ انفرادی عمل — زیادہ سے زیادہ ۷ افراد)';
-    detail.textContent = isEn ? 'Dedicated sacrifice for up to 7 family members' : 'مستقل انفرادی بکرا برائے کامل دفعِ سحر (زیادہ سے زیادہ ۷ افراد)';
-    amount.textContent = 'Rs. 100,000';
-    maxMembers = 7;
+    title.textContent = isEn ? 'Full Goat Individual Remedy' : 'مکمل بکرا (سیپریٹ انفرادی عمل)';
+    detail.textContent = isEn ? 'Dedicated individual sacrifice for complete cure' : 'مستقل انفرادی بکرا برائے کامل دفعِ سحر';
+    amount.textContent = 'Rs. 35,000';
+    if (famRow) famRow.style.display = 'block';
   } else if (val === 'gaye_single') {
-    title.textContent = isEn ? 'Cow Remedy (Shared Share — Max 12 Persons)' : 'گائے کا خاندانی عمل (۱ حصہ — زیادہ سے زیادہ ۱۲ افراد)';
-    detail.textContent = isEn ? 'Ancestral witchcraft & family discord (up to 12 persons)' : 'خاندانی عداوت و نحوست کی کاٹ (زیادہ سے زیادہ ۱۲ افراد)';
-    amount.textContent = 'Rs. 25,000';
-    maxMembers = 12;
+    title.textContent = isEn ? 'Cow Remedy (Shared Share)' : 'گائے کا خاندانی عمل (۱ حصہ)';
+    detail.textContent = isEn ? 'Ancestral witchcraft & family discord' : 'خاندانی عداوت و نحوست کی کاٹ';
+    amount.textContent = 'Rs. 6,000';
+    if (famRow) famRow.style.display = 'block';
   } else if (val === 'gaye_full') {
-    title.textContent = isEn ? 'Full Cow Family Remedy (Max 12 Persons)' : 'مکمل گائے (پورا خاندان — زیادہ سے زیادہ ۱۲ افراد)';
-    detail.textContent = isEn ? 'Protection for whole extended family (up to 12 persons)' : 'پورے خاندان اور گھرانے کیلئے مکمل گائے (زیادہ سے زیادہ ۱۲ افراد)';
-    amount.textContent = 'Rs. 300,000';
-    maxMembers = 12;
+    title.textContent = isEn ? 'Full Cow Family Remedy' : 'مکمل گائے (پورا خاندان)';
+    detail.textContent = isEn ? 'Protection for whole extended family' : 'پورے خاندان اور گھرانے کیلئے مکمل گائے';
+    amount.textContent = 'Rs. 45,000';
+    if (famRow) famRow.style.display = 'block';
   } else if (val === 'oont_single') {
-    title.textContent = isEn ? 'Camel Remedy (1 Share — Max 12 Persons)' : 'اونٹ کا عمل و صدقہ (۱ حصہ — زیادہ سے زیادہ ۱۲ افراد)';
-    detail.textContent = isEn ? 'For severe chronic illness & cancer (up to 12 persons)' : 'مہلک امراض و کینسر سے شفا کیلئے (زیادہ سے زیادہ ۱۲ افراد)';
-    amount.textContent = 'Rs. 100,000';
-    maxMembers = 12;
+    title.textContent = isEn ? 'Camel Remedy (1 Share)' : 'اونٹ کا عمل و صدقہ (۱ حصہ)';
+    detail.textContent = isEn ? 'For severe chronic illness & cancer' : 'مہلک امراض و کینسر سے شفا کیلئے';
+    amount.textContent = 'Rs. 15,000';
+    if (famRow) famRow.style.display = 'block';
   } else if (val === 'oont_full') {
-    title.textContent = isEn ? 'Full Grand Camel Remedy (Max 12 Persons)' : 'مکمل اونٹ (بڑا خاندانی عمل — زیادہ سے زیادہ ۱۲ افراد)';
-    detail.textContent = isEn ? 'Grand ancestral sacrifice for family (up to 12 persons)' : 'نسلوں پرانے سحر و امراض کا بڑا خاتمہ (زیادہ سے زیادہ ۱۲ افراد)';
-    amount.textContent = 'Rs. 1,200,000';
-    maxMembers = 12;
-  }
-
-  // Update slots visibility according to user-specified limits:
-  // Karhai: max 5, Bakra: max 7, Cow & Camel: max 12
-  if (famBlock) {
-    if (maxMembers <= 1) {
-      famBlock.style.display = 'none';
-    } else {
-      famBlock.style.display = 'block';
-      if (famNote) {
-        if (maxMembers === 5) {
-          famNote.innerHTML = isEn 
-            ? '<strong>Amal-e-Karhai Slots (Max 5 Persons):</strong> Enter details for 1 or more family members (up to 5 members). All slots are optional.'
-            : '<strong>کڑھائی کا عمل (زیادہ سے زیادہ ۵ افراد):</strong> ۱ یا اس سے زائد جتنے بھی فیملی ممبرز کے نام درج کرنا چاہیں درج فرمائیں (زیادہ سے زیادہ ۵ افراد تک)۔';
-        } else if (maxMembers === 7) {
-          famNote.innerHTML = isEn 
-            ? '<strong>Goat Sadqa Slots (Max 7 Persons):</strong> Enter details for 1 or more family members (up to 7 members). All slots are optional.'
-            : '<strong>بکرے کا صدقہ و عمل (زیادہ سے زیادہ ۷ افراد):</strong> ۱ یا اس سے زائد جتنے بھی فیملی ممبرز کے نام درج کرنا چاہیں درج فرمائیں (زیادہ سے زیادہ ۷ افراد تک)۔';
-        } else {
-          famNote.innerHTML = isEn 
-            ? '<strong>Cow / Camel Slots (Max 12 Persons):</strong> Enter details for 1 or more family members (up to 12 members). All slots are optional.'
-            : '<strong>گائے و اونٹ کا عمل (زیادہ سے زیادہ ۱۲ افراد):</strong> ۱ یا اس سے زائد جتنے بھی فیملی ممبرز کے نام درج کرنا چاہیں درج فرمائیں (زیادہ سے زیادہ ۱۲ افراد تک)۔';
-        }
-      }
-      for (let i = 2; i <= 12; i++) {
-        const slotEl = document.getElementById('sadqaFamSlot' + i);
-        if (slotEl) {
-          slotEl.style.display = (i <= maxMembers) ? 'block' : 'none';
-        }
-      }
-    }
+    title.textContent = isEn ? 'Full Grand Camel Remedy' : 'مکمل اونٹ (بڑا خاندانی عمل)';
+    detail.textContent = isEn ? 'Grand ancestral sacrifice for generations' : 'نسلوں پرانے سحر و امراض کا بڑا خاتمہ';
+    amount.textContent = 'Rs. 100,000';
+    if (famRow) famRow.style.display = 'block';
   }
 };
 
@@ -3678,101 +2329,72 @@ window.handleSadqaProofPreview = function(event) {
 window.submitAnimalSadqaForm = function() {
   const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
 
-  // Member 1 (Primary / Head)
-  const m1Name = (document.getElementById('sadqaFam1Name')?.value || document.getElementById('sadqaLeadName')?.value || '').trim();
-  const m1Mother = (document.getElementById('sadqaFam1Mother')?.value || document.getElementById('sadqaParentName')?.value || '').trim();
-  const m1Issue = (document.getElementById('sadqaFam1Issue')?.value || '').trim();
-
-  if (!m1Name) {
-    alert(isEn ? 'Please enter Member 1 (Primary / Head) name.' : 'براہِ کرم پہلے فرد (بنیادی مریض یا سائل) کا نام درج کریں۔');
-    document.getElementById('sadqaFam1Name')?.focus();
-    return;
-  }
-  if (!m1Mother) {
-    alert(isEn ? 'Please enter Member 1 mother\'s name.' : 'براہِ کرم پہلے فرد کی والدہ کا نام درج کریں۔');
-    document.getElementById('sadqaFam1Mother')?.focus();
-    return;
-  }
-  if (!m1Issue) {
-    alert(isEn ? 'Please describe Member 1 illness / problem.' : 'براہِ کرم پہلے فرد کے مرض یا مسئلے کی تفصیل درج کریں۔');
-    document.getElementById('sadqaFam1Issue')?.focus();
-    return;
-  }
-
+  const leadName = (document.getElementById('sadqaLeadName')?.value || '').trim();
+  const parentName = (document.getElementById('sadqaParentName')?.value || '').trim();
+  const phone = (document.getElementById('sadqaPhone')?.value || '').trim();
+  const address = (document.getElementById('sadqaAddress')?.value || '').trim();
+  const familyNames = (document.getElementById('sadqaFamilyNames')?.value || '').trim();
+  const issueDetails = (document.getElementById('sadqaIssueDetails')?.value || '').trim();
   const select = document.getElementById('sadqaPackageSelect');
-  const val = select ? select.value : '';
   const selectedPkgText = select ? select.options[select.selectedIndex]?.text : '';
 
-  let maxMembers = 1;
-  if (val === 'karhai_full') maxMembers = 5;
-  else if (val === 'bakra_single' || val === 'bakra_full') maxMembers = 7;
-  else if (val === 'gaye_single' || val === 'gaye_full' || val === 'oont_single' || val === 'oont_full') maxMembers = 12;
-
-  // Collect all filled members up to maxMembers
-  const members = [];
-  members.push({ num: 1, name: m1Name, mother: m1Mother, issue: m1Issue });
-
-  for (let i = 2; i <= maxMembers; i++) {
-    const slotEl = document.getElementById('sadqaFamSlot' + i);
-    if (!slotEl || slotEl.style.display !== 'none') {
-      const n = (document.getElementById('sadqaFam' + i + 'Name')?.value || '').trim();
-      const m = (document.getElementById('sadqaFam' + i + 'Mother')?.value || '').trim();
-      const iss = (document.getElementById('sadqaFam' + i + 'Issue')?.value || '').trim();
-      if (n) {
-        members.push({ num: i, name: n, mother: m || 'Mother', issue: iss || 'General Protection & Shifa' });
-      }
-    }
-  }
-
-  const address = (document.getElementById('sadqaAddress')?.value || '').trim();
-  const country = (document.getElementById('sadqaCountry')?.value || 'Pakistan').trim();
-  const phone = (document.getElementById('sadqaPhone')?.value || '').trim();
-
-  if (!address) {
-    alert(isEn ? 'Please enter City & Residential Address.' : 'براہِ کرم شہر و رہائشی پتہ درج کریں۔');
-    document.getElementById('sadqaAddress')?.focus();
+  if (!leadName) {
+    alert(isEn ? 'Please enter primary patient/seeker name.' : 'براہِ کرم بنیادی مریض یا سائل کا نام درج کریں۔');
+    document.getElementById('sadqaLeadName')?.focus();
     return;
   }
-  if (!country) {
-    alert(isEn ? 'Please select country.' : 'براہِ کرم فہرست سے ملک منتخب کریں۔');
-    document.getElementById('sadqaCountry')?.focus();
+  if (!parentName) {
+    alert(isEn ? 'Please enter Mother or Father name.' : 'براہِ کرم والدہ یا والد کا نام درج کریں۔');
+    document.getElementById('sadqaParentName')?.focus();
     return;
   }
   if (!phone) {
-    alert(isEn ? 'Please enter WhatsApp or Contact number.' : 'براہِ کرم واٹس ایپ یا رابطہ نمبر درج کریں۔');
+    alert(isEn ? 'Please enter WhatsApp or Phone number.' : 'براہِ کرم واٹس ایپ یا فون نمبر درج کریں۔');
     document.getElementById('sadqaPhone')?.focus();
+    return;
+  }
+  if (!address) {
+    alert(isEn ? 'Please enter City and Address.' : 'براہِ کرم شہر و گھر کا پتہ درج کریں۔');
+    document.getElementById('sadqaAddress')?.focus();
+    return;
+  }
+  if (!issueDetails) {
+    alert(isEn ? 'Please describe the illness or affliction details.' : 'براہِ کرم تکلیف یا مسئلے کی تفصیل درج کریں۔');
+    document.getElementById('sadqaIssueDetails')?.focus();
     return;
   }
 
   let msg = '';
   if (isEn) {
     msg = '*Bismillahir Rahmanir Rahim*\n';
-    msg += '*Animal & Bird Sadqa / Karhai Registration (خضریٰ ویز)*\n';
+    msg += '*Animal & Bird Sadqa Remedy Registration (خضریٰ ویز)*\n';
     msg += '------------------------------------\n';
     msg += '📦 *Selected Ritual:* ' + selectedPkgText + '\n';
-    msg += '📍 *Country & Address:* ' + country + ' — ' + address + '\n';
+    msg += '👤 *Patient Name:* ' + leadName + ' (' + parentName + ')\n';
     msg += '📱 *WhatsApp / Mobile:* ' + phone + '\n';
-    msg += '\n👨‍👩‍👧‍👦 *Registered Members (شامل افراد مع والدہ و امراض):*\n';
-    members.forEach((m) => {
-      msg += '• *Member ' + m.num + ':* ' + m.name + ' (Mother: ' + m.mother + ') — Issue: ' + m.issue + '\n';
-    });
-    msg += '\n🧾 *Payment Slip:* ' + (uploadedSadqaProofBase64 ? 'Attached & Uploaded' : 'Transferred') + '\n';
+    msg += '📍 *City & Address:* ' + address + '\n';
+    if (familyNames) {
+      msg += '👨‍👩‍👧‍👦 *Included Family Members:* ' + familyNames + '\n';
+    }
+    msg += '📝 *Affliction / Issue Details:* ' + issueDetails + '\n';
+    msg += '🧾 *Payment Slip:* ' + (uploadedSadqaProofBase64 ? 'Attached & Uploaded' : 'Transferred') + '\n';
     msg += '------------------------------------\n';
-    msg += 'Assalamu Alaikum Mufti Sahib! I have submitted our registration details and fee for this sacred remedy. Please perform the ritual supplications and provide confirmation. JazakAllahu Khairan.';
+    msg += 'Assalamu Alaikum Mufti Sahib! I have submitted my details and fee for this animal charity ritual. Please perform the remedy and provide confirmation. JazakAllahu Khairan.';
   } else {
     msg = '*بسم الله الرحمن الرحيم*\n';
-    msg += '*درخواست برائے عملِ حیوانات، صدقات و کڑھائی (خضریٰ ویز)*\n';
+    msg += '*درخواست برائے عملِ حیوانات و صدقات (خضریٰ ویز)*\n';
     msg += '------------------------------------\n';
-    msg += '📦 *منتخب عمل:* ' + selectedPkgText + '\n';
-    msg += '📍 *ملک و رہائشی پتہ:* ' + country + ' — ' + address + '\n';
+    msg += '📦 *منتخب پیکیج:* ' + selectedPkgText + '\n';
+    msg += '👤 *سائل / مریض کا نام:* ' + leadName + ' (' + parentName + ')\n';
     msg += '📱 *واٹس ایپ نمبر:* ' + phone + '\n';
-    msg += '\n👨‍👩‍👧‍👦 *شامل افراد کی تفصیلات (نمبر وار مع والدہ و امراض):*\n';
-    members.forEach((m) => {
-      msg += '• *فرد ' + m.num + ':* ' + m.name + ' (والدہ: ' + m.mother + ') — مسئلہ: ' + m.issue + '\n';
-    });
-    msg += '\n🧾 *ہدیہ / سلپ:* ' + (uploadedSadqaProofBase64 ? 'سکرین شاٹ منسلک ہے' : 'ٹرانسفر مکمل') + '\n';
+    msg += '📍 *شہر و پتہ:* ' + address + '\n';
+    if (familyNames) {
+      msg += '👨‍👩‍👧‍👦 *شامل فیملی ممبرز:* ' + familyNames + '\n';
+    }
+    msg += '📝 *تکلیف و مسئلہ:* ' + issueDetails + '\n';
+    msg += '🧾 *ہدیہ / سلپ:* ' + (uploadedSadqaProofBase64 ? 'سکرین شاٹ منسلک ہے' : 'ٹرانسفر مکمل') + '\n';
     msg += '------------------------------------\n';
-    msg += 'السلام علیکم مفتی صاحب! میں نے عمل و صدقات کے اندراج کا فارم ہدیہ کی ادائیگی کے ساتھ جمع کروا دیا ہے۔ براہِ کرم نام شامل فرما کر عمل کا آغاز فرمائیں۔ جزاک اللہ خیراً۔';
+    msg += 'السلام علیکم مفتی صاحب! میں نے حیوانات و صدقات کے مسنون عمل کا فارم ہدیہ کی ادائیگی کے ساتھ جمع کروا دیا ہے۔ براہِ کرم نام شامل فرما کر عمل کا آغاز فرمائیں۔ جزاک اللہ خیراً۔';
   }
 
   if (typeof window.closeModal === 'function') {
@@ -3782,577 +2404,4 @@ window.submitAnimalSadqaForm = function() {
   if (typeof window.openWhatsAppConsult === 'function') {
     window.openWhatsAppConsult(msg);
   }
-};
-
-// ==========================================
-// MONTHLY RUQYAH & SPIRITUAL PROTECTION MODAL HANDLERS
-// ==========================================
-let activeDamPlan = 'individual';
-let uploadedDamSlipBase64 = '';
-
-window.openMonthlyDamModal = function(planType = 'individual') {
-  if (typeof window.initCountryDropdowns === 'function') window.initCountryDropdowns();
-  activeDamPlan = (planType === 'family') ? 'family' : 'individual';
-  switchDamModalPlan(activeDamPlan);
-  
-  const preview = document.getElementById('damSlipPreview');
-  if (preview) {
-    preview.style.display = 'none';
-    preview.src = '';
-  }
-  uploadedDamSlipBase64 = '';
-  const fileInput = document.getElementById('damSlipFile');
-  if (fileInput) fileInput.value = '';
-
-  if (typeof window.openModal === 'function') {
-    window.openModal('modalMonthlyDamBooking');
-  }
-};
-
-window.switchDamModalPlan = function(planType) {
-  activeDamPlan = (planType === 'family') ? 'family' : 'individual';
-  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
-
-  const btnIndiv = document.getElementById('btnDamTabIndiv');
-  const btnFam = document.getElementById('btnDamTabFam');
-  const secIndiv = document.getElementById('damFormIndividual');
-  const secFam = document.getElementById('damFormFamily');
-
-  const noticeTitle = document.getElementById('damPlanNoticeTitle');
-  const noticeDetail = document.getElementById('damPlanNoticeDetail');
-  const noticeAmount = document.getElementById('damPlanNoticeAmount');
-
-  if (activeDamPlan === 'individual') {
-    if (btnIndiv) {
-      btnIndiv.style.background = 'var(--khizri-navy-primary)';
-      btnIndiv.style.color = '#FFFFFF';
-    }
-    if (btnFam) {
-      btnFam.style.background = 'transparent';
-      btnFam.style.color = 'var(--text-muted)';
-    }
-    if (secIndiv) secIndiv.style.display = 'block';
-    if (secFam) secFam.style.display = 'none';
-
-    if (noticeTitle) noticeTitle.textContent = isEn ? 'Individual Plan (1 Person Daily Ruqyah)' : 'انفرادی پلان (۱ فرد کا روزانہ دم و دعا)';
-    if (noticeDetail) noticeDetail.textContent = isEn ? 'Daily specialized Ruqyah & prayers for 1 person' : 'سائل کا نام مع والدہ روزانہ خصوصی دعاؤں اور دم میں شامل';
-    if (noticeAmount) noticeAmount.textContent = isEn ? 'Rs. 3,000 / mo' : '3,000 روپے / ماہ';
-  } else {
-    if (btnIndiv) {
-      btnIndiv.style.background = 'transparent';
-      btnIndiv.style.color = 'var(--text-muted)';
-    }
-    if (btnFam) {
-      btnFam.style.background = 'var(--khizri-navy-primary)';
-      btnFam.style.color = '#FFFFFF';
-    }
-    if (secIndiv) secIndiv.style.display = 'none';
-    if (secFam) secFam.style.display = 'block';
-
-    if (noticeTitle) noticeTitle.textContent = isEn ? 'Complete Family Plan (4 to 5 Members)' : 'مکمل فیملی پلان (۴ تا ۵ افراد کا روزانہ دم)';
-    if (noticeDetail) noticeDetail.textContent = isEn ? 'Daily prayers for 4 to 5 members with separate illness slots' : 'خاندان کے ۴ تا ۵ افراد کے نام، والدہ کا نام اور الگ الگ امراض درج کریں';
-    if (noticeAmount) noticeAmount.textContent = isEn ? 'Rs. 6,000 / mo' : '6,000 روپے / ماہ';
-  }
-};
-
-window.handleDamSlipPreview = function(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    uploadedDamSlipBase64 = e.target.result;
-    const preview = document.getElementById('damSlipPreview');
-    if (preview) {
-      preview.src = e.target.result;
-      preview.style.display = 'block';
-    }
-  };
-  reader.readAsDataURL(file);
-};
-
-window.submitMonthlyDamModal = function() {
-  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
-
-  let msg = '';
-  if (activeDamPlan === 'individual') {
-    const name = (document.getElementById('damIndivName')?.value || '').trim();
-    const mother = (document.getElementById('damIndivMother')?.value || '').trim();
-    const issue = (document.getElementById('damIndivIssue')?.value || '').trim();
-    const country = (document.getElementById('damIndivCountry')?.value || 'Pakistan').trim();
-    const address = (document.getElementById('damIndivAddress')?.value || '').trim();
-    const phone = (document.getElementById('damIndivPhone')?.value || '').trim();
-
-    if (!name) {
-      alert(isEn ? 'Please enter patient / seeker full name.' : 'براہِ کرم مریض یا سائل کا نام درج کریں۔');
-      document.getElementById('damIndivName')?.focus();
-      return;
-    }
-    if (!mother) {
-      alert(isEn ? 'Please enter mother name.' : 'براہِ کرم والدہ کا نام درج کریں۔');
-      document.getElementById('damIndivMother')?.focus();
-      return;
-    }
-    if (!issue) {
-      alert(isEn ? 'Please describe the illness or problem.' : 'براہِ کرم مرض یا مسئلے کی تفصیل درج کریں۔');
-      document.getElementById('damIndivIssue')?.focus();
-      return;
-    }
-    if (!country) {
-      alert(isEn ? 'Please select your country.' : 'براہِ کرم فہرست سے اپنا ملک منتخب کریں۔');
-      document.getElementById('damIndivCountry')?.focus();
-      return;
-    }
-    if (!address) {
-      alert(isEn ? 'Please enter city and address.' : 'براہِ کرم شہر و پتہ درج کریں۔');
-      document.getElementById('damIndivAddress')?.focus();
-      return;
-    }
-    if (!phone) {
-      alert(isEn ? 'Please enter WhatsApp or contact phone number.' : 'براہِ کرم رابطہ نمبر درج کریں۔');
-      document.getElementById('damIndivPhone')?.focus();
-      return;
-    }
-
-    if (isEn) {
-      msg = '*Bismillahir Rahmanir Rahim*\n';
-      msg += '*Monthly Ruqyah & Protection Subscription (خضریٰ ویز)*\n';
-      msg += '------------------------------------\n';
-      msg += '📦 *Plan:* Individual Plan (1 Person Daily Ruqyah) — Rs. 3,000 / mo\n';
-      msg += '👤 *Patient Name:* ' + name + '\n';
-      msg += '🧕 *Mother\'s Name:* ' + mother + '\n';
-      msg += '📝 *Illness / Affliction Details:* ' + issue + '\n';
-      msg += '📍 *Country & Address:* ' + country + ' — ' + address + '\n';
-      msg += '📱 *WhatsApp / Mobile:* ' + phone + '\n';
-      msg += '🧾 *Payment Slip:* ' + (uploadedDamSlipBase64 ? 'Attached & Uploaded' : 'Transferred') + '\n';
-      msg += '------------------------------------\n';
-      msg += 'Assalamu Alaikum Mufti Sahib, please activate this monthly Ruqyah plan and include my name in the daily prayers. JazakAllah Khair!';
-    } else {
-      msg = '*بسم اللہ الرحمن الرحیم*\n';
-      msg += '*ماہانہ دم و روحانی حفاظت سبسکرپشن (خضریٰ ویز)*\n';
-      msg += '------------------------------------\n';
-      msg += '📦 *پلان:* انفرادی پلان (۱ فرد کا روزانہ دم و دعا) — 3,000 روپے ماہانہ\n';
-      msg += '👤 *مریض کا نام:* ' + name + '\n';
-      msg += '🧕 *والدہ کا نام:* ' + mother + '\n';
-      msg += '📝 *مرض یا مسئلہ کی تفصیل:* ' + issue + '\n';
-      msg += '📍 *ملک و پتہ:* ' + country + ' — ' + address + '\n';
-      msg += '📱 *واٹس ایپ / رابطہ نمبر:* ' + phone + '\n';
-      msg += '🧾 *ہدیہ کی رسید:* ' + (uploadedDamSlipBase64 ? 'سلپ ساتھ منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
-      msg += '------------------------------------\n';
-      msg += 'السلام علیکم مفتی صاحب! براہِ کرم یہ انفرادی ماہانہ دم کا پلان ایکٹو فرما کر روزانہ کے دم و دعاؤں میں شامل فرمائیں۔ جزاک اللہ خیراً۔';
-    }
-
-  } else {
-    // Family Plan
-    const m1Name = (document.getElementById('damFam1Name')?.value || '').trim();
-    const m1Mother = (document.getElementById('damFam1Mother')?.value || '').trim();
-    const m1Issue = (document.getElementById('damFam1Issue')?.value || '').trim();
-
-    if (!m1Name) {
-      alert(isEn ? 'Please enter Member 1 (Head / Primary) name.' : 'براہِ کرم پہلے فرد کا نام درج کریں۔');
-      document.getElementById('damFam1Name')?.focus();
-      return;
-    }
-    if (!m1Mother) {
-      alert(isEn ? 'Please enter Member 1 mother name.' : 'براہِ کرم پہلے فرد کی والدہ کا نام درج کریں۔');
-      document.getElementById('damFam1Mother')?.focus();
-      return;
-    }
-    if (!m1Issue) {
-      alert(isEn ? 'Please enter Member 1 illness / problem.' : 'براہِ کرم پہلے فرد کے مرض یا مسئلے کی تفصیل درج کریں۔');
-      document.getElementById('damFam1Issue')?.focus();
-      return;
-    }
-
-    const members = [];
-    members.push({ num: 1, name: m1Name, mother: m1Mother, issue: m1Issue });
-
-    // Members 2 to 5
-    for (let i = 2; i <= 5; i++) {
-      const n = (document.getElementById('damFam' + i + 'Name')?.value || '').trim();
-      const m = (document.getElementById('damFam' + i + 'Mother')?.value || '').trim();
-      const iss = (document.getElementById('damFam' + i + 'Issue')?.value || '').trim();
-      if (n) {
-        members.push({ num: i, name: n, mother: m || 'Mother', issue: iss || 'General Protection & Dua' });
-      }
-    }
-
-    const famCountry = (document.getElementById('damFamCountry')?.value || 'Pakistan').trim();
-    const famAddress = (document.getElementById('damFamAddress')?.value || '').trim();
-    const famPhone = (document.getElementById('damFamPhone')?.value || '').trim();
-
-    if (!famCountry) {
-      alert(isEn ? 'Please select family country.' : 'براہِ کرم فہرست سے خاندان کا ملک منتخب کریں۔');
-      document.getElementById('damFamCountry')?.focus();
-      return;
-    }
-    if (!famAddress) {
-      alert(isEn ? 'Please enter family city and residential address.' : 'براہِ کرم خاندان کا رہائشی پتہ و شہر درج کریں۔');
-      document.getElementById('damFamAddress')?.focus();
-      return;
-    }
-    if (!famPhone) {
-      alert(isEn ? 'Please enter family WhatsApp or contact number.' : 'براہِ کرم رابطہ نمبر درج کریں۔');
-      document.getElementById('damFamPhone')?.focus();
-      return;
-    }
-
-    if (isEn) {
-      msg = '*Bismillahir Rahmanir Rahim*\n';
-      msg += '*Monthly Ruqyah & Protection Subscription (خضریٰ ویز)*\n';
-      msg += '------------------------------------\n';
-      msg += '📦 *Plan:* Complete Family Plan (4 to 5 Members) — Rs. 6,000 / mo\n';
-      msg += '📍 *Family Country & Address:* ' + famCountry + ' — ' + famAddress + '\n';
-      msg += '📱 *Family Contact / WhatsApp:* ' + famPhone + '\n';
-      msg += '\n👨‍👩‍👧‍👦 *Family Members Registered:*\n';
-      members.forEach((m) => {
-        msg += '• *Member ' + m.num + ':* ' + m.name + ' (Mother: ' + m.mother + ') — Issue: ' + m.issue + '\n';
-      });
-      msg += '\n🧾 *Payment Slip:* ' + (uploadedDamSlipBase64 ? 'Attached & Uploaded' : 'Transferred') + '\n';
-      msg += '------------------------------------\n';
-      msg += 'Assalamu Alaikum Mufti Sahib, please activate this family Ruqyah subscription and include our family in the daily prayers. JazakAllah Khair!';
-    } else {
-      msg = '*بسم اللہ الرحمن الرحیم*\n';
-      msg += '*ماہانہ دم و روحانی حفاظت سبسکرپشن (خضریٰ ویز)*\n';
-      msg += '------------------------------------\n';
-      msg += '📦 *پلان:* مکمل فیملی پلان (۴ تا ۵ افراد) — 6,000 روپے ماہانہ\n';
-      msg += '📍 *خاندان کا ملک و پتہ:* ' + famCountry + ' — ' + famAddress + '\n';
-      msg += '📱 *رابطہ / واٹس ایپ نمبر:* ' + famPhone + '\n';
-      msg += '\n👨‍👩‍👧‍👦 *شامل فیملی ممبرز کی تفصیلات:*\n';
-      members.forEach((m) => {
-        msg += '• *فرد ' + m.num + ':* ' + m.name + ' (والدہ: ' + m.mother + ') — مرض/مسئلہ: ' + m.issue + '\n';
-      });
-      msg += '\n🧾 *ہدیہ کی رسید:* ' + (uploadedDamSlipBase64 ? 'سلپ ساتھ منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
-      msg += '------------------------------------\n';
-      msg += 'السلام علیکم مفتی صاحب! براہِ کرم یہ فیملی دم کا پلان ایکٹو فرما کر تمام اہل خانہ کو روزانہ کے دم و دعاؤں میں شامل فرمائیں۔ جزاک اللہ خیراً۔';
-    }
-  }
-
-  if (typeof window.closeModal === 'function') {
-    window.closeModal('modalMonthlyDamBooking');
-  }
-
-  if (typeof window.openWhatsAppConsult === 'function') {
-    window.openWhatsAppConsult(msg);
-  }
-};
-
-
-// ==========================================
-// SPIRITUAL DIAGNOSIS & ONLINE CLINIC (TASHKHEES) HANDLERS
-// ==========================================
-let uploadedTashkheesSlipBase64 = '';
-
-window.openTashkheesModal = function(issueKey = 'black_magic') {
-  if (typeof window.initCountryDropdowns === 'function') window.initCountryDropdowns('Pakistan');
-
-  const select = document.getElementById('tashkheesIssueSelect');
-  if (select) {
-    select.value = issueKey || 'black_magic';
-    // If exact key didn't match an option, default to black_magic
-    if (!select.value) select.value = 'black_magic';
-  }
-
-  const preview = document.getElementById('tashkheesSlipPreview');
-  if (preview) {
-    preview.style.display = 'none';
-    preview.src = '';
-  }
-  uploadedTashkheesSlipBase64 = '';
-  const fileInput = document.getElementById('tashkheesSlipFile');
-  if (fileInput) fileInput.value = '';
-
-  if (typeof window.openModal === 'function') {
-    window.openModal('modalTashkheesBooking');
-  }
-};
-
-window.handleTashkheesSlipPreview = function(event) {
-  const file = event.target.files && event.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    uploadedTashkheesSlipBase64 = e.target.result;
-    const preview = document.getElementById('tashkheesSlipPreview');
-    if (preview) {
-      preview.src = uploadedTashkheesSlipBase64;
-      preview.style.display = 'block';
-    }
-  };
-  reader.readAsDataURL(file);
-};
-
-window.submitTashkheesForm = function() {
-  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
-
-  const name = (document.getElementById('tashkheesName')?.value || '').trim();
-  const mother = (document.getElementById('tashkheesMother')?.value || '').trim();
-  const address = (document.getElementById('tashkheesAddress')?.value || '').trim();
-  const country = (document.getElementById('tashkheesCountry')?.value || 'Pakistan').trim();
-  const phone = (document.getElementById('tashkheesPhone')?.value || '').trim();
-  const symptoms = (document.getElementById('tashkheesSymptoms')?.value || '').trim();
-
-  const select = document.getElementById('tashkheesIssueSelect');
-  const issueText = select ? select.options[select.selectedIndex]?.text : 'Spiritual Diagnosis';
-
-  if (!name) {
-    alert(isEn ? 'Please enter patient / seeker name.' : 'براہِ کرم مریض یا سائل کا مکمل نام درج کریں۔');
-    document.getElementById('tashkheesName')?.focus();
-    return;
-  }
-  if (!mother) {
-    alert(isEn ? 'Please enter mother or father name.' : 'براہِ کرم والدہ یا والد کا نام درج کریں۔');
-    document.getElementById('tashkheesMother')?.focus();
-    return;
-  }
-  if (!address) {
-    alert(isEn ? 'Please enter city & residential address.' : 'براہِ کرم شہر و رہائشی پتہ درج کریں۔');
-    document.getElementById('tashkheesAddress')?.focus();
-    return;
-  }
-  if (!country) {
-    alert(isEn ? 'Please select country.' : 'براہِ کرم فہرست سے ملک منتخب کریں۔');
-    document.getElementById('tashkheesCountry')?.focus();
-    return;
-  }
-  if (!phone) {
-    alert(isEn ? 'Please enter WhatsApp or mobile number.' : 'براہِ کرم واٹس ایپ یا رابطہ نمبر درج کریں۔');
-    document.getElementById('tashkheesPhone')?.focus();
-    return;
-  }
-  if (!symptoms) {
-    alert(isEn ? 'Please describe your symptoms, problem or dreams.' : 'براہِ کرم تکلیف، علامات یا خواب کی مختصر تفصیل درج کریں۔');
-    document.getElementById('tashkheesSymptoms')?.focus();
-    return;
-  }
-
-  let msg = '';
-  if (isEn) {
-    msg = '*Bismillahir Rahmanir Rahim*\n';
-    msg += '*Spiritual Diagnosis & Case Checkup Booking (خضریٰ ویز)*\n';
-    msg += '------------------------------------\n';
-    msg += '🩺 *Case Type / Issue:* ' + issueText + '\n';
-    msg += '👤 *Patient Name:* ' + name + '\n';
-    msg += '🧕 *Mother / Parent Name:* ' + mother + '\n';
-    msg += '📍 *Country & Address:* ' + country + ' — ' + address + '\n';
-    msg += '📱 *WhatsApp / Mobile:* ' + phone + '\n';
-    msg += '📝 *Symptoms & Details:* ' + symptoms + '\n';
-    msg += '💰 *Consultation Fee:* Rs. 1,000 (Tashkhees Fee)\n';
-    msg += '🧾 *Payment Slip:* ' + (uploadedTashkheesSlipBase64 ? 'Attached & Uploaded' : 'Transferred') + '\n';
-    msg += '------------------------------------\n';
-    msg += 'Assalamu Alaikum Mufti Sahib, I have submitted my case details and the diagnosis consultation fee. Please evaluate my case and advise the authentic spiritual remedy. JazakAllahu Khair!';
-  } else {
-    msg = '*بسم الله الرحمن الرحيم*\n';
-    msg += '*درخواست برائے روحانی تشخیص و آن لائن مطب (خضریٰ ویز)*\n';
-    msg += '------------------------------------\n';
-    msg += '🩺 *مسئلہ کی قسم:* ' + issueText + '\n';
-    msg += '👤 *مریض / سائل کا نام:* ' + name + '\n';
-    msg += '🧕 *والدہ / والد کا نام:* ' + mother + '\n';
-    msg += '📍 *ملک و رہائشی پتہ:* ' + country + ' — ' + address + '\n';
-    msg += '📱 *واٹس ایپ نمبر:* ' + phone + '\n';
-    msg += '📝 *تکلیف، علامات یا خواب کی تفصیل:* ' + symptoms + '\n';
-    msg += '💰 *ہدیہ تشخیص:* 1,000 روپے (فیس ادا شدہ)\n';
-    msg += '🧾 *ہدیہ کی رسید:* ' + (uploadedTashkheesSlipBase64 ? 'سلپ ساتھ منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
-    msg += '------------------------------------\n';
-    msg += 'السلام علیکم مفتی صاحب! میں نے روحانی تشخیص و چیک اپ کیلئے کیس کی تفصیلات اور ہدیہ جمع کروا دیا ہے۔ براہِ کرم معائنہ فرما کر رہنمائی و شرعی علاج تجویز فرمائیں۔ جزاک اللہ خیراً۔';
-  }
-
-  if (typeof window.closeModal === 'function') {
-    window.closeModal('modalTashkheesBooking');
-  }
-
-  if (typeof window.openWhatsAppConsult === 'function') {
-    window.openWhatsAppConsult(msg);
-  }
-};
-
-
-// =========================================================================
-// KHAWAB KI TABEER & ISLAMIC MASAIL CONSULTATION FORM HANDLERS
-// =========================================================================
-
-window.submitKhawabConsult = function() {
-  const name = document.getElementById('khawabName')?.value.trim();
-  const address = document.getElementById('khawabAddress')?.value.trim();
-  const dream = document.getElementById('khawabDreamText')?.value.trim();
-  const profession = document.getElementById('khawabProfession')?.value.trim();
-  const countrySelect = document.getElementById('khawabCountry');
-  const country = countrySelect?.value || 'Pakistan (+92)';
-  const phone = document.getElementById('khawabPhone')?.value.trim();
-
-  if (!name) {
-    showToast('براہِ کرم اپنا مکمل نام درج فرمائیں (Please enter your name)');
-    document.getElementById('khawabName')?.focus();
-    return;
-  }
-  if (!address) {
-    showToast('براہِ کرم اپنا شہر و رہائشی پتہ درج فرمائیں (Please enter city/address)');
-    document.getElementById('khawabAddress')?.focus();
-    return;
-  }
-  if (!dream) {
-    showToast('براہِ کرم خواب کی مکمل تفصیل درج فرمائیں (Please enter dream details)');
-    document.getElementById('khawabDreamText')?.focus();
-    return;
-  }
-  if (!profession) {
-    showToast('براہِ کرم اپنا پیشہ / کام درج فرمائیں (Please enter your profession)');
-    document.getElementById('khawabProfession')?.focus();
-    return;
-  }
-  if (!phone) {
-    showToast('براہِ کرم اپنا رابطہ واٹس ایپ نمبر درج فرمائیں (Please enter WhatsApp number)');
-    document.getElementById('khawabPhone')?.focus();
-    return;
-  }
-
-  const msg = `🌙 *خضریٰ ویز — خواب کی تعبیر فارم (Khawab Ki Tabeer)* 🌙\n` +
-    `━━━━━━━━━━━━━━━━━━━━\n` +
-    `👤 *سائل / سائلہ کا نام:* ${name}\n` +
-    `💼 *پیشہ / کام (Profession):* ${profession}\n` +
-    `📍 *شہر و رہائشی پتہ:* ${address}\n` +
-    `💭 *دیکھے گئے خواب کی تفصیل:*\n${dream}\n` +
-    `📱 *رابطہ نمبر:* ${country} ${phone}\n` +
-    `━━━━━━━━━━━━━━━━━━━━\n` +
-    `السلام علیکم مفتی صاحب، میں نے خواب دیکھا ہے اور اس کی مستند شرعی تعبیر معلوم کرنا چاہتا/چاہتی ہوں۔ برائے مہربانی تعبیر و رہنمائی سے نوازیں۔ جزاکم اللہ خیراً۔`;
-
-  closeModal('modalKhawabConsult');
-  const waUrl = `https://wa.me/923317704807?text=${encodeURIComponent(msg)}`;
-  window.open(waUrl, '_blank');
-  showToast('خواب کی تفصیل واٹس ایپ پر ارسال کی جا رہی ہے...');
-};
-
-window.submitMasailConsult = function() {
-  const name = document.getElementById('masailName')?.value.trim();
-  const question = document.getElementById('masailQuestionText')?.value.trim();
-  const profession = document.getElementById('masailProfession')?.value.trim();
-  const countrySelect = document.getElementById('masailCountry');
-  const country = countrySelect?.value || 'Pakistan (+92)';
-  const phone = document.getElementById('masailPhone')?.value.trim();
-
-  if (!name) {
-    showToast('براہِ کرم سائل کا نام درج فرمائیں (Please enter your name)');
-    document.getElementById('masailName')?.focus();
-    return;
-  }
-  if (!question) {
-    showToast('براہِ کرم اپنا شرعی مسئلہ تفصیل سے درج فرمائیں (Please enter question details)');
-    document.getElementById('masailQuestionText')?.focus();
-    return;
-  }
-  if (!profession) {
-    showToast('براہِ کرم اپنا پیشہ / کام درج فرمائیں (Please enter profession)');
-    document.getElementById('masailProfession')?.focus();
-    return;
-  }
-  if (!phone) {
-    showToast('براہِ کرم اپنا رابطہ واٹس ایپ نمبر درج فرمائیں (Please enter WhatsApp number)');
-    document.getElementById('masailPhone')?.focus();
-    return;
-  }
-
-  const msg = `⚖️ *خضریٰ ویز — شرعی مسئلہ و فتویٰ فارم (Islamic Masail & Fatwa)* ⚖️\n` +
-    `━━━━━━━━━━━━━━━━━━━━\n` +
-    `👤 *سائل کا نام:* ${name}\n` +
-    `❓ *شرعی مسئلہ کی تفصیل:*\n${question}\n` +
-    `💼 *پیشہ / کام (Profession):* ${profession}\n` +
-    `📱 *رابطہ نمبر:* ${country} ${phone}\n` +
-    `━━━━━━━━━━━━━━━━━━━━\n` +
-    `السلام علیکم مفتی صاحب، برائے مہربانی اس مسئلے کے بارے میں فقہ حنفی و بنوری ٹاؤن کے اصولوں کے مطابق مستند شرعی حکم و فتویٰ مرحمت فرمائیں۔ جزاکم اللہ خیراً۔`;
-
-  closeModal('modalMasailConsult');
-  const waUrl = `https://wa.me/923317704807?text=${encodeURIComponent(msg)}`;
-  window.open(waUrl, '_blank');
-  showToast('شرعی مسئلہ واٹس ایپ پر ارسال کیا جا رہا ہے...');
-};
-
-
-window.downloadSampleResource = function(id) {
-  showToast('ڈاؤنلوڈ جاری ہے...');
-};
-
-
-// =========================================================================
-// APP BOOTSTRAP: ALL MODULES & FUNCTIONS LOADED
-// =========================================================================
-function startApp() {
-  const tasks = [
-    ['Language', typeof initLanguage === 'function' ? initLanguage : null],
-    ['Clock', typeof initClock === 'function' ? initClock : null],
-    ['Location', typeof initLocation === 'function' ? initLocation : null],
-    ['ViewModes', typeof initViewModes === 'function' ? initViewModes : null],
-    ['Navigation', typeof initNavigation === 'function' ? initNavigation : null],
-    ['Tasbeeh', typeof initTasbeeh === 'function' ? initTasbeeh : null],
-    ['Qibla', typeof initQibla === 'function' ? initQibla : null],
-    ['UserName', typeof initUserName === 'function' ? initUserName : null],
-    ['WazaifFilters', typeof initWazaifFilters === 'function' ? initWazaifFilters : null],
-    ['PdfFilters', typeof initPdfFilters === 'function' ? initPdfFilters : null],
-    ['FetchData', typeof fetchAllData === 'function' ? fetchAllData : null],
-    ['Surahs', typeof populateSurahs === 'function' ? populateSurahs : null],
-    ['Hadith', typeof populateHadith === 'function' ? populateHadith : null],
-    ['AllahNames', typeof populateAllahNames === 'function' ? populateAllahNames : null],
-    ['PrayerTimes', typeof populatePrayerTimes === 'function' ? populatePrayerTimes : null]
-  ];
-
-  tasks.forEach(([name, fn]) => {
-    try {
-      if (fn) fn();
-    } catch (err) {
-      console.warn('Init task warning [' + name + ']:', err);
-    }
-  });
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', startApp);
-} else {
-  startApp();
-}
-
-
-// Interactive 3-Times Recitation Step Tracker for Manzil Sharif
-window.trackManzilStep = function(btn) {
-  const container = btn.closest('.manzil-reading-tracker');
-  if (!container) return;
-  const isEn = state.currentLang === 'en';
-  let step = parseInt(container.getAttribute('data-current-step') || '0');
-  
-  step = (step + 1) % 4;
-  container.setAttribute('data-current-step', step);
-
-  const pills = container.querySelectorAll('.mrt-step-pill');
-  pills.forEach((p, idx) => {
-    if (idx < step) {
-      p.classList.add('completed');
-      p.classList.remove('active');
-      p.querySelector('.mrt-status').innerHTML = '<i class="fa-solid fa-circle-check"></i> ' + (isEn ? 'Done' : 'مکمل');
-    } else if (idx === step && step < 3) {
-      p.classList.add('active');
-      p.classList.remove('completed');
-      p.querySelector('.mrt-status').textContent = isEn ? 'Reading...' : 'جاری ہے...';
-    } else {
-      p.classList.remove('completed', 'active');
-      p.querySelector('.mrt-status').textContent = isEn ? 'Pending' : 'باقی';
-    }
-  });
-
-  const btnTxt = btn.querySelector('.mrt-btn-text');
-  if (step === 1) {
-    if (btnTxt) btnTxt.textContent = isEn ? 'Mark 2nd Recitation Done' : 'دوسری مرتبہ مکمل (یہاں کلک کریں)';
-    btn.style.background = '#16A34A';
-  } else if (step === 2) {
-    if (btnTxt) btnTxt.textContent = isEn ? 'Mark 3rd Recitation Done' : 'تیسری مرتبہ مکمل (یہاں کلک کریں)';
-    btn.style.background = '#059669';
-  } else if (step === 3) {
-    if (btnTxt) btnTxt.textContent = isEn ? '🎉 3 Times Completed! Tap to Reset' : '🎉 ماشاء اللہ! ۳ مرتبہ مکمل ہو گئی (ری سیٹ کریں)';
-    btn.style.background = '#047857';
-  } else {
-    if (btnTxt) btnTxt.textContent = isEn ? 'Mark 1st Recitation Done' : 'پہلی مرتبہ مکمل (یہاں کلک کریں)';
-    btn.style.background = '#16A34A';
-  }
-
-  // Also sync the tap counter in card footer
-  const card = container.closest('.wazifa-interactive-card');
-  const countSpan = card ? card.querySelector('.m-count-val') : null;
-  if (countSpan) countSpan.textContent = step;
 };

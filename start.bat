@@ -1,10 +1,11 @@
 @echo off
+chcp 65001 >nul
 title Khizri Ways - Islamic App Launcher
 color 0A
 cls
 echo ========================================================
 echo    KHIZRI WAYS - ISLAMIC APP ^& ADMIN BACKEND
-echo    طرق خضری | روحانی علاج اور اسلامی رہنمائی
+echo    طرق خضری - روحانی علاج اور اسلامی رہنمائی
 echo ========================================================
 echo.
 
