@@ -560,7 +560,11 @@
       "requiresIjazah": true,
       "methodInstructions": "طریقۂ عمل (برائے زکوٰۃ و عامل بننا):\n۱۔ نوچندی جمعرات (مہینے کی پہلی جمعرات) کو ایک ہی نشست میں باوضو، قبلہ رخ بیٹھ کر 1104 مرتبہ پڑھیں۔\n۲۔ اس کے بعد روزانہ 101 مرتبہ مسلسل 101 دن تک پڑھیں۔\n۳۔ پھر اس کے بعد روزانہ 41 مرتبہ مسلسل 41 دن تک ورد میں رکھیں۔\n\n⚠️ اہم شرعی و روحانی تنبیہ:\nیہ وظیفہ انتہائی جلالی اور پر اثر ہے۔ اکابرین و مشائخ کی سخت تاکید ہے کہ یہ وظیفہ بغیر اجازت کے ہرگز نہ کریں۔ اجازت حاصل کرنے کے لیے نیچے دیے گئے بٹن پر کلک کر کے فارم ارسال فرمائیں۔",
       "benefits": "دشمنوں کی زبان بندی، سفلی جادو کا فوری توڑ، مقدمات میں فتح، بندشوں کے خاتمے اور روزگار کی بندشیں کھولنے کے لیے اکسیرِ اعظم ہے۔",
-      "benefitsEn": "Authentic Chehal Kaaf litany from Aaina-e-Amaliyat (p. 205). Strict condition: Must not be recited without spiritual authorization (Ijazah)."
+      "benefitsEn": "Authentic Chehal Kaaf litany from Aaina-e-Amaliyat (p. 205). Strict condition: Must not be recited without spiritual authorization (Ijazah).",
+      "pdfUrl": "/uploads/chehal-kaaf.pdf",
+      "pdfDownloadName": "dua-e-chehal-kaaf.pdf",
+      "hasAudio": true,
+      "audioUrl": "/uploads/chehal-kaaf-recitation.mp3"
     },
     {
       "id": "waz-hizb-nasr",
@@ -576,7 +580,11 @@
       "benefits": "حزب النصر فتح و نصرت اور ظالمین و حاسدین کے شر کو دور کرنے کی قاطع دعا ہے۔ جب دشمنوں کے شر کا خوف ہو یا جھوٹے مقدمات کا سامنا ہو تو سچے دل اور مظلومیت کے احساس کے ساتھ یہ دعا پڑھنے سے اللہ تعالیٰ حق کو فتح اور باطل کو شکست عطا فرماتے ہیں۔",
       "benefitsEn": "The Litany of Victory by Imam ash-Shadhili for overcoming oppression, defeating slander and hostility, and securing divine triumph.",
       "methodInstructions": "📋 طریقہ و شرائطِ دعائے حزب النصر:\n• امام ابو الحسن الشاذلیؒ کی یہ دعا ظالموں کے شر، جابر دشمنوں کے غلبے اور جھوٹے مقدمات سے براءت کے لیے مجرب ہے۔\n• طریقہ: بعد نمازِ عشاء یا بعد فجر باوضو تنہائی میں اول و آخر ۱۱ مرتبہ درودِ خضری پڑھ کر ۳ یا ۷ مرتبہ تلاوت فرمائیں۔\n• تنبیہ: کسی پر ناحق یا ناجائز مقصد کے لیے ہرگز نہ پڑھیں۔",
-      "requiresIjazah": true
+      "requiresIjazah": true,
+      "pdfUrl": "/uploads/hizb-un-nasr.pdf",
+      "pdfDownloadName": "hizb-un-nasr-shadhili.pdf",
+      "hasAudio": true,
+      "audioUrl": "/uploads/hizb-un-nasr-recitation.mp3"
     },
     {
       "id": "waz-khas-muharram",
