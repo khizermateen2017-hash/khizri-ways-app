@@ -2185,8 +2185,8 @@ function renderWazaif(filterCategory = 'all_folders') {
               <button type="button" class="btn-wazifa-reset" onclick="resetWazifaCount(this)" title="${isEn ? 'Reset Counter' : 'کاؤنٹر ری سیٹ کریں'}">
                 <i class="fa-solid fa-rotate-right"></i>
               </button>
-              <button class="btn-wazifa-consult" onclick="openWazifaConsult('${safeTitle}')" title="${isEn ? 'Ask Guidance / Ijazah on WhatsApp' : 'رہنمائی و اجازت حاصل کریں'}">
-                <i class="fa-brands fa-whatsapp"></i>
+              <button class="btn-wazifa-consult" onclick="openWazifaConsult('${safeTitle}')" title="${isEn ? 'Ask Guidance on WhatsApp' : 'رہنمائی و مشاورت حاصل کریں'}">
+                <i class="fa-brands fa-whatsapp"></i> <span>${isEn ? 'Consult' : 'رہنمائی'}</span>
               </button>
             </div>
           </div>
@@ -2254,11 +2254,57 @@ window.toggleWazifaLongText = function(arabicElId, btn) {
 };
 
 // Open Wazifa Ijazah Request Modal
-window.openIjazahModal = function(wazifaTitle) {
+window.openIjazahModal = function(wazifaTitle, mode = 'ijazah') {
   const modal = document.getElementById('modalWazifaIjazah');
   if (!modal) return;
+  modal.setAttribute('data-mode', mode);
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  
   const titleInput = document.getElementById('ijazahWazifaTitle');
-  if (titleInput) titleInput.value = wazifaTitle || 'منزل شریف';
+  if (titleInput) titleInput.value = wazifaTitle || (isEn ? 'Spiritual Wazifa / Practice' : 'وظیفہ و عمل');
+
+  const topTitleEl = modal.querySelector('.modal-card-top-bar span');
+  const bannerEl = modal.querySelector('.modal-card-body > div:first-child');
+  const submitBtn = modal.querySelector('#formWazifaIjazah button[type="submit"]');
+
+  if (mode === 'consult') {
+    if (topTitleEl) {
+      topTitleEl.innerHTML = isEn ? 'Request Wazifa Guidance &amp; Consultation' : 'درخواستِ رہنمائی و شرعی مشاورت';
+    }
+    if (bannerEl) {
+      bannerEl.innerHTML = `
+        <div style="font-size: 0.82rem; font-weight: 800; color: #92400E; display: flex; align-items: center; gap: 6px;">
+          <i class="fa-solid fa-comments" style="color: #D97706;"></i>
+          <span>${isEn ? 'Spiritual Guidance &amp; Direct Consultation' : 'براہِ راست رہنمائی و شرعی مشاورت'}</span>
+        </div>
+        <div style="font-size: 0.74rem; color: #78350F; margin-top: 3px; line-height: 1.45;">
+          <span>${isEn ? 'If you have any questions regarding this litany or wish to seek spiritual advice for your problem, please submit your details below to consult directly with Hazrat on WhatsApp.' : 'اگر آپ اس وظیفے یا عمل کے متعلق کوئی بات پوچھنا چاہتے ہیں یا اپنے مسئلے کے حل کے لیے رہنمائی درکار ہے تو درج ذیل کوائف پُر فرما کر حضرت مفتی صاحب سے براہِ راست رہنمائی حاصل فرمائیں۔'}</span>
+        </div>
+      `;
+    }
+    if (submitBtn) {
+      submitBtn.innerHTML = `<i class="fa-brands fa-whatsapp" style="font-size: 1.25rem;"></i> <span>${isEn ? 'Send Details for Guidance on WhatsApp' : 'رہنمائی کے لیے کوائف ارسال کریں'}</span>`;
+    }
+  } else {
+    if (topTitleEl) {
+      topTitleEl.innerHTML = isEn ? 'Request Wazifa Ijazah (Permission)' : 'درخواستِ شرعی و روحانی اجازت نامہ';
+    }
+    if (bannerEl) {
+      bannerEl.innerHTML = `
+        <div style="font-size: 0.82rem; font-weight: 800; color: #92400E; display: flex; align-items: center; gap: 6px;">
+          <i class="fa-solid fa-triangle-exclamation" style="color: #D97706;"></i>
+          <span>${isEn ? 'Spiritual Permission Required' : 'ضروری شرعی و روحانی اجازت نامہ'}</span>
+        </div>
+        <div style="font-size: 0.74rem; color: #78350F; margin-top: 3px; line-height: 1.45;">
+          <span>${isEn ? 'This wazifa is spiritually powerful. It is recommended to perform it only with authentic authorization (Ijazah). Please fill in your details below to request Ijazah directly from Hazrat on WhatsApp.' : 'یہ وظیفہ انتہائی جلالی اور پر اثر ہے۔ اکابرین و مشائخ کے اصول کے مطابق اسے بغیر اجازت نہیں پڑھنا چاہیے۔ حضرت مفتی صاحب سے اجازت و دعائیہ رہنمائی حاصل کرنے کے لیے درج ذیل تفصیلات پُر فرمائیں۔'}</span>
+        </div>
+      `;
+    }
+    if (submitBtn) {
+      submitBtn.innerHTML = `<i class="fa-brands fa-whatsapp" style="font-size: 1.25rem;"></i> <span>${isEn ? 'Send Ijazah Request to WhatsApp' : 'اجازت کے لیے درخواست ارسال کریں'}</span>`;
+    }
+  }
+
   if (typeof window.initCountryDropdowns === 'function') {
     window.initCountryDropdowns('Pakistan');
   }
@@ -2271,20 +2317,29 @@ window.openIjazahModal = function(wazifaTitle) {
 
 // Submit Wazifa Ijazah Request to WhatsApp
 window.submitWazifaIjazah = function() {
-  const isEn = state.currentLang === 'en';
-  const wazifa = (document.getElementById('ijazahWazifaTitle')?.value || 'منزل شریف').trim();
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const modal = document.getElementById('modalWazifaIjazah');
+  const mode = modal?.getAttribute('data-mode') || 'ijazah';
+  const isConsult = (mode === 'consult');
+
+  const wazifa = (document.getElementById('ijazahWazifaTitle')?.value || 'وظیفہ و عمل').trim();
   const name = (document.getElementById('ijazahFullName')?.value || '').trim();
   const fatherName = (document.getElementById('ijazahFatherName')?.value || '').trim();
-  const issue = (document.getElementById('ijazahIssue')?.value || '').trim();
   const city = (document.getElementById('ijazahCity')?.value || '').trim();
-  const country = (document.getElementById('wazifaIjazahCountry')?.value || 'Pakistan').trim();
   const prof = (document.getElementById('ijazahProfession')?.value || '').trim();
+  const issue = (document.getElementById('ijazahIssue')?.value || '').trim();
   const purpose = (document.getElementById('ijazahPurpose')?.value || '').trim();
+  const country = (document.getElementById('wazifaIjazahCountry')?.value || 'Pakistan').trim();
   const phone = (document.getElementById('ijazahWhatsApp')?.value || '').trim();
 
   if (!name) {
     alert(isEn ? 'Please enter your full name.' : 'براہِ کرم سائل / مریض کا مکمل نام درج فرمائیں۔');
     document.getElementById('ijazahFullName')?.focus();
+    return;
+  }
+  if (!city) {
+    alert(isEn ? 'Please enter your city / address.' : 'براہِ کرم اپنا شہر و پتہ درج فرمائیں۔');
+    document.getElementById('ijazahCity')?.focus();
     return;
   }
   if (!phone) {
@@ -2293,17 +2348,22 @@ window.submitWazifaIjazah = function() {
     return;
   }
 
-  let text = `*درخواستِ شرعی و روحانی اجازت (Khizri Ways)*\n\n`;
-  text += `📋 *وظیفہ:* ${wazifa}\n`;
-  text += `👤 *سائل / مریض کا نام:* ${name}\n`;
+  let text = isConsult ? `*درخواستِ رہنمائی و شرعی مشاورت (Khizri Ways)*\n\n` : `*درخواستِ شرعی و روحانی اجازت (Khizri Ways)*\n\n`;
+  text += `📋 *وظیفہ / عمل:* ${wazifa}\n`;
+  text += `👤 *سائل / سائلہ کا نام:* ${name}\n`;
   if (fatherName) text += `👨‍👩‍👧 *والد / والدہ کا نام:* ${fatherName}\n`;
-  if (issue) text += `⚠️ *مسئلہ / بیماری کی نوعیت:* ${issue}\n`;
   if (city) text += `🏙️ *شہر و پتہ:* ${city}\n`;
-  if (country) text += `🌍 *ملک:* ${country}\n`;
   if (prof) text += `💼 *پیشہ / کام:* ${prof}\n`;
-  if (purpose) text += `🎯 *خاص مقصد / نیت:* ${purpose}\n`;
+  if (issue) text += `⚠️ *مسئلہ / جس بات کی رہنمائی درکار ہے:* ${issue}\n`;
+  if (purpose) text += `🎯 *اضافی تفصیل / سوال:* ${purpose}\n`;
+  if (country) text += `🌍 *ملک:* ${country}\n`;
   text += `📱 *واٹس ایپ نمبر:* ${phone}\n`;
-  text += `\nحضرت مفتی صاحب! مجھے اس وظیفے کی باقاعدہ شرعی و روحانی اجازت اور دعاؤں سے نوازیں۔ جزاک اللہ خیراً!`;
+  
+  if (isConsult) {
+    text += `\nحضرت مفتی صاحب! مجھے اس عمل و مسئلے کے متعلق رہنمائی اور دعاؤں سے نوازیں۔ جزاک اللہ خیراً!`;
+  } else {
+    text += `\nحضرت مفتی صاحب! مجھے اس وظیفے کی باقاعدہ شرعی و روحانی اجازت اور دعاؤں سے نوازیں۔ جزاک اللہ خیراً!`;
+  }
 
   const encoded = encodeURIComponent(text);
   window.open(`https://wa.me/923136224339?text=${encoded}`, '_blank');
@@ -2311,10 +2371,9 @@ window.submitWazifaIjazah = function() {
   if (typeof closeModal === 'function') {
     closeModal('modalWazifaIjazah');
   } else {
-    const modal = document.getElementById('modalWazifaIjazah');
     if (modal) modal.classList.remove('active');
   }
-}
+};
 
 // Global Audio Player instance for authentic Qari MP3 recitations
 let currentWazifaAudio = null;
@@ -2378,8 +2437,7 @@ window.playWazifaAudio = function(btn, wazifaId) {
 
 // WhatsApp Consultation for Specific Wazifa
 window.openWazifaConsult = function(wazifaTitle) {
-  const msg = encodeURIComponent(`السلام علیکم حضرت! مجھے "${wazifaTitle}" کے وظیفہ کے متعلق رہنمائی اور اجازت درکار ہے۔`);
-  window.open(`https://wa.me/923136224339?text=${msg}`, '_blank');
+  openIjazahModal(wazifaTitle, 'consult');
 };
 
 // Interactive In-Card Counter Function for Spiritual Healing & Wazaif
