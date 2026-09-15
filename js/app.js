@@ -2072,7 +2072,7 @@ window.playWazifaAudio = function(btn, wazifaId) {
 
   // Find item audioUrl from state.wazaif or fallback to downloaded Qari recitations
   const item = (state.wazaif || []).find(w => w.id === wazifaId);
-  const audioSrc = item?.audioUrl || (wazifaId === 'waz-manzil' ? '/uploads/manzil-qari-recitation.mp3' : (wazifaId === 'waz-hizb-bahr' ? '/uploads/hizb-ul-bahr-recitation.mp3' : null));
+  const audioSrc = item?.audioUrl || (wazifaId === 'waz-manzil' ? '/uploads/manzil-qari-recitation.mp3' : (wazifaId === 'waz-hizb-bahr' ? '/uploads/hizb-ul-bahr-recitation.mp3' : (wazifaId === 'waz-hizb-nasr' ? '/uploads/hizb-un-nasr-recitation.mp3' : (wazifaId === 'waz-chehal-kaaf' ? '/uploads/chehal-kaaf-recitation.mp3' : null))));
 
   if (audioSrc) {
     btn.classList.add('playing');
