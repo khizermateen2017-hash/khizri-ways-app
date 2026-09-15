@@ -1692,6 +1692,221 @@ const WAZAIF_FOLDERS = [
 ];
 
 // Render Wazaif Folders and In-Card Interactive Wazaif
+
+// =========================================================
+// WAZIFA CHILLA & MULTI-TARGET PRESETS CONFIGURATION
+// =========================================================
+const WAZIFA_PRESETS = {
+  'waz-chehal-kaaf': {
+    chillaOptions: [
+      { days: 41, labelUr: '۴۱ دن کا چلہ', labelEn: '41-Day Chilla' },
+      { days: 101, labelUr: '۱۰۱ دن کا عمل', labelEn: '101-Day Amal' },
+      { days: 1, labelUr: 'نوچندی ۱ دن (زکوٰۃ)', labelEn: '1-Day Zakat' }
+    ],
+    defaultChillaDays: 41,
+    repsOptions: [
+      { count: 1104, labelUr: '۱۱۰۴ مرتبہ (نوچندی)', labelEn: '1,104x (Nauchandi)' },
+      { count: 101, labelUr: '۱۰۱ مرتبہ (معمول)', labelEn: '101x (Daily)' },
+      { count: 41, labelUr: '۴۱ مرتبہ (معمول)', labelEn: '41x (Daily)' }
+    ],
+    defaultReps: 1104
+  },
+  'waz-manzil': {
+    chillaOptions: [
+      { days: 40, labelUr: '۴۰ دن کا چلہ (جادو، جنات و لاعلاج امراض)', labelEn: '40-Day Chilla (Magic/Jinn/Disease)' },
+      { days: 21, labelUr: '۲۱ دن کا معمول', labelEn: '21-Day Course' },
+      { days: 7, labelUr: '۷ دن کی حفاظت', labelEn: '7-Day Protection' }
+    ],
+    defaultChillaDays: 40,
+    repsOptions: [
+      { count: 3, labelUr: '۳ مرتبہ (صبح و شام معمول)', labelEn: '3x (Daily Routine)' },
+      { count: 1, labelUr: '۱ مرتبہ (کم از کم)', labelEn: '1x (Minimum)' },
+      { count: 7, labelUr: '۷ مرتبہ (خاص حصار)', labelEn: '7x (Strong Shield)' },
+      { count: 11, labelUr: '۱۱ مرتبہ (سخت جادو کا توڑ)', labelEn: '11x (Severe Magic)' }
+    ],
+    defaultReps: 3
+  },
+  'waz-hizb-nasr': {
+    chillaOptions: [
+      { days: 11, labelUr: '۱۱ دن کا عمل (نصرت و فتح)', labelEn: '11-Day Amal (Victory)' },
+      { days: 21, labelUr: '۲۱ دن کا عمل', labelEn: '21-Day Amal' },
+      { days: 40, labelUr: '۴۰ دن کا چلہ', labelEn: '40-Day Chilla' }
+    ],
+    defaultChillaDays: 11,
+    repsOptions: [
+      { count: 1, labelUr: '۱ مرتبہ (روزانہ)', labelEn: '1x (Daily)' },
+      { count: 3, labelUr: '۳ مرتبہ (مصیبت و مقدمہ)', labelEn: '3x (Trials & Cases)' },
+      { count: 7, labelUr: '۷ مرتبہ (خاص نصرت)', labelEn: '7x (Divine Victory)' },
+      { count: 11, labelUr: '۱۱ مرتبہ (دشمن پر فتح)', labelEn: '11x (Overcoming Enemies)' }
+    ],
+    defaultReps: 1
+  },
+  'waz-hizb-bahr': {
+    chillaOptions: [
+      { days: 40, labelUr: '۴۰ دن کا چلہ (کامل فتوحات)', labelEn: '40-Day Chilla' },
+      { days: 21, labelUr: '۲۱ دن کا معمول', labelEn: '21-Day Course' },
+      { days: 7, labelUr: '۷ دن کی پناہ', labelEn: '7-Day Protection' }
+    ],
+    defaultChillaDays: 40,
+    repsOptions: [
+      { count: 1, labelUr: '۱ مرتبہ (روزانہ)', labelEn: '1x (Daily)' },
+      { count: 3, labelUr: '۳ مرتبہ (دفعِ بلیات)', labelEn: '3x (Protection)' },
+      { count: 7, labelUr: '۷ مرتبہ (قضائے حاجات)', labelEn: '7x (Needs Fulfilled)' },
+      { count: 14, labelUr: '۱۴ مرتبہ (کشف و برکات)', labelEn: '14x (Spiritual Opening)' }
+    ],
+    defaultReps: 1
+  }
+};
+
+window.getChillaState = function(wazifaId, defaultDays = 40) {
+  try {
+    const raw = localStorage.getItem('khizri_chilla_' + wazifaId);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed.completedDays === 'number') return parsed;
+    }
+  } catch (e) {}
+  return { totalDays: defaultDays, completedDays: 0, lastDate: null };
+};
+
+window.saveChillaState = function(wazifaId, stateObj) {
+  try {
+    localStorage.setItem('khizri_chilla_' + wazifaId, JSON.stringify(stateObj));
+  } catch (e) {}
+};
+
+window.selectChillaDuration = function(wazifaId, days) {
+  const stateObj = getChillaState(wazifaId, days);
+  stateObj.totalDays = days;
+  saveChillaState(wazifaId, stateObj);
+  updateChillaUI(wazifaId);
+};
+
+window.markChillaDayDone = function(wazifaId) {
+  const isEn = state.currentLang === 'en';
+  const stateObj = getChillaState(wazifaId);
+  const todayStr = new Date().toISOString().slice(0, 10);
+
+  if (stateObj.lastDate === todayStr) {
+    if (!confirm(isEn ? "You already marked today's session done! Advance another day?" : "آج کا دن آپ پہلے ہی مکمل کر چکے ہیں! کیا آپ مزید اگلا دن شمار کرنا چاہتے ہیں؟")) {
+      return;
+    }
+  }
+
+  stateObj.completedDays = Math.min((stateObj.completedDays || 0) + 1, stateObj.totalDays || 40);
+  stateObj.lastDate = todayStr;
+  saveChillaState(wazifaId, stateObj);
+  updateChillaUI(wazifaId);
+
+  const remaining = Math.max(0, stateObj.totalDays - stateObj.completedDays);
+  if (remaining === 0) {
+    showToast(isEn ? `🎉 MashaAllah! Your ${stateObj.totalDays}-day course is completed!` : `🎉 الحمد للہ! آپ کا ${stateObj.totalDays} روزہ چلہ مکمل ہو گیا! اللہ تعالیٰ قبول فرمائے۔`);
+  } else {
+    showToast(isEn ? `Day ${stateObj.completedDays} marked done! ${remaining} days remaining.` : `ماشاء اللہ! دن ${stateObj.completedDays} مکمل ہوا۔ اب ${remaining} دن باقی ہیں۔`);
+  }
+};
+
+window.resetChilla = function(wazifaId) {
+  const isEn = state.currentLang === 'en';
+  if (!confirm(isEn ? "Are you sure you want to reset this chilla/duration progress?" : "کیا آپ اس چلے کی پیشرفت کو صفر سے ری سیٹ کرنا چاہتے ہیں؟")) return;
+  const stateObj = getChillaState(wazifaId);
+  stateObj.completedDays = 0;
+  stateObj.lastDate = null;
+  saveChillaState(wazifaId, stateObj);
+  updateChillaUI(wazifaId);
+  showToast(isEn ? "Chilla reset to Day 0" : "چلہ ری سیٹ کر دیا گیا۔");
+};
+
+window.updateChillaUI = function(wazifaId) {
+  const card = document.getElementById('waz-item-' + wazifaId);
+  if (!card) return;
+  const tracker = card.querySelector('.wazifa-chilla-tracker');
+  if (!tracker) return;
+  const isEn = state.currentLang === 'en';
+  const defaultDays = WAZIFA_PRESETS[wazifaId]?.defaultChillaDays || 40;
+  const stateObj = getChillaState(wazifaId, defaultDays);
+  
+  const total = stateObj.totalDays || defaultDays;
+  const completed = stateObj.completedDays || 0;
+  const remaining = Math.max(0, total - completed);
+  const pct = Math.min(100, Math.round((completed / total) * 100));
+  const todayStr = new Date().toISOString().slice(0, 10);
+  const isTodayDone = (stateObj.lastDate === todayStr);
+
+  tracker.querySelectorAll('.wct-chip').forEach(c => {
+    const d = parseInt(c.dataset.days);
+    if (d === total) c.classList.add('active');
+    else c.classList.remove('active');
+  });
+
+  const bar = tracker.querySelector('.wct-progress-bar');
+  if (bar) bar.style.width = pct + '%';
+
+  const compLabel = tracker.querySelector('.wct-completed-txt');
+  if (compLabel) compLabel.textContent = isEn ? `Day ${completed} of ${total} (${pct}%)` : `دن ${completed} / ${total} مکمل (${pct}%)`;
+
+  const remLabel = tracker.querySelector('.wct-remaining-highlight');
+  if (remLabel) {
+    if (remaining === 0) {
+      remLabel.textContent = isEn ? '🎉 Chilla Completed!' : '🎉 چلہ مکمل ہو گیا!';
+      remLabel.style.background = '#DCFCE7';
+      remLabel.style.color = '#15803D';
+    } else {
+      remLabel.textContent = isEn ? `${remaining} days remaining` : `${remaining} دن باقی ہیں`;
+      remLabel.style.background = '#FEF3C7';
+      remLabel.style.color = '#B45309';
+    }
+  }
+
+  const markBtn = tracker.querySelector('.btn-wct-mark');
+  if (markBtn) {
+    if (remaining === 0) {
+      markBtn.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>${isEn ? 'Course Completed (MashaAllah)' : 'ماشاء اللہ! چلہ مکمل ہو چکا ہے'}</span>`;
+      markBtn.classList.add('marked-today');
+    } else if (isTodayDone) {
+      markBtn.innerHTML = `<i class="fa-solid fa-calendar-check"></i> <span>${isEn ? 'Marked Done Today (Tap to +1)' : 'آج کا دن مکمل ہے (مزید اگلا دن شمار کریں)'}</span>`;
+      markBtn.classList.remove('marked-today');
+    } else {
+      markBtn.innerHTML = `<i class="fa-solid fa-calendar-plus"></i> <span>${isEn ? 'Mark Today Done' : 'آج کا دن مکمل ہوا (یہاں کلک کریں)'}</span>`;
+      markBtn.classList.remove('marked-today');
+    }
+  }
+};
+
+window.selectWazifaTargetReps = function(wazifaId, targetCount, chipBtn) {
+  const card = document.getElementById('waz-item-' + wazifaId);
+  if (!card) return;
+  const isEn = state.currentLang === 'en';
+
+  card.querySelectorAll('.wrs-chip').forEach(c => c.classList.remove('active'));
+  chipBtn.classList.add('active');
+
+  const counterBtn = card.querySelector('.btn-wazifa-tap-counter');
+  if (counterBtn) {
+    counterBtn.setAttribute('data-target', targetCount);
+    const targetSpan = counterBtn.querySelector('.m-target-val');
+    if (targetSpan) targetSpan.textContent = targetCount;
+    const current = parseInt(counterBtn.dataset.count) || 0;
+    if (current < targetCount) {
+      counterBtn.classList.remove('completed');
+    }
+  }
+  showToast(isEn ? `Target count set to ${targetCount}` : `ہدف ${targetCount} مرتبہ منتخب ہو گیا`);
+};
+
+window.resetWazifaCount = function(btn) {
+  const card = btn.closest('.wazifa-interactive-card');
+  if (!card) return;
+  const isEn = state.currentLang === 'en';
+  const counterBtn = card.querySelector('.btn-wazifa-tap-counter');
+  if (!counterBtn) return;
+  counterBtn.dataset.count = 0;
+  counterBtn.classList.remove('completed');
+  const valSpan = counterBtn.querySelector('.m-count-val');
+  if (valSpan) valSpan.textContent = '0';
+  showToast(isEn ? 'Counter reset to 0' : 'کاؤنٹر صفر پر ری سیٹ ہو گیا');
+};
+
 function renderWazaif(filterCategory = 'all_folders') {
   const container = document.getElementById('wazaifInteractiveStack');
   if (!container) return;
@@ -1800,6 +2015,8 @@ function renderWazaif(filterCategory = 'all_folders') {
 
   const cardsHtml = items.map((w, index) => {
     const targetReps = parseInt(w.repetitions) || 100;
+    const defaultTargetPreset = WAZIFA_PRESETS[w.id]?.defaultReps || WAZIFA_PRESETS[w.id]?.repsOptions?.[0]?.count;
+    const activeTarget = defaultTargetPreset || targetReps;
     const catLabel = isEn ? (w.categoryEn || w.category || 'Khas Wazifa') : (w.category || 'خاص وظیفہ');
     const timingLabel = isEn ? (w.timingEn || (w.timing === 'صبح و شام' ? 'Morning & Evening' : w.timing || 'Daily')) : (w.timing || 'صبح و شام');
     const transLabel = isEn ? 'Translation:' : 'ترجمہ:';
@@ -1875,6 +2092,41 @@ function renderWazaif(filterCategory = 'all_folders') {
           </div>
         ` : ''}
 
+        <!-- Spiritual Chilla & Duration Tracker (مدت و چلہ ٹریکر) -->
+        ${(WAZIFA_PRESETS[w.id] && WAZIFA_PRESETS[w.id].chillaOptions) ? `
+          <div class="wazifa-chilla-tracker" id="chilla-tracker-${w.id}">
+            <div class="wct-header">
+              <span class="wct-title">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>${isEn ? 'Spiritual Chilla & Duration Tracker' : 'روحانی چلہ و مدت ٹریکر'}</span>
+              </span>
+              <span class="wct-badge">${isEn ? 'Daily Progress' : 'روزانہ کی پیشرفت'}</span>
+            </div>
+            <div class="wct-chips">
+              ${WAZIFA_PRESETS[w.id].chillaOptions.map((opt, optIdx) => `
+                <button type="button" class="wct-chip ${optIdx === 0 ? 'active' : ''}" data-days="${opt.days}" onclick="selectChillaDuration('${w.id}', ${opt.days})">
+                  <i class="fa-regular fa-clock"></i> <span>${isEn ? opt.labelEn : opt.labelUr}</span>
+                </button>
+              `).join('')}
+            </div>
+            <div class="wct-progress-wrap">
+              <div class="wct-progress-bar" style="width: 0%;"></div>
+            </div>
+            <div class="wct-status-row">
+              <span class="wct-completed-txt">${isEn ? 'Day 0 of ...' : 'دن ۰ مکمل'}</span>
+              <span class="wct-remaining-highlight">${isEn ? '... days remaining' : '... دن باقی ہیں'}</span>
+            </div>
+            <div class="wct-actions">
+              <button type="button" class="btn-wct-mark" onclick="markChillaDayDone('${w.id}')">
+                <i class="fa-solid fa-calendar-plus"></i> <span>${isEn ? 'Mark Today Done' : 'آج کا دن مکمل ہوا (یہاں کلک کریں)'}</span>
+              </button>
+              <button type="button" class="btn-wct-reset" onclick="resetChilla('${w.id}')" title="${isEn ? 'Reset Chilla' : 'چلہ ری سیٹ کریں'}">
+                <i class="fa-solid fa-arrow-rotate-left"></i> <span>${isEn ? 'Reset' : 'ری سیٹ'}</span>
+              </button>
+            </div>
+          </div>
+        ` : ''}
+
         <div class="wic-arabic ${isLongText ? 'wic-arabic-collapsible' : ''}" id="${cardElId}-arabic">
           ${(w.itemsList && w.itemsList.length) ? `
             <div class="wazifa-items-grid">
@@ -1907,15 +2159,36 @@ function renderWazaif(filterCategory = 'all_folders') {
           </button>
         ` : ''}
         
-        <div class="wic-footer">
-          <span class="wic-reps-text">${repsLabel}</span>
-          <div style="display:inline-flex; align-items:center; gap:8px;">
-            <button class="btn-wazifa-tap-counter" onclick="countModuleWazifa(this, ${targetReps})" title="${tapHint}">
-              <i class="fa-solid fa-fingerprint"></i> <span class="m-count-val">0</span> / ${targetReps}
-            </button>
-            <button class="btn-wazifa-consult" onclick="openWazifaConsult('${safeTitle}')" title="${isEn ? 'Ask Guidance / Ijazah on WhatsApp' : 'رہنمائی و اجازت حاصل کریں'}">
-              <i class="fa-brands fa-whatsapp"></i>
-            </button>
+        <div class="wic-footer" style="flex-direction:column; align-items:stretch;">
+          ${(WAZIFA_PRESETS[w.id] && WAZIFA_PRESETS[w.id].repsOptions) ? `
+            <div class="wazifa-reps-selector">
+              <div class="wrs-label">
+                <i class="fa-solid fa-bullseye"></i>
+                <span>${isEn ? 'Select Count Target for Today:' : 'آج کی پڑھائی کا ہدف منتخب کریں:'}</span>
+              </div>
+              <div class="wrs-chips">
+                ${WAZIFA_PRESETS[w.id].repsOptions.map((opt, i) => `
+                  <button type="button" class="wrs-chip ${i === 0 ? 'active' : ''}" onclick="selectWazifaTargetReps('${w.id}', ${opt.count}, this)">
+                    ${isEn ? opt.labelEn : opt.labelUr}
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+
+          <div style="display:flex; align-items:center; justify-content:space-between; width:100%; margin-top:8px;">
+            <span class="wic-reps-text">${repsLabel}</span>
+            <div style="display:inline-flex; align-items:center; gap:6px;">
+              <button class="btn-wazifa-tap-counter" data-target="${activeTarget}" onclick="countModuleWazifa(this, ${activeTarget})" title="${tapHint}">
+                <i class="fa-solid fa-fingerprint"></i> <span class="m-count-val">0</span> / <span class="m-target-val">${activeTarget}</span>
+              </button>
+              <button type="button" class="btn-wazifa-reset" onclick="resetWazifaCount(this)" title="${isEn ? 'Reset Counter' : 'کاؤنٹر ری سیٹ کریں'}">
+                <i class="fa-solid fa-rotate-right"></i>
+              </button>
+              <button class="btn-wazifa-consult" onclick="openWazifaConsult('${safeTitle}')" title="${isEn ? 'Ask Guidance / Ijazah on WhatsApp' : 'رہنمائی و اجازت حاصل کریں'}">
+                <i class="fa-brands fa-whatsapp"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1923,6 +2196,12 @@ function renderWazaif(filterCategory = 'all_folders') {
   }).join('');
 
   container.innerHTML = headerBarHtml + cardsHtml;
+
+  items.forEach(w => {
+    if (WAZIFA_PRESETS[w.id]) {
+      setTimeout(() => updateChillaUI(w.id), 25);
+    }
+  });
 }
 
 // Global function to open a wazifa folder directly from anywhere (e.g. Healing screen)
@@ -2105,26 +2384,26 @@ window.openWazifaConsult = function(wazifaTitle) {
 
 // Interactive In-Card Counter Function for Spiritual Healing & Wazaif
 window.countModuleWazifa = function(btn, target) {
-  target = parseInt(target) || 33;
+  const explicitTarget = parseInt(btn.getAttribute('data-target')) || parseInt(target) || 33;
   let current = parseInt(btn.dataset.count) || 0;
   current++;
   btn.dataset.count = current;
 
   playClickSound();
-  if (state.tasbeeh.vibrate && 'vibrate' in navigator) {
+  if (state.tasbeeh && state.tasbeeh.vibrate && 'vibrate' in navigator) {
     navigator.vibrate(25);
   }
 
   const valSpan = btn.querySelector('.m-count-val');
   if (valSpan) valSpan.textContent = current;
 
-  if (current >= target) {
+  if (current >= explicitTarget) {
     btn.classList.add('completed');
-    btn.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span class="m-count-val">${current}</span> / ${target} Complete`;
-    if (state.tasbeeh.vibrate && 'vibrate' in navigator) {
+    if (state.tasbeeh && state.tasbeeh.vibrate && 'vibrate' in navigator) {
       navigator.vibrate([60, 40, 100]);
     }
-    showToast(`MashaAllah! Target of ${target} completed!`);
+    const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+    showToast(isEn ? `🎉 MashaAllah! Target of ${explicitTarget} completed!` : `🎉 ماشاء اللہ! ${explicitTarget} مرتبہ مکمل ہو گیا!`);
   }
 };
 
