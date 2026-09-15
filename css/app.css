@@ -8213,17 +8213,20 @@ body.lang-ur .rohani-issue-card span {
   background: #25D366;
   color: #FFFFFF;
   border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  font-size: 1.1rem;
+  padding: 7px 11px;
+  height: 38px;
+  border-radius: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-family: var(--font-arabic);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 5px;
   transition: all 0.2s ease;
   box-shadow: 0 3px 8px rgba(37, 211, 102, 0.25);
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .btn-wazifa-consult:hover {

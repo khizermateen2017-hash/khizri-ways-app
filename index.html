@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Custom Stylesheet with Cache Buster -->
-  <link rel="stylesheet" href="/css/app.css?v=1789472302067">
+  <link rel="stylesheet" href="/css/app.css?v=1789473090383">
 </head>
 <body class="deen-app-body khizri-theme">
 
@@ -6394,7 +6394,7 @@
   <!-- Exact App Logic with Cache Buster -->
   <script src="/js/quran-data.js?v=v_1789206953032"></script>
   <script src="/js/khawab-data.js?v=1789208877545"></script>
-  <script src="/js/app.js?v=1789472302067"></script>
+  <script src="/js/app.js?v=1789473090383"></script>
 
   <!-- ====================================================
        MODAL: WAZIFA IJAZAH & PERMISSION (اجازت نامہ برائے وظائف و چہل کاف)
@@ -6446,8 +6446,8 @@
           <!-- 1. Full Name -->
           <div style="margin-bottom: 11px;">
             <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-              <span class="lang-en-only">Patient / Applicant Full Name *</span>
-              <span class="lang-ur-only">مریض / سائل کا مکمل نام *</span>
+              <span class="lang-en-only">Applicant / Patient Full Name *</span>
+              <span class="lang-ur-only">سائل / مریض کا مکمل نام *</span>
             </label>
             <input type="text" id="ijazahFullName" required placeholder="مثلاً: محمد رضوان / عائشہ بی بی" style="width: 100%; padding: 9px 12px; border: 1px solid #CBD5E1; border-radius: 10px; font-size: 0.86rem; outline: none;">
           </div>
@@ -6461,22 +6461,13 @@
             <input type="text" id="ijazahFatherName" placeholder="والد یا والدہ کا نام درج فرمائیں" style="width: 100%; padding: 9px 12px; border: 1px solid #CBD5E1; border-radius: 10px; font-size: 0.86rem; outline: none;">
           </div>
 
-          <!-- 1c. Specific Problem / Issue -->
-          <div style="margin-bottom: 11px;">
-            <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-              <span class="lang-en-only">Problem / Issue / Illness</span>
-              <span class="lang-ur-only">مسئلہ / بیماری کی نوعیت (مثلاً: جادو، آسیب، نظر، لاعلاج بیماری، بندش)</span>
-            </label>
-            <input type="text" id="ijazahIssue" placeholder="مثلاً: کالا جادو، آسیب، نظرِ بد، لاعلاج مرض، بندش" style="width: 100%; padding: 9px 12px; border: 1px solid #CBD5E1; border-radius: 10px; font-size: 0.86rem; outline: none;">
-          </div>
-
-          <!-- 2. City / Address -->
+          <!-- 2. City / Address (Placed before profession and problem) -->
           <div style="margin-bottom: 11px;">
             <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
               <span class="lang-en-only">City & Address *</span>
-              <span class="lang-ur-only">شہر / پتہ *</span>
+              <span class="lang-ur-only">شہر و رہائشی پتہ *</span>
             </label>
-            <input type="text" id="ijazahCity" required placeholder="مثلاً: لاہور، پنجاب / کراچی" style="width: 100%; padding: 9px 12px; border: 1px solid #CBD5E1; border-radius: 10px; font-size: 0.86rem; outline: none;">
+            <input type="text" id="ijazahCity" required placeholder="مثلاً: لاہور، پنجاب / کراچی / دبئی" style="width: 100%; padding: 9px 12px; border: 1px solid #CBD5E1; border-radius: 10px; font-size: 0.86rem; outline: none;">
           </div>
 
           <!-- 3. Profession / Occupation -->
@@ -6485,7 +6476,16 @@
               <span class="lang-en-only">Profession / Occupation *</span>
               <span class="lang-ur-only">پیشہ / آپ کیا کام کرتے ہیں؟ *</span>
             </label>
-            <input type="text" id="ijazahProfession" required placeholder="مثلاً: کاروبار، نوکری، گھریلو خاتون، طالب علم" style="width: 100%; padding: 9px 12px; border: 1px solid #CBD5E1; border-radius: 10px; font-size: 0.86rem; outline: none;">
+            <input type="text" id="ijazahProfession" required placeholder="مثلاً: کاروبار، ملازم، گھریلو خاتون، طالب علم" style="width: 100%; padding: 9px 12px; border: 1px solid #CBD5E1; border-radius: 10px; font-size: 0.86rem; outline: none;">
+          </div>
+
+          <!-- 4. Specific Problem / Query / Topic for Guidance -->
+          <div style="margin-bottom: 11px;">
+            <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
+              <span class="lang-en-only">Problem / Query / Topic for Consultation *</span>
+              <span class="lang-ur-only">مسئلہ / جس حوالے سے بات یا رہنمائی حاصل کرنا چاہتے ہیں *</span>
+            </label>
+            <input type="text" id="ijazahIssue" required placeholder="مثلاً: محرم کے عمل کی رہنمائی، جادو کا توڑ، بیماری، نوکری کی بندش وغیرہ" style="width: 100%; padding: 9px 12px; border: 1px solid #CBD5E1; border-radius: 10px; font-size: 0.86rem; outline: none;">
           </div>
 
           <!-- 4. Purpose / Intention (Optional) - Moved ABOVE WhatsApp -->
