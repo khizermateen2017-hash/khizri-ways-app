@@ -1680,14 +1680,14 @@ const WAZAIF_FOLDERS = [
     id: 'ramadan',
     titleUr: 'رمضان و آخری عشرہ',
     titleEn: 'Ramadan & Last 10 Days',
-    subtitleUr: 'سحر، افطار و شبِ قدر',
-    subtitleEn: 'Iftar & Laylatul Qadr',
+    subtitleUr: 'سحر، افطار، شبِ قدر و جادو توڑ',
+    subtitleEn: 'Iftar, Qadr & Magic Removal',
     icon: 'fa-star-and-crescent',
     iconBg: '#FEF3C7',
     iconColor: '#D97706',
-    badgeUr: '۲ مسنون اعمال',
-    badgeEn: '2 Essential Acts',
-    filterFn: (w) => (w.id === 'waz-khas-ramadan' || w.id === 'waz-khas-aakhri-ashra')
+    badgeUr: '۳ مسنون و خاص اعمال',
+    badgeEn: '3 Special Acts',
+    filterFn: (w) => (w.id === 'waz-khas-ramadan' || w.id === 'waz-khas-aakhri-ashra' || w.id === 'waz-ramadan-last10')
   }
 ];
 
@@ -1753,6 +1753,19 @@ const WAZIFA_PRESETS = {
       { count: 3, labelUr: '۳ مرتبہ (دفعِ بلیات)', labelEn: '3x (Protection)' },
       { count: 7, labelUr: '۷ مرتبہ (قضائے حاجات)', labelEn: '7x (Needs Fulfilled)' },
       { count: 14, labelUr: '۱۴ مرتبہ (کشف و برکات)', labelEn: '14x (Spiritual Opening)' }
+    ],
+    defaultReps: 1
+  },
+  'waz-ramadan-last10': {
+    chillaOptions: [
+      { days: 10, labelUr: '۱۰ دن کا خاص عمل (۲۰ رمضان تا چاند رات)', labelEn: '10-Day Special Amal (20th Ramadan to Chand Raat)' },
+      { days: 7, labelUr: '۷ دن کا عمل', labelEn: '7-Day Course' }
+    ],
+    defaultChillaDays: 10,
+    repsOptions: [
+      { count: 1, labelUr: '۱ مکمل نشست (تمام ۷ اوراد)', labelEn: '1 Full Session (All 7 Litanies)' },
+      { count: 41, labelUr: '۴۱ مرتبہ (انفرادی ہدف)', labelEn: '41x (Individual Litany)' },
+      { count: 100, labelUr: '۱۰۰ مرتبہ (تسبیح ہدف)', labelEn: '100x (Tasbeeh Target)' }
     ],
     defaultReps: 1
   }
@@ -2038,9 +2051,17 @@ function renderWazaif(filterCategory = 'all_folders') {
         </div>
         <h4 class="wic-title">${w.title}</h4>
         
-        <!-- Media Actions (PDF Open, Download, Audio Play) -->
-        ${(w.pdfUrl || w.hasAudio) ? `
+        <!-- Media Actions (PDF Open, Download, Audio Play, Poster) -->
+        ${(w.pdfUrl || w.hasAudio || w.posterUrl) ? `
           <div class="wic-media-actions">
+            ${w.posterUrl ? `
+              <a href="${w.posterUrl}" target="_blank" class="btn-wic-action btn-wic-open" style="background:linear-gradient(135deg, #059669, #047857); color:#fff; border-color:#047857;">
+                <i class="fa-solid fa-image"></i> <span>${isEn ? 'View Original Poster' : 'اصل مبارک پوسٹر دیکھیں'}</span>
+              </a>
+              <a href="${w.posterUrl}" download="ramadan-purana-jadu-poster.jpg" class="btn-wic-action btn-wic-download">
+                <i class="fa-solid fa-download"></i> <span>${isEn ? 'Save Poster' : 'پوسٹر محفوظ کریں'}</span>
+              </a>
+            ` : ''}
             ${w.pdfUrl ? `
               <a href="${w.pdfUrl}" target="_blank" class="btn-wic-action btn-wic-open">
                 <i class="fa-solid fa-book-open-reader"></i> <span>${isEn ? 'Read PDF' : 'پی ڈی ایف پڑھیں'}</span>
