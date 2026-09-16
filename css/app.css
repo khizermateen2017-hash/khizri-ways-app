@@ -9396,3 +9396,70 @@ body.lang-ur .rohani-issue-card span {
 .chehal-scan-banner:hover .csb-img {
   transform: scale(1.02);
 }
+
+
+/* =========================================================
+   HIZB-UL-BAHR 3-SESSION TIMINGS STYLES (CHASHT, MAGHRIB, ISHA)
+   ========================================================= */
+.hizb-bahr-sessions-box {
+  margin: 12px 0 14px 0;
+  background: linear-gradient(135deg, #F0FDF4, #ECFDF5);
+  border: 1.5px solid #6EE7B7;
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 3px 10px rgba(16, 185, 129, 0.08);
+}
+.hb-sessions-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #065F46;
+  margin-bottom: 10px;
+}
+.hb-sessions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+@media (max-width: 540px) {
+  .hb-sessions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.hb-session-pill {
+  background: #FFFFFF;
+  border: 1px solid #A7F3D0;
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+.hb-session-pill:hover {
+  border-color: #10B981;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.15);
+}
+.hb-sp-icon {
+  font-size: 1.2rem;
+  margin-bottom: 3px;
+}
+.hb-sp-time {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0F172A;
+}
+.hb-sp-count {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #047857;
+  background: #D1FAE5;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-top: 4px;
+}
