@@ -1719,11 +1719,11 @@ const WAZIFA_PRESETS = {
   },
   'waz-manzil': {
     chillaOptions: [
-      { days: 40, labelUr: '۴۰ دن کا چلہ (جادو، جنات و لاعلاج امراض)', labelEn: '40-Day Chilla (Magic/Jinn/Disease)' },
+      { days: 41, labelUr: '۴۱ دن کا چلہ (جادو، جنات و لاعلاج امراض)', labelEn: '41-Day Chilla (Magic/Jinn/Disease)' },
       { days: 21, labelUr: '۲۱ دن کا معمول', labelEn: '21-Day Course' },
-      { days: 7, labelUr: '۷ دن کی حفاظت', labelEn: '7-Day Protection' }
+      { days: 11, labelUr: '۱۱ دن کی حفاظت', labelEn: '11-Day Protection' }
     ],
-    defaultChillaDays: 40,
+    defaultChillaDays: 41,
     repsOptions: [
       { count: 3, labelUr: '۳ مرتبہ (صبح و شام معمول)', labelEn: '3x (Daily Routine)' },
       { count: 1, labelUr: '۱ مرتبہ (کم از کم)', labelEn: '1x (Minimum)' },
@@ -1874,16 +1874,22 @@ window.updateChillaUI = function(wazifaId) {
   if (bar) bar.style.width = pct + '%';
 
   const compLabel = tracker.querySelector('.wct-completed-txt');
-  if (compLabel) compLabel.textContent = isEn ? `Day ${completed} of ${total} (${pct}%)` : `دن ${completed} / ${total} مکمل (${pct}%)`;
+  if (compLabel) {
+    if (completed === 0) {
+      compLabel.textContent = isEn ? `0 of ${total} Days Done` : `${total} میں سے ۰ دن مکمل`;
+    } else {
+      compLabel.textContent = isEn ? `MashaAllah! Day ${completed} Completed` : `ماشاء اللہ! ${completed} دن مکمل ہو گیا`;
+    }
+  }
 
   const remLabel = tracker.querySelector('.wct-remaining-highlight');
   if (remLabel) {
     if (remaining === 0) {
-      remLabel.textContent = isEn ? '🎉 Chilla Completed!' : '🎉 چلہ مکمل ہو گیا!';
+      remLabel.textContent = isEn ? `🎉 ${total}-Day Chilla Completed!` : `🎉 ماشاء اللہ! ${total} دن کا مکمل چلہ پورا ہو گیا!`;
       remLabel.style.background = '#DCFCE7';
       remLabel.style.color = '#15803D';
     } else {
-      remLabel.textContent = isEn ? `${remaining} days remaining` : `${remaining} دن باقی ہیں`;
+      remLabel.textContent = isEn ? `Now ${remaining} days remaining` : `اب ${remaining} دن رہتے ہیں`;
       remLabel.style.background = '#FEF3C7';
       remLabel.style.color = '#B45309';
     }
@@ -2239,38 +2245,38 @@ function renderWazaif(filterCategory = 'all_folders') {
           </button>
         ` : ''}
         
-        <div class="wic-footer" style="flex-direction:column; align-items:stretch;">
-          ${(WAZIFA_PRESETS[w.id] && WAZIFA_PRESETS[w.id].repsOptions) ? `
-            <div class="wazifa-reps-selector">
-              <div class="wrs-label">
-                <i class="fa-solid fa-bullseye"></i>
-                <span>${isEn ? 'Select Count Target for Today:' : 'آج کی پڑھائی کا ہدف منتخب کریں:'}</span>
+        <!-- Wazifa Card Footer: suppress for Manzil since it has morning & evening trackers, and remove redundant WhatsApp corner icon -->
+        ${w.id !== 'waz-manzil' ? `
+          <div class="wic-footer" style="flex-direction:column; align-items:stretch;">
+            ${(WAZIFA_PRESETS[w.id] && WAZIFA_PRESETS[w.id].repsOptions) ? `
+              <div class="wazifa-reps-selector">
+                <div class="wrs-label">
+                  <i class="fa-solid fa-bullseye"></i>
+                  <span>${isEn ? 'Select Count Target for Today:' : 'آج کی پڑھائی کا ہدف منتخب کریں:'}</span>
+                </div>
+                <div class="wrs-chips">
+                  ${WAZIFA_PRESETS[w.id].repsOptions.map((opt, i) => `
+                    <button type="button" class="wrs-chip ${i === 0 ? 'active' : ''}" onclick="selectWazifaTargetReps('${w.id}', ${opt.count}, this)">
+                      ${isEn ? opt.labelEn : opt.labelUr}
+                    </button>
+                  `).join('')}
+                </div>
               </div>
-              <div class="wrs-chips">
-                ${WAZIFA_PRESETS[w.id].repsOptions.map((opt, i) => `
-                  <button type="button" class="wrs-chip ${i === 0 ? 'active' : ''}" onclick="selectWazifaTargetReps('${w.id}', ${opt.count}, this)">
-                    ${isEn ? opt.labelEn : opt.labelUr}
-                  </button>
-                `).join('')}
-              </div>
-            </div>
-          ` : ''}
+            ` : ''}
 
-          <div style="display:flex; align-items:center; justify-content:space-between; width:100%; margin-top:8px;">
-            <span class="wic-reps-text">${repsLabel}</span>
-            <div style="display:inline-flex; align-items:center; gap:6px;">
-              <button class="btn-wazifa-tap-counter" data-target="${activeTarget}" onclick="countModuleWazifa(this, ${activeTarget})" title="${tapHint}">
-                <i class="fa-solid fa-fingerprint"></i> <span class="m-count-val">0</span> / <span class="m-target-val">${activeTarget}</span>
-              </button>
-              <button type="button" class="btn-wazifa-reset" onclick="resetWazifaCount(this)" title="${isEn ? 'Reset Counter' : 'کاؤنٹر ری سیٹ کریں'}">
-                <i class="fa-solid fa-rotate-right"></i>
-              </button>
-              <button class="btn-wazifa-consult" onclick="openWazifaConsult('${safeTitle}')" title="${isEn ? 'Ask Guidance on WhatsApp' : 'رہنمائی و مشاورت حاصل کریں'}">
-                <i class="fa-brands fa-whatsapp"></i> <span>${isEn ? 'Consult' : 'رہنمائی'}</span>
-              </button>
+            <div style="display:flex; align-items:center; justify-content:space-between; width:100%; margin-top:8px;">
+              <span class="wic-reps-text">${repsLabel}</span>
+              <div style="display:inline-flex; align-items:center; gap:6px;">
+                <button class="btn-wazifa-tap-counter" data-target="${activeTarget}" onclick="countModuleWazifa(this, ${activeTarget})" title="${tapHint}">
+                  <i class="fa-solid fa-fingerprint"></i> <span class="m-count-val">0</span> / <span class="m-target-val">${activeTarget}</span>
+                </button>
+                <button type="button" class="btn-wazifa-reset" onclick="resetWazifaCount(this)" title="${isEn ? 'Reset Counter' : 'کاؤنٹر ری سیٹ کریں'}">
+                  <i class="fa-solid fa-rotate-right"></i>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        ` : ''}
       </div>
     `;
   }).join('');
