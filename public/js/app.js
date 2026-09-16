@@ -1752,18 +1752,19 @@ const WAZIFA_PRESETS = {
   },
   'waz-hizb-bahr': {
     chillaOptions: [
-      { days: 40, labelUr: '۴۰ دن کا چلہ (کامل فتوحات)', labelEn: '40-Day Chilla' },
-      { days: 21, labelUr: '۲۱ دن کا معمول', labelEn: '21-Day Course' },
-      { days: 7, labelUr: '۷ دن کی پناہ', labelEn: '7-Day Protection' }
+      { days: 7, labelUr: '۷ دن کا عمل (طریقہ ۱: روزانہ ۱۲ مرتبہ)', labelEn: '7-Day Amal (Method 1: 12x Daily)' },
+      { days: 27, labelUr: '۲۷ دن کا عمل (طریقہ ۲: چاشت، مغرب، عشاء ۳، ۳ مرتبہ)', labelEn: '27-Day Amal (Method 2: 3x at Chasht, Maghrib & Isha)' },
+      { days: 40, labelUr: '۴۰ دن کا چلہ (کامل فتوحات و زکوٰۃ)', labelEn: '40-Day Chilla (Full Opening & Zakah)' },
+      { days: 21, labelUr: '۲۱ دن کا معمول', labelEn: '21-Day Course' }
     ],
-    defaultChillaDays: 40,
+    defaultChillaDays: 7,
     repsOptions: [
-      { count: 1, labelUr: '۱ مرتبہ (روزانہ)', labelEn: '1x (Daily)' },
-      { count: 3, labelUr: '۳ مرتبہ (دفعِ بلیات)', labelEn: '3x (Protection)' },
-      { count: 7, labelUr: '۷ مرتبہ (قضائے حاجات)', labelEn: '7x (Needs Fulfilled)' },
-      { count: 14, labelUr: '۱۴ مرتبہ (کشف و برکات)', labelEn: '14x (Spiritual Opening)' }
+      { count: 12, labelUr: '۱۲ مرتبہ (طریقہ ۱ - روزانہ)', labelEn: '12x (Method 1 - Daily)' },
+      { count: 3, labelUr: '۳ مرتبہ (طریقہ ۲ - چاشت، مغرب، عشاء)', labelEn: '3x (Method 2 - Chasht, Maghrib & Isha)' },
+      { count: 7, labelUr: '۷ مرتبہ (خاص حصار و قضائے حاجات)', labelEn: '7x (Special Shield & Needs)' },
+      { count: 1, labelUr: '۱ مرتبہ (روزانہ کا معمول)', labelEn: '1x (Daily Routine)' }
     ],
-    defaultReps: 1
+    defaultReps: 12
   },
   'waz-ramadan-last10': {
     chillaOptions: [
@@ -2127,6 +2128,33 @@ function renderWazaif(filterCategory = 'all_folders') {
         ${w.methodInstructions ? `
           <div class="wic-method-box">
             ${(w.methodInstructions || '').replace(/\n/g, '<br>')}
+          </div>
+        ` : ''}
+
+        <!-- Special 3-Session Badges for Hizb-ul-Bahr Method 2 (27 Days) -->
+        ${w.id === 'waz-hizb-bahr' ? `
+          <div class="hizb-bahr-sessions-box">
+            <div class="hb-sessions-title">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+              <span>${isEn ? 'Method 2 (27-Day Course) - 3 Daily Timings (3 Times Each):' : 'طریقہ نمبر ۲ (۲۷ دن کا عمل) - یومیہ ۳ اوقات کی تقسیم (۳، ۳ مرتبہ):'}</span>
+            </div>
+            <div class="hb-sessions-grid">
+              <div class="hb-session-pill">
+                <span class="hb-sp-icon">☀️</span>
+                <span class="hb-sp-time">${isEn ? 'Chasht Prayer' : 'وقتِ چاشت'}</span>
+                <span class="hb-sp-count">${isEn ? '3 Times' : '۳ مرتبہ'}</span>
+              </div>
+              <div class="hb-session-pill">
+                <span class="hb-sp-icon">🌇</span>
+                <span class="hb-sp-time">${isEn ? 'After Maghrib' : 'بعد نمازِ مغرب'}</span>
+                <span class="hb-sp-count">${isEn ? '3 Times' : '۳ مرتبہ'}</span>
+              </div>
+              <div class="hb-session-pill">
+                <span class="hb-sp-icon">🌙</span>
+                <span class="hb-sp-time">${isEn ? 'After Isha' : 'بعد نمازِ عشاء'}</span>
+                <span class="hb-sp-count">${isEn ? '3 Times' : '۳ مرتبہ'}</span>
+              </div>
+            </div>
           </div>
         ` : ''}
 
