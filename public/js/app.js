@@ -1705,17 +1705,17 @@ const WAZAIF_FOLDERS = [
 const WAZIFA_PRESETS = {
   'waz-chehal-kaaf': {
     chillaOptions: [
-      { days: 12, labelUr: '۱۲ دن کا عمل (طریقہ ۱: روزانہ ۱۰۰ مرتبہ)', labelEn: '12-Day Course (Daily 100x)' },
-      { days: 1, labelUr: '۱ دن نوچندی (طریقہ ۲: ۱۱۰۴ مرتبہ)', labelEn: '1-Day Nauchandi (1,104x)' },
-      { days: 41, labelUr: '۴۱ دن کا چلہ', labelEn: '41-Day Chilla' },
-      { days: 101, labelUr: '۱۰۱ دن کا عمل', labelEn: '101-Day Amal' }
+      { days: 1, labelUr: '۱ دن نوچندی عمل (۱۱۰۴ مرتبہ مع روزہ)', labelEn: '1-Day Nauchandi (1,104x with Fast)' },
+      { days: 12, labelUr: '۱۲ دن کا عمل (روزانہ ۱۰۰ مرتبہ)', labelEn: '12-Day Course (Daily 100x)' },
+      { days: 41, labelUr: '۴۱ دن کا چلہ (روزانہ ۴۱ مرتبہ)', labelEn: '41-Day Chilla (Daily 41x)' },
+      { days: 101, labelUr: '۱۰۱ دن کا عمل (روزانہ ۱۰۱ مرتبہ)', labelEn: '101-Day Amal (Daily 101x)' }
     ],
     defaultChillaDays: 12,
     repsOptions: [
-      { count: 100, labelUr: '۱۰۰ مرتبہ (طریقہ ۱ - روزانہ)', labelEn: '100x (Method 1 - Daily)' },
-      { count: 1104, labelUr: '۱۱۰۴ مرتبہ (طریقہ ۲ - نوچندی)', labelEn: '1,104x (Method 2 - Nauchandi)' },
-      { count: 101, labelUr: '۱۰۱ مرتبہ (معمول)', labelEn: '101x (Daily Routine)' },
-      { count: 41, labelUr: '۴۱ مرتبہ (معمول)', labelEn: '41x (Daily Routine)' }
+      { count: 1104, labelUr: '۱۱۰۴ مرتبہ (طریقہ ۱ - نوچندی)', labelEn: '1,104x (Method 1 - Nauchandi)' },
+      { count: 100, labelUr: '۱۰۰ مرتبہ (طریقہ ۲ - ۱۲ دن روزانہ)', labelEn: '100x (Method 2 - 12 Days Daily)' },
+      { count: 41, labelUr: '۴۱ مرتبہ (۴۱ دن کا چلہ)', labelEn: '41x (41-Day Chilla)' },
+      { count: 101, labelUr: '۱۰۱ مرتبہ (۱۰۱ دن کا عمل)', labelEn: '101x (101-Day Amal)' }
     ],
     defaultReps: 100
   },
@@ -1736,18 +1736,19 @@ const WAZIFA_PRESETS = {
   },
   'waz-hizb-nasr': {
     chillaOptions: [
-      { days: 11, labelUr: '۱۱ دن کا عمل (نصرت و فتح)', labelEn: '11-Day Amal (Victory)' },
-      { days: 21, labelUr: '۲۱ دن کا عمل', labelEn: '21-Day Amal' },
-      { days: 40, labelUr: '۴۰ دن کا چلہ', labelEn: '40-Day Chilla' }
+      { days: 7, labelUr: '۷ دن کا عمل (روزانہ ۱۲ مرتبہ)', labelEn: '7-Day Amal (12x Daily)' },
+      { days: 12, labelUr: '۱۲ دن کا عمل (روزانہ ۱۲ مرتبہ)', labelEn: '12-Day Amal (12x Daily)' },
+      { days: 21, labelUr: '۲۱ دن کا عمل (نصرت و فتح)', labelEn: '21-Day Amal (Victory)' },
+      { days: 40, labelUr: '۴۰ دن کا چلہ (حصارِ اعظم)', labelEn: '40-Day Chilla (Grand Shield)' }
     ],
-    defaultChillaDays: 11,
+    defaultChillaDays: 7,
     repsOptions: [
-      { count: 1, labelUr: '۱ مرتبہ (روزانہ)', labelEn: '1x (Daily)' },
-      { count: 3, labelUr: '۳ مرتبہ (مصیبت و مقدمہ)', labelEn: '3x (Trials & Cases)' },
-      { count: 7, labelUr: '۷ مرتبہ (خاص نصرت)', labelEn: '7x (Divine Victory)' },
-      { count: 11, labelUr: '۱۱ مرتبہ (دشمن پر فتح)', labelEn: '11x (Overcoming Enemies)' }
+      { count: 12, labelUr: '۱۲ مرتبہ (۷ یا ۱۲ دن کا عمل - روزانہ)', labelEn: '12x (7 or 12-Day Amal - Daily)' },
+      { count: 7, labelUr: '۷ مرتبہ (خاص فتح و نصرت)', labelEn: '7x (Special Victory)' },
+      { count: 3, labelUr: '۳ مرتبہ (روزانہ معمول)', labelEn: '3x (Daily Routine)' },
+      { count: 1, labelUr: '۱ مرتبہ (حفاظت)', labelEn: '1x (Protection)' }
     ],
-    defaultReps: 1
+    defaultReps: 12
   },
   'waz-hizb-bahr': {
     chillaOptions: [
