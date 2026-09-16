@@ -2077,9 +2077,14 @@ function renderWazaif(filterCategory = 'all_folders') {
         </div>
         <h4 class="wic-title">${w.title}</h4>
         
-        <!-- Media Actions (PDF Open, Download, Audio Play, Poster) -->
-        ${(w.pdfUrl || w.hasAudio || w.posterUrl) ? `
+        <!-- Media Actions (PDF Open, Download, Audio Play, Poster, Scan) -->
+        ${(w.pdfUrl || w.hasAudio || w.posterUrl || w.scanUrl) ? `
           <div class="wic-media-actions">
+            ${w.scanUrl ? `
+              <a href="${w.scanUrl}" target="_blank" class="btn-wic-action btn-wic-scan">
+                <i class="fa-solid fa-file-image"></i> <span>${isEn ? 'Original Book Scan' : 'اصل کتابی عکس دیکھیں'}</span>
+              </a>
+            ` : ''}
             ${w.posterUrl ? `
               <a href="${w.posterUrl}" target="_blank" class="btn-wic-action btn-wic-open" style="background:linear-gradient(135deg, #059669, #047857); color:#fff; border-color:#047857;">
                 <i class="fa-solid fa-image"></i> <span>${isEn ? 'View Original Poster' : 'اصل مبارک پوسٹر دیکھیں'}</span>
@@ -2101,6 +2106,19 @@ function renderWazaif(filterCategory = 'all_folders') {
                 <i class="fa-solid fa-volume-high"></i> <span class="audio-btn-txt">${isEn ? 'Listen Recitation (Qari)' : 'تلاوت سنیں (قاری صاحب)'}</span>
               </button>
             ` : ''}
+          </div>
+        ` : ''}
+
+        <!-- Embedded Book Scan for Chehal Kaaf & Verified Sources -->
+        ${w.scanUrl ? `
+          <div class="chehal-scan-banner" onclick="window.open('${w.scanUrl}', '_blank')" title="${isEn ? 'Click to view full high-resolution scan' : 'بڑے سائز میں اصل عکس دیکھنے کے لیے کلک کریں'}">
+            <div class="csb-header">
+              <span><i class="fa-solid fa-certificate"></i> ${isEn ? 'Original Verified Scan: Aaina-e-Amaliyat (p. 205)' : 'مستند کتابی عکس: آئینہ عملیات (صفحہ ۲۰۵)'}</span>
+              <span class="csb-zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> ${isEn ? 'Zoom / High-Res' : 'بڑا کر کے دیکھیں'}</span>
+            </div>
+            <div class="csb-img-wrap">
+              <img src="${w.scanUrl}" alt="Chehal Kaaf Original Book Scan" class="csb-img" loading="lazy" />
+            </div>
           </div>
         ` : ''}
 
