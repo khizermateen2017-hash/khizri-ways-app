@@ -1339,6 +1339,7 @@ async function fetchAllData() {
     initDualManzilTrackers();
     updateGridOverallProgress('waz-khas-17-ramadan');
     updateGridOverallProgress('waz-ramadan-last10');
+    updateGridOverallProgress('waz-khas-27-ramadan');
   }, 100);
     }
   } catch (err) {
@@ -1685,14 +1686,14 @@ const WAZAIF_FOLDERS = [
     id: 'ramadan',
     titleUr: 'رمضان و آخری عشرہ',
     titleEn: 'Ramadan & Last 10 Days',
-    subtitleUr: 'سحر، افطار، شبِ قدر و جادو توڑ',
-    subtitleEn: 'Iftar, Qadr & Magic Removal',
+    subtitleUr: 'سحر، افطار، ۲۷ شبِ قدر و جادو توڑ',
+    subtitleEn: 'Iftar, 27th Qadr & Magic Removal',
     icon: 'fa-star-and-crescent',
     iconBg: '#FEF3C7',
     iconColor: '#D97706',
-    badgeUr: '۳ مسنون و خاص اعمال',
-    badgeEn: '3 Special Acts',
-    filterFn: (w) => (w.id === 'waz-khas-ramadan' || w.id === 'waz-khas-aakhri-ashra' || w.id === 'waz-ramadan-last10')
+    badgeUr: '۴ مسنون و خاص اعمال',
+    badgeEn: '4 Special Acts',
+    filterFn: (w) => (w.id === 'waz-khas-ramadan' || w.id === 'waz-khas-aakhri-ashra' || w.id === 'waz-ramadan-last10' || w.id === 'waz-khas-27-ramadan')
   }
 ];
 
@@ -1773,6 +1774,18 @@ const WAZIFA_PRESETS = {
       { count: 100, labelUr: '۱۰۰ مرتبہ (تسبیح ہدف)', labelEn: '100x (Tasbeeh Target)' }
     ],
     defaultReps: 1
+  },
+  'waz-khas-27-ramadan': {
+    chillaOptions: [
+      { days: 1, labelUr: '۱ رات کا عمل (شبِ قدر)', labelEn: '1-Night Amal (Qadr)' }
+    ],
+    defaultChillaDays: 1,
+    repsOptions: [
+      { count: 1000, labelUr: '۱۰۰۰ مرتبہ (سورۃ القدر - ایک نشست)', labelEn: '1,000x (Surah Al-Qadr)' },
+      { count: 313, labelUr: '۳۱۳ مرتبہ (دعائے عفو)', labelEn: '313x (Supplication)' },
+      { count: 100, labelUr: '۱۰۰ مرتبہ (تسبیح)', labelEn: '100x (Tasbeeh)' }
+    ],
+    defaultReps: 1000
   }
 };
 
@@ -4778,7 +4791,8 @@ const SURAH_CATALOG_MAPPING = [
   { match: /قریش|القریش/, num: 106, name: 'سورۃ قریش', nameEn: 'Surah Quraysh' },
   { match: /فاتحہ|الفاتحہ|الفاتحة/, num: 1, name: 'سورۃ الفاتحہ', nameEn: 'Surah Al-Fatihah' },
   { match: /فلق|الفلق|الْفَلَقِ/, num: 113, name: 'سورۃ الفلق', nameEn: 'Surah Al-Falaq' },
-  { match: /ناس|الناس|النَّاسِ/, num: 114, name: 'سورۃ الناس', nameEn: 'Surah An-Nas' }
+  { match: /ناس|الناس|النَّاسِ/, num: 114, name: 'سورۃ الناس', nameEn: 'Surah An-Nas' },
+  { match: /قدر|القدر/, num: 97, name: 'سورۃ القدر', nameEn: 'Surah Al-Qadr' }
 ];
 
 window.detectItemSurahsAndLinks = function(text, isEn) {
@@ -4805,6 +4819,12 @@ window.detectItemSurahsAndLinks = function(text, isEn) {
       type: 'pdf',
       url: '/uploads/manzil-dua-with-benefits.pdf',
       label: isEn ? 'Open Manzil Sharif PDF' : 'منزل شریف کھولیں'
+    });
+  }
+  if (text.includes('قرآن')) {
+    links.push({
+      type: 'quran',
+      label: isEn ? 'Open Holy Qur\'an' : 'قرآنِ مجید کھولیں (مکمل تلاوت)'
     });
   }
   return links;
@@ -4871,6 +4891,10 @@ window.renderInteractiveItemsGrid = function(w, isEn) {
                     return `<button type="button" class="btn-wgi-surah" onclick="event.stopPropagation(); openSurahReader(${l.num})">
                       <i class="fa-solid fa-book-quran"></i> <span>${l.label}</span>
                     </button>`;
+                  } else if (l.type === 'quran') {
+                    return `<button type="button" class="btn-wgi-surah" style="background:linear-gradient(135deg, #0284C7 0%, #0369A1 100%);" onclick="event.stopPropagation(); switchSubScreen('tabQuran')">
+                      <i class="fa-solid fa-book-quran"></i> <span>${l.label}</span>
+                    </button>`;
                   } else {
                     return `<a href="${l.url}" target="_blank" class="btn-wgi-surah" onclick="event.stopPropagation();">
                       <i class="fa-solid fa-book-open"></i> <span>${l.label}</span>
@@ -4897,6 +4921,11 @@ window.renderInteractiveItemsGrid = function(w, isEn) {
                 ${target >= 100 ? `
                   <button type="button" class="btn-wgi-quick" onclick="tapGridItemCounter('${w.id}', ${item.num}, ${target}, 50)" title="+50">
                     +50
+                  </button>
+                ` : ''}
+                ${target >= 500 ? `
+                  <button type="button" class="btn-wgi-quick" onclick="tapGridItemCounter('${w.id}', ${item.num}, ${target}, 100)" title="+100">
+                    +100
                   </button>
                 ` : ''}
                 <button type="button" class="btn-wgi-reset" onclick="resetGridItemCounter('${w.id}', ${item.num}, ${target})" title="${isEn ? 'Reset' : 'ری سیٹ'}">
