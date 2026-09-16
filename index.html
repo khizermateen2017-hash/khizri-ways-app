@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Custom Stylesheet with Cache Buster -->
-  <link rel="stylesheet" href="/css/app.css?v=1789547305633">
+  <link rel="stylesheet" href="/css/app.css?v=1789549240055">
 </head>
 <body class="deen-app-body khizri-theme">
 
@@ -6162,6 +6162,9 @@
 
         <!-- Font Size Controls & Close -->
         <div style="display:flex; align-items:center; gap:6px;">
+          <button type="button" id="btnToggleAyahTranslation" onclick="toggleSurahTranslationMode()" style="background:rgba(255,255,255,0.22); color:#FEF08A; border:1px solid rgba(254,240,138,0.4); border-radius:6px; padding:4px 8px; font-size:0.72rem; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:4px;">
+            <i class="fa-solid fa-language"></i> <span id="lblTranslationToggle">صرف عربی (بغیر ترجمہ)</span>
+          </button>
           <button onclick="changeArabicFontSize(-2)" title="Smaller Text" style="background:rgba(255,255,255,0.18); color:#FFF; border:none; border-radius:6px; padding:4px 8px; font-size:0.75rem; font-weight:800; cursor:pointer;">A-</button>
           <button onclick="changeArabicFontSize(2)" title="Larger Text" style="background:rgba(255,255,255,0.18); color:#FFF; border:none; border-radius:6px; padding:4px 8px; font-size:0.75rem; font-weight:800; cursor:pointer;">A+</button>
           <button class="btn-modal-x" onclick="closeSurahReader()" style="background:rgba(255,255,255,0.18); color:#FFF; border:none; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
@@ -6394,7 +6397,7 @@
   <!-- Exact App Logic with Cache Buster -->
   <script src="/js/quran-data.js?v=v_1789206953032"></script>
   <script src="/js/khawab-data.js?v=1789208877545"></script>
-  <script src="/js/app.js?v=1789547305633"></script>
+  <script src="/js/app.js?v=1789549240055"></script>
 
   <!-- ====================================================
        MODAL: WAZIFA IJAZAH & PERMISSION (اجازت نامہ برائے وظائف و چہل کاف)
@@ -6525,6 +6528,43 @@
           </button>
 
         </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================================
+       LITANY & AYATUL KURSI READER MODAL (بغیر ترجمہ صاف عربی تلاوت)
+       ======================================================== -->
+  <div class="modal-dialog-layer" id="modalItemReader">
+    <div class="modal-card-container" style="max-width: 620px;">
+      <div class="reader-header" style="background: linear-gradient(135deg, #065F46, #047857); padding: 14px 18px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <button type="button" onclick="closeItemReaderModal()" style="background:rgba(255,255,255,0.18); color:#FFF; border:none; border-radius:50%; width:34px; height:34px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <div>
+            <div id="itemReaderTitle" style="font-weight:800; font-size:1rem; color:#FFF;">تلاوت و ورد</div>
+            <div id="itemReaderSub" style="font-size:0.74rem; color:#A7F3D0;">صاف عربی متن برائے سہل تلاوت (بغیر ترجمہ)</div>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <button type="button" onclick="closeItemReaderModal()" style="background:rgba(255,255,255,0.18); color:#FFF; border:none; border-radius:50%; width:34px; height:34px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+      <div style="padding: 22px 18px; background: #FFFDF7; text-align: center; max-height: 72vh; overflow-y: auto;">
+        <div id="itemReaderCountBadge" style="display: inline-block; background: #FEF3C7; color: #92400E; padding: 5px 16px; border-radius: 20px; font-weight: bold; font-size: 0.88rem; margin-bottom: 16px; border: 1px solid #FDE68A;"></div>
+        <div id="itemReaderArabic" style="font-family: 'Amiri', 'Traditional Arabic', serif; font-size: 1.58rem; line-height: 2.35; color: #0F172A; text-align: justify; direction: rtl; padding: 18px 20px; border-radius: 14px; background: #FEFCE8; border: 1.5px solid #FDE047; box-shadow: inset 0 1px 4px rgba(0,0,0,0.05); white-space: pre-line;"></div>
+        <div style="margin-top: 20px; display: flex; justify-content: center; align-items: center; gap: 12px;">
+          <button type="button" id="btnItemModalTap" onclick="tapItemModalCounter()" style="background: linear-gradient(135deg, #059669, #047857); color: #FFF; border: none; padding: 12px 28px; font-size: 1.1rem; font-weight: 700; border-radius: 14px; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; box-shadow: 0 4px 14px rgba(5,150,105,0.35);">
+            <i class="fa-solid fa-fingerprint" style="font-size: 1.3rem;"></i> <span>پڑھیں و گنیں</span> (<span id="itemModalCountVal">0</span> / <span id="itemModalTargetVal">313</span>)
+          </button>
+          <button type="button" onclick="resetItemModalCounter()" title="Reset Counter" style="background: #F1F5F9; color: #64748B; border: 1px solid #CBD5E1; border-radius: 12px; padding: 12px 16px; font-size: 1rem; cursor: pointer;">
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>

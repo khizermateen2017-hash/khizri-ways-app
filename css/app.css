@@ -9463,3 +9463,25 @@ body.lang-ur .rohani-issue-card span {
   border-radius: 12px;
   margin-top: 4px;
 }
+
+
+/* =========================================================
+   SURAH READER ARABIC-ONLY MODE & ITEM READER STYLES
+   ========================================================= */
+.modal-dialog-layer.arabic-only-mode .ayah-urdu-text,
+.modal-dialog-layer.arabic-only-mode .ayah-eng-text {
+  display: none !important;
+}
+
+.modal-dialog-layer.arabic-only-mode .ayah-arabic-text {
+  font-size: 1.65rem !important;
+  line-height: 2.35 !important;
+  text-align: justify !important;
+  color: #0F172A !important;
+}
+
+.modal-dialog-layer.arabic-only-mode .ayah-card {
+  padding: 14px 18px !important;
+  margin-bottom: 10px !important;
+  border-color: #E2E8F0 !important;
+}

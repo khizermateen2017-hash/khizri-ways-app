@@ -1070,10 +1070,109 @@ window.downloadSurahMp3 = function() {
 };
 
 // =========================================================================
+
+// =========================================================================
+// AYATUL KURSI & 44 LITANIES ITEM READER MODAL (بغیر ترجمہ صاف تلاوت)
+// =========================================================================
+window.AYATUL_KURSI_TEXT = "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ";
+
+window.DUROOD_IBRAHIMI_TEXT = "اَللّٰهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَّعَلَىٰ آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَّجِيدٌ ؕ\n\nاَللّٰهُمَّ بَارِكْ عَلَىٰ مُحَمَّدٍ وَّعَلَىٰ آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَّجِيدٌ";
+
+window.ASMA_UL_HUSNA_TEXT = "هُوَ اللَّهُ الَّذِي لَا إِلَهَ إِلَّا هُوَ الرَّحْمَنُ الرَّحِيمُ الْمَلِكُ الْقُدُّوسُ السَّلَامُ الْمُؤْمِنُ الْمُهَيْمِنُ الْعَزِيزُ الْجَبَّارُ الْمُتَكَبِّرُ الْخَالِقُ الْبَارِئُ الْمُصَوِّرُ الْغَفَّارُ الْقَهَّارُ الْوَهَّابُ الرَّزَّاقُ الْفَتَّاحُ الْعَلِيمُ الْقَابِضُ الْبَاسِطُ الْخَافِضُ الرَّافِعُ الْمُعِزُّ الْمُذِلُّ السَّمِيعُ الْبَصِيرُ الْحَكَمُ الْعَدْلُ اللَّطِيفُ الْخَبِيرُ الْحَلِيمُ الْعَظِيمُ الْغَفُورُ الشَّكُورُ الْعَلِيُّ الْكَبِيرُ الْحَفِيظُ الْمُقِيتُ الْحَسِيبُ الْجَلِيلُ الْكَرِيمُ الرَّقِيبُ الْمُجِيبُ الْوَاسِعُ الْحَكِيمُ الْوَدُودُ الْمَجِيدُ الْبَاعِثُ الشَّهِيدُ الْحَقُّ الْوَكِيلُ الْقَوِيُّ الْمَتِينُ الْوَلِيُّ الْحَمِيدُ الْمُحْصِي الْمُبْدِئُ الْمُعِيدُ الْمُحْيِي الْمُمِيتُ الْحَيُّ الْقَيُّومُ الْوَاجِدُ الْمَاجِدُ الْوَاحِدُ الصَّمَدُ الْقَادِرُ الْمُقْتَدِرُ الْمُقَدِّمُ الْمُؤَخِّرُ الْأَوَّلُ الْآخِرُ الظَّاهِرُ الْبَاطِنُ الْوَالِي الْمُتَعَالِي الْبَرُّ التَّوَّابُ الْمُنْتَقِمُ الْعَفُوُّ الرَّءُوفُ مَالِكُ الْمُلْكِ ذُو الْجَلَالِ وَالْإِكْرَامِ الْمُقْسِطُ الْجَامِعُ الْغَنِيُّ الْمُغْنِي الْمَانِعُ الضَّارُّ النَّافِعُ النُّورُ الْهَادِي الْبَدِيعُ الْبَاقِي الْوَارِثُ الرَّشِيدُ الصَّبُورُ";
+
+let currentItemModalData = null;
+
+window.openAyatulKursiReader = function() {
+  openItemTextModal(9, 'آیت الکرسی (سورۃ البقرۃ - آیت ۲۵۵)', window.AYATUL_KURSI_TEXT, '313 مرتبہ', 313);
+};
+
+window.openItemTextModal = function(num, title, text, countStr, targetVal) {
+  const modal = document.getElementById('modalItemReader');
+  if (!modal) return;
+
+  const target = targetVal || parseUrduTargetCount(countStr);
+  currentItemModalData = { num, target, wazifaId: 'waz-khas-17-ramadan' };
+
+  const titleEl = document.getElementById('itemReaderTitle');
+  const badgeEl = document.getElementById('itemReaderCountBadge');
+  const textEl = document.getElementById('itemReaderArabic');
+  const targetValEl = document.getElementById('itemModalTargetVal');
+  const countValEl = document.getElementById('itemModalCountVal');
+
+  if (titleEl) titleEl.textContent = title;
+  if (badgeEl) badgeEl.textContent = 'ہدف: ' + (countStr || target + ' مرتبہ');
+  if (textEl) textEl.textContent = text;
+  if (targetValEl) targetValEl.textContent = target;
+
+  const savedCount = parseInt(localStorage.getItem('khizri_item_waz-khas-17-ramadan_' + num) || '0');
+  if (countValEl) countValEl.textContent = savedCount;
+
+  modal.classList.add('active');
+};
+
+window.closeItemReaderModal = function() {
+  const modal = document.getElementById('modalItemReader');
+  if (modal) modal.classList.remove('active');
+  currentItemModalData = null;
+};
+
+window.tapItemModalCounter = function() {
+  if (!currentItemModalData) return;
+  const { num, target, wazifaId } = currentItemModalData;
+  tapGridItemCounter(wazifaId, num, target, 1);
+  const newCount = parseInt(localStorage.getItem('khizri_item_' + wazifaId + '_' + num) || '0');
+  const countValEl = document.getElementById('itemModalCountVal');
+  if (countValEl) countValEl.textContent = newCount;
+  if (newCount >= target) {
+    playClickSound();
+  }
+};
+
+window.resetItemModalCounter = function() {
+  if (!currentItemModalData) return;
+  const { num, wazifaId } = currentItemModalData;
+  localStorage.setItem('khizri_item_' + wazifaId + '_' + num, '0');
+  const countValEl = document.getElementById('itemModalCountVal');
+  if (countValEl) countValEl.textContent = '0';
+  const gridItem = document.getElementById('wgi-' + wazifaId + '-' + num);
+  if (gridItem) {
+    gridItem.classList.remove('completed');
+    const valSpan = gridItem.querySelector('.wgi-count-val');
+    if (valSpan) valSpan.textContent = '0';
+  }
+  updateGridSummary(wazifaId);
+};
+
 // SURAH READER (Interactive Modal with Arabic Uthmani & Urdu Translation)
 // =========================================================================
 
-window.openSurahReader = function(num) {
+window.surahReaderArabicOnly = true;
+
+window.toggleSurahTranslationMode = function() {
+  window.surahReaderArabicOnly = !window.surahReaderArabicOnly;
+  const modal = document.getElementById('modalSurahReader');
+  const lbl = document.getElementById('lblTranslationToggle');
+  if (modal) {
+    if (window.surahReaderArabicOnly) {
+      modal.classList.add('arabic-only-mode');
+      if (lbl) lbl.textContent = 'صرف عربی (بغیر ترجمہ)';
+    } else {
+      modal.classList.remove('arabic-only-mode');
+      if (lbl) lbl.textContent = 'مع اردو ترجمہ';
+    }
+  }
+};
+
+window.openSurahReader = function(num, opts = {}) {
+  // Default to Arabic-only mode for easy recitation when opened from wazaif
+  if (opts.arabicOnly !== false) {
+    window.surahReaderArabicOnly = true;
+    const modalEl = document.getElementById('modalSurahReader');
+    if (modalEl) modalEl.classList.add('arabic-only-mode');
+    const lbl = document.getElementById('lblTranslationToggle');
+    if (lbl) lbl.textContent = 'صرف عربی (بغیر ترجمہ)';
+  }
+
   quranCurrentSurahNum = num;
   const surah = (window.QURAN_SURAHS || []).find(s => s.num === num);
   if (!surah) return;
@@ -1683,17 +1782,17 @@ const WAZAIF_FOLDERS = [
     filterFn: (w) => (w.id === 'waz-khas-17-ramadan' || (w.title || '').includes('۱۷ رمضان'))
   },
   {
-    id: 'ramadan',
-    titleUr: 'رمضان و آخری عشرہ',
-    titleEn: 'Ramadan & Last 10 Days',
-    subtitleUr: 'سحر، افطار، ۲۷ شبِ قدر و جادو توڑ',
-    subtitleEn: 'Iftar, 27th Qadr & Magic Removal',
+    id: 'ramadan-last-10',
+    titleUr: 'آخری ۱۰ دن والے وظائف',
+    titleEn: 'Last 10 Days of Ramadan Wazaif',
+    subtitleUr: 'جادو کا قاطع توڑ، شبِ قدر و ۲۷ رمضان',
+    subtitleEn: 'Magic Removal, Qadr & 27th Night',
     icon: 'fa-star-and-crescent',
     iconBg: '#FEF3C7',
     iconColor: '#D97706',
-    badgeUr: '۴ مسنون و خاص اعمال',
-    badgeEn: '4 Special Acts',
-    filterFn: (w) => (w.id === 'waz-khas-ramadan' || w.id === 'waz-khas-aakhri-ashra' || w.id === 'waz-ramadan-last10' || w.id === 'waz-khas-27-ramadan')
+    badgeUr: 'خاص روحانی اوراد',
+    badgeEn: 'Special Litanies',
+    filterFn: (w) => (w.id === 'waz-ramadan-last10' || w.id === 'waz-khas-27-ramadan' || w.id === 'waz-khas-aakhri-ashra')
   }
 ];
 
@@ -1749,6 +1848,22 @@ const WAZIFA_PRESETS = {
       { count: 1, labelUr: '۱ مرتبہ (حفاظت)', labelEn: '1x (Protection)' }
     ],
     defaultReps: 12
+  },
+  'waz-nadi-ali': {
+    chillaOptions: [
+      { days: 12, labelUr: '۱۲ دن کا عمل (روزانہ ۱۰۰ مرتبہ - خاص ہدف)', labelEn: '12-Day Course (Daily 100x - Primary)' },
+      { days: 21, labelUr: '۲۱ دن کا معمول (کشائشِ کار)', labelEn: '21-Day Course (Relief)' },
+      { days: 40, labelUr: '۴۰ دن کا چلہ (کامل تسخیر و فتح)', labelEn: '40-Day Chilla (Victory)' },
+      { days: 7, labelUr: '۷ دن کی فوری امداد', labelEn: '7-Day Quick Relief' }
+    ],
+    defaultChillaDays: 12,
+    repsOptions: [
+      { count: 100, labelUr: '۱۰۰ مرتبہ (۱۲ دن کا خاص عمل)', labelEn: '100x (12-Day Course)' },
+      { count: 110, labelUr: '۱۱۰ مرتبہ (بحسابِ ابجد)', labelEn: '110x (Abjad Count)' },
+      { count: 21, labelUr: '۲۱ مرتبہ (روزانہ معمول)', labelEn: '21x (Daily Routine)' },
+      { count: 7, labelUr: '۷ مرتبہ (کم از کم)', labelEn: '7x (Minimum)' }
+    ],
+    defaultReps: 100
   },
   'waz-hizb-bahr': {
     chillaOptions: [
@@ -4850,24 +4965,42 @@ const SURAH_CATALOG_MAPPING = [
   { match: /قدر|القدر/, num: 97, name: 'سورۃ القدر', nameEn: 'Surah Al-Qadr' }
 ];
 
-window.detectItemSurahsAndLinks = function(text, isEn) {
+window.detectItemSurahsAndLinks = function(item, isEn) {
+  const text = typeof item === 'string' ? item : (item.text || '');
+  const itemNum = item.num || 1;
+  const countStr = item.count || '';
   if (!text) return [];
   const links = [];
+
+  // 1. Ayatul Kursi detection
+  if (/کرسی|الکرسی/.test(text)) {
+    links.push({
+      type: 'ayatul_kursi',
+      label: isEn ? 'Open Ayatul Kursi (Read)' : 'آیت الکرسی کھولیں و تلاوت کریں'
+    });
+    return links;
+  }
+
+  // 2. Surah Catalog Mapping (Opens without translation for easy recitation)
   for (const s of SURAH_CATALOG_MAPPING) {
     if (s.match.test(text)) {
       links.push({
         type: 'surah',
         num: s.num,
-        label: isEn ? `Read ${s.nameEn}` : `${s.name} کھولیں و تلاوت کریں`
+        label: isEn ? `Read ${s.nameEn} (Simple Arabic)` : `${s.name} کھولیں (صرف عربی تلاوت)`
       });
+      return links;
     }
   }
+
+  // 3. Other special litanies with PDFs
   if (text.includes('حزب البحر')) {
     links.push({
       type: 'pdf',
       url: '/uploads/hizb-ul-bahr.pdf',
       label: isEn ? 'Open Hizb-ul-Bahr PDF' : 'دعائے حزب البحر کھولیں'
     });
+    return links;
   }
   if (text.includes('منزل')) {
     links.push({
@@ -4875,13 +5008,53 @@ window.detectItemSurahsAndLinks = function(text, isEn) {
       url: '/uploads/manzil-dua-with-benefits.pdf',
       label: isEn ? 'Open Manzil Sharif PDF' : 'منزل شریف کھولیں'
     });
+    return links;
   }
   if (text.includes('قرآن')) {
     links.push({
       type: 'quran',
       label: isEn ? 'Open Holy Qur\'an' : 'قرآنِ مجید کھولیں (مکمل تلاوت)'
     });
+    return links;
   }
+
+  // 4. Specific Rich Texts: Durood Ibrahimi & Asma-ul-Husna
+  if (itemNum === 16 || text.includes('درودِ ابراہیمی') || text.includes('ابراہیمی')) {
+    links.push({
+      type: 'custom_item',
+      itemNum: itemNum,
+      title: 'درودِ ابراہیمی شریف',
+      fullText: window.DUROOD_IBRAHIMI_TEXT || text,
+      countStr: countStr,
+      label: isEn ? 'Open Durood Ibrahimi' : 'درودِ ابراہیمی کھولیں و تلاوت کریں'
+    });
+    return links;
+  }
+
+  if (itemNum === 44 || text.includes('اسماء الحسنیٰ') || text.includes('۹۹ اسماء')) {
+    links.push({
+      type: 'custom_item',
+      itemNum: itemNum,
+      title: 'اسماء الحسنیٰ (۹۹ مبارک اسماء)',
+      fullText: window.ASMA_UL_HUSNA_TEXT || text,
+      countStr: countStr,
+      label: isEn ? 'Open 99 Names of Allah' : 'اسماء الحسنیٰ کھولیں و تلاوت کریں'
+    });
+    return links;
+  }
+
+  // 5. Default: Any other Dua / Kalimah / Tasbeeh can be opened in the clean Arabic modal
+  const safeText = text.replace(/'/g, "\\'");
+  const safeTitle = (text.length > 42 ? text.substring(0, 38) + '...' : text).replace(/'/g, "\\'");
+  links.push({
+    type: 'custom_item',
+    itemNum: itemNum,
+    title: safeTitle,
+    fullText: safeText,
+    countStr: countStr,
+    label: isEn ? 'Open Litany to Recite' : 'مکمل ورد کھولیں و تلاوت کریں'
+  });
+
   return links;
 };
 
@@ -4921,7 +5094,7 @@ window.renderInteractiveItemsGrid = function(w, isEn) {
     <div class="wazifa-items-grid" id="itemsGrid-${w.id}">
       ${items.map(item => {
         const target = parseUrduTargetCount(item.count);
-        const links = detectItemSurahsAndLinks(item.text, isEn);
+        const links = detectItemSurahsAndLinks(item, isEn);
         const savedCount = parseInt(localStorage.getItem('khizri_item_' + w.id + '_' + item.num) || '0');
         const isDone = savedCount >= target;
 
@@ -4937,14 +5110,22 @@ window.renderInteractiveItemsGrid = function(w, isEn) {
               </span>
             </div>
 
-            <div class="wgi-arabic">${item.text}</div>
+            <div class="wgi-arabic" style="cursor:pointer;" title="پڑھنے کے لیے کلک کریں" onclick="const b=this.parentElement.querySelector('.btn-wgi-surah'); if(b) b.click();">${item.text}</div>
 
             ${links.length ? `
               <div class="wgi-actions-row">
                 ${links.map(l => {
-                  if (l.type === 'surah') {
-                    return `<button type="button" class="btn-wgi-surah" onclick="event.stopPropagation(); openSurahReader(${l.num})">
+                  if (l.type === 'ayatul_kursi') {
+                    return `<button type="button" class="btn-wgi-surah" style="background:linear-gradient(135deg, #059669 0%, #047857 100%); box-shadow:0 3px 8px rgba(5,150,105,0.3);" onclick="event.stopPropagation(); openAyatulKursiReader()">
                       <i class="fa-solid fa-book-quran"></i> <span>${l.label}</span>
+                    </button>`;
+                  } else if (l.type === 'surah') {
+                    return `<button type="button" class="btn-wgi-surah" onclick="event.stopPropagation(); openSurahReader(${l.num}, { arabicOnly: true })">
+                      <i class="fa-solid fa-book-quran"></i> <span>${l.label}</span>
+                    </button>`;
+                  } else if (l.type === 'custom_item') {
+                    return `<button type="button" class="btn-wgi-surah" style="background:linear-gradient(135deg, #4338CA 0%, #3730A3 100%); box-shadow:0 3px 8px rgba(67,56,202,0.3);" onclick="event.stopPropagation(); openItemTextModal(${l.itemNum}, '${l.title}', '${l.fullText}', '${l.countStr}')">
+                      <i class="fa-solid fa-book-open"></i> <span>${l.label}</span>
                     </button>`;
                   } else if (l.type === 'quran') {
                     return `<button type="button" class="btn-wgi-surah" style="background:linear-gradient(135deg, #0284C7 0%, #0369A1 100%);" onclick="event.stopPropagation(); switchSubScreen('tabQuran')">
