@@ -1335,6 +1335,11 @@ async function fetchAllData() {
     if (wazResp.status === 'fulfilled' && wazResp.value.success) {
       state.wazaif = wazResp.value.data;
       renderWazaif();
+  setTimeout(() => {
+    initDualManzilTrackers();
+    updateGridOverallProgress('waz-khas-17-ramadan');
+    updateGridOverallProgress('waz-ramadan-last10');
+  }, 100);
     }
   } catch (err) {
     console.error('Error fetching data:', err);
@@ -2085,31 +2090,84 @@ function renderWazaif(filterCategory = 'all_folders') {
           </div>
         ` : ''}
 
-        <!-- 3-Step Reading Counter Tracker for Manzil Sharif -->
+        <!-- Dual Morning & Evening 3-Times Recitation Trackers for Manzil Sharif -->
         ${w.id === 'waz-manzil' ? `
-          <div class="manzil-reading-tracker" data-current-step="0">
-            <div class="mrt-header">
-              <i class="fa-solid fa-list-check"></i>
-              <span>${isEn ? '3-Times Recitation Progress Tracker' : '۳ مرتبہ تلاوت کا کاؤنٹر ٹریکر'}</span>
+          <div class="manzil-dual-trackers" id="manzilDualTrackers">
+            
+            <!-- Morning Session Tracker (۳ مرتبہ) -->
+            <div class="manzil-session-card manzil-session-morning" data-session="morning" data-step="0" id="manzilCardMorning">
+              <div class="msc-header">
+                <span class="msc-title">
+                  <i class="fa-solid fa-sun"></i>
+                  <span>${isEn ? 'Morning Session (3 Times)' : 'صبح کا معمول (۳ مرتبہ تلاوت)'}</span>
+                </span>
+                <span class="msc-timing">${isEn ? 'Fajr to 10:00 AM' : 'صبح ۹ تا ۱۰ بجے سے پہلے'}</span>
+              </div>
+              <div class="msc-timing-note">
+                <i class="fa-regular fa-clock"></i>
+                <span>${isEn ? 'Recite after Fajr prayer before 9:00 - 10:00 AM' : 'صبح نمازِ فجر کے بعد سے لے کر ۹ یا ۱۰ بجے سے پہلے پہلے پڑھیں'}</span>
+              </div>
+              <div class="mrt-steps">
+                <div class="mrt-step-pill" data-step="1">
+                  <span>${isEn ? '1st Time' : 'پہلی مرتبہ'}</span>
+                  <span class="mrt-status" style="font-size:0.68rem;">${isEn ? 'Pending' : 'باقی'}</span>
+                </div>
+                <div class="mrt-step-pill" data-step="2">
+                  <span>${isEn ? '2nd Time' : 'دوسری مرتبہ'}</span>
+                  <span class="mrt-status" style="font-size:0.68rem;">${isEn ? 'Pending' : 'باقی'}</span>
+                </div>
+                <div class="mrt-step-pill" data-step="3">
+                  <span>${isEn ? '3rd Time' : 'تیسری مرتبہ'}</span>
+                  <span class="mrt-status" style="font-size:0.68rem;">${isEn ? 'Pending' : 'باقی'}</span>
+                </div>
+              </div>
+              <button type="button" class="btn-mrt-action" onclick="trackDualManzilStep(this, 'morning')">
+                <i class="fa-solid fa-fingerprint"></i>
+                <span class="mrt-btn-text">${isEn ? 'Mark Morning 1st Done' : 'صبح: پہلی مرتبہ مکمل (کلک کریں)'}</span>
+              </button>
             </div>
-            <div class="mrt-steps">
-              <div class="mrt-step-pill" data-step="1">
-                <span>${isEn ? '1st Time' : 'پہلی مرتبہ'}</span>
-                <span class="mrt-status" style="font-size:0.68rem;">${isEn ? 'Pending' : 'باقی'}</span>
+
+            <!-- Evening Session Tracker (۳ مرتبہ) -->
+            <div class="manzil-session-card manzil-session-evening" data-session="evening" data-step="0" id="manzilCardEvening">
+              <div class="msc-header">
+                <span class="msc-title">
+                  <i class="fa-solid fa-moon"></i>
+                  <span>${isEn ? 'Evening Session (3 Times)' : 'شام و رات کا معمول (۳ مرتبہ تلاوت)'}</span>
+                </span>
+                <span class="msc-timing">${isEn ? 'Maghrib to 11:00 PM' : 'مغرب تا رات ۱۰-۱۱ بجے'}</span>
               </div>
-              <div class="mrt-step-pill" data-step="2">
-                <span>${isEn ? '2nd Time' : 'دوسری مرتبہ'}</span>
-                <span class="mrt-status" style="font-size:0.68rem;">${isEn ? 'Pending' : 'باقی'}</span>
+              <div class="msc-timing-note">
+                <i class="fa-regular fa-clock"></i>
+                <span>${isEn ? 'Listen or recite after Maghrib prayer until 10:00 - 11:00 PM' : 'نمازِ مغرب کے بعد سے لے کر رات ۱۰ یا ۱۱ بجے تک سن لیں یا پڑھ لیں'}</span>
               </div>
-              <div class="mrt-step-pill" data-step="3">
-                <span>${isEn ? '3rd Time' : 'تیسری مرتبہ'}</span>
-                <span class="mrt-status" style="font-size:0.68rem;">${isEn ? 'Pending' : 'باقی'}</span>
+              <div class="mrt-steps">
+                <div class="mrt-step-pill" data-step="1">
+                  <span>${isEn ? '1st Time' : 'پہلی مرتبہ'}</span>
+                  <span class="mrt-status" style="font-size:0.68rem;">${isEn ? 'Pending' : 'باقی'}</span>
+                </div>
+                <div class="mrt-step-pill" data-step="2">
+                  <span>${isEn ? '2nd Time' : 'دوسری مرتبہ'}</span>
+                  <span class="mrt-status" style="font-size:0.68rem;">${isEn ? 'Pending' : 'باقی'}</span>
+                </div>
+                <div class="mrt-step-pill" data-step="3">
+                  <span>${isEn ? '3rd Time' : 'تیسری مرتبہ'}</span>
+                  <span class="mrt-status" style="font-size:0.68rem;">${isEn ? 'Pending' : 'باقی'}</span>
+                </div>
               </div>
+              <button type="button" class="btn-mrt-action" onclick="trackDualManzilStep(this, 'evening')">
+                <i class="fa-solid fa-fingerprint"></i>
+                <span class="mrt-btn-text">${isEn ? 'Mark Evening 1st Done' : 'شام: پہلی مرتبہ مکمل (کلک کریں)'}</span>
+              </button>
             </div>
-            <button type="button" class="btn-mrt-action" onclick="trackManzilStep(this)">
-              <i class="fa-solid fa-fingerprint"></i>
-              <span class="mrt-btn-text">${isEn ? 'Mark 1st Recitation Done' : 'پہلی مرتبہ مکمل (یہاں کلک کریں)'}</span>
-            </button>
+
+            <!-- Total Daily Progress Strip -->
+            <div class="manzil-total-summary" id="manzilTotalSummary">
+              <span>${isEn ? '📊 Today Total Manzil Recitation:' : '📊 آج کا کل مسنون معمول:'}</span>
+              <span id="manzilTotalCountBadge" style="background:#10B981; color:#fff; padding:3px 10px; border-radius:99px; font-weight:800;">
+                ${isEn ? '0 of 6 Completed' : '۶ میں سے ۰ مکمل'}
+              </span>
+            </div>
+
           </div>
         ` : ''}
 
@@ -2149,19 +2207,7 @@ function renderWazaif(filterCategory = 'all_folders') {
         ` : ''}
 
         <div class="wic-arabic ${isLongText ? 'wic-arabic-collapsible' : ''}" id="${cardElId}-arabic">
-          ${(w.itemsList && w.itemsList.length) ? `
-            <div class="wazifa-items-grid">
-              ${w.itemsList.map(item => `
-                <div class="wazifa-grid-item">
-                  <div class="wgi-top">
-                    <span class="wgi-badge">${item.num}</span>
-                    <span class="wgi-count">${item.count}</span>
-                  </div>
-                  <div class="wgi-arabic">${item.text}</div>
-                </div>
-              `).join('')}
-            </div>
-          ` : (w.arabicText || '').replace(/\n/g, '<br>')}
+          ${(w.itemsList && w.itemsList.length) ? renderInteractiveItemsGrid(w, isEn) : (w.arabicText || '').replace(/\n/g, '<br>')}
         </div>
 
         ${isLongText ? `
@@ -4713,4 +4759,333 @@ window.trackManzilStep = function(btn) {
   const card = container.closest('.wazifa-interactive-card');
   const countSpan = card ? card.querySelector('.m-count-val') : null;
   if (countSpan) countSpan.textContent = step;
+};
+
+
+// =========================================================================
+// INTERACTIVE SURAH DETECTION & TAP COUNTER FOR WAZIFA ITEMS (۴۴ اوراد و تسبیحات)
+// =========================================================================
+
+const SURAH_CATALOG_MAPPING = [
+  { match: /جن|الجن/, num: 72, name: 'سورۃ جن', nameEn: 'Surah Al-Jinn' },
+  { match: /مزمل|المزمل/, num: 73, name: 'سورۃ مزمل', nameEn: 'Surah Al-Muzzammil' },
+  { match: /یس|يس/, num: 36, name: 'سورۃ یس', nameEn: 'Surah Ya-Sin' },
+  { match: /رحمن|الرحمن/, num: 55, name: 'سورۃ رحمن', nameEn: 'Surah Ar-Rahman' },
+  { match: /ملک|الملک/, num: 67, name: 'سورۃ ملک', nameEn: 'Surah Al-Mulk' },
+  { match: /کہف|الکہف/, num: 18, name: 'سورۃ الکہف', nameEn: 'Surah Al-Kahf' },
+  { match: /اخلاص|الإخلاص|الْإِخْلَاصِ/, num: 112, name: 'سورۃ اخلاص', nameEn: 'Surah Al-Ikhlas' },
+  { match: /کوثر|الکوثر/, num: 108, name: 'سورۃ کوثر', nameEn: 'Surah Al-Kawthar' },
+  { match: /قریش|القریش/, num: 106, name: 'سورۃ قریش', nameEn: 'Surah Quraysh' },
+  { match: /فاتحہ|الفاتحہ|الفاتحة/, num: 1, name: 'سورۃ الفاتحہ', nameEn: 'Surah Al-Fatihah' },
+  { match: /فلق|الفلق|الْفَلَقِ/, num: 113, name: 'سورۃ الفلق', nameEn: 'Surah Al-Falaq' },
+  { match: /ناس|الناس|النَّاسِ/, num: 114, name: 'سورۃ الناس', nameEn: 'Surah An-Nas' }
+];
+
+window.detectItemSurahsAndLinks = function(text, isEn) {
+  if (!text) return [];
+  const links = [];
+  for (const s of SURAH_CATALOG_MAPPING) {
+    if (s.match.test(text)) {
+      links.push({
+        type: 'surah',
+        num: s.num,
+        label: isEn ? `Read ${s.nameEn}` : `${s.name} کھولیں و تلاوت کریں`
+      });
+    }
+  }
+  if (text.includes('حزب البحر')) {
+    links.push({
+      type: 'pdf',
+      url: '/uploads/hizb-ul-bahr.pdf',
+      label: isEn ? 'Open Hizb-ul-Bahr PDF' : 'دعائے حزب البحر کھولیں'
+    });
+  }
+  if (text.includes('منزل')) {
+    links.push({
+      type: 'pdf',
+      url: '/uploads/manzil-dua-with-benefits.pdf',
+      label: isEn ? 'Open Manzil Sharif PDF' : 'منزل شریف کھولیں'
+    });
+  }
+  return links;
+};
+
+window.parseUrduTargetCount = function(countStr) {
+  if (!countStr) return 1;
+  const urduDigits = {'۰':'0', '۱':'1', '۲':'2', '۳':'3', '۴':'4', '۵':'5', '۶':'6', '۷':'7', '۸':'8', '۹':'9'};
+  const normalized = countStr.replace(/[۰-۹]/g, ch => urduDigits[ch]);
+  const match = normalized.match(/\d+/);
+  return match ? parseInt(match[0], 10) : 1;
+};
+
+window.renderInteractiveItemsGrid = function(w, isEn) {
+  const items = w.itemsList || [];
+  const totalItems = items.length;
+
+  return `
+    <div class="wazifa-grid-summary-bar" id="gridSummary-${w.id}">
+      <div class="wgs-top-row">
+        <span>
+          <i class="fa-solid fa-list-check"></i>
+          ${isEn ? 'Recitation Progress & Completed Litanies:' : 'اوراد و تلاوت کی پیش رفت:'}
+        </span>
+        <span class="wgs-count-badge" id="gridCompletedBadge-${w.id}">
+          ${isEn ? `0 of ${totalItems} Completed` : `${totalItems} میں سے ۰ مکمل`}
+        </span>
+      </div>
+      <div class="wgs-progress-track">
+        <div class="wgs-progress-fill" id="gridProgressFill-${w.id}" style="width: 0%;"></div>
+      </div>
+      <div class="wgs-actions">
+        <button type="button" class="btn-wgs-reset-all" onclick="resetAllGridItemCounters('${w.id}')">
+          <i class="fa-solid fa-rotate-left"></i> <span>${isEn ? 'Reset All Counters' : 'تمام کاؤنٹرز ری سیٹ کریں'}</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="wazifa-items-grid" id="itemsGrid-${w.id}">
+      ${items.map(item => {
+        const target = parseUrduTargetCount(item.count);
+        const links = detectItemSurahsAndLinks(item.text, isEn);
+        const savedCount = parseInt(localStorage.getItem('khizri_item_' + w.id + '_' + item.num) || '0');
+        const isDone = savedCount >= target;
+
+        return `
+          <div class="wazifa-grid-item ${isDone ? 'completed' : ''}" id="wgi-${w.id}-${item.num}" data-target="${target}">
+            <div class="wgi-top">
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span class="wgi-badge">${item.num}</span>
+                <span class="wgi-count">${item.count}</span>
+              </div>
+              <span class="wgi-status-done">
+                <i class="fa-solid fa-circle-check"></i> ${isEn ? 'Completed' : 'مکمل'}
+              </span>
+            </div>
+
+            <div class="wgi-arabic">${item.text}</div>
+
+            ${links.length ? `
+              <div class="wgi-actions-row">
+                ${links.map(l => {
+                  if (l.type === 'surah') {
+                    return `<button type="button" class="btn-wgi-surah" onclick="event.stopPropagation(); openSurahReader(${l.num})">
+                      <i class="fa-solid fa-book-quran"></i> <span>${l.label}</span>
+                    </button>`;
+                  } else {
+                    return `<a href="${l.url}" target="_blank" class="btn-wgi-surah" onclick="event.stopPropagation();">
+                      <i class="fa-solid fa-book-open"></i> <span>${l.label}</span>
+                    </a>`;
+                  }
+                }).join('')}
+              </div>
+            ` : ''}
+
+            <div class="wgi-counter-wrap">
+              <button type="button" class="btn-wgi-tap" onclick="tapGridItemCounter('${w.id}', ${item.num}, ${target}, 1)">
+                <span><i class="fa-solid fa-fingerprint"></i> ${isEn ? 'Tap to Count:' : 'پڑھیں و گنیں:'}</span>
+                <span class="wgi-count-display">
+                  <strong id="wgi-val-${w.id}-${item.num}">${savedCount}</strong> / ${target}
+                </span>
+              </button>
+
+              <div class="wgi-quick-row">
+                ${target > 10 ? `
+                  <button type="button" class="btn-wgi-quick" onclick="tapGridItemCounter('${w.id}', ${item.num}, ${target}, 10)" title="+10">
+                    +10
+                  </button>
+                ` : ''}
+                ${target >= 100 ? `
+                  <button type="button" class="btn-wgi-quick" onclick="tapGridItemCounter('${w.id}', ${item.num}, ${target}, 50)" title="+50">
+                    +50
+                  </button>
+                ` : ''}
+                <button type="button" class="btn-wgi-reset" onclick="resetGridItemCounter('${w.id}', ${item.num}, ${target})" title="${isEn ? 'Reset' : 'ری سیٹ'}">
+                  <i class="fa-solid fa-arrow-rotate-left"></i>
+                </button>
+              </div>
+
+              <div class="wgi-mini-progress">
+                <div class="wgi-mini-fill" id="wgi-fill-${w.id}-${item.num}" style="width: ${Math.min(100, Math.round((savedCount / target) * 100))}%;"></div>
+              </div>
+            </div>
+
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+};
+
+window.tapGridItemCounter = function(wazifaId, itemNum, target, delta = 1) {
+  const key = 'khizri_item_' + wazifaId + '_' + itemNum;
+  let current = parseInt(localStorage.getItem(key) || '0');
+  current = Math.min(target, current + delta);
+  localStorage.setItem(key, current);
+
+  // Play click sound & haptics
+  playClickSound();
+  if ('vibrate' in navigator) navigator.vibrate(20);
+
+  // Update UI
+  const valEl = document.getElementById(`wgi-val-${wazifaId}-${itemNum}`);
+  if (valEl) valEl.textContent = current;
+
+  const fillEl = document.getElementById(`wgi-fill-${wazifaId}-${itemNum}`);
+  if (fillEl) fillEl.style.width = Math.min(100, Math.round((current / target) * 100)) + '%';
+
+  const card = document.getElementById(`wgi-${wazifaId}-${itemNum}`);
+  if (current >= target) {
+    if (card) card.classList.add('completed');
+    if ('vibrate' in navigator) navigator.vibrate([60, 40, 100]);
+    showToast(state.currentLang === 'en' ? `🎉 Item #${itemNum} completed (${target}x)!` : `🎉 عمل نمبر ${itemNum} مکمل ہو گیا (${target} مرتبہ)!`);
+  } else {
+    if (card) card.classList.remove('completed');
+  }
+
+  updateGridOverallProgress(wazifaId);
+};
+
+window.resetGridItemCounter = function(wazifaId, itemNum, target) {
+  const key = 'khizri_item_' + wazifaId + '_' + itemNum;
+  localStorage.setItem(key, 0);
+
+  const valEl = document.getElementById(`wgi-val-${wazifaId}-${itemNum}`);
+  if (valEl) valEl.textContent = '0';
+
+  const fillEl = document.getElementById(`wgi-fill-${wazifaId}-${itemNum}`);
+  if (fillEl) fillEl.style.width = '0%';
+
+  const card = document.getElementById(`wgi-${wazifaId}-${itemNum}`);
+  if (card) card.classList.remove('completed');
+
+  updateGridOverallProgress(wazifaId);
+};
+
+window.resetAllGridItemCounters = function(wazifaId) {
+  const isEn = state.currentLang === 'en';
+  if (!confirm(isEn ? 'Are you sure you want to reset all item counters?' : 'کیا آپ واقعی تمام کاؤنٹرز ری سیٹ کرنا چاہتے ہیں؟')) {
+    return;
+  }
+  const cards = document.querySelectorAll(`#itemsGrid-${wazifaId} .wazifa-grid-item`);
+  cards.forEach(card => {
+    const idParts = card.id.split('-');
+    const itemNum = idParts[idParts.length - 1];
+    const target = parseInt(card.getAttribute('data-target') || '1');
+    resetGridItemCounter(wazifaId, itemNum, target);
+  });
+  showToast(isEn ? 'All counters reset' : 'تمام کاؤنٹرز ری سیٹ کر دیے گئے');
+};
+
+window.updateGridOverallProgress = function(wazifaId) {
+  const grid = document.getElementById('itemsGrid-' + wazifaId);
+  if (!grid) return;
+  const cards = grid.querySelectorAll('.wazifa-grid-item');
+  const total = cards.length;
+  let done = 0;
+  cards.forEach(c => {
+    if (c.classList.contains('completed')) done++;
+  });
+
+  const isEn = state.currentLang === 'en';
+  const badge = document.getElementById('gridCompletedBadge-' + wazifaId);
+  if (badge) {
+    badge.textContent = isEn ? `${done} of ${total} Completed` : `${total} میں سے ${done} مکمل`;
+  }
+
+  const fill = document.getElementById('gridProgressFill-' + wazifaId);
+  if (fill) {
+    const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+    fill.style.width = pct + '%';
+  }
+};
+
+// =========================================================================
+// DUAL MANZIL STEP TRACKER (MORNING & EVENING SESSIONS)
+// =========================================================================
+
+window.trackDualManzilStep = function(btn, session) {
+  const container = document.getElementById(session === 'morning' ? 'manzilCardMorning' : 'manzilCardEvening');
+  if (!container) return;
+  const isEn = state.currentLang === 'en';
+  let step = parseInt(container.getAttribute('data-step') || '0');
+
+  step = (step + 1) % 4;
+  container.setAttribute('data-step', step);
+  localStorage.setItem('khizri_manzil_' + session + '_step', step);
+
+  const pills = container.querySelectorAll('.mrt-step-pill');
+  pills.forEach((p, idx) => {
+    if (idx < step) {
+      p.classList.add('completed');
+      p.classList.remove('active');
+      p.querySelector('.mrt-status').innerHTML = '<i class="fa-solid fa-circle-check"></i> ' + (isEn ? 'Done' : 'مکمل');
+    } else if (idx === step && step < 3) {
+      p.classList.add('active');
+      p.classList.remove('completed');
+      p.querySelector('.mrt-status').textContent = isEn ? 'Reading...' : 'جاری ہے...';
+    } else {
+      p.classList.remove('completed', 'active');
+      p.querySelector('.mrt-status').textContent = isEn ? 'Pending' : 'باقی';
+    }
+  });
+
+  const btnTxt = btn.querySelector('.mrt-btn-text');
+  const sessLabel = session === 'morning' ? (isEn ? 'Morning' : 'صبح') : (isEn ? 'Evening' : 'شام');
+
+  if (step === 1) {
+    if (btnTxt) btnTxt.textContent = isEn ? `Mark ${sessLabel} 2nd Done` : `${sessLabel}: دوسری مرتبہ مکمل (کلک کریں)`;
+  } else if (step === 2) {
+    if (btnTxt) btnTxt.textContent = isEn ? `Mark ${sessLabel} 3rd Done` : `${sessLabel}: تیسری مرتبہ مکمل (کلک کریں)`;
+  } else if (step === 3) {
+    if (btnTxt) btnTxt.textContent = isEn ? `🎉 ${sessLabel} 3x Completed! (Tap to Reset)` : `🎉 ماشاء اللہ! ${sessLabel} ۳ مرتبہ مکمل (ری سیٹ)`;
+    showToast(isEn ? `🎉 ${sessLabel} 3x Recitation Completed!` : `🎉 ماشاء اللہ! منزل شریف ${sessLabel} ۳ مرتبہ مکمل ہو گئی!`);
+  } else {
+    if (btnTxt) btnTxt.textContent = isEn ? `Mark ${sessLabel} 1st Done` : `${sessLabel}: پہلی مرتبہ مکمل (کلک کریں)`;
+  }
+
+  updateManzilTotalDaily();
+};
+
+window.updateManzilTotalDaily = function() {
+  const mStep = parseInt(localStorage.getItem('khizri_manzil_morning_step') || '0');
+  const eStep = parseInt(localStorage.getItem('khizri_manzil_evening_step') || '0');
+  const total = mStep + eStep;
+  const isEn = state.currentLang === 'en';
+
+  const badge = document.getElementById('manzilTotalCountBadge');
+  if (badge) {
+    badge.textContent = isEn ? `${total} of 6 Completed` : `۶ میں سے ${total} مکمل`;
+    if (total === 6) {
+      badge.style.background = '#047857';
+    }
+  }
+};
+
+window.initDualManzilTrackers = function() {
+  ['morning', 'evening'].forEach(session => {
+    const card = document.getElementById(session === 'morning' ? 'manzilCardMorning' : 'manzilCardEvening');
+    if (!card) return;
+    const step = parseInt(localStorage.getItem('khizri_manzil_' + session + '_step') || '0');
+    card.setAttribute('data-step', step);
+    const isEn = state.currentLang === 'en';
+    const pills = card.querySelectorAll('.mrt-step-pill');
+    pills.forEach((p, idx) => {
+      if (idx < step) {
+        p.classList.add('completed');
+        p.querySelector('.mrt-status').innerHTML = '<i class="fa-solid fa-circle-check"></i> ' + (isEn ? 'Done' : 'مکمل');
+      } else if (idx === step && step < 3 && step > 0) {
+        p.classList.add('active');
+        p.querySelector('.mrt-status').textContent = isEn ? 'Reading...' : 'جاری ہے...';
+      }
+    });
+    const btn = card.querySelector('.btn-mrt-action');
+    const btnTxt = btn ? btn.querySelector('.mrt-btn-text') : null;
+    const sessLabel = session === 'morning' ? (isEn ? 'Morning' : 'صبح') : (isEn ? 'Evening' : 'شام');
+    if (btnTxt) {
+      if (step === 1) btnTxt.textContent = isEn ? `Mark ${sessLabel} 2nd Done` : `${sessLabel}: دوسری مرتبہ مکمل (کلک کریں)`;
+      else if (step === 2) btnTxt.textContent = isEn ? `Mark ${sessLabel} 3rd Done` : `${sessLabel}: تیسری مرتبہ مکمل (کلک کریں)`;
+      else if (step === 3) btnTxt.textContent = isEn ? `🎉 ${sessLabel} 3x Completed! (Tap to Reset)` : `🎉 ماشاء اللہ! ${sessLabel} ۳ مرتبہ مکمل (ری سیٹ)`;
+    }
+  });
+  updateManzilTotalDaily();
 };
