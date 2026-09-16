@@ -1634,13 +1634,13 @@ const WAZAIF_FOLDERS = [
     id: 'chehal-kaaf',
     titleUr: 'دعائے چہل کاف',
     titleEn: 'Dua-e-Chehal Kaaf',
-    subtitleUr: '۱۱۰۴ طریقہ و اجازت',
-    subtitleEn: 'Count & Ijazah 1104',
+    subtitleUr: '۲ طریقے (۱۰۰ یا ۱۱۰۴ مرتبہ)',
+    subtitleEn: '2 Methods (100x or 1,104x)',
     icon: 'fa-stamp',
     iconBg: '#EDE9FE',
     iconColor: '#7C3AED',
-    badgeUr: 'طریقہ و اجازت فارم',
-    badgeEn: 'Method & Ijazah',
+    badgeUr: '۱۲ دن یا ۱ دن نوچندی',
+    badgeEn: '12 Days or Nauchandi',
     filterFn: (w) => (w.id === 'waz-chehal-kaaf' || (w.title || '').includes('چہل کاف'))
   },
   {
@@ -1705,17 +1705,19 @@ const WAZAIF_FOLDERS = [
 const WAZIFA_PRESETS = {
   'waz-chehal-kaaf': {
     chillaOptions: [
+      { days: 12, labelUr: '۱۲ دن کا عمل (طریقہ ۱: روزانہ ۱۰۰ مرتبہ)', labelEn: '12-Day Course (Daily 100x)' },
+      { days: 1, labelUr: '۱ دن نوچندی (طریقہ ۲: ۱۱۰۴ مرتبہ)', labelEn: '1-Day Nauchandi (1,104x)' },
       { days: 41, labelUr: '۴۱ دن کا چلہ', labelEn: '41-Day Chilla' },
-      { days: 101, labelUr: '۱۰۱ دن کا عمل', labelEn: '101-Day Amal' },
-      { days: 1, labelUr: 'نوچندی ۱ دن (زکوٰۃ)', labelEn: '1-Day Zakat' }
+      { days: 101, labelUr: '۱۰۱ دن کا عمل', labelEn: '101-Day Amal' }
     ],
-    defaultChillaDays: 41,
+    defaultChillaDays: 12,
     repsOptions: [
-      { count: 1104, labelUr: '۱۱۰۴ مرتبہ (نوچندی)', labelEn: '1,104x (Nauchandi)' },
-      { count: 101, labelUr: '۱۰۱ مرتبہ (معمول)', labelEn: '101x (Daily)' },
-      { count: 41, labelUr: '۴۱ مرتبہ (معمول)', labelEn: '41x (Daily)' }
+      { count: 100, labelUr: '۱۰۰ مرتبہ (طریقہ ۱ - روزانہ)', labelEn: '100x (Method 1 - Daily)' },
+      { count: 1104, labelUr: '۱۱۰۴ مرتبہ (طریقہ ۲ - نوچندی)', labelEn: '1,104x (Method 2 - Nauchandi)' },
+      { count: 101, labelUr: '۱۰۱ مرتبہ (معمول)', labelEn: '101x (Daily Routine)' },
+      { count: 41, labelUr: '۴۱ مرتبہ (معمول)', labelEn: '41x (Daily Routine)' }
     ],
-    defaultReps: 1104
+    defaultReps: 100
   },
   'waz-manzil': {
     chillaOptions: [
