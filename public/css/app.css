@@ -9322,3 +9322,77 @@ body.lang-ur .rohani-issue-card span {
   width: 0%;
   transition: width 0.2s ease;
 }
+
+
+/* =========================================================
+   CHEHAL KAAF ORIGINAL SCAN & MEDIA STYLES
+   ========================================================= */
+.btn-wic-scan {
+  background: #FEF3C7;
+  color: #92400E;
+  border-color: #FDE68A;
+}
+.btn-wic-scan:hover {
+  background: #FDE68A;
+  color: #78350F;
+}
+
+.chehal-scan-banner {
+  margin: 14px 0 16px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid #F59E0B;
+  background: #FFFBEB;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.15);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.chehal-scan-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.25);
+  border-color: #D97706;
+}
+.csb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #78350F, #92400E);
+  color: #FEF08A;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(254, 240, 138, 0.3);
+}
+.csb-zoom-badge {
+  background: rgba(254, 240, 138, 0.2);
+  border: 1px solid rgba(254, 240, 138, 0.4);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.csb-img-wrap {
+  position: relative;
+  background: #FFFFFF;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 280px;
+  overflow: hidden;
+}
+.csb-img {
+  max-width: 100%;
+  height: auto;
+  max-height: 260px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid #E5E7EB;
+  transition: transform 0.3s ease;
+}
+.chehal-scan-banner:hover .csb-img {
+  transform: scale(1.02);
+}
