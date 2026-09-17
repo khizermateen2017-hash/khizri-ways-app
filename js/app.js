@@ -1,3 +1,14 @@
+
+window.handleWazaifBack = function() {
+  if (state.activeWazaifFilter && state.activeWazaifFilter !== 'all_folders' && state.activeWazaifFilter !== 'all') {
+    renderWazaif('all_folders');
+  } else {
+    if (typeof window.switchTab === 'function') {
+      window.switchTab('tabHome');
+    }
+  }
+};
+
 /**
  * DEEN ISLAMIC APP - 100% EXACT USER SCREENSHOT JAVASCRIPT
  * Full functionality for Dual Phone presentation and all 16 Islamic features
@@ -87,7 +98,7 @@ const i18n = {
     titleQibla: 'Qibla Direction',
     titleTasbeeh: 'Digital Tasbeeh',
     titleRohaniIlaj: 'Spiritual Healing',
-    titleWazaif: 'Khizri Wazaif',
+    titleWazaif: 'Khas Wazaif',
     titlePdfBooks: 'PDF Library',
     titleHadith: 'Hadith Collection',
     titleAllahNames: 'Asma-ul-Husna (99 Names)',
@@ -160,7 +171,7 @@ const i18n = {
     titleTasbeeh: 'ڈیجیٹل تسبیح',
     titleRohaniIlaj: 'روحانی علاج و شفا',
     titleVideos: 'خضری ویڈیو لائبریری',
-    titleWazaif: 'مستند وظائف خضری',
+    titleWazaif: 'خاص وظائف',
     titlePdfBooks: 'کتب و رسائل لائبریری',
     titleHadith: 'مجموعہ احادیث نبویہ',
     titleAllahNames: 'اسمائے حسنیٰ (99 مبارک نام)',
@@ -2095,8 +2106,14 @@ function renderWazaif(filterCategory = 'all_folders') {
   const scrollArea = document.querySelector('#tabWazaif .sub-screen-scroll');
   if (scrollArea) scrollArea.scrollTop = 0;
 
+  // Update top main title dynamically
+  const topScreenTitle = document.getElementById('wazaifSubScreenTitle') || document.querySelector('#tabWazaif .sub-screen-title');
+
   // CASE 1: RENDER FOLDERS GRID (فولڈرز مین ویو - 2-Column Grid matching Healing)
   if (filterCategory === 'all_folders' || filterCategory === 'all' || !filterCategory) {
+    if (topScreenTitle) {
+      topScreenTitle.textContent = isEn ? 'Khas Wazaif' : 'خاص وظائف';
+    }
     const foldersHtml = WAZAIF_FOLDERS.map(f => {
       const title = isEn ? f.titleEn : f.titleUr;
       const subtitle = isEn ? f.subtitleEn : f.subtitleUr;
@@ -2151,6 +2168,11 @@ function renderWazaif(filterCategory = 'all_folders') {
     });
     headerTitle = filterCategory;
     headerBadge = `${items.length} ${isEn ? 'items' : 'وظائف'}`;
+  }
+
+  // Set top header title to active folder name
+  if (topScreenTitle && headerTitle) {
+    topScreenTitle.textContent = headerTitle;
   }
 
   const backBtnText = isEn ? '← Back to Folders' : '← تمام فولڈرز پر واپس جائیں';
@@ -2669,7 +2691,7 @@ window.playWazifaAudio = function(btn, wazifaId) {
 
   // Find item audioUrl from state.wazaif or fallback to downloaded Qari recitations
   const item = (state.wazaif || []).find(w => w.id === wazifaId);
-  const audioSrc = item?.audioUrl || (wazifaId === 'waz-manzil' ? '/uploads/manzil-qari-recitation.mp3' : (wazifaId === 'waz-hizb-bahr' ? '/uploads/hizb-ul-bahr-recitation.mp3' : (wazifaId === 'waz-hizb-nasr' ? '/uploads/hizb-un-nasr-recitation.mp3' : (wazifaId === 'waz-chehal-kaaf' ? '/uploads/chehal-kaaf-recitation.mp3' : null))));
+  const audioSrc = item?.audioUrl || (wazifaId === 'waz-manzil' ? '/uploads/manzil-qari-recitation.mp3' : (wazifaId === 'waz-hizb-bahr' ? '/uploads/hizb-ul-bahr-recitation.mp3' : (wazifaId === 'waz-hizb-nasr' ? '/uploads/hizb-un-nasr-recitation.mp3' : (wazifaId === 'waz-chehal-kaaf' ? '/uploads/chehal-kaaf-recitation.mp3?v=20260917' : null))));
 
   if (audioSrc) {
     btn.classList.add('playing');
