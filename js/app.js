@@ -17,7 +17,7 @@ if ('caches' in window) {
 
 // Global App State (Default English as requested by user)
 const state = {
-  currentLang: localStorage.getItem('khizri_app_lang_v3') || 'en',
+  currentLang: localStorage.getItem('khizri_app_lang_v3') || 'ur',
   resources: [],
   videos: [],
   articles: [],
@@ -1868,16 +1868,14 @@ const WAZIFA_PRESETS = {
   'waz-hizb-bahr': {
     chillaOptions: [
       { days: 7, labelUr: '۷ دن کا عمل (طریقہ ۱: روزانہ ۱۲ مرتبہ)', labelEn: '7-Day Amal (Method 1: 12x Daily)' },
-      { days: 27, labelUr: '۲۷ دن کا عمل (طریقہ ۲: چاشت، مغرب، عشاء ۳، ۳ مرتبہ)', labelEn: '27-Day Amal (Method 2: 3x at Chasht, Maghrib & Isha)' },
-      { days: 40, labelUr: '۴۰ دن کا چلہ (کامل فتوحات و زکوٰۃ)', labelEn: '40-Day Chilla (Full Opening & Zakah)' },
-      { days: 21, labelUr: '۲۱ دن کا معمول', labelEn: '21-Day Course' }
+      { days: 27, labelUr: '۲۷ دن کا عمل (طریقہ ۲: چاشت، مغرب، عشاء ۳، ۳ مرتبہ)', labelEn: '27-Day Amal (Method 2: 3x each at Chasht, Maghrib & Isha)' },
+      { days: 3, labelUr: '۳ دن کا عمل (طریقہ ۳: ۳۶۰ مرتبہ ختمِ عظیم)', labelEn: '3-Day Amal (Method 3: 360x Grand Course)' }
     ],
     defaultChillaDays: 7,
     repsOptions: [
-      { count: 12, labelUr: '۱۲ مرتبہ (طریقہ ۱ - روزانہ)', labelEn: '12x (Method 1 - Daily)' },
-      { count: 3, labelUr: '۳ مرتبہ (طریقہ ۲ - چاشت، مغرب، عشاء)', labelEn: '3x (Method 2 - Chasht, Maghrib & Isha)' },
-      { count: 7, labelUr: '۷ مرتبہ (خاص حصار و قضائے حاجات)', labelEn: '7x (Special Shield & Needs)' },
-      { count: 1, labelUr: '۱ مرتبہ (روزانہ کا معمول)', labelEn: '1x (Daily Routine)' }
+      { count: 12, labelUr: '۱۲ مرتبہ (طریقہ ۱ - ۷ دن روزانہ)', labelEn: '12x (Method 1: 7 Days Daily)' },
+      { count: 3, labelUr: '۳ مرتبہ (طریقہ ۲ - چاشت، مغرب، عشاء)', labelEn: '3x (Method 2: Chasht, Maghrib & Isha)' },
+      { count: 360, labelUr: '۳۶۰ مرتبہ (طریقہ ۳ - ۳ دن کا ختم)', labelEn: '360x (Method 3: 3 Days Course)' }
     ],
     defaultReps: 12
   },
@@ -2047,6 +2045,17 @@ window.selectWazifaTargetReps = function(wazifaId, targetCount, chipBtn) {
       counterBtn.classList.remove('completed');
     }
   }
+  // Auto-sync Chilla duration for Hizb-ul-Bahr
+  if (wazifaId === 'waz-hizb-bahr') {
+    if (targetCount === 12) {
+      selectChillaDuration('waz-hizb-bahr', 7);
+    } else if (targetCount === 3) {
+      selectChillaDuration('waz-hizb-bahr', 27);
+    } else if (targetCount === 360) {
+      selectChillaDuration('waz-hizb-bahr', 3);
+    }
+  }
+
   showToast(isEn ? `Target count set to ${targetCount}` : `ہدف ${targetCount} مرتبہ منتخب ہو گیا`);
 };
 
