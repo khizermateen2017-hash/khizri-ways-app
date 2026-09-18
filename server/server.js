@@ -61,6 +61,7 @@ app.use('/api/videos', require('./routes/videos'));
 app.use('/api/wazaif', require('./routes/wazaif'));
 app.use('/api/settings', require('./routes/settings'));
 app.use('/api/fatwas', require('./routes/fatwas'));
+app.use('/api/orders', require('./routes/orders'));
 
 // Fallback to index.html for SPA client
 app.get('*', (req, res) => {
