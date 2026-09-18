@@ -28,7 +28,7 @@ if ('caches' in window) {
 
 // Global App State (Default English as requested by user)
 const state = {
-  currentLang: localStorage.getItem('khizri_app_lang_v3') || 'ur',
+  currentLang: localStorage.getItem('khizri_app_lang_v4') || 'ur',
   resources: [],
   videos: [],
   articles: [],
@@ -235,7 +235,7 @@ window.toggleAppLanguage = function() {
 
 function setAppLanguage(lang) {
   state.currentLang = lang;
-  localStorage.setItem('khizri_app_lang_v3', lang);
+  localStorage.setItem('khizri_app_lang_v4', lang);
   document.body.classList.toggle('lang-ur', lang === 'ur');
 
   const t = i18n[lang] || i18n.en;
@@ -5143,6 +5143,17 @@ window.renderInteractiveItemsGrid = function(w, isEn) {
 
             <div class="wgi-arabic" style="cursor:pointer;" title="پڑھنے کے لیے کلک کریں" onclick="const b=this.parentElement.querySelector('.btn-wgi-surah'); if(b) b.click();">${item.text}</div>
 
+            ${(item.num === 16 || (item.text && item.text.includes('ابراہیمی'))) ? `
+              <div class="wgi-durood-inline">
+                اَللّٰھُمَّ صَلِّ عَلٰی مُحَمَّدٍ وَّعَلٰی اٰلِ مُحَمَّدٍ کَمَا صَلَّیْتَ عَلٰی اِبْرَاہِیْمَ وَعَلٰی اٰلِ اِبْرَاہِیْمَ اِنَّکَ حَمِیْدٌ مَّجِیْدٌ ؕ<br>
+                اَللّٰھُمَّ بَارِکْ عَلٰی مُحَمَّدٍ وَّعَلٰی اٰلِ مُحَمَّدٍ کَمَا بَارَکْتَ عَلٰی اِبْرَاہِیْمَ وَعَلٰی اٰلِ اِبْرَاہِیْمَ اِنَّکَ حَمِیْدٌ مَّجِیْدٌ ؕ
+              </div>
+            ` : (item.arabicText ? `
+              <div class="wgi-durood-inline">
+                ${item.arabicText.replace(/\n/g, '<br>')}
+              </div>
+            ` : '')}
+
             ${links.length ? `
               <div class="wgi-actions-row">
                 ${links.map(l => {
@@ -5173,8 +5184,8 @@ window.renderInteractiveItemsGrid = function(w, isEn) {
 
             <div class="wgi-counter-wrap">
               <button type="button" class="btn-wgi-tap" onclick="tapGridItemCounter('${w.id}', ${item.num}, ${target}, 1)">
-                <span><i class="fa-solid fa-fingerprint"></i> ${isEn ? 'Tap to Count:' : 'پڑھیں و گنیں:'}</span>
-                <span class="wgi-count-display">
+                <span><i class="fa-solid fa-fingerprint"></i> ${isEn ? 'Tap to Count' : 'پڑھیں و گنیں'}</span>
+                <span class="wgi-count-display" dir="ltr">
                   <strong id="wgi-val-${w.id}-${item.num}">${savedCount}</strong> / ${target}
                 </span>
               </button>
