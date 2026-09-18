@@ -9539,3 +9539,10 @@ body.lang-ur .rohani-issue-card span {
   margin-bottom: 10px !important;
   border-color: #E2E8F0 !important;
 }
+
+.wazifa-grid-container-wrap {
+  width: 100%;
+  margin: 14px 0;
+  display: block;
+}
+

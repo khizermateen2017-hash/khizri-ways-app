@@ -2214,7 +2214,7 @@ function renderWazaif(filterCategory = 'all_folders') {
     const tapHint = isEn ? 'Tap to Count' : 'شمار کریں';
 
     const safeTitle = (w.title || '').replace(/'/g, "\\'");
-    const isLongText = (w.arabicText || '').length > 240;
+    const isLongText = (!w.itemsList || !w.itemsList.length) && (w.arabicText || '').length > 240;
     const cardElId = 'waz-item-' + (w.id ? w.id.replace(/[^a-zA-Z0-9_-]/g, '') : index);
 
     return `
@@ -2420,15 +2420,21 @@ function renderWazaif(filterCategory = 'all_folders') {
           </div>
         ` : ''}
 
-        <div class="wic-arabic ${isLongText ? 'wic-arabic-collapsible' : ''}" id="${cardElId}-arabic">
-          ${(w.itemsList && w.itemsList.length) ? renderInteractiveItemsGrid(w, isEn) : (w.arabicText || '').replace(/\n/g, '<br>')}
-        </div>
+        ${(w.itemsList && w.itemsList.length) ? `
+          <div class="wazifa-grid-container-wrap">
+            ${renderInteractiveItemsGrid(w, isEn)}
+          </div>
+        ` : `
+          <div class="wic-arabic ${isLongText ? 'wic-arabic-collapsible' : ''}" id="${cardElId}-arabic">
+            ${(w.arabicText || '').replace(/\n/g, '<br>')}
+          </div>
 
-        ${isLongText ? `
-          <button type="button" class="btn-wic-expand" onclick="toggleWazifaLongText('${cardElId}-arabic', this)">
-            <i class="fa-solid fa-book-open"></i> <span>${isEn ? 'Read Complete Litany / Supplication' : 'مکمل تلاوت و دعا دیکھیں'}</span>
-          </button>
-        ` : ''}
+          ${isLongText ? `
+            <button type="button" class="btn-wic-expand" onclick="toggleWazifaLongText('${cardElId}-arabic', this)">
+              <i class="fa-solid fa-book-open"></i> <span>${isEn ? 'Read Complete Litany / Supplication' : 'مکمل تلاوت و دعا دیکھیں'}</span>
+            </button>
+          ` : ''}
+        `}
 
         <div class="wic-urdu"><strong>${transLabel}</strong> ${transText}</div>
         <div class="wic-benefits"><strong>${benefitsLabel}</strong> ${benefitsText}</div>
@@ -5020,7 +5026,6 @@ window.detectItemSurahsAndLinks = function(item, isEn) {
         num: s.num,
         label: isEn ? `Read ${s.nameEn} (Simple Arabic)` : `${s.name} کھولیں (صرف عربی تلاوت)`
       });
-      return links;
     }
   }
 
@@ -5050,7 +5055,7 @@ window.detectItemSurahsAndLinks = function(item, isEn) {
   }
 
   // 4. Specific Rich Texts: Durood Ibrahimi & Asma-ul-Husna
-  if (itemNum === 16 || text.includes('درودِ ابراہیمی') || text.includes('ابراہیمی')) {
+  if (itemNum === 16 || text.includes('درودِ ابراہیمی') || text.includes('ابراہیمی') || text.includes('درود')) {
     links.push({
       type: 'custom_item',
       itemNum: itemNum,
