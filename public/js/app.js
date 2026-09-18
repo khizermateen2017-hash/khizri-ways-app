@@ -1803,7 +1803,7 @@ const WAZAIF_FOLDERS = [
     iconColor: '#D97706',
     badgeUr: 'خاص روحانی اوراد',
     badgeEn: 'Special Litanies',
-    filterFn: (w) => (w.id === 'waz-ramadan-last10' || w.id === 'waz-khas-27-ramadan' || w.id === 'waz-khas-aakhri-ashra')
+    filterFn: (w) => (w.id === 'waz-ramadan-last10' || w.id === 'waz-khas-27-ramadan')
   }
 ];
 
@@ -2691,7 +2691,7 @@ window.playWazifaAudio = function(btn, wazifaId) {
 
   // Find item audioUrl from state.wazaif or fallback to downloaded Qari recitations
   const item = (state.wazaif || []).find(w => w.id === wazifaId);
-  const audioSrc = item?.audioUrl || (wazifaId === 'waz-manzil' ? '/uploads/manzil-qari-recitation.mp3' : (wazifaId === 'waz-hizb-bahr' ? '/uploads/hizb-ul-bahr-recitation.mp3' : (wazifaId === 'waz-hizb-nasr' ? '/uploads/hizb-un-nasr-recitation.mp3' : (wazifaId === 'waz-chehal-kaaf' ? '/uploads/chehal-kaaf-recitation.mp3?v=20260918_v2' : null))));
+  const audioSrc = item?.audioUrl || (wazifaId === 'waz-manzil' ? '/uploads/manzil-qari-recitation.mp3' : (wazifaId === 'waz-hizb-bahr' ? '/uploads/hizb-ul-bahr-recitation.mp3' : (wazifaId === 'waz-hizb-nasr' ? '/uploads/hizb-un-nasr-recitation.mp3' : (wazifaId === 'waz-chehal-kaaf' ? '/uploads/chehal-kaaf-recitation.mp3?v=20260918_echo' : null))));
 
   if (audioSrc) {
     btn.classList.add('playing');
@@ -5143,14 +5143,14 @@ window.renderInteractiveItemsGrid = function(w, isEn) {
 
             <div class="wgi-arabic" style="cursor:pointer;" title="پڑھنے کے لیے کلک کریں" onclick="const b=this.parentElement.querySelector('.btn-wgi-surah'); if(b) b.click();">${item.text}</div>
 
-            ${(item.num === 16 || (item.text && item.text.includes('ابراہیمی'))) ? `
+            ${item.arabicText ? `
+              <div class="wgi-durood-inline">
+                ${item.arabicText.replace(/\n/g, '<br>')}
+              </div>
+            ` : ((item.num === 16 || (item.text && item.text.includes('ابراہیمی'))) ? `
               <div class="wgi-durood-inline">
                 اَللّٰھُمَّ صَلِّ عَلٰی مُحَمَّدٍ وَّعَلٰی اٰلِ مُحَمَّدٍ کَمَا صَلَّیْتَ عَلٰی اِبْرَاہِیْمَ وَعَلٰی اٰلِ اِبْرَاہِیْمَ اِنَّکَ حَمِیْدٌ مَّجِیْدٌ ؕ<br>
                 اَللّٰھُمَّ بَارِکْ عَلٰی مُحَمَّدٍ وَّعَلٰی اٰلِ مُحَمَّدٍ کَمَا بَارَکْتَ عَلٰی اِبْرَاہِیْمَ وَعَلٰی اٰلِ اِبْرَاہِیْمَ اِنَّکَ حَمِیْدٌ مَّجِیْدٌ ؕ
-              </div>
-            ` : (item.arabicText ? `
-              <div class="wgi-durood-inline">
-                ${item.arabicText.replace(/\n/g, '<br>')}
               </div>
             ` : '')}
 
