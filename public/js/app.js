@@ -1094,7 +1094,7 @@ window.ASMA_UL_HUSNA_TEXT = "هُوَ اللَّهُ الَّذِي لَا إِ�
 let currentItemModalData = null;
 
 window.openAyatulKursiReader = function() {
-  openItemTextModal(9, 'آیت الکرسی (سورۃ البقرۃ - آیت ۲۵۵)', window.AYATUL_KURSI_TEXT, '313 مرتبہ', 313);
+  openItemTextModal(9, 'آیت الکرسی (سورۃ البقرۃ - آیت 255)', window.AYATUL_KURSI_TEXT, '313 مرتبہ', 313);
 };
 
 window.openItemTextModal = function(num, title, text, countStr, targetVal) {
@@ -1703,7 +1703,7 @@ window.shareChannelWhatsApp = function() {
 const WAZAIF_FOLDERS = [
   {
     id: 'manzil',
-    titleUr: 'منزل شریف (۳۳ آیات)',
+    titleUr: 'منزل شریف (33 آیات)',
     titleEn: 'Manzil Sharif (33 Verses)',
     subtitleUr: 'آیاتِ شفا و تلاوت',
     subtitleEn: 'Healing Verses & Audio',
@@ -1744,12 +1744,12 @@ const WAZAIF_FOLDERS = [
     id: 'chehal-kaaf',
     titleUr: 'دعائے چہل کاف',
     titleEn: 'Dua-e-Chehal Kaaf',
-    subtitleUr: '۲ طریقے (۱۰۰ یا ۱۱۰۴ مرتبہ)',
+    subtitleUr: '2 طریقے (100 یا 1104 مرتبہ)',
     subtitleEn: '2 Methods (100x or 1,104x)',
     icon: 'fa-stamp',
     iconBg: '#EDE9FE',
     iconColor: '#7C3AED',
-    badgeUr: '۱۲ دن یا ۱ دن نوچندی',
+    badgeUr: '12 دن یا 1 دن نوچندی',
     badgeEn: '12 Days or Nauchandi',
     filterFn: (w) => (w.id === 'waz-chehal-kaaf' || (w.title || '').includes('چہل کاف'))
   },
@@ -1770,40 +1770,53 @@ const WAZAIF_FOLDERS = [
     id: 'muharram',
     titleUr: 'وظائفِ محرم الحرام',
     titleEn: 'Muharram Litanies',
-    subtitleUr: '۵ اکسیری اعمال و شفا',
+    subtitleUr: '5 اکسیری اعمال و شفا',
     subtitleEn: '5 Muharram Practices',
     icon: 'fa-mosque',
     iconBg: '#FEE2E2',
     iconColor: '#DC2626',
-    badgeUr: '۵ اکسیری اعمال',
+    badgeUr: '5 اکسیری اعمال',
     badgeEn: '5 Special Acts',
     filterFn: (w) => (w.id === 'waz-khas-muharram' || (w.title || '').includes('محرم'))
   },
   {
     id: 'shab-17-ramadan',
-    titleUr: 'شبِ ۱۷ رمضان (بدر)',
+    titleUr: 'شبِ 17 رمضان (بدر)',
     titleEn: '17th Ramadan (Badr)',
-    subtitleUr: '۴۴ سورتیں و تسبیحات',
+    subtitleUr: '44 سورتیں و تسبیحات',
     subtitleEn: 'Surahs Litany 44',
     icon: 'fa-moon',
     iconBg: '#EEF2FF',
     iconColor: '#4F46E5',
-    badgeUr: '۴۴ سورتیں و تسبیحات',
+    badgeUr: '44 سورتیں و تسبیحات',
     badgeEn: '44 Surahs List',
-    filterFn: (w) => (w.id === 'waz-khas-17-ramadan' || (w.title || '').includes('۱۷ رمضان'))
+    filterFn: (w) => (w.id === 'waz-khas-17-ramadan' || (w.title || '').includes('17 رمضان') || (w.title || '').includes('17 رمضان'))
   },
   {
     id: 'ramadan-last-10',
-    titleUr: 'آخری ۱۰ دن والے وظائف',
+    titleUr: 'رمضان کے آخری 10 دن والے وظائف',
     titleEn: 'Last 10 Days of Ramadan Wazaif',
-    subtitleUr: 'جادو کا قاطع توڑ، شبِ قدر و ۲۷ رمضان',
-    subtitleEn: 'Magic Removal, Qadr & 27th Night',
+    subtitleUr: 'جادو، سحر، آسیب و بندش کا قاطع توڑ',
+    subtitleEn: 'Black Magic & Blockage Removal Amal',
+    icon: 'fa-shield-halved',
+    iconBg: '#ECFDF5',
+    iconColor: '#059669',
+    badgeUr: 'خاتمۂ سحر و آسیب',
+    badgeEn: 'Magic Removal',
+    filterFn: (w) => (w.id === 'waz-ramadan-last10')
+  },
+  {
+    id: 'shab-27-ramadan',
+    titleUr: 'شبِ 27 رمضان المبارک کے اعمال',
+    titleEn: '27th Ramadan (Shab-e-Qadr)',
+    subtitleUr: 'سورۃ القدر 1000 مرتبہ و ختمِ قرآنِ کریم',
+    subtitleEn: 'Surah Al-Qadr (1000x) & Quran Recitation',
     icon: 'fa-star-and-crescent',
     iconBg: '#FEF3C7',
     iconColor: '#D97706',
-    badgeUr: 'خاص روحانی اوراد',
-    badgeEn: 'Special Litanies',
-    filterFn: (w) => (w.id === 'waz-ramadan-last10' || w.id === 'waz-khas-27-ramadan')
+    badgeUr: 'اعمالِ شبِ قدر',
+    badgeEn: 'Night of Power',
+    filterFn: (w) => (w.id === 'waz-khas-27-ramadan' || (w.title || '').includes('27 رمضان') || (w.title || '').includes('27 رمضان'))
   }
 ];
 
@@ -1815,103 +1828,103 @@ const WAZAIF_FOLDERS = [
 const WAZIFA_PRESETS = {
   'waz-chehal-kaaf': {
     chillaOptions: [
-      { days: 1, labelUr: '۱ دن نوچندی عمل (۱۱۰۴ مرتبہ مع روزہ)', labelEn: '1-Day Nauchandi (1,104x with Fast)' },
-      { days: 12, labelUr: '۱۲ دن کا عمل (روزانہ ۱۰۰ مرتبہ)', labelEn: '12-Day Course (Daily 100x)' },
-      { days: 41, labelUr: '۴۱ دن کا چلہ (روزانہ ۴۱ مرتبہ)', labelEn: '41-Day Chilla (Daily 41x)' },
-      { days: 101, labelUr: '۱۰۱ دن کا عمل (روزانہ ۱۰۱ مرتبہ)', labelEn: '101-Day Amal (Daily 101x)' }
+      { days: 1, labelUr: '1 دن نوچندی عمل (1104 مرتبہ مع روزہ)', labelEn: '1-Day Nauchandi (1,104x with Fast)' },
+      { days: 12, labelUr: '12 دن کا عمل (روزانہ 100 مرتبہ)', labelEn: '12-Day Course (Daily 100x)' },
+      { days: 41, labelUr: '41 دن کا چلہ (روزانہ 41 مرتبہ)', labelEn: '41-Day Chilla (Daily 41x)' },
+      { days: 101, labelUr: '101 دن کا عمل (روزانہ 101 مرتبہ)', labelEn: '101-Day Amal (Daily 101x)' }
     ],
     defaultChillaDays: 12,
     repsOptions: [
-      { count: 1104, labelUr: '۱۱۰۴ مرتبہ (طریقہ ۱ - نوچندی)', labelEn: '1,104x (Method 1 - Nauchandi)' },
-      { count: 100, labelUr: '۱۰۰ مرتبہ (طریقہ ۲ - ۱۲ دن روزانہ)', labelEn: '100x (Method 2 - 12 Days Daily)' },
-      { count: 41, labelUr: '۴۱ مرتبہ (۴۱ دن کا چلہ)', labelEn: '41x (41-Day Chilla)' },
-      { count: 101, labelUr: '۱۰۱ مرتبہ (۱۰۱ دن کا عمل)', labelEn: '101x (101-Day Amal)' }
+      { count: 1104, labelUr: '1104 مرتبہ (طریقہ 1 - نوچندی)', labelEn: '1,104x (Method 1 - Nauchandi)' },
+      { count: 100, labelUr: '100 مرتبہ (طریقہ 2 - 12 دن روزانہ)', labelEn: '100x (Method 2 - 12 Days Daily)' },
+      { count: 41, labelUr: '41 مرتبہ (41 دن کا چلہ)', labelEn: '41x (41-Day Chilla)' },
+      { count: 101, labelUr: '101 مرتبہ (101 دن کا عمل)', labelEn: '101x (101-Day Amal)' }
     ],
     defaultReps: 100
   },
   'waz-manzil': {
     chillaOptions: [
-      { days: 41, labelUr: '۴۱ دن کا چلہ (جادو، جنات و لاعلاج امراض)', labelEn: '41-Day Chilla (Magic/Jinn/Disease)' },
-      { days: 21, labelUr: '۲۱ دن کا معمول', labelEn: '21-Day Course' },
-      { days: 11, labelUr: '۱۱ دن کی حفاظت', labelEn: '11-Day Protection' }
+      { days: 41, labelUr: '41 دن کا چلہ (جادو، جنات و لاعلاج امراض)', labelEn: '41-Day Chilla (Magic/Jinn/Disease)' },
+      { days: 21, labelUr: '21 دن کا معمول', labelEn: '21-Day Course' },
+      { days: 11, labelUr: '11 دن کی حفاظت', labelEn: '11-Day Protection' }
     ],
     defaultChillaDays: 41,
     repsOptions: [
-      { count: 3, labelUr: '۳ مرتبہ (صبح و شام معمول)', labelEn: '3x (Daily Routine)' },
-      { count: 1, labelUr: '۱ مرتبہ (کم از کم)', labelEn: '1x (Minimum)' },
-      { count: 7, labelUr: '۷ مرتبہ (خاص حصار)', labelEn: '7x (Strong Shield)' },
-      { count: 11, labelUr: '۱۱ مرتبہ (سخت جادو کا توڑ)', labelEn: '11x (Severe Magic)' }
+      { count: 3, labelUr: '3 مرتبہ (صبح و شام معمول)', labelEn: '3x (Daily Routine)' },
+      { count: 1, labelUr: '1 مرتبہ (کم از کم)', labelEn: '1x (Minimum)' },
+      { count: 7, labelUr: '7 مرتبہ (خاص حصار)', labelEn: '7x (Strong Shield)' },
+      { count: 11, labelUr: '11 مرتبہ (سخت جادو کا توڑ)', labelEn: '11x (Severe Magic)' }
     ],
     defaultReps: 3
   },
   'waz-hizb-nasr': {
     chillaOptions: [
-      { days: 7, labelUr: '۷ دن کا عمل (روزانہ ۱۲ مرتبہ)', labelEn: '7-Day Amal (12x Daily)' },
-      { days: 12, labelUr: '۱۲ دن کا عمل (روزانہ ۱۲ مرتبہ)', labelEn: '12-Day Amal (12x Daily)' },
-      { days: 21, labelUr: '۲۱ دن کا عمل (نصرت و فتح)', labelEn: '21-Day Amal (Victory)' },
-      { days: 40, labelUr: '۴۰ دن کا چلہ (حصارِ اعظم)', labelEn: '40-Day Chilla (Grand Shield)' }
+      { days: 7, labelUr: '7 دن کا عمل (روزانہ 12 مرتبہ)', labelEn: '7-Day Amal (12x Daily)' },
+      { days: 12, labelUr: '12 دن کا عمل (روزانہ 12 مرتبہ)', labelEn: '12-Day Amal (12x Daily)' },
+      { days: 21, labelUr: '21 دن کا عمل (نصرت و فتح)', labelEn: '21-Day Amal (Victory)' },
+      { days: 40, labelUr: '40 دن کا چلہ (حصارِ اعظم)', labelEn: '40-Day Chilla (Grand Shield)' }
     ],
     defaultChillaDays: 7,
     repsOptions: [
-      { count: 12, labelUr: '۱۲ مرتبہ (۷ یا ۱۲ دن کا عمل - روزانہ)', labelEn: '12x (7 or 12-Day Amal - Daily)' },
-      { count: 7, labelUr: '۷ مرتبہ (خاص فتح و نصرت)', labelEn: '7x (Special Victory)' },
-      { count: 3, labelUr: '۳ مرتبہ (روزانہ معمول)', labelEn: '3x (Daily Routine)' },
-      { count: 1, labelUr: '۱ مرتبہ (حفاظت)', labelEn: '1x (Protection)' }
+      { count: 12, labelUr: '12 مرتبہ (7 یا 12 دن کا عمل - روزانہ)', labelEn: '12x (7 or 12-Day Amal - Daily)' },
+      { count: 7, labelUr: '7 مرتبہ (خاص فتح و نصرت)', labelEn: '7x (Special Victory)' },
+      { count: 3, labelUr: '3 مرتبہ (روزانہ معمول)', labelEn: '3x (Daily Routine)' },
+      { count: 1, labelUr: '1 مرتبہ (حفاظت)', labelEn: '1x (Protection)' }
     ],
     defaultReps: 12
   },
   'waz-nadi-ali': {
     chillaOptions: [
-      { days: 12, labelUr: '۱۲ دن کا عمل (روزانہ ۱۰۰ مرتبہ - خاص ہدف)', labelEn: '12-Day Course (Daily 100x - Primary)' },
-      { days: 21, labelUr: '۲۱ دن کا معمول (کشائشِ کار)', labelEn: '21-Day Course (Relief)' },
-      { days: 40, labelUr: '۴۰ دن کا چلہ (کامل تسخیر و فتح)', labelEn: '40-Day Chilla (Victory)' },
-      { days: 7, labelUr: '۷ دن کی فوری امداد', labelEn: '7-Day Quick Relief' }
+      { days: 12, labelUr: '12 دن کا عمل (روزانہ 100 مرتبہ - خاص ہدف)', labelEn: '12-Day Course (Daily 100x - Primary)' },
+      { days: 21, labelUr: '21 دن کا معمول (کشائشِ کار)', labelEn: '21-Day Course (Relief)' },
+      { days: 40, labelUr: '40 دن کا چلہ (کامل تسخیر و فتح)', labelEn: '40-Day Chilla (Victory)' },
+      { days: 7, labelUr: '7 دن کی فوری امداد', labelEn: '7-Day Quick Relief' }
     ],
     defaultChillaDays: 12,
     repsOptions: [
-      { count: 100, labelUr: '۱۰۰ مرتبہ (۱۲ دن کا خاص عمل)', labelEn: '100x (12-Day Course)' },
-      { count: 110, labelUr: '۱۱۰ مرتبہ (بحسابِ ابجد)', labelEn: '110x (Abjad Count)' },
-      { count: 21, labelUr: '۲۱ مرتبہ (روزانہ معمول)', labelEn: '21x (Daily Routine)' },
-      { count: 7, labelUr: '۷ مرتبہ (کم از کم)', labelEn: '7x (Minimum)' }
+      { count: 100, labelUr: '100 مرتبہ (12 دن کا خاص عمل)', labelEn: '100x (12-Day Course)' },
+      { count: 110, labelUr: '110 مرتبہ (بحسابِ ابجد)', labelEn: '110x (Abjad Count)' },
+      { count: 21, labelUr: '21 مرتبہ (روزانہ معمول)', labelEn: '21x (Daily Routine)' },
+      { count: 7, labelUr: '7 مرتبہ (کم از کم)', labelEn: '7x (Minimum)' }
     ],
     defaultReps: 100
   },
   'waz-hizb-bahr': {
     chillaOptions: [
-      { days: 7, labelUr: '۷ دن کا عمل (طریقہ ۱: روزانہ ۱۲ مرتبہ)', labelEn: '7-Day Amal (Method 1: 12x Daily)' },
-      { days: 27, labelUr: '۲۷ دن کا عمل (طریقہ ۲: چاشت، مغرب، عشاء ۳، ۳ مرتبہ)', labelEn: '27-Day Amal (Method 2: 3x each at Chasht, Maghrib & Isha)' },
-      { days: 3, labelUr: '۳ دن کا عمل (طریقہ ۳: ۳۶۰ مرتبہ ختمِ عظیم)', labelEn: '3-Day Amal (Method 3: 360x Grand Course)' }
+      { days: 7, labelUr: '7 دن کا عمل (طریقہ 1: روزانہ 12 مرتبہ)', labelEn: '7-Day Amal (Method 1: 12x Daily)' },
+      { days: 27, labelUr: '27 دن کا عمل (طریقہ 2: چاشت، مغرب، عشاء 3، 3 مرتبہ)', labelEn: '27-Day Amal (Method 2: 3x each at Chasht, Maghrib & Isha)' },
+      { days: 3, labelUr: '3 دن کا عمل (طریقہ 3: 360 مرتبہ ختمِ عظیم)', labelEn: '3-Day Amal (Method 3: 360x Grand Course)' }
     ],
     defaultChillaDays: 7,
     repsOptions: [
-      { count: 12, labelUr: '۱۲ مرتبہ (طریقہ ۱ - ۷ دن روزانہ)', labelEn: '12x (Method 1: 7 Days Daily)' },
-      { count: 3, labelUr: '۳ مرتبہ (طریقہ ۲ - چاشت، مغرب، عشاء)', labelEn: '3x (Method 2: Chasht, Maghrib & Isha)' },
-      { count: 360, labelUr: '۳۶۰ مرتبہ (طریقہ ۳ - ۳ دن کا ختم)', labelEn: '360x (Method 3: 3 Days Course)' }
+      { count: 12, labelUr: '12 مرتبہ (طریقہ 1 - 7 دن روزانہ)', labelEn: '12x (Method 1: 7 Days Daily)' },
+      { count: 3, labelUr: '3 مرتبہ (طریقہ 2 - چاشت، مغرب، عشاء)', labelEn: '3x (Method 2: Chasht, Maghrib & Isha)' },
+      { count: 360, labelUr: '360 مرتبہ (طریقہ 3 - 3 دن کا ختم)', labelEn: '360x (Method 3: 3 Days Course)' }
     ],
     defaultReps: 12
   },
   'waz-ramadan-last10': {
     chillaOptions: [
-      { days: 10, labelUr: '۱۰ دن کا خاص عمل (۲۰ رمضان تا چاند رات)', labelEn: '10-Day Special Amal (20th Ramadan to Chand Raat)' },
-      { days: 7, labelUr: '۷ دن کا عمل', labelEn: '7-Day Course' }
+      { days: 10, labelUr: '10 دن کا خاص عمل (20 رمضان تا چاند رات)', labelEn: '10-Day Special Amal (20th Ramadan to Chand Raat)' },
+      { days: 7, labelUr: '7 دن کا عمل', labelEn: '7-Day Course' }
     ],
     defaultChillaDays: 10,
     repsOptions: [
-      { count: 1, labelUr: '۱ مکمل نشست (تمام ۷ اوراد)', labelEn: '1 Full Session (All 7 Litanies)' },
-      { count: 41, labelUr: '۴۱ مرتبہ (انفرادی ہدف)', labelEn: '41x (Individual Litany)' },
-      { count: 100, labelUr: '۱۰۰ مرتبہ (تسبیح ہدف)', labelEn: '100x (Tasbeeh Target)' }
+      { count: 1, labelUr: '1 مکمل نشست (تمام 7 اوراد)', labelEn: '1 Full Session (All 7 Litanies)' },
+      { count: 41, labelUr: '41 مرتبہ (انفرادی ہدف)', labelEn: '41x (Individual Litany)' },
+      { count: 100, labelUr: '100 مرتبہ (تسبیح ہدف)', labelEn: '100x (Tasbeeh Target)' }
     ],
     defaultReps: 1
   },
   'waz-khas-27-ramadan': {
     chillaOptions: [
-      { days: 1, labelUr: '۱ رات کا عمل (شبِ قدر)', labelEn: '1-Night Amal (Qadr)' }
+      { days: 1, labelUr: '1 رات کا عمل (شبِ قدر)', labelEn: '1-Night Amal (Qadr)' }
     ],
     defaultChillaDays: 1,
     repsOptions: [
-      { count: 1000, labelUr: '۱۰۰۰ مرتبہ (سورۃ القدر - ایک نشست)', labelEn: '1,000x (Surah Al-Qadr)' },
-      { count: 313, labelUr: '۳۱۳ مرتبہ (دعائے عفو)', labelEn: '313x (Supplication)' },
-      { count: 100, labelUr: '۱۰۰ مرتبہ (تسبیح)', labelEn: '100x (Tasbeeh)' }
+      { count: 1000, labelUr: '1000 مرتبہ (سورۃ القدر - ایک نشست)', labelEn: '1,000x (Surah Al-Qadr)' },
+      { count: 313, labelUr: '313 مرتبہ (دعائے عفو)', labelEn: '313x (Supplication)' },
+      { count: 100, labelUr: '100 مرتبہ (تسبیح)', labelEn: '100x (Tasbeeh)' }
     ],
     defaultReps: 1000
   }
@@ -2004,7 +2017,7 @@ window.updateChillaUI = function(wazifaId) {
   const compLabel = tracker.querySelector('.wct-completed-txt');
   if (compLabel) {
     if (completed === 0) {
-      compLabel.textContent = isEn ? `0 of ${total} Days Done` : `${total} میں سے ۰ دن مکمل`;
+      compLabel.textContent = isEn ? `0 of ${total} Days Done` : `${total} میں سے 0 دن مکمل`;
     } else {
       compLabel.textContent = isEn ? `MashaAllah! Day ${completed} Completed` : `ماشاء اللہ! ${completed} دن مکمل ہو گیا`;
     }
@@ -2135,7 +2148,7 @@ function renderWazaif(filterCategory = 'all_folders') {
       <div style="grid-column: 1 / -1; margin-top: 10px; text-align: center;">
         <button type="button" class="btn-view-all-flat" onclick="renderWazaif('flat_all')" style="background: #F8FAFC; border: 1px dashed #CBD5E1; color: #475569; padding: 10px 18px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
           <i class="fa-solid fa-list-ul"></i>
-          <span>${isEn ? 'View all 19 wazaif in single list' : 'تمام ۱۹ وظائف کی مکمل فہرست ایک ساتھ دیکھیں'}</span>
+          <span>${isEn ? 'View all 19 wazaif in single list' : 'تمام 19 وظائف کی مکمل فہرست ایک ساتھ دیکھیں'}</span>
         </button>
       </div>
     `;
@@ -2152,7 +2165,7 @@ function renderWazaif(filterCategory = 'all_folders') {
 
   if (filterCategory === 'flat_all') {
     items = allItems;
-    headerTitle = isEn ? 'All Wazaif (Complete Collection)' : 'تمام وظائف (مکمل ۱۹ وظائف)';
+    headerTitle = isEn ? 'All Wazaif (Complete Collection)' : 'تمام وظائف (مکمل 19 وظائف)';
     headerBadge = isEn ? `${items.length} Wazaif` : `${items.length} وظائف`;
   } else if (selectedFolder) {
     items = allItems.filter(selectedFolder.filterFn);
@@ -2261,7 +2274,7 @@ function renderWazaif(filterCategory = 'all_folders') {
         ${w.scanUrl ? `
           <div class="chehal-scan-banner" onclick="window.open('${w.scanUrl}', '_blank')" title="${isEn ? 'Click to view full high-resolution scan' : 'بڑے سائز میں اصل عکس دیکھنے کے لیے کلک کریں'}">
             <div class="csb-header">
-              <span><i class="fa-solid fa-certificate"></i> ${isEn ? 'Original Verified Scan: Aaina-e-Amaliyat (p. 205)' : 'مستند کتابی عکس: آئینہ عملیات (صفحہ ۲۰۵)'}</span>
+              <span><i class="fa-solid fa-certificate"></i> ${isEn ? 'Original Verified Scan: Aaina-e-Amaliyat (p. 205)' : 'مستند کتابی عکس: آئینہ عملیات (صفحہ 205)'}</span>
               <span class="csb-zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> ${isEn ? 'Zoom / High-Res' : 'بڑا کر کے دیکھیں'}</span>
             </div>
             <div class="csb-img-wrap">
@@ -2282,23 +2295,23 @@ function renderWazaif(filterCategory = 'all_folders') {
           <div class="hizb-bahr-sessions-box">
             <div class="hb-sessions-title">
               <i class="fa-solid fa-clock-rotate-left"></i>
-              <span>${isEn ? 'Method 2 (27-Day Course) - 3 Daily Timings (3 Times Each):' : 'طریقہ نمبر ۲ (۲۷ دن کا عمل) - یومیہ ۳ اوقات کی تقسیم (۳، ۳ مرتبہ):'}</span>
+              <span>${isEn ? 'Method 2 (27-Day Course) - 3 Daily Timings (3 Times Each):' : 'طریقہ نمبر 2 (27 دن کا عمل) - یومیہ 3 اوقات کی تقسیم (3، 3 مرتبہ):'}</span>
             </div>
             <div class="hb-sessions-grid">
               <div class="hb-session-pill">
                 <span class="hb-sp-icon">☀️</span>
                 <span class="hb-sp-time">${isEn ? 'Chasht Prayer' : 'وقتِ چاشت'}</span>
-                <span class="hb-sp-count">${isEn ? '3 Times' : '۳ مرتبہ'}</span>
+                <span class="hb-sp-count">${isEn ? '3 Times' : '3 مرتبہ'}</span>
               </div>
               <div class="hb-session-pill">
                 <span class="hb-sp-icon">🌇</span>
                 <span class="hb-sp-time">${isEn ? 'After Maghrib' : 'بعد نمازِ مغرب'}</span>
-                <span class="hb-sp-count">${isEn ? '3 Times' : '۳ مرتبہ'}</span>
+                <span class="hb-sp-count">${isEn ? '3 Times' : '3 مرتبہ'}</span>
               </div>
               <div class="hb-session-pill">
                 <span class="hb-sp-icon">🌙</span>
                 <span class="hb-sp-time">${isEn ? 'After Isha' : 'بعد نمازِ عشاء'}</span>
-                <span class="hb-sp-count">${isEn ? '3 Times' : '۳ مرتبہ'}</span>
+                <span class="hb-sp-count">${isEn ? '3 Times' : '3 مرتبہ'}</span>
               </div>
             </div>
           </div>
@@ -2308,18 +2321,18 @@ function renderWazaif(filterCategory = 'all_folders') {
         ${w.id === 'waz-manzil' ? `
           <div class="manzil-dual-trackers" id="manzilDualTrackers">
             
-            <!-- Morning Session Tracker (۳ مرتبہ) -->
+            <!-- Morning Session Tracker (3 مرتبہ) -->
             <div class="manzil-session-card manzil-session-morning" data-session="morning" data-step="0" id="manzilCardMorning">
               <div class="msc-header">
                 <span class="msc-title">
                   <i class="fa-solid fa-sun"></i>
-                  <span>${isEn ? 'Morning Session (3 Times)' : 'صبح کا معمول (۳ مرتبہ تلاوت)'}</span>
+                  <span>${isEn ? 'Morning Session (3 Times)' : 'صبح کا معمول (3 مرتبہ تلاوت)'}</span>
                 </span>
-                <span class="msc-timing">${isEn ? 'Fajr to 10:00 AM' : 'صبح ۹ تا ۱۰ بجے سے پہلے'}</span>
+                <span class="msc-timing">${isEn ? 'Fajr to 10:00 AM' : 'صبح 9 تا 10 بجے سے پہلے'}</span>
               </div>
               <div class="msc-timing-note">
                 <i class="fa-regular fa-clock"></i>
-                <span>${isEn ? 'Recite after Fajr prayer before 9:00 - 10:00 AM' : 'صبح نمازِ فجر کے بعد سے لے کر ۹ یا ۱۰ بجے سے پہلے پہلے پڑھیں'}</span>
+                <span>${isEn ? 'Recite after Fajr prayer before 9:00 - 10:00 AM' : 'صبح نمازِ فجر کے بعد سے لے کر 9 یا 10 بجے سے پہلے پہلے پڑھیں'}</span>
               </div>
               <div class="mrt-steps">
                 <div class="mrt-step-pill" data-step="1">
@@ -2341,18 +2354,18 @@ function renderWazaif(filterCategory = 'all_folders') {
               </button>
             </div>
 
-            <!-- Evening Session Tracker (۳ مرتبہ) -->
+            <!-- Evening Session Tracker (3 مرتبہ) -->
             <div class="manzil-session-card manzil-session-evening" data-session="evening" data-step="0" id="manzilCardEvening">
               <div class="msc-header">
                 <span class="msc-title">
                   <i class="fa-solid fa-moon"></i>
-                  <span>${isEn ? 'Evening Session (3 Times)' : 'شام و رات کا معمول (۳ مرتبہ تلاوت)'}</span>
+                  <span>${isEn ? 'Evening Session (3 Times)' : 'شام و رات کا معمول (3 مرتبہ تلاوت)'}</span>
                 </span>
-                <span class="msc-timing">${isEn ? 'Maghrib to 11:00 PM' : 'مغرب تا رات ۱۰-۱۱ بجے'}</span>
+                <span class="msc-timing">${isEn ? 'Maghrib to 11:00 PM' : 'مغرب تا رات 10-11 بجے'}</span>
               </div>
               <div class="msc-timing-note">
                 <i class="fa-regular fa-clock"></i>
-                <span>${isEn ? 'Listen or recite after Maghrib prayer until 10:00 - 11:00 PM' : 'نمازِ مغرب کے بعد سے لے کر رات ۱۰ یا ۱۱ بجے تک سن لیں یا پڑھ لیں'}</span>
+                <span>${isEn ? 'Listen or recite after Maghrib prayer until 10:00 - 11:00 PM' : 'نمازِ مغرب کے بعد سے لے کر رات 10 یا 11 بجے تک سن لیں یا پڑھ لیں'}</span>
               </div>
               <div class="mrt-steps">
                 <div class="mrt-step-pill" data-step="1">
@@ -2378,7 +2391,7 @@ function renderWazaif(filterCategory = 'all_folders') {
             <div class="manzil-total-summary" id="manzilTotalSummary">
               <span>${isEn ? '📊 Today Total Manzil Recitation:' : '📊 آج کا کل مسنون معمول:'}</span>
               <span id="manzilTotalCountBadge" style="background:#10B981; color:#fff; padding:3px 10px; border-radius:99px; font-weight:800;">
-                ${isEn ? '0 of 6 Completed' : '۶ میں سے ۰ مکمل'}
+                ${isEn ? '0 of 6 Completed' : '6 میں سے 0 مکمل'}
               </span>
             </div>
 
@@ -2386,7 +2399,7 @@ function renderWazaif(filterCategory = 'all_folders') {
         ` : ''}
 
         <!-- Spiritual Chilla & Duration Tracker (مدت و چلہ ٹریکر) -->
-        ${(WAZIFA_PRESETS[w.id] && WAZIFA_PRESETS[w.id].chillaOptions) ? `
+        ${(WAZIFA_PRESETS[w.id] && WAZIFA_PRESETS[w.id].chillaOptions && (!w.itemsList || !w.itemsList.length)) ? `
           <div class="wazifa-chilla-tracker" id="chilla-tracker-${w.id}">
             <div class="wct-header">
               <span class="wct-title">
@@ -2406,7 +2419,7 @@ function renderWazaif(filterCategory = 'all_folders') {
               <div class="wct-progress-bar" style="width: 0%;"></div>
             </div>
             <div class="wct-status-row">
-              <span class="wct-completed-txt">${isEn ? 'Day 0 of ...' : 'دن ۰ مکمل'}</span>
+              <span class="wct-completed-txt">${isEn ? 'Day 0 of ...' : 'دن 0 مکمل'}</span>
               <span class="wct-remaining-highlight">${isEn ? '... days remaining' : '... دن باقی ہیں'}</span>
             </div>
             <div class="wct-actions">
@@ -2447,7 +2460,7 @@ function renderWazaif(filterCategory = 'all_folders') {
         ` : ''}
         
         <!-- Wazifa Card Footer: suppress for Manzil since it has morning & evening trackers, and remove redundant WhatsApp corner icon -->
-        ${w.id !== 'waz-manzil' ? `
+        ${(w.id !== 'waz-manzil' && (!w.itemsList || !w.itemsList.length)) ? `
           <div class="wic-footer" style="flex-direction:column; align-items:stretch;">
             ${(WAZIFA_PRESETS[w.id] && WAZIFA_PRESETS[w.id].repsOptions) ? `
               <div class="wazifa-reps-selector">
@@ -4116,7 +4129,7 @@ window.submitAuthenticIjazahForm = function() {
       msg += '📝 *تفصیلات:* ' + details + '\n';
     }
     msg += '------------------------------------\n';
-    msg += 'السلام علیکم مفتی صاحب! میں ۵ سلاسلِ تصوف کے اسباق، لطائف و چاکراز اور معمولات کی باقاعدہ شرعی اجازت و بیعت کا طلبگار ہوں۔ برائے مہربانی اجازت و رہنمائی عنایت فرمائیں۔ جزاک اللہ خیراً۔';
+    msg += 'السلام علیکم مفتی صاحب! میں 5 سلاسلِ تصوف کے اسباق، لطائف و چاکراز اور معمولات کی باقاعدہ شرعی اجازت و بیعت کا طلبگار ہوں۔ برائے مہربانی اجازت و رہنمائی عنایت فرمائیں۔ جزاک اللہ خیراً۔';
   }
 
   if (typeof window.closeModal === 'function') {
@@ -4140,7 +4153,7 @@ window.updateTasSubFeeNotice = function() {
     noticeTitle.textContent = isEn ? 'Private 1-on-1 Session' : 'خصوصی پرائیویٹ ون آن ون سیشن';
     noticeDetail.textContent = isEn 
       ? 'Daily ~20 Mins dedicated session for personal meditation & chakra guidance' 
-      : 'روزانہ تقریباً ۲۰ منٹ کا خصوصی انفرادی سیشن برائے مراقبہ و باطنی لطائف رہنمائی';
+      : 'روزانہ تقریباً 20 منٹ کا خصوصی انفرادی سیشن برائے مراقبہ و باطنی لطائف رہنمائی';
     noticeAmount.textContent = 'Rs. 10,000 / Mo';
   } else {
     noticeTitle.textContent = isEn ? 'Daily Group Session' : 'روزانہ اجتماعی گروپ سیشن';
@@ -4205,48 +4218,48 @@ window.updateSadqaNotice = function() {
 
   let maxMembers = 1;
   if (val === 'karhai_single') {
-    title.textContent = isEn ? 'Amal-e-Karhai (Shared Share - 1 Person)' : 'کڑھائی کا خاص عمل (مشترکہ حصہ — ۱ فرد)';
+    title.textContent = isEn ? 'Amal-e-Karhai (Shared Share - 1 Person)' : 'کڑھائی کا خاص عمل (مشترکہ حصہ — 1 فرد)';
     detail.textContent = isEn ? 'Sacred Qur\'anic inscriptions incinerated in iron pot for complete relief' : 'سائل کے نام و امراض کے تعویذات کڑھائی میں جلا کر سخت سحر و جنات کی کاٹ';
     amount.textContent = 'Rs. 5,000';
     maxMembers = 1;
   } else if (val === 'karhai_full') {
-    title.textContent = isEn ? 'Full Dedicated Amal-e-Karhai (Max 5 Persons)' : 'مکمل انفرادی کڑھائی کا عمل (زیادہ سے زیادہ ۵ افراد)';
-    detail.textContent = isEn ? 'Dedicated pot incineration for patient & family (up to 5 members)' : 'مریض یا فیملی کیلئے خصوصی سیپریٹ کڑھائی کا عمل (زیادہ سے زیادہ ۵ افراد)';
+    title.textContent = isEn ? 'Full Dedicated Amal-e-Karhai (Max 5 Persons)' : 'مکمل انفرادی کڑھائی کا عمل (زیادہ سے زیادہ 5 افراد)';
+    detail.textContent = isEn ? 'Dedicated pot incineration for patient & family (up to 5 members)' : 'مریض یا فیملی کیلئے خصوصی سیپریٹ کڑھائی کا عمل (زیادہ سے زیادہ 5 افراد)';
     amount.textContent = 'Rs. 25,000';
     maxMembers = 5;
   } else if (val === 'murghi_single') {
-    title.textContent = isEn ? 'Rooster / Bird Kaat & Remedy (1 Person)' : 'مرغی کا خاص عمل و صدقہ (۱ فرد)';
-    detail.textContent = isEn ? 'Instant spiritual cut for 1 person' : '۱ فرد کیلئے فوری کاٹ و دفعِ بلا';
+    title.textContent = isEn ? 'Rooster / Bird Kaat & Remedy (1 Person)' : 'مرغی کا خاص عمل و صدقہ (1 فرد)';
+    detail.textContent = isEn ? 'Instant spiritual cut for 1 person' : '1 فرد کیلئے فوری کاٹ و دفعِ بلا';
     amount.textContent = 'Rs. 6,000';
     maxMembers = 1;
   } else if (val === 'bakra_single') {
-    title.textContent = isEn ? 'Goat Remedy (Shared — Max 7 Persons)' : 'بکرے کا عمل (۱ حصہ — زیادہ سے زیادہ ۷ افراد)';
-    detail.textContent = isEn ? 'Up to 7 family members included' : 'زیادہ سے زیادہ ۷ افراد کے نام شامل ہو سکتے ہیں';
+    title.textContent = isEn ? 'Goat Remedy (Shared — Max 7 Persons)' : 'بکرے کا عمل (1 حصہ — زیادہ سے زیادہ 7 افراد)';
+    detail.textContent = isEn ? 'Up to 7 family members included' : 'زیادہ سے زیادہ 7 افراد کے نام شامل ہو سکتے ہیں';
     amount.textContent = 'Rs. 15,000';
     maxMembers = 7;
   } else if (val === 'bakra_full') {
-    title.textContent = isEn ? 'Full Goat Individual Remedy (Max 7 Persons)' : 'مکمل بکرا (سیپریٹ انفرادی عمل — زیادہ سے زیادہ ۷ افراد)';
-    detail.textContent = isEn ? 'Dedicated sacrifice for up to 7 family members' : 'مستقل انفرادی بکرا برائے کامل دفعِ سحر (زیادہ سے زیادہ ۷ افراد)';
+    title.textContent = isEn ? 'Full Goat Individual Remedy (Max 7 Persons)' : 'مکمل بکرا (سیپریٹ انفرادی عمل — زیادہ سے زیادہ 7 افراد)';
+    detail.textContent = isEn ? 'Dedicated sacrifice for up to 7 family members' : 'مستقل انفرادی بکرا برائے کامل دفعِ سحر (زیادہ سے زیادہ 7 افراد)';
     amount.textContent = 'Rs. 100,000';
     maxMembers = 7;
   } else if (val === 'gaye_single') {
-    title.textContent = isEn ? 'Cow Remedy (Shared Share — Max 12 Persons)' : 'گائے کا خاندانی عمل (۱ حصہ — زیادہ سے زیادہ ۱۲ افراد)';
-    detail.textContent = isEn ? 'Ancestral witchcraft & family discord (up to 12 persons)' : 'خاندانی عداوت و نحوست کی کاٹ (زیادہ سے زیادہ ۱۲ افراد)';
+    title.textContent = isEn ? 'Cow Remedy (Shared Share — Max 12 Persons)' : 'گائے کا خاندانی عمل (1 حصہ — زیادہ سے زیادہ 12 افراد)';
+    detail.textContent = isEn ? 'Ancestral witchcraft & family discord (up to 12 persons)' : 'خاندانی عداوت و نحوست کی کاٹ (زیادہ سے زیادہ 12 افراد)';
     amount.textContent = 'Rs. 25,000';
     maxMembers = 12;
   } else if (val === 'gaye_full') {
-    title.textContent = isEn ? 'Full Cow Family Remedy (Max 12 Persons)' : 'مکمل گائے (پورا خاندان — زیادہ سے زیادہ ۱۲ افراد)';
-    detail.textContent = isEn ? 'Protection for whole extended family (up to 12 persons)' : 'پورے خاندان اور گھرانے کیلئے مکمل گائے (زیادہ سے زیادہ ۱۲ افراد)';
+    title.textContent = isEn ? 'Full Cow Family Remedy (Max 12 Persons)' : 'مکمل گائے (پورا خاندان — زیادہ سے زیادہ 12 افراد)';
+    detail.textContent = isEn ? 'Protection for whole extended family (up to 12 persons)' : 'پورے خاندان اور گھرانے کیلئے مکمل گائے (زیادہ سے زیادہ 12 افراد)';
     amount.textContent = 'Rs. 300,000';
     maxMembers = 12;
   } else if (val === 'oont_single') {
-    title.textContent = isEn ? 'Camel Remedy (1 Share — Max 12 Persons)' : 'اونٹ کا عمل و صدقہ (۱ حصہ — زیادہ سے زیادہ ۱۲ افراد)';
-    detail.textContent = isEn ? 'For severe chronic illness & cancer (up to 12 persons)' : 'مہلک امراض و کینسر سے شفا کیلئے (زیادہ سے زیادہ ۱۲ افراد)';
+    title.textContent = isEn ? 'Camel Remedy (1 Share — Max 12 Persons)' : 'اونٹ کا عمل و صدقہ (1 حصہ — زیادہ سے زیادہ 12 افراد)';
+    detail.textContent = isEn ? 'For severe chronic illness & cancer (up to 12 persons)' : 'مہلک امراض و کینسر سے شفا کیلئے (زیادہ سے زیادہ 12 افراد)';
     amount.textContent = 'Rs. 100,000';
     maxMembers = 12;
   } else if (val === 'oont_full') {
-    title.textContent = isEn ? 'Full Grand Camel Remedy (Max 12 Persons)' : 'مکمل اونٹ (بڑا خاندانی عمل — زیادہ سے زیادہ ۱۲ افراد)';
-    detail.textContent = isEn ? 'Grand ancestral sacrifice for family (up to 12 persons)' : 'نسلوں پرانے سحر و امراض کا بڑا خاتمہ (زیادہ سے زیادہ ۱۲ افراد)';
+    title.textContent = isEn ? 'Full Grand Camel Remedy (Max 12 Persons)' : 'مکمل اونٹ (بڑا خاندانی عمل — زیادہ سے زیادہ 12 افراد)';
+    detail.textContent = isEn ? 'Grand ancestral sacrifice for family (up to 12 persons)' : 'نسلوں پرانے سحر و امراض کا بڑا خاتمہ (زیادہ سے زیادہ 12 افراد)';
     amount.textContent = 'Rs. 1,200,000';
     maxMembers = 12;
   }
@@ -4262,15 +4275,15 @@ window.updateSadqaNotice = function() {
         if (maxMembers === 5) {
           famNote.innerHTML = isEn 
             ? '<strong>Amal-e-Karhai Slots (Max 5 Persons):</strong> Enter details for 1 or more family members (up to 5 members). All slots are optional.'
-            : '<strong>کڑھائی کا عمل (زیادہ سے زیادہ ۵ افراد):</strong> ۱ یا اس سے زائد جتنے بھی فیملی ممبرز کے نام درج کرنا چاہیں درج فرمائیں (زیادہ سے زیادہ ۵ افراد تک)۔';
+            : '<strong>کڑھائی کا عمل (زیادہ سے زیادہ 5 افراد):</strong> 1 یا اس سے زائد جتنے بھی فیملی ممبرز کے نام درج کرنا چاہیں درج فرمائیں (زیادہ سے زیادہ 5 افراد تک)۔';
         } else if (maxMembers === 7) {
           famNote.innerHTML = isEn 
             ? '<strong>Goat Sadqa Slots (Max 7 Persons):</strong> Enter details for 1 or more family members (up to 7 members). All slots are optional.'
-            : '<strong>بکرے کا صدقہ و عمل (زیادہ سے زیادہ ۷ افراد):</strong> ۱ یا اس سے زائد جتنے بھی فیملی ممبرز کے نام درج کرنا چاہیں درج فرمائیں (زیادہ سے زیادہ ۷ افراد تک)۔';
+            : '<strong>بکرے کا صدقہ و عمل (زیادہ سے زیادہ 7 افراد):</strong> 1 یا اس سے زائد جتنے بھی فیملی ممبرز کے نام درج کرنا چاہیں درج فرمائیں (زیادہ سے زیادہ 7 افراد تک)۔';
         } else {
           famNote.innerHTML = isEn 
             ? '<strong>Cow / Camel Slots (Max 12 Persons):</strong> Enter details for 1 or more family members (up to 12 members). All slots are optional.'
-            : '<strong>گائے و اونٹ کا عمل (زیادہ سے زیادہ ۱۲ افراد):</strong> ۱ یا اس سے زائد جتنے بھی فیملی ممبرز کے نام درج کرنا چاہیں درج فرمائیں (زیادہ سے زیادہ ۱۲ افراد تک)۔';
+            : '<strong>گائے و اونٹ کا عمل (زیادہ سے زیادہ 12 افراد):</strong> 1 یا اس سے زائد جتنے بھی فیملی ممبرز کے نام درج کرنا چاہیں درج فرمائیں (زیادہ سے زیادہ 12 افراد تک)۔';
         }
       }
       for (let i = 2; i <= 12; i++) {
@@ -4458,7 +4471,7 @@ window.switchDamModalPlan = function(planType) {
     if (secIndiv) secIndiv.style.display = 'block';
     if (secFam) secFam.style.display = 'none';
 
-    if (noticeTitle) noticeTitle.textContent = isEn ? 'Individual Plan (1 Person Daily Ruqyah)' : 'انفرادی پلان (۱ فرد کا روزانہ دم و دعا)';
+    if (noticeTitle) noticeTitle.textContent = isEn ? 'Individual Plan (1 Person Daily Ruqyah)' : 'انفرادی پلان (1 فرد کا روزانہ دم و دعا)';
     if (noticeDetail) noticeDetail.textContent = isEn ? 'Daily specialized Ruqyah & prayers for 1 person' : 'سائل کا نام مع والدہ روزانہ خصوصی دعاؤں اور دم میں شامل';
     if (noticeAmount) noticeAmount.textContent = isEn ? 'Rs. 3,000 / mo' : '3,000 روپے / ماہ';
   } else {
@@ -4473,8 +4486,8 @@ window.switchDamModalPlan = function(planType) {
     if (secIndiv) secIndiv.style.display = 'none';
     if (secFam) secFam.style.display = 'block';
 
-    if (noticeTitle) noticeTitle.textContent = isEn ? 'Complete Family Plan (4 to 5 Members)' : 'مکمل فیملی پلان (۴ تا ۵ افراد کا روزانہ دم)';
-    if (noticeDetail) noticeDetail.textContent = isEn ? 'Daily prayers for 4 to 5 members with separate illness slots' : 'خاندان کے ۴ تا ۵ افراد کے نام، والدہ کا نام اور الگ الگ امراض درج کریں';
+    if (noticeTitle) noticeTitle.textContent = isEn ? 'Complete Family Plan (4 to 5 Members)' : 'مکمل فیملی پلان (4 تا 5 افراد کا روزانہ دم)';
+    if (noticeDetail) noticeDetail.textContent = isEn ? 'Daily prayers for 4 to 5 members with separate illness slots' : 'خاندان کے 4 تا 5 افراد کے نام، والدہ کا نام اور الگ الگ امراض درج کریں';
     if (noticeAmount) noticeAmount.textContent = isEn ? 'Rs. 6,000 / mo' : '6,000 روپے / ماہ';
   }
 };
@@ -4554,7 +4567,7 @@ window.submitMonthlyDamModal = function() {
       msg = '*بسم اللہ الرحمن الرحیم*\n';
       msg += '*ماہانہ دم و روحانی حفاظت سبسکرپشن (خضریٰ ویز)*\n';
       msg += '------------------------------------\n';
-      msg += '📦 *پلان:* انفرادی پلان (۱ فرد کا روزانہ دم و دعا) — 3,000 روپے ماہانہ\n';
+      msg += '📦 *پلان:* انفرادی پلان (1 فرد کا روزانہ دم و دعا) — 3,000 روپے ماہانہ\n';
       msg += '👤 *مریض کا نام:* ' + name + '\n';
       msg += '🧕 *والدہ کا نام:* ' + mother + '\n';
       msg += '📝 *مرض یا مسئلہ کی تفصیل:* ' + issue + '\n';
@@ -4638,7 +4651,7 @@ window.submitMonthlyDamModal = function() {
       msg = '*بسم اللہ الرحمن الرحیم*\n';
       msg += '*ماہانہ دم و روحانی حفاظت سبسکرپشن (خضریٰ ویز)*\n';
       msg += '------------------------------------\n';
-      msg += '📦 *پلان:* مکمل فیملی پلان (۴ تا ۵ افراد) — 6,000 روپے ماہانہ\n';
+      msg += '📦 *پلان:* مکمل فیملی پلان (4 تا 5 افراد) — 6,000 روپے ماہانہ\n';
       msg += '📍 *خاندان کا ملک و پتہ:* ' + famCountry + ' — ' + famAddress + '\n';
       msg += '📱 *رابطہ / واٹس ایپ نمبر:* ' + famPhone + '\n';
       msg += '\n👨‍👩‍👧‍👦 *شامل فیملی ممبرز کی تفصیلات:*\n';
@@ -4968,7 +4981,7 @@ window.trackManzilStep = function(btn) {
     if (btnTxt) btnTxt.textContent = isEn ? 'Mark 3rd Recitation Done' : 'تیسری مرتبہ مکمل (یہاں کلک کریں)';
     btn.style.background = '#059669';
   } else if (step === 3) {
-    if (btnTxt) btnTxt.textContent = isEn ? '🎉 3 Times Completed! Tap to Reset' : '🎉 ماشاء اللہ! ۳ مرتبہ مکمل ہو گئی (ری سیٹ کریں)';
+    if (btnTxt) btnTxt.textContent = isEn ? '🎉 3 Times Completed! Tap to Reset' : '🎉 ماشاء اللہ! 3 مرتبہ مکمل ہو گئی (ری سیٹ کریں)';
     btn.style.background = '#047857';
   } else {
     if (btnTxt) btnTxt.textContent = isEn ? 'Mark 1st Recitation Done' : 'پہلی مرتبہ مکمل (یہاں کلک کریں)';
@@ -4983,7 +4996,7 @@ window.trackManzilStep = function(btn) {
 
 
 // =========================================================================
-// INTERACTIVE SURAH DETECTION & TAP COUNTER FOR WAZIFA ITEMS (۴۴ اوراد و تسبیحات)
+// INTERACTIVE SURAH DETECTION & TAP COUNTER FOR WAZIFA ITEMS (44 اوراد و تسبیحات)
 // =========================================================================
 
 const SURAH_CATALOG_MAPPING = [
@@ -5055,7 +5068,7 @@ window.detectItemSurahsAndLinks = function(item, isEn) {
   }
 
   // 4. Specific Rich Texts: Durood Ibrahimi & Asma-ul-Husna
-  if (itemNum === 16 || text.includes('درودِ ابراہیمی') || text.includes('ابراہیمی') || text.includes('درود')) {
+  if ((itemNum === 16 || text.includes('درودِ ابراہیمی') || text.includes('ابراہیمی')) && !item.arabicText) {
     links.push({
       type: 'custom_item',
       itemNum: itemNum,
@@ -5067,11 +5080,11 @@ window.detectItemSurahsAndLinks = function(item, isEn) {
     return links;
   }
 
-  if (itemNum === 44 || text.includes('اسماء الحسنیٰ') || text.includes('۹۹ اسماء')) {
+  if (itemNum === 44 || text.includes('اسماء الحسنیٰ') || text.includes('99 اسماء')) {
     links.push({
       type: 'custom_item',
       itemNum: itemNum,
-      title: 'اسماء الحسنیٰ (۹۹ مبارک اسماء)',
+      title: 'اسماء الحسنیٰ (99 مبارک اسماء)',
       fullText: window.ASMA_UL_HUSNA_TEXT || text,
       countStr: countStr,
       label: isEn ? 'Open 99 Names of Allah' : 'اسماء الحسنیٰ کھولیں و تلاوت کریں'
@@ -5094,10 +5107,21 @@ window.detectItemSurahsAndLinks = function(item, isEn) {
   return links;
 };
 
+window.toEnglishDigits = function(str) {
+  if (str === null || str === undefined) return '';
+  const s = String(str);
+  const map = {
+    '\u06F0':'0', '\u06F1':'1', '\u06F2':'2', '\u06F3':'3', '\u06F4':'4',
+    '\u06F5':'5', '\u06F6':'6', '\u06F7':'7', '\u06F8':'8', '\u06F9':'9',
+    '\u0660':'0', '\u0661':'1', '\u0662':'2', '\u0663':'3', '\u0664':'4',
+    '\u0665':'5', '\u0666':'6', '\u0667':'7', '\u0668':'8', '\u0669':'9'
+  };
+  return s.replace(/[\u06F0-\u06F9\u0660-\u0669]/g, ch => map[ch] || ch);
+};
+
 window.parseUrduTargetCount = function(countStr) {
   if (!countStr) return 1;
-  const urduDigits = {'۰':'0', '۱':'1', '۲':'2', '۳':'3', '۴':'4', '۵':'5', '۶':'6', '۷':'7', '۸':'8', '۹':'9'};
-  const normalized = countStr.replace(/[۰-۹]/g, ch => urduDigits[ch]);
+  const normalized = window.toEnglishDigits(countStr);
   const match = normalized.match(/\d+/);
   return match ? parseInt(match[0], 10) : 1;
 };
@@ -5114,7 +5138,7 @@ window.renderInteractiveItemsGrid = function(w, isEn) {
           ${isEn ? 'Recitation Progress & Completed Litanies:' : 'اوراد و تلاوت کی پیش رفت:'}
         </span>
         <span class="wgs-count-badge" id="gridCompletedBadge-${w.id}">
-          ${isEn ? `0 of ${totalItems} Completed` : `${totalItems} میں سے ۰ مکمل`}
+          ${isEn ? `0 of ${totalItems} Completed` : `${totalItems} میں سے 0 مکمل`}
         </span>
       </div>
       <div class="wgs-progress-track">
@@ -5138,8 +5162,8 @@ window.renderInteractiveItemsGrid = function(w, isEn) {
           <div class="wazifa-grid-item ${isDone ? 'completed' : ''}" id="wgi-${w.id}-${item.num}" data-target="${target}">
             <div class="wgi-top">
               <div style="display:flex; align-items:center; gap:6px;">
-                <span class="wgi-badge">${item.num}</span>
-                <span class="wgi-count">${item.count}</span>
+                <span class="wgi-badge">${toEnglishDigits(item.num)}</span>
+                <span class="wgi-count">${isEn ? target + ' Times' : toEnglishDigits(item.count)}</span>
               </div>
               <span class="wgi-status-done">
                 <i class="fa-solid fa-circle-check"></i> ${isEn ? 'Completed' : 'مکمل'}
@@ -5349,8 +5373,8 @@ window.trackDualManzilStep = function(btn, session) {
   } else if (step === 2) {
     if (btnTxt) btnTxt.textContent = isEn ? `Mark ${sessLabel} 3rd Done` : `${sessLabel}: تیسری مرتبہ مکمل (کلک کریں)`;
   } else if (step === 3) {
-    if (btnTxt) btnTxt.textContent = isEn ? `🎉 ${sessLabel} 3x Completed! (Tap to Reset)` : `🎉 ماشاء اللہ! ${sessLabel} ۳ مرتبہ مکمل (ری سیٹ)`;
-    showToast(isEn ? `🎉 ${sessLabel} 3x Recitation Completed!` : `🎉 ماشاء اللہ! منزل شریف ${sessLabel} ۳ مرتبہ مکمل ہو گئی!`);
+    if (btnTxt) btnTxt.textContent = isEn ? `🎉 ${sessLabel} 3x Completed! (Tap to Reset)` : `🎉 ماشاء اللہ! ${sessLabel} 3 مرتبہ مکمل (ری سیٹ)`;
+    showToast(isEn ? `🎉 ${sessLabel} 3x Recitation Completed!` : `🎉 ماشاء اللہ! منزل شریف ${sessLabel} 3 مرتبہ مکمل ہو گئی!`);
   } else {
     if (btnTxt) btnTxt.textContent = isEn ? `Mark ${sessLabel} 1st Done` : `${sessLabel}: پہلی مرتبہ مکمل (کلک کریں)`;
   }
@@ -5366,7 +5390,7 @@ window.updateManzilTotalDaily = function() {
 
   const badge = document.getElementById('manzilTotalCountBadge');
   if (badge) {
-    badge.textContent = isEn ? `${total} of 6 Completed` : `۶ میں سے ${total} مکمل`;
+    badge.textContent = isEn ? `${total} of 6 Completed` : `6 میں سے ${total} مکمل`;
     if (total === 6) {
       badge.style.background = '#047857';
     }
@@ -5396,7 +5420,7 @@ window.initDualManzilTrackers = function() {
     if (btnTxt) {
       if (step === 1) btnTxt.textContent = isEn ? `Mark ${sessLabel} 2nd Done` : `${sessLabel}: دوسری مرتبہ مکمل (کلک کریں)`;
       else if (step === 2) btnTxt.textContent = isEn ? `Mark ${sessLabel} 3rd Done` : `${sessLabel}: تیسری مرتبہ مکمل (کلک کریں)`;
-      else if (step === 3) btnTxt.textContent = isEn ? `🎉 ${sessLabel} 3x Completed! (Tap to Reset)` : `🎉 ماشاء اللہ! ${sessLabel} ۳ مرتبہ مکمل (ری سیٹ)`;
+      else if (step === 3) btnTxt.textContent = isEn ? `🎉 ${sessLabel} 3x Completed! (Tap to Reset)` : `🎉 ماشاء اللہ! ${sessLabel} 3 مرتبہ مکمل (ری سیٹ)`;
     }
   });
   updateManzilTotalDaily();
