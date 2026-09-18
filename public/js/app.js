@@ -5455,13 +5455,6 @@ window.openLohImageModal = function() {
 };
 
 window.openLohOrderForm = function() {
-  const inlineBox = document.getElementById('lohInlineOrderBox');
-  if (inlineBox && inlineBox.offsetParent !== null) {
-    inlineBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    const input = document.getElementById('inlineLohName');
-    if (input) setTimeout(() => input.focus(), 350);
-    return;
-  }
   if (typeof window.openModal === 'function') {
     window.openModal('modalOrderLohHifazat');
   }
@@ -5482,9 +5475,9 @@ window.handleLohSlipPreview = function(event, previewId) {
   reader.readAsDataURL(file);
 };
 
-window.submitLohOrderForm = async function(source = 'inline') {
+window.submitLohOrderForm = async function(source = 'modal') {
   const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
-  const isModal = (source === 'modal');
+  const isModal = true;
 
   const name = (document.getElementById(isModal ? 'modalLohName' : 'inlineLohName')?.value || '').trim();
   const mother = (document.getElementById(isModal ? 'modalLohMother' : 'inlineLohMother')?.value || '').trim();
