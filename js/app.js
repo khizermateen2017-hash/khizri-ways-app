@@ -5439,3 +5439,152 @@ window.initDualManzilTrackers = function() {
   });
   updateManzilTotalDaily();
 };
+
+
+
+// =========================================================================
+// SPECIAL FEATURED LOH-E-HIFAZAT & GOLI BAND TAWEEZ HANDLERS
+// =========================================================================
+
+let uploadedLohSlipBase64 = null;
+
+window.openLohImageModal = function() {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalLohImageViewer');
+  }
+};
+
+window.openLohOrderForm = function() {
+  const inlineBox = document.getElementById('lohInlineOrderBox');
+  if (inlineBox && inlineBox.offsetParent !== null) {
+    inlineBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const input = document.getElementById('inlineLohName');
+    if (input) setTimeout(() => input.focus(), 350);
+    return;
+  }
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalOrderLohHifazat');
+  }
+};
+
+window.handleLohSlipPreview = function(event, previewId) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    uploadedLohSlipBase64 = e.target.result;
+    const preview = document.getElementById(previewId);
+    if (preview) {
+      preview.src = uploadedLohSlipBase64;
+      preview.style.display = 'block';
+    }
+  };
+  reader.readAsDataURL(file);
+};
+
+window.submitLohOrderForm = async function(source = 'inline') {
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const isModal = (source === 'modal');
+
+  const name = (document.getElementById(isModal ? 'modalLohName' : 'inlineLohName')?.value || '').trim();
+  const mother = (document.getElementById(isModal ? 'modalLohMother' : 'inlineLohMother')?.value || '').trim();
+  const phone = (document.getElementById(isModal ? 'modalLohPhone' : 'inlineLohPhone')?.value || '').trim();
+  const city = (document.getElementById(isModal ? 'modalLohCity' : 'inlineLohCity')?.value || '').trim();
+  const address = (document.getElementById(isModal ? 'modalLohAddress' : 'inlineLohAddress')?.value || '').trim();
+  const notes = (document.getElementById(isModal ? 'modalLohNotes' : 'inlineLohNotes')?.value || '').trim();
+
+  if (!name) {
+    alert(isEn ? 'Please enter seeker / applicant full name.' : 'براہِ کرم سائل یا طالب کا مکمل نام درج فرمائیں۔');
+    document.getElementById(isModal ? 'modalLohName' : 'inlineLohName')?.focus();
+    return;
+  }
+  if (!mother) {
+    alert(isEn ? "Please enter mother's name (or 'Eve / Hawwa' if unknown)." : 'براہِ کرم والدہ کا نام درج فرمائیں (اگر معلوم نہ ہو تو حوا لکھ سکتے ہیں)۔');
+    document.getElementById(isModal ? 'modalLohMother' : 'inlineLohMother')?.focus();
+    return;
+  }
+  if (!phone) {
+    alert(isEn ? 'Please enter WhatsApp number.' : 'براہِ کرم اپنا واٹس ایپ نمبر درج فرمائیں۔');
+    document.getElementById(isModal ? 'modalLohPhone' : 'inlineLohPhone')?.focus();
+    return;
+  }
+  if (!address) {
+    alert(isEn ? 'Please enter complete delivery address.' : 'براہِ کرم مکمل ڈلیوری ایڈریس درج فرمائیں تاکہ پارسل پہنچ سکے۔');
+    document.getElementById(isModal ? 'modalLohAddress' : 'inlineLohAddress')?.focus();
+    return;
+  }
+
+  // Save order to server API
+  let orderId = 'ORD-' + Date.now().toString().slice(-6);
+  try {
+    const res = await fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        itemName: 'خاص مجرب لوحِ حفاظت و گولی بند تعویذ',
+        customerName: name,
+        motherName: mother,
+        phone: phone,
+        city: city,
+        address: address,
+        notes: notes,
+        hadya: 2500,
+        slipBase64: uploadedLohSlipBase64
+      })
+    });
+    const resData = await res.json();
+    if (resData.success && resData.orderId) {
+      orderId = resData.orderId;
+    }
+  } catch (err) {
+    console.warn('Orders API offline or local fallback:', err);
+  }
+
+  // Format WhatsApp message with all customer and order details
+  let msg = '';
+  if (isEn) {
+    msg = '*Bismillahir Rahmanir Rahim*\n';
+    msg += '*NEW ORDER: Special Mujarrab Loh-e-Hifazat & Bullet/Weapon Shield*\n';
+    msg += '----------------------------------------\n';
+    msg += '🔖 *Order Reference:* ' + orderId + '\n';
+    msg += '👤 *Applicant Name:* ' + name + '\n';
+    msg += '🧕 *Mother Name:* ' + mother + '\n';
+    msg += '📱 *WhatsApp:* ' + phone + '\n';
+    msg += '📍 *City:* ' + (city || 'Not specified') + '\n';
+    msg += '🏡 *Delivery Address:* ' + address + '\n';
+    if (notes) msg += '🛡️ *Specific Need/Purpose:* ' + notes + '\n';
+    msg += '💰 *Blessed Hadya:* Rs. 2,500 (Free Courier Delivery)\n';
+    msg += '🌙 *Consecration:* Once a Year (Last Night of Ramadan - Pure Saffron)\n';
+    msg += '🧾 *Payment Slip:* ' + (uploadedLohSlipBase64 ? 'Uploaded & Attached' : 'Transferred / Sending on WhatsApp') + '\n';
+    msg += '----------------------------------------\n';
+    msg += 'Assalamu Alaikum Mufti Sahib! I have submitted my order details and transferred the Hadya. Please prepare the blessed Loh-e-Hifazat in my name and mother\'s name and dispatch to my address. JazakAllahu Khair!';
+  } else {
+    msg = '*بسم الله الرحمن الرحيم*\n';
+    msg += '*آن لائن آرڈر: خاص مجرب لوحِ حفاظت و گولی بند تعویذ*\n';
+    msg += '----------------------------------------\n';
+    msg += '🔖 *آرڈر ریفرنس:* ' + orderId + '\n';
+    msg += '👤 *سائل / طالب کا نام:* ' + name + '\n';
+    msg += '🧕 *والدہ کا نام:* ' + mother + '\n';
+    msg += '📱 *رابطہ / واٹس ایپ:* ' + phone + '\n';
+    msg += '📍 *شہر:* ' + (city || 'درج نہیں') + '\n';
+    msg += '🏡 *ڈلیوری ایڈریس:* ' + address + '\n';
+    if (notes) msg += '🛡️ *مخصوص مقصد / دعا:* ' + notes + '\n';
+    msg += '💰 *مبارک ہدیہ:* Rs. 2,500 (بمع چاندی خول و فری ہوم ڈلیوری)\n';
+    msg += '🌙 *تیاری:* سال میں صرف 1 بار (رمضان المبارک کی آخری شب - خالص زعفران سے دست ساختہ)\n';
+    msg += '🧾 *ہدیہ سلپ:* ' + (uploadedLohSlipBase64 ? 'رسید ساتھ منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
+    msg += '----------------------------------------\n';
+    msg += 'السلام علیکم مفتی صاحب! میں نے خاص مجرب لوحِ حفاظت و گولی بند تعویذ کا فارم پُر کر کے آرڈر درج کر دیا ہے اور ہدیہ کی رقم ارسال کر دی ہے۔ براہِ کرم میرے نام اور میری والدہ کے نام سے لوحِ مبارک تیار فرما کر مذکورہ ایڈریس پر ارسال فرمائیں۔ جزاک اللہ خیراً!';
+  }
+
+  if (isModal && typeof window.closeModal === 'function') {
+    window.closeModal('modalOrderLohHifazat');
+  }
+
+  if (typeof window.openWhatsAppConsult === 'function') {
+    window.openWhatsAppConsult(msg);
+  }
+
+  if (typeof window.showToast === 'function') {
+    window.showToast(isEn ? 'Order booked successfully! Opening WhatsApp...' : 'ماشاءاللہ! آپ کا آرڈر درج ہو چکا ہے۔ تفصیلات واٹس ایپ پر اوپن ہو رہی ہیں...');
+  }
+};

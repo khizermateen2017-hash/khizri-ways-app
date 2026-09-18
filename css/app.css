@@ -8580,6 +8580,198 @@ body.lang-ur .rohani-issue-card span {
   margin-bottom: 12px;
 }
 
+.filter-chip-btn.active {
+  background: var(--khizri-navy-primary);
+  color: #FFFFFF;
+  border-color: var(--khizri-navy-primary);
+  box-shadow: 0 2px 8px rgba(24, 28, 78, 0.25);
+}
+
+/* =========================================================
+   SPECIAL FEATURED LOH-E-HIFAZAT & GOLI BAND TAWEEZ
+   ========================================================= */
+.vip-loh-card {
+  background: linear-gradient(145deg, #FFFDF8 0%, #FEFCE8 60%, #FEF3C7 100%) !important;
+  border: 2px solid #D97706 !important;
+  border-radius: 18px !important;
+  padding: 16px !important;
+  margin-bottom: 20px !important;
+  box-shadow: 0 10px 25px rgba(217, 119, 6, 0.16) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.vip-loh-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #B45309, #F59E0B, #D97706, #78350F);
+}
+
+.vip-loh-ribbon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #B45309 0%, #78350F 100%);
+  color: #FEF08A;
+  padding: 5px 13px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(180, 83, 9, 0.3);
+}
+
+.vip-loh-media-wrap {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid #F59E0B;
+  box-shadow: 0 4px 14px rgba(180, 83, 9, 0.15);
+  margin: 12px 0 14px;
+  background: #000;
+}
+
+.vip-loh-img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.vip-loh-media-wrap:hover .vip-loh-img {
+  transform: scale(1.02);
+}
+
+.vip-loh-img-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+  color: #FEF08A;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.vip-loh-benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vip-loh-benefits-list li {
+  position: relative;
+  padding-right: 22px;
+  font-size: 0.8rem;
+  color: #334155;
+  line-height: 1.6;
+  margin-bottom: 7px;
+}
+
+.lang-en-only .vip-loh-benefits-list li {
+  padding-right: 0;
+  padding-left: 22px;
+}
+
+.vip-loh-benefits-list li::before {
+  content: '🛡️';
+  position: absolute;
+  right: 0;
+  top: 1px;
+  font-size: 0.82rem;
+}
+
+.lang-en-only .vip-loh-benefits-list li::before {
+  right: auto;
+  left: 0;
+}
+
+.vip-loh-price-tag {
+  background: #FFFFFF;
+  border: 1.5px solid #F59E0B;
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0 14px;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.12);
+}
+
+.vip-loh-price-tag .amount {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #B45309;
+}
+
+.vip-loh-btn-row {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn-vip-order-form {
+  background: linear-gradient(135deg, #B45309 0%, #D97706 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 0.84rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(180, 83, 9, 0.28);
+  transition: all 0.2s;
+}
+
+.btn-vip-order-form:active {
+  transform: scale(0.98);
+}
+
+.btn-vip-whatsapp {
+  background: linear-gradient(135deg, #15803D 0%, #16A34A 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 0.84rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.28);
+  transition: all 0.2s;
+}
+
+.btn-vip-whatsapp:active {
+  transform: scale(0.98);
+}
+
+/* Embedded Inline Order Box */
+.loh-inline-order-box {
+  background: #FFFFFF;
+  border: 2px solid #F59E0B;
+  border-radius: 16px;
+  padding: 18px;
+  margin: 20px 0 24px;
+  box-shadow: 0 10px 30px rgba(180, 83, 9, 0.12);
+}
+
 .btn-back-folders {
   background: var(--khizri-navy-primary);
   color: #FFFFFF;
