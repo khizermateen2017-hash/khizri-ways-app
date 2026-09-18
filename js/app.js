@@ -1780,6 +1780,19 @@ const WAZAIF_FOLDERS = [
     filterFn: (w) => (w.id === 'waz-khas-muharram' || (w.title || '').includes('محرم'))
   },
   {
+    id: 'wazaif-rishta',
+    titleUr: 'وظائف برائے رشتہ و شادی',
+    titleEn: 'Marriage & Rishta Wazaif',
+    subtitleUr: '11واں روزہ و 12ویں شب کا خاص عمل',
+    subtitleEn: '11th Ramadan Special Marriage Amal',
+    icon: 'fa-ring',
+    iconBg: '#FCE7F3',
+    iconColor: '#DB2777',
+    badgeUr: 'خاص عمل برائے رشتہ',
+    badgeEn: 'Marriage Amal',
+    filterFn: (w) => (w.id === 'waz-baraye-rishta' || (w.title || '').includes('رشتہ') || (w.category || '').includes('رشتہ'))
+  },
+  {
     id: 'shab-17-ramadan',
     titleUr: 'شبِ 17 رمضان (بدر)',
     titleEn: '17th Ramadan (Badr)',
@@ -2148,7 +2161,7 @@ function renderWazaif(filterCategory = 'all_folders') {
       <div style="grid-column: 1 / -1; margin-top: 10px; text-align: center;">
         <button type="button" class="btn-view-all-flat" onclick="renderWazaif('flat_all')" style="background: #F8FAFC; border: 1px dashed #CBD5E1; color: #475569; padding: 10px 18px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
           <i class="fa-solid fa-list-ul"></i>
-          <span>${isEn ? 'View all 19 wazaif in single list' : 'تمام 19 وظائف کی مکمل فہرست ایک ساتھ دیکھیں'}</span>
+          <span>${isEn ? `View all ${allItems.length} wazaif in single list` : `تمام ${allItems.length} وظائف کی مکمل فہرست ایک ساتھ دیکھیں`}</span>
         </button>
       </div>
     `;
@@ -2165,7 +2178,7 @@ function renderWazaif(filterCategory = 'all_folders') {
 
   if (filterCategory === 'flat_all') {
     items = allItems;
-    headerTitle = isEn ? 'All Wazaif (Complete Collection)' : 'تمام وظائف (مکمل 19 وظائف)';
+    headerTitle = isEn ? 'All Wazaif (Complete Collection)' : `تمام وظائف (مکمل ${items.length} وظائف)`;
     headerBadge = isEn ? `${items.length} Wazaif` : `${items.length} وظائف`;
   } else if (selectedFolder) {
     items = allItems.filter(selectedFolder.filterFn);
@@ -5012,7 +5025,8 @@ const SURAH_CATALOG_MAPPING = [
   { match: /فاتحہ|الفاتحہ|الفاتحة/, num: 1, name: 'سورۃ الفاتحہ', nameEn: 'Surah Al-Fatihah' },
   { match: /فلق|الفلق|الْفَلَقِ/, num: 113, name: 'سورۃ الفلق', nameEn: 'Surah Al-Falaq' },
   { match: /ناس|الناس|النَّاسِ/, num: 114, name: 'سورۃ الناس', nameEn: 'Surah An-Nas' },
-  { match: /قدر|القدر/, num: 97, name: 'سورۃ القدر', nameEn: 'Surah Al-Qadr' }
+  { match: /قدر|القدر/, num: 97, name: 'سورۃ القدر', nameEn: 'Surah Al-Qadr' },
+  { match: /فيل|فیل|الفيل|الفیل/, num: 105, name: 'سورۃ الفیل', nameEn: 'Surah Al-Fil' }
 ];
 
 window.detectItemSurahsAndLinks = function(item, isEn) {
