@@ -1606,72 +1606,55 @@
           <div class="sub-screen-header">
             <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
             <h3 class="sub-screen-title" data-i18n="titleTaweezat">Mujarab Taweezat</h3>
-            <button class="btn-icon-sub" onclick="openModal('modalKhawabConsult')" title="Ask Dream Interpretation (تعبیرِ روءیا فارم)">
-              <i class="fa-brands fa-whatsapp"></i>
-            </button>
+            <div class="sub-header-spacer"></div>
           </div>
           <div class="sub-screen-scroll">
 
-            <!-- ========================================================
-                 [ENGLISH VERSION] MUJARAB TAWEEZAT
-                 ======================================================== -->
-            <div class="lang-en-only ltr-on-en">
-              
-              <!-- Banner -->
-              <div class="rohani-consult-banner" style="background: linear-gradient(135deg, #7C2D12 0%, #C2410C 50%, #9A3412 100%); border-radius: 18px; padding: 18px 16px; color: #FFFFFF; margin-bottom: 18px; box-shadow: 0 10px 25px rgba(124, 45, 18, 0.25);">
-                <div class="rcb-badge" style="background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); color: #FDE047; padding: 3px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 800; display: inline-flex; align-items: center; gap: 6px;">
-                  <i class="fa-solid fa-scroll"></i> Qur'anic Inscriptions &amp; Sacred Naqsh
+            <!-- Banner -->
+            <div class="rohani-consult-banner" style="background: linear-gradient(135deg, #7C2D12 0%, #C2410C 50%, #9A3412 100%); border-radius: 18px; padding: 18px 16px; color: #FFFFFF; margin-bottom: 18px; box-shadow: 0 10px 25px rgba(124, 45, 18, 0.25);">
+              <div class="rcb-badge" style="background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); color: #FDE047; padding: 3px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 800; display: inline-flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-scroll"></i>
+                <span class="lang-en-only">Qur'anic Inscriptions &amp; Sacred Naqsh</span>
+                <span class="lang-ur-only">قرآنی نقوش و تعویذات</span>
+              </div>
+              <h4 style="font-size: 1.1rem; font-weight: 800; margin: 10px 0 6px;">
+                <span class="lang-en-only">Authentic &amp; Verified Spiritual Taweezat</span>
+                <span class="lang-ur-only">مجرب و مستند روحانی تعویذات</span>
+              </h4>
+              <p style="font-size: 0.82rem; color: #FFEDD5; line-height: 1.55; margin: 0;">
+                <span class="lang-en-only">Authentic spiritual amulets and inscriptions for divine protection, healing chronic diseases, abundance in sustenance, and breaking witchcraft.</span>
+                <span class="lang-ur-only">حفاظت، شفائے امراض، وسعتِ رزق اور بندشوں کے خاتمے کے لیے کامل شرعی و روحانی نقوش۔</span>
+              </p>
+            </div>
+
+            <!-- NOTICE: FREE SELF-WRITING VS ORDERING HAND-WRITTEN -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 14px 0;">
+              <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 12px; padding: 10px;">
+                <div style="display: flex; align-items: center; gap: 6px; color: #15803D; font-size: 0.84rem; font-weight: 800; margin-bottom: 4px;">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span class="lang-en-only">General Permission (Free)</span>
+                  <span class="lang-ur-only">اجازتِ عام (مفت)</span>
                 </div>
-                <h4 style="font-size: 1.1rem; font-weight: 800; margin: 10px 0 6px;">Authentic &amp; Verified Spiritual Taweezat</h4>
-                <p style="font-size: 0.82rem; color: #FFEDD5; line-height: 1.55; margin: 0 0 12px;">
-                  Authentic spiritual amulets and inscriptions for divine protection, healing chronic diseases, abundance in sustenance, and breaking witchcraft.
+                <p style="margin: 0; font-size: 0.74rem; color: #166534; line-height: 1.45;">
+                  <span class="lang-en-only">All Muslims are generally permitted to write these Qur'anic verses and authentic inscriptions on clean paper using saffron and musk.</span>
+                  <span class="lang-ur-only">تمام مسلمانوں کو شرعی طور پر اجازت ہے کہ وہ مشک و زعفران سے پاک صاف کاغذ پر یہ قرآنی آیات اور نقوش خود تحریر کریں۔</span>
                 </p>
-                <button class="btn-rcb-whatsapp" onclick="openWhatsAppConsult('Assalamu Alaikum, I would like to seek guidance on authentic Taweezat.')" style="width: 100%; padding: 10px; font-size: 0.82rem;">
-                  <i class="fa-brands fa-whatsapp"></i> <span>Consult on WhatsApp (+92 331 7704807)</span>
-                </button>
               </div>
-
-              <!-- NOTICE: FREE SELF-WRITING VS ORDERING HAND-WRITTEN -->
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 14px 0;">
-                <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 12px; padding: 10px;">
-                  <div style="display: flex; align-items: center; gap: 6px; color: #15803D; font-size: 0.84rem; font-weight: 800; margin-bottom: 4px;">
-                    <i class="fa-solid fa-circle-check"></i> General Permission (Free)
-                  </div>
-                  <p style="margin: 0; font-size: 0.74rem; color: #166534; line-height: 1.45;">
-                    All Muslims are generally permitted to write these Qur'anic verses and authentic inscriptions on clean paper using saffron and musk.
-                  </p>
+              <div style="background: #FEF3C7; border: 1px solid #FDE68A; border-radius: 12px; padding: 10px;">
+                <div style="display: flex; align-items: center; gap: 6px; color: #B45309; font-size: 0.84rem; font-weight: 800; margin-bottom: 4px;">
+                  <i class="fa-solid fa-pen-nib"></i>
+                  <span class="lang-en-only">Hand-Written by Scholars</span>
+                  <span class="lang-ur-only">علمائے کرام کے دستِ مبارک سے</span>
                 </div>
-                <div style="background: #FEF3C7; border: 1px solid #FDE68A; border-radius: 12px; padding: 10px;">
-                  <div style="display: flex; align-items: center; gap: 6px; color: #B45309; font-size: 0.84rem; font-weight: 800; margin-bottom: 4px;">
-                    <i class="fa-solid fa-pen-nib"></i> Hand-Written by Scholars
-                  </div>
-                  <p style="margin: 0; font-size: 0.74rem; color: #92400E; line-height: 1.45;">
-                    If you lack time or writing expertise, order customized hand-written amulets penned with authentic ink and ruqyah recitations.
-                  </p>
-                </div>
-              </div>
-
-              <!-- BULLET-PROOF / LIFE PROTECTION CARD -->
-              <div style="background: linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4338CA 100%); border: 1px solid #6366F1; border-radius: 16px; padding: 14px; margin-bottom: 16px; color: #FFFFFF; box-shadow: 0 8px 24px rgba(49, 46, 129, 0.25);">
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                  <span style="background: rgba(239, 68, 68, 0.25); color: #FCA5A5; border: 1px solid rgba(239, 68, 68, 0.4); font-size: 0.7rem; font-weight: 800; padding: 2px 8px; border-radius: 20px;">
-                    VIP Divine Shield
-                  </span>
-                  <span style="font-size: 0.72rem; color: #C7D2FE; font-weight: 700;">Courier Delivery Available</span>
-                </div>
-                <h4 style="margin: 0; font-size: 0.98rem; font-weight: 800; color: #FEE2E2;">Life Protection &amp; Divine Security Shield (Hirz-e-Azam)</h4>
-                <p style="font-size: 0.78rem; color: #E0E7FF; line-height: 1.5; margin: 6px 0 10px;">
-                  An authentic spiritual shield for defense against weapons, fatal accidents, enemy plots, and sudden disasters. Written under specific planetary hours with special prayers.
+                <p style="margin: 0; font-size: 0.74rem; color: #92400E; line-height: 1.45;">
+                  <span class="lang-en-only">If you lack time or writing expertise, order customized hand-written amulets penned with authentic ink and ruqyah recitations.</span>
+                  <span class="lang-ur-only">اگر آپ کے پاس وقت یا کتابت کی مہارت نہ ہو تو آپ باقاعدہ تیار شدہ تعویذات بھی حاصل کر سکتے ہیں۔</span>
                 </p>
-                <div style="display: flex; gap: 8px;">
-                  <button onclick="openWhatsAppConsult('Assalamu Alaikum, I would like to inquire about ordering the Life Protection Shield (Hirz-e-Azam).')" style="flex: 1; background: #DC2626; color: #FFF; border: none; border-radius: 8px; padding: 8px; font-size: 0.78rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
-                    <i class="fa-brands fa-whatsapp"></i> Order Shield (Rs. 5,000)
-                  </button>
-                </div>
               </div>
+            </div>
 
-              <!-- 4 AUTHENTIC TAWEEZ CARDS -->
-              <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+            <!-- 4 AUTHENTIC TAWEEZ CARDS -->
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
                 
                 
                 <!-- Special Featured VIP Loh (English) -->
@@ -1867,7 +1850,6 @@
                 </div>
               </div>
 
-            </div>
             </div>
 
           </div>
