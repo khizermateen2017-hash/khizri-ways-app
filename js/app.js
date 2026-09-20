@@ -5521,7 +5521,7 @@ window.submitLohOrderForm = async function(source = 'modal') {
         city: city,
         address: address,
         notes: notes,
-        hadya: 2500,
+        hadya: 11000,
         slipBase64: uploadedLohSlipBase64
       })
     });
@@ -5546,7 +5546,7 @@ window.submitLohOrderForm = async function(source = 'modal') {
     msg += '📍 *City:* ' + (city || 'Not specified') + '\n';
     msg += '🏡 *Delivery Address:* ' + address + '\n';
     if (notes) msg += '🛡️ *Specific Need/Purpose:* ' + notes + '\n';
-    msg += '💰 *Blessed Hadya:* Rs. 2,500 (Free Courier Delivery)\n';
+    msg += '💰 *Blessed Hadya:* Rs. 11,000 (Free Courier Delivery)\n';
     msg += '🌙 *Consecration:* Once a Year (Last Night of Ramadan - Pure Saffron)\n';
     msg += '🧾 *Payment Slip:* ' + (uploadedLohSlipBase64 ? 'Uploaded & Attached' : 'Transferred / Sending on WhatsApp') + '\n';
     msg += '----------------------------------------\n';
@@ -5562,7 +5562,7 @@ window.submitLohOrderForm = async function(source = 'modal') {
     msg += '📍 *شہر:* ' + (city || 'درج نہیں') + '\n';
     msg += '🏡 *ڈلیوری ایڈریس:* ' + address + '\n';
     if (notes) msg += '🛡️ *مخصوص مقصد / دعا:* ' + notes + '\n';
-    msg += '💰 *مبارک ہدیہ:* Rs. 2,500 (بمع چاندی خول و فری ہوم ڈلیوری)\n';
+    msg += '💰 *مبارک ہدیہ:* Rs. 11,000 (بمع چاندی خول و فری ہوم ڈلیوری)\n';
     msg += '🌙 *تیاری:* سال میں صرف 1 بار (رمضان المبارک کی آخری شب - خالص زعفران سے دست ساختہ)\n';
     msg += '🧾 *ہدیہ سلپ:* ' + (uploadedLohSlipBase64 ? 'رسید ساتھ منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
     msg += '----------------------------------------\n';
