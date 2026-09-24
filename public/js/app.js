@@ -1542,12 +1542,12 @@ async function fetchAllData() {
     if (wazResp.status === 'fulfilled' && wazResp.value.success) {
       state.wazaif = wazResp.value.data;
       renderWazaif();
-      setTimeout(() => {
-        initDualManzilTrackers();
-        updateGridOverallProgress('waz-khas-17-ramadan');
-        updateGridOverallProgress('waz-ramadan-last10');
-        updateGridOverallProgress('waz-khas-27-ramadan');
-      }, 100);
+  setTimeout(() => {
+    initDualManzilTrackers();
+    updateGridOverallProgress('waz-khas-17-ramadan');
+    updateGridOverallProgress('waz-ramadan-last10');
+    updateGridOverallProgress('waz-khas-27-ramadan');
+  }, 100);
     }
   } catch (err) {
     console.error('Error fetching data:', err);
@@ -2820,7 +2820,7 @@ window.playWazifaAudio = function(btn, wazifaId) {
 
   // Find item audioUrl from state.wazaif or fallback to downloaded Qari recitations
   const item = (state.wazaif || []).find(w => w.id === wazifaId);
-  const audioSrc = item?.audioUrl || (wazifaId === 'waz-manzil' ? '/uploads/manzil-qari-recitation.mp3' : (wazifaId === 'waz-hizb-bahr' ? '/uploads/hizb-ul-bahr-recitation.mp3' : (wazifaId === 'waz-hizb-nasr' ? '/uploads/hizb-un-nasr-recitation.mp3' : (wazifaId === 'waz-chehal-kaaf' ? '/uploads/chehal-kaaf-recitation.mp3?v=20260918_echo' : null))));
+  const audioSrc = item?.audioUrl || (wazifaId === 'waz-manzil' ? 'uploads/manzil-qari-recitation.mp3' : (wazifaId === 'waz-hizb-bahr' ? 'uploads/hizb-ul-bahr-recitation.mp3' : (wazifaId === 'waz-hizb-nasr' ? 'uploads/hizb-un-nasr-recitation.mp3' : (wazifaId === 'waz-chehal-kaaf' ? 'uploads/chehal-kaaf-recitation.mp3?v=20260918_echo' : null))));
 
   if (audioSrc) {
     btn.classList.add('playing');
@@ -5226,7 +5226,7 @@ window.detectItemSurahsAndLinks = function(item, isEn) {
   if (text.includes('حزب البحر')) {
     links.push({
       type: 'pdf',
-      url: '/uploads/hizb-ul-bahr.pdf',
+      url: 'uploads/hizb-ul-bahr.pdf',
       label: isEn ? 'Open Hizb-ul-Bahr PDF' : 'دعائے حزب البحر کھولیں'
     });
     return links;
@@ -5234,7 +5234,7 @@ window.detectItemSurahsAndLinks = function(item, isEn) {
   if (text.includes('منزل')) {
     links.push({
       type: 'pdf',
-      url: '/uploads/manzil-dua-with-benefits.pdf',
+      url: 'uploads/manzil-dua-with-benefits.pdf',
       label: isEn ? 'Open Manzil Sharif PDF' : 'منزل شریف کھولیں'
     });
     return links;
