@@ -1,0 +1,1200 @@
+/**
+ * Khizri Ways - Preloaded Bundled Database
+ * Allows 100% offline, zero-latency, and static GitHub Pages support
+ */
+(function(root) {
+  var data = {
+  "settings": {
+    "appName": "Khizri Ways",
+    "tagline": "روحانی علاج اور اسلامی رہنمائی | Spiritual Healing & Islamic Knowledge",
+    "description": "Official mobile companion for Khizri Ways - Rohani Ilaj, Authentic Wazaif, Durood-e-Khizri, Islamic Articles, Videos, and downloadable PDF books.",
+    "whatsapp": "+92 331 7704807",
+    "youtubeChannel": "https://www.youtube.com/@KhizriWays",
+    "facebookPage": "https://www.facebook.com/KhizriWays",
+    "email": "contact@khizriways.com",
+    "prayerCity": "Karachi",
+    "prayerCountry": "Pakistan",
+    "website": "https://khizriways.com",
+    "founder": "Mufti Khizer Mateen",
+    "founderBio": "Alim & Mufti (Jamia Al Farooqia & Jamia Tura Sus Salam), authorized in Tariqat by Hazrat Sheikh Syed Noor Zaman Naqshbandi Shazli, 16+ years in Rohani Ilaj, Tasawwuf and Islamic Counselling."
+  },
+  "resources": [
+    {
+      "id": "res-hizb-ul-bahr",
+      "title": "حزب البحر شریف مع اردو ترجمہ و شرائط (Hizb-ul-Bahr)",
+      "description": "حضرت امام ابو الحسن شاذلیؒ کا مشہور و مجرب حرزِ مبارک۔ تالیف: حضرت حاجی امداد اللہ مہاجر مکیؒ مع اجازت حضرت مولانا اشرف علی تھانویؒ۔",
+      "category": "Wazaif Booklets",
+      "author": "حاجی امداد اللہ مہاجر مکیؒ / مولانا اشرف علی تھانویؒ",
+      "fileName": "hizb_ul_bahr_shazli.pdf",
+      "fileUrl": "uploads/pdfs/hizb_ul_bahr_shazli.pdf",
+      "fileSize": "2.5 MB",
+      "pages": 33,
+      "downloads": 5420,
+      "createdAt": "2026-09-07T11:00:00.000Z"
+    },
+    {
+      "id": "res-azkar-shazliya",
+      "title": "اذکارِ شاذلیہ و وظائفِ مسنونہ (نصابِ اوراد)",
+      "description": "نماز کے بعد مسنون اذکار، آیت الکرسی، سورہ یٰسین، کہف، رحمن، ملک اور 42 مجرب قرآنی اعمال و اوراد کا مکمل شیڈول۔",
+      "category": "Wazaif Booklets",
+      "author": "سلسلہ عالیہ شاذلیہ و خضریہ",
+      "fileName": "azkar_e_shazliya_wazaif.pdf",
+      "fileUrl": "uploads/pdfs/azkar_e_shazliya_wazaif.pdf",
+      "fileSize": "7.9 MB",
+      "pages": 24,
+      "downloads": 4890,
+      "createdAt": "2026-09-07T11:00:00.000Z"
+    },
+    {
+      "id": "res-manzil-dua",
+      "title": "منزل شریف مع فضائل و مسنون رقیہ شرعیہ (Manzil)",
+      "description": "سحر، جادو، جنات اور سخت نظرِ بد سے حفاظت و شفا کے لیے 33 مسنون قرآنی آیات کا مجرب مجموعہ مع فضائل۔",
+      "category": "Rohani Ilaj",
+      "author": "شیخ الحدیث مولانا محمد زکریا کاندھلویؒ",
+      "fileName": "manzil_dua_shifa.pdf",
+      "fileUrl": "uploads/pdfs/manzil_dua_shifa.pdf",
+      "fileSize": "945 KB",
+      "pages": 15,
+      "downloads": 7310,
+      "createdAt": "2026-09-07T11:00:00.000Z"
+    },
+    {
+      "id": "res-1",
+      "title": "مجموعہ وظائف خضری (Khizri Ways Daily Wazaif Guide)",
+      "description": "روزمرہ کے مستند وظائف، حفاظت اور برکت کے لیے مکمل خضری گائیڈ مع طریقہ کار۔",
+      "category": "Wazaif Booklets",
+      "author": "Khizri Ways Research",
+      "fileName": "khizri_daily_wazaif.pdf",
+      "fileUrl": "uploads/pdfs/khizri_daily_wazaif.pdf",
+      "fileSize": "2.4 MB",
+      "pages": 32,
+      "downloads": 1420,
+      "createdAt": "2026-08-15T10:00:00.000Z"
+    },
+    {
+      "id": "res-ramadan-last10",
+      "title": "پرانے سے پرانا جادو ختم - رمضان المبارک کے آخری دس دن کا خاص عمل",
+      "titleEn": "Eradicate Black Magic - Last 10 Days of Ramadan Special Litany",
+      "category": "wazaif",
+      "categoryUr": "وظائف و اوراد",
+      "fileUrl": "uploads/ramadan-aakhri-ashra-wazaif.pdf",
+      "posterUrl": "uploads/ramadan-purana-jadu-poster.jpg",
+      "size": "130 KB",
+      "pages": "1 Page",
+      "desc": "۲۰ رمضان المبارک سے چاند رات تک کا مجرب و مستند عمل برائے خاتمہ سحر، جادو و آسیب۔",
+      "descEn": "Authentic litany for the last 10 days of Ramadan to eradicate stubborn black magic and occult afflictions."
+    }
+  ],
+  "articles": [
+    {
+      "id": "art-1",
+      "title": "درود خضری کی برکات اور روحانی کشائش کا راز",
+      "slug": "barakaat-e-durood-e-khizri",
+      "category": "Durood Sharif",
+      "readTime": "4 منٹ",
+      "author": "خضری ویز ریسرچ",
+      "publishedDate": "2026-08-28",
+      "featured": true,
+      "excerpt": "درود شریف کی کثرت انسان کے دل کو منور کرتی ہے اور روحانی پریشانیوں کو فوری زائل کرتی ہے۔ درود خضری کے فضائل اور طریقہ پڑھیے۔",
+      "content": "بسم الله الرحمن الرحيم\n\nدرود شریف حضور نبی کریم ﷺ کی بارگاہ اقدس میں محبت اور عقیدت کا نذرانہ ہے۔ خضری ویز کے تحت درود خضری کو خاص روحانی تقویت اور برکت کا ذریعہ سمجھا جاتا ہے۔\n\n**درود خضری کے مبارک الفاظ:**\n« صَلَّى اللهُ عَلَى حَبِيْبِهِ مُحَمَّدٍ وَّآلِهِ وَسَلَّمَ »\n\n**فضائل و فوائد:**\n1. دل کو روحانی سکون اور قلبی طمأنینت عطا ہوتی ہے۔\n2. روزمرہ کے کاموں میں برکت اور رزق میں وسعت پیدا ہوتی ہے۔\n3. بلاؤں اور ناگہانی آفات سے حفاظت کا سبب بنتا ہے۔\n\n**طریقہ ورد:**\nصبح و شام کم از کم 100 مرتبہ یا بعد نماز عشاء 313 مرتبہ باوضو پڑھنے سے خصوصی روحانی فیض حاصل ہوتا ہے۔"
+    },
+    {
+      "id": "art-2",
+      "title": "روحانی حصار: گھر اور اہل و عیال کی حفاظت کا مسنون طریقہ",
+      "slug": "rohani-hisar-tariqa",
+      "category": "Rohani Ilaj",
+      "readTime": "6 منٹ",
+      "author": "خضری ویز",
+      "publishedDate": "2026-09-02",
+      "featured": true,
+      "excerpt": "گھر میں شیطانی اثرات، وسوسوں اور نظرِ بد کے خاتمے کے لیے روحانی حصار قائم کرنے کا نبوی مسنون طریقہ۔",
+      "content": "بسم الله الرحمن الرحيم\n\nروحانی حصار سے مراد وہ مسنون حفاظتی دعائیں اور قرآنی آیات ہیں جن کے پڑھنے سے انسان اللہ تعالیٰ کی خصوصی امان اور فرشتوں کی نگرانی میں آ جاتا ہے۔\n\n**حصار کے اجزاء:**\n- آیت الکرسی (ایک مرتبہ)\n- معوذتین (سورۃ الفلق اور سورۃ الناس تین تین مرتبہ)\n- «بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ» (3 بار)\n\n**طریقہ:**\nصبح فجر کے بعد اور شام مغرب کے بعد ان اذکار کو پڑھ کر دونوں ہاتھوں پر دم کریں اور سر سے پاؤں تک اپنے پورے جسم پر پھیر لیں۔ اپنے بچوں اور گھر کے چاروں کونوں پر بھی تصوراً دم کریں۔"
+    },
+    {
+      "id": "art-3",
+      "title": "اسمِ اعظم کی پہچان اور دعاؤں کی فوری قبولیت",
+      "slug": "ism-e-azam-dua-qabooliyat",
+      "category": "Islamic Knowledge",
+      "readTime": "5 منٹ",
+      "author": "خضری ویز",
+      "publishedDate": "2026-09-04",
+      "featured": false,
+      "excerpt": "حدیث مبارکہ کی روشنی میں اسمِ اعظم کی برکات، جب اس کے وسیلے سے دعا مانگی جائے تو اللہ تعالیٰ ضرور قبول فرماتا ہے۔",
+      "content": "بسم الله الرحمن الرحيم\n\nاسمِ اعظم اللہ تعالیٰ کے وہ پاکیزہ مبارک نام ہیں جن کے واسطے سے مانگی گئی دعا رد نہیں ہوتی۔\n\nاحادیث نبویہ میں آتا ہے کہ جس نے «يَا حَيُّ يَا قَيُّومُ» یا «اللَّهُمَّ إِنِّي أَسْأَلُكَ بِأَنَّ لَكَ الْحَمْدَ لَا إِلَهَ إِلَّا أَنْتَ الْمَنَّانُ بَدِيعُ السَّمَاوَاتِ وَالْأَرْضِ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ» کے ساتھ دعا مانگی، اس کی پکار بارگاہ الٰہی میں شرف قبولیت پاتی ہے۔\n\nروحانی علاج کے دوران اس دعا کو اول و آخر درود شریف کے ساتھ معمول بنائیں۔"
+    }
+  ],
+  "videos": [
+    {
+      "id": "vid-khizri-1",
+      "youtubeId": "qpWDI0wbqSM",
+      "title": "Who Performs more Black Magic? Humans or Jinn? | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=qpWDI0wbqSM",
+      "thumbnailUrl": "https://img.youtube.com/vi/qpWDI0wbqSM/hqdefault.jpg",
+      "category": "Black Magic",
+      "duration": "5:00",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Who Performs more Black Magic? Humans or Jinn? | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-2",
+      "youtubeId": "pkUgxq3su4I",
+      "title": "Dam Kis Sey Karana Chahiye | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=pkUgxq3su4I",
+      "thumbnailUrl": "https://img.youtube.com/vi/pkUgxq3su4I/hqdefault.jpg",
+      "category": "Rohani Ilaj",
+      "duration": "1:10",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Dam Kis Sey Karana Chahiye | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-3",
+      "youtubeId": "QrLbwhf4Y-0",
+      "title": "Baalu Ka Girna Ka Ilaj | Powerful Solution of Hairfall | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=QrLbwhf4Y-0",
+      "thumbnailUrl": "https://img.youtube.com/vi/QrLbwhf4Y-0/hqdefault.jpg",
+      "category": "Rohani Ilaj",
+      "duration": "5:00",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Baalu Ka Girna Ka Ilaj | Powerful Solution of Hairfall | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-4",
+      "youtubeId": "yPdR3Tl3Yvg",
+      "title": "Quick Treatment of Jadu & Jinnat | Jadu Jinnat ka Ilaj Khud Krin | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=yPdR3Tl3Yvg",
+      "thumbnailUrl": "https://img.youtube.com/vi/yPdR3Tl3Yvg/hqdefault.jpg",
+      "category": "Black Magic",
+      "duration": "3:00",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Quick Treatment of Jadu & Jinnat | Jadu Jinnat ka Ilaj Khud Krin | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-5",
+      "youtubeId": "jcpQ8duLxEk",
+      "title": "Kisi Bhi Beemari Ka Ilaj Karny Ka Taeeqa | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=jcpQ8duLxEk",
+      "thumbnailUrl": "https://img.youtube.com/vi/jcpQ8duLxEk/hqdefault.jpg",
+      "category": "Rohani Ilaj",
+      "duration": "10:49",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Kisi Bhi Beemari Ka Ilaj Karny Ka Taeeqa | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-6",
+      "youtubeId": "VkKrtP3NiGw",
+      "title": "Tasawaur e Sheikh Krny Ka Tareeqa or Faida | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=VkKrtP3NiGw",
+      "thumbnailUrl": "https://img.youtube.com/vi/VkKrtP3NiGw/hqdefault.jpg",
+      "category": "Tasawwuf & Irfan",
+      "duration": "9:22",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Tasawaur e Sheikh Krny Ka Tareeqa or Faida | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-7",
+      "youtubeId": "oNfrash6zM0",
+      "title": "Types of Jinnat | Jinnat in Animals | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=oNfrash6zM0",
+      "thumbnailUrl": "https://img.youtube.com/vi/oNfrash6zM0/hqdefault.jpg",
+      "category": "Jinnat / Aseb",
+      "duration": "3:00",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Types of Jinnat | Jinnat in Animals | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-8",
+      "youtubeId": "0m4ZiEDPrDk",
+      "title": "Kisi Shakhs Par Jadu or Jinnat Ki Alamaat | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=0m4ZiEDPrDk",
+      "thumbnailUrl": "https://img.youtube.com/vi/0m4ZiEDPrDk/hqdefault.jpg",
+      "category": "Black Magic",
+      "duration": "5:00",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Kisi Shakhs Par Jadu or Jinnat Ki Alamaat | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-9",
+      "youtubeId": "WY8xpXucfZw",
+      "title": "Bagher Mahram Kay Hajj Umra Karny Jana | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=WY8xpXucfZw",
+      "thumbnailUrl": "https://img.youtube.com/vi/WY8xpXucfZw/hqdefault.jpg",
+      "category": "Khizri Bayanat",
+      "duration": "2:16",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Bagher Mahram Kay Hajj Umra Karny Jana | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-10",
+      "youtubeId": "srhP_4Nrv-w",
+      "title": "Eating Prawns and Crabs is allowed in Islam? | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=srhP_4Nrv-w",
+      "thumbnailUrl": "https://img.youtube.com/vi/srhP_4Nrv-w/hqdefault.jpg",
+      "category": "Khizri Bayanat",
+      "duration": "1:54",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Eating Prawns and Crabs is allowed in Islam? | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-11",
+      "youtubeId": "VegsPXdjwJ0",
+      "title": "Durood e Tanjeena Kahan sey Sabit he? Mufti Khizer mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=VegsPXdjwJ0",
+      "thumbnailUrl": "https://img.youtube.com/vi/VegsPXdjwJ0/hqdefault.jpg",
+      "category": "Wazaif & Durood",
+      "duration": "3:36",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Durood e Tanjeena Kahan sey Sabit he? Mufti Khizer mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-12",
+      "youtubeId": "byoLq3hYpOk",
+      "title": "Durood e Ibrahimi K Elawa Koi Duroord Parhna Jaez He | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=byoLq3hYpOk",
+      "thumbnailUrl": "https://img.youtube.com/vi/byoLq3hYpOk/hqdefault.jpg",
+      "category": "Wazaif & Durood",
+      "duration": "2:04",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Durood e Ibrahimi K Elawa Koi Duroord Parhna Jaez He | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-13",
+      "youtubeId": "R4U-NxwMaz4",
+      "title": "Mian Bivi Men Larai or Masalay Jadu sey Huty hen | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=R4U-NxwMaz4",
+      "thumbnailUrl": "https://img.youtube.com/vi/R4U-NxwMaz4/hqdefault.jpg",
+      "category": "Black Magic",
+      "duration": "2:54",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Mian Bivi Men Larai or Masalay Jadu sey Huty hen | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-14",
+      "youtubeId": "QbZ7eVAZK0A",
+      "title": "Black Magic Ka Ilaaj | Fast Curement from Magic and Spiritual Problems",
+      "youtubeUrl": "https://www.youtube.com/watch?v=QbZ7eVAZK0A",
+      "thumbnailUrl": "https://img.youtube.com/vi/QbZ7eVAZK0A/hqdefault.jpg",
+      "category": "Black Magic",
+      "duration": "3:58",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Black Magic Ka Ilaaj | Fast Curement from Magic and Spiritual Problems - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-15",
+      "youtubeId": "dmQFShz3RoE",
+      "title": "Balu Ko Black Color Karna Kesa he?| Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=dmQFShz3RoE",
+      "thumbnailUrl": "https://img.youtube.com/vi/dmQFShz3RoE/hqdefault.jpg",
+      "category": "Khizri Bayanat",
+      "duration": "2:40",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Balu Ko Black Color Karna Kesa he?| Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-16",
+      "youtubeId": "m7_NsVzGv3Q",
+      "title": "Ghar Bethy Apni Taskhees Khud Karen | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=m7_NsVzGv3Q",
+      "thumbnailUrl": "https://img.youtube.com/vi/m7_NsVzGv3Q/hqdefault.jpg",
+      "category": "Rohani Ilaj",
+      "duration": "1:53",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Ghar Bethy Apni Taskhees Khud Karen | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-17",
+      "youtubeId": "HSalu7ItivQ",
+      "title": "Lataif Kay Faidey | Lataif ki Haqeeqat | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=HSalu7ItivQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/HSalu7ItivQ/hqdefault.jpg",
+      "category": "Tasawwuf & Irfan",
+      "duration": "2:36",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Lataif Kay Faidey | Lataif ki Haqeeqat | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-18",
+      "youtubeId": "lkd2JZlRNIE",
+      "title": "Qistu Par Karobar Karna Kesa he | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=lkd2JZlRNIE",
+      "thumbnailUrl": "https://img.youtube.com/vi/lkd2JZlRNIE/hqdefault.jpg",
+      "category": "Khizri Bayanat",
+      "duration": "1:47",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Qistu Par Karobar Karna Kesa he | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-19",
+      "youtubeId": "ID8wYvT3LBM",
+      "title": "Why Supporting Palestine is our Responsibility? | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=ID8wYvT3LBM",
+      "thumbnailUrl": "https://img.youtube.com/vi/ID8wYvT3LBM/hqdefault.jpg",
+      "category": "Khizri Bayanat",
+      "duration": "3:09",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Why Supporting Palestine is our Responsibility? | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-20",
+      "youtubeId": "W_-pVLxibxQ",
+      "title": "T asawuf ka Ilmi or Amli Pehlo | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=W_-pVLxibxQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/W_-pVLxibxQ/hqdefault.jpg",
+      "category": "Khizri Bayanat",
+      "duration": "2:20",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "T asawuf ka Ilmi or Amli Pehlo | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-21",
+      "youtubeId": "QJOhRYI6P4k",
+      "title": "Maarfat Kiya Cheez he | معرفت کسے کہتے ہیں | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=QJOhRYI6P4k",
+      "thumbnailUrl": "https://img.youtube.com/vi/QJOhRYI6P4k/hqdefault.jpg",
+      "category": "Tasawwuf & Irfan",
+      "duration": "3:30",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Maarfat Kiya Cheez he | معرفت کسے کہتے ہیں | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-22",
+      "youtubeId": "QqCiYTTo8MQ",
+      "title": "Tasawuf ki islahat ka Suboot | تصوف کی اصطلاحات کا ثبوت| Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=QqCiYTTo8MQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/QqCiYTTo8MQ/hqdefault.jpg",
+      "category": "Tasawwuf & Irfan",
+      "duration": "2:41",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Tasawuf ki islahat ka Suboot | تصوف کی اصطلاحات کا ثبوت| Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-23",
+      "youtubeId": "7VO05uymyz8",
+      "title": "Khawb Ki Tabeer Kis sey poochni chahiye? | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=7VO05uymyz8",
+      "thumbnailUrl": "https://img.youtube.com/vi/7VO05uymyz8/hqdefault.jpg",
+      "category": "Khawab Ki Tabeer",
+      "duration": "6:18",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Khawb Ki Tabeer Kis sey poochni chahiye? | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    },
+    {
+      "id": "vid-khizri-24",
+      "youtubeId": "gobH5y3BTzM",
+      "title": "Rabiul Awal 2023 | 12 Rabiul Awal | Mufti Khizer Mateen",
+      "youtubeUrl": "https://www.youtube.com/watch?v=gobH5y3BTzM",
+      "thumbnailUrl": "https://img.youtube.com/vi/gobH5y3BTzM/hqdefault.jpg",
+      "category": "Khizri Bayanat",
+      "duration": "4:43",
+      "speaker": "Mufti Khizer Mateen (مفتی خضر متین)",
+      "description": "Rabiul Awal 2023 | 12 Rabiul Awal | Mufti Khizer Mateen - مستند بیان و رہنمائی از مفتی خضر متین (خضری ویز)"
+    }
+  ],
+  "wazaif": [
+    {
+      "id": "waz-1",
+      "title": "درود خضری شریف (Durood-e-Khizri)",
+      "arabicText": "صَلَّى اللهُ عَلَى حَبِيْبِهِ مُحَمَّدٍ وَّآلِهِ وَسَلَّمَ",
+      "transliteration": "Sallallahu 'ala Habeebihi Muhammadinw wa Aalihi wa Sallam",
+      "urduTranslation": "اللہ تعالیٰ رحمت و سلامتی نازل فرمائے اپنے حبیب حضرت محمد ﷺ اور ان کی آل پر۔",
+      "repetitions": "100 یا 313 مرتبہ",
+      "timing": "صبح و شام بعد نماز فجر و عشاء",
+      "category": "Durood Sharif",
+      "benefits": "قلبی سکون، گناہوں کی معافی، بلاؤں سے امان، روحانی ترقی اور رزق میں برکت۔",
+      "methodInstructions": "📋 طریقہ و برکاتِ درودِ خضری شریف:\n• صبح و شام 313 یا 500 مرتبہ باوضو قبلہ رخ پڑھیں۔\n• کشادگیِ رزق، قربِ رسول ﷺ اور روحانی ترقی کا اکسیر اعظم ہے۔"
+    },
+    {
+      "id": "waz-2",
+      "title": "خضری حصار برائے حفاظت و دفعِ بلا",
+      "arabicText": "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+      "transliteration": "Bismillahil ladhi la yadurru ma'asmihi shay'un fil-ardi wala fis-sama'i wa huwas-Samee'ul 'Aleem",
+      "urduTranslation": "اللہ کے نام کے ساتھ جس کے نام کی برکت سے زمین اور آسمان میں کوئی چیز نقصان نہیں پہنچا سکتی اور وہی خوب سننے اور جاننے والا ہے۔",
+      "repetitions": "3 مرتبہ صبح و شام",
+      "timing": "ہر نماز کے بعد اور گھر سے نکلتے وقت",
+      "category": "Protection / Hifazat",
+      "benefits": "ہر قسم کے جادو، نظر بد، زہریلے جانوروں اور اچانک حادثات سے کامل حفاظت۔",
+      "methodInstructions": "📋 طریقہ خضری حصار:\n• گھر سے نکلتے وقت اور صبح و شام 3 مرتبہ پڑھ کر اپنے اوپر اور گھر والوں پر دم کریں۔ سحر، حادثات اور ہر شر سے اللہ کی پناہ میں رہیں گے۔"
+    },
+    {
+      "id": "waz-3",
+      "title": "وظیفہ شفائے امراض (Shifa for Illness)",
+      "arabicText": "اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَاسَ اشْفِ أَنْتَ الشَّافِي لَا شِفَاءَ إِلَّا شِفَاؤُكَ شِفَاءً لَا يُغَادِرُ سَقَمًا",
+      "transliteration": "Allahumma Rabban-nasi adhhibil-ba'sa, ishfi antash-Shafi, la shifa'a illa shifa'uk, shifa'an la yughadiru saqama",
+      "urduTranslation": "اے اللہ! لوگوں کے پالنے والے، تکلیف کو دور فرما، شفا عطا فرما، تو ہی شفا دینے والا ہے، تیری شفا کے سوا کوئی شفا نہیں، ایسی شفا جو کسی بیماری کو باقی نہ چھوڑے۔",
+      "repetitions": "7 یا 11 مرتبہ",
+      "timing": "پانی پر دم کر کے مریض کو پلائیں",
+      "category": "Shifa / Health",
+      "benefits": "جسمانی اور روحانی امراض، لا علاج بیماریوں اور درد سے شفایابی کے لیے مجرب۔",
+      "methodInstructions": "📋 طریقہ وظیفہ شفا:\n• روزانہ صبح و شام 100 مرتبہ پڑھ کر پانی پر دم کر کے مریض کو پلائیں اور متاثرہ جگہ پر ہاتھ رکھ کر دم کریں۔"
+    },
+    {
+      "id": "waz-4",
+      "title": "وظیفہ کشادگیِ رزق و برکت",
+      "arabicText": "يَا فَتَّاحُ يَا رَزَّاقُ يَا كَرِيمُ يَا غَنِيُّ",
+      "transliteration": "Ya Fattahu Ya Razzaqu Ya Kareemu Ya Ghaniyyu",
+      "urduTranslation": "اے کھولنے والے، اے رزق دینے والے، اے کرم فرمانے والے، اے بے نیاز۔",
+      "repetitions": "300 مرتبہ",
+      "timing": "بعد نمازِ فجر یا بعد نمازِ عشاء",
+      "category": "Rizq & Wealth",
+      "benefits": "تنگدستی کا خاتمہ، روزگار کے بند دروازے کھلنا، قرض کی با عزت ادائیگی۔",
+      "methodInstructions": "📋 طریقہ کشادگیِ رزق:\n• بعد نمازِ فجر یا عشاء 101 مرتبہ پابندی سے پڑھیں، بفضلِ الٰہی تنگدستی دور اور غیبی برکت حاصل ہوگی۔"
+    },
+    {
+      "id": "waz-5",
+      "title": "آیتِ کریمہ برائے حل مشکلات",
+      "arabicText": "لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ",
+      "transliteration": "La ilaha illa Anta Subhanaka inni kuntu minaz-zalimeen",
+      "urduTranslation": "تیرے سوا کوئی معبود نہیں، تو پاک ہے، بے شک میں ہی قصورواروں میں سے تھا۔",
+      "repetitions": "100 یا 1000 مرتبہ",
+      "timing": "مشکل اور اضطراب کے وقت سجدے میں یا باوضو بیٹھ کر",
+      "category": "Problem Solving",
+      "benefits": "ہر شدید ترین غم، قانونی پریشانی، قید اور مصیبت سے نجات کا نبوی نسخہ۔",
+      "methodInstructions": "📋 طریقہ آیتِ کریمہ:\n• ہر قسم کے غم، بندش اور پریشانی کے حل کے لیے روزانہ 100 مرتبہ یا خاص مشکلات میں بارگاہِ الٰہی میں سجدہ ریز ہو کر ورد فرمائیں۔"
+    },
+    {
+      "id": "waz-khas-1",
+      "title": "وظیفۂ جمعۃ المبارک - درودِ پاک بعد از نمازِ عصر (80 سال کے گناہ معاف)",
+      "arabicText": "اَللّٰهُمَّ صَلِّ عَلٰى مُحَمَّدٍ النَّبِيِّ الْأُمِّيِّ وَعَلٰى آلِهِ وَسَلِّمْ تَسْلِيمًا",
+      "transliteration": "Allahumma Salli 'ala Muhammadinin-Nabiyyil Ummiyyi wa 'ala Aalihi wa Sallim Tasleema",
+      "urduTranslation": "اے اللہ! رحمت نازل فرما ہمارے آقا حضرت محمد ﷺ پر جو نبیِ اُمّی ہیں اور آپ ﷺ کی آل پر اور خوب سلامتی نازل فرما۔",
+      "repetitions": "80 مرتبہ",
+      "timing": "جمعۃ المبارک کو بعد از نمازِ عصر اپنی جگہ سے اٹھے بغیر",
+      "category": "خاص دنوں کے وظائف",
+      "categoryEn": "Special Days Wazaif",
+      "timingEn": "Friday after Asr prayer before rising",
+      "benefits": "فرمانِ نبوی ﷺ ہے کہ جو شخص جمعہ کے دن عصر کے بعد اسی جگہ بیٹھے بیٹھے 80 مرتبہ یہ درود شریف پڑھے گا، اس کے 80 سال کے گناہ معاف ہوں گے اور 80 سال کی عبادت کا ثواب اس کے نامۂ اعمال میں لکھا جائے گا۔",
+      "benefitsEn": "The Holy Prophet (PBUH) stated that whoever recites this Durood 80 times after Asr on Friday before rising, 80 years of sins will be forgiven and 80 years of worship will be recorded.",
+      "methodInstructions": "📋 طریقہ وظیفۂ جمعۃ المبارک:\n• نمازِ عصر کے بعد اسی جگہ قبلہ رخ بیٹھ کر اپنی جگہ سے اٹھے بغیر 80 مرتبہ یہ درود شریف پڑھیں:\n\"اَللّٰھُمَّ صَلِّ عَلٰی مُحَمَّدِ نِ النَّبِیِّ الْاُمِّیِّ وَعَلٰی اٰلِہٖ وَسَلِّمْ تَسْلِیْمًا\"\n• 80 سال کے گناہ معاف ہوں گے اور 80 سال کی عبادت کا ثواب لکھا جائے گا۔"
+    },
+    {
+      "id": "waz-khas-2",
+      "title": "تلاوتِ سورۂ کہف - جمعۃ المبارک کا نورانی حصار و حفاظتِ دجال",
+      "arabicText": "الْحَمْدُ لِلَّهِ الَّذِي أَنْزَلَ عَلَى عَبْدِهِ الْكِتَابَ وَلَمْ يَجْعَلْ لَهُ عِوَجًا ۜ قَيِّمًا لِيُنْذِرَ بَأْسًا شَدِيدًا مِنْ لَدُنْهُ وَيُبَشِّرَ الْمُؤْمِنِينَ الَّذِينَ يَعْمَلُونَ الصَّالِحَاتِ أَنَّ لَهُمْ أَجْرًا حَسَنًا",
+      "transliteration": "Alhamdulillahi-lladhi anzala 'ala 'abdihil-kitaba wa lam yaj'al lahu 'iwaja...",
+      "urduTranslation": "سب تعریفیں اللہ کے لیے ہیں جس نے اپنے بندے پر یہ کتاب نازل فرمائی اور اس میں کوئی کجی نہ رکھی، بالکل سیدھی اور مضبوط کتاب تاکہ اللہ کے سخت عذاب سے ڈرائے اور مومنوں کو خوشخبری دے۔",
+      "repetitions": "1 مرتبہ مکمل سورۂ کہف",
+      "timing": "جمعرات غروبِ آفتاب تا جمعہ غروبِ آفتاب",
+      "category": "خاص دنوں کے وظائف",
+      "categoryEn": "Special Days Wazaif",
+      "timingEn": "Between Thursday sunset and Friday sunset",
+      "benefits": "حدیثِ پاک میں ہے کہ جو شخص جمعہ کے دن سورۂ کہف کی تلاوت کرے گا، اس کے لیے قدموں سے لے کر آسمان تک ایک نور روشن ہوگا اور فتنۂ دجال سے محفوظ رہے گا۔",
+      "benefitsEn": "Reciting Surah Al-Kahf on Friday illuminates light between the two Fridays and protects against the severe tribulations of Dajjal.",
+      "methodInstructions": "📋 طریقہ سورۂ کہف:\n• جمعۃ المبارک کے دن غروبِ آفتاب سے قبل سورۂ کہف کی تلاوت فرمائیں۔\n• اس جمعہ سے اگلے جمعہ تک نور کی روشنی رہے گی اور فتنۂ دجال سے حفاظت نصیب ہوگی۔"
+    },
+    {
+      "id": "waz-khas-3",
+      "title": "معمولات و دعائے پیر و جمعرات (مسنون روزے و پیشیِ اعمال)",
+      "arabicText": "أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ ، اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ",
+      "transliteration": "Astaghfirullahal 'Azeemal ladhi la ilaha illa Huwal Hayyul Qayyumu wa atoobu ilayh...",
+      "urduTranslation": "میں عظمت والے اللہ سے مغفرت مانگتا ہوں جس کے سوا کوئی معبود نہیں، جو ہمیشہ زندہ اور قائم رہنے والا ہے اور میں اسی کے حضور توبہ کرتا ہوں۔ اے اللہ! میں تجھ سے دنیا و آخرت میں عفو و عافیت کا طلبگار ہوں۔",
+      "repetitions": "100 مرتبہ استغفار و تسبیح",
+      "timing": "پیر اور جمعرات کی صبح و شام",
+      "category": "خاص دنوں کے وظائف",
+      "categoryEn": "Special Days Wazaif",
+      "timingEn": "Monday and Thursday morning & evening",
+      "benefits": "رسول اللہ ﷺ نے فرمایا: پیر اور جمعرات کو بارگاہِ الٰہی میں بندوں کے اعمال پیش کیے جاتے ہیں، مجھے پسند ہے کہ جب میرا عمل پیش ہو تو میں روزے سے ہوں۔ ان دونوں دنوں میں روزے اور کثرتِ استغفار سے درجات بلند ہوتے ہیں۔",
+      "benefitsEn": "The Prophet (PBUH) observed fasts on Mondays and Thursdays because deeds are presented before Allah Almighty on these days.",
+      "methodInstructions": "📋 مسنون معمول پیر و جمعرات:\n• نبی کریم ﷺ پیر اور جمعرات کا روزہ رکھتے تھے کیونکہ ان دنوں میں اعمال اللہ کے حضور پیش کیے جاتے ہیں۔ مسنون روزے کے ساتھ بعد از عصر تسبیحات مکمل فرمائیں۔"
+    },
+    {
+      "id": "waz-khas-4",
+      "title": "ایامِ بیض کے مبارک وظائف (13، 14، 15 قمری تاریخ)",
+      "arabicText": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ سُبْحَانَ اللَّهِ الْعَظِيمِ ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ",
+      "transliteration": "Subhanallahi wa bihamdihi Subhanallahil 'Azeem...",
+      "urduTranslation": "اللہ پاک ہے اپنی حمد و تعریف کے ساتھ، اللہ پاک ہے جو بہت عظمت والا ہے۔ گناہوں سے بچنے اور نیکی کرنے کی قوت اللہ ہی کی توفیق سے ہے۔",
+      "repetitions": "100 یا 313 مرتبہ",
+      "timing": "ہر اسلامی مہینے کی 13، 14 اور 15 تاریخ کو",
+      "category": "خاص دنوں کے وظائف",
+      "categoryEn": "Special Days Wazaif",
+      "timingEn": "13th, 14th, and 15th of every lunar Islamic month",
+      "benefits": "ایامِ بیض کے روزے پورے سال کے روزوں کے برابر ہیں۔ ان تین دنوں میں کثرتِ تسبیح و تحمید سے دل کی سیاہی دھل جاتی ہے اور رزق و عمر میں برکت ہوتی ہے۔",
+      "benefitsEn": "Fasting and glorifying Allah on the White Days (13th, 14th, 15th) purifies the heart and carries the spiritual reward of fasting an entire year.",
+      "methodInstructions": "📋 معمولاتِ ایامِ بیض:\n• ہر اسلامی مہینے کی 13، 14، 15 تاریخ کو روزے رکھیں اور ان دنوں میں بعد نمازِ مغرب استغفار اور درودِ پاک کی 3 تسبیحات مکمل فرمائیں۔"
+    },
+    {
+      "id": "waz-khas-5",
+      "title": "شبِ جمعہ کا خاص وظیفہ و درودِ پاک (برائے فتوحات و حلِ مشکلات)",
+      "arabicText": "اَللّٰهُمَّ صَلِّ عَلٰى سَيِّدِنَا وَمَوْلَانَا مُحَمَّدٍ وَّعَلٰى آلِهِ وَبَارِكْ وَسَلِّمْ صَلَاةً تُنَجِّيْنَا بِهَا مِنْ جَمِيعِ الْأَهْوَالِ وَالْآفَاتِ وَتَقْضِي لَنَا بِهَا جَمِيعَ الْحَاجَاتِ",
+      "transliteration": "Allahumma salli 'ala Sayyidina wa Mawlana Muhammadinw wa 'ala Aalihi wa barik wa sallim...",
+      "urduTranslation": "اے اللہ! ہمارے سردار حضرت محمد ﷺ اور ان کی آل پر ایسی رحمتیں اور برکتیں نازل فرما جس کے وسیلے سے تو ہمیں تمام خوف اور آفات سے نجات بخشے اور ہماری تمام حاجات پوری فرما دے۔",
+      "repetitions": "100 یا 313 مرتبہ",
+      "timing": "جمعرات اور جمعہ کی درمیانی رات بعد نمازِ عشاء",
+      "category": "خاص دنوں کے وظائف",
+      "categoryEn": "Special Days Wazaif",
+      "timingEn": "Thursday night (Eve of Friday) after Isha",
+      "benefits": "شبِ جمعہ قبولیتِ دعا کی مبارک ترین رات ہے۔ اس رات درودِ تنجینا اور استغفار پڑھنے سے سخت ترین پریشانیاں دور اور بند دروازے کھلتے ہیں۔",
+      "benefitsEn": "The eve of Friday is a blessed time for divine acceptance. Reciting Durood on this night opens doors of blessings and relieves hardships.",
+      "methodInstructions": "📋 شبِ جمعہ کا خاص وظیفہ:\n• جمعرات اور جمعہ کی درمیانی رات بعد نمازِ عشاء 100 مرتبہ درودِ خضری اور 100 مرتبہ استغفار پڑھ کر جو دعا مانگی جائے مستجاب ہوتی ہے۔"
+    },
+    {
+      "id": "waz-hizb-bahr",
+      "title": "دعائے حزب البحر الشریف - امام ابو الحسن الشاذلیؒ (کامل متن و اعراب)",
+      "arabicText": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\nيَا عَلِيُّ يَا عَظِيمُ يَا حَلِيمُ يَا عَلِيمُ، أَنْتَ رَبِّي وَعِلْمُكَ حَسْبِي، فَنِعْمَ الرَّبُّ رَبِّي، وَنِعْمَ الْحَسْبُ حَسْبِي، تَنْصُرُ مَنْ تَشَاءُ وَأَنْتَ الْعَزِيزُ الرَّحِيمُ.\nنَسْأَلُكَ الْعِصْمَةَ فِي الْحَرَكَاتِ وَالسَّكَنَاتِ، وَالْكَلِمَاتِ وَالْإِرَادَاتِ وَالْخَطَرَاتِ، مِنَ الشُّكُوكِ وَالظُّنُونِ وَالْأَوْهَامِ السَّاتِرَةِ لِلْقُلُوبِ عَنْ مُطَالَعَةِ الْغُيُوبِ.\nفَقَدِ ﴿ابْتُلِيَ الْمُؤْمِنُونَ وَزُلْزِلُوا زِلْزَالًا شَدِيدًا * وَإِذْ يَقُولُ الْمُنَافِقُونَ وَالَّذِينَ فِي قُلُوبِهِمْ مَرَضٌ مَا وَعَدَنَا اللَّهُ وَرَسُولُهُ إِلَّا غُرُورًا﴾.\nفَثَبِّتْنَا وَانْصُرْنَا، وَسَخِّرْ لَنَا هَذَا الْبَحْرَ كَمَا سَخَّرْتَ الْبَحْرَ لِمُوسَى عَلَيْهِ السَّلَامُ، وَسَخَّرْتَ النَّارَ لِإِبْرَاهِيمَ عَلَيْهِ السَّلَامُ، وَسَخَّرْتَ الْجِبَالَ وَالْحَدِيدَ لِدَاوُدَ عَلَيْهِ السَّلَامُ، وَسَخَّرْتَ الرِّيحَ وَالشَّيَاطِينَ وَالْجِنَّ لِسُلَيْمَانَ عَلَيْهِ السَّلَامُ.\nوَسَخِّرْ لَنَا كُلَّ بَحْرٍ هُوَ لَكَ فِي الْأَرْضِ وَالسَّمَاءِ وَالْمُلْكِ وَالْمَلَكُوتِ، وَبَحْرَ الدُّنْيَا وَبَحْرَ الْآخِرَةِ، وَسَخِّرْ لَنَا كُلَّ شَيْءٍ، يَا مَنْ بِيَدِهِ مَلَكُوتُ كُلِّ شَيْءٍ.\nكهيعص (۳ بار)\nانْصُرْنَا فَإِنَّكَ خَيْرُ النَّاصِرِينَ، وَافْتَحْ لَنَا فَإِنَّكَ خَيْرُ الْفَاتِحِينَ، وَاغْفِرْ لَنَا فَإِنَّكَ خَيْرُ الْغَافِرِينَ، وَارْحَمْنَا فَإِنَّكَ خَيْرُ الرَّاحِمِينَ، وَارْزُقْنَا فَإِنَّكَ خَيْرُ الرَّازِقِينَ، وَاهْدِنَا وَنَجِّنَا مِنَ الْقَوْمِ الظَّالِمِينَ.\nوَهَبْ لَنَا رِيحًا طَيِّبَةً كَمَا هِيَ فِي عِلْمِكَ، وَانْشُرْهَا عَلَيْنَا مِنْ خَزَائِنِ رَحْمَتِكَ، وَاحْمِلْنَا بِهَا حَمْلَ الْكَرَامَةِ مَعَ السَّلَامَةِ وَالْعَافِيَةِ فِي الدِّينِ وَالدُّنْيَا وَالْآخِرَةِ، إِنَّكَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.\nاللَّهُمَّ يَسِّرْ لَنَا أُمُورَنَا مَعَ الرَّاحَةِ لِقُلُوبِنَا وَأَبْدَانِنَا، وَالسَّلَامَةِ وَالْعَافِيَةِ فِي دِينِنَا وَدُنْيَانَا، وَكُنْ لَنَا صَاحِبًا فِي سَفَرِنَا، وَخَلِيفَةً فِي أَهْلِنَا، وَاطْمِسْ عَلَى وُجُوهِ أَعْدَائِنَا، وَامْسَخْهُمْ عَلَى مَكَانَتِهِمْ فَلَا يَسْتَطِيعُونَ الْمُضِيَّ وَلَا الْمَجِيءَ إِلَيْنَا.\n﴿وَلَوْ نَشَاءُ لَطَمَسْنَا عَلَى أَعْيُنِهِمْ فَاسْتَبَقُوا الصِّرَاطَ فَأَنَّى يُبْصِرُونَ * وَلَوْ نَشَاءُ لَمَسَخْنَاهُمْ عَلَى مَكَانَتِهِمْ فَمَا اسْتَطَاعُوا مُضِيًّا وَلَا يَرْجِعُونَ﴾.\n﴿يس * وَالْقُرْآنِ الْحَكِيمِ * إِنَّكَ لَمِنَ الْمُرْسَلِينَ * عَلَى صِرَاطٍ مُسْتَقِيمٍ * تَنْزِيلَ الْعَزِيزِ الرَّحِيمِ * لِتُنْذِرَ قَوْمًا مَا أُنْذِرَ آبَاؤُهُمْ فَهُمْ غَافِلُونَ * لَقَدْ حَقَّ الْقَوْلُ عَلَى أَكْثَرِهِمْ فَهُمْ لَا يُؤْمِنُونَ * إِنَّا جَعَلْنَا فِي أَعْنَاقِهِمْ أَغْلَالًا فَهِيَ إِلَى الْأَذْقَانِ فَهُمْ مُقْمَحُونَ * وَجَعَلْنَا مِنْ بَيْنِ أَيْدِيهِمْ سَدًّا وَمِنْ خَلْفِهِمْ سَدًّا فَأَغْشَيْنَاهُمْ فَهُمْ لَا يُبْصِرُونَ﴾.\nشَاهَتِ الْوُجُوهُ (۳ بار)\n﴿وَعَنَتِ الْوُجُوهُ لِلْحَيِّ الْقَيُّومِ وَقَدْ خَابَ مَنْ حَمَلَ ظُلْمًا﴾.\nطس ، حم عسق ، مَرَجَ الْبَحْرَيْنِ يَلْتَقِيَانِ بَيْنَهُمَا بَرْزَخٌ لَا يَبْغِيَانِ.\nحم، حم، حم، حم، حم، حم، حم.\nحُمَّ الْأَمْرُ وَجَاءَ النَّصْرُ فَعَلَيْنَا لَا يُنْصَرُونَ.\n﴿حم * تَنْزِيلُ الْكِتَابِ مِنَ اللَّهِ الْعَزِيزِ الْعَلِيمِ * غَافِرِ الذَّنْبِ وَقَابِلِ التَّوْبِ شَدِيدِ الْعِقَابِ ذِي الطَّوْلِ لَا إِلَهَ إِلَّا هُوَ إِلَيْهِ الْمَصِيرُ﴾.\nبِسْمِ اللَّهِ بَابُنَا، تَبَارَكَ حِيطَانُنَا، يس سَقْفُنَا، كهيعص كِفَايَتُنَا، حم عسق حِمَايَتُنَا.\n﴿فَسَيَكْفِيكَهُمُ اللَّهُ وَهُوَ السَّمِيعُ الْعَلِيمُ﴾ (۳ بار)\nسِتْرُ الْعَرْشِ مَسْبُولٌ عَلَيْنَا، وَعَيْنُ اللَّهِ نَاظِرَةٌ إِلَيْنَا، بِحَوْلِ اللَّهِ لَا يُقْدَرُ عَلَيْنَا.\n﴿وَاللَّهُ مِنْ وَرَائِهِمْ مُحِيطٌ * بَلْ هُوَ قُرْآنٌ مَجِيدٌ * فِي لَوْحٍ مَحْفُوظٍ﴾.\n﴿فَاللَّهُ خَيْرٌ حَافِظًا وَهُوَ أَرْحَمُ الرَّاحِمِينَ﴾ (۳ بار)\n﴿إِنَّ وَلِيِّيَ اللَّهُ الَّذِي نَزَّلَ الْكِتَابَ وَهُوَ يَتَوَلَّى الصَّالِحِينَ﴾ (۳ بار)\n﴿حَسْبِيَ اللَّهُ لَا إِلَهَ إِلَّا هُوَ عَلَيْهِ تَوَكَّلْتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ﴾ (۳ بار)\nبِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ (۳ بار)\nوَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ.\nوَصَلَّى اللَّهُ عَلَى سَيِّدِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ وَسَلَّمَ تَسْلِيمًا كَثِيرًا إِلَى يَوْمِ الدِّينِ، وَالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ.",
+      "transliteration": "Bismillahir-Rahmanir-Raheem. Ya 'Aliyyu Ya 'Azeemu Ya Haleemu Ya 'Aleem, Anta Rabbi wa 'Ilmuka Hasbi...",
+      "urduTranslation": "شروع اللہ کے نام سے جو بڑا مہربان نہایت رحم والا ہے۔ اے بلند مرتبہ، اے عظمت والے، اے بردبار، اے سب کچھ جاننے والے! تو ہی میرا پروردگار ہے اور تیرا علم ہی میرے لیے کافی ہے۔ کتنا اچھا رب میرا رب ہے اور کتنی عمدہ کفایت میری کفایت ہے۔ تو جس کی چاہتا ہے نصرت فرماتا ہے اور تو ہی زبردست رحم والا ہے۔ اے اللہ! ہمارے تمام معاملات کو دلی سکون اور جسمانی راحت کے ساتھ آسان فرما، اور تمام دشمنوں کے ناپاک ارادوں کو خاک میں ملا دے۔ اور درود و سلام نازل ہو ہمارے آقا حضرت محمد ﷺ اور ان کی آل و اصحاب پر۔",
+      "repetitions": "طریقہ 1: روزانہ 12 مرتبہ (7 دن کا عمل) | طریقہ 2: چاشت، مغرب، عشاء 3، 3 مرتبہ (27 دن کا عمل) | طریقہ 3: 360 مرتبہ (3 دن بعد چاشت، مغرب، عشاء)",
+      "timing": "طریقہ 1: بعد نمازِ فجر یا عصر | طریقہ 2 و 3: بعد از نمازِ چاشت، مغرب اور عشاء",
+      "category": "حزب البحر",
+      "categoryEn": "Hizb-ul-Bahr",
+      "timingEn": "Method 1: After Fajr or Asr | Methods 2 & 3: Chasht, Maghrib, and Isha after prayers",
+      "benefits": "دعائے حزب البحر اولیاء اللہ کا مجرب ترین حرز ہے۔ اس کے معمول سے زمین و آسمان کی تمام آفات، سمندری و زمینی سفر کے خطرات، دشمنوں کے حملے، سحر، جادو اور ناگہانی حادثات سے کامل حفاظت رہتی ہے اور رزق میں وسعت پیدا ہوتی ہے۔",
+      "benefitsEn": "The renowned litany of Imam ash-Shadhili for total divine protection, safety during travel, overcoming adversities, and opening gates of sustenance.",
+      "pdfUrl": "uploads/hizb-ul-bahr.pdf",
+      "pdfDownloadName": "Hizb-ul-Bahr-Dua.pdf",
+      "hasAudio": true,
+      "requiresIjazah": true,
+      "methodInstructions": "📋 دعائے حزب البحر الشریف پڑھنے کے 3 مستند و مخصوص طریقے (امام ابو الحسن الشاذلیؒ):\n\n🔹 طریقہ نمبر 1 (7 دن کا عمل - روزانہ 12 مرتبہ):\n• مسلسل 7 دن تک روزانہ باوضو، قبلہ رخ بیٹھ کر 12 مرتبہ دعائے حزب البحر الشریف تلاوت فرمائیں۔\n• یہ طریقہ سخت مشکلات، دشمنوں کے شر سے فوری پناہ اور بندشوں کے قاطع توڑ کے لیے مجرب ترین ہے۔\n\n🔹 طریقہ نمبر 2 (27 دن کا عمل - چاشت، مغرب اور عشاء میں 3، 3 مرتبہ):\n• مسلسل 27 دن تک روزانہ 3 مخصوص اوقات میں باقاعدگی سے 3، 3 مرتبہ تلاوت فرمائیں:\n  1۔ وقتِ چاشت (صبح سورج بلند ہونے کے بعد): 3 مرتبہ\n  2۔ بعد از نمازِ مغرب: 3 مرتبہ\n  3۔ بعد از نمازِ عشاء: 3 مرتبہ\n• یہ طریقہ روحانی تسخیر، کشائشِ رزق اور باطنی ترقی کے لیے اولیاء اللہ کا معمول رہا ہے۔\n\n🔹 طریقہ نمبر 3 (3 دن کا قاطع ختم - مجموعی 360 مرتبہ):\n• مسلسل 3 دن تک چاشت، مغرب اور عشاء کے اوقات میں تلاوت فرما کر 3 دن میں 360 مرتبہ کی تعداد مکمل فرمائیں۔\n• یہ طریقہ سخت ترین سحر، جادو کے خاتمے اور فوری فتح و نصرت کے لیے اکسیرِ اعظم ہے۔\n\n🔹 روزانہ کا عمومی معمول:\n• حفاظتِ جان و مال، سفر کی سلامتی اور قلبی تسکین کے لیے روزانہ بعد نمازِ فجر یا عصر 1 مرتبہ پڑھنا کافی ہے۔\n\n⚠️ اہم شرعی و روحانی تنبیہ:\nحزب البحر الشریف انتہائی جلالی و پر اثر دعا ہے۔ اکابرین کی تاکید ہے کہ یہ عمل باقاعدہ اجازت کے ساتھ شروع فرمائیں۔\nشرعی اجازت کے لیے نیچے موجود بٹن \"وظیفہ کی باقاعدہ اجازت حاصل کریں\" پر کلک کریں۔",
+      "audioUrl": "uploads/hizb-ul-bahr-recitation.mp3",
+      "repetitionsEn": "Method 1: 12x daily (7-day course) | Method 2: 3x each at Chasht, Maghrib & Isha (27-day course) | Method 3: 360x over 3 days (Chasht, Maghrib & Isha)"
+    },
+    {
+      "id": "waz-manzil",
+      "title": "منزل شریف (Manzil) - 33 قرآنی آیات برائے حفاظت، سحر و نظر بد کا خاتمہ",
+      "arabicText": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ ﴿۱﴾ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿۲﴾ الرَّحْمَنِ الرَّحِيمِ ﴿۳﴾ مَالِكِ يَوْمِ الدِّينِ ﴿۴﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿۵﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿۶﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿۷﴾\n\nبِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\nالم ﴿۱﴾ ذَلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ هُدًى لِلْمُتَّقِينَ ﴿۲﴾ الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُقِيمُونَ الصَّلَاةَ وَمِمَّا رَزَقْنَاهُمْ يُنْفِقُونَ ﴿۳﴾ وَالَّذِينَ يُؤْمِنُونَ بِمَا أُنْزِلَ إِلَيْكَ وَمَا أُنْزِلَ مِنْ قَبْلِكَ وَبِالْآخِرَةِ هُمْ يُوقِنُونَ ﴿۴﴾ أُولَئِكَ عَلَى هُدًى مِنْ رَبِّهِمْ وَأُولَئِكَ هُمُ الْمُفْلِحُونَ ﴿۵﴾\n\nوَإِلَهُكُمْ إِلَهٌ وَاحِدٌ لَا إِلَهَ إِلَّا هُوَ الرَّحْمَنُ الرَّحِيمُ ﴿البقرة: ۱۶۳﴾\n\nاللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ ﴿۲۵۵﴾ لَا إِكْرَاهَ فِي الدِّينِ قَدْ تَبَيَّنَ الرُّشْدُ مِنَ الْغَيِّ فَمَنْ يَكْفُرْ بِالطَّاغُوتِ وَيُؤْمِنْ بِاللَّهِ فَقَدِ اسْتَمْسَكَ بِالْعُرْوَةِ الْوُثْقَى لَا انْفِصَامَ لَهَا وَاللَّهُ سَمِيعٌ عَلِيمٌ ﴿۲۵۶﴾ اللَّهُ وَلِيُّ الَّذِينَ آمَنُوا يُخْرِجُهُمْ مِنَ الظُّلُمَاتِ إِلَى النُّورِ وَالَّذِينَ كَفَرُوا أَوْلِيَاؤُهُمُ الطَّاغُوتُ يُخْرِجُونَهُمْ مِنَ النُّورِ إِلَى الظُّلُمَاتِ أُولَئِكَ أَصْحَابُ النَّارِ هُمْ فِيهَا خَالِدُونَ ﴿۲۵۷﴾\n\nلِلَّهِ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ وَإِنْ تُبْدُوا مَا فِي أَنْفُسِكُمْ أَوْ تُخْفُوهُ يُحَاسِبْكُمْ بِهِ اللَّهُ فَيَغْفِرُ لِمَنْ يَشَاءُ وَيُعَذِّبُ مَنْ يَشَاءُ وَاللَّهُ عَلَى كُلِّ شَيْءٍ قَدِيرٌ ﴿۲۸۴﴾ آمَنَ الرَّسُولُ بِمَا أُنْزِلَ إِلَيْهِ مِنْ رَبِّهِ وَالْمُؤْمِنُونَ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِنْ رُسُلِهِ وَقَالُوا سَمِعْنَا وَأَطَعْنَا غُفْرَانَكَ رَبَّنَا وَإِلَيْكَ الْمَصِيرُ ﴿۲۸۵﴾ لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا اكْتَسَبَتْ رَبَّنَا لَا تُؤَاخِذْنَا إِنْ نَسِينَا أَوْ أَخْطَأْنَا رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِنْ قَبْلِنَا رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا أَنْتَ مَوْلَانَا فَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ ﴿۲۸۶﴾\n\nشَهِدَ اللَّهُ أَنَّهُ لَا إِلَهَ إِلَّا هُوَ وَالْمَلَائِكَةُ وَأُولُو الْعِلْمِ قَائِمًا بِالْقِسْطِ لَا إِلَهَ إِلَّا هُوَ الْعَزِيزُ الْحَكِيمُ ﴿آل عمران: ۱۸﴾\nقُلِ اللَّهُمَّ مَالِكَ الْمُلْكِ تُؤْتِي الْمُلْكَ مَنْ تَشَاءُ وَتَنْزِعُ الْمُلْكَ مِمَّنْ تَشَاءُ وَتُعِزُّ مَنْ تَشَاءُ وَتُذِلُّ مَنْ تَشَاءُ بِيَدِكَ الْخَيْرُ إِنَّكَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ ﴿۲۶﴾ تُولِجُ اللَّيْلَ فِي النَّهَارِ وَتُولِجُ النَّهَارَ فِي اللَّيْلِ وَتُخْرِجُ الْحَيَّ مِنَ الْمَيِّتِ وَتُخْرِجُ الْمَيِّتَ مِنَ الْحَيِّ وَتَرْزُقُ مَنْ تَشَاءُ بِغَيْرِ حِسَابٍ ﴿آل عمران: ۲۷﴾\n\nإِنَّ رَبَّكُمُ اللَّهُ الَّذِي خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ فِي سِتَّةِ أَيَّامٍ ثُمَّ اسْتَوَى عَلَى الْعَرْشِ يُغْشِي اللَّيْلَ النَّهَارَ يَطْلُبُهُ حَثِيثًا وَالشَّمْسَ وَالْقَمَرَ وَالنُّجُومَ مُسَخَّرَاتٍ بِأَمْرِهِ أَلَا لَهُ الْخَلْقُ وَالْأَمْرُ تَبَارَكَ اللَّهُ رَبُّ الْعَالَمِينَ ﴿۵۴﴾ ادْعُوا رَبَّكُمْ تَضَرُّعًا وَخُفْيَةً إِنَّهُ لَا يُحِبُّ الْمُعْتَدِينَ ﴿۵۵﴾ وَلَا تُفْسِدُوا فِي الْأَرْضِ بَعْدَ إِصْلَاحِهَا وَادْعُوهُ خَوْفًا وَطَمَعًا إِنَّ رَحْمَتَ اللَّهِ قَرِيبٌ مِنَ الْمُحْسِنِينَ ﴿الأعراف: ۵۶﴾\n\nقُلِ ادْعُوا اللَّهَ أَوِ ادْعُوا الرَّحْمَنَ أَيًّا مَا تَدْعُوا فَلَهُ الْأَسْمَاءُ الْحُسْنَى وَلَا تَجْهَرْ بِصَلَاتِكَ وَلَا تُخَافِتْ بِهَا وَابْتَغِ بَيْنَ ذَلِكَ سَبِيلًا ﴿۱۱۰﴾ وَقُلِ الْحَمْدُ لِلَّهِ الَّذِي لَمْ يَتَّخِذْ وَلَدًا وَلَمْ يَكُنْ لَهُ شَرِيكٌ فِي الْمُلْكِ وَلَمْ يَكُنْ لَهُ وَلِيٌّ مِنَ الذُّلِّ وَكَبِّرْهُ تَكْبِيرًا ﴿الإسراء: ۱۱۱﴾\n\nأَفَحَسِبْتُمْ أَنَّمَا خَلَقْنَاكُمْ عَبَثًا وَأَنَّكُمْ إِلَيْنَا لَا تُرْجَعُونَ ﴿۱۱۵﴾ فَتَعَالَى اللَّهُ الْمَلِكُ الْحَقُّ لَا إِلَهَ إِلَّا هُوَ رَبُّ الْعَرْشِ الْكَرِيمِ ﴿۱۱۶﴾ وَمَنْ يَدْعُ مَعَ اللَّهِ إِلَهًا آخَرَ لَا بُرْهَانَ لَهُ بِهِ فَإِنَّمَا حِسَابُهُ عِنْدَ رَبِّهِ إِنَّهُ لَا يُفْلِحُ الْكَافِرُونَ ﴿۱۱۷﴾ وَقُلْ رَبِّ اغْفِرْ وَارْحَمْ وَأَنْتَ خَيْرُ الرَّاحِمِينَ ﴿المؤمنون: ۱۱۸﴾\n\nوَالصَّافَّاتِ صَفًّا ﴿۱﴾ فَالزَّاجِرَاتِ زَجْرًا ﴿۲﴾ فَالتَّالِيَاتِ ذِكْرًا ﴿۳﴾ إِنَّ إِلَهَكُمْ لَوَاحِدٌ ﴿۴﴾ رَبُّ السَّمَاوَاتِ وَالْأَرْضِ وَمَا بَيْنَهُمَا وَرَبُّ الْمَشَارِقِ ﴿۵﴾ إِنَّا زَيَّنَّا السَّمَاءَ الدُّنْيَا بِزِينَةٍ الْكَوَاكِبِ ﴿۶﴾ وَحِفْظًا مِنْ كُلِّ شَيْطَانٍ مَارِدٍ ﴿۷﴾ لَا يَسَّمَّعُونَ إِلَى الْمَلَإِ الْأَعْلَى وَيُقْذَفُونَ مِنْ كُلِّ جَانِبٍ ﴿۸﴾ دُحُورًا وَلَهُمْ عَذَابٌ وَاصِبٌ ﴿۹﴾ إِلَّا مَنْ خَطِفَ الْخَطْفَةَ فَأَتْبَعَهُ شِهَابٌ ثَاقِبٌ ﴿الصافات: ۱۱﴾\n\nيَا مَعْشَرَ الْجِنِّ وَالْإِنْسِ إِنِ اسْتَطَعْتُمْ أَنْ تَنْفُذُوا مِنْ أَقْطَارِ السَّمَاوَاتِ وَالْأَرْضِ فَانْفُذُوا لَا تَنْفُذُونَ إِلَّا بِسُلْطَانٍ ﴿۳۳﴾ فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ ﴿۳۴﴾ يُرْسَلُ عَلَيْكُمَا شُوَاظٌ مِنْ نَارٍ وَنُحَاسٌ فَلَا تَنْتَصِرَانِ ﴿الرحمن: ۳۵﴾\n\nلَوْ أَنْزَلْنَا هَذَا الْقُرْآنَ عَلَى جَبَلٍ لَرَأَيْتَهُ خَاشِعًا مُتَصَدِّعًا مِنْ خَشْيَةِ اللَّهِ وَتِلْكَ الْأَمْثَالُ نَضْرِبُهَا لِلنَّاسِ لَعَلَّهُمْ يَتَفَكَّرُونَ ﴿۲۱﴾ هُوَ اللَّهُ الَّذِي لَا إِلَهَ إِلَّا هُوَ عَالِمُ الْغَيْبِ وَالشَّهَادَةِ هُوَ الرَّحْمَنُ الرَّحِيمُ ﴿۲۲﴾ هُوَ اللَّهُ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْمَلِكُ الْقُدُّوسُ السَّلَامُ الْمُؤْمِنُ الْمُهَيْمِنُ الْعَزِيزُ الْجَبَّارُ الْمُتَكَبِّرُ سُبْحَانَ اللَّهِ عَمَّا يُشْرِكُونَ ﴿۲۳﴾ هُوَ اللَّهُ الْخَالِقُ الْبَارِئُ الْمُصَوِّرُ لَهُ الْأَسْمَاءُ الْحُسْنَى يُسَبِّحُ لَهُ مَا فِي السَّمَاوَاتِ وَالْأَرْضِ وَهُوَ الْعَزِيزُ الْحَكِيمُ ﴿الحشر: ۲۴﴾\n\nقُلْ أُوحِيَ إِلَيَّ أَنَّهُ اسْتَمَعَ نَفَرٌ مِنَ الْجِنِّ فَقَالُوا إِنَّا سَمِعْنَا قُرْآنًا عَجَبًا ﴿۱﴾ يَهْدِي إِلَى الرُّشْدِ فَآمَنَّا بِهِ وَلَنْ نُشْرِكَ بِرَبِّنَا أَحَدًا ﴿۲﴾ وَأَنَّهُ تَعَالَى جَدُّ رَبِّنَا مَا اتَّخَذَ صَاحِبَةً وَلَا وَلَدًا ﴿۳﴾ وَأَنَّهُ كَانَ يَقُولُ سَفِيهُنَا عَلَى اللَّهِ شَطَطًا ﴿الجن: ۴﴾\n\nقُلْ يَا أَيُّهَا الْكَافِرُونَ ﴿۱﴾ لَا أَعْبُدُ مَا تَعْبُدُونَ ﴿۲﴾ وَلَا أَنْتُمْ عَابِدُونَ مَا أَعْبُدُ ﴿۳﴾ وَلَا أَنَا عَابِدٌ مَا عَبَدْتُمْ ﴿۴﴾ وَلَا أَنْتُمْ عَابِدُونَ مَا أَعْبُدُ ﴿۵﴾ لَكُمْ دِينُكُمْ وَلِيَ دِينِ ﴿الكافرون: ۶﴾\n\nقُلْ هُوَ اللَّهُ أَحَدٌ ﴿۱﴾ اللَّهُ الصَّمَدُ ﴿۲﴾ لَمْ يَلِدْ وَلَمْ يُولَدْ ﴿۳﴾ وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ ﴿الإخلاص: ۴﴾\n\nقُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ﴿۱﴾ مِنْ شَرِّ مَا خَلَقَ ﴿۲﴾ وَمِنْ شَرِّ غَاسِقٍ إِذَا وَقَبَ ﴿۳﴾ وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ ﴿۴﴾ وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ ﴿الفلق: ۵﴾\n\nقُلْ أَعُوذُ بِرَبِّ النَّاسِ ﴿۱﴾ مَلِكِ النَّاسِ ﴿۲﴾ إِلَهِ النَّاسِ ﴿۳﴾ مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ﴿۴﴾ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ﴿۵﴾ مِنَ الْجِنَّةِ وَالنَّاسِ ﴿الناس: ۶﴾",
+      "transliteration": "Surah Al-Fatihah, Al-Baqarah, Aal-e-Imran, Al-A'raf, Al-Isra, Al-Mu'minun, As-Saffat, Ar-Rahman, Al-Hashr, Al-Jinn, Al-Kafirun, Al-Ikhlas, Al-Falaq, An-Nas.",
+      "urduTranslation": "منزل شریف قرآن مجید کی ان 33 متبرک آیات کا مجموعہ ہے جو احادیث مبارکہ کی روشنی میں جادو، جنات، آسیب، نظر بد اور ہر قسم کے شیطانی شر سے حفاظت کا تیر بہدف علاج ہیں۔ سورۃ الفاتحہ، سورۃ البقرہ، آیت الکرسی، آل عمران، الاعراف، بنی اسرائیل، المؤمنون، الصافات، الرحمن، الحشر، الجن، الکافرون، اور اخلاص و معوذتین کی مکمل تلاوت۔",
+      "repetitions": "3",
+      "timing": "صبح بعد نمازِ فجر اور شام بعد نمازِ مغرب یا عشاء",
+      "category": "منزل",
+      "categoryEn": "Manzil",
+      "timingEn": "Morning after Fajr and Evening after Maghrib/Isha",
+      "benefits": "منزل شریف ہر مومن کے لیے اللہ تعالیٰ کا دیا ہوا ایک ناقابل تسخیر روحانی قلعہ ہے۔ اس کے روزانہ پڑھنے سے کالے جادو کے اثرات، جنات کے حملے، شیطانی وسوسے اور نظرِ بد بالکل ختم ہو جاتے ہیں۔ پانی پر دم کر کے پینا اور گھر میں چھڑکنا تیر بہدف اثر رکھتا ہے۔",
+      "benefitsEn": "The 33 protection verses from the Quran for curing black magic, evil eye, demonic influences, and severe spiritual afflictions.",
+      "pdfUrl": "uploads/manzil-dua-with-benefits.pdf",
+      "pdfDownloadName": "Manzil-Dua-With-Benefits.pdf",
+      "hasAudio": true,
+      "methodInstructions": "📋 طریقہ و معمولِ منزل شریف (برائے جادو، جنات، آسیب، نظرِ بد و لاعلاج امراض):\n• 40 روزہ مجرب چلہ: ہر قسم کے سحر، کالا جادو، آسیب، جنات کی بندش، نظرِ بد اور پرانے لاعلاج امراض کے مکمل خاتمے کے لیے مسلسل 40 دن کا چلہ کریں۔ نیچے دیے گئے \"40 روزہ چلہ ٹریکر\" سے اپنے روزانہ کے دن باآسانی شمار فرمائیں۔\n• روزانہ تلاوت کا معمول: صبح و شام 3، 3 مرتبہ پڑھنی ہے۔\n• اگر کوئی 3، 3 مرتبہ نہ پڑھ سکے تو کم از کم 1، 1 مرتبہ صبح و شام ضرور پڑھیں۔\n• اگر کوئی خود پڑھنے سے قاصر ہو تو روزانہ صبح و شام توجہ سے منزل شریف سنیں (اوپر دیے گئے \"تلاوت سنیں\" بٹن سے باآوازِ قاری مشاری راشد العفاسی)۔\n• سحر، جادو، آسیب اور بیماریوں کے خاتمے کے لیے پانی پر دم کر کے مریض کو پلائیں اور گھر کے چاروں کونوں میں چھڑکیں۔\n\n⚠️ ضروری شرعی تنبیہ و اجازت:\nخود سے ہرگز نہ پڑھیں، باقاعدہ اجازت لے کر پڑھیں۔ اگر آپ کے پاس پہلے سے اجازت ہے تو فبِہا، ورنہ رجعت اور اثرات سے حفاظت کے لیے نیچے دیے گئے بٹن سے باقاعدہ شرعی اجازت حاصل فرما کر پڑھیں۔",
+      "audioUrl": "uploads/manzil-qari-recitation.mp3",
+      "requiresIjazah": true
+    },
+    {
+      "id": "waz-chehal-kaaf",
+      "title": "دعائے چہل کاف (Chehal Kaaf) - 40 کاف کا مجرب و نایاب حصار و تسخیر",
+      "arabicText": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِیْمِ\nکَفَاکَ رَبُّکَ کَمْ یَکْفِیْکَ وَاکِفَۃً ؛ کَفْکَافُھَا کَکَمِیْنٍ کَانَ مِنْ کَلَکٍ ؛\nتَکُرُّ کَرًّا کَکَرِّ الْکَرِّ فِیْ کَبِدٍ تَحْکِیْ مُشَکْشَکَۃً کَلَّکْ لَکَ الْکَلَکَ ؛\nکَفَاکَ مَا بِیْ کَفَاکَ الْکَافُ کُرْبَتَہٗ ؛ یَا کَوْکَبًا کَانَ یَحْکِیْ کَوْکَبَ الْفَلَکَ",
+      "transliteration": "Bismillahir Rahmanir Raheem.\nKafaka Rabbuka kam yakfeeka wakifatan; kafkafuha kakameenin kana min kalakin;\nTakurru karran kakarri al-karri fee kabidin tahkee mushakshakatan kallak laka al-kalaka;\nKafaka ma bee kafaka al-kaafu kurbatahu; ya kawkaban kana yahkee kawkaba al-falak.",
+      "urduTranslation": "مصنف: مولانا صوفی محمد عزیز الرحمن پانی پتیؒ (کتاب: آئینہ عملیات، صفحہ نمبر ۲۰۵ - ناشر: مکی کتاب گھر اردو بازار کراچی)۔\nشروع اللہ کے نام سے جو بڑا مہربان نہایت رحم والا ہے۔\nتیرے رب نے تجھے کتنا کافی کیا اور کتنی ہی مصیبتوں سے بچایا، اس کی کفایت گھات لگا کر بیٹھنے والے دشمن کے ہر غم و خوف سے پناہ دینے والی ہے۔ وہ مصیبت بار بار سختی کے ساتھ حملہ آور ہوتی تھی اور جگر پر چوٹ لگاتی تھی، مگر تیرے رب کی کفایت نے اس سختی کو تیرے لیے آسان کر دیا۔ میرے ساتھ جو کچھ پیش آیا اس کے لیے بھی تیرا رب کافی ہے اور اس کا کاف میری تمام تکالیف و پریشانیوں کو دور کرنے کے لیے کافی ہے؛ اے وہ درخشندہ ستارہ جو آسمان کے چمکتے ہوئے ستارے کی طرح روشن و تابناک تھا!",
+      "repetitions": "طریقہ 1: 1104 مرتبہ (1 دن نوچندی مع روزہ) | طریقہ 2: روزانہ 100 مرتبہ (12 دن) | چلہ: روزانہ 41 مرتبہ (41 دن) یا 101 مرتبہ (101 دن)",
+      "timing": "نوچندی جمعرات (بروزِ جمعرات صبح روزہ رکھنا شرط ہے)، پھر روزانہ بعد از نمازِ فجر یا عشاء",
+      "category": "چہل کاف",
+      "categoryEn": "Chehal Kaaf",
+      "requiresIjazah": true,
+      "methodInstructions": "📋 دعائے چہل کاف پڑھنے کے مستند طریقے (آئینہ عملیات، صفحہ نمبر 205):\n\n🔹 طریقہ نمبر 1 (نوچندی عمل - 1 دن):\n• نوچندی جمعرات کو صبح باقاعدہ روزہ رکھیں اور بعد نمازِ عشاء ایک ہی نشست میں باوضو 1104 مرتبہ تلاوت فرمائیں۔\n\n🔹 طریقہ نمبر 2 (12 دن کا مجرب عمل):\n• مسلسل 12 دن تک بلا ناغہ روزانہ باوضو 100 مرتبہ تلاوت فرمائیں۔\n\n🔹 طریقہ نمبر 3 (41 دن کا چلہ):\n• مسلسل 41 دن تک روزانہ 41 مرتبہ ورد میں رکھیں۔\n\n🔹 طریقہ نمبر 4 (101 دن کا عمل):\n• مسلسل 101 دن تک روزانہ 101 مرتبہ ورد فرمائیں۔\n\n⚠️ اہم شرعی و روحانی تنبیہ:\nیہ وظیفہ انتہائی جلالی اور پر اثر ہے۔ بغیر اجازت کے ہرگز شروع نہ فرمائیں۔",
+      "benefits": "دشمنوں کی زبان بندی، سفلی جادو کا فوری توڑ، مقدمات میں فتح، بندشوں کے خاتمے اور روزگار کی بندشیں کھولنے کے لیے اکسیرِ اعظم ہے۔",
+      "benefitsEn": "Authentic Chehal Kaaf litany from Aaina-e-Amaliyat (p. 205). Strict condition: Must not be recited without spiritual authorization (Ijazah).",
+      "pdfUrl": "uploads/chehal-kaaf.pdf",
+      "pdfDownloadName": "chehal-kaaf-aaina-e-amaliyat-p205.pdf",
+      "hasAudio": true,
+      "audioUrl": "uploads/chehal-kaaf-recitation.mp3",
+      "timingEn": "First Thursday of lunar month (fasting on Thursday is required), then daily after Fajr or Isha",
+      "repetitionsEn": "Method 1: 1,104x (1-Day Nauchandi with fast) | Method 2: 100x daily (12 days) | 41x daily (41 days) | 101x daily (101 days)",
+      "englishTranslation": "Author: Maulana Sufi Muhammad Aziz-ur-Rahman Panipati (Aaina-e-Amaliyat, page 205).\nIn the name of Allah, the Most Gracious, the Most Merciful.\nYour Lord has sufficed you from how many perils! His sufficiency is an impenetrable refuge against ambushing adversaries and grief. That affliction would attack repeatedly striking at the core, yet your Lord's sufficiency dismantled its distress for you. Whatever has befallen me, your Lord is sufficient, and the blessed letter Kaaf suffices all distress; O celestial star that shone brilliantly like the stars of heaven!",
+      "scanUrl": "uploads/chehal-kaaf-original-scan.png"
+    },
+    {
+      "id": "waz-hizb-nasr",
+      "title": "دعائے حزب النصر (Hizb-un-Nasr) - امام ابو الحسن الشاذلیؒ (برائے نصرت و فتح)",
+      "arabicText": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\nاللَّهُمَّ بِسَطْوَةِ جَبَرُوتِ قَهْرِكَ، وَبِسُرْعَةِ إِغَاثَةِ نَصْرِكَ، وَبِغَيْرَتِكَ لِانْتِهَاكِ حُرُمَاتِكَ، وَبِحِمَايَتِكَ لِمَنِ احْتَمَى بِآيَاتِكَ،\nنَسْأَلُكَ يَا اللَّهُ، يَا قَرِيبُ، يَا سَمِيعُ، يَا مُجِيبُ، يَا سَرِيعُ، يَا مُنْتَقِمُ، يَا جَبَّارُ، يَا قَهَّارُ، يَا شَدِيدَ الْبَطْشِ،\nيَا مَنْ لَا يُعْجِزُهُ قَهْرُ الْجَبَابِرَةِ، وَلَا يَعْظُمُ عَلَيْهِ هَلَاكُ الْمُتَمَرِّدَةِ مِنَ الْمُلُوكِ وَالْأَكَاسِرَةِ،\nأَنْ تَجْعَلَ كَيْدَ مَنْ كَادَنَا فِي نَحْرِهِ، وَمَكْرَ مَنْ مَكَرَ بِنَا عَائِدًا عَلَيْهِ، وَحُفْرَةَ مَنْ حَفَرَ لَنَا وَاقِعًا فِيهَا،\nوَمَنْ نَصَبَ لَنَا شَبَكَةَ الْخِدَاعِ اجْعَلْهُ يَا سَيِّدِي مُسَاقًا إِلَيْهَا، وَمُصَادًا فِيهَا، وَأَسِيرًا لَدَيْهَا.\nاللَّهُمَّ بِحَقِّ كهيعص اكْفِنَا هَمَّ الْعِدَا، وَلَقِّهِمُ الرَّدَى، وَاجْعَلْهُمْ لِكُلِّ حَبِيبٍ فِدَا، وَسَلِّطْ عَلَيْهِمْ عَاجِلَ النِّقْمَةِ فِي الْيَوْمِ وَالْغَدَا.\nاللَّهُمَّ بَدِّدْ شَمْلَهُمْ، اللَّهُمَّ فَرِّقْ جَمْعَهُمْ، اللَّهُمَّ قَلِّلْ عَدَدَهُمْ، اللَّهُمَّ اجْعَلِ الدَّائِرَةَ عَلَيْهِمْ، اللَّهُمَّ أَرْسِلِ الْعَذَابَ إِلَيْهِمْ،\nاللَّهُمَّ أَخْرِجْهُمْ عَنْ دَائِرَةِ الْحِلْمِ، وَاسْلُبْهُمْ مَدَدَ الْإِمْهَالِ، وَغُلَّ أَيْدِيَهُمْ، وَارْبِطْ عَلَى قُلُوبِهِمْ، وَلَا تُبَلِّغْهُمُ الْآمَالَ.\nاللَّهُمَّ مَزِّقْهُمْ كُلَّ مُمَزَّقٍ مَزَّقْتَهُ لِأَعْدَائِكَ انْتِصَارًا لِأَنْبِيَائِكَ وَرُسُلِكَ وَأَوْلِيَائِكَ.\n﴿فَقُطِعَ دَابِرُ الْقَوْمِ الَّذِينَ ظَلَمُوا وَالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ﴾.\nوَصَلَّى اللَّهُ عَلَى سَيِّدِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَصَحْبِهِ وَسَلَّمَ تَسْلِيمًا كَثِيرًا إِلَى يَوْمِ الدِّينِ.",
+      "transliteration": "Bismillahir-Rahmanir-Raheem. Allahumma bi-satwati jabarooti qahrika, wa bi-sur'ati ighathati nasrika...",
+      "urduTranslation": "شروع اللہ کے نام سے جو بے حد مہربان نہایت رحم والا ہے۔ اے اللہ! تیرے قہر کے غلبے اور تیری مدد کی تیز رفتار نصرت کے وسیلے سے، تیری حرمتوں پر تیری غیرت کے وسیلے سے اور تیری پناہ لینے والوں کی حفاظت کے صدقے، ہم تجھ سے التجا کرتے ہیں اے قریب، اے سننے والے، اے دعائیں قبول کرنے والے، اے جلدی حساب لینے والے، اے بدلہ لینے والے، اے زبردست قہار! تو جس نے ہمارے خلاف فریب کا جال بچھایا ہے اس کی چال اسی پر لوٹا دے اور ظالموں کو شکستِ فاش عطا فرما۔ پس ظالموں کی جڑ کاٹ دی گئی اور تمام تعریفیں اللہ ہی کے لیے ہیں جو تمام جہانوں کا رب ہے۔",
+      "repetitions": "طریقہ 1: روزانہ 12 مرتبہ (7 دن کا عمل) | طریقہ 2: روزانہ 12 مرتبہ (12 دن کا عمل) | معمول: روزانہ 3 یا 7 مرتبہ",
+      "timing": "ظلم، خطرے اور مقدمات کے وقت بعد از نمازِ عشاء یا فجر",
+      "category": "حزب النصر",
+      "categoryEn": "Hizb-un-Nasr",
+      "timingEn": "During difficulty, trial, or after Isha prayer",
+      "benefits": "حزب النصر فتح و نصرت اور ظالمین و حاسدین کے شر کو دور کرنے کی قاطع دعا ہے۔ جب دشمنوں کے شر کا خوف ہو یا جھوٹے مقدمات کا سامنا ہو تو سچے دل اور مظلومیت کے احساس کے ساتھ یہ دعا پڑھنے سے اللہ تعالیٰ حق کو فتح اور باطل کو شکست عطا فرماتے ہیں۔",
+      "benefitsEn": "The Litany of Victory by Imam ash-Shadhili for overcoming oppression, defeating slander and hostility, and securing divine triumph.",
+      "methodInstructions": "📋 طریقہ و شرائطِ دعائے حزب النصر الشریف (امام ابو الحسن الشاذلیؒ):\n\n🔹 طریقہ نمبر 1 (7 دن کا قاطع عمل - روزانہ 12 مرتبہ):\n• مسلسل 7 دن تک روزانہ بعد نمازِ عشاء یا فجر باوضو، قبلہ رخ بیٹھ کر 12 مرتبہ دعائے حزب النصر تلاوت فرمائیں۔\n\n🔹 طریقہ نمبر 2 (12 دن کا مجرب عمل - روزانہ 12 مرتبہ):\n• مسلسل 12 دن تک روزانہ باقاعدگی سے 12 مرتبہ تلاوت فرمائیں۔\n\n🔹 روزانہ کا معمول و حفاظت:\n• عمومی حفاظت اور دشمنوں کے شر سے نجات کے لیے روزانہ 3 یا 7 مرتبہ ورد میں رکھیں۔\n\n⚠️ اہم شرعی و روحانی تنبیہ:\nیہ دعا انتہائی جلالی اور تیر بہدف اثر رکھتی ہے۔ کسی پر ناحق یا ناجائز مقصد کے لیے ہرگز نہ پڑھیں۔ باقاعدہ روحانی اجازت لے کر ہی شروع فرمائیں۔",
+      "requiresIjazah": true,
+      "pdfUrl": "uploads/hizb-un-nasr.pdf",
+      "pdfDownloadName": "hizb-un-nasr-shadhili.pdf",
+      "hasAudio": true,
+      "audioUrl": "uploads/hizb-un-nasr-recitation.mp3",
+      "repetitionsEn": "Method 1: 12x daily for 7 days | Method 2: 12x daily for 12 days | Routine: 3x or 7x daily"
+    },
+    {
+      "id": "waz-khas-muharram",
+      "title": "وظائفِ محرم الحرام (مکمل 5 مسنون و مجرب اعمال از یکم تا 15 محرم)",
+      "arabicText": "۱۔ یکم محرم الحرام (بعدِ نمازِ مغرب):\nآیت الکرسی ۳۶۰ مرتبہ\n\n۲۔ یکم محرم الحرام (حزب البحر):\n۳ دن میں ۳۶۰ مرتبہ پڑھیں:\n- ۱۰ مرتبہ بعد از مغرب\n- ۵۵ مرتبہ بعد از عشاء\n- ۵۵ مرتبہ بعد از چاشت\n\n۳۔ ۱۰ محرم الحرام (یومِ عاشوراء - بعد اشراق ۳۶۵۰ مرتبہ):\nوَنُنَزِّلُ مِنَ الْقُرْآنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ لِلْمُؤْمِنِينَ\n(طریقہ: ایک چھری پر مذکورہ آیت کندہ کروا کر پڑھنے کے بعد اس پر دم کریں اور آگ پر سرخ کریں، بعد اس کے عرقِ گلاب سے ٹھنڈا کریں)\n\n۴۔ ۱۴ محرم الحرام (۱۲۰۰ مرتبہ):\nوَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ\n\n۵۔ ۱۵ محرم الحرام کی شب (۷۸۶ مرتبہ پانی میں کھڑے ہو کر):\nعَزَمْتُ عَلَيْكُمْ يَا مَعْشَرَ الرُّوْحَانِيِّيْنَ أَنْ تَنْزِلَ بِحَقِّ حم عسق",
+      "transliteration": "1st Muharram Ayat-ul-Kursi 360 times, Hizb-ul-Bahr 360 times in 3 days, 10th Muharram Wa Nunazzilu minal Qur'ani 3650 times...",
+      "urduTranslation": "محرم الحرام کے پانچوں مجرب اکسیری اعمال: یکم محرم کو ۳۶۰ بار آیت الکرسی اور ۳ دن میں ۳۶۰ بار حزب البحر، عاشوراء کے دن ۳۶۵۰ بار آیۂ شفا چھری والے عمل کے ساتھ، ۱۴ محرم کو ۱۲۰۰ بار حفظ و قوت کی آیت، اور ۱۵ محرم کی شب ۷۸۶ بار پانی میں کھڑے ہو کر دعائے روحانیین۔",
+      "repetitions": "مذکورہ تواریخ کی مخصوص تعداد کے مطابق",
+      "timing": "یکم، 10، 14 اور 15 محرم الحرام کے مخصوص اوقات",
+      "category": "خاص دنوں کے وظائف",
+      "categoryEn": "Special Days Wazaif",
+      "timingEn": "1st, 10th, 14th and 15th of Muharram-ul-Haram",
+      "benefits": "یہ پانچوں اعمال مشائخِ عملیات کے نزدیک سال بھر کے لیے حفاظت، امراض کے یقینی علاج، قوتِ باطنی اور تسخیرِ روحانیات کے لیے لاجواب خزانہ ہیں۔",
+      "benefitsEn": "The complete 5 authentic Muharram practices: 1st Muharram Ayat-ul-Kursi & Hizb-ul-Bahr, 10th Ashura Shifa blade practice, 14th Muharram protection, and 15th night litany.",
+      "methodInstructions": "📋 5 اکسیری اعمالِ محرم الحرام:\n1. یکم محرم: 360 مرتبہ آیت الکرسی شریف مع بسم اللہ، سال بھر کے لیے حفاظت کا مضبوط قلعہ۔\n2. یکم تا 3 محرم: 3 دن کے اندر 360 مرتبہ حزب البحر الشریف کی تلاوت برائے وسعتِ رزق و فتوحات۔\n3. یومِ عاشورہ (10 محرم): 3650 مرتبہ عملِ شفا از امراض (تیز دھار بلیڈ پر دم کا مستند عمل)۔\n4. 14 محرم: 1200 مرتبہ خاص ورد برائے قضائے حاجات۔\n5. 15 محرم کی رات: 786 مرتبہ بسم اللہ شریف برائے حلِ مشکلات۔"
+    },
+    {
+      "id": "waz-baraye-rishta",
+      "title": "وظیفہ برائے رشتہ (شادی و بندش کا خاتمہ - 11واں روزہ و 12ویں شب)",
+      "arabicText": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ؕ\nأَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ ﴿۱﴾ أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ ﴿۲﴾ وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ ﴿۳﴾ تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ ﴿۴﴾ فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُولٍ ﴿۵﴾",
+      "transliteration": "Alam tara kayfa fa'ala rabbuka bi-as-habil feel. Alam yaj'al kaydahum fee tadleel. Wa arsala 'alayhim tayran ababeel. Tarmeehim bi-hijaratim min sijjeel. Faja'alahum ka'asfim ma'kool.",
+      "urduTranslation": "کیا آپ نے نہیں دیکھا کہ آپ کے رب نے ہاتھی والوں کے ساتھ کیا سلوک کیا؟ کیا ان کا مکر و فریب خاک میں نہیں ملا دیا؟ اور ان پر جھنڈ کے جھنڈ پرندے بھیجے، جو ان پر پکی ہوئی مٹی کے پتھر پھینکتے تھے، پھر ان کو کھائے ہوئے بھوسے جیسا کر دیا۔",
+      "repetitions": "درودِ ابراہیمی (101 مرتبہ) | 12 رکعت نفل مع سورۃ الفیل (12 مرتبہ ہر رکعت) | درودِ ابراہیمی (101 مرتبہ)",
+      "timing": "11ویں روزے کی شام (12ویں شب) بعد نمازِ تراویح یا وقتِ تہجد",
+      "timingEn": "11th Ramadan Night (12th Night) after Taraweeh or at Tahajjud prayer",
+      "category": "وظائف برائے رشتہ و شادی",
+      "categoryEn": "Marriage & Rishta Wazaif",
+      "posterUrl": "uploads/wazifa-baraye-rishta-poster.jpg",
+      "benefits": "شادی میں ہر قسم کی رکاوٹ، رشتوں کی پرانی بندش، سفلی اثرات اور من پسند نیک صالح رشتہ ملنے کے لیے رمضان المبارک کا انتہائی مجرب و آزمودہ عمل۔ 11ویں روزے کی شام یعنی 12ویں شب کو بعد نمازِ تراویح یا تہجد باوضو ادا کریں۔ اول و آخر 101 مرتبہ درود ابراہیمی، 12 رکعت نفل (دو دو کر کے) اور ہر رکعت میں سورہ فاتحہ کے بعد 12 مرتبہ سورۃ الفیل پڑھیں۔ پورے عمل کا ہدیہ و ثواب حضور سرورِ کائنات ﷺ کی بارگاہ میں پیش کرنے کے 5 منٹ بعد پورے یقین سے شادی کے لیے دعا مانگیں اور کسی سے بات کیے بغیر سو جائیں۔",
+      "benefitsEn": "A time-tested, profound Ramadan practice for breaking stubborn marriage blockages, eliminating negative evil influences, and facilitating righteous marriage proposals. Performed on the 11th fast (12th night) after Taraweeh or at Tahajjud.",
+      "itemsList": [
+        {
+          "num": 1,
+          "text": "اول درودِ ابراہیمی (نماز والا درود پاک)",
+          "count": "101 مرتبہ",
+          "arabicText": "اَللّٰھُمَّ صَلِّ عَلٰی مُحَمَّدٍ وَّعَلٰی اٰلِ مُحَمَّدٍ کَمَا صَلَّیْتَ عَلٰی اِبْرَاہِیْمَ وَعَلٰی اٰلِ اِبْرَاہِیْمَ اِنَّکَ حَمِیْدٌ مَّجِیْدٌ ؕ\nاَللّٰھُمَّ بَارِکْ عَلٰی مُحَمَّدٍ وَّعَلٰی اٰلِ مُحَمَّدٍ کَمَا بَارَکْتَ عَلٰی اِبْرَاہِیْمَ وَعَلٰی اٰلِ اِبْرَاہِیْمَ اِنَّکَ حَمِیْدٌ مَّجِیْدٌ ؕ"
+        },
+        {
+          "num": 2,
+          "text": "12 رکعت نفل (دو دو رکعت کر کے، ہر رکعت میں سورۃ الفاتحہ کے بعد 12 مرتبہ سورۃ الفیل پڑھیں)",
+          "count": "12 رکعت نفل",
+          "arabicText": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ؕ\nأَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ ﴿۱﴾ أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ ﴿۲﴾ وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ ﴿۳﴾ تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ ﴿۴﴾ فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُولٍ ﴿۵﴾"
+        },
+        {
+          "num": 3,
+          "text": "آخر درودِ ابراہیمی (نماز والا درود پاک)",
+          "count": "101 مرتبہ",
+          "arabicText": "اَللّٰھُمَّ صَلِّ عَلٰی مُحَمَّدٍ وَّعَلٰی اٰلِ مُحَمَّدٍ کَمَا صَلَّیْتَ عَلٰی اِبْرَاہِیْمَ وَعَلٰی اٰلِ اِبْرَاہِیْمَ اِنَّکَ حَمِیْدٌ مَّجِیْدٌ ؕ\nاَللّٰھُمَّ بَارِکْ عَلٰی مُحَمَّدٍ وَّعَلٰی اٰلِ مُحَمَّدٍ کَمَا بَارَکْتَ عَلٰی اِبْرَاہِیْمَ وَعَلٰی اٰلِ اِبْرَاہِیْمَ اِنَّکَ حَمِیْدٌ مَّجِیْدٌ ؕ"
+        },
+        {
+          "num": 4,
+          "text": "پورے عمل کا ہدیہ و ثواب آنحضرت صلی اللہ علیہ و آلہ و سلم کو پہنچانا",
+          "count": "1 مرتبہ",
+          "arabicText": "اَللّٰهُمَّ تَقَبَّلْ مِنَّا وَأَوْصِلْ ثَوَابَ هٰذَا الْعَمَلِ الْمُبَارَكِ إِلَىٰ حَضْرَةِ سَيِّدِنَا وَنَبِيِّنَا مُحَمَّدٍ صَلَّى اللّٰهُ عَلَيْهِ وَآلِهِ وَسَلَّمَ"
+        },
+        {
+          "num": 5,
+          "text": "پانچ منٹ بعد پورے یقین اور عاجزی سے شادی کی دعا مانگیں، اور کسی سے بات کیے بغیر سو جائیں",
+          "count": "5 منٹ دعا",
+          "arabicText": "رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا ؕ\n(اے ہمارے رب! ہمیں ہماری بیویوں/شوہروں اور اولاد سے آنکھوں کی ٹھنڈک عطا فرما اور ہمیں پرہیزگاروں کا پیشوا بنا)"
+        }
+      ],
+      "methodInstructions": "📋 طریقہ و شرائطِ عمل برائے رشتہ (شادی کی بندش کا خاتمہ):\n• وقت و تاریخ: یہ عمل 11ویں روزے، 12ویں شب کو بعد نمازِ تراویح یا وقتِ تہجد کیا جائے۔\n• ترتیبِ عمل:\n  1. سب سے پہلے 101 مرتبہ درودِ ابراہیمی (جو نماز میں پڑھا جاتا ہے) پڑھیں۔\n  2. پھر 12 رکعت نفل نماز (دو دو رکعت کر کے، یعنی 6 سلام) ادا کریں۔ ہر رکعت میں سورۃ الفاتحہ کے بعد 12 مرتبہ سورۃ الفیل (أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ) پڑھیں۔\n  3. نماز سے فارغ ہو کر دوبارہ 101 مرتبہ درودِ ابراہیمی پڑھیں۔\n  4. پھر اس پورے مبارک عمل کا ثواب آنحضرت صلی اللہ علیہ و آلہ و سلم کی بارگاہِ اقدس میں ہدیہ پہنچایا جائے۔\n  5. پھر 5 منٹ بعد پورے یقین اور دل کی سچائی سے شادی اور نیک رشتے کے لیے دعا مانگیں، اور اس کے بعد کسی سے بھی بات کیے بغیر سو جائیں۔\n• ضروری ہدایت: نیچے دیے گئے کارڈز پر ہر مرحلے کا مکمل عربی متن اور کاؤنٹر موجود ہے۔ آپ باآسانی ہر کارڈ پر دیکھ کر پڑھ سکتے ہیں اور کاؤنٹر سے گن سکتے ہیں۔"
+    },
+    {
+      "id": "waz-ramadan-last10",
+      "title": "پرانے سے پرانا جادو ختم (رمضان المبارک کے آخری 10 دن کا خاص عمل)",
+      "arabicText": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ\n• اول و آخر درود شریف (۷ مرتبہ)\n• آیت الکرسی (۴۱ مرتبہ)\n• سُوْرَةُ الْإِخْلَاصِ ، سُوْرَةُ الْفَلَقِ ، سُوْرَةُ النَّاسِ (۴۱ مرتبہ)\n• لَا إِلٰهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ (۴۱ مرتبہ)\n• لَا إِلٰهَ إِلَّا اللّٰهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ (۱۰۰ مرتبہ)\n• اَللّٰهُ اَللّٰهُ رَبِّي لَا أُشْرِكُ بِهِ شَيْئًا (۴۱ مرتبہ)\n• اَللّٰهُمَّ إِنَّكَ عَفُوٌّ كَرِيمٌ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي (۱۰۰ مرتبہ)",
+      "transliteration": "Durood Sharif (7x), Ayatul Kursi (41x), Surah Al-Ikhlas, Al-Falaq, An-Nas (41x), Ayat-e-Kareema (41x), 4th Kalima Tawheed (100x), Allahu Allahu Rabbi La Ushriku Bihi Shai'a (41x), Allahumma Innaka Afuwwun Kareem (100x)",
+      "urduTranslation": "اول و آخر درود پاک کی برکت سے تمام دعائیں بارگاہِ الٰہی میں شرفِ قبولیت پاتی ہیں۔ آیت الکرسی اور معوذتین اللہ تعالیٰ کے قوی ترین حصار ہیں جو ہر قسم کے جادو، جنات اور شیطانی اثرات کو جلا کر راکھ کر دیتے ہیں۔ آیتِ کریمہ مصیبتوں اور لاعلاج پریشانیوں سے نجات دلاتی ہے۔ کلمۂ توحید کی تسبیح سے شیطانی لشکر بھاگ کھڑے ہوتے ہیں۔ استغفار و طلبِ عفو سے تمام گناہ اور نحوستیں مٹ جاتی ہیں۔",
+      "repetitions": "روزانہ بلا ناغہ 1 نشست (تمام 7 اوراد مقررہ تعداد کے ساتھ)",
+      "timing": "20 رمضان المبارک سے چاند رات تک (بعد نمازِ عشاء تا صبح کی اذان / اذانِ فجر)",
+      "category": "خاص دنوں کے وظائف",
+      "categoryEn": "Special Days Wazaif",
+      "timingEn": "From 20th Ramadan to Chand Raat (After Isha prayer until Fajr Adhan)",
+      "benefits": "پرانے سے پرانے، خاندانی اور لاعلاج سفلی جادو، سحر، آسیب، بندش اور نحوست کے جڑ سے خاتمے کے لیے رمضان المبارک کے آخری دس دنوں کا خاص و مجرب عمل۔ روزانہ عشاء کے بعد سے صبح کی اذان تک گھر کا ہر فرد خود کرے تو زیادہ بہتر و افضل ہے، اگر ہر فرد نہ کر سکے تو کوئی بھی ایک فرد یہ عمل کر کے پانی پر دم کر کے گھر کے تمام افراد کو پلا سکتا ہے۔ (نوٹ: اپنی استطاعت کے مطابق روزانہ صدقہ کریں)۔",
+      "benefitsEn": "A proven litany for the last 10 days of Ramadan to permanently break and eradicate the oldest, generational black magic, occult blockages, and demonic afflictions. Any single family member can recite it and blow upon water for all members to drink.",
+      "posterUrl": "uploads/ramadan-purana-jadu-poster.jpg",
+      "itemsList": [
+        {
+          "num": 1,
+          "text": "اول و آخر درود شریف",
+          "count": "7 مرتبہ",
+          "arabicText": "اَللّٰھُمَّ صَلِّ عَلٰی مُحَمَّدٍ وَّعَلٰی اٰلِ مُحَمَّدٍ کَمَا صَلَّیْتَ عَلٰی اِبْرَاہِیْمَ وَعَلٰی اٰلِ اِبْرَاہِیْمَ اِنَّکَ حَمِیْدٌ مَّجِیْدٌ ؕ\nاَللّٰھُمَّ بَارِکْ عَلٰی مُحَمَّدٍ وَّعَلٰی اٰلِ مُحَمَّدٍ کَمَا بَارَکْتَ عَلٰی اِبْرَاہِیْمَ وَعَلٰی اٰلِ اِبْرَاہِیْمَ اِنَّکَ حَمِیْدٌ مَّجِیْدٌ ؕ"
+        },
+        {
+          "num": 2,
+          "text": "آیت الکرسی",
+          "count": "41 مرتبہ",
+          "arabicText": "اللَّهُ لَا إِلٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ"
+        },
+        {
+          "num": 3,
+          "text": "سُوْرَةُ الْإِخْلَاصِ ، سُوْرَةُ الْفَلَقِ ، سُوْرَةُ النَّاسِ",
+          "count": "41 مرتبہ",
+          "arabicText": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ؕ قُلْ هُوَ اللَّهُ أَحَدٌ ﴿۱﴾ اللَّهُ الصَّمَدُ ﴿۲﴾ لَمْ يَلِدْ وَلَمْ يُولَدْ ﴿۳﴾ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ ﴿۴﴾\n\nبِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ؕ قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ﴿۱﴾ مِن شَرِّ مَا خَلَقَ ﴿۲﴾ وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ ﴿۳﴾ وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ ﴿۴﴾ وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ ﴿۵﴾\n\nبِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ؕ قُلْ أَعُوذُ بِرَبِّ النَّاسِ ﴿۱﴾ مَلِكِ النَّاسِ ﴿۲﴾ إِلَٰهِ النَّاسِ ﴿۳﴾ مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ﴿۴﴾ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ﴿۵﴾ مِنَ الْجِنَّةِ وَالنَّاسِ ﴿۶﴾"
+        },
+        {
+          "num": 4,
+          "text": "آیتِ کریمہ",
+          "count": "41 مرتبہ",
+          "arabicText": "لَّا إِلٰهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ"
+        },
+        {
+          "num": 5,
+          "text": "کلمۂ توحید (چوتھا کلمہ)",
+          "count": "100 مرتبہ",
+          "arabicText": "لَا إِلٰهَ إِلَّا اللّٰهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ"
+        },
+        {
+          "num": 6,
+          "text": "استعاذۂ توحید",
+          "count": "41 مرتبہ",
+          "arabicText": "اَللّٰهُ اَللّٰهُ رَبِّي لَا أُشْرِكُ بِهِ شَيْئًا"
+        },
+        {
+          "num": 7,
+          "text": "دعائے عفو و درگزر",
+          "count": "100 مرتبہ",
+          "arabicText": "اَللّٰهُمَّ إِنَّكَ عَفُوٌّ كَرِيمٌ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي"
+        }
+      ],
+      "methodInstructions": "📋 پرانے سے پرانا جادو ختم کرنے کا طریقہ (رمضان المبارک کے آخری 10 دن):\n• مدتِ عمل: 20 رمضان المبارک کی رات سے چاند رات تک روزانہ بلا ناغہ یہ عمل کرنا ہے (10 دن)۔\n• وقت: روزانہ عشاء کی نماز کے بعد سے صبح کی اذان تک کسی بھی وقت باوضو ہو کر پڑھیں۔\n• دم کرنے کا طریقہ: اگر گھر کا ہر فرد یہ عمل خود پڑھے تو زیادہ بہتر و افضل ہے، لیکن اگر ہر فرد نہ پڑھ سکے تو گھر کا کوئی بھی ایک فرد یہ عمل مکمل کر کے پانی پر دم کرے اور گھر کے تمام افراد کو پلا دے۔\n• صدقہ: اپنی استطاعت کے مطابق روزانہ کچھ نہ کچھ صدقہ ضرور نکالیں۔\n• ضروری ہدایت: نیچے دیے گئے 7 مبارک کارڈز پر ہر ورد کا مکمل عربی متن اور کاؤنٹر موجود ہے۔ آپ باآسانی ہر کارڈ پر دیکھ کر پڑھ سکتے ہیں اور کاؤنٹر سے گن سکتے ہیں۔",
+      "pdfUrl": "uploads/ramadan-aakhri-ashra-wazaif.pdf",
+      "pdfDownloadName": "ramadan-aakhri-ashra-wazaif.pdf"
+    },
+    {
+      "id": "waz-khas-27-ramadan",
+      "title": "شبِ 27 رمضان المبارک کے خاص اعمال (سورۃ القدر 1000 مرتبہ و ختمِ قرآنِ کریم)",
+      "arabicText": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ\n\nإِنَّا أَنْزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ ﴿۱﴾ وَمَا أَدْرَاكَ مَا لَيْلَةُ الْقَدْرِ ﴿۲﴾ لَيْلَةُ الْقَدْرِ خَيْرٌ مِنْ أَلْفِ شَهْرٍ ﴿۳﴾ تَنَزَّلُ الْمَلَائِكَةُ وَالرُّوحُ فِيهَا بِإِذْنِ رَبِّهِمْ مِنْ كُلِّ أَمْرٍ ﴿۴﴾ سَلَامٌ هِيَ حَتَّىٰ مَطْلَعِ الْفَجْرِ ﴿۵﴾",
+      "transliteration": "Inna anzalnahu fee laylatil qadr. Wa ma adraka ma laylatul qadr. Laylatul qadri khayrum min alfi shahr. Tanazzalul mala'ikatu war roohu feeha bi'idhni rabbihim min kulli amr. Salamun hiya hatta matla'il fajr.",
+      "urduTranslation": "بے شک ہم نے اس (قرآن) کو شبِ قدر میں اتارا ہے۔ اور آپ کیا سمجھے کہ شبِ قدر کیا ہے؟ شبِ قدر ہزار مہینوں سے بہتر ہے۔ اس میں فرشتے اور روح القدس (حضرت جبرائیلؑ) اپنے رب کے حکم سے ہر امرِ خیر کے ساتھ نازل ہوتے ہیں۔ وہ رات طلوعِ فجر تک سراسر سلامتی ہی سلامتی ہے۔",
+      "repetitions": "سورۃ القدر: 1000 مرتبہ (ایک ہی نشست میں بغیر کلام کیے) | تلاوتِ قرآنِ مجید: جتنا ممکن ہو یا مکمل ختم",
+      "timing": "26 رمضان المبارک بعد از نمازِ مغرب سے لے کر 27 رمضان المبارک کی مغرب تک (خاص شبِ 27 رمضان)",
+      "category": "خاص دنوں کے وظائف",
+      "categoryEn": "Special Days Wazaif",
+      "timingEn": "From 26th Ramadan Maghrib to 27th Ramadan Maghrib (Night & Day of 27th Ramadan)",
+      "benefits": "27 رمضان المبارک کی مبارک شب امتِ مسلمہ کے نزدیک شبِ قدر کی سب سے متوقع اور بابرکت ترین رات ہے۔ اس شب باوضو ہو کر ایک ہی نشست میں بیٹھ کر بغیر کسی سے بات کیے 1000 مرتبہ سورۃ القدر پڑھنے سے عمر بھر کے گناہ معاف ہو جاتے ہیں، تقدیری فتوحات اور رزق میں غیبی کشادگی نصیب ہوتی ہے، حاجات و دعائیں درجہ قبولیت پاتی ہیں اور اللہ تعالیٰ کے خصوصی انوار و تجلیات کا نزول ہوتا ہے۔ نیز 26 رمضان مغرب تا 27 رمضان مغرب زیادہ سے زیادہ تلاوتِ قرآن یا مکمل ختمِ قرآن باعثِ عظیم ثواب ہے۔",
+      "benefitsEn": "The 27th night of Ramadan is the most revered potential Night of Power (Laylat-ul-Qadr). Reciting Surah Al-Qadr 1,000 times in a single sitting without speaking bestows complete spiritual purification, divine forgiveness, miraculous breakthroughs, and rewards surpassing 1,000 months of devotion.",
+      "itemsList": [
+        {
+          "num": 1,
+          "text": "سورۃ القدر (ایک ہی نشست میں بغیر کلام کیے)",
+          "count": "1000 مرتبہ",
+          "arabicText": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ؕ\nإِنَّا أَنْزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ ﴿۱﴾ وَمَا أَدْرَاكَ مَا لَيْلَةُ الْقَدْرِ ﴿۲﴾ لَيْلَةُ الْقَدْرِ خَيْرٌ مِنْ أَلْفِ شَهْرٍ ﴿۳﴾ تَنَزَّلُ الْمَلَائِكَةُ وَالرُّوحُ فِيهَا بِإِذْنِ رَبِّهِمْ مِنْ كُلِّ أَمْرٍ ﴿۴﴾ سَلَامٌ هِيَ حَتَّىٰ مَطْلَعِ الْفَجْرِ ﴿۵﴾"
+        },
+        {
+          "num": 2,
+          "text": "تلاوتِ قرآنِ کریم (26 رمضان مغرب تا 27 رمضان مغرب)",
+          "count": "1 مرتبہ (مکمل ختم)",
+          "arabicText": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ؕ\nاقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ ﴿۱﴾ خَلَقَ الْإِنْسَانَ مِنْ عَلَقٍ ﴿۲﴾ اقْرَأْ وَرَبُّكَ الْأَكْرَمُ ﴿۳﴾ الَّذِي عَلَّمَ بِالْقَلَمِ ﴿۴﴾ عَلَّمَ الْإِنْسَانَ مَا لَمْ يَعْلَمْ ﴿۵﴾"
+        },
+        {
+          "num": 3,
+          "text": "دعائے شبِ قدر (مسنون دعا)",
+          "count": "313 مرتبہ",
+          "arabicText": "اَللّٰهُمَّ إِنَّكَ عَفُوٌّ كَرِيمٌ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي"
+        }
+      ],
+      "methodInstructions": "📋 شبِ 27 رمضان المبارک کا طریقہ و شرائطِ عمل:\n\n• 1. سورۃ القدر کا خاص اکسیری عمل (1000 مرتبہ):\n  - وقت: 27 رمضان المبارک کی شب (بعد نمازِ عشاء / تراویح) باوضو قبلہ رخ بیٹھیں۔\n  - شرطِ لازم: ایک ہی نشست میں بیٹھ کر مکمل 1000 مرتبہ سورۃ القدر پڑھنی ہے، درمیان میں کسی سے بھی بات کیے بغیر (بغیر کلام کیے)۔\n  - یہ صرف ایک ہی رات کا عمل ہے، ان شاء اللہ اس کی برکت سے تقدیری فتوحات اور گناہوں سے کامل مغفرت حاصل ہو گی۔\n\n• 2. ختمِ قرآنِ مجید و کثرتِ تلاوت:\n  - وقت: 26 رمضان المبارک کی نمازِ مغرب سے لے کر 27 رمضان المبارک کی مغرب تک (مکمل 24 گھنٹے شب و روز)۔\n  - کوشش کریں کہ اس مبارک وقت میں مکمل قرآنِ مجید کا ختم فرمائیں؛ اگر مکمل نہ ہو سکے تو جتنا زیادہ سے زیادہ پڑھ سکیں وہ بھی صحیح اور باعثِ عظیم برکت ہے۔\n\n• کاؤنٹر و سورت ریڈر: نیچے دیے گئے کارڈز پر سورۃ القدر کا مکمل عربی متن اور کاؤنٹر موجود ہے، نیز بٹن پر کلک کر کے قرآنِ مجید بھی کھول سکتے ہیں۔"
+    },
+    {
+      "id": "waz-nadi-ali",
+      "title": "نادِ علی جل جلالہ (Dua-e-Nadi Ali) - برائے فتح، نصرت و حلِ مشکلات",
+      "arabicText": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\nنَادِ عَلِیًّا جَلَّ جَلَالُہٗ مَظْھَرَ الْعَجَائِبِ\nتَجِدْہُ عَوْنًا لَّکَ فِی النَّوَائِبِ\nکُلُّ غَمٍّ وَّ ھَمٍّ سَیَنْجَلِیْ\nیَا اَللّٰہُ یَا اَللّٰہُ یَا اَللّٰہُ\nبِنُبُوَّۃِ مُحَمَّدٍ صَلَّى اللّٰہُ عَلَیْہِ وَ آلِہٖ وَسَلَّمْ\nبِوِلَایَۃِ عَلِیٍّ کَرَّمَ اللّٰہُ وَجْھَہٗ\nیَا عَلِیُّ یَا عَلِیُّ یَا عَلِیُّ جَلَّ جَلَالُہٗ",
+      "transliteration": "Nadi 'Aliyyan Jalla Jalaluhu Mazharal 'Aja'ibi, Tajidhu 'Awnan laka fin-Nawa'ibi...",
+      "urduTranslation": "پکارو علی کو جو عجائباتِ قدرت کے مظہر ہیں، تم انہیں مصیبتوں اور سختیوں میں اپنا مددگار پاؤ گے۔ ہر رنج و غم دور ہو جائے گا، یا اللہ یا اللہ یا اللہ، حضرت محمد مصطفیٰ ﷺ کی نبوت کے صدقے اور علی مرتضیٰ کرم اللہ وجہہ الکریم کی ولایت کے طفیل، یا علی یا علی یا علی جل جلالہ۔",
+      "repetitions": "روزانہ 100 مرتبہ (12 دن کا خاص عمل) | معمول: 21 یا 110 مرتبہ",
+      "timing": "بعد نمازِ عشاء یا فجر باوضو قبلہ رخ",
+      "category": "نادِ علی",
+      "categoryEn": "Nadi Ali",
+      "benefits": "نادِ علی مصائب اور سختیوں کے خاتمے، دشمنوں کے خوف سے نجات، بندشوں کو توڑنے، اور ناگہانی آفتوں سے امان پانے کے لیے صدیوں سے مجرب ترین ورد ہے۔",
+      "benefitsEn": "The renowned supplication of Nadi Ali for divine help during distress, overcoming adversaries, and opening blocked avenues.",
+      "methodInstructions": "📋 دعائے نادِ علی جل جلالہ کا خاص طریقہ و شرائطِ عمل:\n\n🔹 طریقہ نمبر 1 (12 دن کا مجرب عمل - روزانہ 100 مرتبہ):\n• مسلسل 12 دن تک بلا ناغہ روزانہ بعد نمازِ عشاء یا فجر باوضو، قبلہ رخ بیٹھ کر 100 مرتبہ نادِ علی جل جلالہ تلاوت فرمائیں۔\n• یہ طریقہ سخت ترین مشکلات، بندشوں کو توڑنے، اور دشمنوں پر فتح و غلبہ پانے کے لیے قاطع ترین عمل ہے۔\n\n🔹 طریقہ نمبر 2 (110 مرتبہ بحسابِ ابجد):\n• کسی بھی ناگہانی آفت، مقدمے یا شدید حاجت کے وقت باوضو ایک ہی نشست میں 110 مرتبہ پڑھ کر بارگاہِ الٰہی میں التجا کریں۔\n\n🔹 روزانہ کا دائمی معمول:\n• روحانی حفاظت، برکت اور بلندیِ درجات کے لیے روزانہ بعد نمازِ فجر 7 یا 21 مرتبہ ورد فرمائیں۔\n\n⚠️ اہم شرعی و روحانی تنبیہ:\nیہ کلمات انتہائی پرتاثیر اور جلالی ہیں۔ کسی پر ناحق یا ناجائز مقصد کے لیے ہرگز نہ پڑھیں۔",
+      "repetitionsEn": "100x daily (12-day special course) | Routine: 21x or 110x",
+      "timingEn": "After Isha or Fajr prayer facing Qiblah"
+    },
+    {
+      "id": "waz-khas-17-ramadan",
+      "title": "شب 17 رمضان المبارک کے وظائف (شبِ بدر - 44 سورتیں، تسبیحات و درود شریف)",
+      "arabicText": "1۔ سورۃ جن (7 مرتبہ)\n2۔ سورۃ مزمل (7 مرتبہ)\n3۔ سورۃ یس (7 مرتبہ)\n4۔ سورۃ رحمن (7 مرتبہ)\n5۔ سورۃ ملک (7 مرتبہ)\n6۔ دعائے حزب البحر الشریف (7 مرتبہ)\n7۔ منزل شریف (33 آیاتِ حفاظت) (7 مرتبہ)\n8۔ سورۃ الکہف (1 مرتبہ)\n9۔ آیت الکرسی (313 مرتبہ)\n10۔ سورۃ اخلاص (313 مرتبہ)\n11۔ سورۃ کوثر (313 مرتبہ)\n12۔ سورۃ قریش (313 مرتبہ)\n13۔ سورۃ الفاتحہ (313 مرتبہ)\n14۔ سورۃ الفلق (313 مرتبہ)\n15۔ سورۃ الناس (313 مرتبہ)\n16۔ درودِ ابراہیمی (313 مرتبہ)\n17۔ کلمۂ طیبہ (لَا إِلٰهَ إِلَّا اللّٰهُ) (313 مرتبہ)\n18۔ بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم (313 مرتبہ)\n19۔ حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ (313 مرتبہ)\n20۔ وَجَعَلْنَا مِنْ بَيْنِ أَيْدِيهِمْ سَدًّا وَمِنْ خَلْفِهِمْ سَدًّا فَأَغْشَيْنَاهُمْ فَهُمْ لَا يُبْصِرُونَ (313 مرتبہ)\n21۔ سَلَامٌ قَوْلًا مِّن رَّبٍّ رَّحِيمٍ (313 مرتبہ)\n22۔ بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ (313 مرتبہ)\n23۔ يَا لَطِيفًا بِخَلْقِهِ ، يَا عَلِيمًا بِخَلْقِهِ ، يَا خَبِيرًا بِخَلْقِهِ الْطُفْ بِنَا يَا لَطِيفُ يَا عَلِيمُ يَا خَبِيرُ (313 مرتبہ)\n24۔ فَلَمَّا أَلْقَوْا قَالَ مُوسَىٰ مَا جِئْتُم بِهِ السِّحْرُ ۖ إِنَّ اللَّهَ سَيُبْطِلُهُ ۖ إِنَّ اللَّهَ لَا يُصْلِحُ عَمَلَ الْمُفْسِدِينَ ﴿۸۱﴾ وَيُحِقُّ اللَّهُ الْحَقَّ بِكَلِمَاتِهِ وَلَوْ كَرِهَ الْمُجْرِمُونَ ﴿۸۲﴾ (313 مرتبہ)\n25۔ الم ﴿۱﴾ ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ ﴿۲﴾ (313 مرتبہ)\n26۔ إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ (313 مرتبہ)\n27۔ صُمٌّ بُكْمٌ عُمْيٌ فَهُمْ لَا يَرْجِعُونَ (313 مرتبہ)\n28۔ لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ (313 مرتبہ)\n29۔ لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ (313 مرتبہ)\n30۔ لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ لَا مَلْجَأَ وَلَا مَنْجَا مِنْكَ إِلَّا إِلَيْكَ (313 مرتبہ)\n31۔ سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ وَلَا إِلَهَ إِلَّا اللَّهُ وَاللَّهُ أَكْبَرُ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ (313 مرتبہ)\n32۔ أَسْتَغْفِرُ اللَّهَ رَبِّي مِنْ كُلِّ ذَنْبٍ وَأَتُوبُ إِلَيْهِ (313 مرتبہ)\n33۔ اَللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ، وَعَلَى آلِ سَيِّدِنَا مُحَمَّدٍ صَلَاةً دَائِمَةً مَقْبُولَةً، تُؤَدِّى بِهَا عَنَّا حَقَّهُ الْعَظِيمَ (313 مرتبہ)\n34۔ اَللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ النَّبِيِّ الْأُمِّيِّ وَعَلَى آلِهِ وَسَلِّمْ تَسْلِيمًا (313 مرتبہ)\n35۔ اَللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَسَلِّمْ (313 مرتبہ)\n36۔ اَللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ بِعَدَدِ حُسْنِهِ وَ جَمَالِهِ (313 مرتبہ)\n37۔ اَللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ بِعَدَدِ كُلِّ دَاءٍ وَّدَوَاءٍ وَّبَارِكْ وَسَلِّمْ (313 مرتبہ)\n38۔ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ (313 مرتبہ)\n39۔ صَلَّى اللَّهُ عَلَى النَّبِيِّ الْأُمِّيِّ (313 مرتبہ)\n40۔ مُحَمَّدٌ حَامِدٌ مَّحْمُودٌ دَاعٍ (313 مرتبہ)\n41۔ أَحْمَدٌ حَامِدٌ مَّحْمُودٌ دَاعٍ (313 مرتبہ)\n42۔ يَا اَللّٰهُ (313 مرتبہ)\n43۔ اسمِ ذات ----- اَللّٰه (313 مرتبہ)\n44۔ اسماء الحسنیٰ (یا رَحْمٰنُ تا آخر تمام ۹۹ اسماء) (313 مرتبہ)",
+      "transliteration": "Shab 17 Ramadan (Battle of Badr Anniversary) - 44 Sacred Surahs, Verses and Salawaat",
+      "urduTranslation": "۱۷ رمضان المبارک کی شب (شبِ بدر / یومِ فرقان) سال کی سب سے افضل اور جلالی راتوں میں سے ہے۔ اس متبرک رات میں یہ ۴۴ مخصوص قرآنی سورتیں، آیاتِ مبارکہ، صیغۂ درود شریف، کلماتِ نجات اور اسمائے حسنیٰ پڑھنے سے فتح و نصرت حاصل ہوتی ہے اور ہر بلا و سحر ختم ہوتا ہے۔",
+      "repetitions": "44 تسبیحات (تفصیل کے مطابق)",
+      "timing": "16 رمضان المبارک بعد از نمازِ مغرب سے لے کر 17 رمضان المبارک کی مغرب تک (مکمل 24 گھنٹے شب و روز)",
+      "category": "خاص دنوں کے وظائف",
+      "categoryEn": "Special Days Wazaif",
+      "timingEn": "From the Maghrib of 16th Ramadan until the Maghrib of 17th Ramadan (Full 24-Hour Period)",
+      "benefits": "17 رمضان المبارک تاریخِ اسلام کا وہ یومِ عظیم (یوم الفرقان) ہے جس دن میدانِ بدر میں کفر و اسلام کا پہلا تاریخی معرکہ (غزوہ بدر) پیش آیا۔ اس مبارک دن اللہ پاک نے حضور سید عالم ﷺ اور 313 جانثار صحابہ کرامؓ (اہلِ بدر) کی غیبی مدد فرما کر کفار پر تاریخی فتح و غلبہ عطا فرمایا۔ چونکہ اصحابِ بدر کی مقدس تعداد 313 تھی، اسی بابرکت مناسبت سے یہ اوراد 313 کی تعداد میں ترتیب دیے گئے ہیں۔ ان وظائف کی برکت سے پڑھنے والے کے گرد ہر قسم کی پریشانی، مصائب، لاعلاج بندش اور دشمنوں کے خلاف ایک ناقابلِ تسخیر 'روحانی حصن و قلعہ' قائم ہو جاتا ہے اور اللہ پاک کی خاص مدد و نصرت حاصل ہوتی ہے۔",
+      "benefitsEn": "The 17th of Ramadan marks the blessed Battle of Badr (Ghazwa-e-Badr) where Allah Almighty granted extraordinary divine help and victory to Prophet Muhammad (PBUH) and the 313 noble companions (Ahl al-Badr). In reverence to the 313 sacred companions, these litanies are prescribed 313 times. Reciting them constructs an impenetrable spiritual fortress (Hisn) around the believer against all calamities, evil magic, and afflictions.",
+      "itemsList": [
+        {
+          "num": 1,
+          "text": "سورۃ جن",
+          "count": "7 مرتبہ"
+        },
+        {
+          "num": 2,
+          "text": "سورۃ مزمل",
+          "count": "7 مرتبہ"
+        },
+        {
+          "num": 3,
+          "text": "سورۃ یس",
+          "count": "7 مرتبہ"
+        },
+        {
+          "num": 4,
+          "text": "سورۃ رحمن",
+          "count": "7 مرتبہ"
+        },
+        {
+          "num": 5,
+          "text": "سورۃ ملک",
+          "count": "7 مرتبہ"
+        },
+        {
+          "num": 6,
+          "text": "دعائے حزب البحر الشریف",
+          "count": "7 مرتبہ"
+        },
+        {
+          "num": 7,
+          "text": "منزل شریف (33 آیاتِ حفاظت)",
+          "count": "7 مرتبہ"
+        },
+        {
+          "num": 8,
+          "text": "سورۃ الکہف",
+          "count": "1 مرتبہ"
+        },
+        {
+          "num": 9,
+          "text": "آیت الکرسی",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 10,
+          "text": "سورۃ اخلاص",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 11,
+          "text": "سورۃ کوثر",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 12,
+          "text": "سورۃ قریش",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 13,
+          "text": "سورۃ الفاتحہ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 14,
+          "text": "سورۃ الفلق",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 15,
+          "text": "سورۃ الناس",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 16,
+          "text": "درودِ ابراہیمی",
+          "count": "313 مرتبہ",
+          "arabicText": "اَللّٰهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَّعَلَىٰ آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَّجِيدٌ ؕ\nاَللّٰهُمَّ بَارِكْ عَلَىٰ مُحَمَّدٍ وَّعَلَىٰ آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَّجِيدٌ"
+        },
+        {
+          "num": 17,
+          "text": "کلمۂ طیبہ (لَا إِلٰهَ إِلَّا اللّٰهُ)",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 18,
+          "text": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 19,
+          "text": "حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 20,
+          "text": "وَجَعَلْنَا مِنْ بَيْنِ أَيْدِيهِمْ سَدًّا وَمِنْ خَلْفِهِمْ سَدًّا فَأَغْشَيْنَاهُمْ فَهُمْ لَا يُبْصِرُونَ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 21,
+          "text": "سَلَامٌ قَوْلًا مِّن رَّبٍّ رَّحِيمٍ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 22,
+          "text": "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 23,
+          "text": "يَا لَطِيفًا بِخَلْقِهِ ، يَا عَلِيمًا بِخَلْقِهِ ، يَا خَبِيرًا بِخَلْقِهِ الْطُفْ بِنَا يَا لَطِيفُ يَا عَلِيمُ يَا خَبِيرُ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 24,
+          "text": "فَلَمَّا أَلْقَوْا قَالَ مُوسَىٰ مَا جِئْتُم بِهِ السِّحْرُ ۖ إِنَّ اللَّهَ سَيُبْطِلُهُ ۖ إِنَّ اللَّهَ لَا يُصْلِحُ عَمَلَ الْمُفْسِدِينَ ﴿81﴾ وَيُحِقُّ اللَّهُ الْحَقَّ بِكَلِمَاتِهِ وَلَوْ كَرِهَ الْمُجْرِمُونَ ﴿82﴾",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 25,
+          "text": "الم ﴿1﴾ ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ ﴿2﴾",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 26,
+          "text": "إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 27,
+          "text": "صُمٌّ بُكْمٌ عُمْيٌ فَهُمْ لَا يَرْجِعُونَ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 28,
+          "text": "لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 29,
+          "text": "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 30,
+          "text": "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ لَا مَلْجَأَ وَلَا مَنْجَا مِنْكَ إِلَّا إِلَيْكَ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 31,
+          "text": "سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ وَلَا إِلَهَ إِلَّا اللَّهُ وَاللَّهُ أَكْبَرُ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 32,
+          "text": "أَسْتَغْفِرُ اللَّهَ رَبِّي مِنْ كُلِّ ذَنْبٍ وَأَتُوبُ إِلَيْهِ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 33,
+          "text": "اَللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ، وَعَلَى آلِ سَيِّدِنَا مُحَمَّدٍ صَلَاةً دَائِمَةً مَقْبُولَةً، تُؤَدِّى بِهَا عَنَّا حَقَّهُ الْعَظِيمَ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 34,
+          "text": "اَللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ النَّبِيِّ الْأُمِّيِّ وَعَلَى آلِهِ وَسَلِّمْ تَسْلِيمًا",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 35,
+          "text": "اَللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَسَلِّمْ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 36,
+          "text": "اَللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ بِعَدَدِ حُسْنِهِ وَ جَمَالِهِ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 37,
+          "text": "اَللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ بِعَدَدِ كُلِّ دَاءٍ وَّدَوَاءٍ وَّبَارِكْ وَسَلِّمْ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 38,
+          "text": "صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 39,
+          "text": "صَلَّى اللَّهُ عَلَى النَّبِيِّ الْأُمِّيِّ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 40,
+          "text": "مُحَمَّدٌ حَامِدٌ مَّحْمُودٌ دَاعٍ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 41,
+          "text": "أَحْمَدٌ حَامِدٌ مَّحْمُودٌ دَاعٍ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 42,
+          "text": "يَا اَللّٰهُ",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 43,
+          "text": "اسمِ ذات ----- اَللّٰه",
+          "count": "313 مرتبہ"
+        },
+        {
+          "num": 44,
+          "text": "اسماء الحسنیٰ (یا رَحْمٰنُ تا آخر تمام 99 اسماء)",
+          "count": "313 مرتبہ"
+        }
+      ],
+      "methodInstructions": "📋 شبِ 17 رمضان المبارک (یومِ فتحِ بدر) کا طریقہ و ہدایات:\n\n• غزوہ بدر کا پس منظر و برکات: 17 رمضان المبارک کو غزوہ بدر پیش آیا تھا جس دن اللہ رب العزت نے 313 صحابہ کرامؓ کی خاص غیبی مدد فرما کر کفار پر غلبہ عطا فرمایا۔ اسی مناسبت سے یہ اوراد 313 کی تعداد میں پڑھے جاتے ہیں تاکہ پڑھنے والے کے گرد ایک مضبوط روحانی قلعہ بن جائے اور مصیبتوں سے نجات ملے۔\n\n• مبارک وقت: 16 رمضان المبارک کی مغرب سے لے کر 17 رمضان المبارک کی مغرب تک اس کا وقت ہے (مکمل 24 گھنٹے)۔\n\n• سہولت و رخصت: اگر نیچے دیے گئے تمام 44 اعمال مکمل پڑھ لیے جائیں تو بہت اعلیٰ اور بہترین ہے؛ اور اگر کوئی مکمل نہ پڑھ سکے تو جتنے اعمال پڑھ لیے جائیں وہ بھی درست اور باعثِ برکت ہیں (جتنی توفیق ہو اتنے پڑھ لیں)۔\n\n• سورتیں اور تسبیحات: جس عمل میں سورت کا نام ہے اس پر کلک کر کے آپ وہیں سے براہِ راست سورت کھول کر تلاوت کر سکتے ہیں، اور ہر عمل کے ساتھ دیے گئے کاؤنٹر سے اپنی تلاوت کا شمار کرتے جائیں۔"
+    }
+  ],
+  "fatwas": [
+    {
+      "id": "fatwa-1",
+      "fatwaNumber": "144208200155",
+      "title": "کیا قرآنی آیات کا تعویذ لٹکانا اور دم کروانا شرعاً جائز ہے؟",
+      "category": "تعویذات و جادو",
+      "categoryEn": "Taweez & Rohani Ilaj",
+      "darulIfta": "جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی",
+      "question": "السلام علیکم! کیا بیماری، نظرِ بد یا حفاظت کے لیے گلے میں قرآنی آیات اور ادعیہ ماثورہ کے تعویذ پہننا جائز ہے؟ کیا یہ شرک کے زمرے میں آتا ہے؟",
+      "answer": "الجواب حامداً ومصلیاً:\nاگر تعویذ میں قرآنِ کریم کی آیات، ادعیہ ماثورہ (احادیث میں وارد شدہ دعائیں) یا اللہ تعالیٰ کے اسماءِ حسنیٰ لکھے ہوئے ہوں، اور اس میں کوئی شرکیہ، کفریہ یا نامعلوم کلمات نہ ہوں، نیز اس بات کا پختہ عقیدہ ہو کہ شفا اور نفع و نقصان کا اصل مالک صرف اللہ تعالیٰ ہے اور تعویذ محض ایک ظاہری سبب اور وسیلہ ہے، تو ایسا تعویذ پہننا اور دم کروانا شرعاً بالاتفاق جائز اور درست ہے۔\n\nاحادیثِ مبارکہ میں جس تمیمہ (تعویذ) سے منع فرمایا گیا ہے وہ زمانہ جاہلیت کے شرکیہ اور غیر شرعی تعویذات تھے جن میں بتوں یا نامعلوم جنات کے نام ہوتے تھے۔ لہٰذا خالص قرآنی تعویذ لٹکانا اور شرعی دم کروانا بلا شبہ جائز ہے۔",
+      "references": "رد المحتار علی الدر المختار (فتاویٰ شامی): 6/363 • الفتاویٰ الہندیہ: 5/356 • مشکوٰۃ المصابیح، باب التمائم والتمائم",
+      "muftiVerification": "مفتیانِ کرام دار الافتاء جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی"
+    },
+    {
+      "id": "fatwa-2",
+      "fatwaNumber": "144310200892",
+      "title": "کیا استخارہ سے یہ معلوم ہو سکتا ہے کہ جادو کس نے کروایا ہے؟",
+      "category": "تعویذات و جادو",
+      "categoryEn": "Taweez & Rohani Ilaj",
+      "darulIfta": "جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی",
+      "question": "کیا استخارہ یا حساب کے ذریعے یہ پتہ چل سکتا ہے کہ ہمارے اوپر جادو کس نے کروایا ہے یا چوری کس نے کی ہے؟ بعض عاملین نام بتاتے ہیں، ان کی بات کی شرعی حیثیت کیا ہے؟",
+      "answer": "الجواب حامداً ومصلیاً:\nشرعی استخارہ کسی جائز و مباح کام (مثلاً شادی، نیا کاروبار، یا سفر) میں اللہ تعالیٰ سے خیر اور رہنمائی طلب کرنے کے لیے مسنون ہے، استخارہ غیب کی باتیں معلوم کرنے کا ذریعہ ہرگز نہیں ہے۔\n\nاستخارہ یا کسی نام نہاد عددی حساب سے یہ معلوم نہیں ہو سکتا کہ جادو کس نے کروایا یا چوری کس نے کی ہے۔ غیب کا مطلق علم صرف اللہ تعالیٰ کے پاس ہے۔ نام نہاد عاملین کا کسی شخص کا نام لے کر الزام لگانا محض وہم، قیاس اور جھوٹ پر مبنی ہے جس سے معاشرے میں نفرت، قطع رحمی اور بدگمانیاں پھیلتی ہیں۔ ایسی باتوں کی تصدیق کرنا اور ان پر یقین رکھنا سخت گناہ ہے۔",
+      "references": "صحیح البخاری: حدیث نمبر 1162 • روح المعانی للآلوسی: 20/12 • فتاویٰ رحیمیہ: 2/189",
+      "muftiVerification": "دار الافتاء جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی"
+    },
+    {
+      "id": "fatwa-3",
+      "fatwaNumber": "144105200341",
+      "title": "قضا نمازوں کا حساب اور ادا کرنے کا آسان فقہی طریقہ",
+      "category": "طہارت و عبادات",
+      "categoryEn": "Worship & Taharah",
+      "darulIfta": "جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی",
+      "question": "میری گزشتہ کئی سالوں کی نمازیں قضا ہو چکی ہیں، اب مجھے توبہ کی توفیق ہوئی ہے۔ قضا نمازوں کا حساب کیسے لگاؤں اور انہیں روزمرہ زندگی میں آسانی سے کیسے ادا کروں؟",
+      "answer": "الجواب حامداً ومصلیاً:\nبلوغت کے بعد سے لے کر توبہ کے وقت تک جتنی نمازیں فوت ہوئی ہیں، ان کا غالب گمان اور احتیاط کے ساتھ ایک تخمینہ لگائیں۔ مثلاً اگر 3 سال کی نمازیں قضا ہیں تو روزانہ ہر وقتی نماز کے ساتھ ایک وقتی قضا نماز پڑھنے کا معمول بنا لیں، یعنی فجر کے ساتھ ایک قضا فجر، ظہر کے ساتھ ایک قضا ظہر وغیرہ۔\n\nنیت اس طرح کریں: 'میں اپنی ذمہ باقی تمام فجر کی نمازوں میں سے سب سے پہلی قضا فجر ادا کر رہا ہوں'۔ قضا نمازوں میں وتر کی قضا بھی واجب ہے۔ اس طرح مسلسل قضا ادا کرتے رہیں جب تک دل مطمئن نہ ہو جائے کہ تمام نمازیں ادا ہو چکی ہیں۔",
+      "references": "رد المحتار علی الدر المختار: 2/68 • البحر الرائق: 2/86 • الفتاویٰ الہندیہ: 1/121",
+      "muftiVerification": "دار الافتاء جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی"
+    },
+    {
+      "id": "fatwa-4",
+      "fatwaNumber": "144211200673",
+      "title": "کیا بغیر وضو موبائل اسکرین پر قرآنِ مجید چھونا اور پڑھنا جائز ہے؟",
+      "category": "طہارت و عبادات",
+      "categoryEn": "Worship & Taharah",
+      "darulIfta": "جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی",
+      "question": "موبائل فون میں قرآنی ایپس ہوتی ہیں، کیا بے وضو حالت میں موبائل کی اسکرین پر قرآنی آیات کو ہاتھ لگانا یا اسکرین اسکرول کرنا جائز ہے؟",
+      "answer": "الجواب حامداً ومصلیاً:\nزبانی طور پر بغیر وضو قرآنِ مجید کی تلاوت کرنا جائز ہے بشرطیکہ جنابت (غسل کی ضرورت) نہ ہو۔\n\nجہاں تک موبائل اسکرین کو چھونے کا تعلق ہے، تو جس وقت موبائل اسکرین پر قرآنی آیات واضح طور پر نظر آ رہی ہوں، اس وقت بلا وضو انگلی براہِ راست آیات کے الفاظ پر رکھنا جائز نہیں ہے؛ کیونکہ اسکرین شیشے کا حصہ بن کر قرآنی کلمات کا مظہر ہے۔ البتہ موبائل کے خالی حاشیوں کو چھونا، یا کسی قلم/کور کے ذریعے اسکرول کرنا جائز ہے۔ لیکن ادب اور تقویٰ کا تقاضا یہی ہے کہ قرآن کی تلاوت ہمیشہ باوضو حالت میں کی جائے۔",
+      "references": "الدر المختار مع رد المحتار: 1/173 • امداد الفتاویٰ: 1/54 • فتاویٰ بنوری ٹاؤن آن لائن",
+      "muftiVerification": "دار الافتاء جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی"
+    },
+    {
+      "id": "fatwa-5",
+      "fatwaNumber": "144302200418",
+      "title": "شدید غصے کی حالت میں دی گئی طلاق کا شرعی وقوع",
+      "category": "نکاح و گھریلو",
+      "categoryEn": "Family & Nikah",
+      "darulIfta": "جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی",
+      "question": "شوہر نے سخت غصے میں آ کر بیوی کو طلاق کے الفاظ کہے، بعد میں کہتا ہے کہ میرا ہوش ٹھکانے نہیں تھا اور غصے میں دی گئی طلاق واقع نہیں ہوتی، اس کی کیا شرعی حقیقت ہے؟",
+      "answer": "الجواب حامداً ومصلیاً:\nشریعتِ مطہرہ میں طلاق عام طور پر غصے ہی کی حالت میں دی جاتی ہے، خوشی میں کوئی طلاق نہیں دیتا، لہٰذا محض غصے کا عذر پیش کرنے سے طلاق نہیں رکتی۔\n\nفقہی اصول کے مطابق غصے کی تین حالتیں ہیں: 1) معمولی غصہ: جس میں انسان کو اپنا اور اپنے کلام کا پورا ہوش ہوتا ہے، اس میں طلاق بالاتفاق واقع ہو جاتی ہے۔ 2) انتہائی شدت: جس میں انسان کا حواس باختہ ہو جائے، جنون اور بے ہوشی جیسی کیفیت طاری ہو جائے اور اسے پتہ ہی نہ چلے کہ اس نے کیا بولا ہے، اس نادر حالت میں طلاق واقع نہیں ہوتی۔ 3) درمیانی حالت: اس میں بھی راجح قول کے مطابق طلاق واقع ہو جاتی ہے۔ لہٰذا ایسے حساس معاملات میں زبانی بیان کی بجائے باقاعدہ فریقین کا دارالافتاء تشریف لانا ضروری ہوتا ہے۔",
+      "references": "رد المحتار علی الدر المختار: 3/243 • الفتاویٰ الہندیہ: 1/353 • فتاویٰ دار العلوم دیوبند: 9/27",
+      "muftiVerification": "دار الافتاء جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی"
+    },
+    {
+      "id": "fatwa-6",
+      "fatwaNumber": "144406200529",
+      "title": "ڈراپ شپنگ اور آن لائن ای کامرس بزنس کا شرعی ضابطہ",
+      "category": "کاروبار و مال",
+      "categoryEn": "Business & Finance",
+      "darulIfta": "جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی",
+      "question": "آن لائن کاروبار (مثلاً ڈراپ شپنگ) جس میں بیچنے والے کے پاس مال موجود نہیں ہوتا، آرڈر ملنے پر تیسری پارٹی سے کسٹمر کو بھیجتا ہے اور منافع رکھتا ہے، کیا یہ شرعاً جائز ہے؟",
+      "answer": "الجواب حامداً ومصلیاً:\nرسول اللہ ﷺ کا واضح ارشادِ گرامی ہے: «لَا تَبِعْ مَا لَيْسَ عِنْدَكَ» یعنی جو چیز تمہاری ملکیت اور قبضے میں نہ ہو اسے فروخت نہ کرو (سنن ابوداؤد: 3503)۔\n\nڈراپ شپنگ کی مروجہ صورت جس میں سیلر کے پاس مال کا قبضہ نہیں ہوتا اور وہ سودا پکا کر کے کسٹمر سے رقم لے لیتا ہے، وہ ناجائز اور بیع قبل القبض ہے۔ اس کو شرعی بنانے کی دو جائز صورتیں ہیں: 1) وکالت (کمیشن ایجنسی): سیلر خریدار کو صاف بتا دے کہ میں مال بیچ نہیں رہا بلکہ آپ کے لیے خرید کر پہنچانے کا وکیل ہوں اور اس خدمت کی طے شدہ فیس لوں گا۔ 2) وعدۂ بیع: کسٹمر سے صرف مال منگوانے کا وعدہ کرے، پھر اصل سپلائر سے مال خرید کر اپنے وکیل یا اپنے قبضے میں لینے کے بعد کسٹمر کو باقاعدہ فروخت کرے۔",
+      "references": "بدائع الصنائع فی ترتیب الشرائع: 5/147 • فتح القدیر للسیواسی: 6/514 • فتاویٰ عثمانی: 3/112",
+      "muftiVerification": "دار الافتاء جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی"
+    },
+    {
+      "id": "fatwa-7",
+      "fatwaNumber": "144109200215",
+      "title": "نظرِ بد (نظر لگنا) کا شرعی ثبوت اور مسنون نبوی علاج",
+      "category": "تعویذات و جادو",
+      "categoryEn": "Taweez & Rohani Ilaj",
+      "darulIfta": "جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی",
+      "question": "کیا نظر لگنا برحق ہے؟ اگر کسی بچے یا بڑے کو نظر لگ جائے تو شریعت میں اس کے توڑ کا کیا مسنون طریقہ بیان ہوا ہے؟",
+      "answer": "الجواب حامداً ومصلیاً:\nرسول اللہ ﷺ کا فرمانِ عالیشان ہے: «العَيْنُ حَقٌّ» یعنی نظر کا لگنا برحق ہے (صحیح البخاری: 5740)۔ حاسد کی بد نگاہی اور زہریلے اثرات سے انسان، جانور اور مال متاثر ہو سکتے ہیں۔\n\nنظرِ بد کے مسنون علاج درج ذیل ہیں:\n1. سورۃ الفاتحہ، آیت الکرسی اور معوذتین (سورۃ الفلق اور سورۃ الناس) 3، 3 بار پڑھ کر دم کریں اور پانی پر دم کر کے پلائیں۔\n2. مسنون نبوی دعا: «أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ» روزانہ صبح و شام 3 بار پڑھیں۔\n3. اگر نظر لگانے والا معلوم ہو تو حدیث کے مطابق اس کے وضو یا ہاتھ منہ دھونے کا پانی لے کر مریض کے سر و پیٹھ پر بہانا بھی مجرب و مسنون ہے۔ مرچیں جلانا وغیرہ حدیث سے ثابت نہیں، لیکن اگر کوئی شرکیہ کلمات نہ ہوں تو مباح علاج کے طور پر حرج نہیں۔",
+      "references": "صحیح البخاری: کتاب الطب • مشکوٰۃ المصابیح: 2/387 • فتح الباری لابن حجر: 10/203",
+      "muftiVerification": "دار الافتاء جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی"
+    },
+    {
+      "id": "fatwa-8",
+      "fatwaNumber": "144204200762",
+      "title": "بینک کے سودی منافع سے چھٹکارے اور خلاصی کا شرعی طریقہ",
+      "category": "کاروبار و مال",
+      "categoryEn": "Business & Finance",
+      "darulIfta": "جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی",
+      "question": "بینک میں جمع شدہ رقم پر جو سود آتا ہے اس کا کیا کیا جائے؟ کیا اس سودی رقم کو ٹیکس ادا کرنے یا اپنے کسی خرچ میں استعمال کیا جا سکتا ہے؟",
+      "answer": "الجواب حامداً ومصلیاً:\nسود لینا اور دینا دونوں شریعت میں قطعی حرام اور اللہ اور اس کے رسول ﷺ کے خلاف اعلانِ جنگ کے مترادف ہیں (سورۃ البقرہ: 279)۔\n\nاگر بینک نے اکاؤنٹ میں سود کی رقم جمع کر دی ہے تو اسے اپنے ذاتی استعمال، گھریلو خرچ، یا اپنے ذمہ عائد ٹیکس و یوٹیلیٹی بلز کی ادائیگی میں استعمال کرنا ہرگز جائز نہیں ہے۔ اس سودی رقم سے خلاصی کی شرعی صورت یہ ہے کہ اسے ثواب کی نیت کے بغیر کسی مستحقِ زکوٰۃ غریب، مسکین یا لاوارث مریض کو دے دیا جائے، یا کسی عمومی رفاہی کام میں بغیر نیتِ ثواب خرچ کر دیا جائے تاکہ اس حرام مال کے وبال سے جان چھوٹ جائے۔",
+      "references": "الفتاویٰ الہندیہ (عالمگیری): 5/349 • رد المحتار: 5/99 • فتاویٰ بنوری ٹاؤن، فتویٰ نمبر 144204200762",
+      "muftiVerification": "دار الافتاء جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی"
+    },
+    {
+      "id": "fatwa-9",
+      "fatwaNumber": "144308200194",
+      "title": "خوابوں کی شرعی حیثیت اور برے خواب سے حفاظت کے آداب",
+      "category": "متفرق مسائل",
+      "categoryEn": "General Fiqh",
+      "darulIfta": "جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی",
+      "question": "کیا اچھے یا برے خوابوں کی تعبیر ہر کسی کو بتانا درست ہے؟ برے خواب دیکھنے پر شریعت کیا رہنمائی فرماتی ہے؟",
+      "answer": "الجواب حامداً ومصلیاً:\nنبی کریم ﷺ نے فرمایا: خواب تین قسم کے ہوتے ہیں: 1) رحمانی خواب: جو سچے اور بشارت پر مبنی ہوتے ہیں۔ 2) شیطانی خواب: جو انسان کو پریشان اور غمگین کرنے کے لیے شیطان کی طرف سے وسوسہ ہوتے ہیں۔ 3) نفسانی خواب: جو دن بھر کے خیالات اور سوچوں کا عکس ہوتے ہیں (صحیح مسلم: 2261)۔\n\nاگر کوئی برا یا ڈراونا خواب دیکھے تو مسنون طریقہ یہ ہے کہ: بائیں جانب تین مرتبہ ہلکی سی تھتکار کرے، تین بار اعوذ باللہ پڑھے، اپنی کروٹ تبدیل کر لے، اور اگر چاہے تو اٹھ کر دو رکعت نفل پڑھ لے۔ سب سے اہم بات یہ کہ برا خواب کسی سے ہرگز بیان نہ کرے، تو وہ اسے کچھ نقصان نہیں پہنچائے گا۔ اچھا خواب صرف کسی دیندار، مخلص اور علم والے معبر سے بیان کیا جائے۔",
+      "references": "صحیح مسلم: کتاب الرؤیا • مرقاۃ المفاتیح شرح مشکوٰۃ المصابیح: 8/362 • فتاویٰ محمودیہ: 19/335",
+      "muftiVerification": "دار الافتاء جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی"
+    },
+    {
+      "id": "fatwa-10",
+      "fatwaNumber": "144112200481",
+      "title": "گھر میں جنات و شیاطین کے اثرات سے حفاظت کا مسنون نبوی نسخہ",
+      "category": "تعویذات و جادو",
+      "categoryEn": "Taweez & Rohani Ilaj",
+      "darulIfta": "جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی",
+      "question": "جس گھر میں آسیب یا جنات کی شکایت ہو، یا برتن گرنے اور پراسرار آوازیں آنے کی پریشانی ہو، اس گھر کو پاک کرنے کا کیا شرعی طریقہ ہے؟",
+      "answer": "الجواب حامداً ومصلیاً:\nجنات اور شیاطین کے شر سے گھر کو محفوظ رکھنے کے لیے مستند نبوی تعلیمات درج ذیل ہیں:\n1. گھر میں سورۃ البقرہ کی باقاعدگی سے تلاوت کی جائے۔ رسول اللہ ﷺ نے فرمایا: 'اپنے گھروں کو قبرستان نہ بناؤ، شیطان اس گھر سے بھاگ جاتا ہے جس میں سورۃ البقرہ پڑھی جاتی ہے' (صحیح مسلم: 780)۔\n2. صبح و شام آیت الکرسی پڑھنے کا اہتمام کریں۔\n3. گھر میں داخل ہوتے وقت اور کھانا کھاتے وقت بسم اللہ پڑھیں، اس سے شیطان گھر میں داخل ہونے اور کھانے میں شریک ہونے سے محروم ہو جاتا ہے۔\n4. جاندار کی تصاویر اور گانے باجے سے گھر کو پاک رکھیں، کیونکہ جس گھر میں تصویر یا کتا ہو وہاں رحمت کے فرشتے داخل نہیں ہوتے۔\n5. پانی پر سورۃ الفاتحہ، آیت الکرسی اور چاروں قل دم کر کے گھر کے کونوں میں چھڑکنا بھی مباح اور موثر علاج ہے۔",
+      "references": "صحیح مسلم: 780 • سنن ابوداؤد: 5096 • رد المحتار علی الدر المختار: 1/385",
+      "muftiVerification": "دار الافتاء جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی"
+    },
+    {
+      "id": "fatwa-11",
+      "fatwaNumber": "144401200326",
+      "title": "ٹیٹو (Tattoo) اور ناخن پالش کے ساتھ وضو اور نماز کا شرعی حکم",
+      "category": "طہارت و عبادات",
+      "categoryEn": "Worship & Taharah",
+      "darulIfta": "جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی",
+      "question": "کیا جسم پر مستقل ٹیٹو بنوانا جائز ہے؟ اور کیا ناخن پالش یا کاسمیٹکس لگے ہونے کی صورت میں وضو اور نماز ہو جاتی ہے؟",
+      "answer": "الجواب حامداً ومصلیاً:\nجسم کی کھال میں سوئیاں چھو کر رنگ بھرنا (مستقل ٹیٹو / گودنا) شریعتِ اسلامیہ میں قطعی ناجائز اور حرام ہے، رسول اللہ ﷺ نے ٹیٹو بنانے والی اور بنوانے والی دونوں پر لعنت فرمائی ہے (صحیح البخاری: 5937)۔ اگر کسی نے بنوا لیا ہو تو صدقِ دل سے توبہ کرے اور اگر آسانی سے بغیر نقصان کے مٹ سکتا ہو تو مٹوا لے۔\n\nجہاں تک ناخن پالش کا تعلق ہے، تو چونکہ عام نیل پالش ایک ٹھوس تہہ جما دیتی ہے جو ناخن تک پانی پہنچنے سے مانع ہوتی ہے، لہٰذا نیل پالش لگے ہوئے وضو یا غسل ہرگز صحیح نہیں ہوتا، اور جب وضو نہ ہو تو نماز بھی ادا نہیں ہوتی۔ وضو سے پہلے نیل پالش کو مکمل طور پر چھڑانا لازم ہے۔ البتہ قدرتی مہندی کا رنگ لگانے سے وضو ہو جاتا ہے کیونکہ اس کی کوئی موٹی تہہ نہیں بنتی۔",
+      "references": "صحیح البخاری: کتاب اللباس • الدر المختار مع رد المحتار: 1/154 • الفتاویٰ الہندیہ: 1/4",
+      "muftiVerification": "دار الافتاء جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی"
+    },
+    {
+      "id": "fatwa-12",
+      "fatwaNumber": "144209200812",
+      "title": "والدین کی رضامندی کے بغیر خفیہ نکاح یا کورٹ میرج کی شرعی حیثیت",
+      "category": "نکاح و گھریلو",
+      "categoryEn": "Family & Nikah",
+      "darulIfta": "جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی",
+      "question": "لڑکا اور لڑکی اگر والدین کو بتائے بغیر خفیہ طور پر دو گواہوں کی موجودگی میں کورٹ میرج کر لیں، تو کیا یہ نکاح شرعاً منعقد ہو جاتا ہے؟",
+      "answer": "الجواب حامداً ومصلیاً:\nاگر عاقل اور بالغ لڑکا اور لڑکی دو مسلمان عاقل بالغ مرد گواہوں (یا ایک مرد اور دو عورتوں) کی موجودگی میں ایجاب و قبول کر لیں، تو فقہ حنفی کے مفتیٰ بہ قول کے مطابق نکاح شرعاً منعقد ہو جاتا ہے۔\n\nلیکن والدین کو لاعلم رکھ کر چھپ کر نکاح کرنا یا کورٹ میرج کرنا شریعت اور اخلاق کی رو سے سخت قبیح، ناپسندیدہ اور خاندانی بے برکتی کا باعث ہے۔ نیز اس میں ایک اہم شرعی شرط 'کفاءت' (یعنی لڑکے کا لڑکی کے خاندان اور دین داری میں ہم پلہ ہونا) اور 'مہرِ مثل' ہے۔ اگر لڑکی نے غیر کفو میں یا مہرِ مثل سے کم پر والدین کی اجازت کے بغیر نکاح کیا ہو، تو لڑکی کے ولی (والد وغیرہ) کو عدالت کے ذریعے اس نکاح کو فسخ کروانے کا شرعی حق حاصل ہوتا ہے۔ لہٰذا والدین کی سرپرستی اور برکت کے ساتھ ہی نکاح کرنا چاہیے۔",
+      "references": "الدر المختار مع رد المحتار: 3/56 • بدائع الصنائع: 2/317 • الفتاویٰ الہندیہ: 1/292",
+      "muftiVerification": "دار الافتاء جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD-449765",
+      "itemName": "Test Taweez",
+      "customerName": "Test User",
+      "fatherName": "Father",
+      "motherName": "Mother",
+      "targetName": "",
+      "targetMotherName": "",
+      "purpose": "",
+      "phone": "03331234567",
+      "city": "Not specified",
+      "address": "Lahore",
+      "notes": "",
+      "hadya": 2200,
+      "paymentMethod": "Bank / EasyPaisa / JazzCash",
+      "hasSlip": false,
+      "hasCustomImage": false,
+      "status": "pending",
+      "createdAt": "2026-09-20T10:17:29.767Z"
+    }
+  ]
+};
+  if (typeof window !== 'undefined') window.KHIZRI_INITIAL_DATA = data;
+  if (typeof global !== 'undefined') global.KHIZRI_INITIAL_DATA = data;
+  if (typeof module !== 'undefined' && module.exports) module.exports = data;
+})(typeof globalThis !== 'undefined' ? globalThis : this);

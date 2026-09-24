@@ -45,3 +45,5 @@ start_tunnel.js
 transcribe_*.py
 ONLINE_LINKS.txt
 start_direct_link.bat
+
+scripts/
