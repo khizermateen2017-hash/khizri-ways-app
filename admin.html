@@ -395,7 +395,8 @@
             <table class="admin-table" id="wazaifTable">
               <thead>
                 <tr>
-                  <th>Wazifa Title</th>
+                  <th>Preview / فوٹو</th>
+                  <th>Wazifa / Taweez Title</th>
                   <th>Arabic Text</th>
                   <th>Target Repetitions</th>
                   <th>Category</th>
@@ -772,62 +773,88 @@
     </div>
   </div>
 
-  <!-- Modal: Add Wazifa -->
+  <!-- Modal: Add Wazifa / Sacred Taweez -->
   <div class="admin-modal-backdrop" id="modalAddWazifa">
-    <div class="admin-modal">
+    <div class="admin-modal modal-lg">
       <div class="modal-head">
-        <h4><i class="fa-solid fa-book-quran"></i> Add New Wazifa / Supplication</h4>
+        <h4><i class="fa-solid fa-scroll text-gold"></i> Publish New Wazifa or Daily Sacred Taweez (نقش و وظیفہ)</h4>
         <button class="modal-close" onclick="closeModal('modalAddWazifa')"><i class="fa-solid fa-xmark"></i></button>
       </div>
-      <form id="addWazifaForm">
+      <form id="addWazifaForm" enctype="multipart/form-data">
         <div class="modal-body">
-          <div class="form-group">
-            <label>Wazifa Title *</label>
-            <input type="text" id="wazTitle" class="form-control" required placeholder="e.g. Wazifa for Health & Shifa">
+          
+          <!-- Image / Photo Upload Box -->
+          <div class="form-group" style="background:#F0FDF4; border:2px dashed #10B981; border-radius:12px; padding:16px; margin-bottom:16px;">
+            <label style="font-weight:800; color:#047857; font-size:0.95rem; display:flex; align-items:center; gap:8px;">
+              <i class="fa-solid fa-camera"></i> نقش یا وظیفے کی تصویر اپلوڈ کریں (Upload Taweez / Wazifa Photo)
+            </label>
+            <p style="font-size:0.78rem; color:#065F46; margin:4px 0 10px 0;">
+              اپنے موبائل کیمرے سے کھینچی گئی یا گیلری/کمپیوٹر کی تصویر (JPG, PNG) منتخب کریں۔ یہ فوٹو ایپ پر VIP روزانہ تعویذ میں فوراً لائیو نظر آئے گی۔
+            </p>
+            <input type="file" id="wazImageFile" name="imageFile" accept="image/*" class="form-control" onchange="previewWazifaImage(event)">
+            
+            <div id="wazImagePreviewContainer" style="display:none; margin-top:12px; text-align:center; background:#FFF; padding:10px; border-radius:8px; border:1px solid #A7F3D0;">
+              <div style="font-size:0.75rem; color:#059669; font-weight:700; margin-bottom:6px;">منتخب شدہ تصویر کا پیش منظر (Preview):</div>
+              <img id="wazImagePreview" src="" alt="Taweez Preview" style="max-height:220px; max-width:100%; object-fit:contain; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+            </div>
+          </div>
+
+          <!-- VIP Community Broadcast Toggle -->
+          <div class="form-group" style="background:#FFFBEB; border:1.5px solid #FCD34D; border-radius:10px; padding:12px; margin-bottom:16px;">
+            <label style="display:flex; align-items:center; gap:10px; cursor:pointer; font-weight:800; color:#92400E; margin:0; font-size:0.9rem;">
+              <input type="checkbox" id="wazIsVipCommunity" name="isVipCommunity" value="true" checked style="width:20px; height:20px; accent-color:#D97706;">
+              <span><i class="fa-solid fa-crown text-gold"></i> VIP کمیونٹی پورٹل اور "آج کا مجرب تعویذ" پر لائیو کریں (Broadcast to Daily VIP Portal)</span>
+            </label>
+            <p style="font-size:0.75rem; color:#B45309; margin:4px 0 0 30px;">
+              اسے آن رکھنے پر یہ نقش ایپ کے "آج کا مجرب تعویذ" والے خانے میں خودکار طور پر سب سے اوپر شائع ہو جائے گا۔
+            </p>
           </div>
 
           <div class="form-group">
-            <label>Arabic Text (عربی متن) *</label>
-            <textarea id="wazArabic" class="form-control arabic-input" rows="2" required placeholder="أعوذ بكلمات الله التامات..."></textarea>
+            <label>عنوان / نامِ تعویذ و وظیفہ (Title) *</label>
+            <input type="text" id="wazTitle" class="form-control" required placeholder="مثال: نقشِ کشائشِ رزق و برکت یا وظیفہ شفائے امراض">
           </div>
 
           <div class="form-group">
-            <label>English Transliteration</label>
-            <input type="text" id="wazTranslit" class="form-control" placeholder="e.g. Allahumma Salli Ala...">
-          </div>
-
-          <div class="form-group">
-            <label>Urdu / English Translation</label>
-            <textarea id="wazUrdu" class="form-control" rows="2" placeholder="Translation and meaning..."></textarea>
+            <label>عربی متن یا اسمائے الٰہی (Arabic Text / Asma-ul-Husna)</label>
+            <textarea id="wazArabic" class="form-control arabic-input" rows="2" placeholder="يا فتاح يا رزاق يا غني يا مغني... (اگر صرف تصویر ہے تو خالی چھوڑ سکتے ہیں)"></textarea>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label>Target Repetitions</label>
-              <input type="text" id="wazRepetitions" class="form-control" value="100 times">
+              <label>کیٹیگری (Category)</label>
+              <select id="wazCategory" class="form-control">
+                <option value="VIP Daily Taweez">VIP Daily Taweez (روزانہ تعویذ)</option>
+                <option value="Rizq & Wealth">Rizq & Wealth (رزق و برکت)</option>
+                <option value="Protection / Hifazat">Protection & Hisar (حفاظت و حصار)</option>
+                <option value="Shifa / Health">Shifa & Health (شفا و صحت)</option>
+                <option value="Durood Sharif">Durood Sharif (درود شریف)</option>
+                <option value="Problem Solving">Problem Solving (حلِ مشکلات)</option>
+                <option value="General Wazifa">General Wazifa (عام وظیفہ)</option>
+              </select>
             </div>
             <div class="form-group">
-              <label>Category</label>
-              <select id="wazCategory" class="form-control">
-                <option value="Durood Sharif">Durood Sharif</option>
-                <option value="Protection / Hifazat">Protection & Hisar</option>
-                <option value="Shifa / Health">Shifa & Health</option>
-                <option value="Rizq & Wealth">Rizq & Wealth</option>
-                <option value="Problem Solving">Problem Solving</option>
-              </select>
+              <label>تعداد یا وقت (Repetitions / Timing)</label>
+              <input type="text" id="wazRepetitions" class="form-control" value="100 یا 313 مرتبہ (بعد نماز فجر یا عشاء)">
             </div>
           </div>
 
           <div class="form-group">
-            <label>Virtues & Benefits</label>
-            <textarea id="wazBenefits" class="form-control" rows="2" placeholder="Benefits of regular recitation..."></textarea>
+            <label>طریقہ کار و باطنی ہدایات (Method & Ritual Instructions)</label>
+            <textarea id="wazMethodInstructions" class="form-control" rows="3" placeholder="باوضو قبلہ رخ بیٹھ کر اول و آخر 11 بار درود شریف پڑھیں، نقش کو زعفران سے تحریر کر کے پاس رکھیں..."></textarea>
           </div>
+
+          <div class="form-group">
+            <label>روحانی فوائد و فضائل (Virtues & Benefits)</label>
+            <textarea id="wazBenefits" class="form-control" rows="2" placeholder="رزق کی فراوانی، کاروبار میں برکت اور ناگہانی آفات سے حفاظت..."></textarea>
+          </div>
+
         </div>
 
         <div class="modal-foot">
-          <button type="button" class="btn-cancel" onclick="closeModal('modalAddWazifa')">Cancel</button>
-          <button type="submit" class="btn-primary-gold">
-            <i class="fa-solid fa-plus"></i> Save Wazifa
+          <button type="button" class="btn-cancel" onclick="closeModal('modalAddWazifa')">Cancel (منسوخ)</button>
+          <button type="submit" class="btn-primary-gold" id="btnSubmitWazifa">
+            <i class="fa-solid fa-cloud-arrow-up"></i> Publish Live (ابھی لائیو شائع کریں)
           </button>
         </div>
       </form>
