@@ -211,31 +211,43 @@ function initForms() {
     });
   }
 
-  // 4. Add Wazifa Form
+  // 4. Add Wazifa / Taweez Form (Supports Image & VIP Broadcast)
   const addWazifaForm = document.getElementById('addWazifaForm');
   if (addWazifaForm) {
     addWazifaForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const body = {
-        title: document.getElementById('wazTitle').value,
-        arabicText: document.getElementById('wazArabic').value,
-        transliteration: document.getElementById('wazTranslit').value,
-        urduTranslation: document.getElementById('wazUrdu').value,
-        repetitions: document.getElementById('wazRepetitions').value,
-        category: document.getElementById('wazCategory').value,
-        benefits: document.getElementById('wazBenefits').value
-      };
+      const btn = document.getElementById('btnSubmitWazifa');
+      const originalText = btn ? btn.innerHTML : '';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Publishing...';
+      }
+
+      const formData = new FormData();
+      formData.append('title', (document.getElementById('wazTitle')?.value || '').trim());
+      formData.append('arabicText', (document.getElementById('wazArabic')?.value || '').trim());
+      formData.append('category', (document.getElementById('wazCategory')?.value || 'Daily Wazaif & Taweezat').trim());
+      formData.append('repetitions', (document.getElementById('wazRepetitions')?.value || '100 مرتبہ').trim());
+      formData.append('methodInstructions', (document.getElementById('wazMethodInstructions')?.value || '').trim());
+      formData.append('benefits', (document.getElementById('wazBenefits')?.value || '').trim());
+      formData.append('isVipCommunity', document.getElementById('wazIsVipCommunity')?.checked ? 'true' : 'false');
+
+      const fileInput = document.getElementById('wazImageFile');
+      if (fileInput && fileInput.files[0]) {
+        formData.append('imageFile', fileInput.files[0]);
+      }
 
       try {
         const res = await fetch('/api/wazaif', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
+          body: formData
         });
         const result = await res.json();
         if (result.success) {
-          showAdminToast('Wazifa saved successfully!');
+          showAdminToast('نقش و وظیفہ کامیابی سے لائیو شائع ہو گیا!');
           addWazifaForm.reset();
+          const prevContainer = document.getElementById('wazImagePreviewContainer');
+          if (prevContainer) prevContainer.style.display = 'none';
           closeModal('modalAddWazifa');
           loadWazaif();
           loadOverviewStats();
@@ -243,7 +255,12 @@ function initForms() {
           alert(result.message);
         }
       } catch (err) {
-        alert('Error saving wazifa: ' + err.message);
+        alert('Error publishing: ' + err.message);
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = originalText;
+        }
       }
     });
   }
@@ -414,7 +431,24 @@ async function loadVideos() {
   }
 }
 
-// 5. Load Wazaif
+// Helper: Live preview of selected Wazifa / Taweez Image
+window.previewWazifaImage = function(event) {
+  const file = event.target.files && event.target.files[0];
+  const container = document.getElementById('wazImagePreviewContainer');
+  const img = document.getElementById('wazImagePreview');
+  if (file && img && container) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      img.src = e.target.result;
+      container.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  } else if (container) {
+    container.style.display = 'none';
+  }
+};
+
+// 5. Load Wazaif & Taweezat
 async function loadWazaif() {
   try {
     const res = await fetch('/api/wazaif').then(r => r.json());
@@ -422,25 +456,41 @@ async function loadWazaif() {
     if (!tbody) return;
 
     if (!res.success || res.data.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px;">No wazaif entries found. Click "Add New Wazifa" above.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:24px;">No wazaif entries found. Click "Add New Wazifa" above.</td></tr>`;
       return;
     }
 
-    tbody.innerHTML = res.data.map(waz => `
-      <tr>
-        <td class="tbl-title">${escapeHtml(waz.title)}</td>
-        <td style="font-family:var(--font-arabic);font-size:1.1rem;color:var(--khizri-navy-primary);direction:rtl;text-align:right;">${escapeHtml(waz.arabicText)}</td>
-        <td>${escapeHtml(waz.repetitions || '100')}</td>
-        <td><span class="tbl-badge">${escapeHtml(waz.category)}</span></td>
-        <td>
-          <div class="tbl-actions">
-            <button class="btn-action-delete" onclick="deleteWazifa('${waz.id}')" title="Delete Wazifa">
-              <i class="fa-solid fa-trash-can"></i> Delete
-            </button>
-          </div>
-        </td>
-      </tr>
-    `).join('');
+    tbody.innerHTML = res.data.map(waz => {
+      const hasImg = waz.imageUrl && waz.imageUrl.trim() !== '';
+      const thumbHtml = hasImg 
+        ? `<a href="${escapeHtml(waz.imageUrl)}" target="_blank"><img src="${escapeHtml(waz.imageUrl)}" alt="Taweez" style="width:48px;height:48px;object-fit:cover;border-radius:6px;border:1px solid #10B981;box-shadow:0 2px 6px rgba(0,0,0,0.1);"></a>`
+        : `<div style="width:48px;height:48px;border-radius:6px;background:#F1F5F9;display:flex;align-items:center;justify-content:center;color:#94A3B8;"><i class="fa-solid fa-scroll"></i></div>`;
+      
+      const vipTag = waz.isVipCommunity 
+        ? `<span style="background:#FEF3C7;color:#D97706;border:1px solid #FCD34D;font-size:0.68rem;padding:2px 6px;border-radius:4px;font-weight:700;margin-left:6px;"><i class="fa-solid fa-crown text-gold"></i> VIP Portal</span>`
+        : '';
+
+      return `
+        <tr>
+          <td style="text-align:center; width:60px;">${thumbHtml}</td>
+          <td class="tbl-title">
+            <div style="font-weight:700; color:var(--khizri-navy-primary);">${escapeHtml(waz.title)} ${vipTag}</div>
+            ${waz.methodInstructions ? `<div style="font-size:0.75rem; color:var(--text-muted); max-width:280px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${escapeHtml(waz.methodInstructions)}</div>` : ''}
+          </td>
+          <td style="font-family:var(--font-arabic);font-size:1.05rem;color:var(--khizri-navy-primary);direction:rtl;text-align:right;">${escapeHtml(waz.arabicText || '-')}</td>
+          <td>${escapeHtml(waz.repetitions || '100')}</td>
+          <td><span class="tbl-badge">${escapeHtml(waz.category || 'General')}</span></td>
+          <td>
+            <div class="tbl-actions">
+              ${hasImg ? `<a href="${escapeHtml(waz.imageUrl)}" target="_blank" class="btn-action-view" title="View Full Photo"><i class="fa-solid fa-up-right-from-square"></i> Photo</a>` : ''}
+              <button class="btn-action-delete" onclick="deleteWazifa('${waz.id}')" title="Delete Wazifa">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
   } catch (e) {
     console.error(e);
   }

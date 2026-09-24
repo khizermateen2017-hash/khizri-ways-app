@@ -11,7 +11,8 @@ const PORT = process.env.PORT || 5000;
 const uploadDir = path.join(__dirname, 'uploads');
 const pdfDir = path.join(uploadDir, 'pdfs');
 const thumbDir = path.join(uploadDir, 'thumbnails');
-[uploadDir, pdfDir, thumbDir].forEach(dir => {
+const wazaifDir = path.join(uploadDir, 'wazaif');
+[uploadDir, pdfDir, thumbDir, wazaifDir].forEach(dir => {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }

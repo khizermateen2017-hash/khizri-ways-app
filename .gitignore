@@ -1,4 +1,4 @@
-﻿# Dependencies
+# Dependencies
 node_modules/
 
 # Logs
@@ -25,3 +25,23 @@ scratch/
 # Binaries
 *.exe
 cloudflared.exe
+
+# Scratch & Temporary
+*.wav
+*.ogg.txt
+transcription*.txt
+voice_*.txt
+*.bak*
+cf_runner.js
+tunnel_runner.js
+find_tabs.js
+app_js_diff.txt
+out_inspect.txt
+previous_voices.txt
+products_code_context.txt
+public_url.txt
+search_results.txt
+start_tunnel.js
+transcribe_*.py
+ONLINE_LINKS.txt
+start_direct_link.bat

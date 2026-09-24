@@ -67,6 +67,8 @@ const i18n = {
     titleKhawab: 'Khawab Ki Tabeer',
     featWazaif: 'Khas<br>Wazaif',
     featPdfBooks: 'PDF<br>Books',
+    featProducts: 'Spiritual<br>Products',
+    titleProducts: 'Spiritual Products & Tabarrukat',
     featPrayer: 'Prayer',
     featQibla: 'Qibla',
     featTasbeeh: 'Tasbeeh',
@@ -139,6 +141,8 @@ const i18n = {
     titleKhawab: 'تعبیر الروءیا - خوابوں کی تعبیر',
     featWazaif: 'خاص<br>وظائف',
     featPdfBooks: 'پی ڈی ایف<br>کتب',
+    featProducts: 'روحانی<br>پراڈکٹس',
+    titleProducts: 'متبرک روحانی پراڈکٹس و تبرکات',
     featPrayer: 'اوقاتِ<br>نماز',
     featQibla: 'قبلہ<br>رخ',
     featTasbeeh: 'ڈیجیٹل<br>تسبیح',
@@ -677,12 +681,105 @@ window.calcZakat = function() {
   }
 };
 
-// WhatsApp Consult Link
+// WhatsApp Consult Modal & Direct Consultation
 window.openWhatsAppConsult = function(customMsg) {
-  const phone = (state.settings && state.settings.whatsapp ? state.settings.whatsapp.replace(/[^0-9]/g, '') : '') || '923317704807';
-  const defaultMsg = 'السلام علیکم، مجھے خضریٰ ویز سے روحانی علاج، وظائف، اور استخارہ کے بارے میں رہنمائی چاہیے۔';
-  const text = encodeURIComponent(customMsg || defaultMsg);
-  window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+  if (typeof window.initCountryDropdowns === 'function') {
+    window.initCountryDropdowns('Pakistan');
+  }
+
+  // Pre-fill purpose or message if customMsg given
+  const msgEl = document.getElementById('directConsultMessage');
+  const purposeEl = document.getElementById('directConsultPurpose');
+  if (customMsg) {
+    if (msgEl) msgEl.value = customMsg;
+    if (purposeEl) {
+      if (customMsg.includes('سحر') || customMsg.includes('Magic') || customMsg.includes('جادو')) {
+        purposeEl.value = 'سحر و کالا جادو کا مستقل توڑ (Black Magic Removal)';
+      } else if (customMsg.includes('جنات') || customMsg.includes('Jinn') || customMsg.includes('آسیب')) {
+        purposeEl.value = 'جنات و آسیبی خلل کا علاج (Jinn & Demonic Possession)';
+      } else if (customMsg.includes('نظر') || customMsg.includes('Nazar') || customMsg.includes('Evil Eye')) {
+        purposeEl.value = 'نظرِ بد اور بندش کی کاٹ (Evil Eye & Obstacles)';
+      } else if (customMsg.includes('استخارہ') || customMsg.includes('Istikhara') || customMsg.includes('تشخیص')) {
+        purposeEl.value = 'استخارہ و باطنی روحانی تشخیص (Istikhara & Spiritual Diagnosis)';
+      } else if (customMsg.includes('لطائف') || customMsg.includes('چاکراز') || customMsg.includes('Meditation') || customMsg.includes('Lataif')) {
+        purposeEl.value = 'باطنی چاکراز و لطائف کی بیداری (Chakras & Spiritual Awakening)';
+      } else if (customMsg.includes('گھریلو') || customMsg.includes('Family') || customMsg.includes('ناچاقی')) {
+        purposeEl.value = 'گھریلو ناچاقی و میاں بیوی کے تنازعات (Family Peace & Marital Harmony)';
+      } else if (customMsg.includes('تعویذ') || customMsg.includes('Taweez')) {
+        purposeEl.value = 'مجرب قرآنی تعویذات کی طلب (Taweezat Inquiry)';
+      } else if (customMsg.includes('خواب') || customMsg.includes('Dream')) {
+        purposeEl.value = 'خواب کی تعبیر و شرعی رہنمائی (Dream Interpretation & Guidance)';
+      }
+    }
+  }
+
+  if (typeof openModal === 'function' && document.getElementById('modalDirectWhatsAppConsult')) {
+    openModal('modalDirectWhatsAppConsult');
+  } else {
+    const phone = (state.settings && state.settings.whatsapp ? state.settings.whatsapp.replace(/[^0-9]/g, '') : '') || '923317704807';
+    const defaultMsg = 'السلام علیکم، مجھے خضریٰ ویز سے روحانی علاج، وظائف، اور استخارہ کے بارے میں رہنمائی چاہیے۔';
+    const text = encodeURIComponent(customMsg || defaultMsg);
+    window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+  }
+};
+
+window.submitDirectWhatsAppConsult = function() {
+  const name = document.getElementById('directConsultName')?.value.trim();
+  const address = document.getElementById('directConsultAddress')?.value.trim();
+  const profession = document.getElementById('directConsultProfession')?.value.trim();
+  const purpose = document.getElementById('directConsultPurpose')?.value.trim();
+  const country = document.getElementById('directConsultCountry')?.value.trim() || 'Pakistan';
+  const phone = document.getElementById('directConsultPhone')?.value.trim();
+  const message = document.getElementById('directConsultMessage')?.value.trim();
+
+  if (!name) {
+    showToast('براہِ کرم اپنا نام درج فرمائیں (Please enter your name)');
+    document.getElementById('directConsultName')?.focus();
+    return;
+  }
+  if (!address) {
+    showToast('براہِ کرم اپنا شہر و پتہ درج فرمائیں (Please enter your address/city)');
+    document.getElementById('directConsultAddress')?.focus();
+    return;
+  }
+  if (!profession) {
+    showToast('براہِ کرم اپنا پیشہ / کام درج فرمائیں (Please enter your profession)');
+    document.getElementById('directConsultProfession')?.focus();
+    return;
+  }
+  if (!purpose) {
+    showToast('براہِ کرم رابطے کا مقصد منتخب فرمائیں (Please select purpose)');
+    document.getElementById('directConsultPurpose')?.focus();
+    return;
+  }
+  if (!phone) {
+    showToast('براہِ کرم اپنا واٹس ایپ نمبر درج فرمائیں (Please enter WhatsApp number)');
+    document.getElementById('directConsultPhone')?.focus();
+    return;
+  }
+
+  const msg = `🌿 *خضریٰ ویز — براہِ راست رابطہ و روحانی مشاورت فارم* 🌿\n` +
+    `━━━━━━━━━━━━━━━━━━━━\n` +
+    `👤 *سائل / سائلہ کا نام:* ${name}\n` +
+    `📍 *شہر و پتہ:* ${address}\n` +
+    `💼 *پیشہ (Profession):* ${profession}\n` +
+    `🎯 *رابطے کا مقصد:* ${purpose}\n` +
+    `📱 *رابطہ واٹس ایپ:* ${country} - ${phone}\n` +
+    (message ? `📝 *مسئلے کی تفصیل:* ${message}\n` : '') +
+    `━━━━━━━━━━━━━━━━━━━━\n` +
+    `السلام علیکم حضرت مفتی خضر متین صاحب! میں نے خضریٰ ویز ایپ سے اپنی تفصیلات ارسال کی ہیں۔ براہِ کرم وقت اور رہنمائی عنایت فرمائیں۔ جزاکم اللہ خیراً۔`;
+
+  closeModal('modalDirectWhatsAppConsult');
+  const targetPhone = (state.settings && state.settings.whatsapp ? state.settings.whatsapp.replace(/[^0-9]/g, '') : '') || '923317704807';
+  const waUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(msg)}`;
+  window.open(waUrl, '_blank');
+  showToast('مشاورت فارم واٹس ایپ پر ارسال کیا جا رہا ہے...');
+};
+
+window.skipToRawWhatsApp = function() {
+  closeModal('modalDirectWhatsAppConsult');
+  const targetPhone = (state.settings && state.settings.whatsapp ? state.settings.whatsapp.replace(/[^0-9]/g, '') : '') || '923317704807';
+  window.open(`https://wa.me/${targetPhone}?text=${encodeURIComponent('السلام علیکم مفتی صاحب، مجھے خضریٰ ویز سے روحانی رہنمائی درکار ہے۔')}`, '_blank');
 };
 
 // Live Streams (Makkah & Madina)
@@ -2723,7 +2820,7 @@ window.playWazifaAudio = function(btn, wazifaId) {
 
   // Find item audioUrl from state.wazaif or fallback to downloaded Qari recitations
   const item = (state.wazaif || []).find(w => w.id === wazifaId);
-  const audioSrc = item?.audioUrl || (wazifaId === 'waz-manzil' ? '/uploads/manzil-qari-recitation.mp3' : (wazifaId === 'waz-hizb-bahr' ? '/uploads/hizb-ul-bahr-recitation.mp3' : (wazifaId === 'waz-hizb-nasr' ? '/uploads/hizb-un-nasr-recitation.mp3' : (wazifaId === 'waz-chehal-kaaf' ? '/uploads/chehal-kaaf-recitation.mp3?v=20260918_echo' : null))));
+  const audioSrc = item?.audioUrl || (wazifaId === 'waz-manzil' ? 'uploads/manzil-qari-recitation.mp3' : (wazifaId === 'waz-hizb-bahr' ? 'uploads/hizb-ul-bahr-recitation.mp3' : (wazifaId === 'waz-hizb-nasr' ? 'uploads/hizb-un-nasr-recitation.mp3' : (wazifaId === 'waz-chehal-kaaf' ? 'uploads/chehal-kaaf-recitation.mp3?v=20260918_echo' : null))));
 
   if (audioSrc) {
     btn.classList.add('playing');
@@ -2782,19 +2879,88 @@ window.countModuleWazifa = function(btn, target) {
 // INTERACTIVE FUNCTIONS: TAWEEZAT, TASAWWUF & KHAWAB
 // =========================================================
 
-// Taweezat Filter
+// Taweezat Filter (Supports Multi-Category Folders & Smooth Animations)
 window.filterTaweez = function(cat, btn) {
-  document.querySelectorAll('#tabTaweezat .filter-chip-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#tabTaweezat .filter-chip-btn, #tabTaweezat .taweez-folder-chip').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
 
   const items = document.querySelectorAll('#tabTaweezat .taweez-item');
+  let matchCount = 0;
   items.forEach(it => {
-    if (cat === 'all' || it.getAttribute('data-cat') === cat) {
+    const itemCatStr = it.getAttribute('data-cat') || '';
+    const itemCats = itemCatStr.split(/\s+/);
+    if (cat === 'all' || itemCats.includes(cat)) {
       it.style.display = 'block';
+      it.style.animation = 'none';
+      void it.offsetHeight; // trigger reflow
+      it.style.animation = 'taweezFadeIn 0.35s ease forwards';
+      matchCount++;
     } else {
       it.style.display = 'none';
     }
   });
+
+  const emptyMsg = document.getElementById('taweezEmptyState');
+  if (emptyMsg) {
+    emptyMsg.style.display = matchCount === 0 ? 'block' : 'none';
+  }
+};
+
+// Copy Naqsh Method / Details
+window.copyNaqshDetails = function(title, instructions) {
+  const text = `${title}\n\nطریقہ و شرائط:\n${instructions}\n\nخضریٰ ویز روحانی سینٹر - مستند قرآنی نقوش و عملیات\nwww.khizriways.com`;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('نقش کا طریقہ اور تفصیلات کاپی ہو گئیں');
+    }).catch(() => {
+      prompt('کاپی کریں:', text);
+    });
+  } else {
+    prompt('کاپی کریں:', text);
+  }
+};
+
+// Print / View Printable Naqsh
+window.printNaqsh = function(naqshId, title) {
+  const naqshElem = document.getElementById(naqshId);
+  if (!naqshElem) {
+    showToast('نقش لوڈ نہیں ہو سکا');
+    return;
+  }
+  const printWindow = window.open('', '_blank', 'width=650,height=650');
+  if (!printWindow) {
+    showToast('براؤزر پاپ اپ بلاک ہے، براہ کرم اجازت دیں');
+    return;
+  }
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html dir="rtl" lang="ur">
+    <head>
+      <meta charset="utf-8">
+      <title>${title} - خضریٰ ویز</title>
+      <style>
+        body { font-family: 'Amiri', serif, Tahoma; text-align: center; padding: 40px; background: #FFFDF5; }
+        .print-box { border: 3px double #B45309; padding: 30px; border-radius: 12px; display: inline-block; background: #FFFFFF; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { color: #78350F; margin-bottom: 15px; }
+        table { border-collapse: collapse; margin: 20px auto; }
+        td { border: 2px solid #78350F; width: 64px; height: 54px; font-size: 1.5rem; font-weight: bold; color: #9A3412; text-align: center; }
+        .naqsh-bismillah-head { font-size: 1.3rem; color: #B45309; margin-bottom: 12px; font-weight: bold; }
+        .footer { margin-top: 25px; font-size: 0.85rem; color: #64748B; border-top: 1px dashed #CBD5E1; padding-top: 10px; }
+      </style>
+    </head>
+    <body>
+      <div class="print-box">
+        <h2>${title}</h2>
+        ${naqshElem.innerHTML}
+        <div class="footer">خضریٰ ویز روحانی سینٹر • عام شرعی اجازت باشرطِ تقویٰ • www.khizriways.com</div>
+      </div>
+      <script>
+        window.onload = function() { window.print(); }
+      </script>
+    </body>
+    </html>
+  `);
+  printWindow.document.close();
 };
 
 // Tasawwuf Muraqaba Timer & Pulse
@@ -5060,7 +5226,7 @@ window.detectItemSurahsAndLinks = function(item, isEn) {
   if (text.includes('حزب البحر')) {
     links.push({
       type: 'pdf',
-      url: '/uploads/hizb-ul-bahr.pdf',
+      url: 'uploads/hizb-ul-bahr.pdf',
       label: isEn ? 'Open Hizb-ul-Bahr PDF' : 'دعائے حزب البحر کھولیں'
     });
     return links;
@@ -5068,7 +5234,7 @@ window.detectItemSurahsAndLinks = function(item, isEn) {
   if (text.includes('منزل')) {
     links.push({
       type: 'pdf',
-      url: '/uploads/manzil-dua-with-benefits.pdf',
+      url: 'uploads/manzil-dua-with-benefits.pdf',
       label: isEn ? 'Open Manzil Sharif PDF' : 'منزل شریف کھولیں'
     });
     return links;
@@ -5580,4 +5746,1651 @@ window.submitLohOrderForm = async function(source = 'modal') {
   if (typeof window.showToast === 'function') {
     window.showToast(isEn ? 'Order booked successfully! Opening WhatsApp...' : 'ماشاءاللہ! آپ کا آرڈر درج ہو چکا ہے۔ تفصیلات واٹس ایپ پر اوپن ہو رہی ہیں...');
   }
+};
+
+// ====================================================
+// NEW SPECIALIZED TAWEEZAT & NAQSH ORDER HANDLERS
+// ====================================================
+
+// Generic Image Preview Handler
+window.handleImagePreview = function(event, previewId) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const preview = document.getElementById(previewId);
+    if (preview) {
+      preview.src = e.target.result;
+      preview.style.display = 'block';
+    }
+  };
+  reader.readAsDataURL(file);
+};
+
+// 1. Custom Taweez (Rs. 2,200)
+window.openCustomTaweezModal = function() {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalOrderCustomTaweez');
+  }
+  if (typeof window.initCountryDropdowns === 'function') {
+    window.initCountryDropdowns('Pakistan');
+  }
+};
+
+window.toggleCustomTaweezUpload = function() {
+  const isImageMode = document.getElementById('modeCustomUpload')?.checked;
+  const boxUpload = document.getElementById('boxCustomImageUpload');
+  const boxSelect = document.getElementById('boxCustomIssueSelect');
+  if (boxUpload) boxUpload.style.display = isImageMode ? 'block' : 'none';
+  if (boxSelect) boxSelect.style.display = isImageMode ? 'none' : 'block';
+};
+
+window.submitCustomTaweezOrder = async function() {
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const name = (document.getElementById('modalCustomName')?.value || '').trim();
+  const mother = (document.getElementById('modalCustomMother')?.value || '').trim();
+  const city = (document.getElementById('modalCustomCity')?.value || '').trim();
+  const address = (document.getElementById('modalCustomAddress')?.value || '').trim();
+  const country = (document.getElementById('modalCustomCountry')?.value || 'Pakistan').trim();
+  const phone = (document.getElementById('modalCustomPhone')?.value || '').trim();
+  const isImageMode = document.getElementById('modeCustomUpload')?.checked;
+  const issue = isImageMode ? 'صارف کی فراہم کردہ تصویر کے مطابق تعویذ' : (document.getElementById('modalCustomIssue')?.value || 'سحر و جادو کا خاتمہ');
+  const customNotes = (document.getElementById('modalCustomNotes')?.value || '').trim();
+  const slipImg = document.getElementById('previewCustomSlip')?.src || '';
+  const customImg = document.getElementById('previewCustomImage')?.src || '';
+
+  if (!name) {
+    alert(isEn ? 'Please enter applicant full name.' : 'براہِ کرم سائل کا مکمل نام درج فرمائیں۔');
+    document.getElementById('modalCustomName')?.focus();
+    return;
+  }
+  if (!mother) {
+    alert(isEn ? "Please enter mother's name." : 'براہِ کرم والدہ کا نام درج فرمائیں۔');
+    document.getElementById('modalCustomMother')?.focus();
+    return;
+  }
+  if (!address) {
+    alert(isEn ? 'Please enter delivery address.' : 'براہِ کرم کوریئر ڈلیوری ایڈریس درج فرمائیں۔');
+    document.getElementById('modalCustomAddress')?.focus();
+    return;
+  }
+  if (!phone) {
+    alert(isEn ? 'Please enter WhatsApp number.' : 'براہِ کرم واٹس ایپ نمبر درج فرمائیں۔');
+    document.getElementById('modalCustomPhone')?.focus();
+    return;
+  }
+
+  let orderId = 'ORD-' + Date.now().toString().slice(-6);
+  try {
+    await fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        itemName: 'اپنی پسند کا تعویذ (خالص زعفران سے تحریر شدہ)',
+        customerName: name,
+        motherName: mother,
+        country: country,
+        phone: phone,
+        city: city,
+        address: address,
+        purpose: issue + (customNotes ? ` (تفصیل: ${customNotes})` : ''),
+        notes: (isImageMode ? 'صارف نے اپنے پسندیدہ تعویذ کی تصویر اپلوڈ کی ہے' : issue) + (customNotes ? ` | مزید وضاحت: ${customNotes}` : '') + ` | ملک: ${country}`,
+        hadya: 2200,
+        paymentMethod: 'EasyPaisa / JazzCash / Bank',
+        hasSlip: Boolean(slipImg),
+        hasCustomImage: Boolean(customImg)
+      })
+    });
+  } catch(e) {
+    console.warn('Orders API error:', e);
+  }
+
+  let msg = '*بسم الله الرحمن الرحيم*\n';
+  msg += '*آن لائن آرڈر: اپنی پسند کا تعویذ (خالص زعفران سے تحریر شدہ)*\n';
+  msg += '----------------------------------------\n';
+  msg += '🔖 *آرڈر ریفرنس:* ' + orderId + '\n';
+  msg += '👤 *سائل کا نام:* ' + name + '\n';
+  msg += '🧕 *والدہ کا نام:* ' + mother + '\n';
+  msg += '📍 *شہر:* ' + (city || 'درج نہیں') + '\n';
+  msg += '🏡 *کوریئر ایڈریس:* ' + address + '\n';
+  msg += '🌐 *ملک:* ' + country + '\n';
+  msg += '📱 *واٹس ایپ نمبر:* ' + phone + '\n';
+  msg += '🎯 *تعویذ کا مقصد / مسئلہ:* ' + issue + '\n';
+  if (customNotes) msg += '📝 *مرض یا مسئلہ کی مزید تفصیل:* ' + customNotes + '\n';
+  if (isImageMode) msg += '📸 *مطلوبہ تعویذ:* تصویر ساتھ منسلک کر کے بھیج رہا ہوں\n';
+  msg += '💰 *ہدیہ مبارکہ:* Rs. 2,200 (مع چاندی خول و مفت کوریئر ڈلیوری)\n';
+  msg += '🧾 *ادائیگی سلپ:* ' + (slipImg ? 'رسید منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
+  msg += '----------------------------------------\n';
+  msg += 'السلام علیکم مفتی صاحب! میں نے زعفران سے تحریر شدہ تعویذ کا آرڈر دے دیا ہے اور ہدیہ کی رقم ارسال کر دی ہے۔ براہِ کرم میرے نام اور والدہ کے نام سے تعویذ تیار فرما کر کوریئر سے بھیج دیں۔ جزاک اللہ!';
+
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalOrderCustomTaweez');
+  }
+  if (typeof window.openWhatsAppConsult === 'function') {
+    window.openWhatsAppConsult(msg);
+  }
+  if (typeof window.showToast === 'function') {
+    window.showToast('آرڈر کامیابی سے درج ہو گیا۔ واٹس ایپ کھل رہا ہے...');
+  }
+};
+
+// 2. Hirz Abi Dujanah (Rs. 1,000)
+window.openHirzModal = function() {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalOrderHirzAbiDujanah');
+  }
+  if (typeof window.initCountryDropdowns === 'function') {
+    window.initCountryDropdowns('Pakistan');
+  }
+};
+
+window.toggleHirzFormatNotice = function(val) {
+  const notice = document.getElementById('hirzDigitalNotice');
+  if (!notice) return;
+  if (val && val.includes('پرنٹ ایبل')) {
+    notice.style.display = 'block';
+  } else {
+    notice.style.display = 'none';
+  }
+};
+
+window.lastHirzOrder = null;
+
+window.submitHirzOrder = async function() {
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const name = (document.getElementById('modalHirzName')?.value || '').trim();
+  const mother = (document.getElementById('modalHirzMother')?.value || '').trim();
+  const formatType = document.getElementById('modalHirzType')?.value || 'ہائی ریزولوشن پرنٹ ایبل ڈیجیٹل فائل مع اجازت نامہ';
+  const city = (document.getElementById('modalHirzCity')?.value || '').trim();
+  const address = (document.getElementById('modalHirzAddress')?.value || '').trim();
+  const country = (document.getElementById('modalHirzCountry')?.value || 'Pakistan').trim();
+  const phone = (document.getElementById('modalHirzPhone')?.value || '').trim();
+  const slipImg = document.getElementById('previewHirzSlip')?.src || '';
+
+  if (!name) {
+    alert(isEn ? 'Please enter full name.' : 'براہِ کرم اپنا مکمل نام درج فرمائیں۔');
+    document.getElementById('modalHirzName')?.focus();
+    return;
+  }
+  if (!mother) {
+    alert(isEn ? "Please enter mother's name." : 'براہِ کرم والدہ کا نام درج فرمائیں۔');
+    document.getElementById('modalHirzMother')?.focus();
+    return;
+  }
+  if (!phone) {
+    alert(isEn ? 'Please enter WhatsApp number.' : 'براہِ کرم واٹس ایپ نمبر درج فرمائیں۔');
+    document.getElementById('modalHirzPhone')?.focus();
+    return;
+  }
+
+  let orderId = 'KHZ-HIRZ-' + Date.now().toString().slice(-6);
+  try {
+    const res = await fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        itemName: 'حرزِ ابی دجانہ رضی اللہ عنہ (برائے حفاظتِ مکان و گھر)',
+        customerName: name,
+        motherName: mother,
+        country: country,
+        phone: phone,
+        city: city,
+        address: address,
+        purpose: 'حفاظتِ خانہ، مکان و دکان از جنات و شیاطین (' + formatType + ')',
+        notes: `حصول کا طریقہ: ${formatType} | ملک: ${country} | شہر: ${city}`,
+        hadya: 1000,
+        paymentMethod: 'EasyPaisa / JazzCash / Bank',
+        hasSlip: Boolean(slipImg)
+      })
+    });
+    const data = await res.json();
+    if (data && data.orderId) {
+      orderId = data.orderId;
+    }
+  } catch(e) {
+    console.warn('Orders API error:', e);
+  }
+
+  let msg = '*بسم الله الرحمن الرحيم*\n';
+  msg += '*آن لائن حاصل کریں: حرزِ ابی دجانہ رضی اللہ عنہ (حفاظتِ مکان و اہل و عیال)*\n';
+  msg += '----------------------------------------\n';
+  msg += '🔖 *آرڈر و تصدیق ریفرنس:* ' + orderId + '\n';
+  msg += '👤 *صاحبِ اجازت (سائل):* ' + name + '\n';
+  msg += '🧕 *والدہ کا نام:* ' + mother + '\n';
+  msg += '📦 *حصول کا طریقہ:* ' + formatType + '\n';
+  msg += '📍 *شہر:* ' + (city || 'درج نہیں') + '\n';
+  msg += '🏡 *پتہ:* ' + address + '\n';
+  msg += '🌐 *ملک:* ' + country + '\n';
+  msg += '📱 *واٹس ایپ:* ' + phone + '\n';
+  msg += '💰 *ہدیہ مبارکہ:* Rs. 1,000 (مع روحانی اجازتِ آویزاں کرنا)\n';
+  msg += '🧾 *ادائیگی سلپ:* ' + (slipImg ? 'رسید منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
+  msg += '----------------------------------------\n';
+  msg += 'السلام علیکم مفتی صاحب! میں نے حرزِ ابی دجانہ رضی اللہ عنہ کا ہدیہ ادا کر دیا ہے۔ برائے کرم ادارے کی مہر و تصدیق واٹس ایپ پر بھی فراہم فرمائیں۔ جزاک اللہ خیراً!';
+
+  window.lastHirzOrder = {
+    orderId,
+    name,
+    mother,
+    city,
+    country,
+    phone,
+    formatType,
+    msg
+  };
+
+  // Populate on-screen Certificate in modalHirzDownloadSuccess
+  const todayUrdu = new Date().toLocaleDateString('ur-PK', { year: 'numeric', month: 'long', day: 'numeric' });
+  if (document.getElementById('lblSuccessRefId')) document.getElementById('lblSuccessRefId').textContent = orderId;
+  if (document.getElementById('lblSuccessName')) document.getElementById('lblSuccessName').textContent = name;
+  if (document.getElementById('lblSuccessMother')) document.getElementById('lblSuccessMother').textContent = mother;
+  if (document.getElementById('lblSuccessLocation')) document.getElementById('lblSuccessLocation').textContent = (city ? (city + '، ') : '') + country;
+  if (document.getElementById('lblSuccessDate')) document.getElementById('lblSuccessDate').textContent = todayUrdu;
+
+  // Close input modal and open Success & Download Certificate modal
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalOrderHirzAbiDujanah');
+  }
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalHirzDownloadSuccess');
+  }
+  if (typeof window.showToast === 'function') {
+    window.showToast('آرڈر کامیابی سے درج ہو گیا۔ آپ کی سند اور ڈاؤن لوڈ فائل تیار ہے!');
+  }
+};
+
+window.printHirzCertificate = function() {
+  const o = window.lastHirzOrder || {};
+  const printUrl = `/print-hirz.html?id=${encodeURIComponent(o.orderId || 'KHZ-HIRZ-VERIFIED')}&name=${encodeURIComponent(o.name || 'سائل مبارک')}&mother=${encodeURIComponent(o.mother || 'امۃ اللہ')}&city=${encodeURIComponent(o.city || '')}&country=${encodeURIComponent(o.country || 'Pakistan')}&autoprint=1`;
+  const printWindow = window.open(printUrl, '_blank');
+  if (printWindow) {
+    printWindow.focus();
+  } else {
+    window.print();
+  }
+};
+
+window.openHirzPrintPage = function() {
+  const o = window.lastHirzOrder || {};
+  const printUrl = `/print-hirz.html?id=${encodeURIComponent(o.orderId || 'KHZ-HIRZ-VERIFIED')}&name=${encodeURIComponent(o.name || 'سائل مبارک')}&mother=${encodeURIComponent(o.mother || 'امۃ اللہ')}&city=${encodeURIComponent(o.city || '')}&country=${encodeURIComponent(o.country || 'Pakistan')}`;
+  window.open(printUrl, '_blank');
+};
+
+window.sendHirzWhatsAppVerification = function() {
+  const o = window.lastHirzOrder;
+  if (o && o.msg && typeof window.openWhatsAppConsult === 'function') {
+    window.openWhatsAppConsult(o.msg);
+  } else if (typeof window.openWhatsAppConsult === 'function') {
+    window.openWhatsAppConsult('السلام علیکم مفتی صاحب! میں نے حرزِ ابی دجانہ رضی اللہ عنہ کا ہدیہ ادا کیا ہے۔ تصدیق و اجازت نامہ حاصل ہو چکا ہے۔ جزاک اللہ!');
+  }
+};
+
+// 3. 40-Day Course (Rs. 7,000)
+window.open40DayCourseModal = function() {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalOrder40DayCourse');
+  }
+  if (typeof window.initCountryDropdowns === 'function') {
+    window.initCountryDropdowns('Pakistan');
+  }
+};
+
+window.submit40DayCourseOrder = async function() {
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const name = (document.getElementById('modalCourseName')?.value || '').trim();
+  const mother = (document.getElementById('modalCourseMother')?.value || '').trim();
+  const city = (document.getElementById('modalCourseCity')?.value || '').trim();
+  const problem = (document.getElementById('modalCourseProblem')?.value || '').trim();
+  const address = (document.getElementById('modalCourseAddress')?.value || '').trim();
+  const country = (document.getElementById('modalCourseCountry')?.value || 'Pakistan').trim();
+  const phone = (document.getElementById('modalCoursePhone')?.value || '').trim();
+  const slipImg = document.getElementById('previewCourseSlip')?.src || '';
+
+  if (!name) {
+    alert(isEn ? 'Please enter patient name.' : 'براہِ کرم مریض / سائل کا نام درج فرمائیں۔');
+    document.getElementById('modalCourseName')?.focus();
+    return;
+  }
+  if (!mother) {
+    alert(isEn ? "Please enter mother's name." : 'براہِ کرم والدہ کا نام درج فرمائیں۔');
+    document.getElementById('modalCourseMother')?.focus();
+    return;
+  }
+  if (!address) {
+    alert(isEn ? 'Please enter delivery address.' : 'براہِ کرم مکمل کوریئر ایڈریس درج فرمائیں۔');
+    document.getElementById('modalCourseAddress')?.focus();
+    return;
+  }
+  if (!phone) {
+    alert(isEn ? 'Please enter WhatsApp number.' : 'براہِ کرم واٹس ایپ نمبر درج فرمائیں۔');
+    document.getElementById('modalCoursePhone')?.focus();
+    return;
+  }
+
+  let orderId = 'ORD-' + Date.now().toString().slice(-6);
+  try {
+    await fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        itemName: '۴۰ روزہ تعویذات کے ذریعے علاج کا جامع کورس',
+        customerName: name,
+        motherName: mother,
+        country: country,
+        phone: phone,
+        city: city,
+        address: address,
+        purpose: '۴۰ روزہ پینے و جلانے کے تعویذات کا کورس: ' + problem,
+        notes: `مسئلہ: ${problem} | ملک: ${country} | شہر: ${city}`,
+        hadya: 7000,
+        paymentMethod: 'EasyPaisa / JazzCash / Bank',
+        hasSlip: Boolean(slipImg)
+      })
+    });
+  } catch(e) {
+    console.warn('Orders API error:', e);
+  }
+
+  let msg = '*بسم الله الرحمن الرحيم*\n';
+  msg += '*آن لائن آرڈر: ۴۰ روزہ تعویذات کے ذریعے علاج کا جامع کورس*\n';
+  msg += '----------------------------------------\n';
+  msg += '🔖 *آرڈر ریفرنس:* ' + orderId + '\n';
+  msg += '👤 *مریض کا نام:* ' + name + '\n';
+  msg += '🧕 *والدہ کا نام:* ' + mother + '\n';
+  if (problem) msg += '🩺 *مسئلہ و کیفیت:* ' + problem + '\n';
+  msg += '📍 *شہر:* ' + (city || 'درج نہیں') + '\n';
+  msg += '🏡 *کوریئر ایڈریس:* ' + address + '\n';
+  msg += '🌐 *ملک:* ' + country + '\n';
+  msg += '📱 *واٹس ایپ نمبر:* ' + phone + '\n';
+  msg += '💰 *ہدیہ کورس:* Rs. 7,000 (پینے و جلانے کے تعویذات کا ۴۰ روزہ سیٹ مع مفت کوریئر)\n';
+  msg += '🧾 *ادائیگی سلپ:* ' + (slipImg ? 'رسید منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
+  msg += '----------------------------------------\n';
+  msg += 'السلام علیکم مفتی صاحب! میں نے ۴۰ روزہ تعویذات کے کورس کا آرڈر جمع کروا دیا ہے اور ہدیہ کی رقم (Rs. 7,000) ارسال کر دی ہے۔ برائے مہربانی پینے اور جلانے کے تعویذات کا سیٹ تیار کر کے بذریعہ کوریئر ارسال فرما دیں۔ جزاک اللہ خیراً!';
+
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalOrder40DayCourse');
+  }
+  if (typeof window.openWhatsAppConsult === 'function') {
+    window.openWhatsAppConsult(msg);
+  }
+  if (typeof window.showToast === 'function') {
+    window.showToast('۴۰ روزہ کورس کامیابی سے بک ہو گیا۔ واٹس ایپ کھل رہا ہے...');
+  }
+};
+
+// 4. Halal Love Taweez (Rs. 5,200)
+window.updateMohabbatGenderDisplay = function() {
+  const appMale = document.querySelector('input[name="mohabbatApplicantGender"][value*="مرد"]')?.checked;
+  const lblAppM = document.getElementById('lblMohabbatAppMale');
+  const lblAppF = document.getElementById('lblMohabbatAppFemale');
+  if (lblAppM && lblAppF) {
+    if (appMale) {
+      lblAppM.style.borderColor = '#3B82F6';
+      lblAppM.style.background = '#EFF6FF';
+      lblAppM.style.color = '#1E40AF';
+      lblAppF.style.borderColor = '#CBD5E1';
+      lblAppF.style.background = '#FFFFFF';
+      lblAppF.style.color = '#475569';
+    } else {
+      lblAppF.style.borderColor = '#E11D48';
+      lblAppF.style.background = '#FFE4E6';
+      lblAppF.style.color = '#9F1239';
+      lblAppM.style.borderColor = '#CBD5E1';
+      lblAppM.style.background = '#FFFFFF';
+      lblAppM.style.color = '#475569';
+    }
+  }
+
+  const tgtMale = document.querySelector('input[name="mohabbatTargetGender"][value*="مرد"]')?.checked;
+  const lblTgtM = document.getElementById('lblMohabbatTgtMale');
+  const lblTgtF = document.getElementById('lblMohabbatTgtFemale');
+  if (lblTgtM && lblTgtF) {
+    if (tgtMale) {
+      lblTgtM.style.borderColor = '#3B82F6';
+      lblTgtM.style.background = '#EFF6FF';
+      lblTgtM.style.color = '#1E40AF';
+      lblTgtF.style.borderColor = '#CBD5E1';
+      lblTgtF.style.background = '#FFFFFF';
+      lblTgtF.style.color = '#475569';
+    } else {
+      lblTgtF.style.borderColor = '#E11D48';
+      lblTgtF.style.background = '#FFE4E6';
+      lblTgtF.style.color = '#9F1239';
+      lblTgtM.style.borderColor = '#CBD5E1';
+      lblTgtM.style.background = '#FFFFFF';
+      lblTgtM.style.color = '#475569';
+    }
+  }
+};
+
+window.openMohabbatModal = function() {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalOrderMohabbatTaweez');
+  }
+  if (typeof window.initCountryDropdowns === 'function') {
+    window.initCountryDropdowns('Pakistan');
+  }
+  if (typeof window.updateMohabbatGenderDisplay === 'function') {
+    window.updateMohabbatGenderDisplay();
+  }
+};
+
+window.submitMohabbatOrder = async function() {
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const applicant = (document.getElementById('modalMohabbatApplicant')?.value || '').trim();
+  const appMother = (document.getElementById('modalMohabbatAppMother')?.value || '').trim();
+  const appGender = document.querySelector('input[name="mohabbatApplicantGender"]:checked')?.value || 'مرد / شوہر (لڑکا)';
+  const target = (document.getElementById('modalMohabbatTarget')?.value || '').trim();
+  const targetMother = (document.getElementById('modalMohabbatTargetMother')?.value || '').trim();
+  const targetGender = document.querySelector('input[name="mohabbatTargetGender"]:checked')?.value || 'عورت / بیوی (لڑکی)';
+  const relation = document.getElementById('modalMohabbatRelation')?.value || 'شوہر و بیوی';
+  const city = (document.getElementById('modalMohabbatCity')?.value || '').trim();
+  const address = (document.getElementById('modalMohabbatAddress')?.value || '').trim();
+  const country = (document.getElementById('modalMohabbatCountry')?.value || 'Pakistan').trim();
+  const phone = (document.getElementById('modalMohabbatPhone')?.value || '').trim();
+  const consent = document.getElementById('modalMohabbatConsent')?.checked;
+  const slipImg = document.getElementById('previewMohabbatSlip')?.src || '';
+
+  if (!applicant) {
+    alert(isEn ? 'Please enter applicant name.' : 'براہِ کرم طالب (تعویذ کروانے والے) کا نام درج فرمائیں۔');
+    document.getElementById('modalMohabbatApplicant')?.focus();
+    return;
+  }
+  if (!appMother) {
+    alert(isEn ? "Please enter applicant mother's name." : 'براہِ کرم طالب کی والدہ کا نام درج فرمائیں۔');
+    document.getElementById('modalMohabbatAppMother')?.focus();
+    return;
+  }
+  if (!target) {
+    alert(isEn ? 'Please enter target name.' : 'براہِ کرم مطلوب (جس پر تعویذ کروانا ہے) کا نام درج فرمائیں۔');
+    document.getElementById('modalMohabbatTarget')?.focus();
+    return;
+  }
+  if (!address) {
+    alert(isEn ? 'Please enter delivery address.' : 'براہِ کرم مکمل کوریئر پتہ درج فرمائیں۔');
+    document.getElementById('modalMohabbatAddress')?.focus();
+    return;
+  }
+  if (!phone) {
+    alert(isEn ? 'Please enter WhatsApp number.' : 'براہِ کرم واٹس ایپ نمبر درج فرمائیں۔');
+    document.getElementById('modalMohabbatPhone')?.focus();
+    return;
+  }
+  if (!consent) {
+    alert(isEn ? 'Please agree that this is strictly for halal marital purpose.' : 'براہِ کرم اقرار نامے پر ٹک لگائیں کہ یہ صرف شرعی و جائز مقصد کیلئے ہے۔');
+    return;
+  }
+
+  let orderId = 'ORD-' + Date.now().toString().slice(-6);
+  try {
+    await fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        itemName: 'تعویذ برائے الفت و محبتِ جائز (میاں بیوی و شرعی رشتے)',
+        customerName: applicant,
+        motherName: appMother,
+        applicantGender: appGender,
+        targetName: target,
+        targetMotherName: targetMother || 'حوا',
+        targetGender: targetGender,
+        country: country,
+        phone: phone,
+        city: city,
+        address: address,
+        purpose: 'الفت و محبتِ جائز: ' + relation,
+        notes: `طالب: ${applicant} (${appGender}) ولد/بنت ${appMother} | مطلوب: ${target} (${targetGender}) ولد/بنت ${targetMother || 'حوا'} | رشتہ: ${relation} | ملک: ${country} | شہر: ${city}`,
+        hadya: 5200,
+        paymentMethod: 'EasyPaisa / JazzCash / Bank',
+        hasSlip: Boolean(slipImg)
+      })
+    });
+  } catch(e) {
+    console.warn('Orders API error:', e);
+  }
+
+  let msg = '*بسم الله الرحمن الرحيم*\n';
+  msg += '*آن لائن آرڈر: تعویذ برائے الفت و محبتِ جائز*\n';
+  msg += '----------------------------------------\n';
+  msg += '🔖 *آرڈر ریفرنس:* ' + orderId + '\n';
+  msg += '👤 *طالب (تعویذ کروانے والا):* ' + applicant + ' [' + appGender + ']\n';
+  msg += '🧕 *طالب کی والدہ کا نام:* ' + appMother + '\n';
+  msg += '🎯 *مطلوب (جس کیلئے تعویذ ہے):* ' + target + ' [' + targetGender + ']\n';
+  msg += '🧕 *مطلوب کی والدہ:* ' + (targetMother || 'حوا') + '\n';
+  msg += '🤝 *باہمی شرعی رشتہ:* ' + relation + '\n';
+  msg += '📍 *شہر:* ' + (city || 'درج نہیں') + '\n';
+  msg += '🏡 *کوریئر ایڈریس:* ' + address + '\n';
+  msg += '🌐 *ملک:* ' + country + '\n';
+  msg += '📱 *واٹس ایپ نمبر:* ' + phone + '\n';
+  msg += '💰 *ہدیہ مبارکہ:* Rs. 5,200 (مع چاندی خول و مفت کوریئر ڈلیوری)\n';
+  msg += '🧾 *ادائیگی سلپ:* ' + (slipImg ? 'رسید منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
+  msg += '----------------------------------------\n';
+  msg += 'السلام علیکم مفتی صاحب! میں نے تعویذِ محبتِ شرعی کا آرڈر جمع کروا دیا ہے اور ہدیہ کی رقم (Rs. 5,200) ارسال کر دی ہے۔ برائے مہربانی مطلوبہ ناموں سے تعویذ تیار فرما کر بذریعہ کوریئر بھجوا دیں۔ جزاک اللہ خیراً!';
+
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalOrderMohabbatTaweez');
+  }
+  if (typeof window.openWhatsAppConsult === 'function') {
+    window.openWhatsAppConsult(msg);
+  }
+  if (typeof window.showToast === 'function') {
+    window.showToast('تعویذِ محبت کامیابی سے بک ہو گیا۔ واٹس ایپ کھل رہا ہے...');
+  }
+};
+
+
+// 5. 21-Day Photo Love Ritual (Rs. 35,000)
+window.openAmalTasweerHubModal = function() {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalOrderAmalTasweerHub');
+  }
+  if (typeof window.initCountryDropdowns === 'function') {
+    window.initCountryDropdowns('Pakistan');
+  }
+};
+
+window.submitAmalTasweerHubOrder = async function() {
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const manName = (document.getElementById('modalAmalHubManName')?.value || '').trim();
+  const manMother = (document.getElementById('modalAmalHubManMother')?.value || '').trim();
+  const manPhoto = document.getElementById('previewAmalHubMan')?.src || '';
+  const womanName = (document.getElementById('modalAmalHubWomanName')?.value || '').trim();
+  const womanMother = (document.getElementById('modalAmalHubWomanMother')?.value || '').trim();
+  const womanPhoto = document.getElementById('previewAmalHubWoman')?.src || '';
+  const purpose = document.getElementById('modalAmalHubPurpose')?.value || 'پسند کی شادی و باہمی الفت';
+  const country = (document.getElementById('modalAmalHubCountry')?.value || 'Pakistan').trim();
+  const phone = (document.getElementById('modalAmalHubPhone')?.value || '').trim();
+  const consent = document.getElementById('modalAmalHubConsent')?.checked;
+  const slipImg = document.getElementById('previewAmalHubSlip')?.src || '';
+
+  if (!manName) {
+    alert(isEn ? 'Please enter man full name.' : 'براہِ کرم مرد کا مکمل نام درج فرمائیں۔');
+    document.getElementById('modalAmalHubManName')?.focus();
+    return;
+  }
+  if (!manMother) {
+    alert(isEn ? 'Please enter man mother name.' : 'براہِ کرم مرد کی والدہ کا نام درج فرمائیں۔');
+    document.getElementById('modalAmalHubManMother')?.focus();
+    return;
+  }
+  if (!womanName) {
+    alert(isEn ? 'Please enter woman full name.' : 'براہِ کرم عورت کا مکمل نام درج فرمائیں۔');
+    document.getElementById('modalAmalHubWomanName')?.focus();
+    return;
+  }
+  if (!phone) {
+    alert(isEn ? 'Please enter WhatsApp number.' : 'براہِ کرم واٹس ایپ نمبر درج فرمائیں۔');
+    document.getElementById('modalAmalHubPhone')?.focus();
+    return;
+  }
+  if (!consent) {
+    alert(isEn ? 'Please agree to the halal oath.' : 'براہِ کرم اقرار نامے پر ٹک لگائیں کہ یہ صرف شرعی و جائز مقصد کیلئے ہے۔');
+    return;
+  }
+
+  let orderId = 'ORD-' + Date.now().toString().slice(-6);
+  try {
+    await fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        itemName: 'عملِ حب و تسخیر بذریعہ تصاویر (۲۱ روزہ عمل)',
+        customerName: manName + ' و ' + womanName,
+        motherName: manMother,
+        country: country,
+        phone: phone,
+        purpose: 'عملِ حب بذریعہ تصاویر: ' + purpose,
+        notes: 'مرد: ' + manName + ' ولد ' + manMother + ' | عورت: ' + womanName + ' بنت ' + (womanMother || 'حوا') + ' | مقصد: ' + purpose + ' | ملک: ' + country,
+        hadya: 35000,
+        paymentMethod: 'EasyPaisa / JazzCash / Bank',
+        hasSlip: Boolean(slipImg)
+      })
+    });
+  } catch(e) {
+    console.warn('Orders API error:', e);
+  }
+
+  let msg = '*بسم الله الرحمن الرحيم*\n';
+  msg += '*آن لائن آرڈر: عملِ حب و تسخیر بذریعہ تصاویر (۲۱ روزہ عمل)*\n';
+  msg += '----------------------------------------\n';
+  msg += '🔖 *آرڈر ریفرنس:* ' + orderId + '\n';
+  msg += '👨 *مرد کا نام:* ' + manName + '\n';
+  msg += '🧕 *مرد کی والدہ:* ' + manMother + '\n';
+  msg += '📸 *مرد کی تصویر:* ' + (manPhoto ? 'منسلک کر دی گئی ہے' : 'ارسال کی جائے گی') + '\n';
+  msg += '👩 *عورت کا نام:* ' + womanName + '\n';
+  msg += '🧕 *عورت کی والدہ:* ' + (womanMother || 'حوا') + '\n';
+  msg += '📸 *عورت کی تصویر:* ' + (womanPhoto ? 'منسلک کر دی گئی ہے' : 'ارسال کی جائے گی') + '\n';
+  msg += '🎯 *مقصد / مسئلہ:* ' + purpose + '\n';
+  msg += '🌐 *ملک:* ' + country + '\n';
+  msg += '📱 *واٹس ایپ نمبر:* ' + phone + '\n';
+  msg += '💰 *ہدیہ عمل:* Rs. 35,000 (۲۱ روزہ باطنی عمل مع پڑھائی و دفن)\n';
+  msg += '🧾 *ادائیگی سلپ:* ' + (slipImg ? 'رسید منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
+  msg += '----------------------------------------\n';
+  msg += 'السلام علیکم مفتی صاحب! میں نے تصاویر کے ذریعے ۲۱ روزہ عملِ حب و تسخیر کا آرڈر جمع کروا دیا ہے اور ہدیہ کی رقم (Rs. 35,000) ارسال کر دی ہے۔ برائے مہربانی دونوں تصاویر پر نقوش تحریر فرما کر ۲۱ دن کی پڑھائی کا عمل شروع فرمائیں۔ جزاک اللہ خیراً!';
+
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalOrderAmalTasweerHub');
+  }
+  if (typeof window.openWhatsAppConsult === 'function') {
+    window.openWhatsAppConsult(msg);
+  }
+  if (typeof window.showToast === 'function') {
+    window.showToast('عملِ حب بذریعہ تصاویر کامیابی سے بک ہو گیا۔ واٹس ایپ کھل رہا ہے...');
+  }
+};
+
+// 6. 21-Day Photo Separation Ritual for Haram Relations (Rs. 35,000)
+window.openAmalTasweerTafreeqModal = function() {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalOrderAmalTasweerTafreeq');
+  }
+  if (typeof window.initCountryDropdowns === 'function') {
+    window.initCountryDropdowns('Pakistan');
+  }
+};
+
+window.submitAmalTasweerTafreeqOrder = async function() {
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const manName = (document.getElementById('modalAmalTafreeqManName')?.value || '').trim();
+  const manMother = (document.getElementById('modalAmalTafreeqManMother')?.value || '').trim();
+  const manPhoto = document.getElementById('previewAmalTafreeqMan')?.src || '';
+  const womanName = (document.getElementById('modalAmalTafreeqWomanName')?.value || '').trim();
+  const womanMother = (document.getElementById('modalAmalTafreeqWomanMother')?.value || '').trim();
+  const womanPhoto = document.getElementById('previewAmalTafreeqWoman')?.src || '';
+  const reason = document.getElementById('modalAmalTafreeqReason')?.value || 'خاتمہ ناجائز و حرام تعلق';
+  const country = (document.getElementById('modalAmalTafreeqCountry')?.value || 'Pakistan').trim();
+  const phone = (document.getElementById('modalAmalTafreeqPhone')?.value || '').trim();
+  const consent = document.getElementById('modalAmalTafreeqConsent')?.checked;
+  const slipImg = document.getElementById('previewAmalTafreeqSlip')?.src || '';
+
+  if (!manName) {
+    alert(isEn ? 'Please enter first person full name.' : 'براہِ کرم پہلے فرد (مرد) کا نام درج فرمائیں۔');
+    document.getElementById('modalAmalTafreeqManName')?.focus();
+    return;
+  }
+  if (!womanName) {
+    alert(isEn ? 'Please enter second person full name.' : 'براہِ کرم دوسرے فرد (عورت) کا نام درج فرمائیں۔');
+    document.getElementById('modalAmalTafreeqWomanName')?.focus();
+    return;
+  }
+  if (!phone) {
+    alert(isEn ? 'Please enter WhatsApp number.' : 'براہِ کرم واٹس ایپ نمبر درج فرمائیں۔');
+    document.getElementById('modalAmalTafreeqPhone')?.focus();
+    return;
+  }
+  if (!consent) {
+    alert(isEn ? 'Please confirm the oath that this is only to end sinful/haram relation.' : 'براہِ کرم شرعی حلف نامے پر ٹک لگائیں کہ یہ صرف ناجائز و حرام تعلق کے خاتمے کیلئے ہے۔');
+    return;
+  }
+
+  let orderId = 'ORD-' + Date.now().toString().slice(-6);
+  try {
+    await fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        itemName: 'عملِ تفریق و جدائی برائے ناجائز تعلقات بذریعہ تصاویر (۲۱ روزہ عمل)',
+        customerName: manName + ' و ' + womanName,
+        motherName: manMother,
+        country: country,
+        phone: phone,
+        purpose: 'عملِ تفریق بذریعہ تصاویر: ' + reason,
+        notes: 'فرد ۱: ' + manName + ' ولد ' + (manMother || 'درج نہیں') + ' | فرد ۲: ' + womanName + ' بنت ' + (womanMother || 'حوا') + ' | وجہ: ' + reason + ' | ملک: ' + country,
+        hadya: 35000,
+        paymentMethod: 'EasyPaisa / JazzCash / Bank',
+        hasSlip: Boolean(slipImg)
+      })
+    });
+  } catch(e) {
+    console.warn('Orders API error:', e);
+  }
+
+  let msg = '*بسم الله الرحمن الرحيم*\n';
+  msg += '*آن لائن آرڈر: عملِ تفریق و جدائی برائے ناجائز تعلقات بذریعہ تصاویر (۲۱ روزہ عمل)*\n';
+  msg += '----------------------------------------\n';
+  msg += '🔖 *آرڈر ریفرنس:* ' + orderId + '\n';
+  msg += '👤 *پہلا شخص (مرد):* ' + manName + '\n';
+  msg += '🧕 *والدہ کا نام:* ' + (manMother || 'درج نہیں') + '\n';
+  msg += '📸 *پہلے شخص کی تصویر:* ' + (manPhoto ? 'منسلک کر دی گئی ہے' : 'ارسال کی جائے گی') + '\n';
+  msg += '👤 *دوسرا شخص (عورت):* ' + womanName + '\n';
+  msg += '🧕 *والدہ کا نام:* ' + (womanMother || 'حوا') + '\n';
+  msg += '📸 *دوسرے شخص کی تصویر:* ' + (womanPhoto ? 'منسلک کر دی گئی ہے' : 'ارسال کی جائے گی') + '\n';
+  msg += '⚡ *وجہِ تفریق / شرعی عذر:* ' + reason + '\n';
+  msg += '🌐 *ملک:* ' + country + '\n';
+  msg += '📱 *واٹس ایپ نمبر:* ' + phone + '\n';
+  msg += '💰 *ہدیہ عمل:* Rs. 35,000 (۲۱ روزہ باطنی عمل مع نقوش، سوئیاں، دفن و مسلسل پڑھائی)\n';
+  msg += '🧾 *ادائیگی سلپ:* ' + (slipImg ? 'رسید منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
+  msg += '----------------------------------------\n';
+  msg += 'السلام علیکم مفتی صاحب! میں نے ناجائز و حرام تعلق کے خاتمے کیلئے ۲۱ روزہ عملِ تفریق کا آرڈر جمع کروا دیا ہے اور ہدیہ کی رقم (Rs. 35,000) ارسال کر دی ہے۔ برائے مہربانی دونوں تصاویر پر عمل شروع فرما کر ۲۱ دن کی پڑھائی مکمل فرمائیں۔ جزاک اللہ خیراً!';
+
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalOrderAmalTasweerTafreeq');
+  }
+  if (typeof window.openWhatsAppConsult === 'function') {
+    window.openWhatsAppConsult(msg);
+  }
+  if (typeof window.showToast === 'function') {
+    window.showToast('عملِ تفریق کامیابی سے بک ہو گیا۔ واٹس ایپ کھل رہا ہے...');
+  }
+};
+
+
+// 7. Monthly VIP Taweezat Subscription (Rs. 1,500 / Month)
+window.openMonthlySubscriptionModal = function() {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalOrderMonthlySubscription');
+  }
+  if (typeof window.initCountryDropdowns === 'function') {
+    window.initCountryDropdowns('Pakistan');
+  }
+};
+
+window.openDailyVIPTaweezView = async function() {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalDailyVIPTaweezView');
+  }
+  
+  try {
+    const res = await fetch('/api/wazaif/daily-taweez').then(r => r.json());
+    if (res && res.success && res.data) {
+      const item = res.data;
+      const titleEl = document.getElementById('dailyVIPTaweezTitle');
+      const textEl = document.getElementById('dailyVIPTaweezArabic');
+      const instructionsEl = document.getElementById('dailyVIPTaweezInstructions');
+      const imgContainer = document.getElementById('dailyVIPTaweezImgContainer');
+      const imgEl = document.getElementById('dailyVIPTaweezImg');
+      const imgLink = document.getElementById('dailyVIPTaweezImgLink');
+      const gridContainer = document.getElementById('dailyVIPTaweezGridContainer');
+
+      if (titleEl && item.title) {
+        titleEl.textContent = item.title;
+      }
+      if (textEl && item.arabicText) {
+        textEl.textContent = item.arabicText;
+      }
+      if (instructionsEl) {
+        const text = item.methodInstructions || item.benefits || 'باوضو حالت میں قبلہ رخ بیٹھ کر اول و آخر ۱۱ بار درود شریف اور ۳۱۳ بار ورد کریں۔';
+        instructionsEl.innerHTML = `<strong>طریقہ کار و باطنی عمل:</strong> ${text}`;
+      }
+
+      if (item.imageUrl && item.imageUrl.trim() !== '') {
+        if (imgEl) imgEl.src = item.imageUrl;
+        if (imgLink) imgLink.href = item.imageUrl;
+        if (imgContainer) imgContainer.style.display = 'block';
+        if (gridContainer) gridContainer.style.display = 'none';
+      } else {
+        if (imgContainer) imgContainer.style.display = 'none';
+        if (gridContainer) gridContainer.style.display = 'block';
+      }
+    }
+  } catch (err) {
+    console.error('Could not fetch daily VIP taweez:', err);
+  }
+};
+
+window.submitMonthlySubscriptionOrder = async function() {
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const name = (document.getElementById('modalSubName')?.value || '').trim();
+  const mother = (document.getElementById('modalSubMother')?.value || '').trim();
+  const city = (document.getElementById('modalSubCity')?.value || '').trim();
+  const focus = document.getElementById('modalSubFocus')?.value || 'تمام مجرب و مستند عملیات';
+  const country = (document.getElementById('modalSubCountry')?.value || 'Pakistan').trim();
+  const phone = (document.getElementById('modalSubPhone')?.value || '').trim();
+  const slipImg = document.getElementById('previewSubSlip')?.src || '';
+
+  if (!name) {
+    alert(isEn ? 'Please enter your full name.' : 'براہِ کرم اپنا مکمل نام درج فرمائیں۔');
+    document.getElementById('modalSubName')?.focus();
+    return;
+  }
+  if (!mother) {
+    alert(isEn ? 'Please enter mother name.' : 'براہِ کرم والدہ کا نام درج فرمائیں۔');
+    document.getElementById('modalSubMother')?.focus();
+    return;
+  }
+  if (!phone) {
+    alert(isEn ? 'Please enter WhatsApp number.' : 'براہِ کرم واٹس ایپ نمبر درج فرمائیں۔');
+    document.getElementById('modalSubPhone')?.focus();
+    return;
+  }
+
+  let orderId = 'SUB-' + Date.now().toString().slice(-6);
+  try {
+    await fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        itemName: 'ماہانہ VIP تعویذات و مجرب اعمال سبسکرپشن (Rs. 1,500)',
+        customerName: name,
+        motherName: mother,
+        country: country,
+        phone: phone,
+        city: city,
+        purpose: 'ماہانہ رکنیت: ' + focus,
+        notes: 'سبسکرپشن آئی ڈی: ' + orderId + ' | شہر: ' + city + ' | ملک: ' + country + ' | شعبہ: ' + focus,
+        hadya: 1500,
+        paymentMethod: 'EasyPaisa / JazzCash / Bank',
+        hasSlip: Boolean(slipImg)
+      })
+    });
+  } catch(e) {
+    console.warn('Orders API error:', e);
+  }
+
+  let msg = '*بسم الله الرحمن الرحيم*\n';
+  msg += '*آن لائن آرڈر: ماہانہ VIP تعویذات و مجرب اعمال سبسکرپشن*\n';
+  msg += '----------------------------------------\n';
+  msg += '🔖 *سبسکرپشن ریفرنس:* ' + orderId + '\n';
+  msg += '👤 *رکن کا نام:* ' + name + '\n';
+  msg += '🧕 *والدہ کا نام:* ' + mother + '\n';
+  msg += '📍 *شہر:* ' + (city || 'درج نہیں') + '\n';
+  msg += '🌐 *ملک:* ' + country + '\n';
+  msg += '📱 *واٹس ایپ نمبر:* ' + phone + '\n';
+  msg += '🎯 *شعبہ دلچسپی:* ' + focus + '\n';
+  msg += '💰 *ماہانہ فیس / ہدیہ:* Rs. 1,500 (۳۰ روزہ ممبرشپ مع ڈیلی تعویذ و عمل)\n';
+  msg += '🧾 *ادائیگی سلپ:* ' + (slipImg ? 'رسید منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
+  msg += '----------------------------------------\n';
+  msg += 'السلام علیکم مفتی صاحب! میں نے ماہانہ VIP تعویذات و مجرب اعمال سبسکرپشن (Rs. 1,500) کا آرڈر جمع کروا دیا ہے اور فیس ارسال کر دی ہے۔ برائے مہربانی مجھے پرائیویٹ VIP واٹس ایپ گروپ میں شامل فرما کر روزانہ کے تعویذات کا سلسلہ شروع فرمائیں۔ جزاک اللہ خیراً!';
+
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalOrderMonthlySubscription');
+  }
+
+  // Update success modal
+  const nameEl = document.getElementById('subSuccessClientName');
+  const cardNameEl = document.getElementById('subCardName');
+  const cardRefEl = document.getElementById('subCardRef');
+  const joinBtn = document.getElementById('btnSubWhatsAppJoin');
+
+  if (nameEl) nameEl.textContent = name;
+  if (cardNameEl) cardNameEl.textContent = name;
+  if (cardRefEl) cardRefEl.textContent = orderId;
+  if (joinBtn) {
+    joinBtn.href = 'https://wa.me/923317704807?text=' + encodeURIComponent(msg);
+  }
+
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalMonthlySubscriptionSuccess');
+  }
+
+  if (typeof window.showToast === 'function') {
+    window.showToast('ماہانہ VIP سبسکرپشن درج ہو گئی۔ واٹس ایپ کمیونٹی میں شامل ہوں...');
+  }
+};
+
+// =========================================================
+// TAWEEZAT FOLDER FILTERING & ACTIONS
+// =========================================================
+window.filterTaweez = function(cat, btn) {
+  // Update active state on chips
+  const chips = document.querySelectorAll('.taweez-folder-chip');
+  chips.forEach(c => c.classList.remove('active'));
+  if (btn) {
+    btn.classList.add('active');
+  }
+
+  // Filter taweez cards
+  const items = document.querySelectorAll('.taweez-item');
+  let visibleCount = 0;
+
+  items.forEach(item => {
+    const itemCats = (item.getAttribute('data-cat') || '').toLowerCase().split(' ');
+    if (cat === 'all' || itemCats.includes(cat.toLowerCase())) {
+      item.style.display = '';
+      visibleCount++;
+      // Reflow animation
+      item.style.animation = 'none';
+      item.offsetHeight; // trigger reflow
+      item.style.animation = 'taweezFadeIn 0.35s ease forwards';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+
+  // Empty state handling
+  const emptyEl = document.getElementById('taweezEmptyState');
+  if (emptyEl) {
+    emptyEl.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+};
+
+window.copyNaqshDetails = function(title, instructions) {
+  const text = `*${title}*\n\n*طریقہ و ہدایات:*\n${instructions}\n\n_از: ادارہ روحانیات خضریٰ ویز_`;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      if (typeof window.showToast === 'function') {
+        window.showToast('نقش کی تفصیل اور طریقہ کامیابی سے کاپی ہو گیا!');
+      } else {
+        alert('نقش کی تفصیل کاپی ہو گئی۔');
+      }
+    }).catch(() => {
+      alert('کاپی کرنے میں مسئلہ پیش آیا۔');
+    });
+  } else {
+    // Fallback
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      if (typeof window.showToast === 'function') {
+        window.showToast('نقش کی تفصیل کامیابی سے کاپی ہو گئی!');
+      }
+    } catch (e) {
+      console.warn('Copy failed', e);
+    }
+    document.body.removeChild(textarea);
+  }
+};
+
+window.printNaqsh = function(naqshId, title) {
+  const gridEl = document.getElementById(naqshId);
+  if (!gridEl) {
+    window.print();
+    return;
+  }
+  const printWindow = window.open('', '_blank', 'width=600,height=700');
+  if (!printWindow) {
+    alert('براہِ کرم پاپ اپ بلاکر کو غیر فعال کریں۔');
+    return;
+  }
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html dir="rtl" lang="ur">
+    <head>
+      <meta charset="UTF-8">
+      <title>${title} - خضریٰ ویز</title>
+      <style>
+        body { font-family: 'Amiri', 'Jameel Noori Nastaleeq', 'Traditional Arabic', serif; text-align: center; padding: 40px 20px; direction: rtl; }
+        .print-box { border: 3px double #000; padding: 30px; border-radius: 12px; display: inline-block; min-width: 320px; margin: 0 auto; }
+        h2 { font-size: 1.6rem; margin-bottom: 20px; color: #000; }
+        .naqsh-bismillah-head { font-size: 1.4rem; font-weight: bold; margin-bottom: 14px; }
+        table { border-collapse: collapse; margin: 0 auto; }
+        td { border: 2px solid #000; width: 65px; height: 65px; font-size: 1.8rem; font-weight: bold; text-align: center; vertical-align: middle; }
+        .footer-note { margin-top: 25px; font-size: 0.9rem; color: #444; }
+      </style>
+    </head>
+    <body>
+      <div class="print-box">
+        <h2>${title}</h2>
+        ${gridEl.innerHTML}
+        <div class="footer-note">مستند قرآنی نقش • ادارہ روحانیات خضریٰ ویز (Khizri Ways)</div>
+      </div>
+      <script>
+        window.onload = function() {
+          window.print();
+          setTimeout(function() { window.close(); }, 500);
+        };
+      <\/script>
+    </body>
+    </html>
+  `);
+  printWindow.document.close();
+};
+
+window.openProductOrder = function(productName, price) {
+  const msg = `*بسم الله الرحمن الرحيم*\n*طلبِ روحانی پراڈکٹ و تبرکات (آن لائن آرڈر)*\n----------------------------------------\n🛍️ *پراڈکٹ:* ${productName}\n💰 *ہدیہ / قیمت:* Rs. ${price}\n🚚 *ڈلیوری:* پورے پاکستان میں بذریعہ ٹی سی ایس محفوظ پارسل\n----------------------------------------\nالسلام علیکم مفتی صاحب! میں ادارہ خضریٰ ویز سے یہ متبرک روحانی پراڈکٹ (${productName}) حاصل کرنا چاہتا ہوں۔ برائے مہربانی اپنا بینک اکاؤنٹ / ایزی پیسہ نمبر اور ڈلیوری کے لیے میرا ایڈریس درج کرنے کا طریقہ کار ارسال فرمائیں۔ جزاک اللہ خیراً!`;
+  if (typeof window.openWhatsAppConsult === 'function') {
+    window.openWhatsAppConsult(msg);
+  } else {
+    window.open('https://wa.me/923317704807?text=' + encodeURIComponent(msg), '_blank');
+  }
+};
+
+window.filterProducts = function(cat, btn) {
+  document.querySelectorAll('#tabProducts .filter-chip-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const items = document.querySelectorAll('#tabProducts .product-card-item');
+  items.forEach(it => {
+    const itemCatStr = it.getAttribute('data-pcat') || '';
+    const itemCats = itemCatStr.split(/\s+/);
+    if (cat === 'all' || itemCats.includes(cat)) {
+      it.style.display = '';
+      it.style.animation = 'none';
+      void it.offsetHeight;
+      it.style.animation = 'taweezFadeIn 0.35s ease forwards';
+    } else {
+      it.style.display = 'none';
+    }
+  });
+};
+
+// ====================================================
+// DAM SHUDA TAIL ORDER MODAL & SUBMISSION (دم شدہ تیل)
+// ====================================================
+window.openTailOrderModal = function() {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalTailOrder');
+  } else {
+    const m = document.getElementById('modalTailOrder');
+    if (m) m.classList.add('active');
+  }
+};
+
+window.closeTailOrderModal = function() {
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalTailOrder');
+  } else {
+    const m = document.getElementById('modalTailOrder');
+    if (m) m.classList.remove('active');
+  }
+};
+
+window.submitTailOrder = function(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const name = (document.getElementById('tailCustName')?.value || '').trim();
+  const phone = (document.getElementById('tailCustPhone')?.value || '').trim();
+  const size = (document.getElementById('tailBottleSize')?.value || 'بڑی بوتل (200ml) - Rs. 500').trim();
+  const qty = (document.getElementById('tailQuantity')?.value || '1').trim();
+  const disease = (document.getElementById('tailDisease')?.value || 'جوڑ کا درد سے نجات').trim();
+  const delivery = (document.getElementById('tailDeliveryMode')?.value || 'کراچی (اسی دن بائیکیا / رائیڈر ڈلیوری)').trim();
+  const address = (document.getElementById('tailCustAddress')?.value || '').trim();
+
+  if (!name) {
+    alert(isEn ? 'Please enter your full name.' : 'براہِ کرم اپنا نام ضرور درج فرمائیں۔');
+    document.getElementById('tailCustName')?.focus();
+    return;
+  }
+  if (!phone) {
+    alert(isEn ? 'Please enter your WhatsApp or phone number.' : 'براہِ کرم اپنا رابطہ یا واٹس ایپ نمبر ضرور درج فرمائیں۔');
+    document.getElementById('tailCustPhone')?.focus();
+    return;
+  }
+  if (!address) {
+    alert(isEn ? 'Please enter your complete delivery address.' : 'براہِ کرم ڈلیوری کا مکمل پتہ ضرور درج فرمائیں۔');
+    document.getElementById('tailCustAddress')?.focus();
+    return;
+  }
+
+  let text = `*بسم الله الرحمن الرحيم*\n`;
+  text += `*طلبِ دم شدہ تیل (آن لائن آرڈر فارم)*\n`;
+  text += `----------------------------------------\n`;
+  text += `👤 *سائل / خریدار کا نام:* ${name}\n`;
+  text += `📱 *رابطہ / واٹس ایپ نمبر:* ${phone}\n`;
+  text += `🧴 *مطلوبہ سائز:* ${size}\n`;
+  text += `🔢 *تعداد:* ${qty} بوتل\n`;
+  text += `🩺 *بیماری / مقصد:* ${disease}\n`;
+  text += `🚚 *شہر و ڈلیوری:* ${delivery}\n`;
+  text += `📍 *مکمل پتہ:* ${address}\n`;
+  text += `----------------------------------------\n`;
+  text += `⚠️ *نوٹ:* علاوہ ڈلیوری چارجز (کراچی بذریعہ بائیکیا / دیگر شہر بذریعہ کوریئر)\n`;
+  text += `السلام علیکم مفتی خضر متین صاحب! میں دم شدہ تیل کا آرڈر ارسال کر رہا ہوں۔ برائے مہربانی ڈلیوری اور کنفرمیشن کے لیے رہنمائی فرمائیں۔ جزاک اللہ خیراً!`;
+
+  const encoded = encodeURIComponent(text);
+  window.open(`https://wa.me/923152395969?text=${encoded}`, '_blank');
+
+  window.closeTailOrderModal();
+};
+
+// ====================================================
+// ROHANI AGARBATTI ORDER MODAL & SUBMISSION (روحانی اگر بتی)
+// ====================================================
+window.openAgarbattiOrderModal = function() {
+  if (typeof window.initCountryDropdowns === 'function') {
+    window.initCountryDropdowns('Pakistan');
+  }
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalAgarbattiOrder');
+  } else {
+    const m = document.getElementById('modalAgarbattiOrder');
+    if (m) m.classList.add('active');
+  }
+};
+
+window.closeAgarbattiOrderModal = function() {
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalAgarbattiOrder');
+  } else {
+    const m = document.getElementById('modalAgarbattiOrder');
+    if (m) m.classList.remove('active');
+  }
+};
+
+window.submitAgarbattiOrder = function(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const name = (document.getElementById('agarbattiCustName')?.value || '').trim();
+  const country = (document.getElementById('agarbattiCountry')?.value || 'Pakistan').trim();
+  const phone = (document.getElementById('agarbattiCustPhone')?.value || '').trim();
+  const qty = (document.getElementById('agarbattiQuantity')?.value || '1 پیکٹ - Rs. 1,500').trim();
+  const purpose = (document.getElementById('agarbattiPurpose')?.value || 'گھر، آفس، کمپنی یا فیکٹری سے نیگیٹیویٹی (Negativity) و نحوست دور کرنا').trim();
+  const address = (document.getElementById('agarbattiAddress')?.value || '').trim();
+  const paymentMethod = (document.getElementById('agarbattiPaymentMethod')?.value || 'ایزی پیسہ / جاز کیش').trim();
+
+  if (!name) {
+    alert(isEn ? 'Please enter your full name.' : 'براہِ کرم اپنا نام ضرور درج فرمائیں۔');
+    document.getElementById('agarbattiCustName')?.focus();
+    return;
+  }
+  if (!phone) {
+    alert(isEn ? 'Please enter your WhatsApp mobile number.' : 'براہِ کرم واٹس ایپ موبائل نمبر ضرور درج فرمائیں۔');
+    document.getElementById('agarbattiCustPhone')?.focus();
+    return;
+  }
+  if (!address) {
+    alert(isEn ? 'Please enter your complete delivery address.' : 'براہِ کرم ڈلیوری کا مکمل پتہ ضرور درج فرمائیں۔');
+    document.getElementById('agarbattiAddress')?.focus();
+    return;
+  }
+
+  let text = `*بسم الله الرحمن الرحيم*\n`;
+  text += `*طلبِ روحانی اگر بتی - مبارک بخور (آن لائن آرڈر فارم)*\n`;
+  text += `----------------------------------------\n`;
+  text += `👤 *سائل / خریدار کا نام:* ${name}\n`;
+  text += `🌍 *ملک:* ${country}\n`;
+  text += `📱 *واٹس ایپ نمبر:* ${phone}\n`;
+  text += `🪔 *مطلوبہ پیکٹ:* ${qty}\n`;
+  text += `🎯 *مقصد / مسئلہ:* ${purpose}\n`;
+  text += `💳 *طریقہ ادائیگی:* ${paymentMethod}\n`;
+  text += `📍 *مکمل ڈلیوری ایڈریس:* ${address}\n`;
+  text += `----------------------------------------\n`;
+  text += `📦 *ڈلیوری نوٹ:* بذریعہ ٹی سی ایس / کوریئر محفوظ پارسل\n`;
+  text += `السلام علیکم مفتی خضر متین صاحب! میں روحانی اگر بتی (1500 روپے) کا آرڈر ارسال کر رہا ہوں۔ برائے مہربانی پارسل ڈلیوری اور کنفرمیشن کے لیے رہنمائی فرمائیں۔ جزاک اللہ خیراً!`;
+
+  const encoded = encodeURIComponent(text);
+  window.open(`https://wa.me/923152395969?text=${encoded}`, '_blank');
+
+  window.closeAgarbattiOrderModal();
+};
+
+// ====================================================
+// DAM SHUDA 2-INCH STEEL NAILS ORDER (۵ دم شدہ کیلیں)
+// ====================================================
+window.openSteelNailsOrderModal = function() {
+  if (typeof window.initCountryDropdowns === 'function') {
+    window.initCountryDropdowns('Pakistan');
+  }
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalSteelNailsOrder');
+  } else {
+    const m = document.getElementById('modalSteelNailsOrder');
+    if (m) m.classList.add('active');
+  }
+};
+
+window.closeSteelNailsOrderModal = function() {
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalSteelNailsOrder');
+  } else {
+    const m = document.getElementById('modalSteelNailsOrder');
+    if (m) m.classList.remove('active');
+  }
+};
+
+window.submitSteelNailsOrder = function(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const name = (document.getElementById('steelCustName')?.value || '').trim();
+  const country = (document.getElementById('steelCountry')?.value || 'Pakistan').trim();
+  const phone = (document.getElementById('steelCustPhone')?.value || '').trim();
+  const qty = (document.getElementById('steelQuantity')?.value || '1 سیٹ (۵ کیلیں) - Rs. 6,000').trim();
+  const purpose = (document.getElementById('steelPurpose')?.value || 'کمرے سے شدید نیگیٹیوٹی کا خاتمہ').trim();
+  const address = (document.getElementById('steelAddress')?.value || '').trim();
+  const paymentMethod = (document.getElementById('steelPaymentMethod')?.value || 'ایزی پیسہ / جاز کیش').trim();
+
+  if (!name) {
+    alert(isEn ? 'Please enter your full name.' : 'براہِ کرم اپنا نام ضرور درج فرمائیں۔');
+    document.getElementById('steelCustName')?.focus();
+    return;
+  }
+  if (!phone) {
+    alert(isEn ? 'Please enter your WhatsApp mobile number.' : 'براہِ کرم واٹس ایپ موبائل نمبر ضرور درج فرمائیں۔');
+    document.getElementById('steelCustPhone')?.focus();
+    return;
+  }
+  if (!address) {
+    alert(isEn ? 'Please enter your complete delivery address.' : 'براہِ کرم ڈلیوری کا مکمل پتہ ضرور درج فرمائیں۔');
+    document.getElementById('steelAddress')?.focus();
+    return;
+  }
+
+  let text = `*بسم الله الرحمن الرحيم*\n`;
+  text += `*طلبِ دم شدہ ۲ انچ اسٹیل کی کیلیں (آن لائن آرڈر فارم)*\n`;
+  text += `----------------------------------------\n`;
+  text += `👤 *سائل / خریدار کا نام:* ${name}\n`;
+  text += `🌍 *ملک:* ${country}\n`;
+  text += `📱 *واٹس ایپ نمبر:* ${phone}\n`;
+  text += `🛡️ *مطلوبہ سیٹ:* ${qty}\n`;
+  text += `🎯 *مقصد / مسئلہ:* ${purpose}\n`;
+  text += `💳 *طریقہ ادائیگی:* ${paymentMethod}\n`;
+  text += `📍 *مکمل ڈلیوری ایڈریس:* ${address}\n`;
+  text += `----------------------------------------\n`;
+  text += `📦 *ڈلیوری:* بذریعہ ٹی سی ایس محفوظ پارسل مع نقشۂ تنصیب\n`;
+  text += `السلام علیکم مفتی خضر متین صاحب! میں دم شدہ ۲ انچ اسٹیل کی ۵ کیلوں کا آرڈر ارسال کر رہا ہوں۔ برائے مہربانی ڈلیوری اور کنفرمیشن کے لیے رہنمائی فرمائیں۔ جزاک اللہ خیراً!`;
+
+  const encoded = encodeURIComponent(text);
+  window.open(`https://wa.me/923152395969?text=${encoded}`, '_blank');
+
+  window.closeSteelNailsOrderModal();
+};
+
+// ====================================================
+// DAM SHUDA 18-INCH SARIYE ORDER (۴ بڑے وزنی فولادی سریے)
+// ====================================================
+window.openSariyeOrderModal = function() {
+  if (typeof window.initCountryDropdowns === 'function') {
+    window.initCountryDropdowns('Pakistan');
+  }
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalSariyeOrder');
+  } else {
+    const m = document.getElementById('modalSariyeOrder');
+    if (m) m.classList.add('active');
+  }
+};
+
+window.closeSariyeOrderModal = function() {
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalSariyeOrder');
+  } else {
+    const m = document.getElementById('modalSariyeOrder');
+    if (m) m.classList.remove('active');
+  }
+};
+
+window.submitSariyeOrder = function(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const name = (document.getElementById('sariyeCustName')?.value || '').trim();
+  const country = (document.getElementById('sariyeCountry')?.value || 'Pakistan').trim();
+  const phone = (document.getElementById('sariyeCustPhone')?.value || '').trim();
+  const propDetail = (document.getElementById('sariyePropertyDetail')?.value || '').trim();
+  const qty = (document.getElementById('sariyeQuantity')?.value || '1 سیٹ (۴ بڑے ۱۸ انچ وزنی سریے) - Rs. 25,000').trim();
+  const purpose = (document.getElementById('sariyePurpose')?.value || 'مکان یا پلاٹ کی جادو و آفات سے مستقل حفاظت').trim();
+  const address = (document.getElementById('sariyeAddress')?.value || '').trim();
+  const paymentMethod = (document.getElementById('sariyePaymentMethod')?.value || 'میزان بینک آن لائن ٹرانسفر').trim();
+
+  if (!name) {
+    alert(isEn ? 'Please enter your full name.' : 'براہِ کرم اپنا نام ضرور درج فرمائیں۔');
+    document.getElementById('sariyeCustName')?.focus();
+    return;
+  }
+  if (!phone) {
+    alert(isEn ? 'Please enter your WhatsApp mobile number.' : 'براہِ کرم واٹس ایپ موبائل نمبر ضرور درج فرمائیں۔');
+    document.getElementById('sariyeCustPhone')?.focus();
+    return;
+  }
+  if (!address) {
+    alert(isEn ? 'Please enter your complete delivery address.' : 'براہِ کرم ڈلیوری کا مکمل پتہ ضرور درج فرمائیں۔');
+    document.getElementById('sariyeAddress')?.focus();
+    return;
+  }
+
+  let text = `*بسم الله الرحمن الرحيم*\n`;
+  text += `*طلبِ دم شدہ ۱۸ انچ فولادی سریے (آن لائن آرڈر فارم)*\n`;
+  text += `----------------------------------------\n`;
+  text += `👤 *سائل / خریدار کا نام:* ${name}\n`;
+  text += `🌍 *ملک:* ${country}\n`;
+  text += `📱 *واٹس ایپ نمبر:* ${phone}\n`;
+  if (propDetail) text += `🏠 *پراپرٹی کی نوعیت:* ${propDetail}\n`;
+  text += `🏛️ *مطلوبہ سیٹ:* ${qty}\n`;
+  text += `🎯 *خاص مقصد / نیت:* ${purpose}\n`;
+  text += `💳 *طریقہ ادائیگی:* ${paymentMethod}\n`;
+  text += `📍 *مکمل ڈلیوری ایڈریس:* ${address}\n`;
+  text += `----------------------------------------\n`;
+  text += `🚚 *ترسیل:* خصوصی محفوظ کوریئر / کارگو سروس مع شرعی طریقہ تنصیب\n`;
+  text += `السلام علیکم مفتی خضر متین صاحب! میں دم شدہ ۱۸ انچ فولادی سریوں (25,000 روپے) کا آرڈر ارسال کر رہا ہوں۔ برائے مہربانی کارگو ڈلیوری اور کنفرمیشن کے لیے رہنمائی فرمائیں۔ جزاک اللہ خیراً!`;
+
+  const encoded = encodeURIComponent(text);
+  window.open(`https://wa.me/923152395969?text=${encoded}`, '_blank');
+
+  window.closeSariyeOrderModal();
+};
+
+// ====================================================
+// GEMSTONE & RING ORDER (متبرک پتھر و منقش انگوٹھیاں)
+// ====================================================
+window.openGemstoneRingOrderModal = function() {
+  if (typeof window.initCountryDropdowns === 'function') {
+    window.initCountryDropdowns('Pakistan');
+  }
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalGemstoneRingOrder');
+  } else {
+    const m = document.getElementById('modalGemstoneRingOrder');
+    if (m) m.classList.add('active');
+  }
+};
+
+window.closeGemstoneRingOrderModal = function() {
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalGemstoneRingOrder');
+  } else {
+    const m = document.getElementById('modalGemstoneRingOrder');
+    if (m) m.classList.remove('active');
+  }
+};
+
+window.submitGemstoneRingOrder = function(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const name = (document.getElementById('gemCustName')?.value || '').trim();
+  const mother = (document.getElementById('gemMotherName')?.value || '').trim();
+  const country = (document.getElementById('gemCountry')?.value || 'Pakistan').trim();
+  const phone = (document.getElementById('gemCustPhone')?.value || '').trim();
+  const itemType = (document.getElementById('gemItemType')?.value || 'چاندی کی منقش عقیق انگوٹھی').trim();
+  const ringSize = (document.getElementById('gemRingSize')?.value || '').trim();
+  const purpose = (document.getElementById('gemPurpose')?.value || 'جادو، جنات اور نظرِ بد سے مستقل حفاظت').trim();
+  const address = (document.getElementById('gemAddress')?.value || '').trim();
+  const paymentMethod = (document.getElementById('gemPaymentMethod')?.value || 'ایزی پیسہ / جاز کیش').trim();
+
+  if (!name) {
+    alert(isEn ? 'Please enter your full name.' : 'براہِ کرم اپنا نام ضرور درج فرمائیں۔');
+    document.getElementById('gemCustName')?.focus();
+    return;
+  }
+  if (!phone) {
+    alert(isEn ? 'Please enter your WhatsApp mobile number.' : 'براہِ کرم واٹس ایپ موبائل نمبر ضرور درج فرمائیں۔');
+    document.getElementById('gemCustPhone')?.focus();
+    return;
+  }
+  if (!address) {
+    alert(isEn ? 'Please enter your complete delivery address.' : 'براہِ کرم ڈلیوری کا مکمل پتہ ضرور درج فرمائیں۔');
+    document.getElementById('gemAddress')?.focus();
+    return;
+  }
+
+  let text = `*بسم الله الرحمن الرحيم*\n`;
+  text += `*طلبِ متبرک منقش پتھر و انگوٹھی (آن لائن آرڈر فارم)*\n`;
+  text += `----------------------------------------\n`;
+  text += `👤 *سائل / خریدار کا نام:* ${name}\n`;
+  if (mother) text += `🧕 *والدہ کا نام (برائے دعا و دم):* ${mother}\n`;
+  text += `🌍 *ملک:* ${country}\n`;
+  text += `📱 *واٹس ایپ نمبر:* ${phone}\n`;
+  text += `💎 *مطلوبہ نگینہ / انگوٹھی:* ${itemType}\n`;
+  if (ringSize) text += `💍 *انگوٹھی کا سائز:* ${ringSize}\n`;
+  text += `🎯 *مقصد / نیت:* ${purpose}\n`;
+  text += `💳 *طریقہ ادائیگی:* ${paymentMethod}\n`;
+  text += `📍 *مکمل ڈلیوری ایڈریس:* ${address}\n`;
+  text += `----------------------------------------\n`;
+  text += `📦 *ڈلیوری:* بذریعہ ٹی سی ایس محفوظ پارسل (پورے پاکستان میں)\n`;
+  text += `السلام علیکم مفتی خضر متین صاحب! میں متبرک پتھر / انگوٹھی کا آرڈر ارسال کر رہا ہوں۔ برائے مہربانی تیاری، سائز اور کنفرمیشن کے لیے رہنمائی فرمائیں۔ جزاک اللہ خیراً!`;
+
+  const encoded = encodeURIComponent(text);
+  window.open(`https://wa.me/923152395969?text=${encoded}`, '_blank');
+
+  window.closeGemstoneRingOrderModal();
+};
+
+
+
+
+
+
+
+
+/* ====================================================
+   FAIZAN-E-NOOR (BOOKLET RS. 500) & TASAWWUF DAILY TASKS
+   ==================================================== */
+
+window.openFaizanNoorModal = function() {
+  if (typeof window.initCountryDropdowns === 'function') {
+    window.initCountryDropdowns('Pakistan');
+  }
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalFaizanNoor');
+  } else {
+    const m = document.getElementById('modalFaizanNoor');
+    if (m) m.classList.add('active');
+  }
+};
+
+window.closeFaizanNoorModal = function() {
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalFaizanNoor');
+  } else {
+    const m = document.getElementById('modalFaizanNoor');
+    if (m) m.classList.remove('active');
+  }
+};
+
+window.submitFaizanNoorOrder = async function(e) {
+  if (e && e.preventDefault) e.preventDefault();
+
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const name = (document.getElementById('fnCustName')?.value || '').trim();
+  const country = (document.getElementById('fnCountry')?.value || 'Pakistan').trim();
+  const phone = (document.getElementById('fnCustPhone')?.value || '').trim();
+  const purpose = (document.getElementById('fnPurpose')?.value || 'سیلف و فیملی پروٹیکشن (حصار)').trim();
+  const paymentMethod = (document.getElementById('fnPaymentMethod')?.value || 'ایزی پیسہ / جاز کیش').trim();
+  const slipInput = document.getElementById('fnSlip');
+  const hasSlip = Boolean(slipInput && slipInput.files && slipInput.files.length > 0);
+
+  if (!name) {
+    alert(isEn ? 'Please enter your full name.' : 'براہِ کرم اپنا نام ضرور درج فرمائیں۔');
+    document.getElementById('fnCustName')?.focus();
+    return;
+  }
+  if (!phone) {
+    alert(isEn ? 'Please enter your WhatsApp mobile number.' : 'براہِ کرم واٹس ایپ موبائل نمبر ضرور درج فرمائیں۔');
+    document.getElementById('fnCustPhone')?.focus();
+    return;
+  }
+
+  // Register in backend /api/orders for admin tracking
+  try {
+    await fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        itemName: 'کتابچہ فیضانِ نور (بنیادی روحانی نصاب و حصار نامہ)',
+        customerName: name,
+        country: country,
+        phone: phone,
+        purpose: purpose,
+        notes: `کتابچہ فیضانِ نور (ہدیہ 500 روپے) | مقصد: ${purpose} | طریقہ ادائیگی: ${paymentMethod}`,
+        hadya: 500,
+        paymentMethod: paymentMethod,
+        hasSlip: hasSlip
+      })
+    });
+  } catch (err) {
+    console.warn('Orders API log error:', err);
+  }
+
+  // Construct WhatsApp Message for 0315 2395969
+  let text = `*بسم اللہ الرحمن الرحیم*\n`;
+  text += `*درخواست رسالہ "فیضانِ نور" (روحانی نصاب و حصار نامہ)*\n`;
+  text += `----------------------------------------\n`;
+  text += `👤 *نام طالب:* ${name}\n`;
+  text += `🌍 *ملک:* ${country}\n`;
+  text += `📱 *واٹس ایپ نمبر:* ${phone}\n`;
+  text += `📖 *کتابچہ:* فیضانِ نور (بنیادی مسنون وظائف و حصار)\n`;
+  text += `🎯 *مقصد / دلچسپی:* ${purpose}\n`;
+  text += `💳 *ہدیہ:* 500 روپے (Rs. 500)\n`;
+  text += `🏦 *ادائیگی کا طریقہ:* ${paymentMethod}\n`;
+  if (hasSlip) {
+    text += `📎 *رسید / سکرین شاٹ:* رسید واٹس ایپ پر ارسال کی جا رہی ہے\n`;
+  }
+  text += `----------------------------------------\n`;
+  text += `السلام علیکم مفتی خضر متین صاحب! میں نے رسالہ فیضانِ نور کے حصول اور ممبرشپ کے لیے 500 روپے کا ہدیہ جمع کروا دیا ہے۔ برائے مہربانی مجھے پی ڈی ایف کاپی اور مسنون وظائف کی باقاعدہ روحانی اجازت عنایت فرمائیں۔ جزاک اللہ خیراً!`;
+
+  const encoded = encodeURIComponent(text);
+  window.open(`https://wa.me/923152395969?text=${encoded}`, '_blank');
+
+  window.closeFaizanNoorModal();
+};
+
+/* --- TASAWWUF INTERACTIVE CHECKLIST STORAGE & PROGRESS --- */
+
+window.getTasawwufTaskState = function() {
+  try {
+    return JSON.parse(localStorage.getItem('khizri_tasawwuf_tasks') || '{}');
+  } catch(e) {
+    return {};
+  }
+};
+
+window.toggleTasawwufTask = function(taskId) {
+  const match = taskId.match(/\d+/);
+  const num = match ? match[0] : '1';
+  const stateObj = window.getTasawwufTaskState();
+  
+  const urEl = document.getElementById('twTask' + num);
+  const enEl = document.getElementById('twTask' + num + 'En');
+
+  let isChecked = false;
+  if (taskId.includes('En') && enEl) {
+    isChecked = enEl.checked;
+  } else if (urEl) {
+    isChecked = urEl.checked;
+  }
+
+  stateObj['task' + num] = isChecked;
+  try {
+    localStorage.setItem('khizri_tasawwuf_tasks', JSON.stringify(stateObj));
+  } catch(e) {}
+
+  window.updateTasawwufChecklistUI();
+};
+
+window.updateTasawwufChecklistUI = function() {
+  const stateObj = window.getTasawwufTaskState();
+  let completedCount = 0;
+
+  for (let i = 1; i <= 6; i++) {
+    const isChecked = Boolean(stateObj['task' + i]);
+    if (isChecked) completedCount++;
+
+    // Urdu checkbox & row styling
+    const urEl = document.getElementById('twTask' + i);
+    if (urEl) {
+      urEl.checked = isChecked;
+      const row = urEl.closest('.tasawwuf-check-row');
+      if (row) {
+        if (isChecked) {
+          row.style.background = '#ECFDF5';
+          row.style.borderColor = '#A7F3D0';
+        } else {
+          row.style.background = '#F8FAFC';
+          row.style.borderColor = '#E2E8F0';
+        }
+      }
+    }
+
+    // English checkbox & row styling
+    const enEl = document.getElementById('twTask' + i + 'En');
+    if (enEl) {
+      enEl.checked = isChecked;
+      const rowEn = enEl.closest('.tasawwuf-check-row');
+      if (rowEn) {
+        if (isChecked) {
+          rowEn.style.background = '#ECFDF5';
+          rowEn.style.borderColor = '#A7F3D0';
+        } else {
+          rowEn.style.background = '#F8FAFC';
+          rowEn.style.borderColor = '#E2E8F0';
+        }
+      }
+    }
+  }
+
+  // Progress Badges
+  const badgeUr = document.getElementById('tasawwufProgressBadge');
+  if (badgeUr) {
+    if (completedCount === 6) {
+      badgeUr.style.background = '#059669';
+      badgeUr.style.color = '#FFFFFF';
+      badgeUr.innerHTML = '<i class="fa-solid fa-circle-check"></i> تمام ۶ وظائف مکمل!';
+    } else {
+      badgeUr.style.background = '#ECFDF5';
+      badgeUr.style.color = '#047857';
+      badgeUr.textContent = `مکمل شدہ: ${completedCount} / 6`;
+    }
+  }
+
+  const badgeEn = document.getElementById('tasawwufProgressBadgeEn');
+  if (badgeEn) {
+    if (completedCount === 6) {
+      badgeEn.style.background = '#059669';
+      badgeEn.style.color = '#FFFFFF';
+      badgeEn.innerHTML = '<i class="fa-solid fa-circle-check"></i> All 6 Daily Tasks Completed!';
+    } else {
+      badgeEn.style.background = '#ECFDF5';
+      badgeEn.style.color = '#047857';
+      badgeEn.textContent = `Completed: ${completedCount} / 6`;
+    }
+  }
+};
+
+// Initialize on DOM load and when tabs change
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(window.updateTasawwufChecklistUI, 200);
+  });
+} else {
+  setTimeout(window.updateTasawwufChecklistUI, 200);
+}
+
+
+/* ====================================================
+   FAIZAN-E-NOOR & TUHFAT-UL-MASHA'IKH READERS & TABS
+   ==================================================== */
+
+window.openFaizanNoorReader = function() {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalFaizanNoorReader');
+  } else {
+    const m = document.getElementById('modalFaizanNoorReader');
+    if (m) m.classList.add('active');
+  }
+};
+
+window.closeFaizanNoorReader = function() {
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalFaizanNoorReader');
+  } else {
+    const m = document.getElementById('modalFaizanNoorReader');
+    if (m) m.classList.remove('active');
+  }
+};
+
+window.openTuhfatReader = function(orderId = 'suhrawardi') {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalTuhfatReader');
+  } else {
+    const m = document.getElementById('modalTuhfatReader');
+    if (m) m.classList.add('active');
+  }
+  if (orderId && orderId !== 'all') {
+    window.switchTuhfatTab(orderId);
+  }
+};
+
+window.closeTuhfatReader = function() {
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalTuhfatReader');
+  } else {
+    const m = document.getElementById('modalTuhfatReader');
+    if (m) m.classList.remove('active');
+  }
+};
+
+window.switchTuhfatTab = function(orderId) {
+  const orders = ['suhrawardi', 'chishti', 'qadiri', 'naqshbandi', 'shadhili'];
+  orders.forEach(ord => {
+    const tabBtn = document.getElementById('tabBtn' + ord.charAt(0).toUpperCase() + ord.slice(1));
+    const content = document.getElementById('tuhfatContent' + ord.charAt(0).toUpperCase() + ord.slice(1));
+    if (tabBtn) {
+      if (ord === orderId) {
+        tabBtn.classList.add('active');
+        tabBtn.style.background = '#FFFFFF';
+        tabBtn.style.color = '#1D4ED8';
+      } else {
+        tabBtn.classList.remove('active');
+        tabBtn.style.background = 'transparent';
+        tabBtn.style.color = '#64748B';
+      }
+    }
+    if (content) {
+      content.style.display = (ord === orderId) ? 'block' : 'none';
+    }
+  });
 };

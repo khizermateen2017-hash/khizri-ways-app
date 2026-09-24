@@ -1,7 +1,7 @@
-﻿@echo off
+@echo off
 chcp 65001 >nul
-title Khizri Ways - Online Public Launcher
-color 0B
+title Khizri Ways - Online Public & Local Launcher
+color 0A
 cls
 echo ========================================================
 echo    KHIZRI WAYS - ONLINE PUBLIC & LOCAL LAUNCHER
@@ -24,21 +24,20 @@ if %errorlevel% neq 0 (
     start "Khizri Ways Server" /min cmd /c "node server/server.js"
     timeout /t 2 >nul
 ) else (
-    echo [1/2] Local server is already running on port 5000.
+    echo [1/2] Local server is active on port 5000.
 )
 
-echo [2/2] Starting Cloudflare Tunnel for secure online HTTPS link...
+echo [2/2] Starting Secure Online Public Link...
 echo.
 echo ========================================================
-echo  LOOK BELOW FOR YOUR PUBLIC LINK (*.trycloudflare.com)
-echo  Local PC:      http://localhost:5000
-echo  Admin Panel:   http://localhost:5000/admin
+echo  📱 Instant Local Links:
+echo  - Local PC Browser:   http://localhost:5000
+echo  - Mobile (Same Wi-Fi):http://192.168.100.4:5000
+echo  - Admin Panel:        http://localhost:5000/admin
 echo ========================================================
 echo.
-
-if exist "cloudflared.exe" (
-    cloudflared.exe tunnel --url http://localhost:5000
-) else (
-    echo [ERROR] cloudflared.exe not found in project directory!
-    pause
-)
+echo Opening Public Online Tunnel (Localtunnel)...
+echo (Note: If it asks for Endpoint IP / Password, enter: 117.134.204.34)
+echo.
+npx -y localtunnel --port 5000
+pause

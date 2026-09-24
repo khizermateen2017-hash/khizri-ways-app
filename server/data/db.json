@@ -1166,5 +1166,26 @@
       "muftiVerification": "دار الافتاء جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن، کراچی"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": "ORD-449765",
+      "itemName": "Test Taweez",
+      "customerName": "Test User",
+      "fatherName": "Father",
+      "motherName": "Mother",
+      "targetName": "",
+      "targetMotherName": "",
+      "purpose": "",
+      "phone": "03331234567",
+      "city": "Not specified",
+      "address": "Lahore",
+      "notes": "",
+      "hadya": 2200,
+      "paymentMethod": "Bank / EasyPaisa / JazzCash",
+      "hasSlip": false,
+      "hasCustomImage": false,
+      "status": "pending",
+      "createdAt": "2026-09-20T10:17:29.767Z"
+    }
+  ]
 }

@@ -23,20 +23,25 @@ router.post('/', (req, res) => {
     const {
       itemName = 'خاص مجرب لوحِ حفاظت و گولی بند تعویذ',
       customerName,
-      motherName,
+      fatherName = '',
+      motherName = '',
+      targetName = '',
+      targetMotherName = '',
+      purpose = '',
       phone,
       city,
       address,
       notes = '',
-      hadya = 2500,
+      hadya = 2200,
       paymentMethod = 'Bank / EasyPaisa / JazzCash',
-      slipBase64 = null
+      slipBase64 = null,
+      customImageBase64 = null
     } = req.body;
 
-    if (!customerName || !motherName || !phone || !address) {
+    if (!customerName || !phone) {
       return res.status(400).json({
         success: false,
-        message: 'Name, Mother Name, Phone and Address are required.'
+        message: 'Name and Phone are required.'
       });
     }
 
@@ -45,14 +50,19 @@ router.post('/', (req, res) => {
       id: orderId,
       itemName,
       customerName: customerName.trim(),
-      motherName: motherName.trim(),
+      fatherName: (fatherName || '').trim(),
+      motherName: (motherName || '').trim(),
+      targetName: (targetName || '').trim(),
+      targetMotherName: (targetMotherName || '').trim(),
+      purpose: (purpose || '').trim(),
       phone: phone.trim(),
       city: (city || 'Not specified').trim(),
       address: address.trim(),
       notes: notes.trim(),
-      hadya: Number(hadya) || 2500,
+      hadya: Number(hadya) || 2200,
       paymentMethod,
       hasSlip: Boolean(slipBase64),
+      hasCustomImage: Boolean(customImageBase64),
       status: 'pending',
       createdAt: new Date().toISOString()
     };
