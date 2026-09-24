@@ -29,12 +29,11 @@ if ('caches' in window) {
 // Global App State (Default English as requested by user)
 const state = {
   currentLang: localStorage.getItem('khizri_app_lang_v4') || 'ur',
-  resources: (typeof window !== 'undefined' && window.KHIZRI_INITIAL_DATA && window.KHIZRI_INITIAL_DATA.resources) ? window.KHIZRI_INITIAL_DATA.resources : [],
-  videos: (typeof window !== 'undefined' && window.KHIZRI_INITIAL_DATA && window.KHIZRI_INITIAL_DATA.videos) ? window.KHIZRI_INITIAL_DATA.videos : [],
-  articles: (typeof window !== 'undefined' && window.KHIZRI_INITIAL_DATA && window.KHIZRI_INITIAL_DATA.articles) ? window.KHIZRI_INITIAL_DATA.articles : [],
-  wazaif: (typeof window !== 'undefined' && window.KHIZRI_INITIAL_DATA && window.KHIZRI_INITIAL_DATA.wazaif) ? window.KHIZRI_INITIAL_DATA.wazaif : [],
-  fatwas: (typeof window !== 'undefined' && window.KHIZRI_INITIAL_DATA && window.KHIZRI_INITIAL_DATA.fatwas) ? window.KHIZRI_INITIAL_DATA.fatwas : [],
-  settings: (typeof window !== 'undefined' && window.KHIZRI_INITIAL_DATA && window.KHIZRI_INITIAL_DATA.settings) ? window.KHIZRI_INITIAL_DATA.settings : {},
+  resources: [],
+  videos: [],
+  articles: [],
+  wazaif: [],
+  settings: {},
   userName: localStorage.getItem('deen_user_name') || 'Khizri Ways',
   tasbeeh: {
     count: 0,
@@ -803,12 +802,10 @@ window.openPdfInApp = function(title, fileUrl) {
   const frame = document.getElementById('pdfModalFrame');
   const dlLink = document.getElementById('pdfModalDownloadLink');
 
-  const cleanUrl = fileUrl && fileUrl.startsWith('/') ? fileUrl.substring(1) : fileUrl;
-
   if (titleEl) titleEl.textContent = title;
-  if (frame) frame.src = cleanUrl;
+  if (frame) frame.src = fileUrl;
   if (dlLink) {
-    dlLink.href = cleanUrl;
+    dlLink.href = fileUrl;
     dlLink.download = `${title}.pdf`;
   }
   openModal('modalPdfReader');
@@ -1525,24 +1522,6 @@ function populatePrayerTimes() {
 
 // Fetch Backend REST API Data (PDFs, Videos, Wazaif)
 async function fetchAllData() {
-  // 1. Immediately render preloaded bundled data (instant zero-second display)
-  if (state.resources && state.resources.length > 0) {
-    renderResources();
-  }
-  if (state.videos && state.videos.length > 0) {
-    renderVideos();
-  }
-  if (state.wazaif && state.wazaif.length > 0) {
-    renderWazaif();
-    setTimeout(() => {
-      initDualManzilTrackers();
-      updateGridOverallProgress('waz-khas-17-ramadan');
-      updateGridOverallProgress('waz-ramadan-last10');
-      updateGridOverallProgress('waz-khas-27-ramadan');
-    }, 100);
-  }
-
-  // 2. Fetch live data if Node backend is running
   try {
     const [resResp, vidResp, wazResp] = await Promise.allSettled([
       fetch('/api/resources').then(r => r.json()),
@@ -1550,17 +1529,17 @@ async function fetchAllData() {
       fetch('/api/wazaif').then(r => r.json())
     ]);
 
-    if (resResp.status === 'fulfilled' && resResp.value && resResp.value.success && resResp.value.data && resResp.value.data.length) {
+    if (resResp.status === 'fulfilled' && resResp.value.success) {
       state.resources = resResp.value.data;
       renderResources();
     }
 
-    if (vidResp.status === 'fulfilled' && vidResp.value && vidResp.value.success && vidResp.value.data && vidResp.value.data.length) {
+    if (vidResp.status === 'fulfilled' && vidResp.value.success) {
       state.videos = vidResp.value.data;
       renderVideos();
     }
 
-    if (wazResp.status === 'fulfilled' && wazResp.value && wazResp.value.success && wazResp.value.data && wazResp.value.data.length) {
+    if (wazResp.status === 'fulfilled' && wazResp.value.success) {
       state.wazaif = wazResp.value.data;
       renderWazaif();
       setTimeout(() => {
@@ -1571,7 +1550,7 @@ async function fetchAllData() {
       }, 100);
     }
   } catch (err) {
-    console.log('App running with preloaded database bundle.');
+    console.error('Error fetching data:', err);
   }
 }
 
@@ -2841,7 +2820,7 @@ window.playWazifaAudio = function(btn, wazifaId) {
 
   // Find item audioUrl from state.wazaif or fallback to downloaded Qari recitations
   const item = (state.wazaif || []).find(w => w.id === wazifaId);
-  const audioSrc = item?.audioUrl || (wazifaId === 'waz-manzil' ? 'uploads/manzil-qari-recitation.mp3' : (wazifaId === 'waz-hizb-bahr' ? 'uploads/hizb-ul-bahr-recitation.mp3' : (wazifaId === 'waz-hizb-nasr' ? 'uploads/hizb-un-nasr-recitation.mp3' : (wazifaId === 'waz-chehal-kaaf' ? 'uploads/chehal-kaaf-recitation.mp3?v=20260918_echo' : null))));
+  const audioSrc = item?.audioUrl || (wazifaId === 'waz-manzil' ? '/uploads/manzil-qari-recitation.mp3' : (wazifaId === 'waz-hizb-bahr' ? '/uploads/hizb-ul-bahr-recitation.mp3' : (wazifaId === 'waz-hizb-nasr' ? '/uploads/hizb-un-nasr-recitation.mp3' : (wazifaId === 'waz-chehal-kaaf' ? '/uploads/chehal-kaaf-recitation.mp3?v=20260918_echo' : null))));
 
   if (audioSrc) {
     btn.classList.add('playing');
@@ -3566,23 +3545,20 @@ const DEFAULT_BANURI_FATWAS = [
   }
 ];
 
-state.fatwas = (typeof window !== 'undefined' && window.KHIZRI_INITIAL_DATA && window.KHIZRI_INITIAL_DATA.fatwas && window.KHIZRI_INITIAL_DATA.fatwas.length) ? window.KHIZRI_INITIAL_DATA.fatwas : [...DEFAULT_BANURI_FATWAS];
+state.fatwas = [...DEFAULT_BANURI_FATWAS];
 let currentActiveFatwa = null;
 let currentMasailCat = 'all';
 let currentMasailQuery = '';
 
 async function fetchFatwas() {
-  if (state.fatwas && state.fatwas.length > 0) {
-    renderMasailMiniButtons();
-  }
   try {
     const res = await fetch('/api/fatwas').then(r => r.json());
-    if (res && res.success && res.data && res.data.length > 0) {
+    if (res.success && res.data && res.data.length > 0) {
       state.fatwas = res.data;
       renderMasailMiniButtons();
     }
   } catch (err) {
-    console.log('Using pre-loaded fatwas');
+    console.warn('Using local pre-loaded Banuri Town fatwas:', err);
   }
 }
 
@@ -5250,7 +5226,7 @@ window.detectItemSurahsAndLinks = function(item, isEn) {
   if (text.includes('حزب البحر')) {
     links.push({
       type: 'pdf',
-      url: 'uploads/hizb-ul-bahr.pdf',
+      url: '/uploads/hizb-ul-bahr.pdf',
       label: isEn ? 'Open Hizb-ul-Bahr PDF' : 'دعائے حزب البحر کھولیں'
     });
     return links;
@@ -5258,7 +5234,7 @@ window.detectItemSurahsAndLinks = function(item, isEn) {
   if (text.includes('منزل')) {
     links.push({
       type: 'pdf',
-      url: 'uploads/manzil-dua-with-benefits.pdf',
+      url: '/uploads/manzil-dua-with-benefits.pdf',
       label: isEn ? 'Open Manzil Sharif PDF' : 'منزل شریف کھولیں'
     });
     return links;
@@ -6512,52 +6488,42 @@ window.openDailyVIPTaweezView = async function() {
   if (typeof window.openModal === 'function') {
     window.openModal('modalDailyVIPTaweezView');
   }
-
-  function renderTaweez(item) {
-    if (!item) return;
-    const titleEl = document.getElementById('dailyVIPTaweezTitle');
-    const textEl = document.getElementById('dailyVIPTaweezArabic');
-    const instructionsEl = document.getElementById('dailyVIPTaweezInstructions');
-    const imgContainer = document.getElementById('dailyVIPTaweezImgContainer');
-    const imgEl = document.getElementById('dailyVIPTaweezImg');
-    const imgLink = document.getElementById('dailyVIPTaweezImgLink');
-    const gridContainer = document.getElementById('dailyVIPTaweezGridContainer');
-
-    if (titleEl && item.title) {
-      titleEl.textContent = item.title;
-    }
-    if (textEl && item.arabicText) {
-      textEl.textContent = item.arabicText;
-    }
-    if (instructionsEl) {
-      const text = item.methodInstructions || item.benefits || 'باوضو حالت میں قبلہ رخ بیٹھ کر اول و آخر ۱۱ بار درود شریف اور ۳۱۳ بار ورد کریں۔';
-      instructionsEl.innerHTML = `<strong>طریقہ کار و باطنی عمل:</strong> ${text}`;
-    }
-
-    const cleanImg = item.imageUrl ? (item.imageUrl.startsWith('/') ? item.imageUrl.substring(1) : item.imageUrl) : '';
-    if (cleanImg && cleanImg.trim() !== '') {
-      if (imgEl) imgEl.src = cleanImg;
-      if (imgLink) imgLink.href = cleanImg;
-      if (imgContainer) imgContainer.style.display = 'block';
-      if (gridContainer) gridContainer.style.display = 'none';
-    } else {
-      if (imgContainer) imgContainer.style.display = 'none';
-      if (gridContainer) gridContainer.style.display = 'block';
-    }
-  }
-
-  // 1. Immediately render local taweez from state
-  const localDaily = (state.wazaif || []).find(w => w.isVipCommunity === true || (w.category && w.category.includes('VIP')) || (w.imageUrl && w.imageUrl.length > 0)) || (state.wazaif && state.wazaif[0]);
-  if (localDaily) renderTaweez(localDaily);
   
-  // 2. Fetch live if server is running
   try {
     const res = await fetch('/api/wazaif/daily-taweez').then(r => r.json());
     if (res && res.success && res.data) {
-      renderTaweez(res.data);
+      const item = res.data;
+      const titleEl = document.getElementById('dailyVIPTaweezTitle');
+      const textEl = document.getElementById('dailyVIPTaweezArabic');
+      const instructionsEl = document.getElementById('dailyVIPTaweezInstructions');
+      const imgContainer = document.getElementById('dailyVIPTaweezImgContainer');
+      const imgEl = document.getElementById('dailyVIPTaweezImg');
+      const imgLink = document.getElementById('dailyVIPTaweezImgLink');
+      const gridContainer = document.getElementById('dailyVIPTaweezGridContainer');
+
+      if (titleEl && item.title) {
+        titleEl.textContent = item.title;
+      }
+      if (textEl && item.arabicText) {
+        textEl.textContent = item.arabicText;
+      }
+      if (instructionsEl) {
+        const text = item.methodInstructions || item.benefits || 'باوضو حالت میں قبلہ رخ بیٹھ کر اول و آخر ۱۱ بار درود شریف اور ۳۱۳ بار ورد کریں۔';
+        instructionsEl.innerHTML = `<strong>طریقہ کار و باطنی عمل:</strong> ${text}`;
+      }
+
+      if (item.imageUrl && item.imageUrl.trim() !== '') {
+        if (imgEl) imgEl.src = item.imageUrl;
+        if (imgLink) imgLink.href = item.imageUrl;
+        if (imgContainer) imgContainer.style.display = 'block';
+        if (gridContainer) gridContainer.style.display = 'none';
+      } else {
+        if (imgContainer) imgContainer.style.display = 'none';
+        if (gridContainer) gridContainer.style.display = 'block';
+      }
     }
   } catch (err) {
-    // using local fallback
+    console.error('Could not fetch daily VIP taweez:', err);
   }
 };
 

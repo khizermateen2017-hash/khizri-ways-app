@@ -505,7 +505,7 @@ body.deen-app-body {
 .hero-mosque-section {
   width: 100%;
   height: 232px;
-  background-image: url('../assets/khizri-mosque-header.svg');
+  background-image: url('/assets/khizri-mosque-header.svg');
   background-size: cover;
   background-position: center bottom;
   position: relative;
