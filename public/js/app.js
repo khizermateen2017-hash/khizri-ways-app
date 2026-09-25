@@ -4749,6 +4749,7 @@ window.submitMonthlyDamModal = function() {
       msg += '📦 *پلان:* انفرادی پلان (1 فرد کا روزانہ دم و دعا) — 3,000 روپے ماہانہ\n';
       msg += '👤 *مریض کا نام:* ' + name + '\n';
       msg += '🧕 *والدہ کا نام:* ' + mother + '\n';
+  if (father) msg += '👨 *والد کا نام:* ' + father + '\n';
       msg += '📝 *مرض یا مسئلہ کی تفصیل:* ' + issue + '\n';
       msg += '📍 *ملک و پتہ:* ' + country + ' — ' + address + '\n';
       msg += '📱 *واٹس ایپ / رابطہ نمبر:* ' + phone + '\n';
@@ -5777,6 +5778,18 @@ window.openCustomTaweezModal = function() {
   }
 };
 
+window.toggleCustomTaweezMode = function(mode) {
+  const isImageMode = (mode === 'upload');
+  const chkUpload = document.getElementById('modeCustomUpload');
+  const chkSelect = document.getElementById('modeCustomSelectRadio');
+  if (chkUpload) chkUpload.checked = isImageMode;
+  if (chkSelect) chkSelect.checked = !isImageMode;
+  const boxUpload = document.getElementById('boxCustomImageUpload');
+  const boxSelect = document.getElementById('boxCustomIssueSelect');
+  if (boxUpload) boxUpload.style.display = isImageMode ? 'block' : 'none';
+  if (boxSelect) boxSelect.style.display = isImageMode ? 'none' : 'block';
+};
+
 window.toggleCustomTaweezUpload = function() {
   const isImageMode = document.getElementById('modeCustomUpload')?.checked;
   const boxUpload = document.getElementById('boxCustomImageUpload');
@@ -5789,6 +5802,7 @@ window.submitCustomTaweezOrder = async function() {
   const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
   const name = (document.getElementById('modalCustomName')?.value || '').trim();
   const mother = (document.getElementById('modalCustomMother')?.value || '').trim();
+  const father = (document.getElementById('modalCustomFather')?.value || '').trim();
   const city = (document.getElementById('modalCustomCity')?.value || '').trim();
   const address = (document.getElementById('modalCustomAddress')?.value || '').trim();
   const country = (document.getElementById('modalCustomCountry')?.value || 'Pakistan').trim();

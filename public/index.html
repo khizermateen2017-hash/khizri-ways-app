@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Custom Stylesheet with Cache Buster -->
-  <link rel="stylesheet" href="css/app.css?v=20260925_1315_choice_live">
+  <link rel="stylesheet" href="css/app.css?v=20260925_1340_final_live">
 </head>
 <body class="deen-app-body khizri-theme">
 
@@ -5834,23 +5834,22 @@
         <div style="display: flex; align-items: center; gap: 8px;">
           <i class="fa-solid fa-scroll text-gold" style="font-size: 1.15rem;"></i>
           <span style="font-weight: 800; font-size: 0.92rem;">
-            <span class="lang-en-only">Order: Special Mujarrab Loh-e-Hifazat</span>
-            <span class="lang-ur-only">آن لائن آرڈر: خاص مجرب لوحِ حفاظت و گولی بند</span>
+            Order: Special Mujarrab Loh-e-Hifazat
           </span>
         </div>
-        <button class="btn-modal-x" onclick="closeModal('modalOrderLohHifazat')" style="color:#FFF;"><i class="fa-solid fa-xmark"></i></button>
+        <button class="btn-modal-x" onclick="closeModal('modalOrderLohHifazat')" style="color:#FFF; background:transparent; border:none; font-size:1.1rem; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
       <!-- Modal Body -->
-      <div class="modal-card-body" style="padding: 16px 18px;">
+      <div class="modal-card-body" style="padding: 16px 18px; direction: rtl; text-align: right;">
         
         <!-- Summary Header -->
         <div style="background: linear-gradient(135deg, #FFFDF5 0%, #FEF9C3 100%); border: 1px solid #FDE68A; border-radius: 12px; padding: 10px 14px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
           <div>
-            <div style="font-size: 0.84rem; font-weight: 800; color: #92400E;">خاص مجرب لوحِ حفاظت و گولی بند تعویذ</div>
-            <div style="font-size: 0.72rem; color: #78350F;">سالانہ خصوصی تیاری • خالص کشمیری زعفران سے تیار شدہ</div>
+            <div style="font-size: 0.86rem; font-weight: 800; color: #92400E;">خاص مجرب لوحِ حفاظت و گولی بند تعویذ</div>
+            <div style="font-size: 0.72rem; color: #78350F;">سالانہ نایاب روحانی تحفہ • مع خالص چاندی خول و مفت ٹی سی ایس</div>
           </div>
-          <div style="font-size: 1rem; font-weight: 900; color: #B45309; background: #FFFFFF; padding: 4px 10px; border-radius: 8px; border: 1px solid #F59E0B; white-space: nowrap;">
+          <div style="font-size: 1.05rem; font-weight: 900; color: #B45309; background: #FFFFFF; padding: 4px 10px; border-radius: 8px; border: 1px solid #F59E0B; white-space: nowrap;">
             Rs. 11,000
           </div>
         </div>
@@ -5858,160 +5857,136 @@
         <!-- Field 1: Customer Name -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-            <span class="lang-en-only">Applicant / Seeker Full Name *</span>
-            <span class="lang-ur-only">سائل / طالب کا مکمل نام *</span>
+            سائل / طالب کا مکمل نام *
           </label>
-          <input type="text" id="modalLohName" placeholder="Full Name / مکمل نام *" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
+          <input type="text" id="modalLohName" placeholder="Full Name / مکمل نام *" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
         </div>
 
         <!-- Field 2: Mother's Name -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-            <span class="lang-en-only">Mother's Name (Required for Talisman Calculation) *</span>
-            <span class="lang-ur-only">والدہ کا نام (دعائیہ نسبت و تکسیر کیلئے لازمی) *</span>
+            والدہ کا نام (دعائیہ نسبت و تکسیر کیلئے لازمی) *
           </label>
-          <input type="text" id="modalLohMother" placeholder="Mother's Name / مثلاً: بن عائشہ بی بی" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
+          <input type="text" id="modalLohMother" placeholder="Mother's Name / والدہ کا نام *" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
         </div>
 
-        <!-- Field 3 & 4: Phone & City -->
-        <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 8px; margin-bottom: 10px;">
-          <div>
-            <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-              <span class="lang-en-only">WhatsApp / Mobile *</span>
-              <span class="lang-ur-only">واٹس ایپ نمبر *</span>
-            </label>
-            <input type="tel" id="modalLohPhone" placeholder="03001234567" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
-          </div>
-          <div>
-            <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-              <span class="lang-en-only">City *</span>
-              <span class="lang-ur-only">شہر کا نام *</span>
-            </label>
-            <input type="text" id="modalLohCity" placeholder="City / کراچی" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
-          </div>
-        </div>
-
-        <!-- Field 5: Address -->
+        <!-- Field: City -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-            <span class="lang-en-only">Full Courier Delivery Address *</span>
-            <span class="lang-ur-only">مکمل ڈلیوری ایڈریس (جہاں پارسل پہنچانا ہے) *</span>
+            شہر کا نام *
           </label>
-          <textarea id="modalLohAddress" rows="2" placeholder="Complete Street / House Address for Courier..." style="width: 100%; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box; resize: vertical;"></textarea>
+          <input type="text" id="modalLohCity" placeholder="City / کراچی" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
         </div>
 
-        <!-- Field 6: Special Notes -->
+        <!-- Field: Address -->
+        <div style="margin-bottom: 10px;">
+          <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
+            مکمل ڈلیوری ایڈریس (جہاں پارسل پہنچانا ہے) *
+          </label>
+          <textarea id="modalLohAddress" rows="2" placeholder="Complete Street / House Address for Courier..." style="width: 100%; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box; resize: vertical; background: #FFFFFF;"></textarea>
+        </div>
+
+        <!-- Field: Special Notes -->
         <div style="margin-bottom: 12px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-            <span class="lang-en-only">Specific Affliction or Intention (Optional)</span>
-            <span class="lang-ur-only">مخصوص مقصد یا دعا کی درخواست (اختیاری)</span>
+            مخصوص مقصد یا دعا کی درخواست (اختیاری)
           </label>
-          <input type="text" id="modalLohNotes" placeholder="مثلاً: حفاظتِ جان و مال، سحر و آسیب سے نجات، دشمن کے شر سے امان" style="width: 100%; height: 40px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
+          <input type="text" id="modalLohNotes" placeholder="مثلاً: حفاظتِ جان و مال، سحر و آسیب سے نجات، دشمن کے شر سے امان" style="width: 100%; height: 40px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
         </div>
 
-        <!-- Official Payment Accounts (Full with Western Union & International) -->
-        <div style="background: linear-gradient(135deg, #FFFDF5 0%, #FEF9C3 100%); border: 1.5px solid rgba(212, 175, 55, 0.55); border-radius: 14px; padding: 12px; margin-bottom: 14px;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid rgba(212, 175, 55, 0.3); padding-bottom: 5px;">
-            <span style="font-size: 0.76rem; font-weight: 800; color: #854D0E;">
-              <i class="fa-solid fa-building-columns text-gold"></i> Official Payment Accounts (ہدیہ اکاؤنٹ)
-            </span>
-            <span style="font-size: 0.68rem; color: #15803D; font-weight: 800; background: #DCFCE7; padding: 2px 7px; border-radius: 6px;">
-              <i class="fa-solid fa-circle-check"></i> Verified
-            </span>
-          </div>
-
-          <div style="font-size: 0.76rem; color: #0F172A; line-height: 1.5;">
-            <!-- Bank -->
-            <div style="background: rgba(255,255,255,0.85); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="color: #065F46;">Meezan Bank Ltd</strong>
-                <span style="font-size: 0.72rem; color: #475569;">Muhammad Khizer Mateen</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
-                <span>Acc: <code style="background:#FEF3C7; padding:1px 5px; border-radius:4px; font-weight:700; color:#92400E;">01500103494030</code></span>
-                <button type="button" onclick="navigator.clipboard.writeText('01500103494030'); alert('Copied: 01500103494030');" style="background:#065F46; color:#FFF; border:none; border-radius:4px; padding:2px 7px; font-size:0.66rem; cursor:pointer;">Copy</button>
-              </div>
+        <!-- WHATSAPP NUMBER & COUNTRY CODE (AT BOTTOM OF FIELDS) -->
+        <div style="background: #FFFDF5; border: 1.5px solid #FDE68A; border-radius: 12px; padding: 12px; margin-bottom: 14px;">
+          <label style="font-size: 0.78rem; font-weight: 800; color: #854D0E; display: block; margin-bottom: 6px;">
+            <i class="fa-brands fa-whatsapp text-emerald" style="font-size: 1.05rem;"></i> WhatsApp (with country code) * / واٹس ایپ نمبر مع کنٹری کوڈ *
+          </label>
+          <div style="display: grid; grid-template-columns: 140px 1fr; gap: 8px;">
+            <div>
+              <select id="modalLohCountry" class="country-select" style="width: 100%; height: 44px; padding: 6px 8px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; background: #FFFFFF;">
+                <option value="Pakistan" selected>🇵🇰 Pakistan</option>
+              </select>
             </div>
-            <!-- JazzCash / EasyPaisa / Raast -->
-            <div style="background: rgba(255,255,255,0.85); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="color: #DC2626;">JazzCash / EasyPaisa / Raast</strong>
-                <span style="font-size: 0.72rem; color: #475569;">Muhammad Khizer Mateen</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
-                <span>ID: <code style="background:#FEE2E2; padding:1px 5px; border-radius:4px; font-weight:700; color:#B91C1C;">03317704807</code></span>
-                <button type="button" onclick="navigator.clipboard.writeText('03317704807'); alert('Copied: 03317704807');" style="background:#DC2626; color:#FFF; border:none; border-radius:4px; padding:2px 7px; font-size:0.66rem; cursor:pointer;">Copy</button>
-              </div>
-            </div>
-            <!-- Western Union & International Remittance Section -->
-            <div style="background: rgba(255,255,255,0.92); border: 1px solid rgba(234, 179, 8, 0.45); border-radius: 10px; padding: 10px 12px; margin-top: 6px; margin-bottom: 2px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
-              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F1F5F9; padding-bottom: 5px; margin-bottom: 6px;">
-                <strong style="color: #B45309; font-size: 0.84rem; display: flex; align-items: center; gap: 5px;">
-                  <i class="fa-solid fa-earth-americas text-gold"></i> Western Union &amp; International (بیرونِ ملک ترسیل)
-                </strong>
-                <span style="font-size: 0.68rem; color: #B45309; font-weight: 800; background: #FEF3C7; padding: 2px 6px; border-radius: 4px;">
-                  Wise / Remitly / WU
-                </span>
-              </div>
-
-              <!-- Receiver Full Name -->
-              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.76rem; margin-bottom: 4px;">
-                <span>Receiver Name: <strong style="color: #0F172A;">Muhammad Khizer Mateen</strong></span>
-                <button type="button" onclick="navigator.clipboard.writeText('Muhammad Khizer Mateen'); alert('Receiver Name copied: Muhammad Khizer Mateen');" style="background: #065F46; color: #FFF; border: none; border-radius: 5px; padding: 2px 7px; font-size: 0.66rem; font-weight: 700; cursor: pointer;">Copy</button>
-              </div>
-
-              <!-- First / Last Name breakdown for Western Union Form -->
-              <div style="font-size: 0.7rem; color: #64748B; background: #F8FAFC; padding: 4px 8px; border-radius: 6px; margin-bottom: 5px; display: flex; justify-content: space-between;">
-                <span>First Name: <strong style="color: #334155;">Muhammad Khizer</strong></span>
-                <span>Last Name: <strong style="color: #334155;">Mateen</strong></span>
-              </div>
-
-              <!-- Country & City -->
-              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.74rem; color: #334155; margin-bottom: 4px;">
-                <span>Country / City: <strong>Pakistan / Karachi</strong></span>
-                <span>Mobile: <strong style="color: #0F172A;">+92 331 7704807</strong></span>
-              </div>
-
-              <!-- Direct IBAN for Bank Credit via WU -->
-              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: #475569; background: #FFFBEB; padding: 4px 8px; border-radius: 6px; border: 1px dashed #FDE68A;">
-                <span>Direct Bank / IBAN: <code style="font-size: 0.7rem; font-weight: 700; color: #92400E;">PK04MEZN0001500103494030</code></span>
-                <button type="button" onclick="navigator.clipboard.writeText('PK04MEZN0001500103494030'); alert('IBAN copied: PK04MEZN0001500103494030');" style="background: #D97706; color: #FFF; border: none; border-radius: 4px; padding: 2px 6px; font-size: 0.64rem; font-weight: 700; cursor: pointer;">Copy</button>
-              </div>
-
-              <div style="font-size: 0.68rem; color: #64748B; margin-top: 5px; line-height: 1.35;">
-                <span class="lang-en-only"><i class="fa-solid fa-circle-info text-blue"></i> For Cash Pickup or Bank Deposit via Western Union/Wise/Remitly, upload receipt screenshot or provide MTCN number on WhatsApp.</span>
-                <span class="lang-ur-only"><i class="fa-solid fa-circle-info text-blue"></i> کیش وصولی یا ڈائریکٹ بینک ڈیپازٹ کیلئے ویسٹرن یونین ٹرانسفر کے بعد MTCN نمبر یا سلپ کا سکرین شاٹ اپلوڈ کریں۔</span>
-              </div>
+            <div>
+              <input type="tel" id="modalLohPhone" placeholder="03001234567" style="width: 100%; height: 44px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.86rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
             </div>
           </div>
         </div>
 
-        <!-- Field 7: Slip -->
-        <div style="margin-bottom: 14px;">
+        <!-- Detailed Official Payment Box -->
+        <div style="background: linear-gradient(135deg, #FEF9C3 0%, #FEF3C7 100%); border: 1.5px solid #F59E0B; border-radius: 12px; padding: 12px; margin-bottom: 14px; text-align: right; direction: rtl; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.12);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid rgba(212, 175, 55, 0.35); padding-bottom: 6px;">
+            <span style="font-size: 0.84rem; font-weight: 800; color: #854D0E; display: flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-building-columns text-gold"></i> سرکاری و مصدقہ ادائیگی اکاؤنٹس (Rs. 11,000 ہدیہ اکاؤنٹ)
+            </span>
+            <span style="font-size: 0.68rem; color: #15803D; font-weight: 800; background: #DCFCE7; padding: 2px 7px; border-radius: 4px;">
+              <i class="fa-solid fa-circle-check"></i> تصدیق شدہ
+            </span>
+          </div>
+
+          <!-- Account 1: Meezan Bank -->
+          <div style="background: rgba(255,255,255,0.92); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="color: #065F46; font-size: 0.82rem;"><i class="fa-solid fa-landmark"></i> Meezan Bank Ltd</strong>
+              <span style="font-size: 0.72rem; color: #475569; font-weight: 700;">Muhammad Khizer Mateen</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+              <span style="font-size: 0.76rem;">اکاؤنٹ نمبر: <code style="background:#FEF3C7; padding:2px 6px; border-radius:4px; font-weight:800; color:#92400E; font-size: 0.78rem;">01500103494030</code></span>
+              <button type="button" onclick="navigator.clipboard.writeText('01500103494030'); alert('میزان بینک اکاؤنٹ کاپی ہو گیا: 01500103494030');" style="background:#065F46; color:#FFF; border:none; border-radius:4px; padding:3px 9px; font-size:0.68rem; font-weight: 700; cursor:pointer;">Copy</button>
+            </div>
+          </div>
+
+          <!-- Account 2: JazzCash / EasyPaisa / Raast -->
+          <div style="background: rgba(255,255,255,0.92); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="color: #DC2626; font-size: 0.82rem;"><i class="fa-solid fa-mobile-screen-button"></i> JazzCash / EasyPaisa / Raast</strong>
+              <span style="font-size: 0.72rem; color: #475569; font-weight: 700;">Muhammad Khizer Mateen</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+              <span style="font-size: 0.76rem;">موبائل اکاؤنٹ: <code style="background:#FEE2E2; padding:2px 6px; border-radius:4px; font-weight:800; color:#B91C1C; font-size: 0.78rem;">03317704807</code></span>
+              <button type="button" onclick="navigator.clipboard.writeText('03317704807'); alert('جاز کیش / ایزی پیسہ نمبر کاپی ہو گیا: 03317704807');" style="background:#DC2626; color:#FFF; border:none; border-radius:4px; padding:3px 9px; font-size:0.68rem; font-weight: 700; cursor:pointer;">Copy</button>
+            </div>
+          </div>
+
+          <!-- Account 3: Western Union & International Remittance -->
+          <div style="background: rgba(255,255,255,0.95); border: 1px solid rgba(234, 179, 8, 0.45); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <strong style="color: #B45309; font-size: 0.78rem;"><i class="fa-solid fa-earth-americas text-gold"></i> Western Union / بیرونِ ملک ترسیل</strong>
+              <span style="font-size: 0.66rem; color: #B45309; font-weight: 800; background: #FEF3C7; padding: 1px 5px; border-radius: 4px;">Wise / Remitly / WU</span>
+            </div>
+            <div style="font-size: 0.72rem; color: #334155; line-height: 1.4;">
+              <div>نام: <strong>Muhammad Khizer Mateen</strong> | شہر: <strong>Karachi, Pakistan</strong></div>
+              <div style="margin-top: 3px; display: flex; justify-content: space-between; align-items: center;">
+                <span>IBAN: <code style="background:#FFFBEB; padding:1px 5px; border-radius:3px; font-weight:700; color:#92400E; font-size: 0.7rem;">PK04MEZN0001500103494030</code></span>
+                <button type="button" onclick="navigator.clipboard.writeText('PK04MEZN0001500103494030'); alert('IBAN کاپی ہو گیا: PK04MEZN0001500103494030');" style="background:#D97706; color:#FFF; border:none; border-radius:3px; padding:2px 7px; font-size:0.64rem; font-weight:700; cursor:pointer;">Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 0.72rem; color: #78350F; line-height: 1.45; background: rgba(255,255,255,0.75); padding: 6px 8px; border-radius: 6px;">
+            <i class="fa-solid fa-circle-info text-blue"></i> <strong>طریقہ کار:</strong> ہدیہ کی رقم (Rs. 11,000) منتقل کرنے کے بعد نیچے رسید منسلک فرمائیں۔ لوحِ مبارک چاندی کے خول میں محفوظ کر کے ٹی سی ایس کوریئر سے بھیجی جائے گی۔
+          </div>
+        </div>
+
+        <!-- Slip Upload -->
+        <div style="margin-bottom: 14px; background: #F8FAFC; border: 1.5px dashed #CBD5E1; border-radius: 10px; padding: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
             <i class="fa-solid fa-receipt text-gold"></i>
-            <span class="lang-en-only">Upload Payment Slip / Screenshot (Optional)</span>
-            <span class="lang-ur-only">ادائیگی کی رسید یا سکرین شاٹ اپلوڈ کریں (اختیاری)</span>
+            Upload Payment Slip / Screenshot (Optional)
           </label>
-          <input type="file" id="modalLohSlip" accept="image/*" onchange="handleLohSlipPreview(event, 'modalLohSlipPreview')" style="font-size: 0.78rem; width: 100%;">
+          <input type="file" id="modalLohSlip" accept="image/*" onchange="handleLohSlipPreview(event, 'modalLohSlipPreview')" style="font-size: 0.8rem; width: 100%;">
           <img id="modalLohSlipPreview" src="" alt="Slip Preview" style="display:none; max-width: 100%; max-height: 100px; margin-top: 6px; border-radius: 6px; border: 1px solid #CBD5E1; object-fit: contain;">
         </div>
 
         <!-- Submit Button -->
-        <button type="button" id="btnSubmitModalLohOrder" onclick="submitLohOrderForm('modal')" style="width: 100%; background: linear-gradient(135deg, #B45309 0%, #D97706 100%); color: #FFFFFF; border: none; border-radius: 10px; padding: 12px; font-size: 0.88rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(180, 83, 9, 0.35);">
-          <i class="fa-brands fa-whatsapp text-gold" style="font-size: 1.15rem;"></i>
-          <span class="lang-en-only">Submit Order to WhatsApp</span>
-          <span class="lang-ur-only">آرڈر مکمل کریں اور واٹس ایپ پر ارسال کریں</span>
+        <button type="button" id="btnSubmitModalLohOrder" onclick="submitLohOrderForm('modal')" style="width: 100%; background: linear-gradient(135deg, #B45309 0%, #D97706 100%); color: #FFFFFF; border: none; border-radius: 10px; padding: 13px; font-size: 0.95rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(180, 83, 9, 0.35);">
+          <i class="fa-brands fa-whatsapp text-gold" style="font-size: 1.25rem;"></i>
+          <span>Submit Order to WhatsApp (Rs. 11,000)</span>
         </button>
 
       </div>
     </div>
   </div>
 
-  
-
-
-<div class="modal-dialog-layer" id="modalTashkheesBooking">
+  <div class="modal-dialog-layer" id="modalTashkheesBooking">
     <div class="modal-card-container" style="max-width: 500px; width: 92%; max-height: 90vh; overflow-y: auto; border-radius: 20px; border: 1.5px solid rgba(124, 58, 237, 0.45); background: #FFFFFF; box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
       
       <!-- Top Bar -->
@@ -9019,198 +8994,184 @@
        MODAL: ORDER CHOICE TAWEEZ (اپنی پسند کا تعویذ)
        ==================================================== -->
   <div class="modal-dialog-layer" id="modalOrderCustomTaweez">
-    <div class="modal-card-container" style="max-width: 500px; width: 92%; max-height: 90vh; overflow-y: auto; border-radius: 20px; border: 1.5px solid rgba(217, 119, 6, 0.55); background: #FFFFFF; box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
+    <div class="modal-card-container" style="max-width: 500px; width: 92%; max-height: 90vh; overflow-y: auto; border-radius: 20px; border: 1.5px solid rgba(5, 150, 105, 0.55); background: #FFFFFF; box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
       
-      <!-- Top Bar -->
-      <div class="modal-card-top-bar" style="background: linear-gradient(135deg, #B45309 0%, #78350F 100%); color: #FFFFFF; padding: 14px 18px; border-top-left-radius: 18px; border-top-right-radius: 18px; display: flex; align-items: center; justify-content: space-between;">
+      <!-- Top Bar matching user screenshot (media_1789901303659.png) -->
+      <div class="modal-card-top-bar" style="background: linear-gradient(135deg, #065F46 0%, #059669 100%); color: #FFFFFF; padding: 14px 18px; border-top-left-radius: 18px; border-top-right-radius: 18px; display: flex; align-items: center; justify-content: space-between;">
         <div style="display: flex; align-items: center; gap: 8px;">
-          <i class="fa-solid fa-feather-pointed text-gold" style="font-size: 1.15rem;"></i>
-          <span style="font-weight: 800; font-size: 0.92rem;">
-            <span class="lang-en-only">Order Choice Taweez (Inscribed in Saffron)</span>
-            <span class="lang-ur-only">آن لائن آرڈر: اپنی پسند کا تعویذ (خالص زعفران)</span>
+          <i class="fa-solid fa-pen-nib text-gold" style="font-size: 1.15rem;"></i>
+          <span style="font-weight: 800; font-size: 0.95rem;">
+            Order Choice Taweez (Inscribed in Saffron)
           </span>
         </div>
-        <button class="btn-modal-x" onclick="closeModal('modalOrderCustomTaweez')" style="color:#FFF; background:transparent; border:none; font-size:1.1rem; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+        <button class="btn-modal-x" onclick="closeModal('modalOrderCustomTaweez')" style="color:#FFF; background:transparent; border:none; font-size:1.15rem; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
       <!-- Modal Body -->
       <div class="modal-card-body" style="padding: 16px 18px; direction: rtl; text-align: right;">
         
-        <!-- Summary Header -->
-        <div style="background: linear-gradient(135deg, #FFFDF5 0%, #FEF9C3 100%); border: 1px solid #FDE68A; border-radius: 12px; padding: 10px 14px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center;">
+        <!-- Summary Header matching screenshot -->
+        <div style="background: #F0FDF4; border: 1.5px solid #BBF7D0; border-radius: 14px; padding: 12px 14px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center;">
           <div>
-            <div style="font-size: 0.86rem; font-weight: 800; color: #92400E;">اپنی پسند یا مخصوص مسئلے کا تعویذ</div>
-            <div style="font-size: 0.72rem; color: #78350F;">خالص کشمیری زعفران سے تحریر شدہ • مع چاندی خول و مفت کوریئر</div>
+            <div style="font-size: 0.92rem; font-weight: 800; color: #065F46;">اپنی پسند یا مخصوص مسئلے کا تعویذ</div>
+            <div style="font-size: 0.74rem; color: #047857; margin-top: 2px;">خالص کشمیری زعفران و کستوری • مع چاندی خول و کوریئر ڈلیوری</div>
           </div>
-          <div style="font-size: 1.05rem; font-weight: 900; color: #B45309; background: #FFFFFF; padding: 4px 10px; border-radius: 8px; border: 1px solid #F59E0B; white-space: nowrap;">
+          <div style="font-size: 1.1rem; font-weight: 900; color: #065F46; background: #FFFFFF; padding: 4px 12px; border-radius: 8px; border: 1.5px solid #10B981; white-space: nowrap;">
             Rs. 2,200
           </div>
         </div>
 
-        <!-- SECTION 1: APPLICANT DETAILS (سائل کی تفصیلات) -->
-        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 12px; margin-bottom: 12px;">
-          <div style="font-size: 0.8rem; font-weight: 800; color: #1E293B; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
-            <i class="fa-solid fa-user-pen text-gold"></i> ۱. سائل و طالب کی بنیادی تفصیل:
+        <!-- SECTION: Select How You Want Your Taweez -->
+        <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 12px; margin-bottom: 14px;">
+          <div style="font-size: 0.82rem; font-weight: 800; color: #1E293B; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+            <i class="fa-solid fa-sliders text-emerald"></i> Select How You Want Your Taweez:
           </div>
 
-          <!-- Field 1: Customer Name -->
-          <div style="margin-bottom: 8px;">
-            <label style="font-size: 0.76rem; font-weight: 700; color: #334155; display: block; margin-bottom: 3px;">
-              <span class="lang-en-only">Applicant Full Name *</span>
-              <span class="lang-ur-only">سائل / طالب کا مکمل نام *</span>
-            </label>
-            <input type="text" id="modalCustomName" placeholder="Full Name / سائل کا نام *" style="width: 100%; height: 40px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
-          </div>
-
-          <!-- Field 2: Mother's Name -->
-          <div>
-            <label style="font-size: 0.76rem; font-weight: 700; color: #334155; display: block; margin-bottom: 3px;">
-              <span class="lang-en-only">Mother's Name (Required for Calculation) *</span>
-              <span class="lang-ur-only">والدہ کا نام (دعائیہ نسبت و تکسیر کیلئے لازمی) *</span>
-            </label>
-            <input type="text" id="modalCustomMother" placeholder="Mother's Name / والدہ کا نام *" style="width: 100%; height: 40px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
-          </div>
-        </div>
-
-        <!-- SECTION 2: PURPOSE & ISSUE SELECTION (تعویذ کا مقصد و انتخاب - MOVED UP AS REQUESTED) -->
-        <div style="background: #FFFDF5; border: 1.5px solid #FDE68A; border-radius: 12px; padding: 12px; margin-bottom: 12px;">
-          <div style="font-size: 0.8rem; font-weight: 800; color: #92400E; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
-            <i class="fa-solid fa-scroll text-gold"></i> ۲. مطلوبہ تعویذ کا مقصد یا مخصوص مسئلہ منتخب کریں:
-          </div>
-
-          <!-- Toggle: Custom Photo Upload vs Issue Dropdown -->
-          <label style="display: flex; align-items: center; gap: 8px; font-size: 0.78rem; font-weight: 700; color: #1E293B; cursor: pointer; margin-bottom: 10px; background: #FFFFFF; border: 1px dashed #D97706; padding: 7px 10px; border-radius: 8px;">
-            <input type="checkbox" id="modeCustomUpload" onchange="toggleCustomTaweezUpload()" style="width: 16px; height: 16px; accent-color: #D97706;">
-            <span>میرے پاس اپنے مطلوبہ تعویذ کی تصویر ہے (وہ تصویر اپلوڈ کرنا چاہتا ہوں)</span>
+          <!-- Radio 1: Issue dropdown -->
+          <label style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 700; color: #1E293B; cursor: pointer; margin-bottom: 8px; background: #FFFFFF; border: 1.5px solid #CBD5E1; padding: 8px 12px; border-radius: 8px;">
+            <input type="radio" name="customTaweezMethod" id="modeCustomSelectRadio" checked onchange="toggleCustomTaweezMode('select')" style="width: 16px; height: 16px; accent-color: #059669;">
+            <span>خاص مسئلے کے لیے تعویذ لکھوائیں (Select Issue from List)</span>
           </label>
-          
-          <!-- EXPANDED COMPREHENSIVE DROPDOWN -->
-          <div id="boxCustomIssueSelect" style="display: block; margin-bottom: 10px;">
-            <label style="font-size: 0.76rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">
-              مطلوبہ مقصد منتخب فرمائیں (Select Purpose / Issue) *
+
+          <!-- Radio 2: Photo upload -->
+          <label style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 700; color: #1E293B; cursor: pointer; margin-bottom: 10px; background: #FFFFFF; border: 1.5px solid #CBD5E1; padding: 8px 12px; border-radius: 8px;">
+            <input type="radio" name="customTaweezMethod" id="modeCustomUpload" onchange="toggleCustomTaweezMode('upload')" style="width: 16px; height: 16px; accent-color: #059669;">
+            <span>اپنے پسندیدہ تعویذ کی تصویر اپلوڈ کریں (Upload Custom Photo)</span>
+          </label>
+
+          <!-- Dropdown container -->
+          <div id="boxCustomIssueSelect" style="display: block;">
+            <label style="font-size: 0.78rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">
+              Select Your Issue / Category: *
             </label>
-            <select id="modalCustomIssue" style="width: 100%; height: 42px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; background: #FFFFFF; color: #1E293B;">
-              <option value="سحر و کالا جادو کا مستقل خاتمہ و توڑ">🌟 سحر و کالا جادو کا مستقل خاتمہ و توڑ (Black Magic Removal)</option>
+            <select id="modalCustomIssue" style="width: 100%; height: 44px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; background: #FFFFFF; color: #1E293B;">
+              <option value="سحر، کالا جادو اور شیطانی بندشوں کا خاتمہ" selected>🌟 سحر، کالا جادو اور شیطانی بندشوں کا خاتمہ</option>
               
-              <optgroup label="🛡️ سحر، جادو، جنات و آسیب (Protection &amp; Exorcism)">
-                <option value="سحر و کالا جادو کا مستقل خاتمہ و توڑ">سحر و کالا جادو کا مستقل خاتمہ و توڑ (Black Magic Removal)</option>
-                <option value="سحرِ تفریق و باہمی جدائی کی کاٹ">سحرِ تفریق و باہمی جدائی کی کاٹ (Breaking Separation Hexes)</option>
-                <option value="خبیث جنات، شیاطین و آسیب سے نجات">خبیث جنات، شیاطین و آسیب سے نجات (Jinn Possession Relief)</option>
-                <option value="شیطانی وسوسے، ڈراؤنے خواب و بے خوابی">شیطانی وسوسے، ڈراؤنے خواب و بے خوابی (Nightmares &amp; Anxiety)</option>
-                <option value="دفن شدہ تعویذات و سفلی اثرات کا باطل ہونا">دفن شدہ تعویذات و سفلی اثرات کا باطل ہونا (Neutralizing Buried Occult)</option>
-                <option value="سخت ترین نظرِ بد و حاسدین کے شر سے حفاظت">سخت ترین نظرِ بد و حاسدین کے شر سے حفاظت (Evil Eye Protection)</option>
-                <option value="بچوں کا بلاوجہ رونا، سوکھے کا مرض و چونکنا">بچوں کا بلاوجہ رونا، سوکھے کا مرض و چونکنا (Infant Night Crying)</option>
-                <option value="مکان، فلیٹ، دکان و فیکٹری کا حفاظتی حصار">مکان، فلیٹ، دکان و فیکٹری کا حفاظتی حصار (Home &amp; Property Shield)</option>
+              <optgroup label="🛡️ سحر، جادو، جنات و نظرِ بد">
+                <option value="سحر، کالا جادو اور شیطانی بندشوں کا خاتمہ">سحر، کالا جادو اور شیطانی بندشوں کا خاتمہ</option>
+                <option value="نظرِ بد اور حاسدین کے شر سے حفاظت">نظرِ بد اور حاسدین کے شر سے حفاظت</option>
+                <option value="جنات و آسیب اور ڈراؤنے خوابوں سے نجات">جنات و آسیب اور ڈراؤنے خوابوں سے نجات</option>
+                <option value="سحرِ تفریق اور باہمی جدائی کی کاٹ">سحرِ تفریق اور باہمی جدائی کی کاٹ</option>
+                <option value="دفن شدہ تعویذات و سفلی اثرات کا باطل ہونا">دفن شدہ تعویذات و سفلی اثرات کا باطل ہونا</option>
+                <option value="بچوں کا بلاوجہ رونا، سوکھے کا مرض اور چونکنا">بچوں کا بلاوجہ رونا، سوکھے کا مرض اور چونکنا</option>
+                <option value="مکان، فلیٹ، دکان اور فیکٹری کا حفاظتی حصار">مکان، فلیٹ، دکان اور فیکٹری کا حفاظتی حصار</option>
               </optgroup>
 
-              <optgroup label="💼 رزق، روزگار، کاروبار و معاشی برکت (Wealth &amp; Career)">
-                <option value="وسعتِ رزق، کثرتِ مال و کشادگیِ کاروبار">وسعتِ رزق، کثرتِ مال و کشادگیِ کاروبار (Wealth &amp; Business Growth)</option>
-                <option value="بندشِ کاروبار، دکان میں بے برکتی و گاہک کا نہ آنا">بندشِ کاروبار، دکان میں بے برکتی و گاہک کا نہ آنا (Breaking Business Blockages)</option>
-                <option value="ملازمت، نوکری کی تلاش اور پروموشن میں آسانی">ملازمت، نوکری کی تلاش اور پروموشن میں آسانی (Job Search &amp; Career Success)</option>
-                <option value="قرض کی بروقت اور غیبی ادائیگی">قرض کی بروقت اور غیبی ادائیگی (Debt Clearance Facilitation)</option>
-                <option value="پھنسا ہوا مال، ادھار اور رکی ہوئی رقم کی فوری واپسی">پھنسا ہوا مال، ادھار اور رکی ہوئی رقم کی فوری واپسی (Recovery of Stuck Money)</option>
-                <option value="امتحانات، انٹرویو اور مقابلے کے ٹیسٹ میں کامیابی">امتحانات، انٹرویو اور مقابلے کے ٹیسٹ میں کامیابی (Exam &amp; Interview Success)</option>
+              <optgroup label="💼 رزق، برکت، کاروبار و ملازمت">
+                <option value="وسعتِ رزق، برکت و کاروبار اور قرض سے نجات">وسعتِ رزق، برکت و کاروبار اور قرض سے نجات</option>
+                <option value="بندشِ کاروبار، دکان میں بے برکتی اور گاہک کا نہ آنا">بندشِ کاروبار، دکان میں بے برکتی اور گاہک کا نہ آنا</option>
+                <option value="ملازمت، نوکری کی تلاش اور پروموشن میں آسانی">ملازمت، نوکری کی تلاش اور پروموشن میں آسانی</option>
+                <option value="قرض کی بروقت اور غیبی ادائیگی">قرض کی بروقت اور غیبی ادائیگی</option>
+                <option value="پھنسا ہوا مال، ادھار اور رکی ہوئی رقم کی واپسی">پھنسا ہوا مال، ادھار اور رکی ہوئی رقم کی واپسی</option>
+                <option value="امتحانات، انٹرویو اور مقابلے کے ٹیسٹ میں شاندار کامیابی">امتحانات، انٹرویو اور مقابلے کے ٹیسٹ میں شاندار کامیابی</option>
               </optgroup>
 
-              <optgroup label="💍 شادی، رشتہ، گھریلو صلح و تسخیرِ قلوب (Family &amp; Marriage)">
-                <option value="بندشِ رشتہ، شادی میں رکاوٹ اور بندش کا خاتمہ">بندشِ رشتہ، شادی میں رکاوٹ اور بندش کا خاتمہ (Removing Marriage Obstacles)</option>
-                <option value="من پسند جائز شرعی رشتے کا طے پانا">من پسند جائز شرعی رشتے کا طے پانا (Lawful Proposal Realization)</option>
-                <option value="میاں بیوی میں شدید ناچاقی، نفرت و طلاق سے بچاؤ">میاں بیوی میں شدید ناچاقی، نفرت و طلاق سے بچاؤ (Marital Reconciliation)</option>
-                <option value="ساس، بہو اور سسرالی تنازعات میں امن و صلح">ساس، بہو اور سسرالی تنازعات میں امن و صلح (In-Laws Harmony)</option>
-                <option value="گھریلو جھگڑے، بے چینی اور گھر میں سکون کا قیام">گھریلو جھگڑے، بے چینی اور گھر میں سکون کا قیام (Domestic Peace)</option>
-                <option value="نافرمان اولاد کی اصلاح اور راہِ راست پر آنا">نافرمان اولاد کی اصلاح اور راہِ راست پر آنا (Reforming Children)</option>
-                <option value="گھر چھوڑ کر جانے والے یا ناراض عزیز کی واپسی">گھر چھوڑ کر جانے والے یا ناراض عزیز کی واپسی (Return of Missing/Angry One)</option>
+              <optgroup label="💍 گھریلو صلح، شادی و تسخیرِ قلوب">
+                <option value="گھریلو صلح و ناچاقی اور رنجشوں کا خاتمہ">گھریلو صلح و ناچاقی اور رنجشوں کا خاتمہ</option>
+                <option value="میاں بیوی میں شدید ناچاقی، نفرت اور طلاق سے بچاؤ">میاں بیوی میں شدید ناچاقی، نفرت اور طلاق سے بچاؤ</option>
+                <option value="بندشِ رشتہ، شادی میں رکاوٹ اور بندش کا حل">بندشِ رشتہ، شادی میں رکاوٹ اور بندش کا حل</option>
+                <option value="من پسند جائز شرعی رشتے کا طے پانا">من پسند جائز شرعی رشتے کا طے پانا</option>
+                <option value="ساس، بہو اور سسرالی تنازعات میں امن و صلح">ساس، بہو اور سسرالی تنازعات میں امن و صلح</option>
+                <option value="نافرمان اولاد کی اصلاح اور راہِ راست پر آنا">نافرمان اولاد کی اصلاح اور راہِ راست پر آنا</option>
+                <option value="گھر چھوڑ کر جانے والے یا ناراض عزیز کی واپسی">گھر چھوڑ کر جانے والے یا ناراض عزیز کی واپسی</option>
               </optgroup>
 
-              <optgroup label="🌿 جسمانی و روحانی شفا، لاعلاج امراض (Healing &amp; Health)">
-                <option value="لاعلاج و دائمی جسمانی امراض سے شفائے کاملہ">لاعلاج و دائمی جسمانی امراض سے شفائے کاملہ (Healing Chronic Illness)</option>
-                <option value="نفسیاتی امراض، وہم، خوف، گھبراہٹ و ڈپریشن">نفسیاتی امراض، وہم، خوف، گھبراہٹ و ڈپریشن (Depression &amp; Anxiety Relief)</option>
-                <option value="فالج، لقوہ، رعشہ اور اعصابی کمزوری سے شفا">فالج، لقوہ، رعشہ اور اعصابی کمزوری سے شفا (Paralysis &amp; Nerve Healing)</option>
-                <option value="دل کی دھڑکن، بلڈ پریشر اور گھٹن کا علاج">دل کی دھڑکن، بلڈ پریشر اور گھٹن کا علاج (Heart Health &amp; Calm)</option>
-                <option value="بانجھ پن، بے اولادی اور حمل کی حفاظت">بانجھ پن، بے اولادی اور حمل کی حفاظت (Conception &amp; Pregnancy Safety)</option>
-                <option value="نشہ، شراب، جوئے اور بری عادات سے مستقل نجات">نشہ، شراب، جوئے اور بری عادات سے مستقل نجات (Freedom from Addictions)</option>
+              <optgroup label="🌿 شفائے امراض و جسمانی صحت">
+                <option value="شفائے امراض (معدہ، سر درد، جسمانی و اعصابی امراض)">شفائے امراض (معدہ، سر درد، جسمانی و اعصابی امراض)</option>
+                <option value="لاعلاج و دائمی جسمانی امراض سے شفائے کاملہ">لاعلاج و دائمی جسمانی امراض سے شفائے کاملہ</option>
+                <option value="نفسیاتی امراض، وہم، خوف، گھبراہٹ اور ڈپریشن">نفسیاتی امراض، وہم، خوف، گھبراہٹ اور ڈپریشن</option>
+                <option value="فالج، لقوہ، رعشہ اور اعصابی کمزوری سے شفا">فالج، لقوہ، رعشہ اور اعصابی کمزوری سے شفا</option>
+                <option value="بانجھ پن، بے اولادی اور حمل کی حفاظت">بانجھ پن، بے اولادی اور حمل کی حفاظت</option>
+                <option value="نشہ، شراب، جوئے اور بری عادات سے مستقل نجات">نشہ، شراب، جوئے اور بری عادات سے مستقل نجات</option>
               </optgroup>
 
-              <optgroup label="⚖️ قانونی معاملات، فتح و غلبہ، دیگر حاجات (Legal &amp; General)">
-                <option value="کورٹ کچہری، مقدمات اور قانونی الجھنوں میں فتح">کورٹ کچہری، مقدمات اور قانونی الجھنوں میں فتح (Victory in Court Cases)</option>
-                <option value="دشمن، حاسد اور ظالم کے شر سے غیبی امان">دشمن، حاسد اور ظالم کے شر سے غیبی امان (Safety from Oppressors)</option>
-                <option value="ظالم حاکم یا سخت افسر کے غصے سے بچاؤ و تسخیر">ظالم حاکم یا سخت افسر کے غصے سے بچاؤ و تسخیر (Favor with Authorities)</option>
-                <option value="بیرونِ ملک سفر، ویزا اور پاسپورٹ کی آسانی">بیرونِ ملک سفر، ویزا اور پاسپورٹ کی آسانی (Visa &amp; Travel Facilitation)</option>
-                <option value="گمشدہ چیز یا چوری شدہ مال کا سراغ">گمشدہ چیز یا چوری شدہ مال کا سراغ (Locating Stolen Items)</option>
-                <option value="دیگر خاص دینی یا روحانی مقصد">دیگر خاص دینی یا روحانی مقصد (Other Specific Need)</option>
+              <optgroup label="⚖️ کورٹ کچہری، قانونی فتح و دیگر مقاصد">
+                <option value="کورٹ کچہری، مقدمات اور قانونی الجھنوں میں فتح">کورٹ کچہری، مقدمات اور قانونی الجھنوں میں فتح</option>
+                <option value="دشمن، حاسد اور ظالم کے شر سے غیبی امان">دشمن، حاسد اور ظالم کے شر سے غیبی امان</option>
+                <option value="ظالم حاکم یا سخت افسر کے غصے سے بچاؤ و تسخیر">ظالم حاکم یا سخت افسر کے غصے سے بچاؤ و تسخیر</option>
+                <option value="بیرونِ ملک سفر، ویزا اور پاسپورٹ کی آسانی">بیرونِ ملک سفر، ویزا اور پاسپورٹ کی آسانی</option>
+                <option value="دیگر مخصوص مقصد (تفصیل نیچے لکھیں)">دیگر مخصوص مقصد (تفصیل نیچے لکھیں)</option>
               </optgroup>
             </select>
           </div>
 
-          <!-- Image Upload Box (If user has custom photo) -->
-          <div id="boxCustomImageUpload" style="display: none; margin-bottom: 10px;">
-            <label style="font-size: 0.76rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">
+          <!-- Photo Upload container (hidden by default) -->
+          <div id="boxCustomImageUpload" style="display: none;">
+            <label style="font-size: 0.78rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">
               مطلوبہ تعویذ کی تصویر منتخب کریں (Upload Taweez Image):
             </label>
             <input type="file" id="customTaweezImage" accept="image/*" onchange="handleImagePreview(event, 'previewCustomImage')" style="font-size: 0.8rem; width: 100%;">
             <img id="previewCustomImage" src="" alt="Custom Taweez" style="display:none; max-width: 100%; max-height: 120px; margin-top: 6px; border-radius: 8px; border: 1px solid #CBD5E1; object-fit: contain;">
           </div>
+        </div>
 
-          <!-- Notes / Additional Details -->
+        <!-- SECTION: APPLICANT DETAILS (Name, Father, Mother) -->
+        <div style="margin-bottom: 12px;">
+          <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
+            Applicant Full Name *
+          </label>
+          <input type="text" id="modalCustomName" placeholder="* مکمل نام درج کریں" style="width: 100%; height: 42px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px;">
           <div>
-            <label style="font-size: 0.76rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">
-              <span class="lang-en-only">Specific Affliction or Intention Details (Optional)</span>
-              <span class="lang-ur-only">مرض یا مسئلہ کی مزید تفصیل و کیفیات (اختیاری)</span>
+            <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
+              Father's Name *
             </label>
-            <input type="text" id="modalCustomNotes" placeholder="مثلاً: مرض کی مدت، خاص علامات یا مقصد کی مزید وضاحت لکھیں" style="width: 100%; height: 38px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
+            <input type="text" id="modalCustomFather" placeholder="والد کا نام" style="width: 100%; height: 42px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
+          </div>
+          <div>
+            <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
+              Mother's Name *
+            </label>
+            <input type="text" id="modalCustomMother" placeholder="والدہ کا نام" style="width: 100%; height: 42px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
           </div>
         </div>
 
-        <!-- SECTION 3: CONTACT & DELIVERY DETAILS (رابطہ و کوریئر ڈلیوری ایڈریس - MOVED DOWN AS REQUESTED) -->
-        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 12px; margin-bottom: 14px;">
-          <div style="font-size: 0.8rem; font-weight: 800; color: #1E293B; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
-            <i class="fa-solid fa-truck-fast text-emerald"></i> ۳. رابطہ، ملک اور پارسل ڈلیوری کا پتہ:
-          </div>
+        <!-- SECTION: CITY & ADDRESS -->
+        <div style="margin-bottom: 12px;">
+          <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
+            City *
+          </label>
+          <input type="text" id="modalCustomCity" placeholder="شہر کا نام" style="width: 100%; height: 42px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
+        </div>
 
-          <!-- Country Code / Selector -->
-          <div style="margin-bottom: 8px;">
-            <label style="font-size: 0.76rem; font-weight: 700; color: #334155; display: block; margin-bottom: 3px;">
-              <span class="lang-en-only">Country / Dial Code *</span>
-              <span class="lang-ur-only">ملک و کنٹری کوڈ (Country) *</span>
-            </label>
-            <select id="modalCustomCountry" class="country-select" style="width: 100%; height: 40px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; background: #FFFFFF;">
-              <option value="Pakistan" selected>🇵🇰 Pakistan</option>
-            </select>
-          </div>
+        <div style="margin-bottom: 12px;">
+          <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
+            Complete Delivery Address for Courier *
+          </label>
+          <textarea id="modalCustomAddress" rows="2" placeholder="...مکان نمبر، گلی / محلہ، شہر (مکمل کوریئر پتہ)" style="width: 100%; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box; resize: vertical; background: #FFFFFF;"></textarea>
+        </div>
 
-          <!-- Phone & City Grid -->
-          <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 8px; margin-bottom: 8px;">
+        <div style="margin-bottom: 12px;">
+          <label style="font-size: 0.78rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">
+            Specific Affliction or Intention Details (Optional)
+          </label>
+          <input type="text" id="modalCustomNotes" placeholder="مرض یا مسئلہ کی مزید تفصیل و کیفیات (اختیاری)" style="width: 100%; height: 40px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
+        </div>
+
+        <!-- SECTION: WHATSAPP NUMBER & COUNTRY CODE (AT THE VERY END OF FIELDS AS INSTRUCTED) -->
+        <div style="background: #F0FDF4; border: 1.5px solid #A7F3D0; border-radius: 12px; padding: 12px; margin-bottom: 14px;">
+          <label style="font-size: 0.78rem; font-weight: 800; color: #065F46; display: block; margin-bottom: 6px;">
+            <i class="fa-brands fa-whatsapp text-emerald" style="font-size: 1.05rem;"></i> WhatsApp (with country code) * / واٹس ایپ نمبر مع کنٹری کوڈ *
+          </label>
+          <div style="display: grid; grid-template-columns: 140px 1fr; gap: 8px;">
             <div>
-              <label style="font-size: 0.76rem; font-weight: 700; color: #334155; display: block; margin-bottom: 3px;">
-                <span class="lang-en-only">WhatsApp / Mobile *</span>
-                <span class="lang-ur-only">واٹس ایپ نمبر *</span>
-              </label>
-              <input type="tel" id="modalCustomPhone" placeholder="03001234567" style="width: 100%; height: 40px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
+              <select id="modalCustomCountry" class="country-select" style="width: 100%; height: 44px; padding: 6px 8px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; background: #FFFFFF;">
+                <option value="Pakistan" selected>🇵🇰 Pakistan</option>
+              </select>
             </div>
             <div>
-              <label style="font-size: 0.76rem; font-weight: 700; color: #334155; display: block; margin-bottom: 3px;">
-                <span class="lang-en-only">City *</span>
-                <span class="lang-ur-only">شہر کا نام *</span>
-              </label>
-              <input type="text" id="modalCustomCity" placeholder="مثلاً: کراچی / لاہور" style="width: 100%; height: 40px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
+              <input type="tel" id="modalCustomPhone" placeholder="03001234567" style="width: 100%; height: 44px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.86rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
             </div>
-          </div>
-
-          <!-- Full Address -->
-          <div>
-            <label style="font-size: 0.76rem; font-weight: 700; color: #334155; display: block; margin-bottom: 3px;">
-              <span class="lang-en-only">Complete Delivery Courier Address *</span>
-              <span class="lang-ur-only">مکمل کوریئر ڈلیوری ایڈریس (جہاں پارسل پہنچانا ہے) *</span>
-            </label>
-            <textarea id="modalCustomAddress" rows="2" placeholder="مکان نمبر، گلی/محلہ، نزدیکی مشہور مقام یا مکمل پتہ برائے ٹی سی ایس کوریئر..." style="width: 100%; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box; resize: vertical; background: #FFFFFF;"></textarea>
           </div>
         </div>
 
-        <!-- SECTION 4: DETAILED OFFICIAL PAYMENT ACCOUNTS & INSTRUCTIONS (مکمل تفصیلی ادائیگی سیکشن) -->
+        <!-- SECTION: DETAILED OFFICIAL PAYMENT ACCOUNTS (EXACT STYLE USER REQUESTED) -->
         <div style="background: linear-gradient(135deg, #FEF9C3 0%, #FEF3C7 100%); border: 1.5px solid #F59E0B; border-radius: 12px; padding: 12px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.12);">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid rgba(212, 175, 55, 0.35); padding-bottom: 6px;">
             <span style="font-size: 0.84rem; font-weight: 800; color: #854D0E; display: flex; align-items: center; gap: 6px;">
-              <i class="fa-solid fa-building-columns text-gold"></i> سرکاری و مصدقہ ادائیگی اکاؤنٹس (Official Accounts)
+              <i class="fa-solid fa-building-columns text-gold"></i> سرکاری و مصدقہ ادائیگی اکاؤنٹس (Rs. 2,200 ہدیہ اکاؤنٹ)
             </span>
             <span style="font-size: 0.68rem; color: #15803D; font-weight: 800; background: #DCFCE7; padding: 2px 7px; border-radius: 4px;">
               <i class="fa-solid fa-circle-check"></i> تصدیق شدہ
@@ -9225,7 +9186,7 @@
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
               <span style="font-size: 0.76rem;">اکاؤنٹ نمبر: <code style="background:#FEF3C7; padding:2px 6px; border-radius:4px; font-weight:800; color:#92400E; font-size: 0.78rem;">01500103494030</code></span>
-              <button type="button" onclick="navigator.clipboard.writeText('01500103494030'); alert('میزان بینک اکاؤنٹ کاپی ہو گیا: 01500103494030');" style="background:#065F46; color:#FFF; border:none; border-radius:4px; padding:3px 9px; font-size:0.68rem; font-weight: 700; cursor:pointer;">کاپی کریں</button>
+              <button type="button" onclick="navigator.clipboard.writeText('01500103494030'); alert('میزان بینک اکاؤنٹ کاپی ہو گیا: 01500103494030');" style="background:#065F46; color:#FFF; border:none; border-radius:4px; padding:3px 9px; font-size:0.68rem; font-weight: 700; cursor:pointer;">Copy</button>
             </div>
           </div>
 
@@ -9237,7 +9198,7 @@
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
               <span style="font-size: 0.76rem;">موبائل اکاؤنٹ: <code style="background:#FEE2E2; padding:2px 6px; border-radius:4px; font-weight:800; color:#B91C1C; font-size: 0.78rem;">03317704807</code></span>
-              <button type="button" onclick="navigator.clipboard.writeText('03317704807'); alert('جاز کیش / ایزی پیسہ نمبر کاپی ہو گیا: 03317704807');" style="background:#DC2626; color:#FFF; border:none; border-radius:4px; padding:3px 9px; font-size:0.68rem; font-weight: 700; cursor:pointer;">کاپی کریں</button>
+              <button type="button" onclick="navigator.clipboard.writeText('03317704807'); alert('جاز کیش / ایزی پیسہ نمبر کاپی ہو گیا: 03317704807');" style="background:#DC2626; color:#FFF; border:none; border-radius:4px; padding:3px 9px; font-size:0.68rem; font-weight: 700; cursor:pointer;">Copy</button>
             </div>
           </div>
 
@@ -9251,7 +9212,7 @@
               <div>نام: <strong>Muhammad Khizer Mateen</strong> | شہر: <strong>Karachi, Pakistan</strong></div>
               <div style="margin-top: 3px; display: flex; justify-content: space-between; align-items: center;">
                 <span>IBAN: <code style="background:#FFFBEB; padding:1px 5px; border-radius:3px; font-weight:700; color:#92400E; font-size: 0.7rem;">PK04MEZN0001500103494030</code></span>
-                <button type="button" onclick="navigator.clipboard.writeText('PK04MEZN0001500103494030'); alert('IBAN کاپی ہو گیا: PK04MEZN0001500103494030');" style="background:#D97706; color:#FFF; border:none; border-radius:3px; padding:2px 7px; font-size:0.64rem; font-weight:700; cursor:pointer;">کاپی کریں</button>
+                <button type="button" onclick="navigator.clipboard.writeText('PK04MEZN0001500103494030'); alert('IBAN کاپی ہو گیا: PK04MEZN0001500103494030');" style="background:#D97706; color:#FFF; border:none; border-radius:3px; padding:2px 7px; font-size:0.64rem; font-weight:700; cursor:pointer;">Copy</button>
               </div>
             </div>
           </div>
@@ -9265,27 +9226,22 @@
         <div style="margin-bottom: 14px; background: #F8FAFC; border: 1.5px dashed #CBD5E1; border-radius: 10px; padding: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
             <i class="fa-solid fa-receipt text-gold"></i>
-            <span class="lang-en-only">Upload Payment Slip / Screenshot (Optional)</span>
-            <span class="lang-ur-only">ادائیگی کی رسید یا سکرین شاٹ اپلوڈ کریں (اختیاری)</span>
+            Upload Payment Slip / Screenshot (Optional)
           </label>
           <input type="file" accept="image/*" onchange="handleImagePreview(event, 'previewCustomSlip')" style="font-size: 0.8rem; width: 100%;">
           <img id="previewCustomSlip" src="" alt="Slip Preview" style="display:none; max-width: 100%; max-height: 110px; margin-top: 6px; border-radius: 6px; border: 1px solid #CBD5E1; object-fit: contain;">
         </div>
 
-        <!-- Submit Button -->
+        <!-- Submit Button matching screenshot -->
         <button type="button" onclick="submitCustomTaweezOrder()" style="width: 100%; background: linear-gradient(135deg, #16A34A 0%, #15803D 100%); color: #FFFFFF; border: none; border-radius: 12px; padding: 13px; font-size: 0.95rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.35);">
           <i class="fa-brands fa-whatsapp text-gold" style="font-size: 1.25rem;"></i>
-          <span class="lang-en-only">Submit Order to WhatsApp (Rs. 2,200)</span>
-          <span class="lang-ur-only">آرڈر مکمل کریں اور واٹس ایپ پر ارسال کریں (Rs. 2,200)</span>
+          <span>Submit Order to WhatsApp</span>
         </button>
 
       </div>
     </div>
   </div>
 
-  <!-- ====================================================
-       MODAL: ORDER HIRZ ABI DUJANAH (حرزِ ابی دجانہ رضی اللہ عنہ)
-       ==================================================== -->
   <div class="modal-dialog-layer" id="modalOrderHirzAbiDujanah">
     <div class="modal-card-container" style="max-width: 500px; width: 92%; max-height: 90vh; overflow-y: auto; border-radius: 20px; border: 1.5px solid rgba(37, 99, 235, 0.55); background: #FFFFFF; box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
       
@@ -9294,23 +9250,22 @@
         <div style="display: flex; align-items: center; gap: 8px;">
           <i class="fa-solid fa-scroll text-gold" style="font-size: 1.15rem;"></i>
           <span style="font-weight: 800; font-size: 0.92rem;">
-            <span class="lang-en-only">Order Hirz Abi Dujanah (Home Shield)</span>
-            <span class="lang-ur-only">آن لائن حاصل کریں: حرزِ ابی دجانہ رضی اللہ عنہ</span>
+            Order Hirz Abi Dujanah (Home Shield)
           </span>
         </div>
         <button class="btn-modal-x" onclick="closeModal('modalOrderHirzAbiDujanah')" style="color:#FFF; background:transparent; border:none; font-size:1.1rem; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
       <!-- Modal Body -->
-      <div class="modal-card-body" style="padding: 16px 18px;">
+      <div class="modal-card-body" style="padding: 16px 18px; direction: rtl; text-align: right;">
         
         <!-- Summary Header -->
         <div style="background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); border: 1px solid #BFDBFE; border-radius: 12px; padding: 10px 14px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
           <div>
-            <div style="font-size: 0.84rem; font-weight: 800; color: #1E3A8A;">حرزِ ابی دجانہ رضی اللہ عنہ (تہدیدی نامہ مبارک)</div>
+            <div style="font-size: 0.86rem; font-weight: 800; color: #1E3A8A;">حرزِ ابی دجانہ رضی اللہ عنہ (تہدیدی نامہ مبارک)</div>
             <div style="font-size: 0.72rem; color: #1D4ED8;">حفاظتِ مکان، دکان و اہل و عیال از جنات و شیاطین</div>
           </div>
-          <div style="font-size: 1rem; font-weight: 900; color: #1D4ED8; background: #FFFFFF; padding: 4px 10px; border-radius: 8px; border: 1px solid #93C5FD; white-space: nowrap;">
+          <div style="font-size: 1.05rem; font-weight: 900; color: #1D4ED8; background: #FFFFFF; padding: 4px 10px; border-radius: 8px; border: 1px solid #93C5FD; white-space: nowrap;">
             Rs. 1,000
           </div>
         </div>
@@ -9318,28 +9273,25 @@
         <!-- Field 1: Customer Name -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-            <span class="lang-en-only">Applicant / Seeker Full Name *</span>
-            <span class="lang-ur-only">صاحبِ اجازت / سائل کا مکمل نام *</span>
+            صاحبِ اجازت / سائل کا مکمل نام *
           </label>
-          <input type="text" id="modalHirzName" placeholder="Full Name / سائل کا نام *" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
+          <input type="text" id="modalHirzName" placeholder="Full Name / سائل کا نام *" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
         </div>
 
         <!-- Field 2: Mother's Name -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-            <span class="lang-en-only">Mother's Name *</span>
-            <span class="lang-ur-only">والدہ کا نام *</span>
+            والدہ کا نام *
           </label>
-          <input type="text" id="modalHirzMother" placeholder="Mother's Name / والدہ کا نام *" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
+          <input type="text" id="modalHirzMother" placeholder="Mother's Name / والدہ کا نام *" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
         </div>
 
         <!-- Format Selector -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-            <span class="lang-en-only">Select Delivery / Format Option *</span>
-            <span class="lang-ur-only">حصول کا طریقہ منتخب فرمائیں *</span>
+            حصول کا طریقہ منتخب فرمائیں *
           </label>
-          <select id="modalHirzType" onchange="toggleHirzFormatNotice(this.value)" style="width: 100%; height: 42px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none;">
+          <select id="modalHirzType" onchange="toggleHirzFormatNotice(this.value)" style="width: 100%; height: 42px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; background: #FFFFFF;">
             <option value="ہائی ریزولوشن پرنٹ ایبل ڈیجیٹل فائل مع اجازت نامہ" selected>ہائی ریزولوشن پرنٹ ایبل ڈیجیٹل فائل مع اجازت نامہ (فوری دستیاب)</option>
             <option value="مطبوعہ پارسل مع چاندی خول و مفت کوریئر">مطبوعہ پارسل مع چاندی خول و کوریئر ڈلیوری</option>
           </select>
@@ -9349,85 +9301,114 @@
           <i class="fa-solid fa-circle-info"></i> ہدیہ ادائیگی کے بعد آپ کو سسٹم کی طرف سے فوری طور پر آپ کے نام سے تصدیق شدہ ڈاؤن لوڈ و پرنٹ ایبل فائل اور سندِ اجازت فراہم کر دی جائے گی۔
         </div>
 
-        <!-- Field 3 & 4: Phone & City -->
-        <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 8px; margin-bottom: 10px;">
-          <div>
-            <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-              <span class="lang-en-only">WhatsApp / Mobile *</span>
-              <span class="lang-ur-only">واٹس ایپ نمبر *</span>
-            </label>
-            <input type="tel" id="modalHirzPhone" placeholder="03001234567" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
-          </div>
-          <div>
-            <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-              <span class="lang-en-only">City</span>
-              <span class="lang-ur-only">شہر کا نام</span>
-            </label>
-            <input type="text" id="modalHirzCity" placeholder="City / کراچی" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
-          </div>
-        </div>
-
-        <!-- Field 5: Address -->
+        <!-- Field: City -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-            <span class="lang-en-only">Residential / Delivery Address</span>
-            <span class="lang-ur-only">رہائشی پتہ / مکان یا دکان کا پتہ</span>
+            شہر کا نام
           </label>
-          <textarea id="modalHirzAddress" rows="2" placeholder="مکان یا دکان کا مکمل پتہ..." style="width: 100%; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box; resize: vertical;"></textarea>
+          <input type="text" id="modalHirzCity" placeholder="City / مثلاً: کراچی" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
         </div>
 
-        <!-- Field 6: Country -->
+        <!-- Field: Address -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-            <span class="lang-en-only">Country *</span>
-            <span class="lang-ur-only">ملک (Country) *</span>
+            رہائشی پتہ / مکان یا دکان کا پتہ
           </label>
-          <select id="modalHirzCountry" class="country-select" style="width: 100%; height: 40px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none;">
-            <option value="Pakistan" selected>🇵🇰 Pakistan</option>
-          </select>
+          <textarea id="modalHirzAddress" rows="2" placeholder="مکان یا دکان کا مکمل پتہ..." style="width: 100%; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box; resize: vertical; background: #FFFFFF;"></textarea>
         </div>
 
-        <!-- Official Payment Box -->
-        <div style="background: linear-gradient(135deg, #FFFDF5 0%, #FEF9C3 100%); border: 1.5px solid rgba(212, 175, 55, 0.55); border-radius: 12px; padding: 10px; margin-bottom: 12px; text-align: right; direction: rtl;">
-          <div style="font-size: 0.76rem; font-weight: 800; color: #854D0E; margin-bottom: 6px; border-bottom: 1px solid rgba(212, 175, 55, 0.3); padding-bottom: 4px; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-building-columns text-gold"></i> سرکاری ادائیگی اکاؤنٹس (Official Accounts)</span>
-            <span style="font-size: 0.68rem; color: #15803D; background: #DCFCE7; padding: 2px 6px; border-radius: 4px;"><i class="fa-solid fa-circle-check"></i> تصدیق شدہ</span>
+        <!-- WHATSAPP NUMBER & COUNTRY CODE (AT BOTTOM OF FIELDS) -->
+        <div style="background: #EFF6FF; border: 1.5px solid #BFDBFE; border-radius: 12px; padding: 12px; margin-bottom: 14px;">
+          <label style="font-size: 0.78rem; font-weight: 800; color: #1E3A8A; display: block; margin-bottom: 6px;">
+            <i class="fa-brands fa-whatsapp text-emerald" style="font-size: 1.05rem;"></i> WhatsApp (with country code) * / واٹس ایپ نمبر مع کنٹری کوڈ *
+          </label>
+          <div style="display: grid; grid-template-columns: 140px 1fr; gap: 8px;">
+            <div>
+              <select id="modalHirzCountry" class="country-select" style="width: 100%; height: 44px; padding: 6px 8px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; background: #FFFFFF;">
+                <option value="Pakistan" selected>🇵🇰 Pakistan</option>
+              </select>
+            </div>
+            <div>
+              <input type="tel" id="modalHirzPhone" placeholder="03001234567" style="width: 100%; height: 44px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.86rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
+            </div>
           </div>
-          <div style="background: #FFF; border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 6px; padding: 6px 8px; margin-bottom: 5px; display: flex; justify-content: space-between; align-items: center; font-size: 0.74rem;">
-            <span><strong>میزان بینک:</strong> <code>01500103494030</code> (محمد خضر متین)</span>
-            <button type="button" onclick="navigator.clipboard.writeText('01500103494030'); alert('Copied: 01500103494030');" style="background:#065F46; color:#FFF; border:none; border-radius:4px; padding:2px 8px; font-size:0.68rem; cursor:pointer;">Copy</button>
+        </div>
+
+        <!-- Detailed Official Payment Box -->
+        <div style="background: linear-gradient(135deg, #FEF9C3 0%, #FEF3C7 100%); border: 1.5px solid #F59E0B; border-radius: 12px; padding: 12px; margin-bottom: 14px; text-align: right; direction: rtl; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.12);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid rgba(212, 175, 55, 0.35); padding-bottom: 6px;">
+            <span style="font-size: 0.84rem; font-weight: 800; color: #854D0E; display: flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-building-columns text-gold"></i> سرکاری و مصدقہ ادائیگی اکاؤنٹس (Rs. 1,000 ہدیہ اکاؤنٹ)
+            </span>
+            <span style="font-size: 0.68rem; color: #15803D; font-weight: 800; background: #DCFCE7; padding: 2px 7px; border-radius: 4px;">
+              <i class="fa-solid fa-circle-check"></i> تصدیق شدہ
+            </span>
           </div>
-          <div style="background: #FFF; border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 6px; padding: 6px 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.74rem;">
-            <span><strong>جاز کیش / ایزی پیسہ:</strong> <code>03317704807</code> (محمد خضر متین)</span>
-            <button type="button" onclick="navigator.clipboard.writeText('03317704807'); alert('Copied: 03317704807');" style="background:#DC2626; color:#FFF; border:none; border-radius:4px; padding:2px 8px; font-size:0.68rem; cursor:pointer;">Copy</button>
+
+          <!-- Account 1: Meezan Bank -->
+          <div style="background: rgba(255,255,255,0.92); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="color: #065F46; font-size: 0.82rem;"><i class="fa-solid fa-landmark"></i> Meezan Bank Ltd</strong>
+              <span style="font-size: 0.72rem; color: #475569; font-weight: 700;">Muhammad Khizer Mateen</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+              <span style="font-size: 0.76rem;">اکاؤنٹ نمبر: <code style="background:#FEF3C7; padding:2px 6px; border-radius:4px; font-weight:800; color:#92400E; font-size: 0.78rem;">01500103494030</code></span>
+              <button type="button" onclick="navigator.clipboard.writeText('01500103494030'); alert('میزان بینک اکاؤنٹ کاپی ہو گیا: 01500103494030');" style="background:#065F46; color:#FFF; border:none; border-radius:4px; padding:3px 9px; font-size:0.68rem; font-weight: 700; cursor:pointer;">Copy</button>
+            </div>
+          </div>
+
+          <!-- Account 2: JazzCash / EasyPaisa / Raast -->
+          <div style="background: rgba(255,255,255,0.92); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="color: #DC2626; font-size: 0.82rem;"><i class="fa-solid fa-mobile-screen-button"></i> JazzCash / EasyPaisa / Raast</strong>
+              <span style="font-size: 0.72rem; color: #475569; font-weight: 700;">Muhammad Khizer Mateen</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+              <span style="font-size: 0.76rem;">موبائل اکاؤنٹ: <code style="background:#FEE2E2; padding:2px 6px; border-radius:4px; font-weight:800; color:#B91C1C; font-size: 0.78rem;">03317704807</code></span>
+              <button type="button" onclick="navigator.clipboard.writeText('03317704807'); alert('جاز کیش / ایزی پیسہ نمبر کاپی ہو گیا: 03317704807');" style="background:#DC2626; color:#FFF; border:none; border-radius:4px; padding:3px 9px; font-size:0.68rem; font-weight: 700; cursor:pointer;">Copy</button>
+            </div>
+          </div>
+
+          <!-- Account 3: Western Union & International Remittance -->
+          <div style="background: rgba(255,255,255,0.95); border: 1px solid rgba(234, 179, 8, 0.45); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <strong style="color: #B45309; font-size: 0.78rem;"><i class="fa-solid fa-earth-americas text-gold"></i> Western Union / بیرونِ ملک ترسیل</strong>
+              <span style="font-size: 0.66rem; color: #B45309; font-weight: 800; background: #FEF3C7; padding: 1px 5px; border-radius: 4px;">Wise / Remitly / WU</span>
+            </div>
+            <div style="font-size: 0.72rem; color: #334155; line-height: 1.4;">
+              <div>نام: <strong>Muhammad Khizer Mateen</strong> | شہر: <strong>Karachi, Pakistan</strong></div>
+              <div style="margin-top: 3px; display: flex; justify-content: space-between; align-items: center;">
+                <span>IBAN: <code style="background:#FFFBEB; padding:1px 5px; border-radius:3px; font-weight:700; color:#92400E; font-size: 0.7rem;">PK04MEZN0001500103494030</code></span>
+                <button type="button" onclick="navigator.clipboard.writeText('PK04MEZN0001500103494030'); alert('IBAN کاپی ہو گیا: PK04MEZN0001500103494030');" style="background:#D97706; color:#FFF; border:none; border-radius:3px; padding:2px 7px; font-size:0.64rem; font-weight:700; cursor:pointer;">Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 0.72rem; color: #78350F; line-height: 1.45; background: rgba(255,255,255,0.75); padding: 6px 8px; border-radius: 6px;">
+            <i class="fa-solid fa-circle-info text-blue"></i> <strong>طریقہ کار:</strong> ہدیہ کی رقم (Rs. 1,000) منتقل کرنے کے بعد نیچے رسید منسلک فرمائیں۔ فارم جمع کرتے ہی فوری سندِ اجازت جنریٹ ہو جائے گی۔
           </div>
         </div>
 
         <!-- Slip Upload -->
-        <div style="margin-bottom: 14px;">
+        <div style="margin-bottom: 14px; background: #F8FAFC; border: 1.5px dashed #CBD5E1; border-radius: 10px; padding: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
             <i class="fa-solid fa-receipt text-gold"></i>
-            <span class="lang-en-only">Upload Payment Slip / Screenshot (Optional)</span>
-            <span class="lang-ur-only">ادائیگی کی رسید یا سکرین شاٹ اپلوڈ کریں (اختیاری)</span>
+            Upload Payment Slip / Screenshot (Optional)
           </label>
           <input type="file" accept="image/*" onchange="handleImagePreview(event, 'previewHirzSlip')" style="font-size: 0.8rem; width: 100%;">
           <img id="previewHirzSlip" src="" alt="Slip Preview" style="display:none; max-width: 100%; max-height: 100px; margin-top: 6px; border-radius: 6px; border: 1px solid #CBD5E1; object-fit: contain;">
         </div>
 
         <!-- Submit Button -->
-        <button type="button" onclick="submitHirzOrder()" style="width: 100%; background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); color: #FFFFFF; border: none; border-radius: 10px; padding: 12px; font-size: 0.88rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);">
+        <button type="button" onclick="submitHirzOrder()" style="width: 100%; background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); color: #FFFFFF; border: none; border-radius: 10px; padding: 13px; font-size: 0.95rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);">
           <i class="fa-solid fa-certificate text-gold" style="font-size: 1.15rem;"></i>
-          <span class="lang-en-only">Submit &amp; Generate Certificate</span>
-          <span class="lang-ur-only">آرڈر درج کریں اور سندِ اجازت حاصل کریں</span>
+          <span>Submit &amp; Generate Certificate (Rs. 1,000)</span>
         </button>
 
       </div>
     </div>
   </div>
 
-  <!-- ====================================================
-       MODAL: HIRZ DOWNLOAD & CERTIFICATE SUCCESS (سندِ اجازت)
-       ==================================================== -->
   <div class="modal-dialog-layer" id="modalHirzDownloadSuccess">
     <div class="modal-card-container" style="max-width: 500px; width: 92%; max-height: 90vh; overflow-y: auto; border-radius: 20px; border: 1.5px solid #10B981; background: #FFFFFF; box-shadow: 0 20px 50px rgba(0,0,0,0.4); text-align: center;">
       <div class="modal-card-top-bar" style="background: linear-gradient(135deg, #065F46 0%, #059669 100%); color: #FFFFFF; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
@@ -9477,23 +9458,22 @@
         <div style="display: flex; align-items: center; gap: 8px;">
           <i class="fa-solid fa-calendar-days text-gold" style="font-size: 1.15rem;"></i>
           <span style="font-weight: 800; font-size: 0.92rem;">
-            <span class="lang-en-only">Order 40-Day Taweez Course (Drinking &amp; Burning)</span>
-            <span class="lang-ur-only">آن لائن آرڈر: ۴۰ روزہ تعویذات کا جامع کورس</span>
+            Order 40-Day Taweez Course (Drinking &amp; Burning)
           </span>
         </div>
         <button class="btn-modal-x" onclick="closeModal('modalOrder40DayCourse')" style="color:#FFF; background:transparent; border:none; font-size:1.1rem; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
       <!-- Modal Body -->
-      <div class="modal-card-body" style="padding: 16px 18px;">
+      <div class="modal-card-body" style="padding: 16px 18px; direction: rtl; text-align: right;">
         
         <!-- Summary Header -->
         <div style="background: linear-gradient(135deg, #F0FDF4 0%, #D1FAE5 100%); border: 1px solid #A7F3D0; border-radius: 12px; padding: 10px 14px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
           <div>
-            <div style="font-size: 0.84rem; font-weight: 800; color: #065F46;">۴۰ روزہ پینے اور جلانے والے تعویذات کا کورس</div>
+            <div style="font-size: 0.86rem; font-weight: 800; color: #065F46;">۴۰ روزہ پینے اور جلانے والے تعویذات کا کورس</div>
             <div style="font-size: 0.72rem; color: #047857;">پرانے سحر و دائمی امراض کے لیے مکمل علاج مع مفت کوریئر</div>
           </div>
-          <div style="font-size: 1rem; font-weight: 900; color: #047857; background: #FFFFFF; padding: 4px 10px; border-radius: 8px; border: 1px solid #10B981; white-space: nowrap;">
+          <div style="font-size: 1.05rem; font-weight: 900; color: #047857; background: #FFFFFF; padding: 4px 10px; border-radius: 8px; border: 1px solid #10B981; white-space: nowrap;">
             Rs. 7,000
           </div>
         </div>
@@ -9501,109 +9481,135 @@
         <!-- Field 1: Customer Name -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-            <span class="lang-en-only">Patient / Seeker Full Name *</span>
-            <span class="lang-ur-only">مریض / سائل کا مکمل نام *</span>
+            مریض / سائل کا مکمل نام *
           </label>
-          <input type="text" id="modalCourseName" placeholder="Patient Name / مریض کا نام *" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
+          <input type="text" id="modalCourseName" placeholder="Patient Name / مریض کا نام *" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
         </div>
 
         <!-- Field 2: Mother's Name -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-            <span class="lang-en-only">Mother's Name *</span>
-            <span class="lang-ur-only">والدہ کا نام *</span>
+            والدہ کا نام *
           </label>
-          <input type="text" id="modalCourseMother" placeholder="Mother's Name / والدہ کا نام *" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
+          <input type="text" id="modalCourseMother" placeholder="Mother's Name / والدہ کا نام *" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
         </div>
 
         <!-- Field 3: Problem / Issue -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-            <span class="lang-en-only">Problem / Diagnosis Description *</span>
-            <span class="lang-ur-only">مسئلہ، مرض یا کیفیت کی تفصیل *</span>
+            مسئلہ، مرض یا کیفیت کی تفصیل *
           </label>
-          <input type="text" id="modalCourseProblem" placeholder="مثلاً: کالا جادو کا اثر، لاعلاج بیماری، ہر کام میں رکاوٹ" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
+          <input type="text" id="modalCourseProblem" placeholder="مثلاً: کالا جادو کا پرانا اثر، لاعلاج بیماری، ہر کام میں رکاوٹ" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
         </div>
 
-        <!-- Field 4 & 5: Phone & City -->
-        <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 8px; margin-bottom: 10px;">
-          <div>
-            <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-              <span class="lang-en-only">WhatsApp / Mobile *</span>
-              <span class="lang-ur-only">واٹس ایپ نمبر *</span>
-            </label>
-            <input type="tel" id="modalCoursePhone" placeholder="03001234567" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
-          </div>
-          <div>
-            <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-              <span class="lang-en-only">City</span>
-              <span class="lang-ur-only">شہر کا نام</span>
-            </label>
-            <input type="text" id="modalCourseCity" placeholder="City / کراچی" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
-          </div>
-        </div>
-
-        <!-- Field 6: Address -->
+        <!-- Field 4: City -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-            <span class="lang-en-only">Complete Delivery Courier Address *</span>
-            <span class="lang-ur-only">مکمل کوریئر ڈلیوری ایڈریس *</span>
+            شہر کا نام
           </label>
-          <textarea id="modalCourseAddress" rows="2" placeholder="Complete Street / House Address for Courier..." style="width: 100%; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box; resize: vertical;"></textarea>
+          <input type="text" id="modalCourseCity" placeholder="City / کراچی" style="width: 100%; height: 42px; padding: 9px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.84rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
         </div>
 
-        <!-- Field 7: Country -->
+        <!-- Field 5: Address -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
-            <span class="lang-en-only">Country *</span>
-            <span class="lang-ur-only">ملک (Country) *</span>
+            مکمل کوریئر ڈلیوری ایڈریس *
           </label>
-          <select id="modalCourseCountry" class="country-select" style="width: 100%; height: 40px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none;">
-            <option value="Pakistan" selected>🇵🇰 Pakistan</option>
-          </select>
+          <textarea id="modalCourseAddress" rows="2" placeholder="Complete Street / House Address for Courier..." style="width: 100%; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box; resize: vertical; background: #FFFFFF;"></textarea>
         </div>
 
-        <!-- Official Payment Box -->
-        <div style="background: linear-gradient(135deg, #FFFDF5 0%, #FEF9C3 100%); border: 1.5px solid rgba(212, 175, 55, 0.55); border-radius: 12px; padding: 10px; margin-bottom: 12px; text-align: right; direction: rtl;">
-          <div style="font-size: 0.76rem; font-weight: 800; color: #854D0E; margin-bottom: 6px; border-bottom: 1px solid rgba(212, 175, 55, 0.3); padding-bottom: 4px; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-building-columns text-gold"></i> سرکاری ادائیگی اکاؤنٹس (Official Accounts)</span>
-            <span style="font-size: 0.68rem; color: #15803D; background: #DCFCE7; padding: 2px 6px; border-radius: 4px;"><i class="fa-solid fa-circle-check"></i> تصدیق شدہ</span>
+        <!-- WHATSAPP NUMBER & COUNTRY CODE (AT BOTTOM OF FIELDS) -->
+        <div style="background: #F0FDF4; border: 1.5px solid #A7F3D0; border-radius: 12px; padding: 12px; margin-bottom: 14px;">
+          <label style="font-size: 0.78rem; font-weight: 800; color: #065F46; display: block; margin-bottom: 6px;">
+            <i class="fa-brands fa-whatsapp text-emerald" style="font-size: 1.05rem;"></i> WhatsApp (with country code) * / واٹس ایپ نمبر مع کنٹری کوڈ *
+          </label>
+          <div style="display: grid; grid-template-columns: 140px 1fr; gap: 8px;">
+            <div>
+              <select id="modalCourseCountry" class="country-select" style="width: 100%; height: 44px; padding: 6px 8px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; background: #FFFFFF;">
+                <option value="Pakistan" selected>🇵🇰 Pakistan</option>
+              </select>
+            </div>
+            <div>
+              <input type="tel" id="modalCoursePhone" placeholder="03001234567" style="width: 100%; height: 44px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.86rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
+            </div>
           </div>
-          <div style="background: #FFF; border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 6px; padding: 6px 8px; margin-bottom: 5px; display: flex; justify-content: space-between; align-items: center; font-size: 0.74rem;">
-            <span><strong>میزان بینک:</strong> <code>01500103494030</code> (محمد خضر متین)</span>
-            <button type="button" onclick="navigator.clipboard.writeText('01500103494030'); alert('Copied: 01500103494030');" style="background:#065F46; color:#FFF; border:none; border-radius:4px; padding:2px 8px; font-size:0.68rem; cursor:pointer;">Copy</button>
+        </div>
+
+        <!-- Detailed Official Payment Box -->
+        <div style="background: linear-gradient(135deg, #FEF9C3 0%, #FEF3C7 100%); border: 1.5px solid #F59E0B; border-radius: 12px; padding: 12px; margin-bottom: 14px; text-align: right; direction: rtl; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.12);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid rgba(212, 175, 55, 0.35); padding-bottom: 6px;">
+            <span style="font-size: 0.84rem; font-weight: 800; color: #854D0E; display: flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-building-columns text-gold"></i> سرکاری و مصدقہ ادائیگی اکاؤنٹس (Rs. 7,000 ہدیہ اکاؤنٹ)
+            </span>
+            <span style="font-size: 0.68rem; color: #15803D; font-weight: 800; background: #DCFCE7; padding: 2px 7px; border-radius: 4px;">
+              <i class="fa-solid fa-circle-check"></i> تصدیق شدہ
+            </span>
           </div>
-          <div style="background: #FFF; border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 6px; padding: 6px 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.74rem;">
-            <span><strong>جاز کیش / ایزی پیسہ:</strong> <code>03317704807</code> (محمد خضر متین)</span>
-            <button type="button" onclick="navigator.clipboard.writeText('03317704807'); alert('Copied: 03317704807');" style="background:#DC2626; color:#FFF; border:none; border-radius:4px; padding:2px 8px; font-size:0.68rem; cursor:pointer;">Copy</button>
+
+          <!-- Account 1: Meezan Bank -->
+          <div style="background: rgba(255,255,255,0.92); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="color: #065F46; font-size: 0.82rem;"><i class="fa-solid fa-landmark"></i> Meezan Bank Ltd</strong>
+              <span style="font-size: 0.72rem; color: #475569; font-weight: 700;">Muhammad Khizer Mateen</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+              <span style="font-size: 0.76rem;">اکاؤنٹ نمبر: <code style="background:#FEF3C7; padding:2px 6px; border-radius:4px; font-weight:800; color:#92400E; font-size: 0.78rem;">01500103494030</code></span>
+              <button type="button" onclick="navigator.clipboard.writeText('01500103494030'); alert('میزان بینک اکاؤنٹ کاپی ہو گیا: 01500103494030');" style="background:#065F46; color:#FFF; border:none; border-radius:4px; padding:3px 9px; font-size:0.68rem; font-weight: 700; cursor:pointer;">Copy</button>
+            </div>
+          </div>
+
+          <!-- Account 2: JazzCash / EasyPaisa / Raast -->
+          <div style="background: rgba(255,255,255,0.92); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="color: #DC2626; font-size: 0.82rem;"><i class="fa-solid fa-mobile-screen-button"></i> JazzCash / EasyPaisa / Raast</strong>
+              <span style="font-size: 0.72rem; color: #475569; font-weight: 700;">Muhammad Khizer Mateen</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+              <span style="font-size: 0.76rem;">موبائل اکاؤنٹ: <code style="background:#FEE2E2; padding:2px 6px; border-radius:4px; font-weight:800; color:#B91C1C; font-size: 0.78rem;">03317704807</code></span>
+              <button type="button" onclick="navigator.clipboard.writeText('03317704807'); alert('جاز کیش / ایزی پیسہ نمبر کاپی ہو گیا: 03317704807');" style="background:#DC2626; color:#FFF; border:none; border-radius:4px; padding:3px 9px; font-size:0.68rem; font-weight: 700; cursor:pointer;">Copy</button>
+            </div>
+          </div>
+
+          <!-- Account 3: Western Union & International Remittance -->
+          <div style="background: rgba(255,255,255,0.95); border: 1px solid rgba(234, 179, 8, 0.45); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <strong style="color: #B45309; font-size: 0.78rem;"><i class="fa-solid fa-earth-americas text-gold"></i> Western Union / بیرونِ ملک ترسیل</strong>
+              <span style="font-size: 0.66rem; color: #B45309; font-weight: 800; background: #FEF3C7; padding: 1px 5px; border-radius: 4px;">Wise / Remitly / WU</span>
+            </div>
+            <div style="font-size: 0.72rem; color: #334155; line-height: 1.4;">
+              <div>نام: <strong>Muhammad Khizer Mateen</strong> | شہر: <strong>Karachi, Pakistan</strong></div>
+              <div style="margin-top: 3px; display: flex; justify-content: space-between; align-items: center;">
+                <span>IBAN: <code style="background:#FFFBEB; padding:1px 5px; border-radius:3px; font-weight:700; color:#92400E; font-size: 0.7rem;">PK04MEZN0001500103494030</code></span>
+                <button type="button" onclick="navigator.clipboard.writeText('PK04MEZN0001500103494030'); alert('IBAN کاپی ہو گیا: PK04MEZN0001500103494030');" style="background:#D97706; color:#FFF; border:none; border-radius:3px; padding:2px 7px; font-size:0.64rem; font-weight:700; cursor:pointer;">Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 0.72rem; color: #78350F; line-height: 1.45; background: rgba(255,255,255,0.75); padding: 6px 8px; border-radius: 6px;">
+            <i class="fa-solid fa-circle-info text-blue"></i> <strong>طریقہ کار:</strong> ہدیہ کی رقم (Rs. 7,000) منتقل کرنے کے بعد نیچے رسید منسلک فرمائیں۔ تمام پینے اور جلانے والے تعویذات کا سیٹ محفوظ کوریئر سے بھیجا جائے گا۔
           </div>
         </div>
 
         <!-- Slip Upload -->
-        <div style="margin-bottom: 14px;">
+        <div style="margin-bottom: 14px; background: #F8FAFC; border: 1.5px dashed #CBD5E1; border-radius: 10px; padding: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
             <i class="fa-solid fa-receipt text-gold"></i>
-            <span class="lang-en-only">Upload Payment Slip / Screenshot (Optional)</span>
-            <span class="lang-ur-only">ادائیگی کی رسید یا سکرین شاٹ اپلوڈ کریں (اختیاری)</span>
+            Upload Payment Slip / Screenshot (Optional)
           </label>
           <input type="file" accept="image/*" onchange="handleImagePreview(event, 'previewCourseSlip')" style="font-size: 0.8rem; width: 100%;">
           <img id="previewCourseSlip" src="" alt="Slip Preview" style="display:none; max-width: 100%; max-height: 100px; margin-top: 6px; border-radius: 6px; border: 1px solid #CBD5E1; object-fit: contain;">
         </div>
 
         <!-- Submit Button -->
-        <button type="button" onclick="submit40DayCourseOrder()" style="width: 100%; background: linear-gradient(135deg, #059669 0%, #047857 100%); color: #FFFFFF; border: none; border-radius: 10px; padding: 12px; font-size: 0.88rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);">
-          <i class="fa-brands fa-whatsapp text-gold" style="font-size: 1.15rem;"></i>
-          <span class="lang-en-only">Submit 40-Day Order to WhatsApp</span>
-          <span class="lang-ur-only">۴۰ روزہ کورس بک کریں اور واٹس ایپ پر ارسال کریں</span>
+        <button type="button" onclick="submit40DayCourseOrder()" style="width: 100%; background: linear-gradient(135deg, #059669 0%, #047857 100%); color: #FFFFFF; border: none; border-radius: 10px; padding: 13px; font-size: 0.95rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);">
+          <i class="fa-brands fa-whatsapp text-gold" style="font-size: 1.25rem;"></i>
+          <span>Submit 40-Day Order to WhatsApp (Rs. 7,000)</span>
         </button>
 
       </div>
     </div>
   </div>
 
-  <!-- ====================================================
-       MODAL: ORDER MOHABBAT TAWEEZ (تعویذ برائے تسخیرِ قلوب و محبتِ حلال)
-       ==================================================== -->
   <div class="modal-dialog-layer" id="modalOrderMohabbatTaweez">
     <div class="modal-card-container" style="max-width: 500px; width: 92%; max-height: 90vh; overflow-y: auto; border-radius: 20px; border: 1.5px solid rgba(225, 29, 72, 0.55); background: #FFFFFF; box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
       
@@ -9612,28 +9618,27 @@
         <div style="display: flex; align-items: center; gap: 8px;">
           <i class="fa-solid fa-heart text-gold" style="font-size: 1.15rem;"></i>
           <span style="font-weight: 800; font-size: 0.92rem;">
-            <span class="lang-en-only">Taweez for Halal Love &amp; Marital Peace</span>
-            <span class="lang-ur-only">آن لائن آرڈر: تعویذِ الفت و محبتِ شرعی (میاں بیوی کی صلح)</span>
+            Taweez for Halal Love &amp; Marital Peace
           </span>
         </div>
         <button class="btn-modal-x" onclick="closeModal('modalOrderMohabbatTaweez')" style="color:#FFF; background:transparent; border:none; font-size:1.1rem; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
       <!-- Modal Body -->
-      <div class="modal-card-body" style="padding: 16px 18px;">
+      <div class="modal-card-body" style="padding: 16px 18px; direction: rtl; text-align: right;">
         
         <!-- Summary Header -->
         <div style="background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%); border: 1px solid #FECDD3; border-radius: 12px; padding: 10px 14px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
           <div>
-            <div style="font-size: 0.84rem; font-weight: 800; color: #9F1239;">تعویذ برائے تسخیرِ قلوب و محبتِ حلال</div>
+            <div style="font-size: 0.86rem; font-weight: 800; color: #9F1239;">تعویذ برائے تسخیرِ قلوب و محبتِ حلال</div>
             <div style="font-size: 0.72rem; color: #BE123C;">Strictly for Halal Relationships • Marital Harmony</div>
           </div>
-          <div style="font-size: 1rem; font-weight: 900; color: #BE123C; background: #FFFFFF; padding: 4px 10px; border-radius: 8px; border: 1px solid #FB7185; white-space: nowrap;">
+          <div style="font-size: 1.05rem; font-weight: 900; color: #BE123C; background: #FFFFFF; padding: 4px 10px; border-radius: 8px; border: 1px solid #FB7185; white-space: nowrap;">
             Rs. 2,500
           </div>
         </div>
 
-        <!-- Shar'i Warning Notice matching user screenshot -->
+        <!-- Shar'i Warning Notice -->
         <div style="background: #FFF1F2; border: 1.5px solid #FECDD3; border-radius: 12px; padding: 10px 12px; margin-bottom: 12px; font-size: 0.76rem; color: #9F1239; line-height: 1.5; text-align: right; direction: rtl;">
           <div style="font-weight: 800; display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
             <i class="fa-solid fa-triangle-exclamation"></i> شرعی و اخلاقی وضاحت (Shar'i Notice):
@@ -9649,12 +9654,12 @@
 
           <div style="margin-bottom: 8px;">
             <label style="font-size: 0.76rem; font-weight: 700; color: #475569; display: block; margin-bottom: 2px;">طالب کا مکمل نام *</label>
-            <input type="text" id="modalMohabbatApplicant" placeholder="طالب کا مکمل نام *" style="width: 100%; height: 38px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 6px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
+            <input type="text" id="modalMohabbatApplicant" placeholder="طالب کا مکمل نام *" style="width: 100%; height: 38px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 6px; font-size: 0.82rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
           </div>
 
           <div style="margin-bottom: 8px;">
             <label style="font-size: 0.76rem; font-weight: 700; color: #475569; display: block; margin-bottom: 2px;">طالب کی والدہ کا نام *</label>
-            <input type="text" id="modalMohabbatAppMother" placeholder="طالب کی والدہ کا نام *" style="width: 100%; height: 38px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 6px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
+            <input type="text" id="modalMohabbatAppMother" placeholder="طالب کی والدہ کا نام *" style="width: 100%; height: 38px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 6px; font-size: 0.82rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
           </div>
 
           <div style="display: flex; gap: 8px;">
@@ -9675,12 +9680,12 @@
 
           <div style="margin-bottom: 8px;">
             <label style="font-size: 0.76rem; font-weight: 700; color: #475569; display: block; margin-bottom: 2px;">مطلوب کا مکمل نام *</label>
-            <input type="text" id="modalMohabbatTarget" placeholder="مطلوب کا مکمل نام *" style="width: 100%; height: 38px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 6px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
+            <input type="text" id="modalMohabbatTarget" placeholder="مطلوب کا مکمل نام *" style="width: 100%; height: 38px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 6px; font-size: 0.82rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
           </div>
 
           <div style="margin-bottom: 8px;">
             <label style="font-size: 0.76rem; font-weight: 700; color: #475569; display: block; margin-bottom: 2px;">مطلوب کی والدہ کا نام (نہ معلوم ہو تو 'حوا' لکھیں)</label>
-            <input type="text" id="modalMohabbatTargetMother" placeholder="مثلاً: حوا یا نام معلوم ہے تو لکھیں" style="width: 100%; height: 38px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 6px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
+            <input type="text" id="modalMohabbatTargetMother" placeholder="مثلاً: حوا یا نام معلوم ہے تو لکھیں" style="width: 100%; height: 38px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 6px; font-size: 0.82rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
           </div>
 
           <div style="display: flex; gap: 8px;">
@@ -9696,7 +9701,7 @@
         <!-- Relationship -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">باہمی شرعی رشتہ *</label>
-          <select id="modalMohabbatRelation" style="width: 100%; height: 40px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none;">
+          <select id="modalMohabbatRelation" style="width: 100%; height: 40px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; background: #FFFFFF;">
             <option value="شوہر و بیوی">شوہر و بیوی (میاں بیوی کی باہمی صلح)</option>
             <option value="منگیتر و شرعی رشتہ">منگیتر و شرعی رشتہ (شادی میں رکاوٹ کا خاتمہ)</option>
             <option value="ساس اور بہو میں صلح">ساس اور بہو میں الفت و صلح</option>
@@ -9705,30 +9710,15 @@
           </select>
         </div>
 
-        <!-- Phone & City -->
-        <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 8px; margin-bottom: 10px;">
-          <div>
-            <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">واٹس ایپ نمبر *</label>
-            <input type="tel" id="modalMohabbatPhone" placeholder="03001234567" style="width: 100%; height: 40px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
-          </div>
-          <div>
-            <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">شہر کا نام</label>
-            <input type="text" id="modalMohabbatCity" placeholder="City / کراچی" style="width: 100%; height: 40px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box;">
-          </div>
+        <!-- City & Address -->
+        <div style="margin-bottom: 10px;">
+          <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">شہر کا نام</label>
+          <input type="text" id="modalMohabbatCity" placeholder="City / کراچی" style="width: 100%; height: 40px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
         </div>
 
-        <!-- Address -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">مکمل کوریئر ایڈریس *</label>
-          <textarea id="modalMohabbatAddress" rows="2" placeholder="مکمل کوریئر ایڈریس..." style="width: 100%; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box; resize: vertical;"></textarea>
-        </div>
-
-        <!-- Country -->
-        <div style="margin-bottom: 10px;">
-          <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">ملک (Country) *</label>
-          <select id="modalMohabbatCountry" class="country-select" style="width: 100%; height: 40px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none;">
-            <option value="Pakistan" selected>🇵🇰 Pakistan</option>
-          </select>
+          <textarea id="modalMohabbatAddress" rows="2" placeholder="مکمل کوریئر ایڈریس..." style="width: 100%; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box; resize: vertical; background: #FFFFFF;"></textarea>
         </div>
 
         <!-- Consent Checkbox -->
@@ -9737,47 +9727,98 @@
           <span>میں حلفاً اقرار کرتا / کرتی ہوں کہ یہ تعویذ صرف شرعی اور حلال و جائز مقصد (صلح و محبت) کے لیے استعمال کیا جائے گا۔</span>
         </label>
 
-        <!-- Official Payment Box -->
-        <div style="background: linear-gradient(135deg, #FFFDF5 0%, #FEF9C3 100%); border: 1.5px solid rgba(212, 175, 55, 0.55); border-radius: 12px; padding: 10px; margin-bottom: 12px; text-align: right; direction: rtl;">
-          <div style="font-size: 0.76rem; font-weight: 800; color: #854D0E; margin-bottom: 6px; border-bottom: 1px solid rgba(212, 175, 55, 0.3); padding-bottom: 4px; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-building-columns text-gold"></i> سرکاری ادائیگی اکاؤنٹس (Official Accounts)</span>
-            <span style="font-size: 0.68rem; color: #15803D; background: #DCFCE7; padding: 2px 6px; border-radius: 4px;"><i class="fa-solid fa-circle-check"></i> تصدیق شدہ</span>
+        <!-- WHATSAPP NUMBER & COUNTRY CODE (AT BOTTOM OF FIELDS) -->
+        <div style="background: #FFF1F2; border: 1.5px solid #FECDD3; border-radius: 12px; padding: 12px; margin-bottom: 14px;">
+          <label style="font-size: 0.78rem; font-weight: 800; color: #9F1239; display: block; margin-bottom: 6px;">
+            <i class="fa-brands fa-whatsapp text-emerald" style="font-size: 1.05rem;"></i> WhatsApp (with country code) * / واٹس ایپ نمبر مع کنٹری کوڈ *
+          </label>
+          <div style="display: grid; grid-template-columns: 140px 1fr; gap: 8px;">
+            <div>
+              <select id="modalMohabbatCountry" class="country-select" style="width: 100%; height: 44px; padding: 6px 8px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; background: #FFFFFF;">
+                <option value="Pakistan" selected>🇵🇰 Pakistan</option>
+              </select>
+            </div>
+            <div>
+              <input type="tel" id="modalMohabbatPhone" placeholder="03001234567" style="width: 100%; height: 44px; padding: 8px 12px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.86rem; outline: none; box-sizing: border-box; background: #FFFFFF;">
+            </div>
           </div>
-          <div style="background: #FFF; border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 6px; padding: 6px 8px; margin-bottom: 5px; display: flex; justify-content: space-between; align-items: center; font-size: 0.74rem;">
-            <span><strong>میزان بینک:</strong> <code>01500103494030</code> (محمد خضر متین)</span>
-            <button type="button" onclick="navigator.clipboard.writeText('01500103494030'); alert('Copied: 01500103494030');" style="background:#065F46; color:#FFF; border:none; border-radius:4px; padding:2px 8px; font-size:0.68rem; cursor:pointer;">Copy</button>
+        </div>
+
+        <!-- Detailed Official Payment Box -->
+        <div style="background: linear-gradient(135deg, #FEF9C3 0%, #FEF3C7 100%); border: 1.5px solid #F59E0B; border-radius: 12px; padding: 12px; margin-bottom: 14px; text-align: right; direction: rtl; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.12);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid rgba(212, 175, 55, 0.35); padding-bottom: 6px;">
+            <span style="font-size: 0.84rem; font-weight: 800; color: #854D0E; display: flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-building-columns text-gold"></i> سرکاری و مصدقہ ادائیگی اکاؤنٹس (Rs. 2,500 ہدیہ اکاؤنٹ)
+            </span>
+            <span style="font-size: 0.68rem; color: #15803D; font-weight: 800; background: #DCFCE7; padding: 2px 7px; border-radius: 4px;">
+              <i class="fa-solid fa-circle-check"></i> تصدیق شدہ
+            </span>
           </div>
-          <div style="background: #FFF; border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 6px; padding: 6px 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.74rem;">
-            <span><strong>جاز کیش / ایزی پیسہ:</strong> <code>03317704807</code> (محمد خضر متین)</span>
-            <button type="button" onclick="navigator.clipboard.writeText('03317704807'); alert('Copied: 03317704807');" style="background:#DC2626; color:#FFF; border:none; border-radius:4px; padding:2px 8px; font-size:0.68rem; cursor:pointer;">Copy</button>
+
+          <!-- Account 1: Meezan Bank -->
+          <div style="background: rgba(255,255,255,0.92); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="color: #065F46; font-size: 0.82rem;"><i class="fa-solid fa-landmark"></i> Meezan Bank Ltd</strong>
+              <span style="font-size: 0.72rem; color: #475569; font-weight: 700;">Muhammad Khizer Mateen</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+              <span style="font-size: 0.76rem;">اکاؤنٹ نمبر: <code style="background:#FEF3C7; padding:2px 6px; border-radius:4px; font-weight:800; color:#92400E; font-size: 0.78rem;">01500103494030</code></span>
+              <button type="button" onclick="navigator.clipboard.writeText('01500103494030'); alert('میزان بینک اکاؤنٹ کاپی ہو گیا: 01500103494030');" style="background:#065F46; color:#FFF; border:none; border-radius:4px; padding:3px 9px; font-size:0.68rem; font-weight: 700; cursor:pointer;">Copy</button>
+            </div>
+          </div>
+
+          <!-- Account 2: JazzCash / EasyPaisa / Raast -->
+          <div style="background: rgba(255,255,255,0.92); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="color: #DC2626; font-size: 0.82rem;"><i class="fa-solid fa-mobile-screen-button"></i> JazzCash / EasyPaisa / Raast</strong>
+              <span style="font-size: 0.72rem; color: #475569; font-weight: 700;">Muhammad Khizer Mateen</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+              <span style="font-size: 0.76rem;">موبائل اکاؤنٹ: <code style="background:#FEE2E2; padding:2px 6px; border-radius:4px; font-weight:800; color:#B91C1C; font-size: 0.78rem;">03317704807</code></span>
+              <button type="button" onclick="navigator.clipboard.writeText('03317704807'); alert('جاز کیش / ایزی پیسہ نمبر کاپی ہو گیا: 03317704807');" style="background:#DC2626; color:#FFF; border:none; border-radius:4px; padding:3px 9px; font-size:0.68rem; font-weight: 700; cursor:pointer;">Copy</button>
+            </div>
+          </div>
+
+          <!-- Account 3: Western Union & International Remittance -->
+          <div style="background: rgba(255,255,255,0.95); border: 1px solid rgba(234, 179, 8, 0.45); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <strong style="color: #B45309; font-size: 0.78rem;"><i class="fa-solid fa-earth-americas text-gold"></i> Western Union / بیرونِ ملک ترسیل</strong>
+              <span style="font-size: 0.66rem; color: #B45309; font-weight: 800; background: #FEF3C7; padding: 1px 5px; border-radius: 4px;">Wise / Remitly / WU</span>
+            </div>
+            <div style="font-size: 0.72rem; color: #334155; line-height: 1.4;">
+              <div>نام: <strong>Muhammad Khizer Mateen</strong> | شہر: <strong>Karachi, Pakistan</strong></div>
+              <div style="margin-top: 3px; display: flex; justify-content: space-between; align-items: center;">
+                <span>IBAN: <code style="background:#FFFBEB; padding:1px 5px; border-radius:3px; font-weight:700; color:#92400E; font-size: 0.7rem;">PK04MEZN0001500103494030</code></span>
+                <button type="button" onclick="navigator.clipboard.writeText('PK04MEZN0001500103494030'); alert('IBAN کاپی ہو گیا: PK04MEZN0001500103494030');" style="background:#D97706; color:#FFF; border:none; border-radius:3px; padding:2px 7px; font-size:0.64rem; font-weight:700; cursor:pointer;">Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 0.72rem; color: #78350F; line-height: 1.45; background: rgba(255,255,255,0.75); padding: 6px 8px; border-radius: 6px;">
+            <i class="fa-solid fa-circle-info text-blue"></i> <strong>طریقہ کار:</strong> ہدیہ کی رقم (Rs. 2,500) منتقل کرنے کے بعد نیچے رسید منسلک فرمائیں۔ تمام مطلوبہ ناموں سے تعویذ تیار کر کے کوریئر سے بھیجا جائے گا۔
           </div>
         </div>
 
         <!-- Slip Upload -->
-        <div style="margin-bottom: 14px;">
+        <div style="margin-bottom: 14px; background: #F8FAFC; border: 1.5px dashed #CBD5E1; border-radius: 10px; padding: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
             <i class="fa-solid fa-receipt text-gold"></i>
-            <span class="lang-en-only">Upload Payment Slip / Screenshot (Optional)</span>
-            <span class="lang-ur-only">ادائیگی کی رسید یا سکرین شاٹ اپلوڈ کریں (اختیاری)</span>
+            Upload Payment Slip / Screenshot (Optional)
           </label>
           <input type="file" accept="image/*" onchange="handleImagePreview(event, 'previewMohabbatSlip')" style="font-size: 0.8rem; width: 100%;">
           <img id="previewMohabbatSlip" src="" alt="Slip Preview" style="display:none; max-width: 100%; max-height: 100px; margin-top: 6px; border-radius: 6px; border: 1px solid #CBD5E1; object-fit: contain;">
         </div>
 
         <!-- Submit Button -->
-        <button type="button" onclick="submitMohabbatOrder()" style="width: 100%; background: linear-gradient(135deg, #E11D48 0%, #BE123C 100%); color: #FFFFFF; border: none; border-radius: 10px; padding: 12px; font-size: 0.88rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35);">
-          <i class="fa-brands fa-whatsapp text-gold" style="font-size: 1.15rem;"></i>
-          <span class="lang-en-only">Submit Order to WhatsApp</span>
-          <span class="lang-ur-only">تعویذِ محبت کا آرڈر واٹس ایپ پر ارسال کریں</span>
+        <button type="button" onclick="submitMohabbatOrder()" style="width: 100%; background: linear-gradient(135deg, #E11D48 0%, #BE123C 100%); color: #FFFFFF; border: none; border-radius: 10px; padding: 13px; font-size: 0.95rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35);">
+          <i class="fa-brands fa-whatsapp text-gold" style="font-size: 1.25rem;"></i>
+          <span>Submit Order to WhatsApp (Rs. 2,500)</span>
         </button>
 
       </div>
     </div>
   </div>
 
-  <!-- ====================================================
-       MODAL: ORDER 21-DAY AMAL TASWEER HUB (عملِ تسخیر برائے تصویر)
-       ==================================================== -->
   <div class="modal-dialog-layer" id="modalOrderAmalTasweerHub">
     <div class="modal-card-container" style="max-width: 500px; width: 92%; max-height: 90vh; overflow-y: auto; border-radius: 20px; border: 1.5px solid rgba(139, 92, 246, 0.55); background: #FFFFFF; box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
       
@@ -9864,9 +9905,9 @@
   </div>
 
   <!-- Exact App Logic with Fresh Live Cache Buster -->
-  <script src="js/quran-data.js?v=20260925_1315_choice_live"></script>
-  <script src="js/khawab-data.js?v=20260925_1315_choice_live"></script>
-  <script src="js/app.js?v=20260925_1315_choice_live"></script>
+  <script src="js/quran-data.js?v=20260925_1340_final_live"></script>
+  <script src="js/khawab-data.js?v=20260925_1340_final_live"></script>
+  <script src="js/app.js?v=20260925_1340_final_live"></script>
 
   </body>
 </html>
