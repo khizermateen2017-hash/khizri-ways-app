@@ -191,56 +191,10 @@
 
           </div>
 
-          <!-- VIP Dedicated Folder: Consecrated Spiritual Products & Dam Shuda Tail (متبرک روحانی اشیاء و دم شدہ تیل) -->
-          <div class="spiritual-folder-wrapper" style="margin: 36px 14px 14px 14px; position: relative;">
-            
-            <!-- Folder Tab -->
-            <div style="display: inline-flex; align-items: center; gap: 7px; background: linear-gradient(135deg, #B45309 0%, #78350F 100%); color: #FDE68A; font-size: 0.74rem; font-weight: 800; padding: 5px 16px; border-radius: 12px 12px 0 0; margin-right: 14px; box-shadow: 0 -2px 8px rgba(120, 53, 15, 0.25); border-top: 1px solid #FCD34D; border-left: 1px solid #FCD34D; border-right: 1px solid #FCD34D;">
-              <i class="fa-solid fa-folder-open text-gold"></i>
-              <span class="lang-en-only">SPECIAL FOLDER</span>
-              <span class="lang-ur-only">خصوصی روحانی فولڈر</span>
-            </div>
-            
-            <!-- Main Folder Card -->
-            <div class="spiritual-folder-card" onclick="window.switchTab('tabProducts')" style="background: linear-gradient(145deg, #FFFDF8 0%, #FEFCE8 50%, #FEF3C7 100%); border: 2px solid #D97706; border-radius: 16px; border-top-right-radius: 4px; padding: 14px 16px; cursor: pointer; box-shadow: 0 8px 24px rgba(180, 83, 9, 0.16); transition: transform 0.2s ease, box-shadow 0.2s ease;">
-              
-              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
-                <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
-                  
-                  <!-- Folder Emblem / Poster Avatar -->
-                  <div style="width: 50px; height: 50px; border-radius: 14px; background: linear-gradient(135deg, #B45309 0%, #78350F 100%); color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 12px rgba(120, 53, 15, 0.3); flex-shrink: 0; border: 1.5px solid #FDE68A;">
-                    <i class="fa-solid fa-bottle-droplet text-gold"></i>
-                  </div>
-                  
-                  <div>
-                    <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 3px;">
-                      <h4 style="margin: 0; font-size: 1.05rem; font-weight: 900; color: #78350F; font-family: 'Noto Nastaliq Urdu', 'Plus Jakarta Sans', sans-serif;">
-                        <span class="lang-en-only">Spiritual Products &amp; Blessed Oil</span>
-                        <span class="lang-ur-only">متبرک روحانی اشیاء و دم شدہ تیل</span>
-                      </h4>
-                      <span style="font-size: 0.65rem; background: #D97706; color: #FFFFFF; padding: 1px 7px; border-radius: 4px; font-weight: 900;">فولڈر</span>
-                    </div>
-                    <p style="margin: 0; font-size: 0.74rem; color: #92400E; line-height: 1.45;">
-                      <span class="lang-en-only">Dam Shuda Tail, Agarbatti, 5 Consecrated Nails, Sariye &amp; Rings</span>
-                      <span class="lang-ur-only">دم شدہ تیل، روحانی اگر بتی، ۵ اسٹیل کیلیں، ۱۸ انچ سریے، منقش عقیق</span>
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Folder Open CTA Button -->
-                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; background: linear-gradient(135deg, #D97706 0%, #B45309 100%); color: #FFFFFF; padding: 9px 12px; border-radius: 10px; font-size: 0.76rem; font-weight: 800; white-space: nowrap; box-shadow: 0 3px 10px rgba(180, 83, 9, 0.3);">
-                  <i class="fa-solid fa-folder-open" style="font-size: 1rem; color: #FEF08A;"></i>
-                  <span>فولڈر کھولیں</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
           <!-- 16 Circular Feature Icons (4x4 Grid in Royal Navy Theme) -->
-          <div class="sixteen-grid-section" style="margin-top: 10px;">
+          <div class="sixteen-grid-section" style="margin-top: 32px;">
 
-            <!-- 16 Features Grid with Dedicated Rohani Ilaj, Wazaif, and Zakat Calculator -->
+            <!-- 16 Features Grid with Dedicated Rohani Ilaj, Wazaif, and Spiritual Products -->
             <div class="sixteen-features-grid">
               
               <!-- ================= ROW 1 ================= -->
@@ -301,15 +255,12 @@
                 <span class="feature-title" data-i18n="featTaweezat">Mujarab<br>Taweezat</span>
               </div>
 
-              <!-- 8. Zakat Calculator (زکوٰۃ کیلکولیٹر - Dedicated Folder Cell) -->
-              <div class="feature-cell" onclick="openModal('modalZakat')" title="Zakat Calculator (2.5%)">
-                <div class="feature-icon-circle feature-accent-zakat" style="background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%); color: #047857; border: 1.5px solid #10B981; box-shadow: 0 4px 10px rgba(4, 120, 87, 0.2);">
-                  <i class="fa-solid fa-calculator"></i>
+              <!-- 8. Spiritual Products (باقی سیکشنز کی طرح سرکلر گرڈ سیل) -->
+              <div class="feature-cell" data-open="tabProducts" title="Spiritual Products &amp; Dam Shuda Tail">
+                <div class="feature-icon-circle feature-accent-products">
+                  <i class="fa-solid fa-bottle-droplet"></i>
                 </div>
-                <span class="feature-title" data-i18n="featZakat">
-                  <span class="lang-en-only">Zakat<br>Calculator</span>
-                  <span class="lang-ur-only">زکوٰۃ<br>کیلکولیٹر</span>
-                </span>
+                <span class="feature-title" data-i18n="featProducts">Spiritual<br>Products</span>
               </div>
 
               <!-- ================= ROW 3 ================= -->
@@ -337,7 +288,19 @@
                 <span class="feature-title" data-i18n="featTasbeeh">Tasbeeh</span>
               </div>
 
-              <!-- 12. Fast Treatment -->
+              <!-- 12. Zakat Calculator (زکوٰۃ کیلکولیٹر) -->
+              <div class="feature-cell" onclick="openModal('modalZakat')" title="Zakat Calculator (2.5%)">
+                <div class="feature-icon-circle feature-accent-zakat" style="background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%); color: #047857; border: 1.5px solid #10B981; box-shadow: 0 4px 10px rgba(4, 120, 87, 0.2);">
+                  <i class="fa-solid fa-calculator"></i>
+                </div>
+                <span class="feature-title" data-i18n="featZakat">
+                  <span class="lang-en-only">Zakat<br>Calculator</span>
+                  <span class="lang-ur-only">زکوٰۃ<br>کیلکولیٹر</span>
+                </span>
+              </div>
+
+              <!-- ================= ROW 4 ================= -->
+              <!-- 13. Fast Treatment -->
               <div class="feature-cell" data-open="tabFastTreatment" title="Fast Treatment &amp; Emergency Spiritual Cures">
                 <div class="feature-icon-circle feature-accent-fast">
                   <i class="fa-solid fa-bolt-lightning"></i>
@@ -345,8 +308,7 @@
                 <span class="feature-title" data-i18n="featFastTreatment">Fast<br>Treatment</span>
               </div>
 
-              <!-- ================= ROW 4 ================= -->
-              <!-- 13. Khizri Services (All Services) -->
+              <!-- 14. Khizri Services (All Services) -->
               <div class="feature-cell" data-open="tabServices" title="All Khizri Services &amp; Treatments">
                 <div class="feature-icon-circle feature-accent-services">
                   <i class="fa-solid fa-layer-group"></i>
@@ -354,7 +316,7 @@
                 <span class="feature-title" data-i18n="featServices">Our<br>Services</span>
               </div>
 
-              <!-- 14. PDF Books & Resources -->
+              <!-- 15. PDF Books & Resources -->
               <div class="feature-cell" data-open="tabPdfBooks" title="Downloadable PDF Books &amp; Guides">
                 <div class="feature-icon-circle feature-accent-pdf">
                   <i class="fa-solid fa-file-pdf"></i>
@@ -362,20 +324,12 @@
                 <span class="feature-title" data-i18n="featPdfBooks">PDF<br>Books</span>
               </div>
 
-              <!-- 15. Khizri Videos & Bayanat -->
+              <!-- 16. Khizri Videos & Bayanat -->
               <div class="feature-cell" data-open="tabVideos" title="Official YouTube Video Lectures">
                 <div class="feature-icon-circle feature-accent-video">
                   <i class="fa-solid fa-video"></i>
                 </div>
                 <span class="feature-title" data-i18n="featVideo">Khizri<br>Videos</span>
-              </div>
-
-              <!-- 16. About Us -->
-              <div class="feature-cell" data-open="tabAboutUs" title="About Khizri Ways &amp; Founder">
-                <div class="feature-icon-circle feature-accent-about">
-                  <i class="fa-solid fa-circle-info"></i>
-                </div>
-                <span class="feature-title" data-i18n="featAbout">About<br>Us</span>
               </div>
 
             </div>
@@ -391,6 +345,19 @@
                 </div>
               </div>
               <button class="btn-hft-go">دیکھیں <i class="fa-solid fa-arrow-left"></i></button>
+            </div>
+
+            <!-- Consecrated Spiritual Products Action Banner (باقی سیکشنز کی طرح) -->
+            <div class="home-products-action-btn" data-open="tabProducts" title="Open Consecrated Spiritual Products">
+              <div class="hpa-left">
+                <div class="hpa-icon"><i class="fa-solid fa-bottle-droplet"></i></div>
+                <div>
+                  <span class="hpa-badge"><i class="fa-solid fa-star text-gold"></i> تبرکات و علاج</span>
+                  <h4>Spiritual Products (متبرک روحانی اشیاء و دم شدہ تیل)</h4>
+                  <p>دم شدہ تیل، روحانی اگر بتی، ۵ اسٹیل کیلیں، ۱۸ انچ سریے، منقش عقیق</p>
+                </div>
+              </div>
+              <button class="btn-hpa-go">اشیاء دیکھیں <i class="fa-solid fa-arrow-left"></i></button>
             </div>
 
             <!-- Customer Stories Action Button on Main Screen -->
@@ -10440,9 +10407,9 @@
   </div>
 
   <!-- Exact App Logic with Fresh Live Cache Buster -->
-  <script src="js/quran-data.js?v=20260926_1630_folder_card_live"></script>
-  <script src="js/khawab-data.js?v=20260926_1630_folder_card_live"></script>
-  <script src="js/app.js?v=20260926_1630_folder_card_live"></script>
+  <script src="js/quran-data.js?v=20260926_1640_products_consistent_sections"></script>
+  <script src="js/khawab-data.js?v=20260926_1640_products_consistent_sections"></script>
+  <script src="js/app.js?v=20260926_1640_products_consistent_sections"></script>
 
   </body>
 </html>
