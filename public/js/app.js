@@ -4356,8 +4356,7 @@ window.openAnimalSadqaModal = function(animal = 'murghi', hissaType = 'single', 
 
   const select = document.getElementById('sadqaPackageSelect');
   if (select) {
-    if (animal === 'karhai' && hissaType === 'single') select.value = 'karhai_single';
-    else if (animal === 'karhai' && hissaType === 'full') select.value = 'karhai_full';
+    if (animal === 'karhai') select.value = 'karhai_full';
     else if (animal === 'handi') select.value = 'handi_full';
     else if (animal === 'shaana') select.value = 'shaana_full';
     else if (animal === 'murghi') select.value = 'murghi_single';
