@@ -4358,6 +4358,8 @@ window.openAnimalSadqaModal = function(animal = 'murghi', hissaType = 'single', 
   if (select) {
     if (animal === 'karhai' && hissaType === 'single') select.value = 'karhai_single';
     else if (animal === 'karhai' && hissaType === 'full') select.value = 'karhai_full';
+    else if (animal === 'handi') select.value = 'handi_full';
+    else if (animal === 'shaana') select.value = 'shaana_full';
     else if (animal === 'murghi') select.value = 'murghi_single';
     else if (animal === 'bakra' && hissaType === 'single') select.value = 'bakra_single';
     else if (animal === 'bakra' && hissaType === 'full') select.value = 'bakra_full';
@@ -4406,6 +4408,16 @@ window.updateSadqaNotice = function() {
     detail.textContent = isEn ? 'Dedicated pot incineration for patient & family (up to 5 members)' : 'مریض یا فیملی کیلئے خصوصی سیپریٹ کڑھائی کا عمل (زیادہ سے زیادہ 5 افراد)';
     amount.textContent = 'Rs. 25,000';
     maxMembers = 5;
+  } else if (val === 'handi_full') {
+    title.textContent = isEn ? 'Amal-e-Haandi (Earthen Pot Magic Destroyer)' : 'ہانڈی کا خاص عمل (سخت سحر و جنات کی کامل کاٹ)';
+    detail.textContent = isEn ? 'Patient hair, nails & pulses cooked in earthen pot to destroy occult ties (2 to 5 patients)' : 'مریض کے ناخن، بال اور دالیں ہانڈی میں پکا کر جادو و جنات کی جڑ کاٹنا (2 تا 5 مریض)';
+    amount.textContent = 'Rs. 25,000';
+    maxMembers = 5;
+  } else if (val === 'shaana_full') {
+    title.textContent = isEn ? 'Amal-e-Shaana-e-Bakra (Magic Reversal Ritual)' : 'بکرے کے شانے کا عمل (سحر پلٹانے کا تیر بہدف عمل)';
+    detail.textContent = isEn ? 'Authentic ritual on goat shoulder to reverse black magic onto the perpetrator' : 'بکرے کے شانے کی ہڈی پر جادو کو پلٹانے کا تیر بہدف مسنون عمل';
+    amount.textContent = 'Rs. 21,000';
+    maxMembers = 1;
   } else if (val === 'murghi_single') {
     title.textContent = isEn ? 'Rooster / Bird Kaat & Remedy (1 Person)' : 'مرغی کا خاص عمل و صدقہ (1 فرد)';
     detail.textContent = isEn ? 'Instant spiritual cut for 1 person' : '1 فرد کیلئے فوری کاٹ و دفعِ بلا';
@@ -5007,8 +5019,36 @@ window.openTashkheesModal = function(issueKey = 'black_magic') {
   const fileInput = document.getElementById('tashkheesSlipFile');
   if (fileInput) fileInput.value = '';
 
+  if (typeof window.updateTashkheesFee === 'function') {
+    window.updateTashkheesFee();
+  }
+
   if (typeof window.openModal === 'function') {
     window.openModal('modalTashkheesBooking');
+  }
+};
+
+window.updateTashkheesFee = function() {
+  const select = document.getElementById('tashkheesIssueSelect');
+  const feeEl = document.getElementById('tashkheesFeeDisplay');
+  if (!select || !feeEl) return;
+  if (select.value === 'urgent_consultation') {
+    feeEl.textContent = 'Rs. 3,000';
+    feeEl.style.color = '#DC2626';
+    feeEl.style.borderColor = '#FCA5A5';
+  } else {
+    feeEl.textContent = 'Rs. 1,000';
+    feeEl.style.color = '#5B21B6';
+    feeEl.style.borderColor = '#C4B5FD';
+  }
+};
+
+window.openUrgentAppointmentModal = function() {
+  window.openTashkheesModal('urgent_consultation');
+  const symptomsEl = document.getElementById('tashkheesSymptoms');
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  if (symptomsEl && !symptomsEl.value) {
+    symptomsEl.value = isEn ? '[Urgent 30-Minute Priority Consultation - Fee: Rs. 3,000] ' : '[فوری ارجنٹ اپائنٹمنٹ ۳۰ منٹ سیشن - ہدیہ ۳,۰۰۰ روپے] ';
   }
 };
 
