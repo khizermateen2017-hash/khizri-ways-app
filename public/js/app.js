@@ -4859,6 +4859,122 @@ window.submitMonthlyDamModal = function() {
 // ==========================================
 let uploadedTashkheesSlipBase64 = '';
 
+window.populateApptTimeSlots = function(mode) {
+  const select = document.getElementById('tashkheesApptTimeSlot');
+  if (!select) return;
+  select.innerHTML = '';
+
+  const formatSlot = (h, m) => {
+    const endH = (m === 45) ? (h + 1) % 24 : h;
+    const endM = (m + 15) % 60;
+    
+    const to12h = (hour, min) => {
+      const period = hour >= 12 ? 'PM' : 'AM';
+      let h12 = hour % 12;
+      if (h12 === 0) h12 = 12;
+      const hStr = h12 < 10 ? '0' + h12 : '' + h12;
+      const mStr = min < 10 ? '0' + min : '' + min;
+      return `${hStr}:${mStr} ${period}`;
+    };
+
+    return `${to12h(h, m)} - ${to12h(endH, endM)}`;
+  };
+
+  if (mode === 'physical') {
+    // Strictly 2:00 PM to 10:00 PM (Pakistan Time)
+    // 14:00 to 21:45 (last slot ends at 22:00 / 10:00 PM)
+    for (let h = 14; h < 22; h++) {
+      for (let m = 0; m < 60; m += 15) {
+        const slotText = formatSlot(h, m);
+        const opt = document.createElement('option');
+        opt.value = slotText;
+        opt.textContent = `${slotText} (دوپہر 2 تا رات 10)`;
+        select.appendChild(opt);
+      }
+    }
+  } else {
+    // Online: 24 Hours available categorized by time of day
+    const groups = [
+      { label: '☀️ صبح و دن (Morning / Day - 06:00 AM to 01:45 PM)', start: 6, end: 14 },
+      { label: '🌤️ دوپہر و سہ پہر (Afternoon - 02:00 PM to 05:45 PM)', start: 14, end: 18 },
+      { label: '🌆 شام و رات (Evening / Night - 06:00 PM to 11:45 PM)', start: 18, end: 24 },
+      { label: '🌌 نصف شب و سحر (Late Night - 12:00 AM to 05:45 AM)', start: 0, end: 6 }
+    ];
+
+    groups.forEach(g => {
+      const optgroup = document.createElement('optgroup');
+      optgroup.label = g.label;
+      for (let h = g.start; h < g.end; h++) {
+        for (let m = 0; m < 60; m += 15) {
+          const slotText = formatSlot(h, m);
+          const opt = document.createElement('option');
+          opt.value = slotText;
+          opt.textContent = `${slotText} (15 منٹ)`;
+          optgroup.appendChild(opt);
+        }
+      }
+      select.appendChild(optgroup);
+    });
+
+    // Default select a pleasant afternoon slot e.g. 03:00 PM - 03:15 PM
+    const defaultOption = Array.from(select.options).find(o => o.value && o.value.startsWith('03:00 PM'));
+    if (defaultOption) defaultOption.selected = true;
+  }
+};
+
+window.setApptTimingMode = function(mode) {
+  const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
+  const lblOnline = document.getElementById('lblApptModeOnline');
+  const lblPhysical = document.getElementById('lblApptModePhysical');
+  const radioOnline = document.getElementById('radioApptOnline');
+  const radioPhysical = document.getElementById('radioApptPhysical');
+  const notice = document.getElementById('tashkheesTimingNotice');
+
+  if (mode === 'physical') {
+    if (radioPhysical) radioPhysical.checked = true;
+    if (lblPhysical) {
+      lblPhysical.style.border = '2px solid #D97706';
+      lblPhysical.style.background = '#FFFBEB';
+      lblPhysical.style.color = '#B45309';
+    }
+    if (lblOnline) {
+      lblOnline.style.border = '1.5px solid #CBD5E1';
+      lblOnline.style.background = '#FFFFFF';
+      lblOnline.style.color = '#475569';
+    }
+    if (notice) {
+      notice.style.background = '#FEF3C7';
+      notice.style.borderColor = '#FDE68A';
+      notice.style.color = '#92400E';
+      notice.innerHTML = isEn
+        ? '<i class="fa-solid fa-building"></i> <strong>In-Person Meeting (Karachi Clinic):</strong> Available timings are strictly from <strong>2:00 PM to 10:00 PM PKT</strong>. Please choose your 15-minute slot within this window.'
+        : '<i class="fa-solid fa-building"></i> <strong>بالمشافہ ملاقات (کراچی مطب / دفتر):</strong> اوقاتِ کار صرف <strong>دوپہر 2:00 بجے تا رات 10:00 بجے</strong> (پاکستان وقت) ہیں۔ اسی دورانیے میں سے اپنا 15 منٹ کا سلاٹ منتخب فرمائیں۔';
+    }
+    window.populateApptTimeSlots('physical');
+  } else {
+    if (radioOnline) radioOnline.checked = true;
+    if (lblOnline) {
+      lblOnline.style.border = '2px solid #7C3AED';
+      lblOnline.style.background = '#F5F3FF';
+      lblOnline.style.color = '#5B21B6';
+    }
+    if (lblPhysical) {
+      lblPhysical.style.border = '1.5px solid #CBD5E1';
+      lblPhysical.style.background = '#FFFFFF';
+      lblPhysical.style.color = '#475569';
+    }
+    if (notice) {
+      notice.style.background = '#EDE9FE';
+      notice.style.borderColor = '#DDD6FE';
+      notice.style.color = '#5B21B6';
+      notice.innerHTML = isEn
+        ? '<i class="fa-solid fa-clock"></i> <strong>Online Appointment:</strong> Available <strong>24 Hours</strong> for domestic and international seekers. Select any convenient 15-minute slot.'
+        : '<i class="fa-solid fa-clock"></i> <strong>آن لائن ملاقات:</strong> ملکی و بین الاقوامی سائلین کیلئے <strong>24 گھنٹے</strong> میں سے کوئی بھی 15 منٹ کا وقت منتخب کرنے کی سہولت دستیاب ہے۔';
+    }
+    window.populateApptTimeSlots('online');
+  }
+};
+
 window.openTashkheesModal = function(issueKey = 'black_magic') {
   if (typeof window.initCountryDropdowns === 'function') window.initCountryDropdowns('Pakistan');
 
@@ -4868,6 +4984,19 @@ window.openTashkheesModal = function(issueKey = 'black_magic') {
     // If exact key didn't match an option, default to black_magic
     if (!select.value) select.value = 'black_magic';
   }
+
+  // Setup Date Picker to Today minimum
+  const dateInput = document.getElementById('tashkheesApptDate');
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+    if (!dateInput.value || dateInput.value < today) {
+      dateInput.value = today;
+    }
+  }
+
+  // Initialize appointment mode to online (24h)
+  window.setApptTimingMode('online');
 
   const preview = document.getElementById('tashkheesSlipPreview');
   if (preview) {
@@ -4909,9 +5038,23 @@ window.submitTashkheesForm = function() {
   const phone = (document.getElementById('tashkheesPhone')?.value || '').trim();
   const symptoms = (document.getElementById('tashkheesSymptoms')?.value || '').trim();
 
+  const apptType = (document.querySelector('input[name="tashkheesApptType"]:checked')?.value || 'online');
+  const apptDate = (document.getElementById('tashkheesApptDate')?.value || '').trim();
+  const apptSlot = (document.getElementById('tashkheesApptTimeSlot')?.value || '').trim();
+
   const select = document.getElementById('tashkheesIssueSelect');
   const issueText = select ? select.options[select.selectedIndex]?.text : 'Spiritual Diagnosis';
 
+  if (!apptDate) {
+    alert(isEn ? 'Please choose your preferred appointment date.' : 'براہِ کرم ملاقات کی تاریخ کا انتخاب فرمائیں۔');
+    document.getElementById('tashkheesApptDate')?.focus();
+    return;
+  }
+  if (!apptSlot) {
+    alert(isEn ? 'Please choose your 15-minute time slot.' : 'براہِ کرم 15 منٹ کا وقت / سلاٹ منتخب فرمائیں۔');
+    document.getElementById('tashkheesApptTimeSlot')?.focus();
+    return;
+  }
   if (!name) {
     alert(isEn ? 'Please enter patient / seeker name.' : 'براہِ کرم مریض یا سائل کا مکمل نام درج کریں۔');
     document.getElementById('tashkheesName')?.focus();
@@ -4946,32 +5089,38 @@ window.submitTashkheesForm = function() {
   let msg = '';
   if (isEn) {
     msg = '*Bismillahir Rahmanir Rahim*\n';
-    msg += '*Spiritual Diagnosis & Case Checkup Booking (خضریٰ ویز)*\n';
+    msg += '*Spiritual Diagnosis & Consultation Booking (خضریٰ ویز)*\n';
     msg += '------------------------------------\n';
     msg += '🩺 *Case Type / Issue:* ' + issueText + '\n';
     msg += '👤 *Patient Name:* ' + name + '\n';
     msg += '🧕 *Mother / Parent Name:* ' + mother + '\n';
     msg += '📍 *Country & Address:* ' + country + ' — ' + address + '\n';
     msg += '📱 *WhatsApp / Mobile:* ' + phone + '\n';
+    msg += '📅 *Appointment Date:* ' + apptDate + '\n';
+    msg += '⏰ *Time Slot (15 Mins):* ' + apptSlot + '\n';
+    msg += '🌐 *Meeting Mode:* ' + (apptType === 'online' ? 'Online Audio/Video Call (24 Hours Available)' : 'In-Person Physical Visit - Karachi Clinic (2:00 PM to 10:00 PM PKT)') + '\n';
     msg += '📝 *Symptoms & Details:* ' + symptoms + '\n';
     msg += '💰 *Consultation Fee:* Rs. 1,000 (Tashkhees Fee)\n';
     msg += '🧾 *Payment Slip:* ' + (uploadedTashkheesSlipBase64 ? 'Attached & Uploaded' : 'Transferred') + '\n';
     msg += '------------------------------------\n';
-    msg += 'Assalamu Alaikum Mufti Sahib, I have submitted my case details and the diagnosis consultation fee. Please evaluate my case and advise the authentic spiritual remedy. JazakAllahu Khair!';
+    msg += 'Assalamu Alaikum Mufti Sahib, I have submitted my appointment details for a 15-minute session and transferred the fee. Please confirm the booking. JazakAllahu Khair!';
   } else {
     msg = '*بسم الله الرحمن الرحيم*\n';
-    msg += '*درخواست برائے روحانی تشخیص و آن لائن مطب (خضریٰ ویز)*\n';
+    msg += '*درخواست برائے روحانی تشخیص و مطب اپائنٹمنٹ (خضریٰ ویز)*\n';
     msg += '------------------------------------\n';
     msg += '🩺 *مسئلہ کی قسم:* ' + issueText + '\n';
     msg += '👤 *مریض / سائل کا نام:* ' + name + '\n';
     msg += '🧕 *والدہ / والد کا نام:* ' + mother + '\n';
     msg += '📍 *ملک و رہائشی پتہ:* ' + country + ' — ' + address + '\n';
     msg += '📱 *واٹس ایپ نمبر:* ' + phone + '\n';
+    msg += '📅 *ملاقات کی تاریخ:* ' + apptDate + '\n';
+    msg += '⏰ *ملاقات کا وقت:* ' + apptSlot + ' (دورانیہ: 15 منٹ)\n';
+    msg += '📍 *ملاقات کی نوعیت:* ' + (apptType === 'online' ? 'آن لائن ویڈیو/آڈیو کال (24 گھنٹے دستیاب)' : 'بالمشافہ ملاقات - کراچی مطب/دفتر (دوپہر 2:00 تا رات 10:00 بجے)') + '\n';
     msg += '📝 *تکلیف، علامات یا خواب کی تفصیل:* ' + symptoms + '\n';
     msg += '💰 *ہدیہ تشخیص:* 1,000 روپے (فیس ادا شدہ)\n';
     msg += '🧾 *ہدیہ کی رسید:* ' + (uploadedTashkheesSlipBase64 ? 'سلپ ساتھ منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
     msg += '------------------------------------\n';
-    msg += 'السلام علیکم مفتی صاحب! میں نے روحانی تشخیص و چیک اپ کیلئے کیس کی تفصیلات اور ہدیہ جمع کروا دیا ہے۔ براہِ کرم معائنہ فرما کر رہنمائی و شرعی علاج تجویز فرمائیں۔ جزاک اللہ خیراً۔';
+    msg += 'السلام علیکم مفتی صاحب! میں نے 15 منٹ کی مشاورتی ملاقات کیلئے تفصیلات اور ہدیہ جمع کروا دیا ہے۔ براہِ کرم وقت کی تصدیق فرما کر رہنمائی و شرعی علاج تجویز فرمائیں۔ جزاک اللہ خیراً۔';
   }
 
   if (typeof window.closeModal === 'function') {

@@ -6237,6 +6237,66 @@
           </select>
         </div>
 
+        <!-- Dedicated Appointment Type & Schedule Card (آن لائن بمقابلہ بالمشافہ ملاقات) -->
+        <div style="background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%); border: 1.5px solid #CBD5E1; border-radius: 14px; padding: 12px 14px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+          
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+            <span style="font-size: 0.82rem; font-weight: 800; color: #1E293B; display: flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-calendar-check text-gold"></i>
+              <span class="lang-en-only">Appointment Mode &amp; Schedule *</span>
+              <span class="lang-ur-only">ملاقات کی نوعیت و وقت کا انتخاب *</span>
+            </span>
+            <span style="font-size: 0.7rem; font-weight: 800; background: #FEF3C7; color: #92400E; padding: 3px 8px; border-radius: 6px; border: 1px solid #FDE68A;">
+              <i class="fa-solid fa-stopwatch"></i> دورانیہ: 15 منٹ
+            </span>
+          </div>
+
+          <!-- Appointment Mode Selection Buttons -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;">
+            <label id="lblApptModeOnline" onclick="setApptTimingMode('online')" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 10px 8px; border-radius: 10px; border: 2px solid #7C3AED; background: #F5F3FF; color: #5B21B6; font-size: 0.8rem; font-weight: 800; cursor: pointer; transition: all 0.2s; text-align: center;">
+              <div style="display: flex; align-items: center; gap: 5px;">
+                <input type="radio" name="tashkheesApptType" id="radioApptOnline" value="online" checked style="accent-color: #7C3AED;">
+                <span>🌐 آن لائن ملاقات</span>
+              </div>
+              <span style="font-size: 0.66rem; color: #7C3AED; font-weight: 700; background: rgba(124,58,237,0.1); padding: 1px 6px; border-radius: 4px;">24 گھنٹے دستیاب</span>
+            </label>
+
+            <label id="lblApptModePhysical" onclick="setApptTimingMode('physical')" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 10px 8px; border-radius: 10px; border: 1.5px solid #CBD5E1; background: #FFFFFF; color: #475569; font-size: 0.8rem; font-weight: 800; cursor: pointer; transition: all 0.2s; text-align: center;">
+              <div style="display: flex; align-items: center; gap: 5px;">
+                <input type="radio" name="tashkheesApptType" id="radioApptPhysical" value="physical" style="accent-color: #7C3AED;">
+                <span>🏢 بالمشافہ ملاقات</span>
+              </div>
+              <span style="font-size: 0.66rem; color: #B45309; font-weight: 700; background: #FEF3C7; padding: 1px 6px; border-radius: 4px;">2:00 PM - 10:00 PM</span>
+            </label>
+          </div>
+
+          <!-- Date & Time Row -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+            <div>
+              <label style="font-size: 0.74rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 3px;">
+                <span class="lang-en-only">Date *</span>
+                <span class="lang-ur-only">تاریخِ ملاقات *</span>
+              </label>
+              <input type="date" id="tashkheesApptDate" required style="width: 100%; height: 42px; padding: 6px 10px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; outline: none; box-sizing: border-box; background: #FFF; font-weight: 600;">
+            </div>
+            <div>
+              <label style="font-size: 0.74rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 3px;">
+                <span class="lang-en-only">15-Min Slot *</span>
+                <span class="lang-ur-only">وقت (15 منٹ سلاٹ) *</span>
+              </label>
+              <select id="tashkheesApptTimeSlot" style="width: 100%; height: 42px; padding: 6px 8px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.8rem; outline: none; box-sizing: border-box; background: #FFF; font-weight: 700; color: #0F172A;">
+                <!-- Populated dynamically via JS -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Timing Guidance Badge -->
+          <div id="tashkheesTimingNotice" style="font-size: 0.72rem; color: #5B21B6; line-height: 1.45; background: #EDE9FE; border: 1px solid #DDD6FE; padding: 7px 10px; border-radius: 8px;">
+            <i class="fa-solid fa-clock"></i> <strong>آن لائن ملاقات:</strong> ملکی و بین الاقوامی سائلین کیلئے 24 گھنٹے میں سے کوئی بھی 15 منٹ کا وقت منتخب کرنے کی سہولت دستیاب ہے۔
+          </div>
+
+        </div>
+
         <!-- Patient Name -->
         <div style="margin-bottom: 10px;">
           <label style="font-size: 0.78rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 4px;">
@@ -10334,9 +10394,9 @@
   </div>
 
   <!-- Exact App Logic with Fresh Live Cache Buster -->
-  <script src="js/quran-data.js?v=20260926_1730_products_clean_form_order"></script>
-  <script src="js/khawab-data.js?v=20260926_1730_products_clean_form_order"></script>
-  <script src="js/app.js?v=20260926_1730_products_clean_form_order"></script>
+  <script src="js/quran-data.js?v=20260926_1815_spiritual_appointment_scheduling"></script>
+  <script src="js/khawab-data.js?v=20260926_1815_spiritual_appointment_scheduling"></script>
+  <script src="js/app.js?v=20260926_1815_spiritual_appointment_scheduling"></script>
 
   </body>
 </html>
