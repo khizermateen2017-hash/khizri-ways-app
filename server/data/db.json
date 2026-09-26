@@ -1168,6 +1168,26 @@
   ],
   "orders": [
     {
+      "id": "ORD-326333",
+      "itemName": "حرزِ ابی دجانہ رضی اللہ عنہ (برائے حفاظتِ مکان و گھر)",
+      "customerName": "jh",
+      "fatherName": "",
+      "motherName": "hjg",
+      "targetName": "",
+      "targetMotherName": "",
+      "purpose": "حفاظتِ خانہ، مکان و دکان از جنات و شیاطین (مطبوعہ پارسل مع چاندی خول و مفت کوریئر)",
+      "phone": "03326158732",
+      "city": "Rajanpur",
+      "address": "",
+      "notes": "حصول کا طریقہ: مطبوعہ پارسل مع چاندی خول و مفت کوریئر | ملک: Pakistan | شہر: Rajanpur",
+      "hadya": 1000,
+      "paymentMethod": "EasyPaisa / JazzCash / Bank",
+      "hasSlip": false,
+      "hasCustomImage": false,
+      "status": "pending",
+      "createdAt": "2026-09-26T08:28:46.333Z"
+    },
+    {
       "id": "ORD-449765",
       "itemName": "Test Taweez",
       "customerName": "Test User",

@@ -295,33 +295,6 @@
 </head>
 <body>
 
-  <!-- Verification Gate / Lock Overlay (Displayed if not verified) -->
-  <div id="printLockOverlay" style="display: none; max-width: 520px; margin: 40px auto; background: #FFFFFF; border: 2px solid #2563EB; border-radius: 16px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); text-align: center; font-family: 'Plus Jakarta Sans', 'Noto Nastaliq Urdu', sans-serif;">
-    <div style="width: 56px; height: 56px; border-radius: 50%; background: #EFF6FF; color: #2563EB; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 14px;">
-      <i class="fa-solid fa-lock"></i>
-    </div>
-    <h2 style="font-size: 1.25rem; font-weight: 800; color: #1E3A8A; margin-bottom: 6px;">حرزِ ابی دجانہ رضی اللہ عنہ • تصدیقی کوڈ درکار ہے</h2>
-    <p style="font-size: 0.85rem; color: #475569; line-height: 1.6; margin-bottom: 16px;">
-      حرزِ ابی دجانہ کے تقدس اور شرعی روحانی اجازت کے لیے واٹس ایپ سے حاصل کردہ <strong>خفیہ تصدیقی کوڈ (Access Code)</strong> درج فرما کر انلاک کریں۔
-    </p>
-
-    <div style="display: flex; gap: 8px; margin-bottom: 10px;">
-      <input type="text" id="printUnlockInput" placeholder="تصدیقی کوڈ درج فرمائیں (مثلاً: 8421)" style="flex: 1; height: 44px; padding: 8px 12px; border: 1.5px solid #94A3B8; border-radius: 8px; font-size: 1rem; font-weight: 800; text-align: center; direction: ltr; letter-spacing: 2px; outline: none;">
-      <button type="button" onclick="verifyPrintCode()" style="height: 44px; padding: 0 18px; background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); color: #FFF; border: none; border-radius: 8px; font-weight: 800; font-size: 0.9rem; cursor: pointer; white-space: nowrap;">
-        تصدیق و انلاک
-      </button>
-    </div>
-    <div id="printLockError" style="display: none; color: #DC2626; font-size: 0.8rem; font-weight: 800; margin-bottom: 12px;"></div>
-
-    <div style="border-top: 1px dashed #CBD5E1; padding-top: 14px; margin-top: 14px;">
-      <a id="btnLockWhatsApp" href="#" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; background: #16A34A; color: #FFF; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 0.86rem;">
-        <i class="fa-brands fa-whatsapp"></i> واٹس ایپ پر رابطہ کر کے کوڈ حاصل کریں
-      </a>
-      <div style="margin-top: 10px;">
-        <a href="/" style="font-size: 0.78rem; color: #64748B; text-decoration: underline;">واپس ہوم پیج پر جائیں</a>
-      </div>
-    </div>
-  </div>
 
   <!-- Top Controls Bar -->
   <div class="toolbar">
@@ -459,84 +432,29 @@
     const id = urlParams.get('id') || ('KHZ-' + Date.now().toString().slice(-6));
     const date = urlParams.get('date') || new Date().toLocaleDateString('ur-PK');
 
-    document.getElementById('lblName').textContent = name;
-    document.getElementById('lblInlineName').textContent = name;
-    document.getElementById('lblMother').textContent = mother;
-    document.getElementById('lblLocation').textContent = (city ? (city + '، ') : '') + country;
-    document.getElementById('lblOrderId').textContent = id;
-    document.getElementById('lblDate').textContent = date;
+    if (document.getElementById('lblName')) document.getElementById('lblName').textContent = name;
+    if (document.getElementById('lblInlineName')) document.getElementById('lblInlineName').textContent = name;
+    if (document.getElementById('lblMother')) document.getElementById('lblMother').textContent = mother;
+    if (document.getElementById('lblLocation')) document.getElementById('lblLocation').textContent = (city ? (city + '، ') : '') + country;
+    if (document.getElementById('lblOrderId')) document.getElementById('lblOrderId').textContent = id;
+    if (document.getElementById('lblDate')) document.getElementById('lblDate').textContent = date;
 
     const waMsg = encodeURIComponent(
-      `السلام علیکم مفتی صاحب!\nمیں نے حرزِ ابی دجانہ رضی اللہ عنہ کا آرڈر دیا ہے۔ برائے کرم تصدیق فرما کر انلاک کرنے کا خفیہ کوڈ عنایت فرمائیں۔\n` +
+      `السلام علیکم مفتی صاحب!\nمیں نے حرزِ ابی دجانہ رضی اللہ عنہ کی سند و پرنٹ فائل حاصل کر لی ہے۔\n` +
       `🔖 آرڈر ریفرنس: ${id}\n` +
-      `👤 سائل کا نام: ${name}\n` +
+      `👤 صاحبِ اجازت (سائل): ${name}\n` +
       `🧕 والدہ کا نام: ${mother}\n` +
       `📍 مقام: ${city ? (city + ', ') : ''}${country}\n` +
-      `جزاک اللہ خیراً!`
+      `دعاؤں کی درخواست ہے!`
     );
-    if (document.getElementById('btnWhatsAppConfirm')) document.getElementById('btnWhatsAppConfirm').href = `https://wa.me/923317704807?text=${waMsg}`;
-    if (document.getElementById('btnLockWhatsApp')) document.getElementById('btnLockWhatsApp').href = `https://wa.me/923317704807?text=${waMsg}`;
-
-    // Security Verification Code Logic
-    const MASTER_CODES = ['78692', '786', 'KHZ786', 'KHIZRI786', 'DUJANAH786', 'KHIZRI2026', '92331', 'VERIFIED'];
-    const paramCode = (urlParams.get('code') || '').trim().toUpperCase();
-
-    function checkIsCodeValid(testCode) {
-      if (!testCode) return false;
-      const c = testCode.trim().toUpperCase();
-      if (MASTER_CODES.includes(c)) return true;
-      if (id && (id.toUpperCase().endsWith(c) || id.replace(/\D/g, '').endsWith(c))) return true;
-      return false;
+    if (document.getElementById('btnWhatsAppConfirm')) {
+      document.getElementById('btnWhatsAppConfirm').href = `https://wa.me/923317704807?text=${waMsg}`;
     }
 
-    let isUnlocked = checkIsCodeValid(paramCode) || (localStorage.getItem('hirz_unlocked') === 'true') || (id && localStorage.getItem('hirz_verified_' + id) === 'true');
-
-    function updatePrintLockUI() {
-      const overlay = document.getElementById('printLockOverlay');
-      const toolbar = document.querySelector('.toolbar');
-      const sheet = document.getElementById('printArea');
-
-      if (isUnlocked) {
-        if (overlay) overlay.style.display = 'none';
-        if (toolbar) toolbar.style.display = 'flex';
-        if (sheet) sheet.style.display = 'block';
-
-        if (urlParams.get('autoprint') === '1') {
-          setTimeout(() => window.print(), 800);
-        }
-      } else {
-        if (overlay) overlay.style.display = 'block';
-        if (toolbar) toolbar.style.display = 'none';
-        if (sheet) sheet.style.display = 'none';
-      }
+    // Auto-trigger print if requested via query param
+    if (urlParams.get('autoprint') === '1') {
+      setTimeout(() => window.print(), 700);
     }
-
-    window.verifyPrintCode = function() {
-      const inp = document.getElementById('printUnlockInput');
-      const err = document.getElementById('printLockError');
-      const entered = (inp?.value || '').trim().toUpperCase();
-
-      if (!entered) {
-        if (err) { err.textContent = 'براہِ کرم تصدیقی کوڈ درج فرمائیں۔'; err.style.display = 'block'; }
-        inp?.focus();
-        return;
-      }
-
-      if (checkIsCodeValid(entered)) {
-        isUnlocked = true;
-        localStorage.setItem('hirz_unlocked', 'true');
-        if (id) localStorage.setItem('hirz_verified_' + id, 'true');
-        updatePrintLockUI();
-      } else {
-        if (err) {
-          err.textContent = 'غلط تصدیقی کوڈ! براہِ کرم واٹس ایپ پر موصول ہونے والا درست کوڈ درج فرمائیں۔';
-          err.style.display = 'block';
-        }
-        inp?.focus();
-      }
-    };
-
-    updatePrintLockUI();
   </script>
 </body>
 </html>

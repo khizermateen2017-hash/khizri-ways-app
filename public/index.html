@@ -1932,11 +1932,11 @@
                     <span class="lang-en-only">Get Hirz (Rs. 1,000)</span>
                     <span class="lang-ur-only">حرز حاصل کریں (Rs. 1,000)</span>
                   </button>
-                  <button type="button" onclick="openHirzVerificationGate()" style="padding: 12px 10px; background: #FFFFFF; color: #1D4ED8; border: 1.5px solid #93C5FD; border-radius: 10px; font-size: 0.86rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-                    <i class="fa-solid fa-key text-gold"></i>
-                    <span class="lang-en-only">Verify Code &amp; Unlock</span>
-                    <span class="lang-ur-only">کوڈ درج کریں / انلاک</span>
-                  </button>
+                  <a href="/print-hirz.html" target="_blank" style="padding: 12px 10px; background: #FFFFFF; color: #1D4ED8; border: 1.5px solid #93C5FD; border-radius: 10px; font-size: 0.86rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <i class="fa-solid fa-print"></i>
+                    <span class="lang-en-only">View Printable Certificate</span>
+                    <span class="lang-ur-only">پرنٹ فائل دیکھیں</span>
+                  </a>
                 </div>
               </div>
 
@@ -9665,19 +9665,21 @@
       <div class="modal-card-top-bar" style="background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); color: #FFFFFF; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
         <h4 style="margin: 0; font-size: 1rem; font-weight: 800; display: flex; align-items: center; gap: 8px;">
           <i class="fa-solid fa-shield-halved text-gold"></i>
-          <span>حرزِ ابی دجانہ رضی اللہ عنہ • تصدیق و انلاک گیٹ</span>
+          <span>حرزِ ابی دجانہ رضی اللہ عنہ • سندِ اجازت و پرنٹ فائل</span>
         </h4>
         <button type="button" class="btn-modal-x" onclick="closeModal('modalHirzDownloadSuccess')" style="color:#FFF; background:transparent; border:none; font-size:1.1rem; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
       <div class="modal-card-body" style="padding: 16px 18px;">
         
-        <!-- Status Indicator Banner -->
-        <div id="hirzStatusBanner" style="background: #FEF3C7; border: 1.5px solid #F59E0B; border-radius: 10px; padding: 9px 12px; margin-bottom: 12px; color: #92400E; display: flex; align-items: center; justify-content: space-between; direction: rtl;">
-          <span style="font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; gap: 6px;">
-            <i class="fa-solid fa-lock text-gold"></i> حالت: غیر مصدقہ / مقفل (Locked)
-          </span>
-          <span style="font-size: 0.72rem; background: #FDE68A; padding: 2px 7px; border-radius: 4px; font-weight: 700;">واٹس ایپ تصدیق درکار</span>
+        <!-- Success Banner -->
+        <div style="background: #DCFCE7; border: 1.5px solid #22C55E; border-radius: 12px; padding: 12px 14px; margin-bottom: 12px; text-align: center; color: #15803D;">
+          <div style="font-weight: 900; font-size: 0.98rem; display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <i class="fa-solid fa-circle-check"></i> مبارک ہو! آپ کی سندِ روحانی اجازت و پرنٹ فائل تیار ہے
+          </div>
+          <div style="font-size: 0.78rem; color: #166534; margin-top: 3px;">
+            آپ کا نام باضابطہ درج ہو چکا ہے۔ اب آپ نیچے دیے گئے بٹن سے فوری پرنٹ یا ڈاؤن لوڈ کر سکتے ہیں۔
+          </div>
         </div>
 
         <!-- Order & Applicant Summary Card -->
@@ -9698,92 +9700,45 @@
           </div>
         </div>
 
-        <!-- 1. LOCKED SECTION (Displayed until verified by code) -->
-        <div id="hirzLockedSection">
-          
-          <!-- Step 1: Send on WhatsApp -->
-          <div style="background: #F0FDF4; border: 1.5px solid #86EFAC; border-radius: 12px; padding: 12px; margin-bottom: 12px; text-align: right; direction: rtl;">
-            <div style="font-weight: 800; font-size: 0.86rem; color: #166534; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-              <i class="fa-brands fa-whatsapp text-emerald" style="font-size: 1.15rem;"></i> مرحلہ ۱: واٹس ایپ پر رسید ارسال کریں اور تصدیقی کوڈ حاصل کریں
-            </div>
-            <p style="font-size: 0.78rem; color: #15803D; line-height: 1.55; margin: 0 0 10px 0;">
-              حرزِ ابی دجانہ رضی اللہ عنہ کے تقدس اور شرعی روحانی اجازت کے لیے نیچے دیے گئے بٹن پر کلک کر کے واٹس ایپ پر اپنی رسید ارسال فرمائیں۔ تصدیق کے بعد مفتی صاحب آپ کو ایک <strong>خفیہ تصدیقی کوڈ (Verification Code)</strong> فراہم فرمائیں گے۔
-            </p>
-            <button type="button" onclick="sendHirzWhatsAppVerification()" style="width: 100%; padding: 12px; background: linear-gradient(135deg, #16A34A 0%, #15803D 100%); color: #FFF; border: none; border-radius: 10px; font-weight: 800; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3);">
-              <i class="fa-brands fa-whatsapp" style="font-size: 1.25rem;"></i> واٹس ایپ پر رسید بھیجیں اور تصدیقی کوڈ لیں
-            </button>
-          </div>
-
-          <!-- Step 2: Enter Verification Code -->
-          <div style="background: #F8FAFC; border: 1.5px solid #CBD5E1; border-radius: 12px; padding: 12px; text-align: right; direction: rtl;">
-            <div style="font-weight: 800; font-size: 0.86rem; color: #1E293B; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-              <i class="fa-solid fa-key text-gold"></i> مرحلہ ۲: واٹس ایپ کا خفیہ تصدیقی کوڈ درج فرمائیں
-            </div>
-            <p style="font-size: 0.77rem; color: #64748B; margin: 0 0 8px 0;">
-              واٹس ایپ سے موصول ہونے والا تصدیقی کوڈ درج کر کے 'تصدیق و انلاک' کے بٹن پر کلک کریں:
-            </p>
-            <div style="display: flex; gap: 8px;">
-              <input type="text" id="inputHirzUnlockCode" placeholder="تصدیقی کوڈ درج فرمائیں (مثلاً: 8421)" style="flex: 1; height: 44px; padding: 8px 12px; border: 1.5px solid #94A3B8; border-radius: 8px; font-size: 0.95rem; font-weight: 800; text-align: center; direction: ltr; letter-spacing: 2px; background: #FFFFFF; outline: none;">
-              <button type="button" onclick="verifyHirzUnlockCode()" style="height: 44px; padding: 0 18px; background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); color: #FFFFFF; border: none; border-radius: 8px; font-weight: 800; font-size: 0.88rem; cursor: pointer; white-space: nowrap; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);">
-                <i class="fa-solid fa-unlock-keyhole"></i> تصدیق و انلاک
-              </button>
-            </div>
-            <div id="hirzUnlockError" style="display: none; color: #DC2626; font-size: 0.78rem; font-weight: 800; margin-top: 6px;"></div>
-          </div>
-
+        <!-- Direct Action Buttons (Instant Access, No Codes, No WhatsApp Lock) -->
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
+          <button type="button" onclick="printHirzCertificate()" style="padding: 13px; background: linear-gradient(135deg, #065F46 0%, #059669 100%); color: #FFF; border: none; border-radius: 10px; font-weight: 800; font-size: 0.94rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);">
+            <i class="fa-solid fa-print"></i> حرزِ مبارک پرنٹ کریں / PDF ڈاؤن لوڈ کریں (Print Certificate)
+          </button>
+          <button type="button" onclick="toggleHirzFullReading()" style="padding: 12px; background: #FFFFFF; color: #1E3A8A; border: 1.5px solid #93C5FD; border-radius: 10px; font-weight: 800; font-size: 0.88rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+            <i class="fa-solid fa-book-quran text-gold"></i> <span id="lblToggleReading">حرزِ مبارک کا مکمل متن پڑھیں (آن لائن معائنہ)</span>
+          </button>
+          <button type="button" onclick="openHirzPrintPage()" style="padding: 10px; background: #F8FAFC; color: #475569; border: 1px dashed #CBD5E1; border-radius: 8px; font-weight: 700; font-size: 0.82rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> پرنٹ صفحہ نئی ونڈو میں کھولیں
+          </button>
+          <button type="button" onclick="sendHirzWhatsAppSlipOptional()" style="padding: 9px; background: #F0FDF4; color: #166534; border: 1px solid #86EFAC; border-radius: 8px; font-weight: 700; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <i class="fa-brands fa-whatsapp" style="color: #22C55E;"></i> رسید کی تفصیل واٹس ایپ پر ارسال کریں (اختیاری)
+          </button>
         </div>
 
-        <!-- 2. UNLOCKED SECTION (Hidden by default, revealed only after code verification) -->
-        <div id="hirzUnlockedSection" style="display: none; margin-top: 10px;">
-          
-          <!-- Verified Badge -->
-          <div style="background: #DCFCE7; border: 1.5px solid #22C55E; border-radius: 12px; padding: 12px; margin-bottom: 12px; text-align: center; color: #15803D;">
-            <div style="font-weight: 900; font-size: 0.98rem; display: flex; align-items: center; justify-content: center; gap: 6px;">
-              <i class="fa-solid fa-circle-check"></i> ماشاء اللہ! تصدیق مکمل • حرزِ مبارک انلاک ہو گیا
-            </div>
-            <div style="font-size: 0.78rem; color: #166534; margin-top: 3px;">
-              آپ کا نام اب سندِ اجازت میں باضابطہ تصدیق شدہ درج ہو چکا ہے۔ اب آپ اسے پرنٹ، ڈاؤن لوڈ یا یہیں مکمل تلاوت کر سکتے ہیں۔
+        <!-- Complete On-Screen Reading Box (Toggleable: "یا پڑھ سکے") -->
+        <div id="hirzReadingContainer" style="display: none; background: #FFFDF9; border: 2px solid #D4AF37; border-radius: 12px; padding: 14px; text-align: right; direction: rtl; margin-top: 10px; max-height: 380px; overflow-y: auto;">
+          <div style="text-align: center; margin-bottom: 12px;">
+            <img src="assets/tahdidi-namah-abu-dujanah.jpg" alt="Tahdidi Namah" style="max-width: 100%; max-height: 220px; border-radius: 8px; border: 1px solid #E2E8F0;">
+            <div style="margin-top: 6px;">
+              <a href="assets/tahdidi-namah-abu-dujanah.jpg" download="Tahdidi-Namah-Abu-Dujanah.jpg" style="display: inline-flex; align-items: center; gap: 5px; font-size: 0.76rem; font-weight: 700; color: #B45309; text-decoration: none; background: #FEF3C7; padding: 4px 10px; border-radius: 6px;">
+                <i class="fa-solid fa-download"></i> اصل تعویذ کی تصویر ڈاؤن لوڈ کریں
+              </a>
             </div>
           </div>
 
-          <!-- Unlocked Action Buttons -->
-          <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
-            <button type="button" onclick="printHirzCertificate()" style="padding: 13px; background: linear-gradient(135deg, #065F46 0%, #059669 100%); color: #FFF; border: none; border-radius: 10px; font-weight: 800; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);">
-              <i class="fa-solid fa-print"></i> حرزِ مبارک پرنٹ کریں / PDF ڈاؤن لوڈ کریں (Print Certificate)
-            </button>
-            <button type="button" onclick="toggleHirzFullReading()" style="padding: 12px; background: #FFFFFF; color: #1E3A8A; border: 1.5px solid #93C5FD; border-radius: 10px; font-weight: 800; font-size: 0.88rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-              <i class="fa-solid fa-book-quran text-gold"></i> <span id="lblToggleReading">حرزِ مبارک کا مکمل متن پڑھیں (آن لائن معائنہ)</span>
-            </button>
-            <button type="button" onclick="openHirzPrintPage()" style="padding: 10px; background: #F8FAFC; color: #475569; border: 1px dashed #CBD5E1; border-radius: 8px; font-weight: 700; font-size: 0.82rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> پرنٹ صفحہ نئی ونڈو میں کھولیں
-            </button>
+          <div style="text-align: center; margin-bottom: 10px; border-bottom: 1px solid #FDE68A; padding-bottom: 6px;">
+            <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #065F46;">حِرْزُ سَيِّدِنَا أَبِي دُجَانَةَ الْأَنْصَارِيِّ رَضِيَ اللَّهُ عَنْهُ</h4>
+            <span style="font-size: 0.74rem; color: #854D0E;">مُجَرَّبٌ قَاطِعٌ لِدَفْعِ الْجِنِّ وَالشَّيَاطِينِ وَالسِّحْرِ</span>
           </div>
 
-          <!-- Complete On-Screen Reading Box (Toggleable: "یا پڑھ سکے") -->
-          <div id="hirzReadingContainer" style="display: none; background: #FFFDF9; border: 2px solid #D4AF37; border-radius: 12px; padding: 14px; text-align: right; direction: rtl; margin-top: 10px; max-height: 380px; overflow-y: auto;">
-            <div style="text-align: center; margin-bottom: 12px;">
-              <img src="assets/tahdidi-namah-abu-dujanah.jpg" alt="Tahdidi Namah" style="max-width: 100%; max-height: 220px; border-radius: 8px; border: 1px solid #E2E8F0;">
-              <div style="margin-top: 6px;">
-                <a href="assets/tahdidi-namah-abu-dujanah.jpg" download="Tahdidi-Namah-Abu-Dujanah.jpg" style="display: inline-flex; align-items: center; gap: 5px; font-size: 0.76rem; font-weight: 700; color: #B45309; text-decoration: none; background: #FEF3C7; padding: 4px 10px; border-radius: 6px;">
-                  <i class="fa-solid fa-download"></i> اصل تعویذ کی تصویر ڈاؤن لوڈ کریں
-                </a>
-              </div>
-            </div>
-
-            <div style="text-align: center; margin-bottom: 10px; border-bottom: 1px solid #FDE68A; padding-bottom: 6px;">
-              <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #065F46;">حِرْزُ سَيِّدِنَا أَبِي دُجَانَةَ الْأَنْصَارِيِّ رَضِيَ اللَّهُ عَنْهُ</h4>
-              <span style="font-size: 0.74rem; color: #854D0E;">مُجَرَّبٌ قَاطِعٌ لِدَفْعِ الْجِنِّ وَالشَّيَاطِينِ وَالسِّحْرِ</span>
-            </div>
-
-            <div style="font-family: 'Amiri', 'Scheherazade New', serif; font-size: 1.15rem; line-height: 2.1; color: #0F172A; text-align: justify; margin-bottom: 12px;">
-              بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. الْحَمْدُ لِلَّهِ الَّذِي خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ وَجَعَلَ الظُّلُمَاتِ وَالنُّورَ ثُمَّ الَّذِينَ كَفَرُوا بِرَبِّهِمْ يَعْدِلُونَ. هَذَا كِتَابٌ مِنْ مُحَمَّدٍ رَسُولِ اللَّهِ رَبِّ الْعَالَمِينَ صَلَّى اللَّهُ عَلَيْهِ وَآلِهِ وَسَلَّمَ، إِلَى مَنْ يَطْرُقُ الدَّارَ مِنَ الْعُمَّارِ وَالزُّوَّارِ وَالطَّوَارِقِ، إِلَّا طَارِقًا يَطْرُقُ بِخَيْرٍ يَا رَحْمَٰنُ. أَمَّا بَعْدُ: فَإِنَّ لَنَا وَلَكُمْ فِي الْحَقِّ سَعَةً، فَإِنْ تَكُ عَاشِقًا مُولَعًا، أَوْ فَاجِرًا مُقْتَحِمًا، أَوْ رَاعِيًا مُؤْذِيًا، فَهَذَا كِتَابُ اللَّهِ تَعَالَى يَنْطِقُ عَلَيْنَا وَعَلَيْكُمْ بِالْحَقِّ، إِنَّا كُنَّا نَسْتَنْسِخُ مَا كُنْتُمْ تَعْمَلُونَ، وَرُسُلُنَا يَكْتُبُونَ مَا تَمْكُرُونَ. اتْرُكُوا صَاحِبَ كِتَابِي هَذَا، وَانْطَلِقُوا إِلَى عَبَدَةِ الْأَصْنَامِ، وَإِلَى مَنْ يَزْعُمُ أَنَّ مَعَ اللَّهِ إِلَٰهًا آخَرَ، لَا إِلَٰهَ إِلَّا هُوَ كُلُّ شَيْءٍ هَالِكٌ إِلَّا وَجْهَهُ، لَهُ الْحُكْمُ وَإِلَيْهِ تُرْجَعُونَ. تُغْلَبُونَ، ﴿حم ۝١ لَا يُنْصَرُونَ﴾، ﴿حم ۝١ عسق ۝٢﴾، تُفَرَّقُ أَعْدَاءُ اللَّهِ، وَبَلَغَتْ حُجَّةُ اللَّهِ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ. ﴿فَسَيَكْفِيكَهُمُ اللَّهُ ۚ وَهُوَ السَّمِيعُ الْعَلِيمُ﴾. ﴿اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ﴾. وَصَلَّى اللَّهُ تَعَالَى عَلَى خَيْرِ خَلْقِهِ سَيِّدِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَأَصْحَابِهِ وَبَارَكَ وَسَلَّمَ تَسْلِيمًا كَثِيرًا دَائِمًا إِلَى يَوْمِ الدِّينِ، وَالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ.
-            </div>
-
-            <div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 8px; padding: 8px 10px; font-size: 0.76rem; color: #1E40AF; line-height: 1.5;">
-              <strong>آویزاں کرنے کا مسنون طریقہ:</strong> اس متبرک حرز کو باوضو پاک صاف فریم میں لگا کر مکان، فلیٹ، دکان یا فیکٹری کے مرکزی دروازے یا اونچی دیوار پر لٹکائیں۔ ان شاء اللہ ہر قسم کے شیطانی و آسیبی اثرات سے حفاظت رہے گی۔
-            </div>
+          <div style="font-family: 'Amiri', 'Scheherazade New', serif; font-size: 1.15rem; line-height: 2.1; color: #0F172A; text-align: justify; margin-bottom: 12px;">
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. الْحَمْدُ لِلَّهِ الَّذِي خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ وَجَعَلَ الظُّلُمَاتِ وَالنُّورَ ثُمَّ الَّذِينَ كَفَرُوا بِرَبِّهِمْ يَعْدِلُونَ. هَذَا كِتَابٌ مِنْ مُحَمَّدٍ رَسُولِ اللَّهِ رَبِّ الْعَالَمِينَ صَلَّى اللَّهُ عَلَيْهِ وَآلِهِ وَسَلَّمَ، إِلَى مَنْ يَطْرُقُ الدَّارَ مِنَ الْعُمَّارِ وَالزُّوَّارِ وَالطَّوَارِقِ، إِلَّا طَارِقًا يَطْرُقُ بِخَيْرٍ يَا رَحْمَٰنُ. أَمَّا بَعْدُ: فَإِنَّ لَنَا وَلَكُمْ فِي الْحَقِّ سَعَةً، فَإِنْ تَكُ عَاشِقًا مُولَعًا، أَوْ فَاجِرًا مُقْتَحِمًا، أَوْ رَاعِيًا مُؤْذِيًا، فَهَذَا كِتَابُ اللَّهِ تَعَالَى يَنْطِقُ عَلَيْنَا وَعَلَيْكُمْ بِالْحَقِّ، إِنَّا كُنَّا نَسْتَنْسِخُ مَا كُنْتُمْ تَعْمَلُونَ، وَرُسُلُنَا يَكْتُبُونَ مَا تَمْكُرُونَ. اتْرُكُوا صَاحِبَ كِتَابِي هَذَا، وَانْطَلِقُوا إِلَى عَبَدَةِ الْأَصْنَامِ، وَإِلَى مَنْ يَزْعُمُ أَنَّ مَعَ اللَّهِ إِلَٰهًا آخَرَ، لَا إِلَٰهَ إِلَّا هُوَ كُلُّ شَيْءٍ هَالِكٌ إِلَّا وَجْهَهُ، لَهُ الْحُكْمُ وَإِلَيْهِ تُرْجَعُونَ. تُغْلَبُونَ، ﴿حم ۝١ لَا يُنْصَرُونَ﴾، ﴿حم ۝١ عسق ۝٢﴾، تُفَرَّقُ أَعْدَاءُ اللَّهِ، وَبَلَغَتْ حُجَّةُ اللَّهِ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ. ﴿فَسَيَكْفِيكَهُمُ اللَّهُ ۚ وَهُوَ السَّمِيعُ الْعَلِيمُ﴾. ﴿اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ﴾. وَصَلَّى اللَّهُ تَعَالَى عَلَى خَيْرِ خَلْقِهِ سَيِّدِنَا مُحَمَّدٍ وَعَلَى آلِهِ وَأَصْحَابِهِ وَبَارَكَ وَسَلَّمَ تَسْلِيمًا كَثِيرًا دَائِمًا إِلَى يَوْمِ الدِّينِ، وَالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ.
           </div>
 
+          <div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 8px; padding: 8px 10px; font-size: 0.76rem; color: #1E40AF; line-height: 1.5;">
+            <strong>آویزاں کرنے کا مسنون طریقہ:</strong> اس متبرک حرز کو باوضو پاک صاف فریم میں لگا کر مکان، فلیٹ، دکان یا فیکٹری کے مرکزی دروازے یا اونچی دیوار پر لٹکائیں۔ ان شاء اللہ ہر قسم کے شیطانی و آسیبی اثرات سے حفاظت رہے گی۔
+          </div>
         </div>
 
       </div>
@@ -10455,9 +10410,9 @@
   </div>
 
   <!-- Exact App Logic with Fresh Live Cache Buster -->
-  <script src="js/quran-data.js?v=20260926_1335_hirz_verification_live"></script>
-  <script src="js/khawab-data.js?v=20260926_1335_hirz_verification_live"></script>
-  <script src="js/app.js?v=20260926_1335_hirz_verification_live"></script>
+  <script src="js/quran-data.js?v=20260926_1405_hirz_direct_print_live"></script>
+  <script src="js/khawab-data.js?v=20260926_1405_hirz_direct_print_live"></script>
+  <script src="js/app.js?v=20260926_1405_hirz_direct_print_live"></script>
 
   </body>
 </html>
