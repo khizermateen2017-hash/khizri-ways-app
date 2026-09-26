@@ -7476,7 +7476,178 @@ window.submitFaizanNoorOrder = async function(e) {
   const encoded = encodeURIComponent(text);
   window.open(`https://wa.me/923152395969?text=${encoded}`, '_blank');
 
+  try {
+    localStorage.setItem('khizri_fuyuz_un_noor_unlocked', 'true');
+  } catch(e) {}
+
   window.closeFaizanNoorModal();
+
+  setTimeout(() => {
+    window.openFuyuzNoorWazaifPortal();
+    if (typeof showToast === 'function') {
+      showToast(isEn ? 'Fuyuz-un-Noor wazaif & notes portal is now unlocked!' : 'مبارک ہو! فیوض النور کے تمام وظائف اور نوٹس ڈائری ان لاک ہو گئی۔');
+    }
+  }, 400);
+};
+
+/* --- FUYUZ-UN-NOOR WAZAIF PORTAL & NOTES TRACKER --- */
+
+window.unlockAndOpenFuyuzNoor = function() {
+  try {
+    localStorage.setItem('khizri_fuyuz_un_noor_unlocked', 'true');
+  } catch(e) {}
+  window.closeFaizanNoorModal();
+  window.openFuyuzNoorWazaifPortal();
+  if (typeof showToast === 'function') {
+    showToast('فیوض النور پورٹل فعال ہو گیا!');
+  }
+};
+
+window.openFuyuzNoorWazaifPortal = function() {
+  window.loadFuyuzState();
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalFuyuzNoorWazaif');
+  } else {
+    const m = document.getElementById('modalFuyuzNoorWazaif');
+    if (m) m.classList.add('active');
+  }
+};
+
+window.closeFuyuzNoorWazaifPortal = function() {
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalFuyuzNoorWazaif');
+  } else {
+    const m = document.getElementById('modalFuyuzNoorWazaif');
+    if (m) m.classList.remove('active');
+  }
+};
+
+window.getFuyuzData = function() {
+  try {
+    return JSON.parse(localStorage.getItem('khizri_fuyuz_wazaif_data') || '{}');
+  } catch(e) {
+    return {};
+  }
+};
+
+window.toggleFuyuzTick = function(id) {
+  const data = window.getFuyuzData();
+  if (!data.ticks) data.ticks = {};
+  const chk = document.getElementById('fnWazifaTick_' + id);
+  if (chk) {
+    data.ticks['wazifa_' + id] = chk.checked;
+    const card = chk.closest('.fn-wazifa-card');
+    if (card) {
+      if (chk.checked) {
+        card.style.background = '#ECFDF5';
+        card.style.borderColor = '#A7F3D0';
+      } else {
+        card.style.background = '#F8FAFC';
+        card.style.borderColor = '#E2E8F0';
+      }
+    }
+  }
+  try {
+    localStorage.setItem('khizri_fuyuz_wazaif_data', JSON.stringify(data));
+  } catch(e) {}
+  window.updateFuyuzDoneCount();
+};
+
+window.saveFuyuzNote = function(id) {
+  const data = window.getFuyuzData();
+  if (!data.notes) data.notes = {};
+  const txt = (document.getElementById('fnNoteText_' + id)?.value || '').trim();
+  data.notes['note_' + id] = txt;
+  try {
+    localStorage.setItem('khizri_fuyuz_wazaif_data', JSON.stringify(data));
+  } catch(e) {}
+
+  const statusEl = document.getElementById('fnNoteStatus_' + id);
+  if (statusEl) {
+    statusEl.textContent = 'نوٹ محفوظ ہو گیا ✓';
+    statusEl.style.color = '#059669';
+    setTimeout(() => {
+      statusEl.textContent = '';
+    }, 2500);
+  }
+  if (typeof showToast === 'function') {
+    showToast('وظیفہ نمبر ' + id + ' کا نوٹ محفوظ ہو گیا!');
+  }
+};
+
+window.loadFuyuzState = function() {
+  const data = window.getFuyuzData();
+  const ticks = data.ticks || {};
+  const notes = data.notes || {};
+
+  for (let i = 1; i <= 6; i++) {
+    const chk = document.getElementById('fnWazifaTick_' + i);
+    if (chk) {
+      const isDone = Boolean(ticks['wazifa_' + i]);
+      chk.checked = isDone;
+      const card = chk.closest('.fn-wazifa-card');
+      if (card) {
+        if (isDone) {
+          card.style.background = '#ECFDF5';
+          card.style.borderColor = '#A7F3D0';
+        } else {
+          card.style.background = '#F8FAFC';
+          card.style.borderColor = '#E2E8F0';
+        }
+      }
+    }
+    const txt = document.getElementById('fnNoteText_' + i);
+    if (txt) {
+      txt.value = notes['note_' + i] || '';
+    }
+  }
+  window.updateFuyuzDoneCount();
+};
+
+window.updateFuyuzDoneCount = function() {
+  const data = window.getFuyuzData();
+  const ticks = data.ticks || {};
+  let count = 0;
+  for (let i = 1; i <= 6; i++) {
+    if (ticks['wazifa_' + i]) count++;
+  }
+  const el = document.getElementById('fnDoneCount');
+  if (el) el.textContent = count;
+};
+
+window.sendFuyuzNotesWhatsApp = function() {
+  const data = window.getFuyuzData();
+  const ticks = data.ticks || {};
+  const notes = data.notes || {};
+  
+  const wazaifNames = [
+    '۱. کثرتِ استغفار (۱۰۰ بار)',
+    '۲. درودِ ابراہیمی (۱۰۰ بار)',
+    '۳. کلمہ طیبہ و نفی و اثبات',
+    '۴. فیملی پروٹیکشن و حصار',
+    '۵. چہار قل و سیلف ہیلنگ',
+    '۶. مراقبہ و پاسِ انفاس'
+  ];
+
+  let msg = `*بسم اللہ الرحمن الرحیم*\n`;
+  msg += `*روزانہ روحانی کارکردگی و نوٹس رپورٹ (فیوض النور)*\n`;
+  msg += `----------------------------------------\n`;
+  
+  let doneCount = 0;
+  for (let i = 1; i <= 6; i++) {
+    const isDone = Boolean(ticks['wazifa_' + i]);
+    if (isDone) doneCount++;
+    const note = notes['note_' + i] || '';
+    msg += `${isDone ? '✅' : '⚪'} *${wazaifNames[i - 1]}*: ${isDone ? 'مکمل' : 'باقی'}\n`;
+    if (note) {
+      msg += `   📝 *نوٹ / کیفیت:* ${note}\n`;
+    }
+  }
+  msg += `----------------------------------------\n`;
+  msg += `📊 *مجموعی پیش رفت:* ${doneCount} / 6 وظائف مکمل\n`;
+  msg += `محترم مفتی خضر متین صاحب! میری روزانہ کے وظائف اور روحانی کیفیات کی رپورٹ ملاحظہ فرمائیں۔ جزاک اللہ خیراً!`;
+
+  window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
 /* --- TASAWWUF INTERACTIVE CHECKLIST STORAGE & PROGRESS --- */
