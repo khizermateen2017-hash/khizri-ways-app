@@ -7575,12 +7575,89 @@ window.saveFuyuzNote = function(id) {
   }
 };
 
+/* --- FUYUZ-UN-NOOR 44 WAZAIF TRACKER & DAY COUNTER --- */
+
+window.setFuyuzTodayDate = function() {
+  const today = new Date().toISOString().split('T')[0];
+  const input = document.getElementById('fnStartDate');
+  if (input) {
+    input.value = today;
+    window.updateFuyuzDayCount();
+  }
+};
+
+window.updateFuyuzDayCount = function() {
+  const input = document.getElementById('fnStartDate');
+  if (!input || !input.value) return;
+  const startDate = new Date(input.value);
+  const today = new Date();
+  startDate.setHours(0,0,0,0);
+  today.setHours(0,0,0,0);
+  const diffTime = today - startDate;
+  const diffDays = Math.max(1, Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1);
+  
+  const badge = document.getElementById('fnCurrentDayBadge');
+  if (badge) {
+    badge.textContent = 'آج کا دن: دن نمبر ' + diffDays;
+  }
+  const data = window.getFuyuzData();
+  data.startDate = input.value;
+  try {
+    localStorage.setItem('khizri_fuyuz_wazaif_data', JSON.stringify(data));
+  } catch(e) {}
+};
+
+window.filterFuyuzWazaif = function(cat, btn) {
+  document.querySelectorAll('#modalFuyuzNoorWazaif .quran-chip').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const cards = document.querySelectorAll('#fuyuzWazaifContainer .fn-wazifa-card');
+  cards.forEach(card => {
+    if (cat === 'all') {
+      card.style.display = 'block';
+    } else {
+      if (card.classList.contains('fn-cat-' + cat)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    }
+  });
+};
+
+window.resetFuyuzTodayTicks = function() {
+  if (!confirm('کیا آپ واقعی آج کے تمام ٹِک (Ticks) ری سیٹ کرنا چاہتے ہیں تاکہ اگلے دن کے معمولات شروع ہو سکیں؟ نوٹس محفوظ رہیں گے۔')) {
+    return;
+  }
+  const data = window.getFuyuzData();
+  data.ticks = {};
+  try {
+    localStorage.setItem('khizri_fuyuz_wazaif_data', JSON.stringify(data));
+  } catch(e) {}
+  window.loadFuyuzState();
+  if (typeof showToast === 'function') {
+    showToast('آج کے تمام ٹِک ری سیٹ ہو گئے!');
+  }
+};
+
 window.loadFuyuzState = function() {
   const data = window.getFuyuzData();
   const ticks = data.ticks || {};
   const notes = data.notes || {};
 
-  for (let i = 1; i <= 6; i++) {
+  // Load start date
+  const input = document.getElementById('fnStartDate');
+  if (input) {
+    if (data.startDate) {
+      input.value = data.startDate;
+    } else {
+      input.value = new Date().toISOString().split('T')[0];
+    }
+    window.updateFuyuzDayCount();
+  }
+
+  // Loop all 44 wazaif
+  for (let i = 1; i <= 44; i++) {
     const chk = document.getElementById('fnWazifaTick_' + i);
     if (chk) {
       const isDone = Boolean(ticks['wazifa_' + i]);
@@ -7608,11 +7685,20 @@ window.updateFuyuzDoneCount = function() {
   const data = window.getFuyuzData();
   const ticks = data.ticks || {};
   let count = 0;
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 1; i <= 44; i++) {
     if (ticks['wazifa_' + i]) count++;
   }
-  const el = document.getElementById('fnDoneCount');
-  if (el) el.textContent = count;
+  const doneEl = document.getElementById('fnDoneCount');
+  if (doneEl) doneEl.textContent = count;
+  
+  const remainingEl = document.getElementById('fnRemainingCount');
+  if (remainingEl) remainingEl.textContent = 44 - count;
+
+  const bar = document.getElementById('fnProgressBar');
+  if (bar) {
+    const pct = Math.round((count / 44) * 100);
+    bar.style.width = pct + '%';
+  }
 };
 
 window.sendFuyuzNotesWhatsApp = function() {
@@ -7620,32 +7706,206 @@ window.sendFuyuzNotesWhatsApp = function() {
   const ticks = data.ticks || {};
   const notes = data.notes || {};
   
-  const wazaifNames = [
-    '۱. کثرتِ استغفار (۱۰۰ بار)',
-    '۲. درودِ ابراہیمی (۱۰۰ بار)',
-    '۳. کلمہ طیبہ و نفی و اثبات',
-    '۴. فیملی پروٹیکشن و حصار',
-    '۵. چہار قل و سیلف ہیلنگ',
-    '۶. مراقبہ و پاسِ انفاس'
-  ];
-
-  let msg = `*بسم اللہ الرحمن الرحیم*\n`;
-  msg += `*روزانہ روحانی کارکردگی و نوٹس رپورٹ (فیوض النور)*\n`;
-  msg += `----------------------------------------\n`;
-  
   let doneCount = 0;
-  for (let i = 1; i <= 6; i++) {
+  let notesCount = 0;
+  let summary = '';
+
+  for (let i = 1; i <= 44; i++) {
     const isDone = Boolean(ticks['wazifa_' + i]);
+    const note = (notes['note_' + i] || '').trim();
     if (isDone) doneCount++;
-    const note = notes['note_' + i] || '';
-    msg += `${isDone ? '✅' : '⚪'} *${wazaifNames[i - 1]}*: ${isDone ? 'مکمل' : 'باقی'}\n`;
     if (note) {
-      msg += `   📝 *نوٹ / کیفیت:* ${note}\n`;
+      notesCount++;
+      const titleEl = document.querySelector('#fnWazifaTick_' + i)?.closest('.fn-wazifa-card')?.querySelector('strong');
+      const title = titleEl ? titleEl.textContent.trim() : ('وظیفہ نمبر ' + i);
+      summary += `• *${title}*: ${isDone ? 'مکمل ✅' : 'جاری ⚪'}\n   📝 *نوٹ:* ${note}\n`;
     }
   }
+
+  const dayBadge = document.getElementById('fnCurrentDayBadge')?.textContent || 'دن نمبر ۱';
+
+  let msg = `*بسم اللہ الرحمن الرحیم*\n`;
+  msg += `*روزانہ روحانی معمولات و نوٹس رپورٹ (فیوض النور)*\n`;
+  msg += `📅 *مرحلہ:* ${dayBadge}\n`;
+  msg += `📊 *مجموعی پیش رفت:* ${doneCount} / 44 وظائف مکمل (${Math.round((doneCount / 44) * 100)}%)\n`;
   msg += `----------------------------------------\n`;
-  msg += `📊 *مجموعی پیش رفت:* ${doneCount} / 6 وظائف مکمل\n`;
-  msg += `محترم مفتی خضر متین صاحب! میری روزانہ کے وظائف اور روحانی کیفیات کی رپورٹ ملاحظہ فرمائیں۔ جزاک اللہ خیراً!`;
+  if (summary) {
+    msg += `📝 *قلبی کیفیات و نوٹس (${notesCount} وظائف):*\n${summary}`;
+  } else {
+    msg += `(آج تمام وظائف کے اوراد تسلسل کے ساتھ مکمل کیے جا رہے ہیں)\n`;
+  }
+  msg += `----------------------------------------\n`;
+  msg += `محترم مفتی خضر متین صاحب! میری روزانہ کے وظائف کی پیش رفت رپورٹ ملاحظہ فرمائیں۔ جزاک اللہ خیراً!`;
+
+  window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
+};
+
+/* --- SPIRITUAL HEALING BOOK ORDER HANDLERS --- */
+window.openSpiritualHealingBookModal = function() {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalSpiritualHealingBook');
+  } else {
+    document.getElementById('modalSpiritualHealingBook')?.classList.add('active');
+  }
+};
+
+window.submitSpiritualHealingBook = async function(e) {
+  const name = (document.getElementById('shbName')?.value || '').trim();
+  const profession = (document.getElementById('shbProfession')?.value || '').trim();
+  const address = (document.getElementById('shbAddress')?.value || '').trim();
+  const country = document.getElementById('shbCountry')?.value || 'Pakistan';
+  const phone = (document.getElementById('shbPhone')?.value || '').trim();
+  const slipInput = document.getElementById('shbSlip');
+  const hasSlip = slipInput && slipInput.files && slipInput.files.length > 0;
+
+  if (!name || !phone) {
+    alert('برائے مہربانی اپنا نام اور واٹس ایپ نمبر درج فرمائیں۔');
+    return;
+  }
+
+  let text = `*بسم اللہ الرحمن الرحیم*\n`;
+  text += `*طلب / آرڈر برائے کتابِ روحانی علاج و معالجہ و نقوش*\n`;
+  text += `----------------------------------------\n`;
+  text += `👤 *خریدار کا نام:* ${name}\n`;
+  text += `💼 *شعبہ / پیشہ:* ${profession}\n`;
+  text += `🏠 *شہر و پتہ:* ${address}\n`;
+  text += `🌍 *ملک:* ${country}\n`;
+  text += `📱 *واٹس ایپ نمبر:* ${phone}\n`;
+  text += `💵 *ہدیہ کتاب:* 1,000 روپے (Rs. 1,000)\n`;
+  if (hasSlip) {
+    text += `📎 *رسید / سکرین شاٹ:* رسید واٹس ایپ پر ارسال کی جا رہی ہے\n`;
+  }
+  text += `----------------------------------------\n`;
+  text += `السلام علیکم مفتی خضر متین صاحب! میں نے روحانی علاج کی مستند کتاب (تشخیص، حصار، کڑھائی، بکرے و ہانڈی کے اعمال اور توڑ) کے حصول کیلئے 1,000 روپے کا ہدیہ جمع کروا دیا ہے۔ برائے مہربانی مجھے پی ڈی ایف کتاب اور اجازت عنایت فرمائیں۔`;
+
+  window.open(`https://wa.me/923152395969?text=${encodeURIComponent(text)}`, '_blank');
+  
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalSpiritualHealingBook');
+  } else {
+    document.getElementById('modalSpiritualHealingBook')?.classList.remove('active');
+  }
+
+  if (typeof showToast === 'function') {
+    showToast('درخواست موصول ہو گئی! واٹس ایپ پر پیغام ارسال ہو رہا ہے۔');
+  }
+};
+
+/* --- JOIN CLINICAL HEALING CLASSES HANDLERS --- */
+window.openJoinHealingClassesModal = function() {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalJoinHealingClasses');
+  } else {
+    document.getElementById('modalJoinHealingClasses')?.classList.add('active');
+  }
+};
+
+window.submitJoinHealingClasses = async function(e) {
+  const name = (document.getElementById('jhcName')?.value || '').trim();
+  const profession = (document.getElementById('jhcProfession')?.value || '').trim();
+  const address = (document.getElementById('jhcAddress')?.value || '').trim();
+  const wazaifStatus = document.getElementById('jhcWazaifStatus')?.value || 'جی ہاں، تمام بنیادی وظائف مکمل کر لیے ہیں';
+  const country = document.getElementById('jhcCountry')?.value || 'Pakistan';
+  const phone = (document.getElementById('jhcPhone')?.value || '').trim();
+  const slipInput = document.getElementById('jhcSlip');
+  const hasSlip = slipInput && slipInput.files && slipInput.files.length > 0;
+
+  if (!name || !phone) {
+    alert('برائے مہربانی اپنا نام اور واٹس ایپ نمبر درج فرمائیں۔');
+    return;
+  }
+
+  let text = `*بسم اللہ الرحمن الرحیم*\n`;
+  text += `*داخلہ درخواست برائے باقاعدہ روحانی علاج کلاسز*\n`;
+  text += `----------------------------------------\n`;
+  text += `👤 *امیدوار کا نام:* ${name}\n`;
+  text += `💼 *تعلیم و پیشہ:* ${profession}\n`;
+  text += `🏠 *شہر و پتہ:* ${address}\n`;
+  text += `📜 *وظائف کی صورتحال:* ${wazaifStatus}\n`;
+  text += `🌍 *ملک:* ${country}\n`;
+  text += `📱 *واٹس ایپ نمبر:* ${phone}\n`;
+  text += `💵 *کورس ہدیہ:* 15,000 روپے (Rs. 15,000)\n`;
+  if (hasSlip) {
+    text += `📎 *فیس رسید:* واٹس ایپ پر ارسال کی جا رہی ہے\n`;
+  }
+  text += `----------------------------------------\n`;
+  text += `السلام علیکم مفتی خضر متین صاحب! میں نے باقاعدہ روحانی علاج اور دم کی پریکٹیکل کلاسز میں داخلے کے لیے فارم اور ہدیہ جمع کروا دیا ہے۔ برائے مہربانی میری کلاسز کی باقاعدہ رجسٹریشن فرما کر رہنمائی عنایت فرمائیں۔`;
+
+  window.open(`https://wa.me/923152395969?text=${encodeURIComponent(text)}`, '_blank');
+
+  if (typeof window.closeModal === 'function') {
+    window.closeModal('modalJoinHealingClasses');
+  } else {
+    document.getElementById('modalJoinHealingClasses')?.classList.remove('active');
+  }
+
+  if (typeof showToast === 'function') {
+    showToast('کلاسز میں داخلہ درخواست واٹس ایپ پر ارسال ہو گئی!');
+  }
+};
+
+/* --- SUHRAWARDIA ASBAQ VIEWER & TRACKER --- */
+window.openSuhrawardiAsbaqReader = function() {
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalSuhrawardiAsbaqReader');
+  } else {
+    document.getElementById('modalSuhrawardiAsbaqReader')?.classList.add('active');
+  }
+};
+
+window.saveSuhrawardiDateUr = function() {
+  const val = document.getElementById('suhrawardiStartDateUr')?.value;
+  if (!val) return;
+  const start = new Date(val);
+  const today = new Date();
+  start.setHours(0,0,0,0);
+  today.setHours(0,0,0,0);
+  const diffDays = Math.max(1, Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1);
+  const counter = document.getElementById('suhrawardiDayCounterUr');
+  if (counter) counter.textContent = 'دن نمبر: ' + diffDays;
+  localStorage.setItem('khizri_suh_start_date', val);
+};
+
+window.saveSuhrawardiDateEn = function() {
+  const val = document.getElementById('suhrawardiStartDateEn')?.value;
+  if (!val) return;
+  const start = new Date(val);
+  const today = new Date();
+  start.setHours(0,0,0,0);
+  today.setHours(0,0,0,0);
+  const diffDays = Math.max(1, Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1);
+  const counter = document.getElementById('suhrawardiDayCounterEn');
+  if (counter) counter.textContent = 'Day: ' + diffDays;
+  localStorage.setItem('khizri_suh_start_date', val);
+};
+
+window.toggleSuhTickUr = function(id) {
+  const chk = document.getElementById('suhTickUr_' + id);
+  if (chk) {
+    localStorage.setItem('khizri_suh_tick_' + id, chk.checked ? 'true' : 'false');
+  }
+};
+
+window.toggleSuhTickEn = function(id) {
+  const chk = document.getElementById('suhTickEn_' + id);
+  if (chk) {
+    localStorage.setItem('khizri_suh_tick_' + id, chk.checked ? 'true' : 'false');
+  }
+};
+
+window.sendSuhrawardiReport = function(lang) {
+  let doneCount = 0;
+  for (let i = 1; i <= 7; i++) {
+    if (localStorage.getItem('khizri_suh_tick_' + i) === 'true') doneCount++;
+  }
+  const dateVal = localStorage.getItem('khizri_suh_start_date') || 'آج';
+
+  let msg = `*بسم اللہ الرحمن الرحیم*\n`;
+  msg += `*پیش رفت رپورٹ برائے اسباقِ سلسلہ عالیہ سہروردیہ (تحفۃ المشائخ)*\n`;
+  msg += `📅 *تاریخِ آغاز:* ${dateVal}\n`;
+  msg += `📊 *تکمیل شدہ اسباق:* ${doneCount} / 7 اسباق مکمل\n`;
+  msg += `----------------------------------------\n`;
+  msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ سہروردیہ کے اسباق شروع کیے ہیں اور ${doneCount} اسباق طے کر لیے ہیں۔ برائے مہربانی اگلے سبق اور مراقبے کی اجازت و دعا عنایت فرمائیں۔`;
 
   window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
 };
