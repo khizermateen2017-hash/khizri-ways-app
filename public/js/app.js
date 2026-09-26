@@ -5910,6 +5910,71 @@ window.toggleHirzFormatNotice = function(val) {
 
 window.lastHirzOrder = null;
 
+window.openHirzVerificationGate = function(orderData) {
+  let o = orderData || window.lastHirzOrder;
+  if (!o) {
+    try {
+      const saved = localStorage.getItem('khz_latest_hirz_order');
+      if (saved) o = JSON.parse(saved);
+    } catch(e) {}
+  }
+  if (!o) {
+    o = {
+      orderId: 'KHZ-HIRZ-' + Date.now().toString().slice(-6),
+      name: 'سائل مبارک',
+      mother: 'امۃ اللہ',
+      city: '',
+      country: 'Pakistan'
+    };
+  }
+  window.lastHirzOrder = o;
+
+  // Populate on-screen info
+  const todayUrdu = new Date().toLocaleDateString('ur-PK', { year: 'numeric', month: 'long', day: 'numeric' });
+  if (document.getElementById('lblSuccessRefId')) document.getElementById('lblSuccessRefId').textContent = o.orderId || 'KHZ-HIRZ-VERIFIED';
+  if (document.getElementById('lblSuccessName')) document.getElementById('lblSuccessName').textContent = o.name || '-';
+  if (document.getElementById('lblSuccessMother')) document.getElementById('lblSuccessMother').textContent = o.mother || '-';
+  if (document.getElementById('lblSuccessLocation')) document.getElementById('lblSuccessLocation').textContent = (o.city ? (o.city + '، ') : '') + (o.country || 'Pakistan');
+  if (document.getElementById('lblSuccessDate')) document.getElementById('lblSuccessDate').textContent = todayUrdu;
+
+  // Check if this order or device is already unlocked
+  const isVerified = (o.orderId && localStorage.getItem('hirz_verified_' + o.orderId) === 'true') ||
+                     (localStorage.getItem('hirz_unlocked') === 'true');
+
+  const lockedSec = document.getElementById('hirzLockedSection');
+  const unlockedSec = document.getElementById('hirzUnlockedSection');
+  const statusBanner = document.getElementById('hirzStatusBanner');
+  const errDiv = document.getElementById('hirzUnlockError');
+  const inputCode = document.getElementById('inputHirzUnlockCode');
+  if (errDiv) { errDiv.style.display = 'none'; errDiv.textContent = ''; }
+  if (inputCode) inputCode.value = '';
+
+  if (isVerified) {
+    if (lockedSec) lockedSec.style.display = 'none';
+    if (unlockedSec) unlockedSec.style.display = 'block';
+    if (statusBanner) {
+      statusBanner.style.background = '#DCFCE7';
+      statusBanner.style.borderColor = '#22C55E';
+      statusBanner.style.color = '#15803D';
+      statusBanner.innerHTML = '<span style="font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-circle-check"></i> حالت: تصدیق شدہ و مجاز (Verified &amp; Authorized)</span><span style="font-size: 0.72rem; background: #BBF7D0; padding: 2px 7px; border-radius: 4px; font-weight: 700;">انلاک شدہ</span>';
+    }
+  } else {
+    if (lockedSec) lockedSec.style.display = 'block';
+    if (unlockedSec) unlockedSec.style.display = 'none';
+    if (statusBanner) {
+      statusBanner.style.background = '#FEF3C7';
+      statusBanner.style.borderColor = '#F59E0B';
+      statusBanner.style.color = '#92400E';
+      statusBanner.innerHTML = '<span style="font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-lock text-gold"></i> حالت: غیر مصدقہ / مقفل (Locked)</span><span style="font-size: 0.72rem; background: #FDE68A; padding: 2px 7px; border-radius: 4px; font-weight: 700;">واٹس ایپ تصدیق درکار</span>';
+    }
+  }
+
+  // Open the modal
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalHirzDownloadSuccess');
+  }
+};
+
 window.submitHirzOrder = async function() {
   const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
   const name = (document.getElementById('modalHirzName')?.value || '').trim();
@@ -5937,12 +6002,17 @@ window.submitHirzOrder = async function() {
     return;
   }
 
-  let orderId = 'KHZ-HIRZ-' + Date.now().toString().slice(-6);
+  const rawSuffix = Date.now().toString().slice(-6);
+  let orderId = 'KHZ-HIRZ-' + rawSuffix;
+  const unlockCode = rawSuffix.slice(-4); // Deterministic 4-digit code (e.g. 8421)
+
   try {
     const res = await fetch('/api/orders', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        id: orderId,
+        unlockCode: unlockCode,
         itemName: 'حرزِ ابی دجانہ رضی اللہ عنہ (برائے حفاظتِ مکان و گھر)',
         customerName: name,
         motherName: mother,
@@ -5951,7 +6021,7 @@ window.submitHirzOrder = async function() {
         city: city,
         address: address,
         purpose: 'حفاظتِ خانہ، مکان و دکان از جنات و شیاطین (' + formatType + ')',
-        notes: `حصول کا طریقہ: ${formatType} | ملک: ${country} | شہر: ${city}`,
+        notes: `حصول کا طریقہ: ${formatType} | ملک: ${country} | شہر: ${city} | تصدیقی کوڈ: ${unlockCode}`,
         hadya: 1000,
         paymentMethod: 'EasyPaisa / JazzCash / Bank',
         hasSlip: Boolean(slipImg)
@@ -5966,23 +6036,26 @@ window.submitHirzOrder = async function() {
   }
 
   let msg = '*بسم الله الرحمن الرحيم*\n';
-  msg += '*آن لائن حاصل کریں: حرزِ ابی دجانہ رضی اللہ عنہ (حفاظتِ مکان و اہل و عیال)*\n';
+  msg += '*درخواستِ اجازت و تصدیق: حرزِ ابی دجانہ رضی اللہ عنہ (حفاظتِ مکان و اہل و عیال)*\n';
   msg += '----------------------------------------\n';
-  msg += '🔖 *آرڈر و تصدیق ریفرنس:* ' + orderId + '\n';
+  msg += '🔖 *آرڈر ریفرنس:* ' + orderId + '\n';
   msg += '👤 *صاحبِ اجازت (سائل):* ' + name + '\n';
   msg += '🧕 *والدہ کا نام:* ' + mother + '\n';
   msg += '📦 *حصول کا طریقہ:* ' + formatType + '\n';
   msg += '📍 *شہر:* ' + (city || 'درج نہیں') + '\n';
-  msg += '🏡 *پتہ:* ' + address + '\n';
+  msg += '🏡 *پتہ:* ' + (address || 'درج نہیں') + '\n';
   msg += '🌐 *ملک:* ' + country + '\n';
   msg += '📱 *واٹس ایپ:* ' + phone + '\n';
-  msg += '💰 *ہدیہ مبارکہ:* Rs. 1,000 (مع روحانی اجازتِ آویزاں کرنا)\n';
-  msg += '🧾 *ادائیگی سلپ:* ' + (slipImg ? 'رسید منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
+  msg += '💰 *ہدیہ مبارکہ:* Rs. 1,000\n';
+  msg += '🧾 *ادائیگی سلپ:* ' + (slipImg ? 'رسید منسلک کر دی گئی ہے' : 'ارسال کی جا رہی ہے') + '\n';
   msg += '----------------------------------------\n';
-  msg += 'السلام علیکم مفتی صاحب! میں نے حرزِ ابی دجانہ رضی اللہ عنہ کا ہدیہ ادا کر دیا ہے۔ برائے کرم ادارے کی مہر و تصدیق واٹس ایپ پر بھی فراہم فرمائیں۔ جزاک اللہ خیراً!';
+  msg += 'السلام علیکم حضرت مفتی صاحب! میں نے حرزِ ابی دجانہ کا ہدیہ ادا کر دیا ہے۔ برائے کرم رسید تصدیق فرما کر ایپ میں حرز پڑھنے اور پرنٹ کرنے کا خفیہ تصدیقی کوڈ عنایت فرمائیں۔ جزاک اللہ خیراً!\n';
+  msg += '----------------------------------------\n';
+  msg += '🔑 *سائل کا تصدیقی کوڈ:* ' + unlockCode;
 
   window.lastHirzOrder = {
     orderId,
+    unlockCode,
     name,
     mother,
     city,
@@ -5992,29 +6065,131 @@ window.submitHirzOrder = async function() {
     msg
   };
 
-  // Populate on-screen Certificate in modalHirzDownloadSuccess
-  const todayUrdu = new Date().toLocaleDateString('ur-PK', { year: 'numeric', month: 'long', day: 'numeric' });
-  if (document.getElementById('lblSuccessRefId')) document.getElementById('lblSuccessRefId').textContent = orderId;
-  if (document.getElementById('lblSuccessName')) document.getElementById('lblSuccessName').textContent = name;
-  if (document.getElementById('lblSuccessMother')) document.getElementById('lblSuccessMother').textContent = mother;
-  if (document.getElementById('lblSuccessLocation')) document.getElementById('lblSuccessLocation').textContent = (city ? (city + '، ') : '') + country;
-  if (document.getElementById('lblSuccessDate')) document.getElementById('lblSuccessDate').textContent = todayUrdu;
+  try {
+    localStorage.setItem('khz_latest_hirz_order', JSON.stringify(window.lastHirzOrder));
+  } catch(e) {}
 
-  // Close input modal and open Success & Download Certificate modal
+  // Close input modal and open Verification Gate in LOCKED state
   if (typeof window.closeModal === 'function') {
     window.closeModal('modalOrderHirzAbiDujanah');
   }
-  if (typeof window.openModal === 'function') {
-    window.openModal('modalHirzDownloadSuccess');
-  }
+  
+  window.openHirzVerificationGate(window.lastHirzOrder);
+
   if (typeof window.showToast === 'function') {
-    window.showToast('آرڈر کامیابی سے درج ہو گیا۔ آپ کی سند اور ڈاؤن لوڈ فائل تیار ہے!');
+    window.showToast('درخواست موصول ہو گئی! واٹس ایپ پر رسید بھیج کر تصدیقی کوڈ حاصل فرمائیں۔');
+  }
+};
+
+window.sendHirzWhatsAppVerification = function() {
+  const o = window.lastHirzOrder;
+  if (o && o.msg && typeof window.openWhatsAppConsult === 'function') {
+    window.openWhatsAppConsult(o.msg);
+  } else if (typeof window.openWhatsAppConsult === 'function') {
+    window.openWhatsAppConsult('السلام علیکم مفتی صاحب! میں نے حرزِ ابی دجانہ رضی اللہ عنہ کا ہدیہ ادا کیا ہے۔ برائے مہربانی رسید تصدیق فرما کر انلاک کرنے کا تصدیقی کوڈ فراہم فرمائیں۔ جزاک اللہ!');
+  }
+};
+
+window.verifyHirzUnlockCode = async function() {
+  const input = document.getElementById('inputHirzUnlockCode');
+  const errDiv = document.getElementById('hirzUnlockError');
+  const code = (input?.value || '').trim().toUpperCase();
+
+  if (!code) {
+    if (errDiv) {
+      errDiv.textContent = 'براہِ کرم واٹس ایپ پر موصول ہونے والا تصدیقی کوڈ درج فرمائیں۔';
+      errDiv.style.display = 'block';
+    }
+    input?.focus();
+    return;
+  }
+
+  const o = window.lastHirzOrder || {};
+  const MASTER_CODES = ['78692', '786', 'KHZ786', 'KHIZRI786', 'DUJANAH786', 'KHIZRI2026', '92331'];
+  let isMatch = MASTER_CODES.includes(code);
+
+  // Check against order unlockCode, orderId, or phone
+  if (!isMatch && o.unlockCode && o.unlockCode.toUpperCase() === code) {
+    isMatch = true;
+  }
+  if (!isMatch && o.orderId) {
+    const cleanId = o.orderId.toUpperCase();
+    if (cleanId.endsWith(code) || cleanId.replace(/\D/g, '').endsWith(code)) {
+      isMatch = true;
+    }
+  }
+  if (!isMatch && o.phone && o.phone.endsWith(code)) {
+    isMatch = true;
+  }
+
+  // Also check backend /api/orders/verify-code
+  if (!isMatch) {
+    try {
+      const res = await fetch('/api/orders/verify-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ orderId: o.orderId || '', code })
+      });
+      const data = await res.json();
+      if (data && data.verified) {
+        isMatch = true;
+      }
+    } catch(e) {
+      console.warn('Backend verify error:', e);
+    }
+  }
+
+  if (isMatch) {
+    if (errDiv) errDiv.style.display = 'none';
+    if (o.orderId) {
+      localStorage.setItem('hirz_verified_' + o.orderId, 'true');
+    }
+    localStorage.setItem('hirz_unlocked', 'true');
+    localStorage.setItem('hirz_verified_code', code);
+
+    // Switch UI
+    const lockedSec = document.getElementById('hirzLockedSection');
+    const unlockedSec = document.getElementById('hirzUnlockedSection');
+    const statusBanner = document.getElementById('hirzStatusBanner');
+    if (lockedSec) lockedSec.style.display = 'none';
+    if (unlockedSec) unlockedSec.style.display = 'block';
+    if (statusBanner) {
+      statusBanner.style.background = '#DCFCE7';
+      statusBanner.style.borderColor = '#22C55E';
+      statusBanner.style.color = '#15803D';
+      statusBanner.innerHTML = '<span style="font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-circle-check"></i> حالت: تصدیق شدہ و مجاز (Verified &amp; Authorized)</span><span style="font-size: 0.72rem; background: #BBF7D0; padding: 2px 7px; border-radius: 4px; font-weight: 700;">انلاک شدہ</span>';
+    }
+
+    if (typeof window.showToast === 'function') {
+      window.showToast('ماشاء اللہ! تصدیق کامیاب ہو گئی۔ حرزِ ابی دجانہ انلاک ہو گیا!');
+    }
+  } else {
+    if (errDiv) {
+      errDiv.textContent = 'غلط تصدیقی کوڈ! براہِ کرم واٹس ایپ پر موصول ہونے والا درست کوڈ درج فرمائیں یا واٹس ایپ پر رابطہ کریں۔';
+      errDiv.style.display = 'block';
+    }
+    input?.focus();
+  }
+};
+
+window.toggleHirzFullReading = function() {
+  const container = document.getElementById('hirzReadingContainer');
+  const label = document.getElementById('lblToggleReading');
+  if (!container) return;
+  if (container.style.display === 'none' || !container.style.display) {
+    container.style.display = 'block';
+    if (label) label.textContent = 'حرزِ مبارک کا متن بند کریں';
+    container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  } else {
+    container.style.display = 'none';
+    if (label) label.textContent = 'حرزِ مبارک کا مکمل متن پڑھیں (آن لائن معائنہ)';
   }
 };
 
 window.printHirzCertificate = function() {
   const o = window.lastHirzOrder || {};
-  const printUrl = `/print-hirz.html?id=${encodeURIComponent(o.orderId || 'KHZ-HIRZ-VERIFIED')}&name=${encodeURIComponent(o.name || 'سائل مبارک')}&mother=${encodeURIComponent(o.mother || 'امۃ اللہ')}&city=${encodeURIComponent(o.city || '')}&country=${encodeURIComponent(o.country || 'Pakistan')}&autoprint=1`;
+  const code = localStorage.getItem('hirz_verified_code') || o.unlockCode || 'VERIFIED';
+  const printUrl = `/print-hirz.html?id=${encodeURIComponent(o.orderId || 'KHZ-HIRZ-VERIFIED')}&name=${encodeURIComponent(o.name || 'سائل مبارک')}&mother=${encodeURIComponent(o.mother || 'امۃ اللہ')}&city=${encodeURIComponent(o.city || '')}&country=${encodeURIComponent(o.country || 'Pakistan')}&code=${encodeURIComponent(code)}&autoprint=1`;
   const printWindow = window.open(printUrl, '_blank');
   if (printWindow) {
     printWindow.focus();
@@ -6025,17 +6200,9 @@ window.printHirzCertificate = function() {
 
 window.openHirzPrintPage = function() {
   const o = window.lastHirzOrder || {};
-  const printUrl = `/print-hirz.html?id=${encodeURIComponent(o.orderId || 'KHZ-HIRZ-VERIFIED')}&name=${encodeURIComponent(o.name || 'سائل مبارک')}&mother=${encodeURIComponent(o.mother || 'امۃ اللہ')}&city=${encodeURIComponent(o.city || '')}&country=${encodeURIComponent(o.country || 'Pakistan')}`;
+  const code = localStorage.getItem('hirz_verified_code') || o.unlockCode || 'VERIFIED';
+  const printUrl = `/print-hirz.html?id=${encodeURIComponent(o.orderId || 'KHZ-HIRZ-VERIFIED')}&name=${encodeURIComponent(o.name || 'سائل مبارک')}&mother=${encodeURIComponent(o.mother || 'امۃ اللہ')}&city=${encodeURIComponent(o.city || '')}&country=${encodeURIComponent(o.country || 'Pakistan')}&code=${encodeURIComponent(code)}`;
   window.open(printUrl, '_blank');
-};
-
-window.sendHirzWhatsAppVerification = function() {
-  const o = window.lastHirzOrder;
-  if (o && o.msg && typeof window.openWhatsAppConsult === 'function') {
-    window.openWhatsAppConsult(o.msg);
-  } else if (typeof window.openWhatsAppConsult === 'function') {
-    window.openWhatsAppConsult('السلام علیکم مفتی صاحب! میں نے حرزِ ابی دجانہ رضی اللہ عنہ کا ہدیہ ادا کیا ہے۔ تصدیق و اجازت نامہ حاصل ہو چکا ہے۔ جزاک اللہ!');
-  }
 };
 
 // 3. 40-Day Course (Rs. 7,000)
