@@ -8363,7 +8363,37 @@ window.openLataifImageModal = function(type, lang) {
   const imgEl = document.getElementById('lataifViewerImg');
   const descEl = document.getElementById('lataifViewerDesc');
 
-  if (type === 'qadiri_lataif') {
+  if (type === 'naqshbandi_lataif') {
+    if (imgEl) imgEl.src = 'assets/naqshbandi-lataif-diagram.png';
+    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: Naqshbandi Order 7 Subtle Centers (Lata\'if) & Azkar' : 'نقشہ نمبر ۱: سلسلہ عالیہ نقشبندیہ مجددیہ کے سات لطائف اور اذکار کا جدول';
+    if (descEl) {
+      if (lang === 'en') {
+        descEl.style.direction = 'ltr';
+        descEl.style.textAlign = 'left';
+        descEl.innerHTML = `<strong>Naqshbandi Order 7 Subtle Centers (Lata'if) &amp; Lights:</strong><br>
+        1. <strong>Qalb (Below left breast 2 fingers):</strong> Earthy / Amber Khaki Light - Awakening of heart consciousness and silent Dhikr.<br>
+        2. <strong>Ruh (Below right breast 2 fingers):</strong> Red Light - Station of celestial peace and spiritual vitality.<br>
+        3. <strong>Sirr (Above left breast):</strong> White Light - Station of divine secrets and revelation.<br>
+        4. <strong>Khafi (Above right breast):</strong> Black Light - Station of inward spiritual vision and deep gnosis.<br>
+        5. <strong>Akhfa (Mid-chest center):</strong> Green Light - Station of divine intimacy and essence.<br>
+        6. <strong>Nafs (Forehead / Mid-brows):</strong> Purple / Violet Light - Purification of ego into contentment (Mutma'innah).<br>
+        7. <strong>Sultan-ul-Azkar / Qalib (Universal whole body &amp; apex):</strong> Colorless - Every cell, nerve, and bone vibrating with unceasing remembrance.<br>
+        <em>Daily Azkar:</em> 12,000x «Allah» (Ism-e-Zaat) &amp; 7,000x «La Ilaha Illallah» (Tahlil).`;
+      } else {
+        descEl.style.direction = 'rtl';
+        descEl.style.textAlign = 'right';
+        descEl.innerHTML = `<strong>سلسلہ عالیہ نقشبندیہ مجددیہ کے سات لطائف اور انوارات کے رنگ (تحفۃ المشائخ، ص ۲۴):</strong><br>
+        ۱. <strong>لطیفہ قلب (بائیں پستان سے ۲ انگل نیچے):</strong> خاکی نور — وقوفِ قلبی اور بے زبان ذکرِ اسمِ ذات کا آغاز۔<br>
+        ۲. <strong>لطیفہ روح (دائیں پستان سے ۲ انگل نیچے):</strong> سرخ نور — سکینہ، اطمینان اور باطنی حیات۔<br>
+        ۳. <strong>لطیفہ سرّ (بائیں چھاتی کے اوپر):</strong> سفید نور — کشف اور اسرارِ الٰہیہ کا مقام۔<br>
+        ۴. <strong>لطیفہ خفی (دائیں چھاتی کے اوپر):</strong> سیاہ نور — باطنی بصیرت اور قربِ غیبی کا مقام۔<br>
+        ۵. <strong>لطیفہ اخفیٰ (سینے کے عین وسط میں):</strong> ہرا / سبز نور — مقامِ قربِ خاص اور شانِ جامع۔<br>
+        ۶. <strong>لطیفہ نفس (پیشانی پر دونوں ابرو کے درمیان):</strong> جامنی نور — تزکیۂ نفسِ امارہ اور مقامِ رضا و تسلیم۔<br>
+        ۷. <strong>سلطان الاذکار / قالب (تمام جسم و سر کی چوٹی):</strong> بے رنگ نور — پورے جسم کے تمام رگ و ریشے سے خودکار ذکر کا جاری ہونا۔<br>
+        <em>اذکارِ نقشبندیہ:</em> ۱۲۰۰۰ مرتبہ اسمِ ذات «اللہ» اور ۷۰۰۰ مرتبہ کلمہ طیبہ «لا الہ الا اللہ»۔`;
+      }
+    }
+  } else if (type === 'qadiri_lataif') {
     if (imgEl) imgEl.src = 'assets/qadiri-lataif-diagram.png';
     if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: Qadiri Order 7 Subtle Centers (Lata\'if) & Azkar Table' : 'نقشہ نمبر ۱: سلسلہ عالیہ قادریہ کے سات لطائف اور اذکار کا جدول';
     if (descEl) {
@@ -8371,8 +8401,8 @@ window.openLataifImageModal = function(type, lang) {
         descEl.style.direction = 'ltr';
         descEl.style.textAlign = 'left';
         descEl.innerHTML = `<strong>Qadiri Order 7 Subtle Centers (Lata'if) &amp; Spiritual Nodes:</strong><br>
-        1. <strong>Ruh (Below right breast 2 fingers):</strong> White Light - Station of spiritual vitality and celestial peace.<br>
-        2. <strong>Qalb (Below left breast 2 fingers):</strong> Red Light - Station of pure Divine love and heart strike.<br>
+        1. <strong>Qalb (Below left breast 2 fingers):</strong> Red Light - Station of pure Divine love and heart strike.<br>
+        2. <strong>Ruh (Below right breast 2 fingers):</strong> White Light - Station of spiritual vitality and celestial peace.<br>
         3. <strong>Sirr (Mid-chest center):</strong> Green Light - Station of divine secrets and spiritual revelation.<br>
         4. <strong>Khafi (Forehead between eyebrows):</strong> Blue Light - Station of inner vision and intuitive insight.<br>
         5. <strong>Akhfa (Top Crown / Palate):</strong> Black Light - Station of supreme proximity and direct divine effulgence.<br>
@@ -8382,8 +8412,8 @@ window.openLataifImageModal = function(type, lang) {
         descEl.style.direction = 'rtl';
         descEl.style.textAlign = 'right';
         descEl.innerHTML = `<strong>سلسلہ عالیہ قادریہ کے سات لطائف، مقامات اور انوارات کے رنگ:</strong><br>
-        ۱. <strong>لطیفہ روح (دائیں پستان سے ۲ انگل نیچے):</strong> سفید نور — روحانی حیات، سکینہ اور اطمینانِ قلب کا مقام۔<br>
-        ۲. <strong>لطیفہ قلب (بائیں پستان سے ۲ انگل نیچے):</strong> سرخ نور — عشقِ الٰہی، محبتِ رسول ﷺ اور ضربِ ذکر کا مرکز۔<br>
+        ۱. <strong>لطیفہ قلب (بائیں پستان سے ۲ انگل نیچے):</strong> سرخ نور — عشقِ الٰہی، محبتِ رسول ﷺ اور ضربِ ذکر کا مرکز۔<br>
+        ۲. <strong>لطیفہ روح (دائیں پستان سے ۲ انگل نیچے):</strong> سفید نور — روحانی حیات، سکینہ اور اطمینانِ قلب کا مقام۔<br>
         ۳. <strong>لطیفہ سرّ (سینے کے عین وسط/درمیان میں):</strong> سبز / ہرا نور — باطنی اسرار اور کشفِ حقائق کا مخزن۔<br>
         ۴. <strong>لطیفہ خفی (پیشانی پر دونوں آنکھوں/ابرو کے درمیان):</strong> نیلا نور — باطنی بصیرت اور روحانی وجدان کا مقام۔<br>
         ۵. <strong>لطیفہ اخفیٰ (سر کی چوٹی / تالو پر):</strong> سیاہ نور — قربِ خاص اور تجلیاتِ ذات کا اعلیٰ ترین مقام۔<br>
@@ -8999,6 +9029,283 @@ window.sendQadiriReport = function(lang) {
   window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
+/* --- NAQSHBANDI ORDER STATE & LESSON TRACKER --- */
+window.saveNaqshbandiDateUr = function() {
+  const val = document.getElementById('naqshbandiStartDateUr')?.value;
+  if (!val) return;
+  const enInput = document.getElementById('naqshbandiStartDateEn');
+  if (enInput) enInput.value = val;
+  const start = new Date(val);
+  const today = new Date();
+  start.setHours(0,0,0,0);
+  today.setHours(0,0,0,0);
+  const diffDays = Math.max(1, Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1);
+  const counterUr = document.getElementById('naqshbandiDayCounterUr');
+  if (counterUr) counterUr.textContent = 'دن: ' + diffDays;
+  const counterEn = document.getElementById('naqshbandiDayCounterEn');
+  if (counterEn) counterEn.textContent = 'Day: ' + diffDays;
+  localStorage.setItem('khizri_naqshbandi_start_date', val);
+};
+
+window.saveNaqshbandiDateEn = function() {
+  const val = document.getElementById('naqshbandiStartDateEn')?.value;
+  if (!val) return;
+  const urInput = document.getElementById('naqshbandiStartDateUr');
+  if (urInput) urInput.value = val;
+  const start = new Date(val);
+  const today = new Date();
+  start.setHours(0,0,0,0);
+  today.setHours(0,0,0,0);
+  const diffDays = Math.max(1, Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1);
+  const counterUr = document.getElementById('naqshbandiDayCounterUr');
+  if (counterUr) counterUr.textContent = 'دن: ' + diffDays;
+  const counterEn = document.getElementById('naqshbandiDayCounterEn');
+  if (counterEn) counterEn.textContent = 'Day: ' + diffDays;
+  localStorage.setItem('khizri_naqshbandi_start_date', val);
+};
+
+window.saveNaqshbandiLessonDate = function(lessonId, type, lang) {
+  const inputId = (lang === 'en') ? `naqshbandi${type === 'start' ? 'Start' : 'End'}DateEn_${lessonId}` : `naqshbandi${type === 'start' ? 'Start' : 'End'}DateUr_${lessonId}`;
+  const peerInputId = (lang === 'en') ? `naqshbandi${type === 'start' ? 'Start' : 'End'}DateUr_${lessonId}` : `naqshbandi${type === 'start' ? 'Start' : 'End'}DateEn_${lessonId}`;
+  const val = document.getElementById(inputId)?.value || '';
+
+  const peer = document.getElementById(peerInputId);
+  if (peer) peer.value = val;
+
+  localStorage.setItem(`khizri_naqshbandi_${type}_date_${lessonId}`, val);
+  window.updateNaqshbandiLessonStatusBadge(lessonId);
+};
+
+window.updateNaqshbandiLessonStatusBadge = function(lessonId) {
+  const isDone = localStorage.getItem('khizri_naqshbandi_tick_' + lessonId) === 'true';
+  const startDate = localStorage.getItem('khizri_naqshbandi_start_date_' + lessonId);
+
+  const badgeUr = document.getElementById('naqshbandiStatusBadgeUr_' + lessonId);
+  const badgeEn = document.getElementById('naqshbandiStatusBadgeEn_' + lessonId);
+
+  if (isDone) {
+    if (badgeUr) {
+      badgeUr.textContent = 'مکمل ✅';
+      badgeUr.style.background = '#DCFCE7';
+      badgeUr.style.color = '#15803D';
+    }
+    if (badgeEn) {
+      badgeEn.textContent = 'Completed ✅';
+      badgeEn.style.background = '#DCFCE7';
+      badgeEn.style.color = '#15803D';
+    }
+  } else if (startDate) {
+    if (badgeUr) {
+      badgeUr.textContent = 'جاری ہے ⏳';
+      badgeUr.style.background = '#FEF3C7';
+      badgeUr.style.color = '#B45309';
+    }
+    if (badgeEn) {
+      badgeEn.textContent = 'In Progress ⏳';
+      badgeEn.style.background = '#FEF3C7';
+      badgeEn.style.color = '#B45309';
+    }
+  } else {
+    if (badgeUr) {
+      badgeUr.textContent = 'شروع نہیں ہوا';
+      badgeUr.style.background = '#F1F5F9';
+      badgeUr.style.color = '#64748B';
+    }
+    if (badgeEn) {
+      badgeEn.textContent = 'Not Started';
+      badgeEn.style.background = '#F1F5F9';
+      badgeEn.style.color = '#64748B';
+    }
+  }
+};
+
+window.toggleNaqshbandiTickUr = function(id) {
+  const chkUr = document.getElementById('naqshbandiTickUr_' + id);
+  const chkEn = document.getElementById('naqshbandiTickEn_' + id);
+  const checked = chkUr ? chkUr.checked : false;
+  if (chkEn) chkEn.checked = checked;
+  localStorage.setItem('khizri_naqshbandi_tick_' + id, checked ? 'true' : 'false');
+  window.updateNaqshbandiLessonStatusBadge(id);
+};
+
+window.toggleNaqshbandiTickEn = function(id) {
+  const chkUr = document.getElementById('naqshbandiTickUr_' + id);
+  const chkEn = document.getElementById('naqshbandiTickEn_' + id);
+  const checked = chkEn ? chkEn.checked : false;
+  if (chkUr) chkUr.checked = checked;
+  localStorage.setItem('khizri_naqshbandi_tick_' + id, checked ? 'true' : 'false');
+  window.updateNaqshbandiLessonStatusBadge(id);
+};
+
+window.loadNaqshbandiState = function() {
+  const overallDate = localStorage.getItem('khizri_naqshbandi_start_date');
+  if (overallDate) {
+    const urInput = document.getElementById('naqshbandiStartDateUr');
+    const enInput = document.getElementById('naqshbandiStartDateEn');
+    if (urInput) urInput.value = overallDate;
+    if (enInput) enInput.value = overallDate;
+
+    const start = new Date(overallDate);
+    const today = new Date();
+    start.setHours(0,0,0,0);
+    today.setHours(0,0,0,0);
+    const diffDays = Math.max(1, Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1);
+    const counterUr = document.getElementById('naqshbandiDayCounterUr');
+    if (counterUr) counterUr.textContent = 'دن: ' + diffDays;
+    const counterEn = document.getElementById('naqshbandiDayCounterEn');
+    if (counterEn) counterEn.textContent = 'Day: ' + diffDays;
+  }
+
+  for (let i = 1; i <= 35; i++) {
+    const isDone = localStorage.getItem('khizri_naqshbandi_tick_' + i) === 'true';
+    const chkUr = document.getElementById('naqshbandiTickUr_' + i);
+    const chkEn = document.getElementById('naqshbandiTickEn_' + i);
+    if (chkUr) chkUr.checked = isDone;
+    if (chkEn) chkEn.checked = isDone;
+
+    const sDate = localStorage.getItem('khizri_naqshbandi_start_date_' + i);
+    const sUr = document.getElementById('naqshbandiStartDateUr_' + i);
+    const sEn = document.getElementById('naqshbandiStartDateEn_' + i);
+    if (sDate) {
+      if (sUr) sUr.value = sDate;
+      if (sEn) sEn.value = sDate;
+    }
+
+    const eDate = localStorage.getItem('khizri_naqshbandi_end_date_' + i);
+    const eUr = document.getElementById('naqshbandiEndDateUr_' + i);
+    const eEn = document.getElementById('naqshbandiEndDateEn_' + i);
+    if (eDate) {
+      if (eUr) eUr.value = eDate;
+      if (eEn) eEn.value = eDate;
+    }
+
+    window.updateNaqshbandiLessonStatusBadge(i);
+  }
+};
+
+window.sendNaqshbandiReport = function(lang) {
+  const lessonNamesUr = [
+    'لطیفۂ قلب (ذکرِ اسمِ ذات)',
+    'لطیفۂ روح (ذکرِ اسمِ ذات)',
+    'لطیفۂ سر (ذکرِ اسمِ ذات)',
+    'لطیفۂ خفی (ذکرِ اسمِ ذات)',
+    'لطیفۂ اخفیٰ (ذکرِ اسمِ ذات)',
+    'لطیفۂ نفس (ذکرِ اسمِ ذات)',
+    'لطیفۂ قالبیہ (سلطان الاذکار پر ذکرِ اسمِ ذات)',
+    'طریقہ نفی و اثبات (کلمہ طیبہ کا ذکر)',
+    'تہلیلِ لسانی (کلمہ طیبہ)',
+    'لطیفۂ قلب پر مراقبۂ احدیت (صفاتِ جامعہ)',
+    'لطیفۂ قلب پر مراقبۂ تجلیاتِ افعالیہ',
+    'لطیفۂ روح پر مراقبۂ تجلیاتِ صفاتِ ثبوتیہ',
+    'لطیفۂ سر پر مراقبۂ تجلیاتِ شئونِ ذاتیہ',
+    'لطیفۂ خفی پر مراقبۂ تجلیاتِ صفاتِ سلبیہ',
+    'لطیفۂ اخفیٰ پر مراقبۂ تجلیاتِ شانِ جامع',
+    'لطیفۂ قلب پر مراقبۂ معیت (ولایتِ صغریٰ)',
+    'لطیفۂ قلب اور نفس پر نیتِ دائرۂ اولیٰ (ولایتِ کبریٰ)',
+    'لطیفۂ نفس پر دوسرے دائرہ کی نیت (یحبہم ویحبونہ)',
+    'لطیفۂ نفس پر تیسرے دائرہ کی نیت (یحبہم ویحبونہ)',
+    'لطیفۂ نفس پر نیتِ قوس (یحبہم ویحبونہ)',
+    'لطیفۂ نفس پر مراقبۂ اسم الظاہر',
+    'لطیفۂ نفس پر مراقبۂ اسم الباطن',
+    'مراقبۂ کمالاتِ نبوت (خاک کا عنصر)',
+    'مراقبۂ کمالاتِ رسالت (ہیئتِ وحدانی)',
+    'مراقبۂ کمالاتِ اولوالعزم (ہیئتِ وحدانی)',
+    'مراقبۂ حقیقتِ کعبہ ربانی (شکلِ وحدانی)',
+    'مراقبۂ حقیقتِ قرآن (ہیئتِ وحدانی)',
+    'مراقبۂ حقیقتِ صلوٰۃ (شکلِ وحدانی)',
+    'مراقبۂ معبودیتِ صرفہ (ہیئتِ وحدانی)',
+    'مراقبۂ حقیقتِ ابراہیمی (شکلِ وحدانی)',
+    'مراقبۂ حقیقتِ موسوی (شکلِ وحدانی)',
+    'مراقبۂ حقیقتِ محمدی (ہیئتِ وحدانی)',
+    'مراقبۂ حقیقتِ احمدی (ہیئتِ وحدانی)',
+    'مراقبۂ حقیقتِ حبِ صرف (شکلِ وحدانی)',
+    'مراقبۂ حقیقتِ دائرۂ لاتعین (ہیئتِ وحدانی)'
+  ];
+
+  const lessonNamesEn = [
+    'Latifa Qalb (Dhikr Ism-e-Zaat)',
+    'Latifa Ruh (Dhikr Ism-e-Zaat)',
+    'Latifa Sirr (Dhikr Ism-e-Zaat)',
+    'Latifa Khafi (Dhikr Ism-e-Zaat)',
+    'Latifa Akhfa (Dhikr Ism-e-Zaat)',
+    'Latifa Nafs (Dhikr Ism-e-Zaat)',
+    'Latifa Qalibiyya (Sultan-ul-Azkar)',
+    'Tariqa Nafi wa Isbat (Kalima Tayyiba)',
+    'Tahlil Lisani (Kalima Tayyiba 7000x)',
+    'Muraqaba Ahadiyyat on Qalb',
+    'Muraqaba Tajalliyat Af\'aaliyya on Qalb',
+    'Muraqaba Tajalliyat Sifat Thubutiyya on Ruh',
+    'Muraqaba Tajalliyat Shu\'oon Dhatiyya on Sirr',
+    'Muraqaba Tajalliyat Sifat Salbiyya on Khafi',
+    'Muraqaba Tajalliyat Shan Jami\' on Akhfa',
+    'Muraqaba Ma\'iyyat on Qalb (Wilayat Sughra)',
+    'Niyyat Da\'irah Oola on Qalb & Nafs (Wilayat Kubra)',
+    'Niyyat Second Circle on Nafs (Yuhibbuhum wa Yuhibboonahu)',
+    'Niyyat Third Circle on Nafs (Yuhibbuhum wa Yuhibboonahu)',
+    'Niyyat Qaws on Nafs (Yuhibbuhum wa Yuhibboonahu)',
+    'Muraqaba Ism az-Zahir on Nafs',
+    'Muraqaba Ism al-Batin on Nafs',
+    'Muraqaba Kamalat-e-Nubuwwat (Khak Element)',
+    'Muraqaba Kamalat-e-Risalat (Hay\'at Wahdani)',
+    'Muraqaba Kamalat-e-Ulul\'azm (Hay\'at Wahdani)',
+    'Muraqaba Haqiqat Ka\'ba Rabbani (Shakl Wahdani)',
+    'Muraqaba Haqiqat-e-Quran (Hay\'at Wahdani)',
+    'Muraqaba Haqiqat-e-Salat (Shakl Wahdani)',
+    'Muraqaba Ma\'boodiyyat Sarfah (Hay\'at Wahdani)',
+    'Muraqaba Haqiqat-e-Ibrahimi (Shakl Wahdani)',
+    'Muraqaba Haqiqat-e-Musawi (Shakl Wahdani)',
+    'Muraqaba Haqiqat-e-Muhammadi (Hay\'at Wahdani)',
+    'Muraqaba Haqiqat-e-Ahmadi (Hay\'at Wahdani)',
+    'Muraqaba Haqiqat-e-Hubb-e-Sarf (Shakl Wahdani)',
+    'Muraqaba Haqiqat Da\'irah La-Ta\'ayyun'
+  ];
+
+  let doneCount = 0;
+  let detailsText = '';
+
+  for (let i = 1; i <= 35; i++) {
+    const isDone = localStorage.getItem('khizri_naqshbandi_tick_' + i) === 'true';
+    if (isDone) doneCount++;
+
+    const sDate = localStorage.getItem('khizri_naqshbandi_start_date_' + i) || '-';
+    const eDate = localStorage.getItem('khizri_naqshbandi_end_date_' + i) || '-';
+
+    if (lang === 'en') {
+      const statusStr = isDone ? '✅ Completed' : (sDate !== '-' ? '⏳ In Progress' : '⚪ Not Started');
+      detailsText += `\n*${i}. ${lessonNamesEn[i-1]}:* ${statusStr}\n   • Start: ${sDate} | End: ${eDate}`;
+    } else {
+      const statusStr = isDone ? '✅ مکمل' : (sDate !== '-' ? '⏳ زیرِ عمل' : '⚪ شروع نہیں ہوا');
+      detailsText += `\n*سبق ${i}: ${lessonNamesUr[i-1]}* — ${statusStr}\n   • آغاز: ${sDate} | اختتام: ${eDate}`;
+    }
+  }
+
+  const overallDateVal = localStorage.getItem('khizri_naqshbandi_start_date') || 'آج';
+
+  let msg = '';
+  if (lang === 'en') {
+    msg += `*Bismillahir Rahmanir Raheem*\n`;
+    msg += `*Progress Report: Naqshbandi Mujaddidi Order (35 Lessons - Tuhfat-ul-Masha\'ikh)*\n`;
+    msg += `📅 *Order Start Date:* ${overallDateVal}\n`;
+    msg += `📊 *Completed Lessons:* ${doneCount} / 35 Lessons Complete\n`;
+    msg += `----------------------------------------\n`;
+    msg += `*Detailed Lesson Dates & Status:*${detailsText}\n`;
+    msg += `----------------------------------------\n`;
+    msg += `Assalamu Alaikum Mufti Khizer Mateen! Here is my progress in the Naqshbandi Mujaddidi Order 35 lessons, 7 Lata\'if, and Muraqabat. Kindly grant guidance, spiritual blessings, and permission for higher spiritual stations.`;
+  } else {
+    msg += `*بسم اللہ الرحمن الرحیم*\n`;
+    msg += `*پیش رفت رپورٹ برائے ۳۵ اسباقِ سلسلہ عالیہ نقشبندیہ مجددیہ (تحفۃ المشائخ)*\n`;
+    msg += `📅 *سلسلہ میں آغاز کی تاریخ:* ${overallDateVal}\n`;
+    msg += `📊 *مجموعی تکمیل:* ${doneCount} / 35 اسباق مکمل\n`;
+    msg += `----------------------------------------\n`;
+    msg += `*اسباق کی تاریخیں و موجودہ کیفیت:*${detailsText}\n`;
+    msg += `----------------------------------------\n`;
+    msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ نقشبندیہ مجددیہ کے ۳۵ اسباق، ۷ لطائف و مراقبات کی مشق شروع کی ہوئی ہے اور میری تفصیلی پیش رفت درج بالا ہے۔ برائے مہربانی اگلے اسباق، مراقبات اور معمولات کی اجازت و دعا عنایت فرمائیں۔`;
+  }
+
+  window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
+};
+
+
 
 /* --- SILSILA CHISHTIA DATE TRACKERS & 31 ASBAQ PROGRESS --- */
 window.saveChishtiDateUr = function() {
@@ -9437,6 +9744,10 @@ window.switchSilsilaScreenTab = function(orderKey, lang) {
   if (orderKey === 'qadiri' && typeof window.loadQadiriState === 'function') {
     window.loadQadiriState();
   }
+  // 9. Reload Naqshbandi state if active
+  if (orderKey === 'naqshbandi' && typeof window.loadNaqshbandiState === 'function') {
+    window.loadNaqshbandiState();
+  }
 };
 
 window.stepSilsilaOrder = function(dir, lang) {
@@ -9659,4 +9970,93 @@ if (typeof window.loadSuhrawardiState === 'function') {
     setTimeout(window.loadSuhrawardiState, 200);
   }
 }
+
+// ====================================================
+// GOOGLE REVIEWS FUNCTIONALITY
+// ====================================================
+window.filterGoogleReviews = function(category, btnElement) {
+  // Update buttons state
+  const buttons = document.querySelectorAll('#reviewsFilterBar .review-filter-btn');
+  buttons.forEach(b => {
+    b.classList.remove('active');
+    b.style.background = '#FFFFFF';
+    b.style.color = '#475569';
+  });
+  if (btnElement) {
+    btnElement.classList.add('active');
+    btnElement.style.background = '#0F172A';
+    btnElement.style.color = '#FFFFFF';
+  }
+
+  // Filter review cards
+  const cards = document.querySelectorAll('#googleReviewsList .google-review-card');
+  cards.forEach(card => {
+    const cardCat = card.getAttribute('data-cat');
+    if (category === 'all' || cardCat === category) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+};
+
+window.setReviewRating = function(rating) {
+  const starsContainer = document.getElementById('starRatingSelector');
+  const hiddenInput = document.getElementById('reviewStarValue');
+  if (hiddenInput) hiddenInput.value = rating;
+
+  if (starsContainer) {
+    const stars = starsContainer.querySelectorAll('i');
+    stars.forEach((star, idx) => {
+      if (idx < rating) {
+        star.classList.remove('fa-regular');
+        star.classList.add('fa-solid');
+        star.style.color = '#F59E0B';
+      } else {
+        star.classList.remove('fa-solid');
+        star.classList.add('fa-regular');
+        star.style.color = '#CBD5E1';
+      }
+    });
+  }
+};
+
+window.handleGoogleReviewSubmit = function(event) {
+  event.preventDefault();
+  const name = document.getElementById('reviewAuthorName')?.value.trim() || '';
+  const city = document.getElementById('reviewAuthorCity')?.value.trim() || '';
+  const rating = document.getElementById('reviewStarValue')?.value || '5';
+  const category = document.getElementById('reviewCategorySelect')?.value || 'عمومی تاثرات';
+  const reviewText = document.getElementById('reviewTextContent')?.value.trim() || '';
+
+  if (!name || !reviewText) {
+    alert('براہ کرم تمام لازمی خانے پر فرمائیں۔');
+    return;
+  }
+
+  const starsStr = '⭐'.repeat(parseInt(rating, 10));
+
+  const msg = `*نئے گوگل ریویو / تاثرات (خضری ویز)*\n` +
+              `👤 *نام:* ${name}\n` +
+              `📍 *شہر/ملک:* ${city}\n` +
+              `⭐ *ریٹنگ:* ${starsStr} (${rating}/5)\n` +
+              `🏷️ *زمرہ:* ${category}\n\n` +
+              `📝 *ریویو:* "${reviewText}"\n\n` +
+              `_خضری ویز ایپ کے ذریعے ارسال کیا گیا_`;
+
+  const phone = '923152395969';
+  const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+  
+  if (typeof closeModal === 'function') {
+    closeModal('modalWriteGoogleReview');
+  }
+
+  // Reset form
+  const form = document.getElementById('formSubmitGoogleReview');
+  if (form) form.reset();
+  window.setReviewRating(5);
+
+  window.open(waUrl, '_blank');
+};
+
 

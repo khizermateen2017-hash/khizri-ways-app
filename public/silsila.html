@@ -213,6 +213,9 @@
             if (currentOrder === 'qadiri' && typeof window.loadQadiriState === 'function') {
               setTimeout(window.loadQadiriState, 50);
             }
+            if (currentOrder === 'naqshbandi' && typeof window.loadNaqshbandiState === 'function') {
+              setTimeout(window.loadNaqshbandiState, 50);
+            }
           }
         })
         .catch(err => {
