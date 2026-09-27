@@ -3252,31 +3252,43 @@ body.lang-ur .sub-screen-title {
     display: none;
   }
 
+  .splash-mockup-frame {
+    display: none !important;
+  }
+
   .presentation-stage.mode-dual-view .splash-mockup-frame {
     display: none !important;
   }
 
-  .presentation-stage.mode-dual-view .main-mockup-frame {
+  .presentation-stage.mode-dual-view .main-mockup-frame,
+  .main-mockup-frame {
     transform: none !important;
+    margin: 0 auto !important;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .floating-control-bar {
-    display: none;
+    display: none !important;
   }
 
   .presentation-stage {
-    padding: 0;
-    height: 100vh;
+    padding: 0 !important;
+    min-height: 100vh !important;
+    height: 100vh !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .phone-mockup-frame {
     width: 100% !important;
+    max-width: 100% !important;
     height: 100vh !important;
     border-radius: 0 !important;
     border: none !important;
     box-shadow: none !important;
+    margin: 0 !important;
+    transform: none !important;
   }
 
   .iphone-island,
