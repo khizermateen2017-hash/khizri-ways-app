@@ -8413,6 +8413,107 @@ window.sendSuhrawardiReport = function(lang) {
   window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
+/* --- STEP 3: 5 SUFI ORDERS COMPACT CARDS & INTERACTION --- */
+window.selectSilsila = function(orderKey, lang) {
+  const allOrders = ['suhrawardi', 'chishti', 'qadiri', 'naqshbandi', 'shadhili'];
+  const detailEl = document.getElementById('silsilaDetail_' + orderKey + '_' + lang);
+  const thumbEl = document.getElementById('silsilaThumb_' + (orderKey === 'suhrawardi' ? 'suh' : orderKey) + '_' + lang);
+  if (!detailEl) return;
+
+  const isCurrentlyOpen = detailEl.style.display !== 'none' && detailEl.style.display !== '';
+
+  // If already open, clicking toggles it closed
+  if (isCurrentlyOpen) {
+    detailEl.style.display = 'none';
+    if (thumbEl) {
+      thumbEl.classList.remove('silsila-active');
+      const pill = thumbEl.querySelector('.silsila-status-pill');
+      if (pill) {
+        pill.innerHTML = (lang === 'ur') ? '<span>تفصیل دیکھیں</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>' : '<span>View Lessons</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>';
+      }
+    }
+    return;
+  }
+
+  // Close other open details in this lang section
+  allOrders.forEach(k => {
+    const d = document.getElementById('silsilaDetail_' + k + '_' + lang);
+    if (d) d.style.display = 'none';
+    const th = document.getElementById('silsilaThumb_' + (k === 'suhrawardi' ? 'suh' : k) + '_' + lang);
+    if (th) {
+      th.classList.remove('silsila-active');
+      const p = th.querySelector('.silsila-status-pill');
+      if (p) {
+        p.innerHTML = (lang === 'ur') ? '<span>تفصیل دیکھیں</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>' : '<span>View Lessons</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>';
+      }
+    }
+  });
+
+  // Open this detail
+  detailEl.style.display = 'block';
+  if (thumbEl) {
+    thumbEl.classList.add('silsila-active');
+    const pill = thumbEl.querySelector('.silsila-status-pill');
+    if (pill) {
+      pill.innerHTML = (lang === 'ur') ? '<span>اسباق کھلے ہیں</span> <i class="fa-solid fa-chevron-up" style="font-size:0.62rem;"></i>' : '<span>Open</span> <i class="fa-solid fa-chevron-up" style="font-size:0.62rem;"></i>';
+    }
+  }
+
+  // Smooth scroll so the user sees the lessons
+  detailEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+};
+
+window.closeSilsilaDetail = function(orderKey, lang) {
+  const detailEl = document.getElementById('silsilaDetail_' + orderKey + '_' + lang);
+  const thumbEl = document.getElementById('silsilaThumb_' + (orderKey === 'suhrawardi' ? 'suh' : orderKey) + '_' + lang);
+  if (detailEl) detailEl.style.display = 'none';
+  if (thumbEl) {
+    thumbEl.classList.remove('silsila-active');
+    const pill = thumbEl.querySelector('.silsila-status-pill');
+    if (pill) {
+      pill.innerHTML = (lang === 'ur') ? '<span>تفصیل دیکھیں</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>' : '<span>View Lessons</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>';
+    }
+  }
+};
+
+window.toggleAllSilsila = function(lang) {
+  const allOrders = ['suhrawardi', 'chishti', 'qadiri', 'naqshbandi', 'shadhili'];
+  const btn = document.getElementById('btnToggleAllSilsila' + (lang === 'ur' ? 'Ur' : 'En'));
+  const areAnyOpen = allOrders.some(k => {
+    const d = document.getElementById('silsilaDetail_' + k + '_' + lang);
+    return d && d.style.display !== 'none' && d.style.display !== '';
+  });
+
+  const shouldOpenAll = !areAnyOpen;
+
+  allOrders.forEach(k => {
+    const d = document.getElementById('silsilaDetail_' + k + '_' + lang);
+    if (d) d.style.display = shouldOpenAll ? 'block' : 'none';
+    const th = document.getElementById('silsilaThumb_' + (k === 'suhrawardi' ? 'suh' : k) + '_' + lang);
+    if (th) {
+      if (shouldOpenAll) {
+        th.classList.add('silsila-active');
+      } else {
+        th.classList.remove('silsila-active');
+      }
+      const p = th.querySelector('.silsila-status-pill');
+      if (p) {
+        p.innerHTML = shouldOpenAll ? 
+          ((lang === 'ur') ? '<span>اسباق کھلے ہیں</span> <i class="fa-solid fa-chevron-up" style="font-size:0.62rem;"></i>' : '<span>Open</span> <i class="fa-solid fa-chevron-up" style="font-size:0.62rem;"></i>') :
+          ((lang === 'ur') ? '<span>تفصیل دیکھیں</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>' : '<span>View Lessons</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>');
+      }
+    }
+  });
+
+  if (btn) {
+    if (shouldOpenAll) {
+      btn.innerHTML = (lang === 'ur') ? '<i class="fa-solid fa-compress"></i> سب سمیٹیں' : '<i class="fa-solid fa-compress"></i> Collapse All';
+    } else {
+      btn.innerHTML = (lang === 'ur') ? '<i class="fa-solid fa-layer-group"></i> سب دکھائیں' : '<i class="fa-solid fa-layer-group"></i> Expand All';
+    }
+  }
+};
+
 /* --- TASAWWUF INTERACTIVE CHECKLIST STORAGE & PROGRESS --- */
 
 window.getTasawwufTaskState = function() {

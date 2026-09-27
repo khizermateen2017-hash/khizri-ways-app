@@ -11138,7 +11138,68 @@ html, body {
   background: #F1F5F9;
 }
 
-
-
-
-
+/* ==========================================================================
+   STEP 3: 5 SUFI ORDERS COMPACT CARDS & INTERACTIVE DETAIL SYSTEM
+   ========================================================================== */
+.silsila-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+@media (max-width: 900px) {
+  .silsila-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 580px) {
+  .silsila-cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .silsila-mini-card.silsila-card-last {
+    grid-column: span 2;
+  }
+}
+.silsila-mini-card {
+  cursor: pointer;
+  border-radius: 14px;
+  padding: 12px 10px;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  position: relative;
+  user-select: none;
+  background: #FFFFFF;
+}
+.silsila-mini-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1) !important;
+}
+.silsila-mini-card.silsila-active {
+  border-color: #D4AF37 !important;
+  box-shadow: 0 0 0 2px #D4AF37, 0 6px 18px rgba(212, 175, 55, 0.25) !important;
+  transform: scale(1.02);
+}
+.silsila-status-pill {
+  transition: all 0.2s ease;
+}
+.silsila-mini-card.silsila-active .silsila-status-pill {
+  background: #D4AF37 !important;
+  color: #1E1B4B !important;
+  font-weight: 900 !important;
+}
+.silsila-detail-box {
+  animation: silsilaFadeIn 0.3s ease-out;
+}
+@keyframes silsilaFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
