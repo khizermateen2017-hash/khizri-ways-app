@@ -343,11 +343,11 @@
                 </span>
               </div>
 
-              <!-- 15. About Us (ہمارا تعارف - سب سے آخر میں) -->
-                            <!-- 15. Google Reviews (گوگل ریویوز) -->
+              <!-- 15. Google Reviews (گوگل ریویوز) -->
               <div class="feature-cell" data-open="tabGoogleReviews" title="Google Reviews &amp; Client Ratings (گوگل ریویوز)">
-                <div class="feature-icon-circle feature-accent-reviews" style="background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); color: #D97706; border: 1.5px solid #F59E0B; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.25);">
+                <div class="feature-icon-circle feature-accent-reviews" style="background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); color: #D97706; border: 1.5px solid #F59E0B; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.25); position: relative;">
                   <i class="fa-brands fa-google" style="color: #EA4335; font-size: 1.25rem;"></i>
+                  <span style="position: absolute; top: -3px; right: -3px; background: #10B981; color: #FFF; font-size: 0.55rem; font-weight: 900; padding: 1px 4px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">★ 4.9</span>
                 </div>
                 <span class="feature-title" data-i18n="featReviews">
                   <span class="lang-en-only">Google<br>Reviews</span>
@@ -355,6 +355,7 @@
                 </span>
               </div>
 
+              <!-- 16. About Us (ہمارا تعارف - سب سے آخر میں) -->
               <div class="feature-cell" data-open="tabAboutUs" title="About Khizri Ways &amp; Founder">
                 <div class="feature-icon-circle feature-accent-about">
                   <i class="fa-solid fa-circle-info"></i>
@@ -12372,12 +12373,19 @@
                 </div>
               </div>
 
-              <!-- Write a Review Button -->
-              <button type="button" onclick="openModal('modalWriteGoogleReview')" style="width: 100%; background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%); color: #FFF; border: none; border-radius: 10px; padding: 10px 14px; font-size: 0.82rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);">
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span class="lang-ur-only">گوگل پر اپنا ریویو درج فرمائیں</span>
-                <span class="lang-en-only">Write a Google Review</span>
-              </button>
+              <!-- Dual Action Buttons (Official Google + In-App Form) -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <a href="https://share.google/B26uoDyw9iDKQcQFk" target="_blank" rel="noopener" style="background: linear-gradient(135deg, #EA4335 0%, #D93025 100%); color: #FFF; border-radius: 10px; padding: 10px 8px; font-size: 0.78rem; font-weight: 800; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 12px rgba(234, 67, 53, 0.3); text-align: center;">
+                  <i class="fa-brands fa-google"></i>
+                  <span class="lang-ur-only">گوگل پر ریویو دیں</span>
+                  <span class="lang-en-only">Review on Google</span>
+                </a>
+                <button type="button" onclick="openModal('modalWriteGoogleReview')" style="background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%); color: #FFF; border: none; border-radius: 10px; padding: 10px 8px; font-size: 0.78rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); text-align: center;">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                  <span class="lang-ur-only">ایپ میں ریویو لکھیں</span>
+                  <span class="lang-en-only">Write Review</span>
+                </button>
+              </div>
             </div>
 
             <!-- Review Categories Filter Bar -->
