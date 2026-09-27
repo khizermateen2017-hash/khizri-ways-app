@@ -2544,7 +2544,7 @@ window.sendFuyuzNotesWhatsApp = function() {
   msg += `السلام علیکم مفتی خضر متین صاحب! وظائفِ فیوض النور کے دوران حاصل ہونے والی کیفیات و احوال ملاحظہ فرمائیں اور رہنمائی عنایت فرمائیں۔`;
 
   const encoded = encodeURIComponent(msg);
-  window.open(`https://wa.me/923152395969?text=${encoded}`, '_blank');
+  window.open(`https://wa.me/923317704807?text=${encoded}`, '_blank');
 };
 
 /* --- INLINE TASAWWUF SECTION SYNCHRONIZATION --- */

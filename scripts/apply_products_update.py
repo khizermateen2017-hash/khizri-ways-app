@@ -166,7 +166,7 @@ tab_products_screen = """<!-- ==================================================
             <button class="btn-product-order btn-product-order-outline" onclick="openTailOrderModal()">
               <i class="fa-solid fa-file-invoice"></i> فارم سے آرڈر
             </button>
-            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923152395969?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے دم شدہ تیل آرڈر کرنا ہے۔ برائے مہربانی ڈلیوری اور تفصیلات سے آگاہ فرمائیں۔ جزاک اللہ خیراً!'), '_blank')">
+            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923317704807?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے دم شدہ تیل آرڈر کرنا ہے۔ برائے مہربانی ڈلیوری اور تفصیلات سے آگاہ فرمائیں۔ جزاک اللہ خیراً!'), '_blank')">
               <i class="fa-brands fa-whatsapp"></i> واٹس ایپ آرڈر
             </button>
           </div>
@@ -207,7 +207,7 @@ tab_products_screen = """<!-- ==================================================
             <button class="btn-product-order btn-product-order-outline" onclick="openAgarbattiOrderModal()">
               <i class="fa-solid fa-file-invoice"></i> فارم سے آرڈر
             </button>
-            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923152395969?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے روحانی اگر بتی (Rs. 1,500) حاصل کرنی ہے۔ برائے مہربانی ڈلیوری کا طریقہ ارسال فرمائیں۔'), '_blank')">
+            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923317704807?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے روحانی اگر بتی (Rs. 1,500) حاصل کرنی ہے۔ برائے مہربانی ڈلیوری کا طریقہ ارسال فرمائیں۔'), '_blank')">
               <i class="fa-brands fa-whatsapp"></i> واٹس ایپ آرڈر
             </button>
           </div>
@@ -244,7 +244,7 @@ tab_products_screen = """<!-- ==================================================
             <button class="btn-product-order btn-product-order-outline" onclick="openSteelNailsOrderModal()">
               <i class="fa-solid fa-file-invoice"></i> فارم سے آرڈر
             </button>
-            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923152395969?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے ۵ دم شدہ اسٹیل کیلوں کا سیٹ (Rs. 6,000) آرڈر کرنا ہے۔ برائے مہربانی رہنمائی فرمائیں۔'), '_blank')">
+            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923317704807?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے ۵ دم شدہ اسٹیل کیلوں کا سیٹ (Rs. 6,000) آرڈر کرنا ہے۔ برائے مہربانی رہنمائی فرمائیں۔'), '_blank')">
               <i class="fa-brands fa-whatsapp"></i> واٹس ایپ آرڈر
             </button>
           </div>
@@ -281,7 +281,7 @@ tab_products_screen = """<!-- ==================================================
             <button class="btn-product-order btn-product-order-outline" onclick="openSariyeOrderModal()">
               <i class="fa-solid fa-file-invoice"></i> فارم سے آرڈر
             </button>
-            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923152395969?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے دم شدہ ۱۸ انچ فولادی سریوں (Rs. 25,000) کی معلومات اور آرڈر کے لیے رابطہ کرنا ہے۔'), '_blank')">
+            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923317704807?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے دم شدہ ۱۸ انچ فولادی سریوں (Rs. 25,000) کی معلومات اور آرڈر کے لیے رابطہ کرنا ہے۔'), '_blank')">
               <i class="fa-brands fa-whatsapp"></i> واٹس ایپ آرڈر
             </button>
           </div>
@@ -318,7 +318,7 @@ tab_products_screen = """<!-- ==================================================
             <button class="btn-product-order btn-product-order-outline" onclick="openGemstoneRingOrderModal()">
               <i class="fa-solid fa-file-invoice"></i> فارم سے آرڈر
             </button>
-            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923152395969?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے متبرک منقش عقیق انگوٹھی / لاکٹ نگینہ حاصل کرنے کے سلسلے میں معلومات اور ہدیہ کی تفصیل چاہیے۔'), '_blank')">
+            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923317704807?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے متبرک منقش عقیق انگوٹھی / لاکٹ نگینہ حاصل کرنے کے سلسلے میں معلومات اور ہدیہ کی تفصیل چاہیے۔'), '_blank')">
               <i class="fa-brands fa-whatsapp"></i> واٹس ایپ آرڈر
             </button>
           </div>
@@ -421,7 +421,7 @@ all_modals_html = """
           </div>
 
           <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 8px 10px; font-size: 0.72rem; color: #64748B; margin-bottom: 14px; line-height: 1.4;">
-            <i class="fa-solid fa-circle-info text-blue"></i> <strong>نوٹ:</strong> علاوہ ڈلیوری چارجز (کراچی بذریعہ بائیکیا، دیگر شہر بذریعہ کوریئر)۔ فارم جمع ہوتے ہی تفصیلات واٹس ایپ <strong>0315 2395969</strong> پر موصول ہو جائیں گی۔
+            <i class="fa-solid fa-circle-info text-blue"></i> <strong>نوٹ:</strong> علاوہ ڈلیوری چارجز (کراچی بذریعہ بائیکیا، دیگر شہر بذریعہ کوریئر)۔ فارم جمع ہوتے ہی تفصیلات واٹس ایپ <strong>0331 7704807</strong> پر موصول ہو جائیں گی۔
           </div>
 
           <button type="submit" style="width: 100%; padding: 12px; background: linear-gradient(135deg, #16A34A 0%, #15803D 100%); color: #FFFFFF; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);">

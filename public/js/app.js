@@ -3489,7 +3489,7 @@ window.submitWazifaIjazah = function() {
   }
 
   const encoded = encodeURIComponent(text);
-  window.open(`https://wa.me/923136224339?text=${encoded}`, '_blank');
+  window.open(`https://wa.me/923317704807?text=${encoded}`, '_blank');
   
   if (typeof closeModal === 'function') {
     closeModal('modalWazifaIjazah');
@@ -8274,7 +8274,7 @@ window.submitTailOrder = function(e) {
   text += `السلام علیکم مفتی خضر متین صاحب! میں دم شدہ تیل کا آرڈر ارسال کر رہا ہوں۔ برائے مہربانی ڈلیوری اور کنفرمیشن کے لیے رہنمائی فرمائیں۔ جزاک اللہ خیراً!`;
 
   const encoded = encodeURIComponent(text);
-  window.open(`https://wa.me/923152395969?text=${encoded}`, '_blank');
+  window.open(`https://wa.me/923317704807?text=${encoded}`, '_blank');
 
   window.closeTailOrderModal();
 };
@@ -8346,7 +8346,7 @@ window.submitAgarbattiOrder = function(e) {
   text += `السلام علیکم مفتی خضر متین صاحب! میں روحانی اگر بتی (1500 روپے) کا آرڈر ارسال کر رہا ہوں۔ برائے مہربانی پارسل ڈلیوری اور کنفرمیشن کے لیے رہنمائی فرمائیں۔ جزاک اللہ خیراً!`;
 
   const encoded = encodeURIComponent(text);
-  window.open(`https://wa.me/923152395969?text=${encoded}`, '_blank');
+  window.open(`https://wa.me/923317704807?text=${encoded}`, '_blank');
 
   window.closeAgarbattiOrderModal();
 };
@@ -8418,7 +8418,7 @@ window.submitSteelNailsOrder = function(e) {
   text += `السلام علیکم مفتی خضر متین صاحب! میں دم شدہ ۲ انچ اسٹیل کی ۵ کیلوں کا آرڈر ارسال کر رہا ہوں۔ برائے مہربانی ڈلیوری اور کنفرمیشن کے لیے رہنمائی فرمائیں۔ جزاک اللہ خیراً!`;
 
   const encoded = encodeURIComponent(text);
-  window.open(`https://wa.me/923152395969?text=${encoded}`, '_blank');
+  window.open(`https://wa.me/923317704807?text=${encoded}`, '_blank');
 
   window.closeSteelNailsOrderModal();
 };
@@ -8492,7 +8492,7 @@ window.submitSariyeOrder = function(e) {
   text += `السلام علیکم مفتی خضر متین صاحب! میں دم شدہ ۱۸ انچ فولادی سریوں (25,000 روپے) کا آرڈر ارسال کر رہا ہوں۔ برائے مہربانی کارگو ڈلیوری اور کنفرمیشن کے لیے رہنمائی فرمائیں۔ جزاک اللہ خیراً!`;
 
   const encoded = encodeURIComponent(text);
-  window.open(`https://wa.me/923152395969?text=${encoded}`, '_blank');
+  window.open(`https://wa.me/923317704807?text=${encoded}`, '_blank');
 
   window.closeSariyeOrderModal();
 };
@@ -8568,7 +8568,7 @@ window.submitGemstoneRingOrder = function(e) {
   text += `السلام علیکم مفتی خضر متین صاحب! میں متبرک پتھر / انگوٹھی کا آرڈر ارسال کر رہا ہوں۔ برائے مہربانی تیاری، سائز اور کنفرمیشن کے لیے رہنمائی فرمائیں۔ جزاک اللہ خیراً!`;
 
   const encoded = encodeURIComponent(text);
-  window.open(`https://wa.me/923152395969?text=${encoded}`, '_blank');
+  window.open(`https://wa.me/923317704807?text=${encoded}`, '_blank');
 
   window.closeGemstoneRingOrderModal();
 };
@@ -8649,7 +8649,7 @@ window.submitFaizanNoorOrder = async function(e) {
     console.warn('Orders API log error:', err);
   }
 
-  // Construct WhatsApp Message for 0315 2395969
+  // Construct WhatsApp Message for 0331 7704807
   let text = `*بسم اللہ الرحمن الرحیم*\n`;
   text += `*درخواست رسالہ "فیضانِ نور" (روحانی نصاب و حصار نامہ)*\n`;
   text += `----------------------------------------\n`;
@@ -8667,7 +8667,7 @@ window.submitFaizanNoorOrder = async function(e) {
   text += `السلام علیکم مفتی خضر متین صاحب! میں نے رسالہ فیضانِ نور کے حصول اور ممبرشپ کے لیے 500 روپے کا ہدیہ جمع کروا دیا ہے۔ برائے مہربانی مجھے پی ڈی ایف کاپی اور مسنون وظائف کی باقاعدہ روحانی اجازت عنایت فرمائیں۔ جزاک اللہ خیراً!`;
 
   const encoded = encodeURIComponent(text);
-  window.open(`https://wa.me/923152395969?text=${encoded}`, '_blank');
+  window.open(`https://wa.me/923317704807?text=${encoded}`, '_blank');
 
   try {
     localStorage.setItem('khizri_fuyuz_un_noor_unlocked', 'true');
@@ -8761,7 +8761,7 @@ window.submitSpiritualHealingBook = async function(e) {
   text += `----------------------------------------\n`;
   text += `السلام علیکم مفتی خضر متین صاحب! میں نے روحانی علاج کی مستند کتاب (تشخیص، حصار، کڑھائی، بکرے و ہانڈی کے اعمال اور توڑ) کے حصول کیلئے 1,000 روپے کا ہدیہ جمع کروا دیا ہے۔ برائے مہربانی مجھے پی ڈی ایف کتاب اور اجازت عنایت فرمائیں۔`;
 
-  window.open(`https://wa.me/923152395969?text=${encodeURIComponent(text)}`, '_blank');
+  window.open(`https://wa.me/923317704807?text=${encodeURIComponent(text)}`, '_blank');
   
   if (typeof window.closeModal === 'function') {
     window.closeModal('modalSpiritualHealingBook');
@@ -8814,7 +8814,7 @@ window.submitJoinHealingClasses = async function(e) {
   text += `----------------------------------------\n`;
   text += `السلام علیکم مفتی خضر متین صاحب! میں نے باقاعدہ روحانی علاج اور دم کی پریکٹیکل کلاسز میں داخلے کے لیے فارم اور ہدیہ جمع کروا دیا ہے۔ برائے مہربانی میری کلاسز کی باقاعدہ رجسٹریشن فرما کر رہنمائی عنایت فرمائیں۔`;
 
-  window.open(`https://wa.me/923152395969?text=${encodeURIComponent(text)}`, '_blank');
+  window.open(`https://wa.me/923317704807?text=${encodeURIComponent(text)}`, '_blank');
 
   if (typeof window.closeModal === 'function') {
     window.closeModal('modalJoinHealingClasses');
@@ -9248,7 +9248,7 @@ window.sendSuhrawardiReport = function(lang) {
     msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ سہروردیہ کے اسباق و لطائف کی مشق شروع کی ہوئی ہے اور میری تفصیلی پیش رفت درج بالا ہے۔ برائے مہربانی اگلے سبق اور مراقبات کی اجازت و دعا عنایت فرمائیں۔`;
   }
 
-  window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open(`https://wa.me/923317704807?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
 /* --- QADIRI ORDER STATE & LESSON TRACKER --- */
@@ -9506,7 +9506,7 @@ window.sendQadiriReport = function(lang) {
     msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ قادریہ کے ۲۶ اسباق، ۷ لطائف و مراقبات کی مشق شروع کی ہوئی ہے اور میری تفصیلی پیش رفت درج بالا ہے۔ برائے مہربانی اگلے اسباق، مراقبات اور معمولات کی اجازت و دعا عنایت فرمائیں۔`;
   }
 
-  window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open(`https://wa.me/923317704807?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
 /* --- NAQSHBANDI ORDER STATE & LESSON TRACKER --- */
@@ -9782,7 +9782,7 @@ window.sendNaqshbandiReport = function(lang) {
     msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ نقشبندیہ مجددیہ کے ۳۵ اسباق، ۷ لطائف و مراقبات کی مشق شروع کی ہوئی ہے اور میری تفصیلی پیش رفت درج بالا ہے۔ برائے مہربانی اگلے اسباق، مراقبات اور معمولات کی اجازت و دعا عنایت فرمائیں۔`;
   }
 
-  window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open(`https://wa.me/923317704807?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
 
@@ -10057,7 +10057,7 @@ window.sendChishtiReport = function(lang) {
     msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ چشتیہ کے ۳۱ اسباق، لطائف و مراقبات کی مشق شروع کی ہوئی ہے اور میری تفصیلی پیش رفت درج بالا ہے۔ برائے مہربانی اگلے اسباق، مراقبات اور معمولات کی اجازت و دعا عنایت فرمائیں۔`;
   }
 
-  window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open(`https://wa.me/923317704807?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
 /* --- STEP 3: 5 SUFI ORDERS DEDICATED FULL SCREEN SYSTEM --- */

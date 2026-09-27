@@ -180,7 +180,7 @@ payment_box_html = """          <!-- Official Verified Payment Accounts Section 
             </div>
 
             <div style="font-size: 0.72rem; color: #78350F; margin-top: 6px; line-height: 1.4; background: rgba(255,255,255,0.75); padding: 6px 8px; border-radius: 6px;">
-              <i class="fa-solid fa-circle-info text-blue"></i> رقم کی ادائیگی کے بعد سلپ / اسکرین شاٹ واٹس ایپ <strong>0315 2395969</strong> پر بھیج دیں۔
+              <i class="fa-solid fa-circle-info text-blue"></i> رقم کی ادائیگی کے بعد سلپ / اسکرین شاٹ واٹس ایپ <strong>0331 7704807</strong> پر بھیج دیں۔
             </div>
           </div>"""
 
@@ -288,14 +288,14 @@ old_tail_btns = """          <div class="product-buttons-wrap">
             <button class="btn-product-order btn-product-order-outline" onclick="openTailOrderModal()">
               <i class="fa-solid fa-file-invoice"></i> فارم سے آرڈر
             </button>
-            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923152395969?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے دم شدہ تیل آرڈر کرنا ہے۔ برائے مہربانی ڈلیوری اور تفصیلات سے آگاہ فرمائیں۔ جزاک اللہ خیراً!'), '_blank')">
+            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923317704807?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے دم شدہ تیل آرڈر کرنا ہے۔ برائے مہربانی ڈلیوری اور تفصیلات سے آگاہ فرمائیں۔ جزاک اللہ خیراً!'), '_blank')">
               <i class="fa-brands fa-whatsapp"></i> واٹس ایپ آرڈر
             </button>
           </div>"""
 
 new_tail_btns = """          <div class="product-buttons-wrap">
-            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923152395969?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے دم شدہ تیل آرڈر کرنا ہے۔ برائے مہربانی ڈلیوری اور تفصیلات سے آگاہ فرمائیں۔ جزاک اللہ خیراً!'), '_blank')">
-              <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> واٹس ایپ آرڈر (0315 2395969)
+            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923317704807?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے دم شدہ تیل آرڈر کرنا ہے۔ برائے مہربانی ڈلیوری اور تفصیلات سے آگاہ فرمائیں۔ جزاک اللہ خیراً!'), '_blank')">
+              <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> واٹس ایپ آرڈر (0331 7704807)
             </button>
             <button class="btn-product-order btn-product-order-outline" onclick="openTailOrderModal()">
               <i class="fa-solid fa-file-invoice"></i> فارم سے آرڈر کریں
@@ -310,14 +310,14 @@ old_agar_btns = """          <div class="product-buttons-wrap">
             <button class="btn-product-order btn-product-order-outline" onclick="openAgarbattiOrderModal()">
               <i class="fa-solid fa-file-invoice"></i> فارم سے آرڈر
             </button>
-            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923152395969?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے روحانی اگر بتی (Rs. 1,500) حاصل کرنی ہے۔ برائے مہربانی ڈلیوری کا طریقہ ارسال فرمائیں۔'), '_blank')">
+            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923317704807?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے روحانی اگر بتی (Rs. 1,500) حاصل کرنی ہے۔ برائے مہربانی ڈلیوری کا طریقہ ارسال فرمائیں۔'), '_blank')">
               <i class="fa-brands fa-whatsapp"></i> واٹس ایپ آرڈر
             </button>
           </div>"""
 
 new_agar_btns = """          <div class="product-buttons-wrap">
-            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923152395969?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے روحانی اگر بتی (Rs. 1,500) حاصل کرنی ہے۔ برائے مہربانی ڈلیوری کا طریقہ ارسال فرمائیں۔'), '_blank')">
-              <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> واٹس ایپ آرڈر (0315 2395969)
+            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923317704807?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے روحانی اگر بتی (Rs. 1,500) حاصل کرنی ہے۔ برائے مہربانی ڈلیوری کا طریقہ ارسال فرمائیں۔'), '_blank')">
+              <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> واٹس ایپ آرڈر (0331 7704807)
             </button>
             <button class="btn-product-order btn-product-order-outline" onclick="openAgarbattiOrderModal()">
               <i class="fa-solid fa-file-invoice"></i> فارم سے آرڈر کریں
@@ -332,14 +332,14 @@ old_steel_btns = """          <div class="product-buttons-wrap">
             <button class="btn-product-order btn-product-order-outline" onclick="openSteelNailsOrderModal()">
               <i class="fa-solid fa-file-invoice"></i> فارم سے آرڈر
             </button>
-            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923152395969?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے ۵ دم شدہ اسٹیل کیلوں کا سیٹ (Rs. 6,000) آرڈر کرنا ہے۔ برائے مہربانی رہنمائی فرمائیں۔'), '_blank')">
+            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923317704807?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے ۵ دم شدہ اسٹیل کیلوں کا سیٹ (Rs. 6,000) آرڈر کرنا ہے۔ برائے مہربانی رہنمائی فرمائیں۔'), '_blank')">
               <i class="fa-brands fa-whatsapp"></i> واٹس ایپ آرڈر
             </button>
           </div>"""
 
 new_steel_btns = """          <div class="product-buttons-wrap">
-            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923152395969?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے ۵ دم شدہ اسٹیل کیلوں کا سیٹ (Rs. 6,000) آرڈر کرنا ہے۔ برائے مہربانی رہنمائی فرمائیں۔'), '_blank')">
-              <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> واٹس ایپ آرڈر (0315 2395969)
+            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923317704807?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے ۵ دم شدہ اسٹیل کیلوں کا سیٹ (Rs. 6,000) آرڈر کرنا ہے۔ برائے مہربانی رہنمائی فرمائیں۔'), '_blank')">
+              <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> واٹس ایپ آرڈر (0331 7704807)
             </button>
             <button class="btn-product-order btn-product-order-outline" onclick="openSteelNailsOrderModal()">
               <i class="fa-solid fa-file-invoice"></i> فارم سے آرڈر کریں
@@ -354,14 +354,14 @@ old_sariye_btns = """          <div class="product-buttons-wrap">
             <button class="btn-product-order btn-product-order-outline" onclick="openSariyeOrderModal()">
               <i class="fa-solid fa-file-invoice"></i> فارم سے آرڈر
             </button>
-            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923152395969?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے دم شدہ ۱۸ انچ فولادی سریوں (Rs. 25,000) کی معلومات اور آرڈر کے لیے رابطہ کرنا ہے۔'), '_blank')">
+            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923317704807?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے دم شدہ ۱۸ انچ فولادی سریوں (Rs. 25,000) کی معلومات اور آرڈر کے لیے رابطہ کرنا ہے۔'), '_blank')">
               <i class="fa-brands fa-whatsapp"></i> واٹس ایپ آرڈر
             </button>
           </div>"""
 
 new_sariye_btns = """          <div class="product-buttons-wrap">
-            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923152395969?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے دم شدہ ۱۸ انچ فولادی سریوں (Rs. 25,000) کی معلومات اور آرڈر کے لیے رابطہ کرنا ہے۔'), '_blank')">
-              <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> واٹس ایپ آرڈر (0315 2395969)
+            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923317704807?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے دم شدہ ۱۸ انچ فولادی سریوں (Rs. 25,000) کی معلومات اور آرڈر کے لیے رابطہ کرنا ہے۔'), '_blank')">
+              <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> واٹس ایپ آرڈر (0331 7704807)
             </button>
             <button class="btn-product-order btn-product-order-outline" onclick="openSariyeOrderModal()">
               <i class="fa-solid fa-file-invoice"></i> فارم سے آرڈر کریں
@@ -376,14 +376,14 @@ old_gem_btns = """          <div class="product-buttons-wrap">
             <button class="btn-product-order btn-product-order-outline" onclick="openGemstoneRingOrderModal()">
               <i class="fa-solid fa-file-invoice"></i> فارم سے آرڈر
             </button>
-            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923152395969?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے متبرک منقش عقیق انگوٹھی یا نگینہ حاصل کرنے کے لیے رہنمائی درکار ہے۔'), '_blank')">
+            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923317704807?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے متبرک منقش عقیق انگوٹھی یا نگینہ حاصل کرنے کے لیے رہنمائی درکار ہے۔'), '_blank')">
               <i class="fa-brands fa-whatsapp"></i> واٹس ایپ آرڈر
             </button>
           </div>"""
 
 new_gem_btns = """          <div class="product-buttons-wrap">
-            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923152395969?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے متبرک منقش عقیق انگوٹھی یا نگینہ حاصل کرنے کے لیے رہنمائی درکار ہے۔'), '_blank')">
-              <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> واٹس ایپ آرڈر (0315 2395969)
+            <button class="btn-product-order btn-product-order-primary" onclick="window.open('https://wa.me/923317704807?text=' + encodeURIComponent('السلام علیکم مفتی خضر متین صاحب! مجھے متبرک منقش عقیق انگوٹھی یا نگینہ حاصل کرنے کے لیے رہنمائی درکار ہے۔'), '_blank')">
+              <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> واٹس ایپ آرڈر (0331 7704807)
             </button>
             <button class="btn-product-order btn-product-order-outline" onclick="openGemstoneRingOrderModal()">
               <i class="fa-solid fa-file-invoice"></i> فارم سے آرڈر کریں
