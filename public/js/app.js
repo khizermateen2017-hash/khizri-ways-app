@@ -8413,23 +8413,31 @@ window.sendSuhrawardiReport = function(lang) {
   window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
-/* --- STEP 3: 5 SUFI ORDERS FOLDER SCREEN SYSTEM --- */
+/* --- STEP 3: 5 SUFI ORDERS DEDICATED FULL SCREEN SYSTEM --- */
 window.currentSilsilaOrder = { ur: 'suhrawardi', en: 'suhrawardi' };
 
 window.openSilsilaFolderScreen = function(orderKey, lang) {
   if (!orderKey) orderKey = 'suhrawardi';
-  if (!lang) lang = 'ur';
+  if (!lang) lang = (window.state && window.state.currentLang) || 'ur';
   window.currentSilsilaOrder[lang] = orderKey;
 
-  const modalId = (lang === 'ur') ? 'modalSilsilaScreenUr' : 'modalSilsilaScreenEn';
-  window.switchSilsilaScreenTab(orderKey, lang);
-  if (typeof window.openModal === 'function') {
-    window.openModal(modalId);
+  // 1. Switch to the dedicated full-screen page for Silsila
+  if (typeof window.switchTab === 'function') {
+    window.switchTab('tabSilsilaDetail');
   }
+
+  // 2. Activate the selected Silsila tab and show corresponding content
+  window.switchSilsilaScreenTab(orderKey, lang);
+
+  // 3. Scroll page to top
+  const scrollArea = document.getElementById('silsilaPageScrollArea');
+  if (scrollArea) scrollArea.scrollTop = 0;
 };
 
+window.openSilsilaPage = window.openSilsilaFolderScreen;
+
 window.switchSilsilaScreenTab = function(orderKey, lang) {
-  if (!lang) lang = 'ur';
+  if (!lang) lang = (window.state && window.state.currentLang) || 'ur';
   const allOrders = ['suhrawardi', 'chishti', 'qadiri', 'naqshbandi', 'shadhili'];
   window.currentSilsilaOrder[lang] = orderKey;
   const currentIdx = allOrders.indexOf(orderKey);
@@ -8480,82 +8488,86 @@ window.switchSilsilaScreenTab = function(orderKey, lang) {
 
   // 1. Show only target detail container
   allOrders.forEach(k => {
-    const d = document.getElementById('silsilaDetail_' + k + '_' + lang);
-    if (d) {
-      d.style.display = (k === orderKey) ? 'block' : 'none';
-    }
+    const dEn = document.getElementById('silsilaDetail_' + k + '_en');
+    const dUr = document.getElementById('silsilaDetail_' + k + '_ur');
+    if (dEn) dEn.style.display = (k === orderKey) ? 'block' : 'none';
+    if (dUr) dUr.style.display = (k === orderKey) ? 'block' : 'none';
   });
 
   // 2. Update screen tabs active class
   allOrders.forEach(k => {
-    const tab = document.getElementById('silsilaTab_' + k + '_' + lang) || document.getElementById('screenTab_' + k + '_' + lang);
-    if (tab) {
+    const tabEn = document.getElementById('silsilaTab_' + k + '_en');
+    const tabUr = document.getElementById('silsilaTab_' + k + '_ur');
+    if (tabEn) {
       if (k === orderKey) {
-        tab.classList.add('active');
-        try { tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); } catch(e){}
+        tabEn.classList.add('active');
+        try { tabEn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); } catch(e){}
       } else {
-        tab.classList.remove('active');
+        tabEn.classList.remove('active');
+      }
+    }
+    if (tabUr) {
+      if (k === orderKey) {
+        tabUr.classList.add('active');
+        try { tabUr.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); } catch(e){}
+      } else {
+        tabUr.classList.remove('active');
       }
     }
   });
 
   // 3. Update Header Title
-  if (lang === 'ur') {
-    const titleEl = document.getElementById('silsilaScreenHeaderTitleUr');
-    if (titleEl) titleEl.textContent = titlesUr[orderKey] || 'سلاسلِ تصوف';
-  } else {
-    const titleEl = document.getElementById('silsilaScreenHeaderTitleEn');
-    if (titleEl) titleEl.textContent = titlesEn[orderKey] || 'Sufi Orders';
+  const mainHeaderTitle = document.getElementById('silsilaScreenHeaderTitle');
+  if (mainHeaderTitle) {
+    mainHeaderTitle.textContent = (lang === 'ur') ? (titlesUr[orderKey] || 'سلاسلِ تصوف') : (titlesEn[orderKey] || 'Sufi Orders');
   }
 
   // 4. Update Prev / Next Buttons in Footer
-  if (lang === 'ur') {
-    const btnPrev = document.getElementById('btnPrevSilsilaUr');
-    const btnNext = document.getElementById('btnNextSilsilaUr');
-    if (btnPrev) {
-      if (currentIdx > 0) {
-        btnPrev.style.display = 'inline-flex';
-        btnPrev.innerHTML = `<i class="fa-solid fa-arrow-right"></i> پچھلا: ${prevNamesUr[orderKey] || ''}`;
-      } else {
-        btnPrev.style.display = 'none';
-      }
+  const btnPrevUr = document.getElementById('btnPrevSilsilaUr');
+  const btnNextUr = document.getElementById('btnNextSilsilaUr');
+  if (btnPrevUr) {
+    if (currentIdx > 0) {
+      btnPrevUr.style.display = 'inline-flex';
+      btnPrevUr.innerHTML = `<i class="fa-solid fa-arrow-right"></i> پچھلا: ${prevNamesUr[orderKey] || ''}`;
+    } else {
+      btnPrevUr.style.display = 'none';
     }
-    if (btnNext) {
-      if (currentIdx < allOrders.length - 1) {
-        btnNext.style.display = 'inline-flex';
-        btnNext.innerHTML = `<span>اگلا: ${nextNamesUr[orderKey] || ''}</span> <i class="fa-solid fa-arrow-left"></i>`;
-      } else {
-        btnNext.style.display = 'none';
-      }
+  }
+  if (btnNextUr) {
+    if (currentIdx < allOrders.length - 1) {
+      btnNextUr.style.display = 'inline-flex';
+      btnNextUr.innerHTML = `<span>اگلا: ${nextNamesUr[orderKey] || ''}</span> <i class="fa-solid fa-arrow-left"></i>`;
+    } else {
+      btnNextUr.style.display = 'none';
     }
-  } else {
-    const btnPrev = document.getElementById('btnPrevSilsilaEn');
-    const btnNext = document.getElementById('btnNextSilsilaEn');
-    if (btnPrev) {
-      if (currentIdx > 0) {
-        btnPrev.style.display = 'inline-flex';
-        btnPrev.innerHTML = `<i class="fa-solid fa-arrow-left"></i> Prev: ${prevNamesEn[orderKey] || ''}`;
-      } else {
-        btnPrev.style.display = 'none';
-      }
+  }
+
+  const btnPrevEn = document.getElementById('btnPrevSilsilaEn');
+  const btnNextEn = document.getElementById('btnNextSilsilaEn');
+  if (btnPrevEn) {
+    if (currentIdx > 0) {
+      btnPrevEn.style.display = 'inline-flex';
+      btnPrevEn.innerHTML = `<i class="fa-solid fa-arrow-left"></i> Prev: ${prevNamesEn[orderKey] || ''}`;
+    } else {
+      btnPrevEn.style.display = 'none';
     }
-    if (btnNext) {
-      if (currentIdx < allOrders.length - 1) {
-        btnNext.style.display = 'inline-flex';
-        btnNext.innerHTML = `<span>Next: ${nextNamesEn[orderKey] || ''}</span> <i class="fa-solid fa-arrow-right"></i>`;
-      } else {
-        btnNext.style.display = 'none';
-      }
+  }
+  if (btnNextEn) {
+    if (currentIdx < allOrders.length - 1) {
+      btnNextEn.style.display = 'inline-flex';
+      btnNextEn.innerHTML = `<span>Next: ${nextNamesEn[orderKey] || ''}</span> <i class="fa-solid fa-arrow-right"></i>`;
+    } else {
+      btnNextEn.style.display = 'none';
     }
   }
 
   // 5. Scroll screen body to top
-  const bodyEl = document.getElementById('silsilaScreenBody' + (lang === 'ur' ? 'Ur' : 'En'));
-  if (bodyEl) bodyEl.scrollTop = 0;
+  const scrollArea = document.getElementById('silsilaPageScrollArea');
+  if (scrollArea) scrollArea.scrollTop = 0;
 };
 
 window.stepSilsilaOrder = function(dir, lang) {
-  if (!lang) lang = 'ur';
+  if (!lang) lang = (window.state && window.state.currentLang) || 'ur';
   const allOrders = ['suhrawardi', 'chishti', 'qadiri', 'naqshbandi', 'shadhili'];
   const cur = window.currentSilsilaOrder[lang] || 'suhrawardi';
   let idx = allOrders.indexOf(cur);
@@ -8563,6 +8575,13 @@ window.stepSilsilaOrder = function(dir, lang) {
   if (idx < 0) idx = 0;
   if (idx >= allOrders.length) idx = allOrders.length - 1;
   window.switchSilsilaScreenTab(allOrders[idx], lang);
+};
+
+window.openSilsilaStandalone = function(orderKey, lang) {
+  if (!orderKey) orderKey = window.currentSilsilaOrder[lang || 'ur'] || 'suhrawardi';
+  if (!lang) lang = (window.state && window.state.currentLang) || 'ur';
+  const url = `silsila.html?order=${orderKey}&lang=${lang}`;
+  window.open(url, '_blank');
 };
 
 // Compatibility functions

@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Custom Stylesheet with Cache Buster -->
-  <link rel="stylesheet" href="css/app.css?v=20260927_1150_silsila_folders_screen_live">
+  <link rel="stylesheet" href="css/app.css?v=20260927_1215_silsila_dedicated_page_live">
 </head>
 <body class="deen-app-body khizri-theme">
 
@@ -2950,6 +2950,694 @@
 
             </div>
           </div></section>
+
+                <!-- ====================================================
+             TAB SCREEN: SILSILA LESSONS (DEDICATED NEW FULL SCREEN PAGE)
+             ==================================================== -->
+        <section class="tab-screen" id="tabSilsilaDetail">
+          <div class="sub-screen-header">
+            <button class="btn-sub-back" onclick="window.switchTab('tabTasawwuf')" title="Back to Tasawwuf">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <h3 class="sub-screen-title" id="silsilaScreenHeaderTitle">سلاسلِ تصوف و اسباق</h3>
+            <button class="btn-icon-sub" onclick="openSilsilaStandalone()" title="Open in new window">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </button>
+          </div>
+          <div class="sub-screen-scroll" id="silsilaPageScrollArea">
+            
+            <!-- [ENGLISH VERSION] OF DEDICATED SILSILA PAGE -->
+            <div class="lang-en-only ltr-on-en">
+              
+              <!-- Sticky Tabs & Back Bar -->
+              <div class="silsila-page-nav-bar">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <button type="button" onclick="window.switchTab('tabTasawwuf')" class="silsila-page-back-pill">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Tasawwuf
+                  </button>
+                  <span style="font-size: 0.72rem; color: #15803D; background: #DCFCE7; font-weight: 800; padding: 3px 10px; border-radius: 20px;">
+                    Tuhfat-ul-Masha'ikh
+                  </span>
+                </div>
+
+                <!-- Quick Switcher Tabs Bar -->
+                <div class="silsila-screen-tabs-bar">
+                  <button type="button" id="silsilaTab_suhrawardi_en" class="silsila-screen-tab active" onclick="switchSilsilaScreenTab('suhrawardi', 'en')">
+                    <span class="tab-badge">1</span> Suhrawardi
+                  </button>
+                  <button type="button" id="silsilaTab_chishti_en" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('chishti', 'en')">
+                    <span class="tab-badge">2</span> Chishti
+                  </button>
+                  <button type="button" id="silsilaTab_qadiri_en" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('qadiri', 'en')">
+                    <span class="tab-badge">3</span> Qadiri
+                  </button>
+                  <button type="button" id="silsilaTab_naqshbandi_en" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('naqshbandi', 'en')">
+                    <span class="tab-badge">4</span> Naqshbandi
+                  </button>
+                  <button type="button" id="silsilaTab_shadhili_en" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('shadhili', 'en')">
+                    <span class="tab-badge">5</span> Shadhili
+                  </button>
+                </div>
+              </div>
+
+              <!-- Scrollable Screen Content Body (English) -->
+              <div class="silsila-screen-body" id="silsilaScreenBodyEn" style="padding-top: 6px;">
+<!-- 1. Suhrawardiya Detail Container -->
+                <div id="silsilaDetail_suhrawardi_en" class="silsila-detail-box" style="display: block;">
+                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #3B82F6; border-radius: 16px; padding: 16px; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.12); text-align: left;">
+                    
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="background: #1D4ED8; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">1</span>
+                        <strong style="color: #1E3A8A; font-size: 1.05rem;">Suhrawardi Order (اسباقِ سلسلہ سہروردیہ)</strong>
+                      </div>
+                      <span style="font-size: 0.7rem; color: #1D4ED8; background: #EFF6FF; padding: 3px 8px; border-radius: 12px; font-weight: 800; border: 1px solid #BFDBFE;">Tuhfat-ul-Masha'ikh</span>
+                    </div>
+                    
+                    <p style="font-size: 0.8rem; color: #334155; line-height: 1.55; margin: 0 0 10px 0;">
+                      Sanad traces directly to Hazrat Ali (RA) with foundation in Wilayah. Stations, spiritual faculties (Lata'if), and colored lights of illumination are unified.
+                    </p>
+
+                    <!-- Spiritual Centers (Lata'if) & Lights Box -->
+                    <div style="background: #F8FAFC; border: 1.5px solid #CBD5E1; border-radius: 12px; padding: 12px; margin-bottom: 12px;">
+                      <div style="font-weight: 800; font-size: 0.84rem; color: #0F172A; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
+                        <span><i class="fa-solid fa-palette text-gold"></i> The 6 Subtle Centers (Lata'if) &amp; Colored Lights:</span>
+                        <span style="font-size: 0.72rem; color: #64748B;">Locations &amp; Colors</span>
+                      </div>
+                      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; font-size: 0.74rem;">
+                        <div style="background: #FEF9C3; border: 1px solid #FDE047; padding: 6px; border-radius: 6px; color: #854D0E;"><strong>1. Nafs:</strong> Yellow (2 fingers below navel)</div>
+                        <div style="background: #FEE2E2; border: 1px solid #FECACA; padding: 6px; border-radius: 6px; color: #991B1B;"><strong>2. Qalb:</strong> Red (2 fingers below left breast)</div>
+                        <div style="background: #F1F5F9; border: 1px solid #CBD5E1; padding: 6px; border-radius: 6px; color: #1E293B;"><strong>3. Rooh:</strong> White (2 fingers below right breast)</div>
+                        <div style="background: #DCFCE7; border: 1px solid #86EFAC; padding: 6px; border-radius: 6px; color: #166534;"><strong>4. Sirr:</strong> Green</div>
+                        <div style="background: #DBEAFE; border: 1px solid #93C5FD; padding: 6px; border-radius: 6px; color: #1E40AF;"><strong>5. Khafi:</strong> Blue</div>
+                        <div style="background: #1E293B; border: 1px solid #0F172A; padding: 6px; border-radius: 6px; color: #F8FAFC;"><strong>6. Akhfa:</strong> Black</div>
+                      </div>
+                    </div>
+
+                    <!-- Date Started Tracker Strip -->
+                    <div style="background: #EFF6FF; border: 1px solid #93C5FD; border-radius: 10px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                      <div style="display: flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 700; color: #1E40AF;">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <span>Date Started:</span>
+                        <input type="date" id="suhrawardiStartDateEn" onchange="saveSuhrawardiDateEn()" style="border: 1px solid #CBD5E1; border-radius: 6px; padding: 2px 6px; font-size: 0.76rem;">
+                      </div>
+                      <span id="suhrawardiDayCounterEn" style="font-size: 0.74rem; font-weight: 800; background: #DBEAFE; color: #1D4ED8; padding: 2px 8px; border-radius: 10px;">
+                        Day: 1
+                      </span>
+                    </div>
+
+                    <!-- 7 Authentic Asbaq (Lessons) -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
+                      <!-- Lesson 1 -->
+                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                          <strong style="color: #1E3A8A;">Lesson 1: Dawazdah Tasbih (دوازدہ تسبیح)</strong>
+                          <label style="font-size: 0.72rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                            <input type="checkbox" id="suhTickEn_1" onchange="toggleSuhTickEn(1)"> Completed
+                          </label>
+                        </div>
+                        <div style="color: #475569; line-height: 1.5;">
+                          • La Ilaha Illallah: 200x • Illallah: 400x • Allah: 600x.<br>
+                          <strong>Method 1:</strong> Recite across all Lata'if sequentially (Nafs, Qalb, Rooh, Sirr, Khafi, Akhfa).<br>
+                          <strong>Method 2:</strong> Shape of "La" drawn from Nafs to Akhfa, "Ilaha" on Rooh, "Illallah" struck onto Qalb.
+                        </div>
+                      </div>
+
+                      <!-- Lesson 2 -->
+                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                          <strong style="color: #1E3A8A;">Lesson 2: Zikr-e-Khafi of Ism-e-Zaat (اسمِ ذات کا ذکرِ خفی)</strong>
+                          <label style="font-size: 0.72rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                            <input type="checkbox" id="suhTickEn_2" onchange="toggleSuhTickEn(2)"> Completed
+                          </label>
+                        </div>
+                        <div style="color: #475569; line-height: 1.5;">
+                          Silent heart invocation of «Allah» across all subtle centers in sequence. Minimum count: 12,000 times; Maximum: 125,000 times.
+                        </div>
+                      </div>
+
+                      <!-- Lesson 3 -->
+                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                          <strong style="color: #1E3A8A;">Lesson 3: Nafi wa Isbat with Breath Vigil (نفی و اثبات)</strong>
+                          <label style="font-size: 0.72rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                            <input type="checkbox" id="suhTickEn_3" onchange="toggleSuhTickEn(3)"> Completed
+                          </label>
+                        </div>
+                        <div style="color: #475569; line-height: 1.5;">
+                          <strong>Method 1:</strong> Exhale «La Ilaha» visualizing base vices exiting the body; inhale «Illallah» firmly embedding radiant noble virtues into the spirit.<br>
+                          <strong>Method 2:</strong> Exhale expelling thoughts of false idols; inhale firmly rooting the conviction of the True Creator.
+                        </div>
+                      </div>
+
+                      <!-- Lesson 4 -->
+                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                          <strong style="color: #1E3A8A;">Lesson 4: Muraqaba-e-Nafs (مراقبۂ نفس)</strong>
+                          <label style="font-size: 0.72rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                            <input type="checkbox" id="suhTickEn_4" onchange="toggleSuhTickEn(4)"> Completed
+                          </label>
+                        </div>
+                        <div style="color: #475569; line-height: 1.5;">
+                          «يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ» (Surah Al-Fajr: 27). Deep meditation visualizing your purified soul at peace, standing directly before you in your exact likeness.
+                        </div>
+                      </div>
+
+                      <!-- Lesson 5 -->
+                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                          <strong style="color: #1E3A8A;">Lesson 5: Muraqaba-e-Ilm (مراقبۂ علم)</strong>
+                          <label style="font-size: 0.72rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                            <input type="checkbox" id="suhTickEn_5" onchange="toggleSuhTickEn(5)"> Completed
+                          </label>
+                        </div>
+                        <div style="color: #475569; line-height: 1.5;">
+                          «فَادْخُلِي فِي عِبَادِي» entering true servanthood, rising to the Divine Throne reciting «Ya Samee'u Ya Baseer». Followed by «رَّبِّ زِدْنِي عِلْمًا» reciting «Allah Aleem», receiving direct influx of divine gnosis.
+                        </div>
+                      </div>
+
+                      <!-- Lesson 6 -->
+                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                          <strong style="color: #1E3A8A;">Lesson 6: Muraqaba-e-Jannat (مراقبۂ جنت)</strong>
+                          <label style="font-size: 0.72rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                            <input type="checkbox" id="suhTickEn_6" onchange="toggleSuhTickEn(6)"> Completed
+                          </label>
+                        </div>
+                        <div style="color: #475569; line-height: 1.5;">
+                          «وَادْخُلِي جَنَّتِي» (Surah Al-Fajr: 30). Contemplating being inside Paradise, immersed in eternal favors, above all the supreme bliss of the Divine Vision.
+                        </div>
+                      </div>
+
+                      <!-- Lesson 7 -->
+                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                          <strong style="color: #1E3A8A;">Lesson 7: Muraqaba-e-Ma'iyyat (مراقبۂ معیتِ الٰہی)</strong>
+                          <label style="font-size: 0.72rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                            <input type="checkbox" id="suhTickEn_7" onchange="toggleSuhTickEn(7)"> Completed
+                          </label>
+                        </div>
+                        <div style="color: #475569; line-height: 1.5;">
+                          «وَهُوَ مَعَكُمْ أَيْنَ مَا كُنتُمْ» (Surah Al-Hadid: 4). Contemplating that Allah the Almighty is intimately with you at every instant, surrounding every breath.
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- In-App Reader & WhatsApp Report -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                      <button type="button" onclick="openSuhrawardiAsbaqReader()" style="background: #1D4ED8; color: #FFF; border: none; border-radius: 8px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                        <i class="fa-solid fa-book-open"></i> Full Asbaq Viewer
+                      </button>
+                      <button type="button" onclick="sendSuhrawardiReport('en')" style="background: #059669; color: #FFF; border: none; border-radius: 8px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                        <i class="fa-brands fa-whatsapp text-gold"></i> Report Progress
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <!-- 2. Chishti Detail Container -->
+                <div id="silsilaDetail_chishti_en" class="silsila-detail-box" style="display: none;">
+                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #8B5CF6; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.08); text-align: left;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="background: #7C3AED; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">2</span>
+                        <strong style="color: #5B21B6; font-size: 1.02rem;">Chishti Order (سلسلہ چشتیہ)</strong>
+                      </div>
+                      <span style="font-size: 0.7rem; color: #7C3AED; background: #F5F3FF; padding: 2px 7px; border-radius: 4px; font-weight: 700;">Divine Love (Ishq)</span>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #475569; margin: 0 0 10px 0;">Founded by Khwaja Mu'in al-Din Chishti Ajmeri (RA). Focuses on fervent divine love, heartfelt Dhikr, tenderness, and service to humanity.</p>
+                    
+                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.77rem; display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px;">
+                      <div><strong>Lesson 1: Zikr-e-Jali (Vocal Heart Dhikr):</strong> Rhythmic invocation of «Allah, Allah» (300 times daily) melting hardness of heart.</div>
+                      <div><strong>Lesson 2: Four-Stroke Dhikr (Char Zarbi):</strong> Four-directional strike of «La Ilaha Illallah» on navel, chest, right shoulder, and heart.</div>
+                      <div><strong>Lesson 3: Contemplation of Divine Unity:</strong> 500x Durood Shareef after Isha with deep emotional absorption in the Prophetic presence ﷺ.</div>
+                      <div><strong>Lesson 4: Selflessness &amp; Compassion:</strong> Active charity and humility towards all living beings.</div>
+                    </div>
+
+                    <div style="display: flex; gap: 8px;">
+                      <button type="button" onclick="openTuhfatReader('chishti')" style="flex: 1; background: #7C3AED; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
+                        <i class="fa-solid fa-book-open"></i> Read Chishti Guide
+                      </button>
+                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
+                        <i class="fa-solid fa-download"></i> Download Asbaq PDF
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- 3. Qadiri Detail Container -->
+                <div id="silsilaDetail_qadiri_en" class="silsila-detail-box" style="display: none;">
+                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #0284C7; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08); text-align: left;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="background: #0284C7; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">3</span>
+                        <strong style="color: #075985; font-size: 1.02rem;">Qadiri Order (سلسلہ قادریہ)</strong>
+                      </div>
+                      <span style="font-size: 0.7rem; color: #0284C7; background: #F0F9FF; padding: 2px 7px; border-radius: 4px; font-weight: 700;">Spiritual Majesty</span>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #475569; margin: 0 0 10px 0;">Founded by Sayyiduna Shaykh Abd al-Qadir al-Jilani (RA). Focuses on divine proximity, royal litanies, and commanding spiritual authority.</p>
+                    
+                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.77rem; display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px;">
+                      <div><strong>Lesson 1: Hizb al-A'zam &amp; Durood-e-Ghousia:</strong> Daily portion of Hizb al-A'zam and 100x Durood-e-Ghousia after Fajr.</div>
+                      <div><strong>Lesson 2: Royal Litany of Essential Names:</strong> 1,000x «Ya Hayyu Ya Qayyum» or «Ya Allahu Ya Kareem» daily.</div>
+                      <div><strong>Lesson 3: Contemplation of Divine Majesty (Haybat):</strong> Tahajjud meditation feeling the overwhelming grandeur and majesty of the Creator.</div>
+                      <div><strong>Lesson 4: Inner Conquering (Fath-ul-Quloob):</strong> Vanquishing dark demonic forces and absorbing sovereign angelic light.</div>
+                    </div>
+
+                    <div style="display: flex; gap: 8px;">
+                      <button type="button" onclick="openTuhfatReader('qadiri')" style="flex: 1; background: #0284C7; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
+                        <i class="fa-solid fa-book-open"></i> Read Qadiri Guide
+                      </button>
+                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
+                        <i class="fa-solid fa-download"></i> Download Asbaq PDF
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- 4. Naqshbandi Detail Container -->
+                <div id="silsilaDetail_naqshbandi_en" class="silsila-detail-box" style="display: none;">
+                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #059669; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.08); text-align: left;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="background: #065F46; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">4</span>
+                        <strong style="color: #064E3B; font-size: 1.02rem;">Naqshbandi Order (سلسلہ نقشبندیہ)</strong>
+                      </div>
+                      <span style="font-size: 0.7rem; color: #065F46; background: #ECFDF5; padding: 2px 7px; border-radius: 4px; font-weight: 700;">Silent Dhikr &amp; 6 Subtle Centers</span>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #475569; margin: 0 0 10px 0;">Founded by Khwaja Baha al-Din Naqshband (RA). Focuses on silent tongue-less Dhikr, heart stillness, and rapid illumination of subtle chakras (Lataif).</p>
+                    
+                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.77rem; display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px;">
+                      <div><strong>Lesson 1: Wuquf-e-Qalbi (Heart Stillness):</strong> Tongue fixed to roof of mouth; 5,000x silent mental repetition of «Allah, Allah» at the physical heart.</div>
+                      <div><strong>Lesson 2: Illumination of 5 Subtle Centers:</strong> Progressively energizing Qalb (red), Ruh (yellow), Sirr (white), Khafi (green), and Akhfa (black/radiant).</div>
+                      <div><strong>Lesson 3: Nafs Discipline &amp; Breath Retention:</strong> Inward meditation of Nafi wa Isbat with controlled breathing.</div>
+                      <div><strong>Lesson 4: Sultan-ul-Azkar:</strong> Every hair follicle, cell, and nerve vibrating spontaneously in continuous divine remembrance.</div>
+                    </div>
+
+                    <div style="display: flex; gap: 8px;">
+                      <button type="button" onclick="openTuhfatReader('naqshbandi')" style="flex: 1; background: #065F46; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
+                        <i class="fa-solid fa-book-open"></i> Read Naqshbandi Guide
+                      </button>
+                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
+                        <i class="fa-solid fa-download"></i> Download Asbaq PDF
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- 5. Shadhili Detail Container -->
+                <div id="silsilaDetail_shadhili_en" class="silsila-detail-box" style="display: none;">
+                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #D97706; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.08); text-align: left;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="background: #B45309; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">5</span>
+                        <strong style="color: #78350F; font-size: 1.02rem;">Shadhili Order (سلسلہ شاذلیہ)</strong>
+                      </div>
+                      <span style="font-size: 0.7rem; color: #B45309; background: #FEF3C7; padding: 2px 7px; border-radius: 4px; font-weight: 700;">Gratitude (Shukr) &amp; Hizb-ul-Bahr</span>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #475569; margin: 0 0 10px 0;">Founded by Imam Abu al-Hasan al-Shadhili (RA). Focuses on constant gratitude, inner detachment from people, and the formidable litany of the sea (Hizb-ul-Bahr).</p>
+                    
+                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.77rem; display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px;">
+                      <div><strong>Lesson 1: Hizb-ul-Bahr Recitation:</strong> Daily recitation between Asr and Maghrib facing Qiblah with protective visualization.</div>
+                      <div><strong>Lesson 2: Contemplation of the Bestower (Shukr):</strong> Directing gratitude to Allah in ease and fortitude in trials; ending all worldly dependency.</div>
+                      <div><strong>Lesson 3: Lutf Litany:</strong> 129x «Ya Lateef» after Isha with supplication for relief and divine gentleness in decrees.</div>
+                      <div><strong>Lesson 4: Contemplation of Primordial Light:</strong> Witnessing the Creator's artistry in every element of existence.</div>
+                    </div>
+
+                    <div style="display: flex; gap: 8px;">
+                      <button type="button" onclick="openTuhfatReader('shadhili')" style="flex: 1; background: #B45309; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
+                        <i class="fa-solid fa-book-open"></i> Read Shadhili Guide
+                      </button>
+                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
+                        <i class="fa-solid fa-download"></i> Download Asbaq PDF
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+      </div>
+              </div>
+
+              <!-- Bottom Navigation Footer (English) -->
+              <div class="silsila-screen-footer">
+                <button type="button" id="btnPrevSilsilaEn" onclick="stepSilsilaOrder(-1, 'en')" class="silsila-screen-nav-btn prev-btn">
+                  <i class="fa-solid fa-arrow-left"></i> Previous Order
+                </button>
+                <button type="button" onclick="window.switchTab('tabTasawwuf')" class="silsila-screen-nav-btn folders-btn">
+                  <i class="fa-solid fa-shapes"></i> All Orders
+                </button>
+                <button type="button" id="btnNextSilsilaEn" onclick="stepSilsilaOrder(1, 'en')" class="silsila-screen-nav-btn next-btn">
+                  Next Order <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- [URDU VERSION] OF DEDICATED SILSILA PAGE -->
+            <div class="lang-ur-only rtl-on-ur" style="direction: rtl; text-align: right;">
+              
+              <!-- Sticky Tabs & Back Bar -->
+              <div class="silsila-page-nav-bar" style="direction: rtl;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <button type="button" onclick="window.switchTab('tabTasawwuf')" class="silsila-page-back-pill">
+                    <i class="fa-solid fa-arrow-right"></i> واپس تصوف و عرفان
+                  </button>
+                  <span style="font-size: 0.72rem; color: #15803D; background: #DCFCE7; font-weight: 800; padding: 3px 10px; border-radius: 20px;">
+                    تحفۃ المشائخ
+                  </span>
+                </div>
+
+                <!-- Quick Switcher Tabs Bar (Urdu) -->
+                <div class="silsila-screen-tabs-bar" style="direction: rtl;">
+                  <button type="button" id="silsilaTab_suhrawardi_ur" class="silsila-screen-tab active" onclick="switchSilsilaScreenTab('suhrawardi', 'ur')">
+                    <span class="tab-badge">۱</span> سہروردیہ
+                  </button>
+                  <button type="button" id="silsilaTab_chishti_ur" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('chishti', 'ur')">
+                    <span class="tab-badge">۲</span> چشتیہ
+                  </button>
+                  <button type="button" id="silsilaTab_qadiri_ur" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('qadiri', 'ur')">
+                    <span class="tab-badge">۳</span> قادریہ
+                  </button>
+                  <button type="button" id="silsilaTab_naqshbandi_ur" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('naqshbandi', 'ur')">
+                    <span class="tab-badge">۴</span> نقشبندیہ
+                  </button>
+                  <button type="button" id="silsilaTab_shadhili_ur" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('shadhili', 'ur')">
+                    <span class="tab-badge">۵</span> شاذلیہ
+                  </button>
+                </div>
+              </div>
+
+              <!-- Scrollable Screen Content Body (Urdu) -->
+              <div class="silsila-screen-body" id="silsilaScreenBodyUr" style="padding-top: 6px;">
+<!-- 1. Suhrawardiya Detail Container -->
+                <div id="silsilaDetail_suhrawardi_ur" class="silsila-detail-box" style="display: block;">
+                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #3B82F6; border-radius: 16px; padding: 16px; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.12);">
+                    
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="background: #1D4ED8; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">۱</span>
+                        <strong style="color: #1E3A8A; font-size: 1.05rem; font-family: var(--font-arabic);">اسباقِ سلسلہ عالیہ سہروردیہ (تحفۃ المشائخ)</strong>
+                      </div>
+                      <span style="font-size: 0.7rem; color: #1D4ED8; background: #EFF6FF; padding: 3px 8px; border-radius: 12px; font-weight: 800; border: 1px solid #BFDBFE;">تحفۃ المشائخ</span>
+                    </div>
+                    
+                    <p style="font-size: 0.82rem; color: #334155; line-height: 1.6; margin: 0 0 10px 0;">
+                      سلسلہ عالیہ سہروردیہ کی سند براہِ راست حضرت علی کرم اللہ وجہہ الکریم سے ملتی ہے اور اس کی بنیاد ولایت پر ہے۔ اس میں درجات و مقامات، لطائف اور انوارات کے مختلف رنگ یکجا ہیں۔
+                    </p>
+
+                    <!-- Spiritual Centers (Lata'if) & Lights Box -->
+                    <div style="background: #F8FAFC; border: 1.5px solid #CBD5E1; border-radius: 12px; padding: 12px; margin-bottom: 12px;">
+                      <div style="font-weight: 800; font-size: 0.86rem; color: #0F172A; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
+                        <span><i class="fa-solid fa-palette text-gold"></i> لطائفِ ستہ (۶ روحانی مراکز) اور ان کے انوارات:</span>
+                        <span style="font-size: 0.72rem; color: #64748B;">مقامات و رنگ</span>
+                      </div>
+                      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; font-size: 0.76rem;">
+                        <div style="background: #FEF9C3; border: 1px solid #FDE047; padding: 6px; border-radius: 6px; color: #854D0E;"><strong>۱. نفس:</strong> زرد (ناف کے نیچے ۲ انگل)</div>
+                        <div style="background: #FEE2E2; border: 1px solid #FECACA; padding: 6px; border-radius: 6px; color: #991B1B;"><strong>۲. قلب:</strong> سرخ (بائیں چھاتی کے نیچے ۲ انگل)</div>
+                        <div style="background: #F1F5F9; border: 1px solid #CBD5E1; padding: 6px; border-radius: 6px; color: #1E293B;"><strong>۳. روح:</strong> سفید (دائیں چھاتی کے نیچے ۲ انگل)</div>
+                        <div style="background: #DCFCE7; border: 1px solid #86EFAC; padding: 6px; border-radius: 6px; color: #166534;"><strong>۴. سر:</strong> سبز (دل اور سینے کے درمیان)</div>
+                        <div style="background: #DBEAFE; border: 1px solid #93C5FD; padding: 6px; border-radius: 6px; color: #1E40AF;"><strong>۵. خفی:</strong> نیلا (پیشانی کے وسط میں)</div>
+                        <div style="background: #1E293B; border: 1px solid #0F172A; padding: 6px; border-radius: 6px; color: #F8FAFC;"><strong>۶. اخفیٰ:</strong> سیاہ (سر کے درمیان مغز میں)</div>
+                      </div>
+                    </div>
+
+                    <!-- Date Started Tracker Strip -->
+                    <div style="background: #EFF6FF; border: 1px solid #93C5FD; border-radius: 10px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                      <div style="display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 700; color: #1E40AF;">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <span>اسباق شروع کرنے کی تاریخ:</span>
+                        <input type="date" id="suhrawardiStartDateUr" onchange="saveSuhrawardiDateUr()" style="border: 1px solid #CBD5E1; border-radius: 6px; padding: 2px 6px; font-size: 0.78rem;">
+                      </div>
+                      <span id="suhrawardiDayCounterUr" style="font-size: 0.76rem; font-weight: 800; background: #DBEAFE; color: #1D4ED8; padding: 2px 8px; border-radius: 10px;">
+                        دن: ۱
+                      </span>
+                    </div>
+
+                    <!-- 7 Authentic Asbaq (Lessons) -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
+                      <!-- Lesson 1 -->
+                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                          <strong style="color: #1E3A8A; font-family: var(--font-arabic);">سبق نمبر ۱: دوازدہ تسبیح</strong>
+                          <label style="font-size: 0.74rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                            <input type="checkbox" id="suhTickUr_1" onchange="toggleSuhTickUr(1)"> مکمل کر لیا
+                          </label>
+                        </div>
+                        <div style="color: #334155; line-height: 1.6;">
+                          • لا الہ الا اللہ (200 مرتبہ) • الا اللہ (400 مرتبہ) • اللہ (600 مرتبہ)<br>
+                          <strong>طریقہ اول:</strong> تمام لطائف پر مذکورہ اذکار کریں۔ پہلے لطیفہ نفس پر، پھر لطیفہ قلب پر، پھر لطیفہ روح پر، پھر لطیفہ سر پر، پھر لطیفہ خفی پر، پھر لطیفہ اخفیٰ پر۔<br>
+                          <strong>طریقہ دوم:</strong> "الف": «لا الہ الا اللہ» کا ذکر تمام لطائف پر «لا» کی شکل بنا کر کریں۔ «لا» کو لطیفہ نفس سے کھینچ کر لطیفہ اخفیٰ تک لے جائیں، «الہ» لطیفہ روح پر اور «الا اللہ» لطیفہ قلب پر ضرب لگائیں۔ "ب": اور «الا اللہ» کا ورد تین لطائف پر کرے: روح، سر اور قلب۔ "ج": اور «اللہ» کا ذکر لطیفہ نفس پر۔
+                        </div>
+                      </div>
+
+                      <!-- Lesson 2 -->
+                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                          <strong style="color: #1E3A8A; font-family: var(--font-arabic);">سبق نمبر ۲: اسمِ ذات کا ذکرِ خفی</strong>
+                          <label style="font-size: 0.74rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                            <input type="checkbox" id="suhTickUr_2" onchange="toggleSuhTickUr(2)"> مکمل کر لیا
+                          </label>
+                        </div>
+                        <div style="color: #334155; line-height: 1.6;">
+                          تمام لطائف پر بالترتیب اسم ذات یعنی «اللہ» کا ذکر خفی کرنا۔ کم از کم تعداد 12,000 دفعہ اور زیادہ سے زیادہ تعداد 125,000 دفعہ۔
+                        </div>
+                      </div>
+
+                      <!-- Lesson 3 -->
+                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                          <strong style="color: #1E3A8A; font-family: var(--font-arabic);">سبق نمبر ۳: نفی و اثبات مع حبسِ دم و تخلیہ و تحلیہ</strong>
+                          <label style="font-size: 0.74rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                            <input type="checkbox" id="suhTickUr_3" onchange="toggleSuhTickUr(3)"> مکمل کر لیا
+                          </label>
+                        </div>
+                        <div style="color: #334155; line-height: 1.6;">
+                          <strong>پہلا طریقہ:</strong> «لا الہ الا اللہ» کا ورد اس طرح سے کرے کہ «لا الہ» پڑھتے ہوئے سانس جسم سے باہر چھوڑے یہ تصور کرتے ہوئے کہ اخلاقِ رزیلہ و خسیسہ میرے جسم سے باہر آ رہے ہیں۔ اور «الا اللہ» پڑھتے ہوئے سانس جسم میں داخل کرے یہ تصور جما کر کہ اخلاقِ حمیدہ و جمیلہ میرے جسم میں داخل ہو رہے ہیں۔<br>
+                          <strong>دوسرا طریقہ:</strong> «لا الہ الا اللہ» کا ورد اس طرح کرے کہ «لا الہ» پڑھتے وقت یہ تصور کرتے ہوئے سانس باہر کو نکالے کہ تمام معبودانِ باطلہ کا گمان، شائبہ اور سوچ تک جسم سے باہر نکل رہے ہیں اور «الا اللہ» پڑھتے وقت یہ تصور کرتے ہوئے سانس جسم میں داخل کرے کہ میرے جسم میں معبودِ حقیقی کا اعتقاد رسوخ کر رہا ہے۔
+                        </div>
+                      </div>
+
+                      <!-- Lesson 4 -->
+                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                          <strong style="color: #1E3A8A; font-family: var(--font-arabic);">سبق نمبر ۴: مراقبۂ نفس</strong>
+                          <label style="font-size: 0.74rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                            <input type="checkbox" id="suhTickUr_4" onchange="toggleSuhTickUr(4)"> مکمل کر لیا
+                          </label>
+                        </div>
+                        <div style="color: #334155; line-height: 1.6;">
+                          «يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ» (سورۃ الفجر، آیت: ۲۷، پارہ ۳۰)<br>
+                          <em>ترجمہ: اے اطمینان پانے والی روح! اے نفسِ مطمئنہ!</em><br>
+                          اس آیت کو مدنظر رکھ کر یہ تصور کرے کہ میرا نفس مطمئنہ ہو کر میرے سامنے میری ہی شکل میں کھڑا ہے۔
+                        </div>
+                      </div>
+
+                      <!-- Lesson 5 -->
+                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                          <strong style="color: #1E3A8A; font-family: var(--font-arabic);">سبق نمبر ۵: مراقبۂ علم</strong>
+                          <label style="font-size: 0.74rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                            <input type="checkbox" id="suhTickUr_5" onchange="toggleSuhTickUr(5)"> مکمل کر لیا
+                          </label>
+                        </div>
+                        <div style="color: #334155; line-height: 1.6;">
+                          «فَادْخُلِي فِي عِبَادِي» (سورۃ الفجر، آیت: ۲۹) — <em>ترجمہ: پس میرے ممتاز بندوں میں داخل ہو جا۔</em><br>
+                          اس آیت کو مدنظر رکھ کر یہ تصور کرے کہ میرا نفس عبودیت میں داخل ہو چکا ہے اور پھر «یا سمیع یا بصیر» کا ورد کرتے ہوئے عرش پہ جائے۔ اس کے بعد: «رَّبِّ زِدْنِي عِلْمًا» (سورۃ طٰہٰ، آیت: ۱۱۴) — <em>ترجمہ: اے میرے رب میرے علم میں اضافہ فرما۔</em> اور «اللہ علیم» کا ورد کرتے یہ تصور جمائے کہ میرے نفس پر اللہ کے علم کا ورود ہو رہا ہے۔
+                        </div>
+                      </div>
+
+                      <!-- Lesson 6 -->
+                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                          <strong style="color: #1E3A8A; font-family: var(--font-arabic);">سبق نمبر ۶: مراقبۂ جنت</strong>
+                          <label style="font-size: 0.74rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                            <input type="checkbox" id="suhTickUr_6" onchange="toggleSuhTickUr(6)"> مکمل کر لیا
+                          </label>
+                        </div>
+                        <div style="color: #334155; line-height: 1.6;">
+                          «وَادْخُلِي جَنَّتِي» (سورۃ الفجر، آیت: ۳۰، پارہ ۳۰) — <em>ترجمہ: اور میری بہشت (جنت) میں داخل ہو جا۔</em><br>
+                          اس آیت کو مدنظر رکھ کر یہ تصور کرے کہ میں جنت میں ہوں اور اس کی نعمتوں سے سرشار ہو رہا ہوں۔ سب سے بڑی نعمت اللہ کا دیدار اور دوسری نعمتوں کا تصور کرے اور لطف اندوز ہو۔
+                        </div>
+                      </div>
+
+                      <!-- Lesson 7 -->
+                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                          <strong style="color: #1E3A8A; font-family: var(--font-arabic);">سبق نمبر ۷: مراقبۂ معیت</strong>
+                          <label style="font-size: 0.74rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                            <input type="checkbox" id="suhTickUr_7" onchange="toggleSuhTickUr(7)"> مکمل کر لیا
+                          </label>
+                        </div>
+                        <div style="color: #334155; line-height: 1.6;">
+                          «وَهُوَ مَعَكُمْ أَيْنَ مَا كُنتُمْ» (سورۃ الحدید، آیت: ۴، پارہ ۲۷) — <em>ترجمہ: اور تم جہاں کہیں ہو وہ تمہارے ساتھ ہے۔</em><br>
+                          اس آیت کو مدنظر رکھ کر یہ تصور کرے کہ اللہ رب العزت میرے ساتھ ہے۔
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- In-App Reader & WhatsApp Report -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                      <button type="button" onclick="openSuhrawardiAsbaqReader()" style="background: #1D4ED8; color: #FFF; border: none; border-radius: 8px; padding: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                        <i class="fa-solid fa-book-open text-gold"></i> مکمل اسباق تفصیل
+                      </button>
+                      <button type="button" onclick="sendSuhrawardiReport('ur')" style="background: #059669; color: #FFF; border: none; border-radius: 8px; padding: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                        <i class="fa-brands fa-whatsapp text-gold"></i> پیش رفت رپورٹ بھیجیں
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <!-- 2. Chishtiya Detail Container -->
+                <div id="silsilaDetail_chishti_ur" class="silsila-detail-box" style="display: none;">
+                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #8B5CF6; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.08);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="background: #7C3AED; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">۲</span>
+                        <strong style="color: #5B21B6; font-size: 1.05rem; font-family: var(--font-arabic);">سلسلہ عالیہ چشتیہ (خواجہ معین الدین چشتیؒ)</strong>
+                      </div>
+                      <span style="font-size: 0.7rem; color: #7C3AED; background: #F5F3FF; padding: 2px 7px; border-radius: 4px; font-weight: 700;">عشقِ الٰہی و محبتِ رسولﷺ</span>
+                    </div>
+                    <p style="font-size: 0.82rem; color: #475569; margin: 0 0 10px 0; line-height: 1.55;">عشقِ الٰہی، محبتِ رسول ﷺ، خدمتِ خلق، سوز و گداز اور قلبی رقت کا پرتاثیر راستہ۔</p>
+                    
+                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.79rem; display: flex; flex-direction: column; gap: 7px; margin-bottom: 10px; line-height: 1.6;">
+                      <div><strong>سبق ۱ (ذکرِ جلی و پاسِ انفاس):</strong> روزانہ ۳۰۰ مرتبہ آواز سے «اللہ، اللہ» کا دل پر ضرب لگانا تاکہ زنگ دور ہو۔</div>
+                      <div><strong>سبق ۲ (ذکرِ چہار ضربی):</strong> چاروں سمتوں (ناف، سینہ، دائیں شانے اور دل) پر کلمۂ طیبہ کی ضربیں لگانا۔</div>
+                      <div><strong>سبق ۳ (مراقبۂ فنا فی الرسول ﷺ):</strong> بعد نمازِ عشاء ۵۰۰ مرتبہ درودِ پاک پڑھ کر بارگاہِ رسالت میں خود کو حاضر جاننا۔</div>
+                      <div><strong>سبق ۴ (خدمتِ خلق و ایثار):</strong> مخلوقِ خدا کی دلجوئی، لنگر اور عاجزی و انکساری اختیار کرنا۔</div>
+                    </div>
+
+                    <div style="display: flex; gap: 8px;">
+                      <button type="button" onclick="openTuhfatReader('chishti')" style="flex: 1; background: #7C3AED; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
+                        <i class="fa-solid fa-book-open text-gold"></i> چشتیہ اسباق رہنمائی
+                      </button>
+                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
+                        <i class="fa-solid fa-download text-gold"></i> اسباق پی ڈی ایف ڈاؤنلوڈ
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- 3. Qadiriya Detail Container -->
+                <div id="silsilaDetail_qadiri_ur" class="silsila-detail-box" style="display: none;">
+                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #0284C7; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="background: #0284C7; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">۳</span>
+                        <strong style="color: #075985; font-size: 1.05rem; font-family: var(--font-arabic);">سلسلہ عالیہ قادریہ (سیدنا شیخ عبد القادر جیلانیؒ)</strong>
+                      </div>
+                      <span style="font-size: 0.7rem; color: #0284C7; background: #F0F9FF; padding: 2px 7px; border-radius: 4px; font-weight: 700;">ہیبت و روحانی اختیارات</span>
+                    </div>
+                    <p style="font-size: 0.82rem; color: #475569; margin: 0 0 10px 0; line-height: 1.55;">قربِ خداوندی، باطنی ہیبت، روحانی اختیارات، جلال اور شاہانہ اوراد و وظائف کا عظیم روحانی نظام۔</p>
+                    
+                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.79rem; display: flex; flex-direction: column; gap: 7px; margin-bottom: 10px; line-height: 1.6;">
+                      <div><strong>سبق ۱ (حزب الاعظم و درودِ غوثیہ):</strong> روزانہ بعد فجر حزب الاعظم کی منزل اور ۱۰۰ مرتبہ درودِ غوثیہ شریف۔</div>
+                      <div><strong>سبق ۲ (اسمِ ذات کا شاہانہ ورد):</strong> روزانہ ۱۰۰۰ مرتبہ «یَا حَیُّ یَا قَیُّومُ» یا «یَا اللَّهُ، یَا کَرِیمُ» کا شاہانہ ورد۔</div>
+                      <div><strong>سبق ۳ (مراقبۂ ہیبت و تسخیرِ باطن):</strong> بعد تہجد ۱۰ منٹ مراقبہ کہ حق تعالیٰ کے جلال و عظمت کے انوار سینے میں جلوہ گر ہیں۔</div>
+                      <div><strong>سبق ۴ (دعائے سیفی و فتحِ قلوب):</strong> روحانی تسخیر، سحر و شیاطین کی بربادی اور قلبی حیات۔</div>
+                    </div>
+
+                    <div style="display: flex; gap: 8px;">
+                      <button type="button" onclick="openTuhfatReader('qadiri')" style="flex: 1; background: #0284C7; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
+                        <i class="fa-solid fa-book-open text-gold"></i> قادریہ اسباق رہنمائی
+                      </button>
+                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
+                        <i class="fa-solid fa-download text-gold"></i> اسباق پی ڈی ایف ڈاؤنلوڈ
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- 4. Naqshbandiya Detail Container -->
+                <div id="silsilaDetail_naqshbandi_ur" class="silsila-detail-box" style="display: none;">
+                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #059669; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.08);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="background: #065F46; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">۴</span>
+                        <strong style="color: #064E3B; font-size: 1.05rem; font-family: var(--font-arabic);">سلسلہ عالیہ نقشبندیہ (خواجہ بہاؤ الدین نقشبندؒ)</strong>
+                      </div>
+                      <span style="font-size: 0.7rem; color: #065F46; background: #ECFDF5; padding: 2px 7px; border-radius: 4px; font-weight: 700;">ذکرِ خفی و لطائفِ ستہ (چاکراز)</span>
+                    </div>
+                    <p style="font-size: 0.82rem; color: #475569; margin: 0 0 10px 0; line-height: 1.55;">بے زبان ذکرِ قلبی، وقوفِ قلبی اور لطائفِ ستہ (چاکراز) کی فوری بیداری کا سب سے تیز رفتار روحانی طریقہ۔</p>
+                    
+                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.79rem; display: flex; flex-direction: column; gap: 7px; margin-bottom: 10px; line-height: 1.6;">
+                      <div><strong>سبق ۱ (وقوفِ قلبی و ذکرِ اسمِ ذات):</strong> زبان کو تالو سے چپکا کر دل کے مقام پر ۵،۰۰۰ مرتبہ خیال میں «اللہ اللہ» کہنا۔</div>
+                      <div><strong>سبق ۲ (لطائفِ خمسہ کی بیداری):</strong> لطیفۂ قلب (سرخ)، روح (زرد)، سر (سفید)، خفی (سبز) اور اخفی (روشن نور) کی بیداری۔</div>
+                      <div><strong>سبق ۳ (لطیفۂ نفس و نفی و اثبات):</strong> سانس روک کر نفی (لَا إِلٰهَ) اور دل پر اثبات (إِلَّا اللَّهُ) کا گہرا مراقبہ۔</div>
+                      <div><strong>سبق ۴ (سلطان الاذکار):</strong> پورے بدن کی ہر رگ و ریشے سے خود بخود ذکرِ الٰہی کا جاری ہو جانا۔</div>
+                    </div>
+
+                    <div style="display: flex; gap: 8px;">
+                      <button type="button" onclick="openTuhfatReader('naqshbandi')" style="flex: 1; background: #065F46; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
+                        <i class="fa-solid fa-book-open text-gold"></i> نقشبندیہ اسباق رہنمائی
+                      </button>
+                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
+                        <i class="fa-solid fa-download text-gold"></i> اسباق پی ڈی ایف ڈاؤنلوڈ
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- 5. Shadhiliya Detail Container -->
+                <div id="silsilaDetail_shadhili_ur" class="silsila-detail-box" style="display: none;">
+                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #D97706; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.08);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="background: #B45309; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">۵</span>
+                        <strong style="color: #78350F; font-size: 1.05rem; font-family: var(--font-arabic);">سلسلہ عالیہ شاذلیہ (امام ابو الحسن شاذلیؒ)</strong>
+                      </div>
+                      <span style="font-size: 0.7rem; color: #B45309; background: #FEF3C7; padding: 2px 7px; border-radius: 4px; font-weight: 700;">شکر، استغنا و حزب البحر</span>
+                    </div>
+                    <p style="font-size: 0.82rem; color: #475569; margin: 0 0 10px 0; line-height: 1.55;">شکر، غنائے قلبی، مخلوق کے آگے ہاتھ پھیلانے سے آزادی اور حزب البحر شریف کی تلاوت کا مجرب سلسلہ۔</p>
+                    
+                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.79rem; display: flex; flex-direction: column; gap: 7px; margin-bottom: 10px; line-height: 1.6;">
+                      <div><strong>سبق ۱ (حزب البحر شریف کی تلاوت):</strong> عصر تا مغرب قبلہ رخ بیٹھ کر باقاعدہ حصار و اجازت کے ساتھ تلاوت۔</div>
+                      <div><strong>سبق ۲ (مشاہدۂ منعم و استغنا):</strong> ہر نعمت پر شکر اور مخلوق کے طمع و خوف سے دل کا مکمل آزاد ہونا۔</div>
+                      <div><strong>سبق ۳ (وظیفۂ لطفیہ):</strong> روزانہ بعد نمازِ عشاء ۱۲۹ مرتبہ «یَا لَطِیفُ» مع دعائے لطف برائے کشائشِ رزق و امور۔</div>
+                      <div><strong>سبق ۴ (مراقبۂ نورِ ازل):</strong> کائنات کی ہر شے میں صانعِ حقیقی کے کمال و قدرت کا مشاہدہ۔</div>
+                    </div>
+
+                    <div style="display: flex; gap: 8px;">
+                      <button type="button" onclick="openTuhfatReader('shadhili')" style="flex: 1; background: #B45309; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
+                        <i class="fa-solid fa-book-open text-gold"></i> شاذلیہ اسباق رہنمائی
+                      </button>
+                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
+                        <i class="fa-solid fa-download text-gold"></i> اسباق پی ڈی ایف ڈاؤنلوڈ
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+      </div>
+              </div>
+
+              <!-- Bottom Navigation Footer (Urdu) -->
+              <div class="silsila-screen-footer" style="direction: rtl;">
+                <button type="button" id="btnPrevSilsilaUr" onclick="stepSilsilaOrder(-1, 'ur')" class="silsila-screen-nav-btn prev-btn">
+                  <i class="fa-solid fa-arrow-right"></i> پچھلا سلسلہ
+                </button>
+                <button type="button" onclick="window.switchTab('tabTasawwuf')" class="silsila-screen-nav-btn folders-btn">
+                  <i class="fa-solid fa-shapes"></i> تمام سلاسل
+                </button>
+                <button type="button" id="btnNextSilsilaUr" onclick="stepSilsilaOrder(1, 'ur')" class="silsila-screen-nav-btn next-btn">
+                  اگلا سلسلہ <i class="fa-solid fa-arrow-left"></i>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
 
         <!-- ====================================================
              TAB: KHAWAB KI TABEER
@@ -10808,686 +11496,10 @@
   </div>
 
 
-  <!-- =================================================================
-       MODAL: FULLSCREEN DEDICATED SILSILA SCREEN (ENGLISH)
-       ================================================================= -->
-  <div id="modalSilsilaScreenEn" class="modal silsila-screen-modal">
-    <div class="modal-card silsila-screen-card" id="modalSilsilaScreenEnCard">
-      
-      <!-- Top Sticky Header -->
-      <div class="silsila-screen-header">
-        <button type="button" onclick="closeModal('modalSilsilaScreenEn')" class="silsila-screen-back-btn">
-          <i class="fa-solid fa-arrow-left"></i> Folders
-        </button>
-        <div id="silsilaScreenHeaderTitleEn" class="silsila-screen-header-title">
-          🌟 Suhrawardi Order
-        </div>
-        <button type="button" onclick="closeModal('modalSilsilaScreenEn')" class="silsila-screen-close-btn">✕</button>
-      </div>
-
-      <!-- Quick Switcher Tabs Bar -->
-      <div class="silsila-screen-tabs-bar">
-        <button type="button" id="silsilaTab_suhrawardi_en" class="silsila-screen-tab active" onclick="switchSilsilaScreenTab('suhrawardi', 'en')">
-          <span class="tab-badge">1</span> Suhrawardi
-        </button>
-        <button type="button" id="silsilaTab_chishti_en" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('chishti', 'en')">
-          <span class="tab-badge">2</span> Chishti
-        </button>
-        <button type="button" id="silsilaTab_qadiri_en" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('qadiri', 'en')">
-          <span class="tab-badge">3</span> Qadiri
-        </button>
-        <button type="button" id="silsilaTab_naqshbandi_en" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('naqshbandi', 'en')">
-          <span class="tab-badge">4</span> Naqshbandi
-        </button>
-        <button type="button" id="silsilaTab_shadhili_en" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('shadhili', 'en')">
-          <span class="tab-badge">5</span> Shadhili
-        </button>
-      </div>
-
-      <!-- Scrollable Screen Content Body -->
-      <div class="modal-card-body silsila-screen-body" id="silsilaScreenBodyEn">
-
-                <!-- 1. Suhrawardiya Detail Container -->
-                <div id="silsilaDetail_suhrawardi_en" class="silsila-detail-box" style="display: block;">
-                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #3B82F6; border-radius: 16px; padding: 16px; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.12); text-align: left;">
-                    
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                      <div style="display: flex; align-items: center; gap: 8px;">
-                        <span style="background: #1D4ED8; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">1</span>
-                        <strong style="color: #1E3A8A; font-size: 1.05rem;">Suhrawardi Order (اسباقِ سلسلہ سہروردیہ)</strong>
-                      </div>
-                      <span style="font-size: 0.7rem; color: #1D4ED8; background: #EFF6FF; padding: 3px 8px; border-radius: 12px; font-weight: 800; border: 1px solid #BFDBFE;">Tuhfat-ul-Masha'ikh</span>
-                    </div>
-                    
-                    <p style="font-size: 0.8rem; color: #334155; line-height: 1.55; margin: 0 0 10px 0;">
-                      Sanad traces directly to Hazrat Ali (RA) with foundation in Wilayah. Stations, spiritual faculties (Lata'if), and colored lights of illumination are unified.
-                    </p>
-
-                    <!-- Spiritual Centers (Lata'if) & Lights Box -->
-                    <div style="background: #F8FAFC; border: 1.5px solid #CBD5E1; border-radius: 12px; padding: 12px; margin-bottom: 12px;">
-                      <div style="font-weight: 800; font-size: 0.84rem; color: #0F172A; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
-                        <span><i class="fa-solid fa-palette text-gold"></i> The 6 Subtle Centers (Lata'if) &amp; Colored Lights:</span>
-                        <span style="font-size: 0.72rem; color: #64748B;">Locations &amp; Colors</span>
-                      </div>
-                      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; font-size: 0.74rem;">
-                        <div style="background: #FEF9C3; border: 1px solid #FDE047; padding: 6px; border-radius: 6px; color: #854D0E;"><strong>1. Nafs:</strong> Yellow (2 fingers below navel)</div>
-                        <div style="background: #FEE2E2; border: 1px solid #FECACA; padding: 6px; border-radius: 6px; color: #991B1B;"><strong>2. Qalb:</strong> Red (2 fingers below left breast)</div>
-                        <div style="background: #F1F5F9; border: 1px solid #CBD5E1; padding: 6px; border-radius: 6px; color: #1E293B;"><strong>3. Rooh:</strong> White (2 fingers below right breast)</div>
-                        <div style="background: #DCFCE7; border: 1px solid #86EFAC; padding: 6px; border-radius: 6px; color: #166534;"><strong>4. Sirr:</strong> Green</div>
-                        <div style="background: #DBEAFE; border: 1px solid #93C5FD; padding: 6px; border-radius: 6px; color: #1E40AF;"><strong>5. Khafi:</strong> Blue</div>
-                        <div style="background: #1E293B; border: 1px solid #0F172A; padding: 6px; border-radius: 6px; color: #F8FAFC;"><strong>6. Akhfa:</strong> Black</div>
-                      </div>
-                    </div>
-
-                    <!-- Date Started Tracker Strip -->
-                    <div style="background: #EFF6FF; border: 1px solid #93C5FD; border-radius: 10px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                      <div style="display: flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 700; color: #1E40AF;">
-                        <i class="fa-regular fa-calendar-check"></i>
-                        <span>Date Started:</span>
-                        <input type="date" id="suhrawardiStartDateEn" onchange="saveSuhrawardiDateEn()" style="border: 1px solid #CBD5E1; border-radius: 6px; padding: 2px 6px; font-size: 0.76rem;">
-                      </div>
-                      <span id="suhrawardiDayCounterEn" style="font-size: 0.74rem; font-weight: 800; background: #DBEAFE; color: #1D4ED8; padding: 2px 8px; border-radius: 10px;">
-                        Day: 1
-                      </span>
-                    </div>
-
-                    <!-- 7 Authentic Asbaq (Lessons) -->
-                    <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
-                      <!-- Lesson 1 -->
-                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                          <strong style="color: #1E3A8A;">Lesson 1: Dawazdah Tasbih (دوازدہ تسبیح)</strong>
-                          <label style="font-size: 0.72rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="checkbox" id="suhTickEn_1" onchange="toggleSuhTickEn(1)"> Completed
-                          </label>
-                        </div>
-                        <div style="color: #475569; line-height: 1.5;">
-                          • La Ilaha Illallah: 200x • Illallah: 400x • Allah: 600x.<br>
-                          <strong>Method 1:</strong> Recite across all Lata'if sequentially (Nafs, Qalb, Rooh, Sirr, Khafi, Akhfa).<br>
-                          <strong>Method 2:</strong> Shape of "La" drawn from Nafs to Akhfa, "Ilaha" on Rooh, "Illallah" struck onto Qalb.
-                        </div>
-                      </div>
-
-                      <!-- Lesson 2 -->
-                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                          <strong style="color: #1E3A8A;">Lesson 2: Zikr-e-Khafi of Ism-e-Zaat (اسمِ ذات کا ذکرِ خفی)</strong>
-                          <label style="font-size: 0.72rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="checkbox" id="suhTickEn_2" onchange="toggleSuhTickEn(2)"> Completed
-                          </label>
-                        </div>
-                        <div style="color: #475569; line-height: 1.5;">
-                          Silent heart invocation of «Allah» across all subtle centers in sequence. Minimum count: 12,000 times; Maximum: 125,000 times.
-                        </div>
-                      </div>
-
-                      <!-- Lesson 3 -->
-                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                          <strong style="color: #1E3A8A;">Lesson 3: Nafi wa Isbat with Breath Vigil (نفی و اثبات)</strong>
-                          <label style="font-size: 0.72rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="checkbox" id="suhTickEn_3" onchange="toggleSuhTickEn(3)"> Completed
-                          </label>
-                        </div>
-                        <div style="color: #475569; line-height: 1.5;">
-                          <strong>Method 1:</strong> Exhale «La Ilaha» visualizing base vices exiting the body; inhale «Illallah» firmly embedding radiant noble virtues into the spirit.<br>
-                          <strong>Method 2:</strong> Exhale expelling thoughts of false idols; inhale firmly rooting the conviction of the True Creator.
-                        </div>
-                      </div>
-
-                      <!-- Lesson 4 -->
-                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                          <strong style="color: #1E3A8A;">Lesson 4: Muraqaba-e-Nafs (مراقبۂ نفس)</strong>
-                          <label style="font-size: 0.72rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="checkbox" id="suhTickEn_4" onchange="toggleSuhTickEn(4)"> Completed
-                          </label>
-                        </div>
-                        <div style="color: #475569; line-height: 1.5;">
-                          «يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ» (Surah Al-Fajr: 27). Deep meditation visualizing your purified soul at peace, standing directly before you in your exact likeness.
-                        </div>
-                      </div>
-
-                      <!-- Lesson 5 -->
-                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                          <strong style="color: #1E3A8A;">Lesson 5: Muraqaba-e-Ilm (مراقبۂ علم)</strong>
-                          <label style="font-size: 0.72rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="checkbox" id="suhTickEn_5" onchange="toggleSuhTickEn(5)"> Completed
-                          </label>
-                        </div>
-                        <div style="color: #475569; line-height: 1.5;">
-                          «فَادْخُلِي فِي عِبَادِي» entering true servanthood, rising to the Divine Throne reciting «Ya Samee'u Ya Baseer». Followed by «رَّبِّ زِدْنِي عِلْمًا» reciting «Allah Aleem», receiving direct influx of divine gnosis.
-                        </div>
-                      </div>
-
-                      <!-- Lesson 6 -->
-                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                          <strong style="color: #1E3A8A;">Lesson 6: Muraqaba-e-Jannat (مراقبۂ جنت)</strong>
-                          <label style="font-size: 0.72rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="checkbox" id="suhTickEn_6" onchange="toggleSuhTickEn(6)"> Completed
-                          </label>
-                        </div>
-                        <div style="color: #475569; line-height: 1.5;">
-                          «وَادْخُلِي جَنَّتِي» (Surah Al-Fajr: 30). Contemplating being inside Paradise, immersed in eternal favors, above all the supreme bliss of the Divine Vision.
-                        </div>
-                      </div>
-
-                      <!-- Lesson 7 -->
-                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                          <strong style="color: #1E3A8A;">Lesson 7: Muraqaba-e-Ma'iyyat (مراقبۂ معیتِ الٰہی)</strong>
-                          <label style="font-size: 0.72rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="checkbox" id="suhTickEn_7" onchange="toggleSuhTickEn(7)"> Completed
-                          </label>
-                        </div>
-                        <div style="color: #475569; line-height: 1.5;">
-                          «وَهُوَ مَعَكُمْ أَيْنَ مَا كُنتُمْ» (Surah Al-Hadid: 4). Contemplating that Allah the Almighty is intimately with you at every instant, surrounding every breath.
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- In-App Reader & WhatsApp Report -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                      <button type="button" onclick="openSuhrawardiAsbaqReader()" style="background: #1D4ED8; color: #FFF; border: none; border-radius: 8px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
-                        <i class="fa-solid fa-book-open"></i> Full Asbaq Viewer
-                      </button>
-                      <button type="button" onclick="sendSuhrawardiReport('en')" style="background: #059669; color: #FFF; border: none; border-radius: 8px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
-                        <i class="fa-brands fa-whatsapp text-gold"></i> Report Progress
-                      </button>
-                    </div>
-
-                  </div>
-                </div>
-
-
-                <!-- 2. Chishti Detail Container -->
-                <div id="silsilaDetail_chishti_en" class="silsila-detail-box" style="display: none;">
-                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #8B5CF6; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.08); text-align: left;">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                      <div style="display: flex; align-items: center; gap: 8px;">
-                        <span style="background: #7C3AED; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">2</span>
-                        <strong style="color: #5B21B6; font-size: 1.02rem;">Chishti Order (سلسلہ چشتیہ)</strong>
-                      </div>
-                      <span style="font-size: 0.7rem; color: #7C3AED; background: #F5F3FF; padding: 2px 7px; border-radius: 4px; font-weight: 700;">Divine Love (Ishq)</span>
-                    </div>
-                    <p style="font-size: 0.8rem; color: #475569; margin: 0 0 10px 0;">Founded by Khwaja Mu'in al-Din Chishti Ajmeri (RA). Focuses on fervent divine love, heartfelt Dhikr, tenderness, and service to humanity.</p>
-                    
-                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.77rem; display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px;">
-                      <div><strong>Lesson 1: Zikr-e-Jali (Vocal Heart Dhikr):</strong> Rhythmic invocation of «Allah, Allah» (300 times daily) melting hardness of heart.</div>
-                      <div><strong>Lesson 2: Four-Stroke Dhikr (Char Zarbi):</strong> Four-directional strike of «La Ilaha Illallah» on navel, chest, right shoulder, and heart.</div>
-                      <div><strong>Lesson 3: Contemplation of Divine Unity:</strong> 500x Durood Shareef after Isha with deep emotional absorption in the Prophetic presence ﷺ.</div>
-                      <div><strong>Lesson 4: Selflessness &amp; Compassion:</strong> Active charity and humility towards all living beings.</div>
-                    </div>
-
-                    <div style="display: flex; gap: 8px;">
-                      <button type="button" onclick="openTuhfatReader('chishti')" style="flex: 1; background: #7C3AED; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
-                        <i class="fa-solid fa-book-open"></i> Read Chishti Guide
-                      </button>
-                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
-                        <i class="fa-solid fa-download"></i> Download Asbaq PDF
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-
-                <!-- 3. Qadiri Detail Container -->
-                <div id="silsilaDetail_qadiri_en" class="silsila-detail-box" style="display: none;">
-                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #0284C7; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08); text-align: left;">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                      <div style="display: flex; align-items: center; gap: 8px;">
-                        <span style="background: #0284C7; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">3</span>
-                        <strong style="color: #075985; font-size: 1.02rem;">Qadiri Order (سلسلہ قادریہ)</strong>
-                      </div>
-                      <span style="font-size: 0.7rem; color: #0284C7; background: #F0F9FF; padding: 2px 7px; border-radius: 4px; font-weight: 700;">Spiritual Majesty</span>
-                    </div>
-                    <p style="font-size: 0.8rem; color: #475569; margin: 0 0 10px 0;">Founded by Sayyiduna Shaykh Abd al-Qadir al-Jilani (RA). Focuses on divine proximity, royal litanies, and commanding spiritual authority.</p>
-                    
-                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.77rem; display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px;">
-                      <div><strong>Lesson 1: Hizb al-A'zam &amp; Durood-e-Ghousia:</strong> Daily portion of Hizb al-A'zam and 100x Durood-e-Ghousia after Fajr.</div>
-                      <div><strong>Lesson 2: Royal Litany of Essential Names:</strong> 1,000x «Ya Hayyu Ya Qayyum» or «Ya Allahu Ya Kareem» daily.</div>
-                      <div><strong>Lesson 3: Contemplation of Divine Majesty (Haybat):</strong> Tahajjud meditation feeling the overwhelming grandeur and majesty of the Creator.</div>
-                      <div><strong>Lesson 4: Inner Conquering (Fath-ul-Quloob):</strong> Vanquishing dark demonic forces and absorbing sovereign angelic light.</div>
-                    </div>
-
-                    <div style="display: flex; gap: 8px;">
-                      <button type="button" onclick="openTuhfatReader('qadiri')" style="flex: 1; background: #0284C7; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
-                        <i class="fa-solid fa-book-open"></i> Read Qadiri Guide
-                      </button>
-                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
-                        <i class="fa-solid fa-download"></i> Download Asbaq PDF
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-
-                <!-- 4. Naqshbandi Detail Container -->
-                <div id="silsilaDetail_naqshbandi_en" class="silsila-detail-box" style="display: none;">
-                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #059669; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.08); text-align: left;">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                      <div style="display: flex; align-items: center; gap: 8px;">
-                        <span style="background: #065F46; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">4</span>
-                        <strong style="color: #064E3B; font-size: 1.02rem;">Naqshbandi Order (سلسلہ نقشبندیہ)</strong>
-                      </div>
-                      <span style="font-size: 0.7rem; color: #065F46; background: #ECFDF5; padding: 2px 7px; border-radius: 4px; font-weight: 700;">Silent Dhikr &amp; 6 Subtle Centers</span>
-                    </div>
-                    <p style="font-size: 0.8rem; color: #475569; margin: 0 0 10px 0;">Founded by Khwaja Baha al-Din Naqshband (RA). Focuses on silent tongue-less Dhikr, heart stillness, and rapid illumination of subtle chakras (Lataif).</p>
-                    
-                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.77rem; display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px;">
-                      <div><strong>Lesson 1: Wuquf-e-Qalbi (Heart Stillness):</strong> Tongue fixed to roof of mouth; 5,000x silent mental repetition of «Allah, Allah» at the physical heart.</div>
-                      <div><strong>Lesson 2: Illumination of 5 Subtle Centers:</strong> Progressively energizing Qalb (red), Ruh (yellow), Sirr (white), Khafi (green), and Akhfa (black/radiant).</div>
-                      <div><strong>Lesson 3: Nafs Discipline &amp; Breath Retention:</strong> Inward meditation of Nafi wa Isbat with controlled breathing.</div>
-                      <div><strong>Lesson 4: Sultan-ul-Azkar:</strong> Every hair follicle, cell, and nerve vibrating spontaneously in continuous divine remembrance.</div>
-                    </div>
-
-                    <div style="display: flex; gap: 8px;">
-                      <button type="button" onclick="openTuhfatReader('naqshbandi')" style="flex: 1; background: #065F46; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
-                        <i class="fa-solid fa-book-open"></i> Read Naqshbandi Guide
-                      </button>
-                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
-                        <i class="fa-solid fa-download"></i> Download Asbaq PDF
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-
-                <!-- 5. Shadhili Detail Container -->
-                <div id="silsilaDetail_shadhili_en" class="silsila-detail-box" style="display: none;">
-                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #D97706; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.08); text-align: left;">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                      <div style="display: flex; align-items: center; gap: 8px;">
-                        <span style="background: #B45309; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">5</span>
-                        <strong style="color: #78350F; font-size: 1.02rem;">Shadhili Order (سلسلہ شاذلیہ)</strong>
-                      </div>
-                      <span style="font-size: 0.7rem; color: #B45309; background: #FEF3C7; padding: 2px 7px; border-radius: 4px; font-weight: 700;">Gratitude (Shukr) &amp; Hizb-ul-Bahr</span>
-                    </div>
-                    <p style="font-size: 0.8rem; color: #475569; margin: 0 0 10px 0;">Founded by Imam Abu al-Hasan al-Shadhili (RA). Focuses on constant gratitude, inner detachment from people, and the formidable litany of the sea (Hizb-ul-Bahr).</p>
-                    
-                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.77rem; display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px;">
-                      <div><strong>Lesson 1: Hizb-ul-Bahr Recitation:</strong> Daily recitation between Asr and Maghrib facing Qiblah with protective visualization.</div>
-                      <div><strong>Lesson 2: Contemplation of the Bestower (Shukr):</strong> Directing gratitude to Allah in ease and fortitude in trials; ending all worldly dependency.</div>
-                      <div><strong>Lesson 3: Lutf Litany:</strong> 129x «Ya Lateef» after Isha with supplication for relief and divine gentleness in decrees.</div>
-                      <div><strong>Lesson 4: Contemplation of Primordial Light:</strong> Witnessing the Creator's artistry in every element of existence.</div>
-                    </div>
-
-                    <div style="display: flex; gap: 8px;">
-                      <button type="button" onclick="openTuhfatReader('shadhili')" style="flex: 1; background: #B45309; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
-                        <i class="fa-solid fa-book-open"></i> Read Shadhili Guide
-                      </button>
-                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
-                        <i class="fa-solid fa-download"></i> Download Asbaq PDF
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-      </div>
-
-      <!-- Bottom Navigation Footer -->
-      <div class="silsila-screen-footer">
-        <button type="button" id="btnPrevSilsilaEn" onclick="stepSilsilaOrder(-1, 'en')" class="silsila-screen-nav-btn">
-          <i class="fa-solid fa-chevron-left"></i> Previous Order
-        </button>
-        <button type="button" onclick="closeModal('modalSilsilaScreenEn')" class="silsila-screen-nav-btn folders-btn">
-          <i class="fa-solid fa-folder-closed"></i> All Folders
-        </button>
-        <button type="button" id="btnNextSilsilaEn" onclick="stepSilsilaOrder(1, 'en')" class="silsila-screen-nav-btn">
-          Next Order <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-
-  <!-- =================================================================
-       MODAL: FULLSCREEN DEDICATED SILSILA SCREEN (URDU)
-       ================================================================= -->
-  <div id="modalSilsilaScreenUr" class="modal silsila-screen-modal">
-    <div class="modal-card silsila-screen-card" id="modalSilsilaScreenUrCard" style="direction: rtl;">
-      
-      <!-- Top Sticky Header -->
-      <div class="silsila-screen-header">
-        <button type="button" onclick="closeModal('modalSilsilaScreenUr')" class="silsila-screen-back-btn">
-          تمام فولڈرز <i class="fa-solid fa-arrow-left"></i>
-        </button>
-        <div id="silsilaScreenHeaderTitleUr" class="silsila-screen-header-title" style="font-family: var(--font-arabic);">
-          🌟 اسباقِ سلسلہ عالیہ سہروردیہ
-        </div>
-        <button type="button" onclick="closeModal('modalSilsilaScreenUr')" class="silsila-screen-close-btn">✕</button>
-      </div>
-
-      <!-- Quick Switcher Tabs Bar -->
-      <div class="silsila-screen-tabs-bar" style="direction: rtl;">
-        <button type="button" id="silsilaTab_suhrawardi_ur" class="silsila-screen-tab active" onclick="switchSilsilaScreenTab('suhrawardi', 'ur')">
-          <span class="tab-badge">۱</span> سہروردیہ
-        </button>
-        <button type="button" id="silsilaTab_chishti_ur" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('chishti', 'ur')">
-          <span class="tab-badge">۲</span> چشتیہ
-        </button>
-        <button type="button" id="silsilaTab_qadiri_ur" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('qadiri', 'ur')">
-          <span class="tab-badge">۳</span> قادریہ
-        </button>
-        <button type="button" id="silsilaTab_naqshbandi_ur" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('naqshbandi', 'ur')">
-          <span class="tab-badge">۴</span> نقشبندیہ
-        </button>
-        <button type="button" id="silsilaTab_shadhili_ur" class="silsila-screen-tab" onclick="switchSilsilaScreenTab('shadhili', 'ur')">
-          <span class="tab-badge">۵</span> شاذلیہ
-        </button>
-      </div>
-
-      <!-- Scrollable Screen Content Body -->
-      <div class="modal-card-body silsila-screen-body" id="silsilaScreenBodyUr">
-
-                <!-- 1. Suhrawardiya Detail Container -->
-                <div id="silsilaDetail_suhrawardi_ur" class="silsila-detail-box" style="display: block;">
-                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #3B82F6; border-radius: 16px; padding: 16px; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.12);">
-                    
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                      <div style="display: flex; align-items: center; gap: 8px;">
-                        <span style="background: #1D4ED8; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">۱</span>
-                        <strong style="color: #1E3A8A; font-size: 1.05rem; font-family: var(--font-arabic);">اسباقِ سلسلہ عالیہ سہروردیہ (تحفۃ المشائخ)</strong>
-                      </div>
-                      <span style="font-size: 0.7rem; color: #1D4ED8; background: #EFF6FF; padding: 3px 8px; border-radius: 12px; font-weight: 800; border: 1px solid #BFDBFE;">تحفۃ المشائخ</span>
-                    </div>
-                    
-                    <p style="font-size: 0.82rem; color: #334155; line-height: 1.6; margin: 0 0 10px 0;">
-                      سلسلہ عالیہ سہروردیہ کی سند براہِ راست حضرت علی کرم اللہ وجہہ الکریم سے ملتی ہے اور اس کی بنیاد ولایت پر ہے۔ اس میں درجات و مقامات، لطائف اور انوارات کے مختلف رنگ یکجا ہیں۔
-                    </p>
-
-                    <!-- Spiritual Centers (Lata'if) & Lights Box -->
-                    <div style="background: #F8FAFC; border: 1.5px solid #CBD5E1; border-radius: 12px; padding: 12px; margin-bottom: 12px;">
-                      <div style="font-weight: 800; font-size: 0.86rem; color: #0F172A; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
-                        <span><i class="fa-solid fa-palette text-gold"></i> لطائفِ ستہ (۶ روحانی مراکز) اور ان کے انوارات:</span>
-                        <span style="font-size: 0.72rem; color: #64748B;">مقامات و رنگ</span>
-                      </div>
-                      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; font-size: 0.76rem;">
-                        <div style="background: #FEF9C3; border: 1px solid #FDE047; padding: 6px; border-radius: 6px; color: #854D0E;"><strong>۱. نفس:</strong> زرد (ناف کے نیچے ۲ انگل)</div>
-                        <div style="background: #FEE2E2; border: 1px solid #FECACA; padding: 6px; border-radius: 6px; color: #991B1B;"><strong>۲. قلب:</strong> سرخ (بائیں چھاتی کے نیچے ۲ انگل)</div>
-                        <div style="background: #F1F5F9; border: 1px solid #CBD5E1; padding: 6px; border-radius: 6px; color: #1E293B;"><strong>۳. روح:</strong> سفید (دائیں چھاتی کے نیچے ۲ انگل)</div>
-                        <div style="background: #DCFCE7; border: 1px solid #86EFAC; padding: 6px; border-radius: 6px; color: #166534;"><strong>۴. سر:</strong> سبز (دل اور سینے کے درمیان)</div>
-                        <div style="background: #DBEAFE; border: 1px solid #93C5FD; padding: 6px; border-radius: 6px; color: #1E40AF;"><strong>۵. خفی:</strong> نیلا (پیشانی کے وسط میں)</div>
-                        <div style="background: #1E293B; border: 1px solid #0F172A; padding: 6px; border-radius: 6px; color: #F8FAFC;"><strong>۶. اخفیٰ:</strong> سیاہ (سر کے درمیان مغز میں)</div>
-                      </div>
-                    </div>
-
-                    <!-- Date Started Tracker Strip -->
-                    <div style="background: #EFF6FF; border: 1px solid #93C5FD; border-radius: 10px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                      <div style="display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 700; color: #1E40AF;">
-                        <i class="fa-regular fa-calendar-check"></i>
-                        <span>اسباق شروع کرنے کی تاریخ:</span>
-                        <input type="date" id="suhrawardiStartDateUr" onchange="saveSuhrawardiDateUr()" style="border: 1px solid #CBD5E1; border-radius: 6px; padding: 2px 6px; font-size: 0.78rem;">
-                      </div>
-                      <span id="suhrawardiDayCounterUr" style="font-size: 0.76rem; font-weight: 800; background: #DBEAFE; color: #1D4ED8; padding: 2px 8px; border-radius: 10px;">
-                        دن: ۱
-                      </span>
-                    </div>
-
-                    <!-- 7 Authentic Asbaq (Lessons) -->
-                    <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
-                      <!-- Lesson 1 -->
-                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.8rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                          <strong style="color: #1E3A8A; font-family: var(--font-arabic);">سبق نمبر ۱: دوازدہ تسبیح</strong>
-                          <label style="font-size: 0.74rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="checkbox" id="suhTickUr_1" onchange="toggleSuhTickUr(1)"> مکمل کر لیا
-                          </label>
-                        </div>
-                        <div style="color: #334155; line-height: 1.6;">
-                          • لا الہ الا اللہ (200 مرتبہ) • الا اللہ (400 مرتبہ) • اللہ (600 مرتبہ)<br>
-                          <strong>طریقہ اول:</strong> تمام لطائف پر مذکورہ اذکار کریں۔ پہلے لطیفہ نفس پر، پھر لطیفہ قلب پر، پھر لطیفہ روح پر، پھر لطیفہ سر پر، پھر لطیفہ خفی پر، پھر لطیفہ اخفیٰ پر۔<br>
-                          <strong>طریقہ دوم:</strong> "الف": «لا الہ الا اللہ» کا ذکر تمام لطائف پر «لا» کی شکل بنا کر کریں۔ «لا» کو لطیفہ نفس سے کھینچ کر لطیفہ اخفیٰ تک لے جائیں، «الہ» لطیفہ روح پر اور «الا اللہ» لطیفہ قلب پر ضرب لگائیں۔ "ب": اور «الا اللہ» کا ورد تین لطائف پر کرے: روح، سر اور قلب۔ "ج": اور «اللہ» کا ذکر لطیفہ نفس پر۔
-                        </div>
-                      </div>
-
-                      <!-- Lesson 2 -->
-                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.8rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                          <strong style="color: #1E3A8A; font-family: var(--font-arabic);">سبق نمبر ۲: اسمِ ذات کا ذکرِ خفی</strong>
-                          <label style="font-size: 0.74rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="checkbox" id="suhTickUr_2" onchange="toggleSuhTickUr(2)"> مکمل کر لیا
-                          </label>
-                        </div>
-                        <div style="color: #334155; line-height: 1.6;">
-                          تمام لطائف پر بالترتیب اسم ذات یعنی «اللہ» کا ذکر خفی کرنا۔ کم از کم تعداد 12,000 دفعہ اور زیادہ سے زیادہ تعداد 125,000 دفعہ۔
-                        </div>
-                      </div>
-
-                      <!-- Lesson 3 -->
-                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.8rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                          <strong style="color: #1E3A8A; font-family: var(--font-arabic);">سبق نمبر ۳: نفی و اثبات مع حبسِ دم و تخلیہ و تحلیہ</strong>
-                          <label style="font-size: 0.74rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="checkbox" id="suhTickUr_3" onchange="toggleSuhTickUr(3)"> مکمل کر لیا
-                          </label>
-                        </div>
-                        <div style="color: #334155; line-height: 1.6;">
-                          <strong>پہلا طریقہ:</strong> «لا الہ الا اللہ» کا ورد اس طرح سے کرے کہ «لا الہ» پڑھتے ہوئے سانس جسم سے باہر چھوڑے یہ تصور کرتے ہوئے کہ اخلاقِ رزیلہ و خسیسہ میرے جسم سے باہر آ رہے ہیں۔ اور «الا اللہ» پڑھتے ہوئے سانس جسم میں داخل کرے یہ تصور جما کر کہ اخلاقِ حمیدہ و جمیلہ میرے جسم میں داخل ہو رہے ہیں۔<br>
-                          <strong>دوسرا طریقہ:</strong> «لا الہ الا اللہ» کا ورد اس طرح کرے کہ «لا الہ» پڑھتے وقت یہ تصور کرتے ہوئے سانس باہر کو نکالے کہ تمام معبودانِ باطلہ کا گمان، شائبہ اور سوچ تک جسم سے باہر نکل رہے ہیں اور «الا اللہ» پڑھتے وقت یہ تصور کرتے ہوئے سانس جسم میں داخل کرے کہ میرے جسم میں معبودِ حقیقی کا اعتقاد رسوخ کر رہا ہے۔
-                        </div>
-                      </div>
-
-                      <!-- Lesson 4 -->
-                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.8rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                          <strong style="color: #1E3A8A; font-family: var(--font-arabic);">سبق نمبر ۴: مراقبۂ نفس</strong>
-                          <label style="font-size: 0.74rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="checkbox" id="suhTickUr_4" onchange="toggleSuhTickUr(4)"> مکمل کر لیا
-                          </label>
-                        </div>
-                        <div style="color: #334155; line-height: 1.6;">
-                          «يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ» (سورۃ الفجر، آیت: ۲۷، پارہ ۳۰)<br>
-                          <em>ترجمہ: اے اطمینان پانے والی روح! اے نفسِ مطمئنہ!</em><br>
-                          اس آیت کو مدنظر رکھ کر یہ تصور کرے کہ میرا نفس مطمئنہ ہو کر میرے سامنے میری ہی شکل میں کھڑا ہے۔
-                        </div>
-                      </div>
-
-                      <!-- Lesson 5 -->
-                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.8rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                          <strong style="color: #1E3A8A; font-family: var(--font-arabic);">سبق نمبر ۵: مراقبۂ علم</strong>
-                          <label style="font-size: 0.74rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="checkbox" id="suhTickUr_5" onchange="toggleSuhTickUr(5)"> مکمل کر لیا
-                          </label>
-                        </div>
-                        <div style="color: #334155; line-height: 1.6;">
-                          «فَادْخُلِي فِي عِبَادِي» (سورۃ الفجر، آیت: ۲۹) — <em>ترجمہ: پس میرے ممتاز بندوں میں داخل ہو جا۔</em><br>
-                          اس آیت کو مدنظر رکھ کر یہ تصور کرے کہ میرا نفس عبودیت میں داخل ہو چکا ہے اور پھر «یا سمیع یا بصیر» کا ورد کرتے ہوئے عرش پہ جائے۔ اس کے بعد: «رَّبِّ زِدْنِي عِلْمًا» (سورۃ طٰہٰ، آیت: ۱۱۴) — <em>ترجمہ: اے میرے رب میرے علم میں اضافہ فرما۔</em> اور «اللہ علیم» کا ورد کرتے یہ تصور جمائے کہ میرے نفس پر اللہ کے علم کا ورود ہو رہا ہے۔
-                        </div>
-                      </div>
-
-                      <!-- Lesson 6 -->
-                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.8rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                          <strong style="color: #1E3A8A; font-family: var(--font-arabic);">سبق نمبر ۶: مراقبۂ جنت</strong>
-                          <label style="font-size: 0.74rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="checkbox" id="suhTickUr_6" onchange="toggleSuhTickUr(6)"> مکمل کر لیا
-                          </label>
-                        </div>
-                        <div style="color: #334155; line-height: 1.6;">
-                          «وَادْخُلِي جَنَّتِي» (سورۃ الفجر، آیت: ۳۰، پارہ ۳۰) — <em>ترجمہ: اور میری بہشت (جنت) میں داخل ہو جا۔</em><br>
-                          اس آیت کو مدنظر رکھ کر یہ تصور کرے کہ میں جنت میں ہوں اور اس کی نعمتوں سے سرشار ہو رہا ہوں۔ سب سے بڑی نعمت اللہ کا دیدار اور دوسری نعمتوں کا تصور کرے اور لطف اندوز ہو۔
-                        </div>
-                      </div>
-
-                      <!-- Lesson 7 -->
-                      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.8rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                          <strong style="color: #1E3A8A; font-family: var(--font-arabic);">سبق نمبر ۷: مراقبۂ معیت</strong>
-                          <label style="font-size: 0.74rem; color: #059669; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                            <input type="checkbox" id="suhTickUr_7" onchange="toggleSuhTickUr(7)"> مکمل کر لیا
-                          </label>
-                        </div>
-                        <div style="color: #334155; line-height: 1.6;">
-                          «وَهُوَ مَعَكُمْ أَيْنَ مَا كُنتُمْ» (سورۃ الحدید، آیت: ۴، پارہ ۲۷) — <em>ترجمہ: اور تم جہاں کہیں ہو وہ تمہارے ساتھ ہے۔</em><br>
-                          اس آیت کو مدنظر رکھ کر یہ تصور کرے کہ اللہ رب العزت میرے ساتھ ہے۔
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- In-App Reader & WhatsApp Report -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                      <button type="button" onclick="openSuhrawardiAsbaqReader()" style="background: #1D4ED8; color: #FFF; border: none; border-radius: 8px; padding: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
-                        <i class="fa-solid fa-book-open text-gold"></i> مکمل اسباق تفصیل
-                      </button>
-                      <button type="button" onclick="sendSuhrawardiReport('ur')" style="background: #059669; color: #FFF; border: none; border-radius: 8px; padding: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
-                        <i class="fa-brands fa-whatsapp text-gold"></i> پیش رفت رپورٹ بھیجیں
-                      </button>
-                    </div>
-
-                  </div>
-                </div>
-
-
-                <!-- 2. Chishtiya Detail Container -->
-                <div id="silsilaDetail_chishti_ur" class="silsila-detail-box" style="display: none;">
-                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #8B5CF6; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.08);">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                      <div style="display: flex; align-items: center; gap: 8px;">
-                        <span style="background: #7C3AED; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">۲</span>
-                        <strong style="color: #5B21B6; font-size: 1.05rem; font-family: var(--font-arabic);">سلسلہ عالیہ چشتیہ (خواجہ معین الدین چشتیؒ)</strong>
-                      </div>
-                      <span style="font-size: 0.7rem; color: #7C3AED; background: #F5F3FF; padding: 2px 7px; border-radius: 4px; font-weight: 700;">عشقِ الٰہی و محبتِ رسولﷺ</span>
-                    </div>
-                    <p style="font-size: 0.82rem; color: #475569; margin: 0 0 10px 0; line-height: 1.55;">عشقِ الٰہی، محبتِ رسول ﷺ، خدمتِ خلق، سوز و گداز اور قلبی رقت کا پرتاثیر راستہ۔</p>
-                    
-                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.79rem; display: flex; flex-direction: column; gap: 7px; margin-bottom: 10px; line-height: 1.6;">
-                      <div><strong>سبق ۱ (ذکرِ جلی و پاسِ انفاس):</strong> روزانہ ۳۰۰ مرتبہ آواز سے «اللہ، اللہ» کا دل پر ضرب لگانا تاکہ زنگ دور ہو۔</div>
-                      <div><strong>سبق ۲ (ذکرِ چہار ضربی):</strong> چاروں سمتوں (ناف، سینہ، دائیں شانے اور دل) پر کلمۂ طیبہ کی ضربیں لگانا۔</div>
-                      <div><strong>سبق ۳ (مراقبۂ فنا فی الرسول ﷺ):</strong> بعد نمازِ عشاء ۵۰۰ مرتبہ درودِ پاک پڑھ کر بارگاہِ رسالت میں خود کو حاضر جاننا۔</div>
-                      <div><strong>سبق ۴ (خدمتِ خلق و ایثار):</strong> مخلوقِ خدا کی دلجوئی، لنگر اور عاجزی و انکساری اختیار کرنا۔</div>
-                    </div>
-
-                    <div style="display: flex; gap: 8px;">
-                      <button type="button" onclick="openTuhfatReader('chishti')" style="flex: 1; background: #7C3AED; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
-                        <i class="fa-solid fa-book-open text-gold"></i> چشتیہ اسباق رہنمائی
-                      </button>
-                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
-                        <i class="fa-solid fa-download text-gold"></i> اسباق پی ڈی ایف ڈاؤنلوڈ
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-
-                <!-- 3. Qadiriya Detail Container -->
-                <div id="silsilaDetail_qadiri_ur" class="silsila-detail-box" style="display: none;">
-                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #0284C7; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                      <div style="display: flex; align-items: center; gap: 8px;">
-                        <span style="background: #0284C7; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">۳</span>
-                        <strong style="color: #075985; font-size: 1.05rem; font-family: var(--font-arabic);">سلسلہ عالیہ قادریہ (سیدنا شیخ عبد القادر جیلانیؒ)</strong>
-                      </div>
-                      <span style="font-size: 0.7rem; color: #0284C7; background: #F0F9FF; padding: 2px 7px; border-radius: 4px; font-weight: 700;">ہیبت و روحانی اختیارات</span>
-                    </div>
-                    <p style="font-size: 0.82rem; color: #475569; margin: 0 0 10px 0; line-height: 1.55;">قربِ خداوندی، باطنی ہیبت، روحانی اختیارات، جلال اور شاہانہ اوراد و وظائف کا عظیم روحانی نظام۔</p>
-                    
-                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.79rem; display: flex; flex-direction: column; gap: 7px; margin-bottom: 10px; line-height: 1.6;">
-                      <div><strong>سبق ۱ (حزب الاعظم و درودِ غوثیہ):</strong> روزانہ بعد فجر حزب الاعظم کی منزل اور ۱۰۰ مرتبہ درودِ غوثیہ شریف۔</div>
-                      <div><strong>سبق ۲ (اسمِ ذات کا شاہانہ ورد):</strong> روزانہ ۱۰۰۰ مرتبہ «یَا حَیُّ یَا قَیُّومُ» یا «یَا اللَّهُ، یَا کَرِیمُ» کا شاہانہ ورد۔</div>
-                      <div><strong>سبق ۳ (مراقبۂ ہیبت و تسخیرِ باطن):</strong> بعد تہجد ۱۰ منٹ مراقبہ کہ حق تعالیٰ کے جلال و عظمت کے انوار سینے میں جلوہ گر ہیں۔</div>
-                      <div><strong>سبق ۴ (دعائے سیفی و فتحِ قلوب):</strong> روحانی تسخیر، سحر و شیاطین کی بربادی اور قلبی حیات۔</div>
-                    </div>
-
-                    <div style="display: flex; gap: 8px;">
-                      <button type="button" onclick="openTuhfatReader('qadiri')" style="flex: 1; background: #0284C7; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
-                        <i class="fa-solid fa-book-open text-gold"></i> قادریہ اسباق رہنمائی
-                      </button>
-                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
-                        <i class="fa-solid fa-download text-gold"></i> اسباق پی ڈی ایف ڈاؤنلوڈ
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-
-                <!-- 4. Naqshbandiya Detail Container -->
-                <div id="silsilaDetail_naqshbandi_ur" class="silsila-detail-box" style="display: none;">
-                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #059669; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.08);">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                      <div style="display: flex; align-items: center; gap: 8px;">
-                        <span style="background: #065F46; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">۴</span>
-                        <strong style="color: #064E3B; font-size: 1.05rem; font-family: var(--font-arabic);">سلسلہ عالیہ نقشبندیہ (خواجہ بہاؤ الدین نقشبندؒ)</strong>
-                      </div>
-                      <span style="font-size: 0.7rem; color: #065F46; background: #ECFDF5; padding: 2px 7px; border-radius: 4px; font-weight: 700;">ذکرِ خفی و لطائفِ ستہ (چاکراز)</span>
-                    </div>
-                    <p style="font-size: 0.82rem; color: #475569; margin: 0 0 10px 0; line-height: 1.55;">بے زبان ذکرِ قلبی، وقوفِ قلبی اور لطائفِ ستہ (چاکراز) کی فوری بیداری کا سب سے تیز رفتار روحانی طریقہ۔</p>
-                    
-                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.79rem; display: flex; flex-direction: column; gap: 7px; margin-bottom: 10px; line-height: 1.6;">
-                      <div><strong>سبق ۱ (وقوفِ قلبی و ذکرِ اسمِ ذات):</strong> زبان کو تالو سے چپکا کر دل کے مقام پر ۵،۰۰۰ مرتبہ خیال میں «اللہ اللہ» کہنا۔</div>
-                      <div><strong>سبق ۲ (لطائفِ خمسہ کی بیداری):</strong> لطیفۂ قلب (سرخ)، روح (زرد)، سر (سفید)، خفی (سبز) اور اخفی (روشن نور) کی بیداری۔</div>
-                      <div><strong>سبق ۳ (لطیفۂ نفس و نفی و اثبات):</strong> سانس روک کر نفی (لَا إِلٰهَ) اور دل پر اثبات (إِلَّا اللَّهُ) کا گہرا مراقبہ۔</div>
-                      <div><strong>سبق ۴ (سلطان الاذکار):</strong> پورے بدن کی ہر رگ و ریشے سے خود بخود ذکرِ الٰہی کا جاری ہو جانا۔</div>
-                    </div>
-
-                    <div style="display: flex; gap: 8px;">
-                      <button type="button" onclick="openTuhfatReader('naqshbandi')" style="flex: 1; background: #065F46; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
-                        <i class="fa-solid fa-book-open text-gold"></i> نقشبندیہ اسباق رہنمائی
-                      </button>
-                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
-                        <i class="fa-solid fa-download text-gold"></i> اسباق پی ڈی ایف ڈاؤنلوڈ
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-
-                <!-- 5. Shadhiliya Detail Container -->
-                <div id="silsilaDetail_shadhili_ur" class="silsila-detail-box" style="display: none;">
-                  <div class="salasil-order-box" style="background: #FFFFFF; border: 1.5px solid #D97706; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.08);">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                      <div style="display: flex; align-items: center; gap: 8px;">
-                        <span style="background: #B45309; color: #FFF; font-size: 0.76rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">۵</span>
-                        <strong style="color: #78350F; font-size: 1.05rem; font-family: var(--font-arabic);">سلسلہ عالیہ شاذلیہ (امام ابو الحسن شاذلیؒ)</strong>
-                      </div>
-                      <span style="font-size: 0.7rem; color: #B45309; background: #FEF3C7; padding: 2px 7px; border-radius: 4px; font-weight: 700;">شکر، استغنا و حزب البحر</span>
-                    </div>
-                    <p style="font-size: 0.82rem; color: #475569; margin: 0 0 10px 0; line-height: 1.55;">شکر، غنائے قلبی، مخلوق کے آگے ہاتھ پھیلانے سے آزادی اور حزب البحر شریف کی تلاوت کا مجرب سلسلہ۔</p>
-                    
-                    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; font-size: 0.79rem; display: flex; flex-direction: column; gap: 7px; margin-bottom: 10px; line-height: 1.6;">
-                      <div><strong>سبق ۱ (حزب البحر شریف کی تلاوت):</strong> عصر تا مغرب قبلہ رخ بیٹھ کر باقاعدہ حصار و اجازت کے ساتھ تلاوت۔</div>
-                      <div><strong>سبق ۲ (مشاہدۂ منعم و استغنا):</strong> ہر نعمت پر شکر اور مخلوق کے طمع و خوف سے دل کا مکمل آزاد ہونا۔</div>
-                      <div><strong>سبق ۳ (وظیفۂ لطفیہ):</strong> روزانہ بعد نمازِ عشاء ۱۲۹ مرتبہ «یَا لَطِیفُ» مع دعائے لطف برائے کشائشِ رزق و امور۔</div>
-                      <div><strong>سبق ۴ (مراقبۂ نورِ ازل):</strong> کائنات کی ہر شے میں صانعِ حقیقی کے کمال و قدرت کا مشاہدہ۔</div>
-                    </div>
-
-                    <div style="display: flex; gap: 8px;">
-                      <button type="button" onclick="openTuhfatReader('shadhili')" style="flex: 1; background: #B45309; color: #FFF; border: none; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
-                        <i class="fa-solid fa-book-open text-gold"></i> شاذلیہ اسباق رہنمائی
-                      </button>
-                      <a href="uploads/tuhfat-ul-mashaikh.pdf" download style="flex: 1; text-align: center; text-decoration: none; background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; border-radius: 6px; padding: 8px; font-size: 0.76rem; font-weight: 700;">
-                        <i class="fa-solid fa-download text-gold"></i> اسباق پی ڈی ایف ڈاؤنلوڈ
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-      </div>
-
-      <!-- Bottom Navigation Footer -->
-      <div class="silsila-screen-footer" style="direction: rtl;">
-        <button type="button" id="btnPrevSilsilaUr" onclick="stepSilsilaOrder(-1, 'ur')" class="silsila-screen-nav-btn">
-          <i class="fa-solid fa-chevron-right"></i> پچھلا سلسلہ
-        </button>
-        <button type="button" onclick="closeModal('modalSilsilaScreenUr')" class="silsila-screen-nav-btn folders-btn">
-          <i class="fa-solid fa-folder-closed"></i> تمام فولڈرز
-        </button>
-        <button type="button" id="btnNextSilsilaUr" onclick="stepSilsilaOrder(1, 'ur')" class="silsila-screen-nav-btn">
-          اگلا سلسلہ <i class="fa-solid fa-chevron-left"></i>
-        </button>
-      </div>
-
-    </div>
-  </div>
-
   <!-- Exact App Logic with Fresh Live Cache Buster -->
   <script src="js/quran-data.js?v=20260927_0720_remove_healing_products_folder_live"></script>
   <script src="js/khawab-data.js?v=20260927_0720_remove_healing_products_folder_live"></script>
-  <script src="js/app.js?v=20260927_1150_silsila_folders_screen_live"></script>
+  <script src="js/app.js?v=20260927_1215_silsila_dedicated_page_live"></script>
   <script src="js/fuyuz-wazaif-data.js?v=20260927_0835_fuyuz_booklet_live"></script>
 </body>
 </html>

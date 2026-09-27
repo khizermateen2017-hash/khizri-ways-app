@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>سلاسلِ تصوف و اسباق | Khizri Ways - Sufi Orders</title>
+  
+  <meta name="theme-color" content="#064E3B">
+  <link rel="icon" type="image/png" href="assets/khizri-ways-logo.png">
+
+  <!-- Google Fonts: Amiri & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="css/app.css?v=20260927_1215_silsila_page_live">
+
+  <style>
+    body {
+      background: #F8FAFC;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', var(--font-arabic), sans-serif;
+      color: #0F172A;
+    }
+    .silsila-standalone-container {
+      max-width: 600px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: #FFFFFF;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+    .standalone-top-header {
+      background: linear-gradient(135deg, #064E3B 0%, #065F46 100%);
+      color: #FFFFFF;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 4px 15px rgba(6, 78, 59, 0.25);
+    }
+    .standalone-back-link {
+      color: #FFFFFF;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: background 0.2s;
+    }
+    .standalone-back-link:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    .standalone-header-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin: 0;
+      font-family: 'Amiri', serif;
+    }
+    .standalone-body {
+      padding: 16px;
+      flex: 1;
+    }
+  </style>
+</head>
+<body class="khizri-theme">
+
+  <div class="silsila-standalone-container">
+    <!-- Top Header -->
+    <header class="standalone-top-header">
+      <a href="index.html#tasawwuf" class="standalone-back-link">
+        <i class="fa-solid fa-arrow-right"></i> واپس ایپ
+      </a>
+      <h1 id="standalonePageTitle" class="standalone-header-title">سلسلہ عالیہ سہروردیہ</h1>
+      <button onclick="toggleStandaloneLang()" id="btnStandaloneLang" style="background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.35); color: #FFF; border-radius: 8px; padding: 4px 10px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
+        English
+      </button>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="standalone-body">
+      
+      <!-- Orders Switcher Bar -->
+      <div class="silsila-page-nav-bar" style="margin-bottom: 16px;">
+        <div class="silsila-screen-tabs-bar">
+          <button type="button" class="silsila-screen-tab active" onclick="switchOrder('suhrawardi')" id="tab_suhrawardi">
+            <span class="tab-badge">۱</span> سہروردیہ
+          </button>
+          <button type="button" class="silsila-screen-tab" onclick="switchOrder('chishti')" id="tab_chishti">
+            <span class="tab-badge">۲</span> چشتیہ
+          </button>
+          <button type="button" class="silsila-screen-tab" onclick="switchOrder('qadiri')" id="tab_qadiri">
+            <span class="tab-badge">۳</span> قادریہ
+          </button>
+          <button type="button" class="silsila-screen-tab" onclick="switchOrder('naqshbandi')" id="tab_naqshbandi">
+            <span class="tab-badge">۴</span> نقشبندیہ
+          </button>
+          <button type="button" class="silsila-screen-tab" onclick="switchOrder('shadhili')" id="tab_shadhili">
+            <span class="tab-badge">۵</span> شاذلیہ
+          </button>
+        </div>
+      </div>
+
+      <!-- Container dynamically filled from index.html or embedded data -->
+      <div id="standaloneContentBox">
+        <div style="text-align: center; padding: 40px 20px;">
+          <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 2rem; color: #064E3B;"></i>
+          <p style="margin-top: 12px; color: #64748B; font-size: 0.85rem;">اسباق لوڈ ہو رہے ہیں...</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    let currentOrder = 'suhrawardi';
+    let currentLang = 'ur';
+
+    // Parse URL query params
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('order')) currentOrder = params.get('order');
+    if (params.get('lang')) currentLang = params.get('lang');
+
+    const titlesUr = {
+      suhrawardi: '🌟 سلسلہ عالیہ سہروردیہ (اسباق و لطائف)',
+      chishti: '🕊️ سلسلہ عالیہ چشتیہ (عشقِ الٰہی و اسباق)',
+      qadiri: '👑 سلسلہ عالیہ قادریہ (ہیبت و اسباق)',
+      naqshbandi: '💎 سلسلہ عالیہ نقشبندیہ (ذکرِ خفی و لطائف)',
+      shadhili: '🌊 سلسلہ عالیہ شاذلیہ (شکر و حزب البحر)'
+    };
+    const titlesEn = {
+      suhrawardi: '🌟 Suhrawardi Order (Lessons & Lata\'if)',
+      chishti: '🕊️ Chishti Order (Divine Love & Lessons)',
+      qadiri: '👑 Qadiri Order (Spiritual Authority & Lessons)',
+      naqshbandi: '💎 Naqshbandi Order (Silent Dhikr & Lata\'if)',
+      shadhili: '🌊 Shadhili Order (Gratitude & Hizb-ul-Bahr)'
+    };
+
+    function updateView() {
+      // Set html dir and title
+      document.documentElement.dir = (currentLang === 'ur') ? 'rtl' : 'ltr';
+      document.documentElement.lang = currentLang;
+      document.getElementById('btnStandaloneLang').textContent = (currentLang === 'ur') ? 'English' : 'اردو';
+      document.getElementById('standalonePageTitle').textContent = (currentLang === 'ur') ? titlesUr[currentOrder] : titlesEn[currentOrder];
+
+      // Update tabs active class
+      ['suhrawardi', 'chishti', 'qadiri', 'naqshbandi', 'shadhili'].forEach(o => {
+        const tb = document.getElementById('tab_' + o);
+        if (tb) {
+          if (o === currentOrder) tb.classList.add('active');
+          else tb.classList.remove('active');
+        }
+      });
+
+      // Fetch content from index.html if needed or redirect seamlessly
+      fetch('index.html')
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const targetId = `silsilaDetail_${currentOrder}_${currentLang}`;
+          const el = doc.getElementById(targetId);
+          if (el) {
+            el.style.display = 'block';
+            document.getElementById('standaloneContentBox').innerHTML = el.outerHTML;
+          }
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
+
+    function switchOrder(orderKey) {
+      currentOrder = orderKey;
+      history.replaceState(null, '', `?order=${orderKey}&lang=${currentLang}`);
+      updateView();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleStandaloneLang() {
+      currentLang = (currentLang === 'ur') ? 'en' : 'ur';
+      history.replaceState(null, '', `?order=${currentOrder}&lang=${currentLang}`);
+      updateView();
+    }
+
+    // Init
+    updateView();
+  </script>
+</body>
+</html>
