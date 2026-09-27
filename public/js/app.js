@@ -4042,7 +4042,8 @@ window.filterCustomerStories = function(category, btnElement) {
   const cards = document.querySelectorAll('#csCardsList .cs-card-item');
   cards.forEach(card => {
     const cardCat = card.getAttribute('data-story-cat');
-    if (category === 'all' || cardCat === category) {
+    const isGoogle = card.classList.contains('is-google-story');
+    if (category === 'all' || cardCat === category || (category === 'google' && isGoogle)) {
       card.style.display = 'block';
     } else {
       card.style.display = 'none';
