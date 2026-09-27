@@ -8363,7 +8363,53 @@ window.openLataifImageModal = function(type, lang) {
   const imgEl = document.getElementById('lataifViewerImg');
   const descEl = document.getElementById('lataifViewerDesc');
 
-  if (type === 'silsila') {
+  if (type === 'chishti_lataif') {
+    if (imgEl) imgEl.src = 'assets/chishti-lataif-diagram.png';
+    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: Chishti Order 6 Subtle Centers (Lata\'if) & Positions' : 'نقشہ نمبر ۱: سلسلہ عالیہ چشتیہ کے لطائفِ ستہ کے باطنی مقامات';
+    if (descEl) {
+      if (lang === 'en') {
+        descEl.style.direction = 'ltr';
+        descEl.style.textAlign = 'left';
+        descEl.innerHTML = `<strong>Chishti Order 6 Subtle Centers (Lata'if) &amp; Spiritual Nodes:</strong><br>
+        1. <strong>Qalb (Below left breast 2 fingers):</strong> Red Light - Station of divine love and dhikr strike.<br>
+        2. <strong>Rooh (Below right breast 2 fingers):</strong> White Light - Station of peace and Prophetic love ﷺ.<br>
+        3. <strong>Sirr (Mid-chest):</strong> Green Light - Station of secret divine mysteries.<br>
+        4. <strong>Khafi (Forehead between brows):</strong> Blue Light - Station of spiritual vision and intuition.<br>
+        5. <strong>Akhfa (Top Crown / Apex):</strong> Black Light - Station of supreme divine proximity.<br>
+        6. <strong>Nafs (Below navel 2 fingers):</strong> Yellow Light - Base self purified into contentment (Mutma'innah).`;
+      } else {
+        descEl.style.direction = 'rtl';
+        descEl.style.textAlign = 'right';
+        descEl.innerHTML = `<strong>سلسلہ عالیہ چشتیہ کے لطائفِ ستہ اور ان کے باطنی مقامات و انوارات:</strong><br>
+        ۱. <strong>لطیفہ قلب (بائیں پستان سے ۲ انگل نیچے):</strong> سرخ نور — عشقِ الٰہی، محبتِ رسول ﷺ اور ضربِ ذکر کا مرکز۔<br>
+        ۲. <strong>لطیفہ روح (دائیں پستان سے ۲ انگل نیچے):</strong> سفید نور — مقامِ سکینہ، اطمینان اور روحانی حیات۔<br>
+        ۳. <strong>لطیفہ سرّ (سینے کے درمیان میں):</strong> سبز / ہرا نور — کشف و باطنی اسرار کا مقام۔<br>
+        ۴. <strong>لطیفہ خفی (پیشانی پر دونوں آنکھوں/ابرو کے درمیان):</strong> نیلا نور — باطنی بصیرت کا مقام۔<br>
+        ۵. <strong>لطیفہ اخفیٰ (سر کی چوٹی / تالو پر مغز میں):</strong> سیاہ نور — قربِ الٰہی اور تجلیاتِ ذات۔<br>
+        ۶. <strong>لطیفہ نفس (ناف سے ۲ انگل نیچے):</strong> زرد / پیلا نور — تزکیۂ نفسِ امارہ تا مطمئنہ۔`;
+      }
+    }
+  } else if (type === 'chishti_zikr_path') {
+    if (imgEl) imgEl.src = 'assets/chishti-zikr-path-diagram.jpg';
+    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 2: Chishti Dawazdah Tasbih & Dhikr Trajectory' : 'نقشہ نمبر ۲: دوازدہ تسبیح و ضربِ ذکر کی گردش (سلسلہ چشتیہ)';
+    if (descEl) {
+      if (lang === 'en') {
+        descEl.style.direction = 'ltr';
+        descEl.style.textAlign = 'left';
+        descEl.innerHTML = `<strong>Trajectory of Dawazdah Tasbih &amp; Dhikr Strike in Chishti Order:</strong><br>
+        • <strong>«La» (لا):</strong> Raised from Nafs (navel) through Sirr (mid-chest) and Khafi (forehead) all the way up to Akhfa at the crown of the head.<br>
+        • <strong>«Ilaha» (إِلٰهَ):</strong> Descended directly from Akhfa downward to the Rooh on the right chest.<br>
+        • <strong>«Illallah» (إِلَّا اللّٰه):</strong> Struck with immense spiritual force and divine love from Rooh directly onto the Qalb (left chest), cleansing all rust and worldly attachments.`;
+      } else {
+        descEl.style.direction = 'rtl';
+        descEl.style.textAlign = 'right';
+        descEl.innerHTML = `<strong>سلسلہ چشتیہ میں دوازدہ تسبیح، گردشِ ذکر اور ضربِ نفی و اثبات کی باطنی روش:</strong><br>
+        • <strong>«لا»:</strong> ناف (نفس) سے سانس و دھیان کو اٹھا کر سینے (سرّ) اور پیشانی (خفی) سے گزارتے ہوئے سر کی چوٹی (اخفیٰ) تک کھینچنا۔<br>
+        • <strong>«إِلٰهَ»:</strong> اخفیٰ سے نیچے سیدھا دائیں جانب لطیفہ روح پر لانا اور ٹکانا۔<br>
+        • <strong>«إِلَّا اللّٰه»:</strong> لطیفہ روح سے بھرپور روحانی تڑپ، دلی لگاؤ اور سوز و گداز کے ساتھ بائیں جانب لطیفہ قلب پر زبردست ضرب لگانا۔`;
+      }
+    }
+  } else if (type === 'silsila') {
     if (imgEl) imgEl.src = 'assets/lataif-silsila-diagram.png';
     if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: 6 Subtle Centers (Lata\'if) & Positions' : 'نقشہ نمبر ۱: انسانی جسم میں لطائفِ ستہ کے باطنی مقامات';
     if (descEl) {
@@ -8647,6 +8693,279 @@ window.sendSuhrawardiReport = function(lang) {
   window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
+/* --- SILSILA CHISHTIA DATE TRACKERS & 31 ASBAQ PROGRESS --- */
+window.saveChishtiDateUr = function() {
+  const val = document.getElementById('chishtiStartDateUr')?.value;
+  if (!val) return;
+  const enInput = document.getElementById('chishtiStartDateEn');
+  if (enInput) enInput.value = val;
+  const start = new Date(val);
+  const today = new Date();
+  start.setHours(0,0,0,0);
+  today.setHours(0,0,0,0);
+  const diffDays = Math.max(1, Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1);
+  const counterUr = document.getElementById('chishtiDayCounterUr');
+  if (counterUr) counterUr.textContent = 'دن: ' + diffDays;
+  const counterEn = document.getElementById('chishtiDayCounterEn');
+  if (counterEn) counterEn.textContent = 'Day: ' + diffDays;
+  localStorage.setItem('khizri_chishti_start_date', val);
+};
+
+window.saveChishtiDateEn = function() {
+  const val = document.getElementById('chishtiStartDateEn')?.value;
+  if (!val) return;
+  const urInput = document.getElementById('chishtiStartDateUr');
+  if (urInput) urInput.value = val;
+  const start = new Date(val);
+  const today = new Date();
+  start.setHours(0,0,0,0);
+  today.setHours(0,0,0,0);
+  const diffDays = Math.max(1, Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1);
+  const counterUr = document.getElementById('chishtiDayCounterUr');
+  if (counterUr) counterUr.textContent = 'دن: ' + diffDays;
+  const counterEn = document.getElementById('chishtiDayCounterEn');
+  if (counterEn) counterEn.textContent = 'Day: ' + diffDays;
+  localStorage.setItem('khizri_chishti_start_date', val);
+};
+
+window.saveChishtiLessonDate = function(lessonId, type, lang) {
+  const inputUr = document.getElementById(`chishti${type === 'start' ? 'Start' : 'End'}DateUr_${lessonId}`);
+  const inputEn = document.getElementById(`chishti${type === 'start' ? 'Start' : 'End'}DateEn_${lessonId}`);
+  const val = (lang === 'ur' ? inputUr?.value : inputEn?.value) || inputUr?.value || inputEn?.value;
+
+  if (inputUr && inputUr.value !== val) inputUr.value = val || '';
+  if (inputEn && inputEn.value !== val) inputEn.value = val || '';
+
+  if (val) {
+    localStorage.setItem(`khizri_chishti_${type}_date_${lessonId}`, val);
+  } else {
+    localStorage.removeItem(`khizri_chishti_${type}_date_${lessonId}`);
+  }
+
+  window.updateChishtiLessonStatusBadge(lessonId);
+};
+
+window.updateChishtiLessonStatusBadge = function(lessonId) {
+  const isDone = localStorage.getItem('khizri_chishti_tick_' + lessonId) === 'true';
+  const startDate = localStorage.getItem('khizri_chishti_start_date_' + lessonId);
+
+  const badgeUr = document.getElementById('chishtiStatusBadgeUr_' + lessonId);
+  const badgeEn = document.getElementById('chishtiStatusBadgeEn_' + lessonId);
+
+  if (isDone) {
+    if (badgeUr) {
+      badgeUr.textContent = 'مکمل ✅';
+      badgeUr.style.background = '#DCFCE7';
+      badgeUr.style.color = '#15803D';
+    }
+    if (badgeEn) {
+      badgeEn.textContent = 'Completed ✅';
+      badgeEn.style.background = '#DCFCE7';
+      badgeEn.style.color = '#15803D';
+    }
+  } else if (startDate) {
+    if (badgeUr) {
+      badgeUr.textContent = 'جاری ہے ⏳';
+      badgeUr.style.background = '#FEF3C7';
+      badgeUr.style.color = '#B45309';
+    }
+    if (badgeEn) {
+      badgeEn.textContent = 'In Progress ⏳';
+      badgeEn.style.background = '#FEF3C7';
+      badgeEn.style.color = '#B45309';
+    }
+  } else {
+    if (badgeUr) {
+      badgeUr.textContent = 'شروع نہیں ہوا';
+      badgeUr.style.background = '#F1F5F9';
+      badgeUr.style.color = '#64748B';
+    }
+    if (badgeEn) {
+      badgeEn.textContent = 'Not Started';
+      badgeEn.style.background = '#F1F5F9';
+      badgeEn.style.color = '#64748B';
+    }
+  }
+};
+
+window.toggleChishtiTickUr = function(id) {
+  const chkUr = document.getElementById('chishtiTickUr_' + id);
+  const chkEn = document.getElementById('chishtiTickEn_' + id);
+  const checked = chkUr ? chkUr.checked : false;
+  if (chkEn) chkEn.checked = checked;
+  localStorage.setItem('khizri_chishti_tick_' + id, checked ? 'true' : 'false');
+  window.updateChishtiLessonStatusBadge(id);
+};
+
+window.toggleChishtiTickEn = function(id) {
+  const chkUr = document.getElementById('chishtiTickUr_' + id);
+  const chkEn = document.getElementById('chishtiTickEn_' + id);
+  const checked = chkEn ? chkEn.checked : false;
+  if (chkUr) chkUr.checked = checked;
+  localStorage.setItem('khizri_chishti_tick_' + id, checked ? 'true' : 'false');
+  window.updateChishtiLessonStatusBadge(id);
+};
+
+window.loadChishtiState = function() {
+  const overallDate = localStorage.getItem('khizri_chishti_start_date');
+  if (overallDate) {
+    const urInput = document.getElementById('chishtiStartDateUr');
+    const enInput = document.getElementById('chishtiStartDateEn');
+    if (urInput) urInput.value = overallDate;
+    if (enInput) enInput.value = overallDate;
+
+    const start = new Date(overallDate);
+    const today = new Date();
+    start.setHours(0,0,0,0);
+    today.setHours(0,0,0,0);
+    const diffDays = Math.max(1, Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1);
+    const counterUr = document.getElementById('chishtiDayCounterUr');
+    if (counterUr) counterUr.textContent = 'دن: ' + diffDays;
+    const counterEn = document.getElementById('chishtiDayCounterEn');
+    if (counterEn) counterEn.textContent = 'Day: ' + diffDays;
+  }
+
+  for (let i = 1; i <= 31; i++) {
+    const isDone = localStorage.getItem('khizri_chishti_tick_' + i) === 'true';
+    const chkUr = document.getElementById('chishtiTickUr_' + i);
+    const chkEn = document.getElementById('chishtiTickEn_' + i);
+    if (chkUr) chkUr.checked = isDone;
+    if (chkEn) chkEn.checked = isDone;
+
+    const sDate = localStorage.getItem('khizri_chishti_start_date_' + i);
+    const sUr = document.getElementById('chishtiStartDateUr_' + i);
+    const sEn = document.getElementById('chishtiStartDateEn_' + i);
+    if (sDate) {
+      if (sUr) sUr.value = sDate;
+      if (sEn) sEn.value = sDate;
+    }
+
+    const eDate = localStorage.getItem('khizri_chishti_end_date_' + i);
+    const eUr = document.getElementById('chishtiEndDateUr_' + i);
+    const eEn = document.getElementById('chishtiEndDateEn_' + i);
+    if (eDate) {
+      if (eUr) eUr.value = eDate;
+      if (eEn) eEn.value = eDate;
+    }
+
+    window.updateChishtiLessonStatusBadge(i);
+  }
+};
+
+window.sendChishtiReport = function(lang) {
+  const lessonNamesUr = [
+    'دوازدہ تسبیح جلی',
+    '۲۰۰ مرتبہ "لا الہ الا اللہ" کا ذکر',
+    '۴۰۰ مرتبہ "الا اللہ" کا ذکر',
+    '۶۰۰ مرتبہ "اللہ، اللہ" کا ذکر لطیفہ قلب پر',
+    '۱۰۰ مرتبہ "اللہ" کا ذکر لطیفہ قلب پر',
+    'لطیفہ قلب (ذکرِ خفی)',
+    'لطیفہ روح (ذکرِ خفی)',
+    'لطیفہ سر (ذکرِ خفی)',
+    'لطیفہ خفی (ذکرِ خفی)',
+    'لطیفہ اخفیٰ (ذکرِ خفی)',
+    'لطیفہ نفس (ذکرِ خفی)',
+    'شغل سلطان الاذکار / شغل خفی',
+    'حبسِ دم (طریقہ اوّل و دوم)',
+    'شغلِ سرمدی',
+    'اسمِ ذات صنوبری',
+    'حبسِ بصر (حضورِ نماز)',
+    'مراقبہ تخلیقِ ماہیت اور حقیقت',
+    'مراقبہ محاسبۂ اعمال',
+    'مراقبہ رزق',
+    'مراقبہ تلاوت',
+    'مراقبہ نماز',
+    'مراقبہ رویت',
+    'مراقبہ موت',
+    'مراقبہ قبر (نیک و بد)',
+    'مراقبہ قیامت',
+    'مراقبہ سفرِ آخرت',
+    'مراقبہ جہنم',
+    'مراقبہ جنت',
+    'مراقبہ وحدت',
+    'مراقبہ معیت (ولایتِ صغریٰ)',
+    'مراقبہ اقربیت (ولایتِ کبریٰ)'
+  ];
+
+  const lessonNamesEn = [
+    'Dawazdah Tasbih Jali',
+    '200x "La Ilaha Illallah"',
+    '400x "Illallah"',
+    '600x "Allah, Allah" on Qalb',
+    '100x "Allah" on Qalb',
+    'Latifa Qalb (Silent Dhikr)',
+    'Latifa Ruh (Silent Dhikr)',
+    'Latifa Sirr (Silent Dhikr)',
+    'Latifa Khafi (Silent Dhikr)',
+    'Latifa Akhfa (Silent Dhikr)',
+    'Latifa Nafs (Silent Dhikr)',
+    'Sultan-ul-Azkar (Universal Inscription)',
+    'Habs-e-Dam (Breath Retention)',
+    'Shughl-e-Sarmadi (Celestial Hearing)',
+    'Ism-e-Zaat Sanobari (Golden Inscription)',
+    'Habs-e-Basar (Vision Vigil in Prayer)',
+    'Muraqaba Takhleeq-e-Mahiyyat (Creation)',
+    'Muraqaba Muhasaba-e-A\'maal (Self-Accounting)',
+    'Muraqaba-e-Rizq (Divine Sustenance)',
+    'Muraqaba Tilawat (Divine Recitation)',
+    'Muraqaba Namaz (Spiritual Ascent)',
+    'Muraqaba Ruyat (Divine Sight)',
+    'Muraqaba Maut (Death Contemplation)',
+    'Muraqaba Qabr (The Grave Realm)',
+    'Muraqaba Qayamat (Resurrection Day)',
+    'Muraqaba Safar-e-Aakhirat (Hereafter Journey)',
+    'Muraqaba Jahannam (Hellfire Warning)',
+    'Muraqaba Jannat (Paradise Delights)',
+    'Muraqaba Wahdat (Divine Oneness)',
+    'Muraqaba Ma\'iyyat (Divine Companionship)',
+    'Muraqaba Aqrabiyyat (Supreme Proximity)'
+  ];
+
+  let doneCount = 0;
+  let detailsText = '';
+
+  for (let i = 1; i <= 31; i++) {
+    const isDone = localStorage.getItem('khizri_chishti_tick_' + i) === 'true';
+    if (isDone) doneCount++;
+
+    const sDate = localStorage.getItem('khizri_chishti_start_date_' + i) || '-';
+    const eDate = localStorage.getItem('khizri_chishti_end_date_' + i) || '-';
+
+    if (lang === 'en') {
+      const statusStr = isDone ? '✅ Completed' : (sDate !== '-' ? '⏳ In Progress' : '⚪ Not Started');
+      detailsText += `\n*${i}. ${lessonNamesEn[i-1]}:* ${statusStr}\n   • Start: ${sDate} | End: ${eDate}`;
+    } else {
+      const statusStr = isDone ? '✅ مکمل' : (sDate !== '-' ? '⏳ زیرِ عمل' : '⚪ شروع نہیں ہوا');
+      detailsText += `\n*سبق ${i}: ${lessonNamesUr[i-1]}* — ${statusStr}\n   • آغاز: ${sDate} | اختتام: ${eDate}`;
+    }
+  }
+
+  const overallDateVal = localStorage.getItem('khizri_chishti_start_date') || 'آج';
+
+  let msg = '';
+  if (lang === 'en') {
+    msg += `*Bismillahir Rahmanir Raheem*\n`;
+    msg += `*Progress Report: Chishti Order Lessons (Tuhfat-ul-Masha'ikh)*\n`;
+    msg += `📅 *Order Start Date:* ${overallDateVal}\n`;
+    msg += `📊 *Completed Lessons:* ${doneCount} / 31 Lessons Complete\n`;
+    msg += `----------------------------------------\n`;
+    msg += `*Detailed Lesson Dates & Status:*${detailsText}\n`;
+    msg += `----------------------------------------\n`;
+    msg += `Assalamu Alaikum Mufti Khizer Mateen! Here is my progress in the Chishti Order 31 lessons, Lata'if, and Muraqabat. Kindly grant guidance, spiritual blessings, and permission for higher spiritual stations.`;
+  } else {
+    msg += `*بسم اللہ الرحمن الرحیم*\n`;
+    msg += `*پیش رفت رپورٹ برائے ۳۱ اسباقِ سلسلہ عالیہ چشتیہ (تحفۃ المشائخ)*\n`;
+    msg += `📅 *سلسلہ میں آغاز کی تاریخ:* ${overallDateVal}\n`;
+    msg += `📊 *مجموعی تکمیل:* ${doneCount} / 31 اسباق مکمل\n`;
+    msg += `----------------------------------------\n`;
+    msg += `*اسباق کی تاریخیں و موجودہ کیفیت:*${detailsText}\n`;
+    msg += `----------------------------------------\n`;
+    msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ چشتیہ کے ۳۱ اسباق، لطائف و مراقبات کی مشق شروع کی ہوئی ہے اور میری تفصیلی پیش رفت درج بالا ہے۔ برائے مہربانی اگلے اسباق، مراقبات اور معمولات کی اجازت و دعا عنایت فرمائیں۔`;
+  }
+
+  window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
+};
+
 /* --- STEP 3: 5 SUFI ORDERS DEDICATED FULL SCREEN SYSTEM --- */
 window.currentSilsilaOrder = { ur: 'suhrawardi', en: 'suhrawardi' };
 
@@ -8802,6 +9121,10 @@ window.switchSilsilaScreenTab = function(orderKey, lang) {
   // 6. Reload Suhrawardi state if active
   if (orderKey === 'suhrawardi' && typeof window.loadSuhrawardiState === 'function') {
     window.loadSuhrawardiState();
+  }
+  // 7. Reload Chishti state if active
+  if (orderKey === 'chishti' && typeof window.loadChishtiState === 'function') {
+    window.loadChishtiState();
   }
 };
 
