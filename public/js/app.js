@@ -51,7 +51,7 @@ const state = {
 const i18n = {
   en: {
     langBtn: 'اردو',
-    greeting: "Assalamu'alaikum",
+    greeting: "",
     nowPrayer: 'Now prayer is',
     nextPrayerPrefix: 'Next prayer is',
     featQuran: 'Quran<br>Majeed',
@@ -125,7 +125,7 @@ const i18n = {
   },
   ur: {
     langBtn: 'English',
-    greeting: 'السلام علیکم',
+    greeting: '',
     nowPrayer: 'اب وقت ہے',
     nextPrayerPrefix: 'اگلی نماز ہے',
     featQuran: 'القرآن<br>الکریم',
@@ -252,9 +252,9 @@ function setAppLanguage(lang) {
   if (toggleBtnText) toggleBtnText.textContent = (lang === 'en' ? 'اردو' : 'English');
   if (desktopBtnText) desktopBtnText.textContent = (lang === 'en' ? 'اردو' : 'English');
 
-  // Greeting
+  // Greeting (Removed as requested)
   const greetingEl = document.getElementById('headerGreetingText');
-  if (greetingEl) greetingEl.textContent = t.greeting;
+  if (greetingEl) greetingEl.textContent = '';
 
   // Hero Prayer Card labels
   const curLabel = document.getElementById('currentPrayerLabel');
