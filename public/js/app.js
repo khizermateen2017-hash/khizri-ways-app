@@ -8363,7 +8363,55 @@ window.openLataifImageModal = function(type, lang) {
   const imgEl = document.getElementById('lataifViewerImg');
   const descEl = document.getElementById('lataifViewerDesc');
 
-  if (type === 'chishti_lataif') {
+  if (type === 'qadiri_lataif') {
+    if (imgEl) imgEl.src = 'assets/qadiri-lataif-diagram.png';
+    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: Qadiri Order 7 Subtle Centers (Lata\'if) & Azkar Table' : 'نقشہ نمبر ۱: سلسلہ عالیہ قادریہ کے سات لطائف اور اذکار کا جدول';
+    if (descEl) {
+      if (lang === 'en') {
+        descEl.style.direction = 'ltr';
+        descEl.style.textAlign = 'left';
+        descEl.innerHTML = `<strong>Qadiri Order 7 Subtle Centers (Lata'if) &amp; Spiritual Nodes:</strong><br>
+        1. <strong>Ruh (Below right breast 2 fingers):</strong> White Light - Station of spiritual vitality and celestial peace.<br>
+        2. <strong>Qalb (Below left breast 2 fingers):</strong> Red Light - Station of pure Divine love and heart strike.<br>
+        3. <strong>Sirr (Mid-chest center):</strong> Green Light - Station of divine secrets and spiritual revelation.<br>
+        4. <strong>Khafi (Forehead between eyebrows):</strong> Blue Light - Station of inner vision and intuitive insight.<br>
+        5. <strong>Akhfa (Top Crown / Palate):</strong> Black Light - Station of supreme proximity and direct divine effulgence.<br>
+        6. <strong>Nafs (Below navel 2 fingers):</strong> Yellow Light - Station of purification, transforming ego into contentment.<br>
+        7. <strong>Qalib / Sultan-ul-Azkar (2 fingers below Nafs & entire body):</strong> Colorless / All-Permeating - Activation of all cells, nerves, and tissues with universal Dhikr.`;
+      } else {
+        descEl.style.direction = 'rtl';
+        descEl.style.textAlign = 'right';
+        descEl.innerHTML = `<strong>سلسلہ عالیہ قادریہ کے سات لطائف، مقامات اور انوارات کے رنگ:</strong><br>
+        ۱. <strong>لطیفہ روح (دائیں پستان سے ۲ انگل نیچے):</strong> سفید نور — روحانی حیات، سکینہ اور اطمینانِ قلب کا مقام۔<br>
+        ۲. <strong>لطیفہ قلب (بائیں پستان سے ۲ انگل نیچے):</strong> سرخ نور — عشقِ الٰہی، محبتِ رسول ﷺ اور ضربِ ذکر کا مرکز۔<br>
+        ۳. <strong>لطیفہ سرّ (سینے کے عین وسط/درمیان میں):</strong> سبز / ہرا نور — باطنی اسرار اور کشفِ حقائق کا مخزن۔<br>
+        ۴. <strong>لطیفہ خفی (پیشانی پر دونوں آنکھوں/ابرو کے درمیان):</strong> نیلا نور — باطنی بصیرت اور روحانی وجدان کا مقام۔<br>
+        ۵. <strong>لطیفہ اخفیٰ (سر کی چوٹی / تالو پر):</strong> سیاہ نور — قربِ خاص اور تجلیاتِ ذات کا اعلیٰ ترین مقام۔<br>
+        ۶. <strong>لطیفہ نفس (ناف سے ۲ انگل نیچے):</strong> زرد / پیلا نور — تزکیۂ نفسِ امارہ اور مقامِ رضا و تسلیم۔<br>
+        ۷. <strong>قالب / سلطان الاذکار (نفس سے ۲ انگل نیچے و تمام رگ و ریشہ):</strong> بے رنگ نور — پورے جسم کے تمام مسامات اور اعصاب کا ہمہ تن ذکرِ الٰہی میں ڈوب جانا۔`;
+      }
+    }
+  } else if (type === 'qadiri_zikr_path') {
+    if (imgEl) imgEl.src = 'assets/qadiri-zikr-path-diagram.jpg';
+    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 2: Qadiri Dhikr Trajectory & Nafi wa Isbat Strike' : 'نقشہ نمبر ۲: سلسلہ قادریہ میں گردشِ ذکر اور ضربِ نفی و اثبات کی باطنی روش';
+    if (descEl) {
+      if (lang === 'en') {
+        descEl.style.direction = 'ltr';
+        descEl.style.textAlign = 'left';
+        descEl.innerHTML = `<strong>Trajectory of Dhikr Strike in Qadiri Order (Nafi wa Isbat):</strong><br>
+        • <strong>«La» (لا):</strong> Raised steadily from Nafs (navel) through Sirr (mid-chest) and Khafi (forehead) up to Akhfa at the crown of the head.<br>
+        • <strong>«Ilaha» (إِلٰهَ):</strong> Brought down diagonally from Akhfa directly down onto the Ruh (right breast).<br>
+        • <strong>«Illallah» (إِلَّا اللّٰه):</strong> Struck with immense spiritual power and inward reverence from Ruh across into the Qalb (left breast), effacing all attachments other than Allah.`;
+      } else {
+        descEl.style.direction = 'rtl';
+        descEl.style.textAlign = 'right';
+        descEl.innerHTML = `<strong>سلسلہ قادریہ میں دوازدہ ذکر اور ضربِ نفی و اثبات کی باطنی گردش:</strong><br>
+        • <strong>«لا»:</strong> ناف (نفس) سے خطِ نورانی کو سینے (سرّ) اور پیشانی (خفی) سے گزارتے ہوئے سر کی چوٹی (اخفیٰ) تک کھینچنا۔<br>
+        • <strong>«إِلٰهَ»:</strong> اخفیٰ سے نیچے سیدھا دائیں جانب لطیفہ روح پر لانا اور ٹکانا۔<br>
+        • <strong>«إِلَّا اللّٰه»:</strong> لطیفہ روح سے بھرپور روحانی ہیبت، جلال اور عشقِ الٰہی کے ساتھ بائیں جانب لطیفہ قلب پر زبردست ضرب مارنا تا آنکہ دل غیر اللہ سے پاک ہو جائے۔`;
+      }
+    }
+  } else if (type === 'chishti_lataif') {
     if (imgEl) imgEl.src = 'assets/chishti-lataif-diagram.png';
     if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: Chishti Order 6 Subtle Centers (Lata\'if) & Positions' : 'نقشہ نمبر ۱: سلسلہ عالیہ چشتیہ کے لطائفِ ستہ کے باطنی مقامات';
     if (descEl) {
@@ -8692,6 +8740,265 @@ window.sendSuhrawardiReport = function(lang) {
 
   window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
 };
+
+/* --- QADIRI ORDER STATE & LESSON TRACKER --- */
+window.saveQadiriDateUr = function() {
+  const val = document.getElementById('qadiriStartDateUr')?.value;
+  if (!val) return;
+  const enInput = document.getElementById('qadiriStartDateEn');
+  if (enInput) enInput.value = val;
+  const start = new Date(val);
+  const today = new Date();
+  start.setHours(0,0,0,0);
+  today.setHours(0,0,0,0);
+  const diffDays = Math.max(1, Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1);
+  const counterUr = document.getElementById('qadiriDayCounterUr');
+  if (counterUr) counterUr.textContent = 'دن: ' + diffDays;
+  const counterEn = document.getElementById('qadiriDayCounterEn');
+  if (counterEn) counterEn.textContent = 'Day: ' + diffDays;
+  localStorage.setItem('khizri_qadiri_start_date', val);
+};
+
+window.saveQadiriDateEn = function() {
+  const val = document.getElementById('qadiriStartDateEn')?.value;
+  if (!val) return;
+  const urInput = document.getElementById('qadiriStartDateUr');
+  if (urInput) urInput.value = val;
+  const start = new Date(val);
+  const today = new Date();
+  start.setHours(0,0,0,0);
+  today.setHours(0,0,0,0);
+  const diffDays = Math.max(1, Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1);
+  const counterUr = document.getElementById('qadiriDayCounterUr');
+  if (counterUr) counterUr.textContent = 'دن: ' + diffDays;
+  const counterEn = document.getElementById('qadiriDayCounterEn');
+  if (counterEn) counterEn.textContent = 'Day: ' + diffDays;
+  localStorage.setItem('khizri_qadiri_start_date', val);
+};
+
+window.saveQadiriLessonDate = function(lessonId, type, lang) {
+  const inputId = (lang === 'en') ? `qadiri${type === 'start' ? 'Start' : 'End'}DateEn_${lessonId}` : `qadiri${type === 'start' ? 'Start' : 'End'}DateUr_${lessonId}`;
+  const peerInputId = (lang === 'en') ? `qadiri${type === 'start' ? 'Start' : 'End'}DateUr_${lessonId}` : `qadiri${type === 'start' ? 'Start' : 'End'}DateEn_${lessonId}`;
+  const val = document.getElementById(inputId)?.value || '';
+
+  const peer = document.getElementById(peerInputId);
+  if (peer) peer.value = val;
+
+  localStorage.setItem(`khizri_qadiri_${type}_date_${lessonId}`, val);
+  window.updateQadiriLessonStatusBadge(lessonId);
+};
+
+window.updateQadiriLessonStatusBadge = function(lessonId) {
+  const isDone = localStorage.getItem('khizri_qadiri_tick_' + lessonId) === 'true';
+  const startDate = localStorage.getItem('khizri_qadiri_start_date_' + lessonId);
+
+  const badgeUr = document.getElementById('qadiriStatusBadgeUr_' + lessonId);
+  const badgeEn = document.getElementById('qadiriStatusBadgeEn_' + lessonId);
+
+  if (isDone) {
+    if (badgeUr) {
+      badgeUr.textContent = 'مکمل ✅';
+      badgeUr.style.background = '#DCFCE7';
+      badgeUr.style.color = '#15803D';
+    }
+    if (badgeEn) {
+      badgeEn.textContent = 'Completed ✅';
+      badgeEn.style.background = '#DCFCE7';
+      badgeEn.style.color = '#15803D';
+    }
+  } else if (startDate) {
+    if (badgeUr) {
+      badgeUr.textContent = 'جاری ہے ⏳';
+      badgeUr.style.background = '#FEF3C7';
+      badgeUr.style.color = '#B45309';
+    }
+    if (badgeEn) {
+      badgeEn.textContent = 'In Progress ⏳';
+      badgeEn.style.background = '#FEF3C7';
+      badgeEn.style.color = '#B45309';
+    }
+  } else {
+    if (badgeUr) {
+      badgeUr.textContent = 'شروع نہیں ہوا';
+      badgeUr.style.background = '#F1F5F9';
+      badgeUr.style.color = '#64748B';
+    }
+    if (badgeEn) {
+      badgeEn.textContent = 'Not Started';
+      badgeEn.style.background = '#F1F5F9';
+      badgeEn.style.color = '#64748B';
+    }
+  }
+};
+
+window.toggleQadiriTickUr = function(id) {
+  const chkUr = document.getElementById('qadiriTickUr_' + id);
+  const chkEn = document.getElementById('qadiriTickEn_' + id);
+  const checked = chkUr ? chkUr.checked : false;
+  if (chkEn) chkEn.checked = checked;
+  localStorage.setItem('khizri_qadiri_tick_' + id, checked ? 'true' : 'false');
+  window.updateQadiriLessonStatusBadge(id);
+};
+
+window.toggleQadiriTickEn = function(id) {
+  const chkUr = document.getElementById('qadiriTickUr_' + id);
+  const chkEn = document.getElementById('qadiriTickEn_' + id);
+  const checked = chkEn ? chkEn.checked : false;
+  if (chkUr) chkUr.checked = checked;
+  localStorage.setItem('khizri_qadiri_tick_' + id, checked ? 'true' : 'false');
+  window.updateQadiriLessonStatusBadge(id);
+};
+
+window.loadQadiriState = function() {
+  const overallDate = localStorage.getItem('khizri_qadiri_start_date');
+  if (overallDate) {
+    const urInput = document.getElementById('qadiriStartDateUr');
+    const enInput = document.getElementById('qadiriStartDateEn');
+    if (urInput) urInput.value = overallDate;
+    if (enInput) enInput.value = overallDate;
+
+    const start = new Date(overallDate);
+    const today = new Date();
+    start.setHours(0,0,0,0);
+    today.setHours(0,0,0,0);
+    const diffDays = Math.max(1, Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1);
+    const counterUr = document.getElementById('qadiriDayCounterUr');
+    if (counterUr) counterUr.textContent = 'دن: ' + diffDays;
+    const counterEn = document.getElementById('qadiriDayCounterEn');
+    if (counterEn) counterEn.textContent = 'Day: ' + diffDays;
+  }
+
+  for (let i = 1; i <= 26; i++) {
+    const isDone = localStorage.getItem('khizri_qadiri_tick_' + i) === 'true';
+    const chkUr = document.getElementById('qadiriTickUr_' + i);
+    const chkEn = document.getElementById('qadiriTickEn_' + i);
+    if (chkUr) chkUr.checked = isDone;
+    if (chkEn) chkEn.checked = isDone;
+
+    const sDate = localStorage.getItem('khizri_qadiri_start_date_' + i);
+    const sUr = document.getElementById('qadiriStartDateUr_' + i);
+    const sEn = document.getElementById('qadiriStartDateEn_' + i);
+    if (sDate) {
+      if (sUr) sUr.value = sDate;
+      if (sEn) sEn.value = sDate;
+    }
+
+    const eDate = localStorage.getItem('khizri_qadiri_end_date_' + i);
+    const eUr = document.getElementById('qadiriEndDateUr_' + i);
+    const eEn = document.getElementById('qadiriEndDateEn_' + i);
+    if (eDate) {
+      if (eUr) eUr.value = eDate;
+      if (eEn) eEn.value = eDate;
+    }
+
+    window.updateQadiriLessonStatusBadge(i);
+  }
+};
+
+window.sendQadiriReport = function(lang) {
+  const lessonNamesUr = [
+    '۲۰۰ مرتبہ "لا الہ الا اللہ" جہراً',
+    '۴۰۰ مرتبہ "الا اللہ" جہراً',
+    '۶۰۰ مرتبہ "اللہ ھو" جہراً',
+    'ذکرِ نفسی خفی (اللہ ھو)',
+    'اللہ اور ھو کی ایک ایک تسبیح سلطان الاذکار پر جہراً',
+    'لطیفۂ قلب (ذکرِ خفی)',
+    'لطیفۂ روح (ذکرِ خفی)',
+    'لطیفۂ سر (ذکرِ خفی)',
+    'لطیفۂ خفی (ذکرِ خفی)',
+    'لطیفۂ اخفیٰ (ذکرِ خفی)',
+    'لطیفۂ نفس (ذکرِ خفی)',
+    'لطیفۂ شغل سلطان الاذکار',
+    'حبسِ نفی واثبات (بمع دعائے نور و فنا)',
+    'پاسِ انفاس',
+    'ذکرِ ازراہ (شقِ صدر)',
+    'اسمِ ذات باضربات (یک، دو، سہ، چہار ضربی)',
+    'لطائف پر اسمِ ذات کا ذکرِ خفی',
+    'دورۂ قادریہ',
+    'مراقبۂ برزخِ اکبر',
+    'مراقبۂ توحید (آیت: اینما تکونوا یدرککم الموت)',
+    'مراقبۂ توحیدِ نوری (آیت: اللہ نور السموت والارض)',
+    'مراقبۂ توحیدِ افعالی',
+    'مراقبۂ توحیدِ صفاتی',
+    'مراقبۂ جہت (آیت: فاینما تولوا فثم وجہ اللہ)',
+    'مراقبۂ معیت (آیت: وهو معكم این ما کنتم)',
+    'مراقبۂ وحدۃ الوجود و وحدۃ الشہود'
+  ];
+
+  const lessonNamesEn = [
+    '200x "La Ilaha Illallah" (Vocal Dhikr)',
+    '400x "Illallah" (Vocal Dhikr)',
+    '600x "Allahu Hoo" (Vocal Dhikr)',
+    'Zikr-e-Nafsi Khafi ("Allahu Hoo" Silent Breath)',
+    '1 Tasbih "Allah" & 1 Tasbih "Hoo" for Sultan-ul-Azkar',
+    'Latifa Qalb (Heart Subtle Center - Silent)',
+    'Latifa Ruh (Spirit Subtle Center - Silent)',
+    'Latifa Sirr (Secret Subtle Center - Silent)',
+    'Latifa Khafi (Hidden Subtle Center - Silent)',
+    'Latifa Akhfa (Most Hidden Subtle Center - Silent)',
+    'Latifa Nafs (Ego/Soul Subtle Center - Silent)',
+    'Shughl Sultan-ul-Azkar (Universal Bodily Dhikr)',
+    'Habs-e-Nafi wa Isbat (Breath Retention with Nur Supplication)',
+    'Paas-e-Anfaas (Conscious Vigilance of Breath)',
+    'Zikr-e-Azrah / Shaqq-e-Sadr (Heart Expansion)',
+    'Ism-e-Zaat Ba-Zarbaat (1, 2, 3 & 4 Strikes)',
+    'Silent Dhikr of Ism-e-Zaat across all 7 Lata\'if',
+    'Daura-e-Qadiriyya (Ascent & Descent Circuit)',
+    'Muraqaba-e-Barzakh-e-Akbar (The Great Isthmus)',
+    'Muraqaba-e-Tawheed (Certainty of Death - 4:78)',
+    'Muraqaba-e-Tawheed-e-Noori (Ayat-un-Nur - 24:35)',
+    'Muraqaba Tawheed-e-Af\'aali (Unity of Divine Acts)',
+    'Muraqaba Tawheed-e-Sifaati (Unity of Divine Attributes)',
+    'Muraqaba Jihat (Omnipresent Divine Face - 2:115)',
+    'Muraqaba Ma\'iyyat (Divine Accompaniment - 57:4)',
+    'Muraqaba Wahdat-ul-Wujood wa Wahdat-ush-Shuhood'
+  ];
+
+  let doneCount = 0;
+  let detailsText = '';
+
+  for (let i = 1; i <= 26; i++) {
+    const isDone = localStorage.getItem('khizri_qadiri_tick_' + i) === 'true';
+    if (isDone) doneCount++;
+
+    const sDate = localStorage.getItem('khizri_qadiri_start_date_' + i) || '-';
+    const eDate = localStorage.getItem('khizri_qadiri_end_date_' + i) || '-';
+
+    if (lang === 'en') {
+      const statusStr = isDone ? '✅ Completed' : (sDate !== '-' ? '⏳ In Progress' : '⚪ Not Started');
+      detailsText += `\n*${i}. ${lessonNamesEn[i-1]}:* ${statusStr}\n   • Start: ${sDate} | End: ${eDate}`;
+    } else {
+      const statusStr = isDone ? '✅ مکمل' : (sDate !== '-' ? '⏳ زیرِ عمل' : '⚪ شروع نہیں ہوا');
+      detailsText += `\n*سبق ${i}: ${lessonNamesUr[i-1]}* — ${statusStr}\n   • آغاز: ${sDate} | اختتام: ${eDate}`;
+    }
+  }
+
+  const overallDateVal = localStorage.getItem('khizri_qadiri_start_date') || 'آج';
+
+  let msg = '';
+  if (lang === 'en') {
+    msg += `*Bismillahir Rahmanir Raheem*\n`;
+    msg += `*Progress Report: Qadiri Order Lessons (Tuhfat-ul-Masha\'ikh)*\n`;
+    msg += `📅 *Order Start Date:* ${overallDateVal}\n`;
+    msg += `📊 *Completed Lessons:* ${doneCount} / 26 Lessons Complete\n`;
+    msg += `----------------------------------------\n`;
+    msg += `*Detailed Lesson Dates & Status:*${detailsText}\n`;
+    msg += `----------------------------------------\n`;
+    msg += `Assalamu Alaikum Mufti Khizer Mateen! Here is my progress in the Qadiri Order 26 lessons, 7 Lata\'if, and Muraqabat. Kindly grant guidance, spiritual blessings, and permission for higher spiritual stations.`;
+  } else {
+    msg += `*بسم اللہ الرحمن الرحیم*\n`;
+    msg += `*پیش رفت رپورٹ برائے ۲۶ اسباقِ سلسلہ عالیہ قادریہ (تحفۃ المشائخ)*\n`;
+    msg += `📅 *سلسلہ میں آغاز کی تاریخ:* ${overallDateVal}\n`;
+    msg += `📊 *مجموعی تکمیل:* ${doneCount} / 26 اسباق مکمل\n`;
+    msg += `----------------------------------------\n`;
+    msg += `*اسباق کی تاریخیں و موجودہ کیفیت:*${detailsText}\n`;
+    msg += `----------------------------------------\n`;
+    msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ قادریہ کے ۲۶ اسباق، ۷ لطائف و مراقبات کی مشق شروع کی ہوئی ہے اور میری تفصیلی پیش رفت درج بالا ہے۔ برائے مہربانی اگلے اسباق، مراقبات اور معمولات کی اجازت و دعا عنایت فرمائیں۔`;
+  }
+
+  window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
+};
+
 
 /* --- SILSILA CHISHTIA DATE TRACKERS & 31 ASBAQ PROGRESS --- */
 window.saveChishtiDateUr = function() {
@@ -9125,6 +9432,10 @@ window.switchSilsilaScreenTab = function(orderKey, lang) {
   // 7. Reload Chishti state if active
   if (orderKey === 'chishti' && typeof window.loadChishtiState === 'function') {
     window.loadChishtiState();
+  }
+  // 8. Reload Qadiri state if active
+  if (orderKey === 'qadiri' && typeof window.loadQadiriState === 'function') {
+    window.loadQadiriState();
   }
 };
 

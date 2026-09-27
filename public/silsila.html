@@ -210,6 +210,9 @@
             if (currentOrder === 'chishti' && typeof window.loadChishtiState === 'function') {
               setTimeout(window.loadChishtiState, 50);
             }
+            if (currentOrder === 'qadiri' && typeof window.loadQadiriState === 'function') {
+              setTimeout(window.loadQadiriState, 50);
+            }
           }
         })
         .catch(err => {
