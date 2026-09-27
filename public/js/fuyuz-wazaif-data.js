@@ -2433,6 +2433,9 @@ window.loadFuyuzState = function() {
   });
 
   window.updateFuyuzDoneCount();
+  if (typeof window.loadFuyuzInlineState === 'function') {
+    window.loadFuyuzInlineState();
+  }
 };
 
 /* Update Overall Progress Counters */
@@ -2544,15 +2547,115 @@ window.sendFuyuzNotesWhatsApp = function() {
   window.open(`https://wa.me/923152395969?text=${encoded}`, '_blank');
 };
 
+/* --- INLINE TASAWWUF SECTION SYNCHRONIZATION --- */
+window.toggleFuyuzInline7Day = function(wid, day) {
+  const data = window.getFuyuzData();
+  if (!data.ticks7) data.ticks7 = {};
+  const key = wid + '_' + day;
+
+  // Find either UR or EN checkbox
+  const chkUr = document.getElementById('fnInlineChk_' + wid + '_' + day);
+  const chkEn = document.getElementById('fnInlineChkEn_' + wid + '_' + day);
+  const isChecked = (chkUr && chkUr.checked) || (chkEn && chkEn.checked);
+
+  data.ticks7[key] = isChecked;
+  window.saveFuyuzStorageData(data);
+
+  // Sync UR
+  if (chkUr) chkUr.checked = isChecked;
+  const lblUr = document.getElementById('fnInlineLbl_' + wid + '_' + day);
+  if (lblUr) {
+    lblUr.style.background = isChecked ? '#ECFDF5' : '#FFFFFF';
+    lblUr.style.borderColor = isChecked ? '#10B981' : '#CBD5E1';
+    lblUr.style.color = isChecked ? '#065F46' : '#1E293B';
+  }
+
+  // Sync EN
+  if (chkEn) chkEn.checked = isChecked;
+  const lblEn = document.getElementById('fnInlineLblEn_' + wid + '_' + day);
+  if (lblEn) {
+    lblEn.style.background = isChecked ? '#ECFDF5' : '#FFFFFF';
+    lblEn.style.borderColor = isChecked ? '#10B981' : '#CBD5E1';
+    lblEn.style.color = isChecked ? '#065F46' : '#1E293B';
+  }
+
+  // Also sync modal checkbox if rendered
+  const modalChk = document.getElementById('fnTick7_' + wid + '_' + day);
+  const modalLbl = document.getElementById('fnDayLabel_' + wid + '_' + day);
+  if (modalChk) modalChk.checked = isChecked;
+  if (modalLbl) {
+    modalLbl.style.background = isChecked ? '#ECFDF5' : '#FFFFFF';
+    modalLbl.style.borderColor = isChecked ? '#10B981' : '#E2E8F0';
+  }
+
+  window.updateFuyuzWazifaBadge(wid);
+  window.updateFuyuzDoneCount();
+};
+
+window.setFuyuzInlineStartDate = function(wid, val) {
+  const data = window.getFuyuzData();
+  if (!data.startDates) data.startDates = {};
+  data.startDates[wid] = val;
+  window.saveFuyuzStorageData(data);
+
+  // Sync both inputs
+  const inUr = document.getElementById('fnInlineStartDate_' + wid);
+  const inEn = document.getElementById('fnInlineStartDateEn_' + wid);
+  if (inUr && inUr.value !== val) inUr.value = val;
+  if (inEn && inEn.value !== val) inEn.value = val;
+
+  const modalInput = document.getElementById('fnStartDate_' + wid);
+  if (modalInput && modalInput.value !== val) modalInput.value = val;
+
+  if (typeof window.updateFuyuz40DayDate === 'function') {
+    window.updateFuyuz40DayDate(wid);
+  }
+};
+
+window.loadFuyuzInlineState = function() {
+  const data = window.getFuyuzData();
+  [0, 1].forEach(wid => {
+    for (let d = 1; d <= 7; d++) {
+      const isChecked = Boolean(data.ticks7 && data.ticks7[wid + '_' + d]);
+      const chkUr = document.getElementById('fnInlineChk_' + wid + '_' + d);
+      const lblUr = document.getElementById('fnInlineLbl_' + wid + '_' + d);
+      if (chkUr) chkUr.checked = isChecked;
+      if (lblUr) {
+        lblUr.style.background = isChecked ? '#ECFDF5' : '#FFFFFF';
+        lblUr.style.borderColor = isChecked ? '#10B981' : '#CBD5E1';
+        lblUr.style.color = isChecked ? '#065F46' : '#1E293B';
+      }
+
+      const chkEn = document.getElementById('fnInlineChkEn_' + wid + '_' + d);
+      const lblEn = document.getElementById('fnInlineLblEn_' + wid + '_' + d);
+      if (chkEn) chkEn.checked = isChecked;
+      if (lblEn) {
+        lblEn.style.background = isChecked ? '#ECFDF5' : '#FFFFFF';
+        lblEn.style.borderColor = isChecked ? '#10B981' : '#CBD5E1';
+        lblEn.style.color = isChecked ? '#065F46' : '#1E293B';
+      }
+    }
+
+    const inUr = document.getElementById('fnInlineStartDate_' + wid);
+    const inEn = document.getElementById('fnInlineStartDateEn_' + wid);
+    const savedDate = (data.startDates && data.startDates[wid]) ? data.startDates[wid] : new Date().toISOString().split('T')[0];
+    if (inUr) inUr.value = savedDate;
+    if (inEn) inEn.value = savedDate;
+  });
+};
+
 /* Initialize on DOMContentLoaded or immediate */
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     if (typeof window.renderFuyuzWazaif === 'function') {
       window.renderFuyuzWazaif();
     }
+    window.loadFuyuzInlineState();
   });
 } else {
   if (typeof window.renderFuyuzWazaif === 'function') {
     window.renderFuyuzWazaif();
   }
+  window.loadFuyuzInlineState();
 }
+
