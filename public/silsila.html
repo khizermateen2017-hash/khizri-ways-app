@@ -125,6 +125,34 @@
     </main>
   </div>
 
+  <!-- MODAL: LATAIF & ZIKR DIAGRAMS VIEWER -->
+  <div class="modal-dialog-layer" id="modalLataifImageViewer">
+    <div class="modal-card-container" style="max-width: 650px; width: 95%; max-height: 94vh; overflow-y: auto; border-radius: 18px; border: 1.5px solid rgba(59, 130, 246, 0.6); background: #FFFFFF; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+      <div class="modal-card-top-bar" style="background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%); color: #FFFFFF; padding: 12px 16px; border-top-left-radius: 16px; border-top-right-radius: 16px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-image text-gold" style="font-size: 1.15rem;"></i>
+          <span id="lataifViewerTitle" style="font-weight: 800; font-size: 0.96rem;">نقشہ لطائفِ ستہ</span>
+        </div>
+        <button class="btn-modal-x" onclick="closeModal('modalLataifImageViewer')" style="color: #FFFFFF; background: rgba(255,255,255,0.18); border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-card-body" style="padding: 16px; text-align: center;">
+        <div style="background: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 12px; padding: 10px; margin-bottom: 12px;">
+          <img id="lataifViewerImg" src="assets/lataif-silsila-diagram.png" alt="Lataif Diagram" style="max-width: 100%; max-height: 58vh; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+        </div>
+        <div id="lataifViewerDesc" style="text-align: right; direction: rtl; font-size: 0.82rem; color: #334155; line-height: 1.7; background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 10px; padding: 12px;">
+        </div>
+        <button type="button" onclick="closeModal('modalLataifImageViewer')" style="width: 100%; margin-top: 12px; background: #1D4ED8; color: #FFF; border: none; border-radius: 8px; padding: 10px; font-size: 0.84rem; font-weight: 800; cursor: pointer;">
+          بند کریں (Close)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/app.js?v=20260927_1235_silsila_live"></script>
   <script>
     let currentOrder = 'suhrawardi';
     let currentLang = 'ur';
@@ -165,7 +193,7 @@
         }
       });
 
-      // Fetch content from index.html if needed or redirect seamlessly
+      // Fetch content from index.html
       fetch('index.html')
         .then(res => res.text())
         .then(html => {
@@ -176,6 +204,9 @@
           if (el) {
             el.style.display = 'block';
             document.getElementById('standaloneContentBox').innerHTML = el.outerHTML;
+            if (currentOrder === 'suhrawardi' && typeof window.loadSuhrawardiState === 'function') {
+              setTimeout(window.loadSuhrawardiState, 50);
+            }
           }
         })
         .catch(err => {

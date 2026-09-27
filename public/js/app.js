@@ -8347,7 +8347,7 @@ window.submitJoinHealingClasses = async function(e) {
   }
 };
 
-/* --- SUHRAWARDIA ASBAQ VIEWER & TRACKER --- */
+/* --- SUHRAWARDIA ASBAQ VIEWER, DIAGRAMS & TRACKER --- */
 window.openSuhrawardiAsbaqReader = function() {
   if (typeof window.openModal === 'function') {
     window.openModal('modalSuhrawardiAsbaqReader');
@@ -8356,59 +8356,293 @@ window.openSuhrawardiAsbaqReader = function() {
   }
 };
 
+// Open high-resolution image modal for Lataif & Dhikr diagrams
+window.openLataifImageModal = function(type, lang) {
+  const modal = document.getElementById('modalLataifImageViewer');
+  const titleEl = document.getElementById('lataifViewerTitle');
+  const imgEl = document.getElementById('lataifViewerImg');
+  const descEl = document.getElementById('lataifViewerDesc');
+
+  if (type === 'silsila') {
+    if (imgEl) imgEl.src = 'assets/lataif-silsila-diagram.png';
+    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: 6 Subtle Centers (Lata\'if) & Positions' : 'نقشہ نمبر ۱: انسانی جسم میں لطائفِ ستہ کے باطنی مقامات';
+    if (descEl) {
+      if (lang === 'en') {
+        descEl.style.direction = 'ltr';
+        descEl.style.textAlign = 'left';
+        descEl.innerHTML = `<strong>The 6 Subtle Centers (Lata'if) &amp; Spiritual Nodes:</strong><br>
+        1. <strong>Akhfa (Top Crown):</strong> Black Light - Seat of deepest divine mystery.<br>
+        2. <strong>Khafi (Forehead between brows):</strong> Blue Light - Station of intuition and spiritual vision.<br>
+        3. <strong>Sirr (Mid-chest):</strong> Green Light - Station of secret divine fellowship.<br>
+        4. <strong>Rooh (Below right breast 2 fingers):</strong> White Light - Station of peaceful spiritual vitality.<br>
+        5. <strong>Qalb (Below left breast 2 fingers):</strong> Red Light - Station of divine love and dhikr strike.<br>
+        6. <strong>Nafs (Below navel 2 fingers):</strong> Yellow Light - Base instinct purified into peaceful contentment.`;
+      } else {
+        descEl.style.direction = 'rtl';
+        descEl.style.textAlign = 'right';
+        descEl.innerHTML = `<strong>لطائفِ ستہ اور ان کے باطنی مقامات و انوارات:</strong><br>
+        ۱. <strong>لطیفہ اخفیٰ (سر کی چوٹی / مغز):</strong> سیاہ نور — اسرارِ ذات کا مرکز۔<br>
+        ۲. <strong>لطیفہ خفی (پیشانی کے وسط میں ابرو کے درمیان):</strong> نیلا نور — باطنی بصیرت کا مقام۔<br>
+        ۳. <strong>لطیفہ سرّ (دل اور سینے کے درمیان):</strong> سبز نور — رازِ الٰہی کا مرکز۔<br>
+        ۴. <strong>لطیفہ روح (دائیں پستان سے ۲ انگل نیچے):</strong> سفید نور — سکینہ و صفائی کا مقام۔<br>
+        ۵. <strong>لطیفہ قلب (بائیں پستان سے ۲ انگل نیچے):</strong> سرخ نور — عشقِ الٰہی اور ضربِ ذکر کا مرکز۔<br>
+        ۶. <strong>لطیفہ نفس (ناف سے ۲ انگل نیچے):</strong> زرد نور — نفسِ امارہ جس کا تزکیہ کر کے مطمئنہ بنایا جاتا ہے۔`;
+      }
+    }
+  } else {
+    if (imgEl) imgEl.src = 'assets/lataif-zikr-path-diagram.jpg';
+    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 2: Flow of Dawazdah Tasbih & Dhikr Trajectory' : 'نقشہ نمبر ۲: دوازدہ تسبیح و ضربِ ذکر کی گردش';
+    if (descEl) {
+      if (lang === 'en') {
+        descEl.style.direction = 'ltr';
+        descEl.style.textAlign = 'left';
+        descEl.innerHTML = `<strong>Trajectory of Dawazdah Tasbih &amp; Dhikr Strike (نفی و اثبات):</strong><br>
+        • <strong>«La» (لا):</strong> Pulled upward from Nafs (navel) through Sirr (chest) and Khafi (forehead) ascending all the way to Akhfa above the crown of the head.<br>
+        • <strong>«Ilaha» (إِلٰهَ):</strong> Brought directly downward from Akhfa and firmly seated onto the Rooh (below the right breast).<br>
+        • <strong>«Illallah» (إِلَّا اللّٰه):</strong> Struck powerfully with spiritual weight horizontally from Rooh across into the Qalb (below the left breast), cleansing the heart of all spiritual impurities.`;
+      } else {
+        descEl.style.direction = 'rtl';
+        descEl.style.textAlign = 'right';
+        descEl.innerHTML = `<strong>دوازدہ تسبیح، گردشِ ذکر اور ضربِ نفی و اثبات کی باطنی روش:</strong><br>
+        • <strong>«لا»:</strong> نفس (ناف) سے سانس و خیال کو اٹھا کر سینے (سرّ) اور پیشانی (خفی) سے گزارتے ہوئے سر کی چوٹی (اخفیٰ) تک کھینچنا۔<br>
+        • <strong>«إِلٰهَ»:</strong> اخفیٰ سے نیچے سیدھا دائیں جانب لطیفہ روح پر لانا اور ٹکانا۔<br>
+        • <strong>«إِلَّا اللّٰه»:</strong> لطیفہ روح سے بھرپور روحانی طاقت، دلی لگاؤ اور استحضار کے ساتھ بائیں جانب لطیفہ قلب پر زبردست ضرب مارنا۔`;
+      }
+    }
+  }
+
+  if (typeof window.openModal === 'function') {
+    window.openModal('modalLataifImageViewer');
+  } else if (modal) {
+    modal.classList.add('active');
+  }
+};
+
 window.saveSuhrawardiDateUr = function() {
   const val = document.getElementById('suhrawardiStartDateUr')?.value;
   if (!val) return;
+  const enInput = document.getElementById('suhrawardiStartDateEn');
+  if (enInput) enInput.value = val;
   const start = new Date(val);
   const today = new Date();
   start.setHours(0,0,0,0);
   today.setHours(0,0,0,0);
   const diffDays = Math.max(1, Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1);
-  const counter = document.getElementById('suhrawardiDayCounterUr');
-  if (counter) counter.textContent = 'دن نمبر: ' + diffDays;
+  const counterUr = document.getElementById('suhrawardiDayCounterUr');
+  if (counterUr) counterUr.textContent = 'دن: ' + diffDays;
+  const counterEn = document.getElementById('suhrawardiDayCounterEn');
+  if (counterEn) counterEn.textContent = 'Day: ' + diffDays;
   localStorage.setItem('khizri_suh_start_date', val);
 };
 
 window.saveSuhrawardiDateEn = function() {
   const val = document.getElementById('suhrawardiStartDateEn')?.value;
   if (!val) return;
+  const urInput = document.getElementById('suhrawardiStartDateUr');
+  if (urInput) urInput.value = val;
   const start = new Date(val);
   const today = new Date();
   start.setHours(0,0,0,0);
   today.setHours(0,0,0,0);
   const diffDays = Math.max(1, Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1);
-  const counter = document.getElementById('suhrawardiDayCounterEn');
-  if (counter) counter.textContent = 'Day: ' + diffDays;
+  const counterUr = document.getElementById('suhrawardiDayCounterUr');
+  if (counterUr) counterUr.textContent = 'دن: ' + diffDays;
+  const counterEn = document.getElementById('suhrawardiDayCounterEn');
+  if (counterEn) counterEn.textContent = 'Day: ' + diffDays;
   localStorage.setItem('khizri_suh_start_date', val);
 };
 
-window.toggleSuhTickUr = function(id) {
-  const chk = document.getElementById('suhTickUr_' + id);
-  if (chk) {
-    localStorage.setItem('khizri_suh_tick_' + id, chk.checked ? 'true' : 'false');
+// Save individual lesson Start Date & End Date
+window.saveSuhLessonDate = function(lessonId, type, lang) {
+  const inputUr = document.getElementById(`suh${type === 'start' ? 'Start' : 'End'}DateUr_${lessonId}`);
+  const inputEn = document.getElementById(`suh${type === 'start' ? 'Start' : 'End'}DateEn_${lessonId}`);
+  const val = (lang === 'ur' ? inputUr?.value : inputEn?.value) || inputUr?.value || inputEn?.value;
+
+  if (inputUr && inputUr.value !== val) inputUr.value = val || '';
+  if (inputEn && inputEn.value !== val) inputEn.value = val || '';
+
+  if (val) {
+    localStorage.setItem(`khizri_suh_${type}_date_${lessonId}`, val);
+  } else {
+    localStorage.removeItem(`khizri_suh_${type}_date_${lessonId}`);
+  }
+
+  window.updateSuhLessonStatusBadge(lessonId);
+};
+
+window.updateSuhLessonStatusBadge = function(lessonId) {
+  const isDone = localStorage.getItem('khizri_suh_tick_' + lessonId) === 'true';
+  const startDate = localStorage.getItem('khizri_suh_start_date_' + lessonId);
+
+  const badgeUr = document.getElementById('suhStatusBadgeUr_' + lessonId);
+  const badgeEn = document.getElementById('suhStatusBadgeEn_' + lessonId);
+
+  if (isDone) {
+    if (badgeUr) {
+      badgeUr.textContent = 'مکمل ✅';
+      badgeUr.style.background = '#DCFCE7';
+      badgeUr.style.color = '#15803D';
+    }
+    if (badgeEn) {
+      badgeEn.textContent = 'Completed ✅';
+      badgeEn.style.background = '#DCFCE7';
+      badgeEn.style.color = '#15803D';
+    }
+  } else if (startDate) {
+    if (badgeUr) {
+      badgeUr.textContent = 'جاری ہے ⏳';
+      badgeUr.style.background = '#FEF3C7';
+      badgeUr.style.color = '#B45309';
+    }
+    if (badgeEn) {
+      badgeEn.textContent = 'In Progress ⏳';
+      badgeEn.style.background = '#FEF3C7';
+      badgeEn.style.color = '#B45309';
+    }
+  } else {
+    if (badgeUr) {
+      badgeUr.textContent = 'شروع نہیں ہوا';
+      badgeUr.style.background = '#F1F5F9';
+      badgeUr.style.color = '#64748B';
+    }
+    if (badgeEn) {
+      badgeEn.textContent = 'Not Started';
+      badgeEn.style.background = '#F1F5F9';
+      badgeEn.style.color = '#64748B';
+    }
   }
 };
 
+window.toggleSuhTickUr = function(id) {
+  const chkUr = document.getElementById('suhTickUr_' + id);
+  const chkEn = document.getElementById('suhTickEn_' + id);
+  const checked = chkUr ? chkUr.checked : false;
+  if (chkEn) chkEn.checked = checked;
+  localStorage.setItem('khizri_suh_tick_' + id, checked ? 'true' : 'false');
+  window.updateSuhLessonStatusBadge(id);
+};
+
 window.toggleSuhTickEn = function(id) {
-  const chk = document.getElementById('suhTickEn_' + id);
-  if (chk) {
-    localStorage.setItem('khizri_suh_tick_' + id, chk.checked ? 'true' : 'false');
+  const chkUr = document.getElementById('suhTickUr_' + id);
+  const chkEn = document.getElementById('suhTickEn_' + id);
+  const checked = chkEn ? chkEn.checked : false;
+  if (chkUr) chkUr.checked = checked;
+  localStorage.setItem('khizri_suh_tick_' + id, checked ? 'true' : 'false');
+  window.updateSuhLessonStatusBadge(id);
+};
+
+// Full loader for all Suhrawardi state
+window.loadSuhrawardiState = function() {
+  const overallDate = localStorage.getItem('khizri_suh_start_date');
+  if (overallDate) {
+    const urInput = document.getElementById('suhrawardiStartDateUr');
+    const enInput = document.getElementById('suhrawardiStartDateEn');
+    if (urInput) urInput.value = overallDate;
+    if (enInput) enInput.value = overallDate;
+
+    const start = new Date(overallDate);
+    const today = new Date();
+    start.setHours(0,0,0,0);
+    today.setHours(0,0,0,0);
+    const diffDays = Math.max(1, Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1);
+    const counterUr = document.getElementById('suhrawardiDayCounterUr');
+    if (counterUr) counterUr.textContent = 'دن: ' + diffDays;
+    const counterEn = document.getElementById('suhrawardiDayCounterEn');
+    if (counterEn) counterEn.textContent = 'Day: ' + diffDays;
+  }
+
+  for (let i = 1; i <= 7; i++) {
+    // Checkbox
+    const isDone = localStorage.getItem('khizri_suh_tick_' + i) === 'true';
+    const chkUr = document.getElementById('suhTickUr_' + i);
+    const chkEn = document.getElementById('suhTickEn_' + i);
+    if (chkUr) chkUr.checked = isDone;
+    if (chkEn) chkEn.checked = isDone;
+
+    // Start Date
+    const sDate = localStorage.getItem('khizri_suh_start_date_' + i);
+    const sUr = document.getElementById('suhStartDateUr_' + i);
+    const sEn = document.getElementById('suhStartDateEn_' + i);
+    if (sDate) {
+      if (sUr) sUr.value = sDate;
+      if (sEn) sEn.value = sDate;
+    }
+
+    // End Date
+    const eDate = localStorage.getItem('khizri_suh_end_date_' + i);
+    const eUr = document.getElementById('suhEndDateUr_' + i);
+    const eEn = document.getElementById('suhEndDateEn_' + i);
+    if (eDate) {
+      if (eUr) eUr.value = eDate;
+      if (eEn) eEn.value = eDate;
+    }
+
+    window.updateSuhLessonStatusBadge(i);
   }
 };
 
 window.sendSuhrawardiReport = function(lang) {
-  let doneCount = 0;
-  for (let i = 1; i <= 7; i++) {
-    if (localStorage.getItem('khizri_suh_tick_' + i) === 'true') doneCount++;
-  }
-  const dateVal = localStorage.getItem('khizri_suh_start_date') || 'آج';
+  const lessonNamesUr = [
+    'دوازدہ تسبیح',
+    'اسمِ ذات کا ذکرِ خفی',
+    'نفی و اثبات مع حبسِ دم',
+    'مراقبۂ نفس (يا أيتها النفس المطمئنة)',
+    'مراقبۂ علم (فادخلي في عبادي)',
+    'مراقبۂ جنت (وادخلي جنتي)',
+    'مراقبۂ معیت (وهو معكم أين ما كنتم)'
+  ];
 
-  let msg = `*بسم اللہ الرحمن الرحیم*\n`;
-  msg += `*پیش رفت رپورٹ برائے اسباقِ سلسلہ عالیہ سہروردیہ (تحفۃ المشائخ)*\n`;
-  msg += `📅 *تاریخِ آغاز:* ${dateVal}\n`;
-  msg += `📊 *تکمیل شدہ اسباق:* ${doneCount} / 7 اسباق مکمل\n`;
-  msg += `----------------------------------------\n`;
-  msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ سہروردیہ کے اسباق شروع کیے ہیں اور ${doneCount} اسباق طے کر لیے ہیں۔ برائے مہربانی اگلے سبق اور مراقبے کی اجازت و دعا عنایت فرمائیں۔`;
+  const lessonNamesEn = [
+    'Dawazdah Tasbih',
+    'Zikr-e-Khafi (Ism-e-Zaat)',
+    'Nafi wa Isbat (Breath Vigil)',
+    'Muraqaba-e-Nafs',
+    'Muraqaba-e-Ilm',
+    'Muraqaba-e-Jannat',
+    'Muraqaba-e-Ma\'iyyat'
+  ];
+
+  let doneCount = 0;
+  let detailsText = '';
+
+  for (let i = 1; i <= 7; i++) {
+    const isDone = localStorage.getItem('khizri_suh_tick_' + i) === 'true';
+    if (isDone) doneCount++;
+
+    const sDate = localStorage.getItem('khizri_suh_start_date_' + i) || '-';
+    const eDate = localStorage.getItem('khizri_suh_end_date_' + i) || '-';
+
+    if (lang === 'en') {
+      const statusStr = isDone ? '✅ Completed' : (sDate !== '-' ? '⏳ In Progress' : '⚪ Not Started');
+      detailsText += `\n*${i}. ${lessonNamesEn[i-1]}:* ${statusStr}\n   • Start: ${sDate} | End: ${eDate}`;
+    } else {
+      const statusStr = isDone ? '✅ مکمل' : (sDate !== '-' ? '⏳ زیرِ عمل' : '⚪ شروع نہیں ہوا');
+      detailsText += `\n*سبق ${i}: ${lessonNamesUr[i-1]}* — ${statusStr}\n   • آغاز: ${sDate} | اختتام: ${eDate}`;
+    }
+  }
+
+  const overallDateVal = localStorage.getItem('khizri_suh_start_date') || 'آج';
+
+  let msg = '';
+  if (lang === 'en') {
+    msg += `*Bismillahir Rahmanir Raheem*\n`;
+    msg += `*Progress Report: Suhrawardi Order Lessons (Tuhfat-ul-Masha'ikh)*\n`;
+    msg += `📅 *Order Start Date:* ${overallDateVal}\n`;
+    msg += `📊 *Completed Lessons:* ${doneCount} / 7 Lessons Complete\n`;
+    msg += `----------------------------------------\n`;
+    msg += `*Detailed Lesson Dates & Status:*${detailsText}\n`;
+    msg += `----------------------------------------\n`;
+    msg += `Assalamu Alaikum Mufti Khizer Mateen! Here is my progress in the Suhrawardi Order lessons and Lata'if practice. Kindly grant guidance, blessings, and permission for the next spiritual stations.`;
+  } else {
+    msg += `*بسم اللہ الرحمن الرحیم*\n`;
+    msg += `*پیش رفت رپورٹ برائے اسباقِ سلسلہ عالیہ سہروردیہ (تحفۃ المشائخ)*\n`;
+    msg += `📅 *سلسلہ میں آغاز کی تاریخ:* ${overallDateVal}\n`;
+    msg += `📊 *مجموعی تکمیل:* ${doneCount} / 7 اسباق مکمل\n`;
+    msg += `----------------------------------------\n`;
+    msg += `*اسباق کی تاریخیں و موجودہ کیفیت:*${detailsText}\n`;
+    msg += `----------------------------------------\n`;
+    msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ سہروردیہ کے اسباق و لطائف کی مشق شروع کی ہوئی ہے اور میری تفصیلی پیش رفت درج بالا ہے۔ برائے مہربانی اگلے سبق اور مراقبات کی اجازت و دعا عنایت فرمائیں۔`;
+  }
 
   window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
 };
@@ -8564,6 +8798,11 @@ window.switchSilsilaScreenTab = function(orderKey, lang) {
   // 5. Scroll screen body to top
   const scrollArea = document.getElementById('silsilaPageScrollArea');
   if (scrollArea) scrollArea.scrollTop = 0;
+
+  // 6. Reload Suhrawardi state if active
+  if (orderKey === 'suhrawardi' && typeof window.loadSuhrawardiState === 'function') {
+    window.loadSuhrawardiState();
+  }
 };
 
 window.stepSilsilaOrder = function(dir, lang) {
@@ -8777,3 +9016,13 @@ window.switchTuhfatTab = function(orderId) {
     }
   });
 };
+
+// Auto-initialize Suhrawardi state on app load
+if (typeof window.loadSuhrawardiState === 'function') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', window.loadSuhrawardiState);
+  } else {
+    setTimeout(window.loadSuhrawardiState, 200);
+  }
+}
+
