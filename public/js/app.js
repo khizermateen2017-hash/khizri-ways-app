@@ -8421,20 +8421,20 @@ window.openLataifImageModal = function(type, lang) {
         descEl.innerHTML = `<strong>Chishti Order 6 Subtle Centers (Lata'if) &amp; Spiritual Nodes:</strong><br>
         1. <strong>Qalb (Below left breast 2 fingers):</strong> Red Light - Station of divine love and dhikr strike.<br>
         2. <strong>Rooh (Below right breast 2 fingers):</strong> White Light - Station of peace and Prophetic love ﷺ.<br>
-        3. <strong>Sirr (Mid-chest):</strong> Green Light - Station of secret divine mysteries.<br>
-        4. <strong>Khafi (Forehead between brows):</strong> Blue Light - Station of spiritual vision and intuition.<br>
-        5. <strong>Akhfa (Top Crown / Apex):</strong> Black Light - Station of supreme divine proximity.<br>
-        6. <strong>Nafs (Below navel 2 fingers):</strong> Yellow Light - Base self purified into contentment (Mutma'innah).`;
+        3. <strong>Nafs (Below navel 2 fingers):</strong> Yellow Light - Base self purified into contentment (Mutma'innah).<br>
+        4. <strong>Sirr (Mid-chest):</strong> Green Light - Station of secret divine mysteries.<br>
+        5. <strong>Khafi (Forehead between brows):</strong> Blue Light - Station of spiritual vision and intuition.<br>
+        6. <strong>Akhfa (Top Crown / Apex):</strong> Black Light - Station of supreme divine proximity.`;
       } else {
         descEl.style.direction = 'rtl';
         descEl.style.textAlign = 'right';
         descEl.innerHTML = `<strong>سلسلہ عالیہ چشتیہ کے لطائفِ ستہ اور ان کے باطنی مقامات و انوارات:</strong><br>
         ۱. <strong>لطیفہ قلب (بائیں پستان سے ۲ انگل نیچے):</strong> سرخ نور — عشقِ الٰہی، محبتِ رسول ﷺ اور ضربِ ذکر کا مرکز۔<br>
         ۲. <strong>لطیفہ روح (دائیں پستان سے ۲ انگل نیچے):</strong> سفید نور — مقامِ سکینہ، اطمینان اور روحانی حیات۔<br>
-        ۳. <strong>لطیفہ سرّ (سینے کے درمیان میں):</strong> سبز / ہرا نور — کشف و باطنی اسرار کا مقام۔<br>
-        ۴. <strong>لطیفہ خفی (پیشانی پر دونوں آنکھوں/ابرو کے درمیان):</strong> نیلا نور — باطنی بصیرت کا مقام۔<br>
-        ۵. <strong>لطیفہ اخفیٰ (سر کی چوٹی / تالو پر مغز میں):</strong> سیاہ نور — قربِ الٰہی اور تجلیاتِ ذات۔<br>
-        ۶. <strong>لطیفہ نفس (ناف سے ۲ انگل نیچے):</strong> زرد / پیلا نور — تزکیۂ نفسِ امارہ تا مطمئنہ۔`;
+        ۳. <strong>لطیفہ نفس (ناف سے ۲ انگل نیچے):</strong> زرد / پیلا نور — تزکیۂ نفسِ امارہ تا مطمئنہ۔<br>
+        ۴. <strong>لطیفہ سرّ (سینے کے درمیان میں):</strong> سبز / ہرا نور — کشف و باطنی اسرار کا مقام۔<br>
+        ۵. <strong>لطیفہ خفی (پیشانی پر دونوں آنکھوں/ابرو کے درمیان):</strong> نیلا نور — باطنی بصیرت کا مقام۔<br>
+        ۶. <strong>لطیفہ اخفیٰ (سر کی چوٹی / تالو پر مغز میں):</strong> سیاہ نور — قربِ الٰہی اور تجلیاتِ ذات۔`;
       }
     }
   } else if (type === 'chishti_zikr_path') {
@@ -9168,10 +9168,10 @@ window.sendChishtiReport = function(lang) {
     '۱۰۰ مرتبہ "اللہ" کا ذکر لطیفہ قلب پر',
     'لطیفہ قلب (ذکرِ خفی)',
     'لطیفہ روح (ذکرِ خفی)',
+    'لطیفہ نفس (ذکرِ خفی)',
     'لطیفہ سر (ذکرِ خفی)',
     'لطیفہ خفی (ذکرِ خفی)',
     'لطیفہ اخفیٰ (ذکرِ خفی)',
-    'لطیفہ نفس (ذکرِ خفی)',
     'شغل سلطان الاذکار / شغل خفی',
     'حبسِ دم (طریقہ اوّل و دوم)',
     'شغلِ سرمدی',
@@ -9202,10 +9202,10 @@ window.sendChishtiReport = function(lang) {
     '100x "Allah" on Qalb',
     'Latifa Qalb (Silent Dhikr)',
     'Latifa Ruh (Silent Dhikr)',
+    'Latifa Nafs (Silent Dhikr)',
     'Latifa Sirr (Silent Dhikr)',
     'Latifa Khafi (Silent Dhikr)',
     'Latifa Akhfa (Silent Dhikr)',
-    'Latifa Nafs (Silent Dhikr)',
     'Sultan-ul-Azkar (Universal Inscription)',
     'Habs-e-Dam (Breath Retention)',
     'Shughl-e-Sarmadi (Celestial Hearing)',
