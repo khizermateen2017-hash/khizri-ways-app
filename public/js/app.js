@@ -8364,7 +8364,7 @@ window.openLataifImageModal = function(type, lang) {
   const descEl = document.getElementById('lataifViewerDesc');
 
   if (type === 'naqshbandi_lataif') {
-    if (imgEl) imgEl.src = 'assets/naqshbandi-lataif-diagram.png';
+    if (imgEl) imgEl.src = 'assets/naqshbandi-lataif-diagram.png?v=24_page';
     if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: Naqshbandi Order 7 Subtle Centers (Lata\'if) & Azkar' : 'نقشہ نمبر ۱: سلسلہ عالیہ نقشبندیہ مجددیہ کے سات لطائف اور اذکار کا جدول';
     if (descEl) {
       if (lang === 'en') {

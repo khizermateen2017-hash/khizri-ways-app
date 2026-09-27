@@ -152,7 +152,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/app.js?v=20260927_1235_silsila_live"></script>
+  <script src="js/app.js?v=20260927_1730_lataif_page24"></script>
   <script>
     let currentOrder = 'suhrawardi';
     let currentLang = 'ur';
@@ -194,7 +194,7 @@
       });
 
       // Fetch content from index.html
-      fetch('index.html')
+      fetch('index.html?v=' + Date.now())
         .then(res => res.text())
         .then(html => {
           const parser = new DOMParser();
