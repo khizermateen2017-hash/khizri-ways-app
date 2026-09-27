@@ -3308,6 +3308,53 @@ body.lang-ur .sub-screen-title {
   color: #7E22CE !important;
 }
 
+.feature-accent-tasbeeh {
+  background: linear-gradient(135deg, #FDF4FF 0%, #FAE8FF 100%) !important;
+  border: 1.5px solid #E879F9 !important;
+  color: #A21CAF !important;
+  box-shadow: 0 4px 10px rgba(162, 28, 175, 0.2) !important;
+}
+
+.feature-cell:hover .feature-accent-tasbeeh {
+  background: #F5D0FE !important;
+  box-shadow: 0 6px 16px rgba(162, 28, 175, 0.3) !important;
+}
+
+.feature-accent-prayer {
+  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%) !important;
+  border: 1.5px solid #60A5FA !important;
+  color: #1D4ED8 !important;
+  box-shadow: 0 4px 10px rgba(29, 78, 216, 0.2) !important;
+}
+
+.feature-cell:hover .feature-accent-prayer {
+  background: #BFDBFE !important;
+  box-shadow: 0 6px 16px rgba(29, 78, 216, 0.3) !important;
+}
+
+.feature-accent-qibla {
+  background: linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%) !important;
+  border: 1.5px solid #2DD4BF !important;
+  color: #0F766E !important;
+  box-shadow: 0 4px 10px rgba(15, 118, 110, 0.2) !important;
+}
+
+.feature-cell:hover .feature-accent-qibla {
+  background: #99F6E4 !important;
+  box-shadow: 0 6px 16px rgba(15, 118, 110, 0.3) !important;
+}
+
+.feature-tasbeeh-svg {
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 1px 2px rgba(162, 28, 175, 0.2));
+  transition: transform 0.2s ease;
+}
+
+.feature-cell:hover .feature-tasbeeh-svg {
+  transform: rotate(15deg) scale(1.08);
+}
+
 /* Naqsh Table Grid in Taweezat */
 .naqsh-table-container {
   display: flex;
