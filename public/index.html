@@ -2528,12 +2528,37 @@
                 </div>
               </div>
 
-              <p style="font-size: 0.78rem; color: #64748B; margin: 0 0 12px 0;">
+              <p style="font-size: 0.78rem; color: #64748B; margin: 0 0 10px 0;">
                 Click on any Sufi order card to view its authentic lessons, subtle centers (Lata'if), and daily practices:
               </p>
 
+              <!-- NAVIGATION & VIEW CONTROLS (ENGLISH) -->
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; flex-wrap: wrap; gap: 6px; background: #F8FAFC; border: 1px solid #E2E8F0; padding: 6px 10px; border-radius: 10px;">
+                <!-- Jump Pills -->
+                <div style="display: flex; align-items: center; gap: 5px;">
+                  <span style="font-size: 0.72rem; color: #475569; font-weight: 700;">Select Order:</span>
+                  <button type="button" onclick="jumpToSilsila('suhrawardi', 'en')" id="silsilaPill_suh_en" class="silsila-nav-pill" title="1. Suhrawardi Order">1</button>
+                  <button type="button" onclick="jumpToSilsila('chishti', 'en')" id="silsilaPill_chishti_en" class="silsila-nav-pill" title="2. Chishti Order">2</button>
+                  <button type="button" onclick="jumpToSilsila('qadiri', 'en')" id="silsilaPill_qadiri_en" class="silsila-nav-pill" title="3. Qadiri Order">3</button>
+                  <button type="button" onclick="jumpToSilsila('naqshbandi', 'en')" id="silsilaPill_naqshbandi_en" class="silsila-nav-pill" title="4. Naqshbandi Order">4</button>
+                  <button type="button" onclick="jumpToSilsila('shadhili', 'en')" id="silsilaPill_shadhili_en" class="silsila-nav-pill" title="5. Shadhili Order">5</button>
+                </div>
+                <!-- Navigation Arrows & Grid Toggle -->
+                <div style="display: flex; align-items: center; gap: 5px;">
+                  <button type="button" onclick="scrollSilsilaCarousel('silsilaCardsGridEn', -1)" class="silsila-nav-arrow" title="Scroll Left (Previous)">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </button>
+                  <button type="button" onclick="scrollSilsilaCarousel('silsilaCardsGridEn', 1)" class="silsila-nav-arrow" title="Scroll Right (Next)">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </button>
+                  <button type="button" onclick="toggleSilsilaViewMode('en')" id="btnSilsilaViewModeEn" class="silsila-nav-arrow" title="Toggle Grid / Slider View">
+                    <i class="fa-solid fa-table-cells-large"></i> Grid View
+                  </button>
+                </div>
+              </div>
+
               <!-- 5 COMPACT CARDS GRID (ENGLISH) -->
-              <div class="silsila-cards-grid">
+              <div class="silsila-cards-grid" id="silsilaCardsGridEn">
                 
                 <!-- 1. Suhrawardi Mini Card -->
                 <div id="silsilaThumb_suh_en" onclick="selectSilsila('suhrawardi', 'en')" class="silsila-mini-card" style="background: linear-gradient(145deg, #FFFFFF 0%, #EFF6FF 100%); border: 1.5px solid #93C5FD; box-shadow: 0 3px 10px rgba(59, 130, 246, 0.08);">
@@ -3182,12 +3207,37 @@
                 </div>
               </div>
 
-              <p style="font-size: 0.78rem; color: #64748B; margin: 0 0 12px 0; direction: rtl; text-align: right;">
+              <p style="font-size: 0.78rem; color: #64748B; margin: 0 0 10px 0; direction: rtl; text-align: right;">
                 کسی بھی سلسلہ کے کارڈ پر کلک کر کے اس کے مستند اسباق، لطائف اور روزانہ معمولات ملاحظہ فرمائیں:
               </p>
 
-              <!-- 5 COMPACT CARDS GRID (URDU) -->
-              <div class="silsila-cards-grid" style="direction: rtl;">
+              <!-- NAVIGATION & VIEW CONTROLS (URDU) -->
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; flex-wrap: wrap; gap: 6px; background: #F8FAFC; border: 1px solid #E2E8F0; padding: 6px 10px; border-radius: 10px; direction: rtl;">
+                <!-- Jump Pills -->
+                <div style="display: flex; align-items: center; gap: 5px;">
+                  <span style="font-size: 0.72rem; color: #475569; font-weight: 700;">سلسلہ منتخب کریں:</span>
+                  <button type="button" onclick="jumpToSilsila('suhrawardi', 'ur')" id="silsilaPill_suh_ur" class="silsila-nav-pill" title="۱. سلسلہ سہروردیہ">۱</button>
+                  <button type="button" onclick="jumpToSilsila('chishti', 'ur')" id="silsilaPill_chishti_ur" class="silsila-nav-pill" title="۲. سلسلہ چشتیہ">۲</button>
+                  <button type="button" onclick="jumpToSilsila('qadiri', 'ur')" id="silsilaPill_qadiri_ur" class="silsila-nav-pill" title="۳. سلسلہ قادریہ">۳</button>
+                  <button type="button" onclick="jumpToSilsila('naqshbandi', 'ur')" id="silsilaPill_naqshbandi_ur" class="silsila-nav-pill" title="۴. سلسلہ نقشبندیہ">۴</button>
+                  <button type="button" onclick="jumpToSilsila('shadhili', 'ur')" id="silsilaPill_shadhili_ur" class="silsila-nav-pill" title="۵. سلسلہ شاذلیہ">۵</button>
+                </div>
+                <!-- Navigation Arrows & Grid Toggle -->
+                <div style="display: flex; align-items: center; gap: 5px;">
+                  <button type="button" onclick="scrollSilsilaCarousel('silsilaCardsGridUr', 1)" class="silsila-nav-arrow" title="اگلا سلسلہ دیکھیں">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </button>
+                  <button type="button" onclick="scrollSilsilaCarousel('silsilaCardsGridUr', -1)" class="silsila-nav-arrow" title="پچھلا سلسلہ دیکھیں">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </button>
+                  <button type="button" onclick="toggleSilsilaViewMode('ur')" id="btnSilsilaViewModeUr" class="silsila-nav-arrow" title="گرڈ منظر / سلائیڈر منظر تبدیل کریں">
+                    <i class="fa-solid fa-table-cells-large"></i> گرڈ منظر
+                  </button>
+                </div>
+              </div>
+
+              <!-- 5 COMPACT CARDS GRID / CAROUSEL (URDU) -->
+              <div class="silsila-cards-grid" id="silsilaCardsGridUr" style="direction: rtl;">
                 
                 <!-- 1. Suhrawardiyya Mini Card -->
                 <div id="silsilaThumb_suh_ur" onclick="selectSilsila('suhrawardi', 'ur')" class="silsila-mini-card" style="background: linear-gradient(145deg, #FFFFFF 0%, #EFF6FF 100%); border: 1.5px solid #93C5FD; box-shadow: 0 3px 10px rgba(59, 130, 246, 0.08); text-align: right;">

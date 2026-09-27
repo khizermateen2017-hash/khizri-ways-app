@@ -8422,6 +8422,18 @@ window.selectSilsila = function(orderKey, lang) {
 
   const isCurrentlyOpen = detailEl.style.display !== 'none' && detailEl.style.display !== '';
 
+  // Update pills active state
+  allOrders.forEach(k => {
+    const pill = document.getElementById('silsilaPill_' + (k === 'suhrawardi' ? 'suh' : k) + '_' + lang);
+    if (pill) {
+      if (!isCurrentlyOpen && k === orderKey) {
+        pill.classList.add('active');
+      } else {
+        pill.classList.remove('active');
+      }
+    }
+  });
+
   // If already open, clicking toggles it closed
   if (isCurrentlyOpen) {
     detailEl.style.display = 'none';
@@ -8457,10 +8469,48 @@ window.selectSilsila = function(orderKey, lang) {
     if (pill) {
       pill.innerHTML = (lang === 'ur') ? '<span>اسباق کھلے ہیں</span> <i class="fa-solid fa-chevron-up" style="font-size:0.62rem;"></i>' : '<span>Open</span> <i class="fa-solid fa-chevron-up" style="font-size:0.62rem;"></i>';
     }
+    // Make sure the thumbnail is scrolled into visible view inside carousel
+    thumbEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
 
   // Smooth scroll so the user sees the lessons
   detailEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+};
+
+window.jumpToSilsila = function(orderKey, lang) {
+  window.selectSilsila(orderKey, lang);
+  const thumbEl = document.getElementById('silsilaThumb_' + (orderKey === 'suhrawardi' ? 'suh' : orderKey) + '_' + lang);
+  if (thumbEl) {
+    thumbEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+};
+
+window.scrollSilsilaCarousel = function(gridId, direction) {
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+  const scrollAmount = direction * 165;
+  grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+};
+
+window.toggleSilsilaViewMode = function(lang) {
+  const gridId = lang === 'ur' ? 'silsilaCardsGridUr' : 'silsilaCardsGridEn';
+  const btnId = lang === 'ur' ? 'btnSilsilaViewModeUr' : 'btnSilsilaViewModeEn';
+  const grid = document.getElementById(gridId);
+  const btn = document.getElementById(btnId);
+  if (!grid || !btn) return;
+
+  const isGrid = grid.classList.toggle('mode-grid-view');
+  if (isGrid) {
+    btn.innerHTML = (lang === 'ur') ? '<i class="fa-solid fa-arrows-left-right"></i> سلائیڈر منظر' : '<i class="fa-solid fa-arrows-left-right"></i> Slider View';
+    btn.style.background = '#064E3B';
+    btn.style.color = '#FFFFFF';
+    btn.style.borderColor = '#064E3B';
+  } else {
+    btn.innerHTML = (lang === 'ur') ? '<i class="fa-solid fa-table-cells-large"></i> گرڈ منظر' : '<i class="fa-solid fa-table-cells-large"></i> Grid View';
+    btn.style.background = '#F1F5F9';
+    btn.style.color = '#334155';
+    btn.style.borderColor = '#CBD5E1';
+  }
 };
 
 window.closeSilsilaDetail = function(orderKey, lang) {

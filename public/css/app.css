@@ -11142,25 +11142,64 @@ html, body {
    STEP 3: 5 SUFI ORDERS COMPACT CARDS & INTERACTIVE DETAIL SYSTEM
    ========================================================================== */
 .silsila-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex !important;
+  overflow-x: auto !important;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
   gap: 10px;
+  padding: 4px 2px 10px 2px;
   margin-bottom: 14px;
+  scrollbar-width: thin;
+  scrollbar-color: #94A3B8 #F1F5F9;
 }
-@media (max-width: 900px) {
-  .silsila-cards-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.silsila-cards-grid::-webkit-scrollbar {
+  height: 6px;
 }
-@media (max-width: 580px) {
-  .silsila-cards-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  .silsila-mini-card.silsila-card-last {
-    grid-column: span 2;
-  }
+.silsila-cards-grid::-webkit-scrollbar-track {
+  background: #F1F5F9;
+  border-radius: 10px;
 }
+.silsila-cards-grid::-webkit-scrollbar-thumb {
+  background: #94A3B8;
+  border-radius: 10px;
+}
+.silsila-cards-grid::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+}
+
+/* Grid View Mode Toggle */
+.silsila-cards-grid.mode-grid-view {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  overflow-x: visible !important;
+  gap: 10px;
+}
+.silsila-cards-grid.mode-grid-view .silsila-mini-card {
+  flex: none !important;
+  min-width: 0 !important;
+  max-width: none !important;
+}
+.silsila-cards-grid.mode-grid-view .silsila-card-last {
+  grid-column: span 2 !important;
+}
+
+/* Fullscreen Edge-to-Edge Desktop View */
+.presentation-stage.mode-fullscreen .silsila-cards-grid:not(.mode-grid-view) {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  overflow-x: visible !important;
+}
+.presentation-stage.mode-fullscreen .silsila-cards-grid:not(.mode-grid-view) .silsila-mini-card {
+  flex: none !important;
+  min-width: 0 !important;
+  max-width: none !important;
+}
+
 .silsila-mini-card {
+  flex: 0 0 145px !important;
+  min-width: 145px !important;
+  max-width: 155px !important;
+  scroll-snap-align: start;
   cursor: pointer;
   border-radius: 14px;
   padding: 12px 10px;
@@ -11203,3 +11242,54 @@ html, body {
     transform: translateY(0);
   }
 }
+
+/* Silsila Navigation Controls (Pills, Arrows & Mode Switcher) */
+.silsila-nav-pill {
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+  color: #475569;
+  font-size: 0.74rem;
+  font-weight: 800;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+.silsila-nav-pill:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+  transform: scale(1.06);
+}
+.silsila-nav-pill.active {
+  background: #064E3B !important;
+  border-color: #064E3B !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(6, 78, 59, 0.35) !important;
+}
+.silsila-nav-arrow {
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+  color: #334155;
+  font-size: 0.72rem;
+  font-weight: 700;
+  height: 26px;
+  border-radius: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0 8px;
+  gap: 4px;
+}
+.silsila-nav-arrow:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+  border-color: #94A3B8;
+}
+
