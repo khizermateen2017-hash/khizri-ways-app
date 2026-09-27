@@ -1284,28 +1284,434 @@ body.lang-ur .sub-screen-title {
   color: var(--khizri-navy-primary);
 }
 
-/* Prayer Times Schedule */
+/* ====================================================
+   PRAYER TIMES SCHEDULE & AUQAT-E-MAKROOHA STYLES
+   ==================================================== */
+.prayer-location-bar {
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.pl-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.pl-city-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pl-gps-icon {
+  color: #DC2626;
+  font-size: 0.95rem;
+}
+
+.pl-city-text {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1E293B;
+}
+
+.pl-badge-auto {
+  background: #EFF6FF;
+  color: #2563EB;
+  border: 1px solid #BFDBFE;
+  border-radius: 6px;
+  padding: 1px 7px;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.pl-method-text {
+  font-size: 0.72rem;
+  color: #64748B;
+  font-weight: 600;
+}
+
+.pl-action-col {
+  flex-shrink: 0;
+}
+
+.btn-gps-detect {
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+  color: #334155;
+  border-radius: 10px;
+  padding: 7px 11px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.btn-gps-detect:hover, .btn-gps-detect:active {
+  background: var(--khizri-navy-primary);
+  color: #FFFFFF;
+  border-color: var(--khizri-navy-primary);
+}
+
+.prayer-city-selector-wrap {
+  margin-bottom: 12px;
+}
+
+.prayer-city-dropdown {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 12px;
+  padding: 9px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1E293B;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.prayer-city-dropdown:focus {
+  border-color: var(--khizri-navy-primary);
+  box-shadow: 0 0 0 3px rgba(30, 41, 59, 0.1);
+}
+
+/* Prayer Validity Status Banner ("کیا ابھی نماز پڑھ سکتے ہیں؟") */
+.prayer-validity-card {
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.prayer-validity-card.status-valid {
+  background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+  border: 1.5px solid #10B981;
+  border-left: 6px solid #059669;
+}
+
+.prayer-validity-card.status-prohibited {
+  background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
+  border: 1.5px solid #EF4444;
+  border-left: 6px solid #DC2626;
+  animation: pulseMakruhBorder 2.5s infinite;
+}
+
+.prayer-validity-card.status-restricted {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  border: 1.5px solid #F59E0B;
+  border-left: 6px solid #D97706;
+}
+
+@keyframes pulseMakruhBorder {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.pvc-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.status-valid .pvc-icon-wrap {
+  background: #059669;
+  color: #FFFFFF;
+}
+
+.status-prohibited .pvc-icon-wrap {
+  background: #DC2626;
+  color: #FFFFFF;
+}
+
+.status-restricted .pvc-icon-wrap {
+  background: #D97706;
+  color: #FFFFFF;
+}
+
+.pvc-content-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.pvc-headline-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.pvc-title {
+  font-size: 0.96rem;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.status-valid .pvc-title { color: #065F46; }
+.status-prohibited .pvc-title { color: #991B1B; }
+.status-restricted .pvc-title { color: #92400E; }
+
+.pvc-status-pill {
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.status-valid .pvc-status-pill { background: #059669; color: #FFFFFF; }
+.status-prohibited .pvc-status-pill { background: #DC2626; color: #FFFFFF; }
+.status-restricted .pvc-status-pill { background: #D97706; color: #FFFFFF; }
+
+.pvc-desc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+.status-valid .pvc-desc { color: #047857; }
+.status-prohibited .pvc-desc { color: #B91C1C; }
+.status-restricted .pvc-desc { color: #B45309; }
+
+.pvc-countdown-note {
+  font-size: 0.76rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.status-valid .pvc-countdown-note { background: rgba(5, 150, 105, 0.12); color: #065F46; }
+.status-prohibited .pvc-countdown-note { background: rgba(220, 38, 38, 0.15); color: #991B1B; }
+.status-restricted .pvc-countdown-note { background: rgba(217, 119, 6, 0.15); color: #92400E; }
+
+/* Next Prayer Hero Countdown Card */
+.next-prayer-hero-card {
+  background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 55%, #172554 100%);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 18px;
+  padding: 16px 18px;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.next-prayer-hero-card::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.nph-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.nph-tag {
+  background: rgba(212, 175, 55, 0.2);
+  color: #FDE047;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nph-current-active-tag {
+  font-size: 0.75rem;
+  color: #93C5FD;
+  font-weight: 700;
+}
+
+.nph-main-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.nph-name-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.nph-sublabel {
+  font-size: 0.74rem;
+  color: #CBD5E1;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.nph-prayer-name {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.nph-exact-time {
+  font-size: 1.05rem;
+  color: #FDE047;
+  font-weight: 800;
+  margin-top: 3px;
+}
+
+.nph-countdown-ring-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 10px 14px;
+  text-align: center;
+  min-width: 125px;
+  backdrop-filter: blur(4px);
+}
+
+.nph-countdown-val {
+  font-family: 'Courier New', Courier, monospace, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #F8FAFC;
+  letter-spacing: 1px;
+}
+
+.nph-countdown-label {
+  font-size: 0.68rem;
+  color: #94A3B8;
+  margin-top: 3px;
+  font-weight: 600;
+}
+
+.nph-progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.nph-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FDE047, #F59E0B);
+  border-radius: 9999px;
+  transition: width 0.5s ease;
+}
+
+.nph-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: #94A3B8;
+  font-weight: 600;
+}
+
+/* Prayer Section Heading */
+.prayer-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 2px 10px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.prayer-section-heading h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.psh-date {
+  font-size: 0.75rem;
+  color: #64748B;
+  font-weight: 700;
+}
+
+/* Prayer Times Schedule List */
 .prayer-times-schedule-cards {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .prayer-time-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 18px;
+  padding: 12px 15px;
   border-radius: 14px;
-  background: #F8F9FD;
-  border: 1px solid #EEF1FA;
+  background: #FFFFFF;
+  border: 1.5px solid #EEF1FA;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  transition: all 0.25s ease;
+}
+
+.prayer-time-item:hover {
+  transform: translateY(-1px);
+  border-color: #CBD5E1;
 }
 
 .prayer-time-item.active-prayer {
-  background: var(--khizri-navy-primary);
+  background: linear-gradient(135deg, #1E1B4B 0%, #1E293B 100%);
   color: #FFFFFF;
-  border-color: var(--khizri-navy-primary);
-  box-shadow: 0 6px 18px rgba(34, 38, 93, 0.28);
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 6px 18px rgba(30, 27, 75, 0.28);
+}
+
+.prayer-time-item.is-makruh-row {
+  background: #FFF5F5;
+  border: 1.5px dashed #FCA5A5;
+}
+
+.prayer-time-item.is-nafl-row {
+  background: #F0FDF4;
+  border: 1.5px solid #BBF7D0;
 }
 
 .prayer-time-item.active-prayer .p-time-val,
@@ -1313,16 +1719,171 @@ body.lang-ur .sub-screen-title {
   color: #FFFFFF;
 }
 
+.p-item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.p-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  background: #F1F5F9;
+  color: #475569;
+  flex-shrink: 0;
+}
+
+.active-prayer .p-icon-box {
+  background: rgba(212, 175, 55, 0.25);
+  color: #FDE047;
+}
+
+.is-makruh-row .p-icon-box {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+.is-nafl-row .p-icon-box {
+  background: #DCFCE7;
+  color: #16A34A;
+}
+
+.p-meta-box {
+  display: flex;
+  flex-direction: column;
+}
+
 .p-time-name {
-  font-size: 1rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1E293B;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.p-name-ar {
+  font-family: var(--font-arabic);
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.p-type-tag {
+  font-size: 0.68rem;
   font-weight: 700;
-  color: var(--text-main);
+  padding: 1px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+.tag-farz { background: #EEF2FF; color: #4338CA; }
+.tag-makruh { background: #FEE2E2; color: #DC2626; }
+.tag-nafl { background: #DCFCE7; color: #15803D; }
+.active-prayer .p-type-tag { background: rgba(255, 255, 255, 0.2); color: #FFFFFF; }
+
+.p-item-right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .p-time-val {
   font-size: 1.15rem;
-  font-weight: 800;
+  font-weight: 900;
   color: var(--khizri-navy-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.active-prayer .p-time-val {
+  color: #FDE047;
+}
+
+.p-active-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #FDE047;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+/* Makruh Guidance Box */
+.makruh-guide-box {
+  background: #FFFBEB;
+  border: 1.5px solid #FCD34D;
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-top: 18px;
+  color: #92400E;
+}
+
+.mgb-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.mgb-header h5 {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #92400E;
+  margin: 0;
+}
+
+.mgb-hadith {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px 12px;
+  border-radius: 10px;
+  border-left: 3px solid #D97706;
+  margin: 0 0 10px 0;
+  font-style: italic;
+}
+
+.mgb-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+.mgb-bullet-item {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  line-height: 1.45;
+}
+
+.mgb-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.makruh-red {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+.mgb-note {
+  font-size: 0.76rem;
+  line-height: 1.5;
+  color: #78350F;
+  border-top: 1px dashed rgba(217, 119, 6, 0.3);
+  padding-top: 8px;
 }
 
 /* Qibla Compass */

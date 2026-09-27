@@ -175,7 +175,7 @@
             </div>
 
             <!-- Floating Deep Royal Midnight Navy Prayer Card -->
-            <div class="hero-prayer-floating-card">
+            <div class="hero-prayer-floating-card" data-open="tabPrayerTimes" style="cursor: pointer;" title="مکمل اوقاتِ نماز و مکروہ اوقات دیکھیں">
               <div class="prayer-col-left">
                 <span class="p-status-label" id="currentPrayerLabel" data-i18n="nowPrayer">Now prayer is</span>
                 <span class="p-current-name" id="currentPrayerName">Dhuhr</span>
@@ -441,16 +441,148 @@
         <!-- ====================================================
              TAB 3: PRAYER TIMES SCREEN
              ==================================================== -->
+        <!-- ====================================================
+             TAB 3: PRAYER TIMES SCREEN (اوقاتِ نماز و اوقاتِ مکروہہ)
+             ==================================================== -->
         <section class="tab-screen" id="tabPrayerTimes">
           <div class="sub-screen-header">
             <button class="btn-sub-back" data-open="tabHome"><i class="fa-solid fa-chevron-left"></i></button>
-            <h3 class="sub-screen-title" data-i18n="titlePrayer">Prayer Schedule</h3>
-            <div class="sub-header-spacer"></div>
+            <h3 class="sub-screen-title" data-i18n="titlePrayer">اوقاتِ نماز و مکروہ اوقات</h3>
+            <button class="btn-icon-sub" onclick="detectUserGeolocation()" title="Refresh GPS Location">
+              <i class="fa-solid fa-location-crosshairs"></i>
+            </button>
           </div>
-          <div class="sub-screen-scroll">
+          
+          <div class="sub-screen-scroll" style="padding-bottom: 90px;">
+
+            <!-- 1. LOCATION & JURISTIC METHOD BAR -->
+            <div class="prayer-location-bar">
+              <div class="pl-info-col">
+                <div class="pl-city-line">
+                  <i class="fa-solid fa-location-dot pl-gps-icon"></i>
+                  <span id="prayerCurrentLocationName" class="pl-city-text">کراچی، پاکستان</span>
+                  <span class="pl-badge-auto" id="prayerLocationTypeBadge">Auto GPS</span>
+                </div>
+                <div class="pl-method-text">
+                  جامعہ علوم اسلامیہ علامہ بنوری ٹاؤن (حنفی)
+                </div>
+              </div>
+              <div class="pl-action-col">
+                <button class="btn-gps-detect" onclick="detectUserGeolocation()" id="btnGpsDetect" title="موجودہ لوکیشن حاصل کریں">
+                  <i class="fa-solid fa-crosshairs"></i> <span class="btn-gps-label">مقام بدلو</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- CITY QUICK SELECTOR DROPDOWN -->
+            <div class="prayer-city-selector-wrap" id="prayerCitySelectorWrap">
+              <select id="prayerCityDropdown" class="prayer-city-dropdown" onchange="onCityDropdownChange(this.value)">
+                <option value="current">📍 موجودہ لوکیشن (Auto GPS / IP)</option>
+                <optgroup label="پاکستان (Pakistan)">
+                  <option value="Karachi,PK,24.8607,67.0011">کراچی (Karachi)</option>
+                  <option value="Lahore,PK,31.5204,74.3587">لاہور (Lahore)</option>
+                  <option value="Islamabad,PK,33.6844,73.0479">اسلام آباد (Islamabad)</option>
+                  <option value="Rawalpindi,PK,33.5651,73.0169">راولپنڈی (Rawalpindi)</option>
+                  <option value="Faisalabad,PK,31.4504,73.1350">فیصل آباد (Faisalabad)</option>
+                  <option value="Multan,PK,30.1575,71.5249">ملتان (Multan)</option>
+                  <option value="Peshawar,PK,34.0151,71.5249">پشاور (Peshawar)</option>
+                  <option value="Quetta,PK,30.1798,66.9750">کوئٹہ (Quetta)</option>
+                  <option value="Gujranwala,PK,32.1877,74.1945">گوجرانوالہ (Gujranwala)</option>
+                  <option value="Sialkot,PK,32.4945,74.5229">سیالکوٹ (Sialkot)</option>
+                  <option value="Hyderabad,PK,25.3960,68.3578">حیدرآباد (Hyderabad)</option>
+                  <option value="Abbottabad,PK,34.1688,73.2215">ایبٹ آباد (Abbottabad)</option>
+                  <option value="Gilgit,PK,35.9221,74.3087">گلگت (Gilgit)</option>
+                  <option value="Muzaffarabad,PK,34.3700,73.4711">مظفرآباد (Muzaffarabad)</option>
+                </optgroup>
+                <optgroup label="دیگر ممالک (International)">
+                  <option value="Makkah,SA,21.3891,39.8579">مکہ مکرمہ (Makkah)</option>
+                  <option value="Madinah,SA,24.5247,39.5692">مدینہ منورہ (Madinah)</option>
+                  <option value="Dubai,AE,25.2048,55.2708">دبئی (Dubai)</option>
+                  <option value="London,GB,51.5074,-0.1278">لندن (London)</option>
+                  <option value="New York,US,40.7128,-74.0060">نیویارک (New York)</option>
+                  <option value="Toronto,CA,43.6532,-79.3832">ٹورنٹو (Toronto)</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <!-- 2. SHARIAH PRAYER VALIDITY BANNER (کیا ابھی نماز پڑھ سکتے ہیں؟) -->
+            <div id="prayerValidityStatusCard" class="prayer-validity-card status-valid">
+              <!-- Dynamically populated: Green (Valid), Red (Makruh Tahrimi), or Amber (Nafl restricted) -->
+            </div>
+
+            <!-- 3. NEXT PRAYER HERO COUNTDOWN CARD -->
+            <div class="next-prayer-hero-card" id="nextPrayerHeroCard">
+              <div class="nph-top-row">
+                <div class="nph-tag">
+                  <i class="fa-solid fa-hourglass-half"></i> <span id="nphTagText">اگلی نماز کا وقت</span>
+                </div>
+                <div class="nph-current-active-tag" id="nphCurrentActiveTag">
+                  ● ظہر کا وقت جاری ہے
+                </div>
+              </div>
+
+              <div class="nph-main-body">
+                <div class="nph-name-group">
+                  <div class="nph-sublabel">اگلی نماز (Next Prayer)</div>
+                  <h2 class="nph-prayer-name" id="nphNextPrayerName">عصر (Asr)</h2>
+                  <div class="nph-exact-time" id="nphNextPrayerTime">04:42 PM</div>
+                </div>
+
+                <div class="nph-countdown-ring-box">
+                  <div class="nph-countdown-val" id="nphCountdownClock">01:25:40</div>
+                  <div class="nph-countdown-label" id="nphCountdownSubLabel">باقی وقت (Remaining)</div>
+                </div>
+              </div>
+
+              <!-- Progress bar of current prayer window -->
+              <div class="nph-progress-track">
+                <div class="nph-progress-fill" id="nphProgressFill" style="width: 45%;"></div>
+              </div>
+              <div class="nph-progress-labels">
+                <span id="nphWindowStartLabel">ظہر 12:24 PM</span>
+                <span id="nphWindowRemainingLabel">1 گھنٹہ 25 منٹ باقی</span>
+                <span id="nphWindowEndLabel">عصر 04:42 PM</span>
+              </div>
+            </div>
+
+            <!-- 4. PRAYER SCHEDULE & AUQAT-E-MAKROOHA LIST -->
+            <div class="prayer-section-heading">
+              <h4><i class="fa-solid fa-calendar-check" style="color:var(--khizri-gold);"></i> یومیہ اوقاتِ صلوٰۃ و اوقاتِ مکروہہ</h4>
+              <span class="psh-date" id="prayerScheduleDateText">27 ستمبر 2026</span>
+            </div>
+
             <div class="prayer-times-schedule-cards" id="prayerTimesSchedule">
               <!-- Populated via JS -->
             </div>
+
+            <!-- 5. SHAR'I REFERENCE & MAKRUH TIMES GUIDANCE BOX -->
+            <div class="makruh-guide-box">
+              <div class="mgb-header">
+                <i class="fa-solid fa-triangle-exclamation" style="color:#D97706; font-size:1.1rem;"></i>
+                <h5>اوقاتِ مکروہہ کے شرعی احکام (حدیثِ نبوی ﷺ)</h5>
+              </div>
+              <p class="mgb-hadith">
+                سیدنا عقبہ بن عامر رضی اللہ عنہ فرماتے ہیں: «ثَلاَثُ سَاعَاتٍ كَانَ رَسُولُ اللَّهِ ﷺ يَنْهَانَا أَنْ نُصَلِّيَ فِيهِنَّ أَوْ أَنْ نَقْبُرَ فِيهِنَّ مَوْتَانَا: حِينَ تَطْلُعُ الشَّمْسُ بَازِغَةً حَتَّى تَرْتَفِعَ، وَحِينَ يَقُومُ قَائِمُ الظَّهِيرَةِ حَتَّى تَمِيلَ الشَّمْسُ، وَحِينَ تَضَيَّفُ الشَّمْسُ لِلْغُرُوبِ حَتَّى تَغْرُبَ» <em>(صحیح مسلم: 831)</em>
+              </p>
+              <div class="mgb-bullets">
+                <div class="mgb-bullet-item">
+                  <span class="mgb-badge makruh-red">1. طلوعِ آفتاب:</span>
+                  <span>سورج نکلنے کے بعد تقریباً 15 تا 20 منٹ تک (اشراق کا وقت شروع ہونے تک)۔</span>
+                </div>
+                <div class="mgb-bullet-item">
+                  <span class="mgb-badge makruh-red">2. نصف النہار (زوال):</span>
+                  <span>سورج عین سر پر ہونے سے لے کر ڈھلنے (ظہر شروع ہونے) سے 10 منٹ پہلے تک۔</span>
+                </div>
+                <div class="mgb-bullet-item">
+                  <span class="mgb-badge makruh-red">3. غروبِ آفتاب:</span>
+                  <span>سورج زرد ہونے سے لے کر ڈوبنے تک (تقریباً 15 تا 20 منٹ)۔</span>
+                </div>
+              </div>
+              <div class="mgb-note">
+                <strong>حکمِ شرعی:</strong> ان تینوں اوقات میں ہر قسم کی فرض، قضا اور نفل نماز پڑھنا یا سجدہ تلاوت کرنا مکروہِ تحریمی (سخت ممنوع) ہے۔ فجر کے فرض کے بعد طلوع تک اور عصر کے فرض کے بعد غروب تک نفل نماز مکروہ ہے، البتہ قضا نماز جائز ہے۔
+              </div>
+            </div>
+
           </div>
         </section>
 

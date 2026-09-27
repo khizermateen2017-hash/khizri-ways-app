@@ -359,99 +359,649 @@ function initClock() {
   setInterval(updateClockDisplay, 1000);
 }
 
-// IP-Based Location Detection
-function initLocation() {
-  const cityEl = document.getElementById('headerCityName');
-  
-  // 1. Check local cache first for instant zero-latency display
-  const cachedCity = localStorage.getItem('khizri_user_city');
-  if (cachedCity && cityEl) {
-    cityEl.textContent = cachedCity;
-  }
+// ====================================================
+// AUTHENTIC ISLAMIC PRAYER TIMES & MAKRUH ENGINE
+// (University of Islamic Sciences, Karachi - Hanafi)
+// ====================================================
 
-  // 2. Fallback to browser timezone identifier if not cached
-  if (!cachedCity && cityEl) {
-    try {
-      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      if (tz) {
-        const parts = tz.split('/');
-        const fallbackCity = parts[parts.length - 1].replace(/_/g, ' ');
-        cityEl.textContent = fallbackCity;
-      }
-    } catch(e) {}
-  }
+const prayerState = {
+  lat: parseFloat(localStorage.getItem('khizri_prayer_lat')) || 24.8607,
+  lng: parseFloat(localStorage.getItem('khizri_prayer_lng')) || 67.0011,
+  cityName: localStorage.getItem('khizri_prayer_city') || 'کراچی (Karachi)',
+  country: localStorage.getItem('khizri_prayer_country') || 'Pakistan',
+  isGps: localStorage.getItem('khizri_prayer_is_gps') === 'true',
+  timings: null,
+  rawTimings: null,
+  lastFetchedDate: null,
+  nextPrayerKey: 'Asr',
+  nextPrayerNameUr: 'عصر',
+  nextPrayerMins: 980,
+  nextPrayerDiffSec: 0,
+  makruhStatus: null
+};
 
-  // 3. Fetch exact city & country from IP Geolocation API asynchronously
-  fetch('https://ipwho.is/')
-    .then(r => r.json())
-    .then(data => {
-      if (data && data.success) {
-        const locStr = `${data.city || data.region || 'Pakistan'}, ${data.country_code || 'PK'}`;
-        if (cityEl) cityEl.textContent = locStr;
-        localStorage.setItem('khizri_user_city', locStr);
-        if (typeof window.initCountryDropdowns === 'function' && data.country) {
-          window.initCountryDropdowns(data.country);
-        }
-      } else {
-        // Alternative free IP geolocation fallback
-        fetch('https://ipapi.co/json/')
-          .then(r => r.json())
-          .then(d => {
-            if (d && d.city) {
-              const locStr = `${d.city}, ${d.country_code || 'PK'}`;
-              if (cityEl) cityEl.textContent = locStr;
-              localStorage.setItem('khizri_user_city', locStr);
-            }
-          }).catch(() => {});
-      }
-    })
-    .catch(() => {
-      // Offline or network error - keep timezone or cached city
-    });
+// 1. Astronomical Calculation Engine (High-Accuracy Offline Fallback)
+// Method: University of Islamic Sciences, Karachi (Fajr: 18°, Isha: 18°, Hanafi Asr 2x shadow)
+function calculateOfflinePrayerTimes(lat, lng, date) {
+  try {
+    const startOfYear = new Date(date.getFullYear(), 0, 0);
+    const diff = date - startOfYear;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const N = Math.floor(diff / oneDay);
+    const tzOffset = -date.getTimezoneOffset() / 60;
+
+    const M = (357.5291 + 0.98560028 * N) % 360;
+    const Mrad = (M * Math.PI) / 180;
+    const C = 1.9148 * Math.sin(Mrad) + 0.02 * Math.sin(2 * Mrad);
+    const L = (280.4665 + 0.98564736 * N + C) % 360;
+    const Lrad = (L * Math.PI) / 180;
+
+    const eps = 23.439 - 0.00000036 * N;
+    const epsRad = (eps * Math.PI) / 180;
+    const sinDec = Math.sin(epsRad) * Math.sin(Lrad);
+    const decRad = Math.asin(sinDec);
+    const dec = (decRad * 180) / Math.PI;
+
+    const y = Math.tan(epsRad / 2) * Math.tan(epsRad / 2);
+    const eqt = 4 * ((180 / Math.PI) * (
+      y * Math.sin(2 * Lrad) -
+      2 * 0.0167 * Math.sin(Mrad) +
+      4 * 0.0167 * y * Math.sin(Mrad) * Math.cos(2 * Lrad) -
+      0.5 * y * y * Math.sin(4 * Lrad) -
+      1.25 * 0.0167 * 0.0167 * Math.sin(2 * Mrad)
+    ));
+
+    const noonHour = 12 + tzOffset - (lng / 15.0) - (eqt / 60.0);
+    const latRad = (lat * Math.PI) / 180;
+
+    function hourAngle(alphaDeg) {
+      const alphaRad = (alphaDeg * Math.PI) / 180;
+      const cosHA = (Math.sin(alphaRad) - Math.sin(latRad) * Math.sin(decRad)) / (Math.cos(latRad) * Math.cos(decRad));
+      if (cosHA > 1 || cosHA < -1) return null;
+      return (Math.acos(cosHA) * 180) / Math.PI / 15.0;
+    }
+
+    const haFajr = hourAngle(-18.0) || 1.45;
+    const haSun = hourAngle(-0.833) || 1.02;
+    const haIsha = hourAngle(-18.0) || 1.45;
+
+    // Hanafi Asr: shadow = 2 + tan(|lat - dec|)
+    const asrAltRad = Math.atan(1.0 / (2.0 + Math.tan(Math.abs(latRad - decRad))));
+    const haAsr = hourAngle((asrAltRad * 180) / Math.PI) || 2.45;
+
+    function toMins(hFloat) {
+      let m = Math.round(hFloat * 60);
+      return ((m % 1440) + 1440) % 1440;
+    }
+
+    return {
+      Fajr: toMins(noonHour - haFajr),
+      Sunrise: toMins(noonHour - haSun),
+      Dhuhr: toMins(noonHour),
+      Asr: toMins(noonHour + haAsr),
+      Sunset: toMins(noonHour + haSun),
+      Maghrib: toMins(noonHour + haSun),
+      Isha: toMins(noonHour + haIsha)
+    };
+  } catch (err) {
+    console.error('Offline prayer calc error:', err);
+    return {
+      Fajr: 5 * 60 + 7,
+      Sunrise: 6 * 60 + 22,
+      Dhuhr: 12 * 60 + 23,
+      Asr: 16 * 60 + 43,
+      Sunset: 18 * 60 + 23,
+      Maghrib: 18 * 60 + 23,
+      Isha: 19 * 60 + 39
+    };
+  }
 }
 
-// Prayer Timings & Countdown
+// 2. Fetch Authentic Timings from AlAdhan API with Offline Fallback
+async function syncPrayerTimesFromApi(force = false) {
+  const todayKey = new Date().toISOString().slice(0, 10);
+  if (!force && prayerState.lastFetchedDate === todayKey && prayerState.timings) {
+    return prayerState.timings;
+  }
+
+  // Pre-calculate offline immediately so UI is never blank
+  prayerState.timings = calculateOfflinePrayerTimes(prayerState.lat, prayerState.lng, new Date());
+  prayerState.lastFetchedDate = todayKey;
+
+  try {
+    const timestamp = Math.floor(Date.now() / 1000);
+    const url = `https://api.aladhan.com/v1/timings/${timestamp}?latitude=${prayerState.lat}&longitude=${prayerState.lng}&method=1&school=1`;
+    const resp = await fetch(url, { cache: 'no-cache' });
+    const data = await resp.json();
+    if (data && data.code === 200 && data.data && data.data.timings) {
+      const raw = data.data.timings;
+      prayerState.rawTimings = raw;
+
+      function parseHHMM(str) {
+        if (!str) return 0;
+        const [h, m] = str.split(':').map(Number);
+        return h * 60 + m;
+      }
+
+      prayerState.timings = {
+        Fajr: parseHHMM(raw.Fajr),
+        Sunrise: parseHHMM(raw.Sunrise),
+        Dhuhr: parseHHMM(raw.Dhuhr),
+        Asr: parseHHMM(raw.Asr),
+        Sunset: parseHHMM(raw.Sunset || raw.Maghrib),
+        Maghrib: parseHHMM(raw.Maghrib),
+        Isha: parseHHMM(raw.Isha),
+        Midnight: parseHHMM(raw.Midnight),
+        Firstthird: parseHHMM(raw.Firstthird),
+        Lastthird: parseHHMM(raw.Lastthird)
+      };
+      prayerState.lastFetchedDate = todayKey;
+    }
+  } catch (err) {
+    console.warn('AlAdhan network sync skipped, offline authentic calculation active:', err);
+  }
+
+  // Update schedule list in prayer tab
+  if (typeof populatePrayerTimes === 'function') {
+    populatePrayerTimes();
+  }
+  return prayerState.timings;
+}
+
+// 3. Location Management (GPS Geolocation + IP Fallback + City Selector)
+function initLocation() {
+  const headerCityEl = document.getElementById('headerCityName');
+  const prayerLocEl = document.getElementById('prayerCurrentLocationName');
+  const prayerBadgeEl = document.getElementById('prayerLocationTypeBadge');
+  const citySelectEl = document.getElementById('prayerCityDropdown');
+
+  // Update header and prayer tab with saved or default location
+  if (headerCityEl) headerCityEl.textContent = prayerState.cityName;
+  if (prayerLocEl) prayerLocEl.textContent = prayerState.cityName;
+  if (prayerBadgeEl) {
+    prayerBadgeEl.textContent = prayerState.isGps ? 'GPS Detected' : 'Auto Location';
+  }
+
+  // Sync initial prayer times
+  syncPrayerTimesFromApi();
+
+  // If user hasn't set explicit GPS or city, discover via IP
+  if (!localStorage.getItem('khizri_prayer_lat')) {
+    fetch('https://ipwho.is/')
+      .then(r => r.json())
+      .then(data => {
+        if (data && data.success && data.latitude && data.longitude) {
+          prayerState.lat = data.latitude;
+          prayerState.lng = data.longitude;
+          prayerState.cityName = `${data.city || 'کراچی'}, ${data.country_code || 'PK'}`;
+          prayerState.country = data.country || 'Pakistan';
+          prayerState.isGps = false;
+
+          localStorage.setItem('khizri_prayer_lat', prayerState.lat);
+          localStorage.setItem('khizri_prayer_lng', prayerState.lng);
+          localStorage.setItem('khizri_prayer_city', prayerState.cityName);
+          localStorage.setItem('khizri_prayer_country', prayerState.country);
+
+          if (headerCityEl) headerCityEl.textContent = prayerState.cityName;
+          if (prayerLocEl) prayerLocEl.textContent = prayerState.cityName;
+
+          syncPrayerTimesFromApi(true);
+        }
+      })
+      .catch(() => {});
+  }
+}
+
+// GPS Location Detector (Triggered by user tap on GPS button)
+function detectUserGeolocation() {
+  const btn = document.getElementById('btnGpsDetect');
+  const prayerLocEl = document.getElementById('prayerCurrentLocationName');
+  const prayerBadgeEl = document.getElementById('prayerLocationTypeBadge');
+  const headerCityEl = document.getElementById('headerCityName');
+
+  if (!navigator.geolocation) {
+    if (typeof showToast === 'function') {
+      showToast('آپ کے براؤزر میں GPS سپورٹ دستیاب نہیں ہے');
+    }
+    return;
+  }
+
+  if (btn) btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> تلاش جاری...';
+
+  navigator.geolocation.getCurrentPosition(
+    async (position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      prayerState.lat = lat;
+      prayerState.lng = lng;
+      prayerState.isGps = true;
+
+      // Identify approximate city or format coords
+      let detectedName = `GPS: ${lat.toFixed(2)}°, ${lng.toFixed(2)}°`;
+      try {
+        const revResp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=10`);
+        const revData = await revResp.json();
+        if (revData && revData.address) {
+          const c = revData.address.city || revData.address.town || revData.address.county || revData.address.state || 'موجودہ مقام';
+          const cntry = revData.address.country || 'پاکستان';
+          detectedName = `${c}، ${cntry}`;
+        }
+      } catch (e) {
+        // Fallback name
+        detectedName = `آپ کا مقام (${lat.toFixed(2)}°, ${lng.toFixed(2)}°)`;
+      }
+
+      prayerState.cityName = detectedName;
+      localStorage.setItem('khizri_prayer_lat', lat);
+      localStorage.setItem('khizri_prayer_lng', lng);
+      localStorage.setItem('khizri_prayer_city', detectedName);
+      localStorage.setItem('khizri_prayer_is_gps', 'true');
+
+      if (headerCityEl) headerCityEl.textContent = detectedName;
+      if (prayerLocEl) prayerLocEl.textContent = detectedName;
+      if (prayerBadgeEl) prayerBadgeEl.textContent = 'GPS تصدیق شدہ';
+      if (btn) btn.innerHTML = '<i class="fa-solid fa-check text-green-500"></i> لوکیشن سیٹ ہو گئی';
+
+      await syncPrayerTimesFromApi(true);
+      if (typeof showToast === 'function') {
+        showToast(`مقام اپڈیٹ ہو گیا: ${detectedName}`);
+      }
+
+      setTimeout(() => {
+        if (btn) btn.innerHTML = '<i class="fa-solid fa-crosshairs"></i> <span class="btn-gps-label">مقام بدلو</span>';
+      }, 2500);
+    },
+    (err) => {
+      console.warn('Geolocation error:', err);
+      if (btn) btn.innerHTML = '<i class="fa-solid fa-crosshairs"></i> <span class="btn-gps-label">مقام بدلو</span>';
+      if (typeof showToast === 'function') {
+        showToast('لوکیشن کی اجازت درکار ہے۔ براہ کرم براؤزر میں لوکیشن آن کریں۔');
+      }
+    },
+    { enableHighAccuracy: true, timeout: 8000, maximumAge: 60000 }
+  );
+}
+
+// City Dropdown Handler
+function onCityDropdownChange(val) {
+  if (!val) return;
+  if (val === 'current') {
+    detectUserGeolocation();
+    return;
+  }
+
+  const [cityName, countryCode, latStr, lngStr] = val.split(',');
+  if (!latStr || !lngStr) return;
+
+  prayerState.lat = parseFloat(latStr);
+  prayerState.lng = parseFloat(lngStr);
+  prayerState.cityName = `${cityName} (${countryCode})`;
+  prayerState.country = countryCode;
+  prayerState.isGps = false;
+
+  localStorage.setItem('khizri_prayer_lat', prayerState.lat);
+  localStorage.setItem('khizri_prayer_lng', prayerState.lng);
+  localStorage.setItem('khizri_prayer_city', prayerState.cityName);
+  localStorage.setItem('khizri_prayer_is_gps', 'false');
+
+  const headerCityEl = document.getElementById('headerCityName');
+  const prayerLocEl = document.getElementById('prayerCurrentLocationName');
+  const prayerBadgeEl = document.getElementById('prayerLocationTypeBadge');
+
+  if (headerCityEl) headerCityEl.textContent = prayerState.cityName;
+  if (prayerLocEl) prayerLocEl.textContent = prayerState.cityName;
+  if (prayerBadgeEl) prayerBadgeEl.textContent = 'منتخب شہر';
+
+  syncPrayerTimesFromApi(true);
+  if (typeof showToast === 'function') {
+    showToast(`شہر منتخب کر لیا گیا: ${cityName}`);
+  }
+}
+
+// Format minutes from midnight into 12-hour AM/PM string
+function formatMinutesTo12Hour(mins, showUnit = true) {
+  mins = ((mins % 1440) + 1440) % 1440;
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  const h12 = h % 12 || 12;
+  const hStr = String(h12).padStart(2, '0');
+  const mStr = String(m).padStart(2, '0');
+  if (!showUnit) return `${hStr}:${mStr}`;
+  return `${hStr}:${mStr} ${ampm}`;
+}
+
+// Format seconds into HH:MM:SS or text
+function formatSecondsClock(sec) {
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const s = sec % 60;
+  return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+}
+
+// 4. Evaluate Prayer Validity & Auqat-e-Makrooha ("کیا ابھی نماز پڑھ سکتے ہیں؟")
+function evaluatePrayerValidityAndSchedule(now) {
+  if (!prayerState.timings) {
+    prayerState.timings = calculateOfflinePrayerTimes(prayerState.lat, prayerState.lng, now);
+  }
+  const t = prayerState.timings;
+  const curM = now.getHours() * 60 + now.getMinutes();
+  const curSec = now.getSeconds();
+
+  // Derived Times:
+  // 1. Ishraq starts 20 minutes after Sunrise (end of Makruh Sunrise)
+  const ishraqM = t.Sunrise + 20;
+  // 2. Zawal (Midday Zenith / Istiwa) starts 10 mins before Dhuhr until Dhuhr
+  const zawalStartM = t.Dhuhr - 10;
+  const zawalEndM = t.Dhuhr;
+  // 3. Sunset Makruh starts 20 mins before Maghrib until Maghrib
+  const sunsetMakruhStartM = t.Maghrib - 20;
+  const sunsetMakruhEndM = t.Maghrib;
+
+  let makruhStatus = {
+    type: 'VALID',
+    badgeText: 'جائز وقت',
+    titleUr: 'ابھی نماز کا جائز وقت ہے',
+    titleEn: 'Valid Prayer Time: You Can Pray Now',
+    descUr: 'آپ فرض، سنن، نوافل اور قضا نمازیں باآسانی ادا کر سکتے ہیں۔',
+    descEn: 'You can offer obligatory (Farz), Sunnah, Nafl and Qada prayers now.',
+    countdownNote: ''
+  };
+
+  // CHECK 1: طلوعِ آفتاب (Sunrise to Ishraq - Makruh Tahrimi)
+  if (curM >= t.Sunrise && curM < ishraqM) {
+    const remMins = ishraqM - curM;
+    makruhStatus = {
+      type: 'PROHIBITED',
+      badgeText: 'مکروہ تحریمی وقت',
+      titleUr: 'مکروہ وقت: ابھی نماز پڑھنا منع ہے!',
+      titleEn: 'Prohibited Time: Prayer is Strictly Forbidden!',
+      descUr: 'طلوعِ آفتاب کا مکروہ وقت جاری ہے۔ اس دوران ہر قسم کی فرض، قضا اور نفل نماز یا سجدہ تلاوت کرنا مکروہِ تحریمی (سخت ممنوع) ہے۔',
+      descEn: 'Sunrise prohibited time. All prayers (Farz, Qada, Nafl) and Sajdah Tilawat are strictly forbidden.',
+      countdownNote: `مکروہ وقت ختم ہونے اور اشراق میں ${remMins} منٹ باقی ہیں (${formatMinutesTo12Hour(ishraqM)})`
+    };
+  }
+  // CHECK 2: نصف النہار / زوال (Zawal zenith 10 mins before Dhuhr - Makruh Tahrimi)
+  else if (curM >= zawalStartM && curM < zawalEndM) {
+    const remMins = zawalEndM - curM;
+    makruhStatus = {
+      type: 'PROHIBITED',
+      badgeText: 'مکروہ تحریمی وقت',
+      titleUr: 'مکروہ وقت: ابھی نماز پڑھنا منع ہے!',
+      titleEn: 'Prohibited Time: Prayer is Strictly Forbidden!',
+      descUr: 'نصف النہار (استواءِ شمس / زوال) کا وقت ہے۔ سورج عین سر پر ہونے کی وجہ سے اس وقت ہر قسم کی نماز مکروہِ تحریمی (ممنوع) ہے۔',
+      descEn: 'Midday Zenith (Zawal). Offering any prayer is strictly prohibited until Dhuhr starts.',
+      countdownNote: `ظہر کا جائز وقت شروع ہونے میں ${remMins} منٹ باقی ہیں (${formatMinutesTo12Hour(zawalEndM)})`
+    };
+  }
+  // CHECK 3: زردیِ شمس تا غروب (Sunset Makruh last 20 mins before Maghrib)
+  else if (curM >= sunsetMakruhStartM && curM < sunsetMakruhEndM) {
+    const remMins = sunsetMakruhEndM - curM;
+    makruhStatus = {
+      type: 'PROHIBITED',
+      badgeText: 'مکروہ وقت',
+      titleUr: 'مکروہ وقت: ابھی نماز پڑھنا منع ہے!',
+      titleEn: 'Prohibited Time: Prayer is Forbidden Now!',
+      descUr: 'سورج زرد ہونے سے لے کر ڈوبنے تک کا مکروہ وقت ہے۔ اس وقت نفل و قضا نماز منع ہے (سوائے اس دن کی عصر کے اگر رہ گئی ہو، لیکن تاخیر گناہ ہے)۔',
+      descEn: 'Sun is setting. Prayers are forbidden except today\'s Asr if not prayed yet.',
+      countdownNote: `مغرب و افطار کا وقت شروع ہونے میں ${remMins} منٹ باقی ہیں (${formatMinutesTo12Hour(sunsetMakruhEndM)})`
+    };
+  }
+  // CHECK 4: فجر کی نماز کے بعد سے طلوعِ آفتاب تک (Nafl restricted)
+  else if (curM >= t.Fajr && curM < t.Sunrise) {
+    makruhStatus = {
+      type: 'VALID',
+      badgeText: 'فجر کا وقت',
+      titleUr: 'نمازِ فجر کا جائز وقت ہے',
+      titleEn: 'Fajr Prayer Window',
+      descUr: 'ابھی نمازِ فجر کا وقت ہے۔ فجر کے فرض پڑھنے کے بعد طلوع تک نفل نماز پڑھنا مکروہ ہے، البتہ قضا نماز جائز ہے۔',
+      descEn: 'Fajr prayer time. Obligatory Fajr and Qada are allowed; post-Fajr Nafl is discouraged.',
+      countdownNote: `طلوعِ آفتاب میں ${t.Sunrise - curM} منٹ باقی ہیں`
+    };
+  }
+  // CHECK 5: عصر کی نماز کے بعد تا 20 منٹ قبل غروب (Nafl restricted)
+  else if (curM >= t.Asr && curM < sunsetMakruhStartM) {
+    makruhStatus = {
+      type: 'RESTRICTED',
+      badgeText: 'نفل نماز مکروہ ہے',
+      titleUr: 'عصر کا وقت ہے (نفل نماز مکروہ ہے)',
+      titleEn: 'Asr Window (Nafl Restricted)',
+      descUr: 'ابھی نمازِ عصر کا وقت ہے۔ عصر کے فرض پڑھنے کے بعد نفل پڑھنا مکروہ ہے، البتہ قضا نماز ادا کی جا سکتی ہے۔',
+      descEn: 'Asr time. Obligatory Asr & Qada are allowed. Nafl prayers are restricted until Maghrib.',
+      countdownNote: `غروبِ آفتاب کے مکروہ وقت میں ${sunsetMakruhStartM - curM} منٹ باقی ہیں`
+    };
+  }
+  else if (curM >= ishraqM && curM < zawalStartM) {
+    makruhStatus = {
+      type: 'VALID',
+      badgeText: 'اشراق و چاشت',
+      titleUr: 'اشراق، چاشت و قضا کا مبارک وقت ہے',
+      titleEn: 'Ishraq, Chasht & Qada Window',
+      descUr: 'ابھی اشراق و چاشت کے نوافل اور قضا نمازوں کی ادائیگی کا بہترین اور مستحب وقت ہے۔',
+      descEn: 'Blessed time for voluntary Ishraq, Chasht (Duha), and Qada prayers.',
+      countdownNote: `نصف النہار (زوال) کے مکروہ وقت میں ${zawalStartM - curM} منٹ باقی ہیں`
+    };
+  }
+  else if (curM >= t.Dhuhr && curM < t.Asr) {
+    makruhStatus = {
+      type: 'VALID',
+      badgeText: 'ظہر کا وقت',
+      titleUr: 'نمازِ ظہر کا جائز وقت ہے',
+      titleEn: 'Dhuhr Prayer Window',
+      descUr: 'ابھی نمازِ ظہر کا وقت ہے۔ آپ فرض، سنن، نوافل اور قضا نمازیں باآسانی ادا کر سکتے ہیں۔',
+      descEn: 'Dhuhr time. You can offer Farz, Sunnah, and Nafl prayers freely.',
+      countdownNote: `عصر (حنفی) کا وقت شروع ہونے میں ${t.Asr - curM} منٹ باقی ہیں`
+    };
+  }
+  else if (curM >= t.Maghrib && curM < t.Isha) {
+    makruhStatus = {
+      type: 'VALID',
+      badgeText: 'مغرب کا وقت',
+      titleUr: 'نمازِ مغرب و اوابین کا وقت ہے',
+      titleEn: 'Maghrib & Awwabin Window',
+      descUr: 'ابھی نمازِ مغرب اور صلوٰۃ الاوابین کے نوافل کا بابرکت وقت ہے۔',
+      descEn: 'Maghrib time. Blessed time for Farz, Sunnah and Awwabin voluntary prayers.',
+      countdownNote: `عشاء کا وقت شروع ہونے میں ${t.Isha - curM} منٹ باقی ہیں`
+    };
+  }
+  else {
+    // Isha or Tahajjud (Night)
+    const isTahajjud = curM >= (t.Lastthird || 150) && curM < t.Fajr;
+    makruhStatus = {
+      type: 'VALID',
+      badgeText: isTahajjud ? 'تہجد کا وقت' : 'عشاء کا وقت',
+      titleUr: isTahajjud ? 'تہجد و قیام اللیل کا بابرکت وقت ہے' : 'نمازِ عشاء و وتر کا وقت ہے',
+      titleEn: isTahajjud ? 'Tahajjud (Night Vigil) Window' : 'Isha & Witr Window',
+      descUr: isTahajjud ? 'رات کا آخری تہائی حصہ ہے۔ دعاؤں کی قبولیت اور تہجد ادا کرنے کا بہترین وقت ہے۔' : 'ابھی نمازِ عشاء اور وتر واجب کا وقت جاری ہے۔',
+      descEn: isTahajjud ? 'Last third of the night - blessed time for Tahajjud prayers and supplications.' : 'Isha prayer and Witr prayer window.',
+      countdownNote: curM >= t.Isha ? `سحری کے اختتام و فجر میں ${(1440 - curM) + t.Fajr} منٹ باقی ہیں` : `فجر میں ${t.Fajr - curM} منٹ باقی ہیں`
+    };
+  }
+
+  prayerState.makruhStatus = makruhStatus;
+
+  // Next Farz Prayer & Live Countdown calculation
+  const fivePrayers = [
+    { name: 'Fajr', nameUr: 'فجر', mins: t.Fajr },
+    { name: 'Dhuhr', nameUr: 'ظہر', mins: t.Dhuhr },
+    { name: 'Asr', nameUr: 'عصر', mins: t.Asr },
+    { name: 'Maghrib', nameUr: 'مغرب', mins: t.Maghrib },
+    { name: 'Isha', nameUr: 'عشاء', mins: t.Isha }
+  ];
+
+  let nextP = fivePrayers[0];
+  let prevP = fivePrayers[fivePrayers.length - 1];
+  let targetMins = fivePrayers[0].mins;
+  let isNextTomorrow = false;
+
+  for (let i = 0; i < fivePrayers.length; i++) {
+    if (curM < fivePrayers[i].mins) {
+      nextP = fivePrayers[i];
+      targetMins = fivePrayers[i].mins;
+      prevP = i > 0 ? fivePrayers[i - 1] : fivePrayers[fivePrayers.length - 1];
+      break;
+    }
+    if (i === fivePrayers.length - 1) {
+      nextP = fivePrayers[0];
+      targetMins = fivePrayers[0].mins;
+      prevP = fivePrayers[fivePrayers.length - 1];
+      isNextTomorrow = true;
+    }
+  }
+
+  let totalDiffSec = 0;
+  if (!isNextTomorrow) {
+    totalDiffSec = (targetMins * 60) - (curM * 60 + curSec);
+  } else {
+    totalDiffSec = ((1440 - curM + targetMins) * 60) - curSec;
+  }
+  if (totalDiffSec < 0) totalDiffSec = 0;
+
+  prayerState.nextPrayerKey = nextP.name;
+  prayerState.nextPrayerNameUr = nextP.nameUr;
+  prayerState.nextPrayerMins = targetMins;
+  prayerState.nextPrayerDiffSec = totalDiffSec;
+  prayerState.prevPrayerNameUr = prevP.nameUr;
+  prayerState.prevPrayerMins = prevP.mins;
+
+  // Active Farz Prayer Key
+  let activeFarz = 'Isha';
+  if (curM >= t.Fajr && curM < t.Dhuhr) activeFarz = 'Fajr';
+  else if (curM >= t.Dhuhr && curM < t.Asr) activeFarz = 'Dhuhr';
+  else if (curM >= t.Asr && curM < t.Maghrib) activeFarz = 'Asr';
+  else if (curM >= t.Maghrib && curM < t.Isha) activeFarz = 'Maghrib';
+  else activeFarz = 'Isha';
+  prayerState.activePrayerKey = activeFarz;
+
+  return prayerState;
+}
+
+// 5. Dynamic Current & Next Prayer calculation (Called every second)
 function updateCurrentAndNextPrayer(now) {
+  evaluatePrayerValidityAndSchedule(now);
+
+  const t = prayerState.timings;
+  if (!t) return;
+
+  const curM = now.getHours() * 60 + now.getMinutes();
+  const curSec = now.getSeconds();
+  const diffSec = prayerState.nextPrayerDiffSec;
+  const isUr = (state.currentLang === 'ur');
+
+  // A. Home Screen Floating Prayer Card
   const currentPrayerEl = document.getElementById('currentPrayerName');
   const nextPrayerEl = document.getElementById('nextPrayerTime');
   const currentPrayerLabel = document.getElementById('currentPrayerLabel');
   const nextPrayerLabel = document.getElementById('nextPrayerLabel');
-  if (!currentPrayerEl || !nextPrayerEl) return;
 
-  const currentMinutes = now.getHours() * 60 + now.getMinutes();
+  if (currentPrayerEl && nextPrayerEl) {
+    const localizedCurrent = isUr ? (
+      prayerState.activePrayerKey === 'Fajr' ? 'فجر' :
+      prayerState.activePrayerKey === 'Dhuhr' ? 'ظہر' :
+      prayerState.activePrayerKey === 'Asr' ? 'عصر' :
+      prayerState.activePrayerKey === 'Maghrib' ? 'مغرب' : 'عشاء'
+    ) : prayerState.activePrayerKey;
 
-  // Prayer times in minutes from midnight
-  const prayers = [
-    { name: 'Fajr', mins: 4 * 60 + 45, timeStr: '04:45 AM' },
-    { name: 'Sunrise', mins: 6 * 60 + 5, timeStr: '06:05 AM' },
-    { name: 'Dhuhr', mins: 13 * 60 + 15, timeStr: '01:15 PM' },
-    { name: 'Asr', mins: 16 * 60 + 4, timeStr: '04:04 PM' },
-    { name: 'Maghrib', mins: 18 * 60 + 35, timeStr: '06:35 PM' },
-    { name: 'Isha', mins: 20 * 60 + 0, timeStr: '08:00 PM' }
-  ];
+    const localizedNext = isUr ? prayerState.nextPrayerNameUr : prayerState.nextPrayerKey;
 
-  let current = prayers[prayers.length - 1]; // Default to Isha if before Fajr or after Isha
-  let next = prayers[0];
+    if (currentPrayerLabel) currentPrayerLabel.textContent = isUr ? 'ابھی وقت ہے:' : 'Now prayer is';
+    currentPrayerEl.textContent = localizedCurrent;
 
-  for (let i = 0; i < prayers.length; i++) {
-    if (currentMinutes >= prayers[i].mins) {
-      current = prayers[i];
-      next = prayers[(i + 1) % prayers.length];
+    if (nextPrayerLabel) {
+      const hoursRem = Math.floor(diffSec / 3600);
+      const minsRem = Math.floor((diffSec % 3600) / 60);
+      const timeRemText = isUr ? `(${hoursRem} گھنٹہ ${minsRem} منٹ باقی)` : `(${hoursRem}h ${minsRem}m left)`;
+      nextPrayerLabel.textContent = isUr ? `اگلی نماز: ${localizedNext} ${timeRemText}` : `Next prayer: ${localizedNext} ${timeRemText}`;
     }
+
+    const nextTimeStr = formatMinutesTo12Hour(prayerState.nextPrayerMins);
+    const parts = nextTimeStr.split(' ');
+    nextPrayerEl.innerHTML = `${parts[0]} <span class="pm-unit">${parts[1] || ''}</span>`;
   }
 
-  const t = i18n[state.currentLang] || i18n.en;
-  const curNameKey = current.name === 'Sunrise' ? 'Dhuhr' : current.name;
-  const localizedCurrentName = t.prayerNames[curNameKey] || curNameKey;
-  const localizedNextName = t.prayerNames[next.name] || next.name;
+  // B. Prayer Validity Status Banner ("کیا ابھی نماز پڑھ سکتے ہیں؟")
+  const validityCard = document.getElementById('prayerValidityStatusCard');
+  if (validityCard && prayerState.makruhStatus) {
+    const s = prayerState.makruhStatus;
+    const cardClass = s.type === 'VALID' ? 'status-valid' : (s.type === 'PROHIBITED' ? 'status-prohibited' : 'status-restricted');
+    validityCard.className = `prayer-validity-card ${cardClass}`;
 
-  if (currentPrayerLabel) currentPrayerLabel.textContent = t.nowPrayer;
-  currentPrayerEl.textContent = localizedCurrentName;
-  if (nextPrayerLabel) nextPrayerLabel.textContent = `${t.nextPrayerPrefix} ${localizedNextName}`;
-  
-  // Format next prayer time (matches "04:04 PM")
-  const parts = next.timeStr.split(' ');
-  nextPrayerEl.innerHTML = `${parts[0]} <span class="pm-unit">${parts[1]}</span>`;
+    const iconHtml = s.type === 'VALID' ?
+      '<i class="fa-solid fa-circle-check"></i>' :
+      (s.type === 'PROHIBITED' ? '<i class="fa-solid fa-circle-xmark"></i>' : '<i class="fa-solid fa-triangle-exclamation"></i>');
+
+    validityCard.innerHTML = `
+      <div class="pvc-icon-wrap">
+        ${iconHtml}
+      </div>
+      <div class="pvc-content-wrap">
+        <div class="pvc-headline-row">
+          <span class="pvc-title">${isUr ? s.titleUr : s.titleEn}</span>
+          <span class="pvc-status-pill">${s.badgeText}</span>
+        </div>
+        <div class="pvc-desc">${isUr ? s.descUr : s.descEn}</div>
+        ${s.countdownNote ? `<div class="pvc-countdown-note"><i class="fa-regular fa-clock"></i> ${s.countdownNote}</div>` : ''}
+      </div>
+    `;
+  }
+
+  // C. Next Prayer Hero Countdown Card (tabPrayerTimes)
+  const nphNextName = document.getElementById('nphNextPrayerName');
+  const nphNextTime = document.getElementById('nphNextPrayerTime');
+  const nphCountdown = document.getElementById('nphCountdownClock');
+  const nphActiveTag = document.getElementById('nphCurrentActiveTag');
+  const nphProgressFill = document.getElementById('nphProgressFill');
+  const nphStartLabel = document.getElementById('nphWindowStartLabel');
+  const nphRemainingLabel = document.getElementById('nphWindowRemainingLabel');
+  const nphEndLabel = document.getElementById('nphWindowEndLabel');
+
+  if (nphNextName) {
+    nphNextName.textContent = isUr ? `${prayerState.nextPrayerNameUr} (${prayerState.nextPrayerKey})` : prayerState.nextPrayerKey;
+  }
+  if (nphNextTime) {
+    nphNextTime.textContent = formatMinutesTo12Hour(prayerState.nextPrayerMins);
+  }
+  if (nphCountdown) {
+    nphCountdown.textContent = formatSecondsClock(diffSec);
+  }
+  if (nphActiveTag) {
+    const actName = isUr ? (
+      prayerState.activePrayerKey === 'Fajr' ? 'فجر' :
+      prayerState.activePrayerKey === 'Dhuhr' ? 'ظہر' :
+      prayerState.activePrayerKey === 'Asr' ? 'عصر' :
+      prayerState.activePrayerKey === 'Maghrib' ? 'مغرب' : 'عشاء'
+    ) : prayerState.activePrayerKey;
+    nphActiveTag.textContent = isUr ? `● ${actName} کا وقت جاری ہے` : `● ${prayerState.activePrayerKey} is active`;
+  }
+
+  // Progress Bar Calculation
+  if (nphProgressFill) {
+    let windowDurationSec = 0;
+    let elapsedSec = 0;
+    const startM = prayerState.prevPrayerMins;
+    const endM = prayerState.nextPrayerMins;
+
+    if (endM > startM) {
+      windowDurationSec = (endM - startM) * 60;
+      elapsedSec = (curM * 60 + curSec) - (startM * 60);
+    } else {
+      windowDurationSec = (1440 - startM + endM) * 60;
+      elapsedSec = curM >= startM ? (curM * 60 + curSec - startM * 60) : (1440 - startM + curM) * 60 + curSec;
+    }
+
+    const pct = Math.min(100, Math.max(0, (elapsedSec / Math.max(1, windowDurationSec)) * 100));
+    nphProgressFill.style.width = `${pct.toFixed(1)}%`;
+
+    const hRem = Math.floor(diffSec / 3600);
+    const mRem = Math.floor((diffSec % 3600) / 60);
+    const sRem = diffSec % 60;
+
+    if (nphStartLabel) nphStartLabel.textContent = `${prayerState.prevPrayerNameUr} ${formatMinutesTo12Hour(startM)}`;
+    if (nphEndLabel) nphEndLabel.textContent = `${prayerState.nextPrayerNameUr} ${formatMinutesTo12Hour(endM)}`;
+    if (nphRemainingLabel) {
+      nphRemainingLabel.textContent = isUr ? `${hRem} گھنٹہ ${mRem} منٹ باقی` : `${hRem}h ${mRem}m left`;
+    }
+  }
 }
 
 // User Display Name Management (Default: Khizri Ways)
@@ -537,6 +1087,10 @@ function initNavigation() {
     if (targetId === 'tabIslamicMasail') { renderMasailMiniButtons(); }
     if (targetId === 'tabQuran') { if (typeof populateSurahs === 'function') populateSurahs(); }
     if (targetId === 'tabWazaif') { renderWazaif(state.activeWazaifFilter || 'all_folders'); }
+    if (targetId === 'tabPrayerTimes') {
+      if (typeof populatePrayerTimes === 'function') populatePrayerTimes();
+      if (typeof updateCurrentAndNextPrayer === 'function') updateCurrentAndNextPrayer(new Date());
+    }
 
     const activeCell = document.querySelector(`.exact-bottom-nav .bottom-nav-cell[data-open="${targetId}"]`);
     if (activeCell) activeCell.classList.add('active');
@@ -1503,21 +2057,180 @@ function populatePrayerTimes() {
   const container = document.getElementById('prayerTimesSchedule');
   if (!container) return;
 
-  const times = [
-    { name: 'Fajr', time: '04:45 AM', active: false },
-    { name: 'Sunrise', time: '06:05 AM', active: false },
-    { name: 'Dhuhr', time: '01:15 PM', active: true },
-    { name: 'Asr', time: '04:04 PM', active: false },
-    { name: 'Maghrib', time: '06:35 PM', active: false },
-    { name: 'Isha', time: '08:00 PM', active: false }
+  const now = new Date();
+  if (!prayerState.timings) {
+    prayerState.timings = calculateOfflinePrayerTimes(prayerState.lat, prayerState.lng, now);
+  }
+  const t = prayerState.timings;
+  const curM = now.getHours() * 60 + now.getMinutes();
+  const isUr = (state.currentLang === 'ur');
+
+  // Derived key points
+  const ishraqM = t.Sunrise + 20;
+  const zawalM = t.Dhuhr - 10;
+  const sunsetMakruhM = t.Maghrib - 20;
+  const tahajjudM = t.Lastthird || (2 * 60 + 30); // ~02:30 AM
+
+  // Format schedule date
+  const dateEl = document.getElementById('prayerScheduleDateText');
+  if (dateEl) {
+    const opts = { day: 'numeric', month: 'long', year: 'numeric' };
+    dateEl.textContent = now.toLocaleDateString(isUr ? 'ur-PK' : 'en-GB', opts);
+  }
+
+  const scheduleItems = [
+    {
+      key: 'fajr',
+      nameEn: 'Fajr',
+      nameUr: 'فجر (سحری کا اختتام)',
+      nameAr: 'الفجر',
+      icon: 'fa-solid fa-cloud-sun',
+      time: formatMinutesTo12Hour(t.Fajr),
+      type: 'farz',
+      typeLabelUr: 'فرض نماز',
+      typeLabelEn: 'Obligatory (Farz)',
+      isActive: curM >= t.Fajr && curM < t.Sunrise
+    },
+    {
+      key: 'sunrise',
+      nameEn: 'Sunrise (Makruh End)',
+      nameUr: 'طلوعِ آفتاب (مکروہ وقت)',
+      nameAr: 'الشروق',
+      icon: 'fa-solid fa-sun',
+      time: `${formatMinutesTo12Hour(t.Sunrise)} - ${formatMinutesTo12Hour(ishraqM)}`,
+      type: 'makruh',
+      typeLabelUr: 'مکروہ تحریمی وقت',
+      typeLabelEn: 'Prohibited Time (20 mins)',
+      isActive: curM >= t.Sunrise && curM < ishraqM
+    },
+    {
+      key: 'ishraq',
+      nameEn: 'Ishraq & Chasht (Duha)',
+      nameUr: 'اشراق و چاشت (صلوٰۃ الضحیٰ)',
+      nameAr: 'الإشراق والضحى',
+      icon: 'fa-solid fa-sparkles',
+      time: `${formatMinutesTo12Hour(ishraqM)} - ${formatMinutesTo12Hour(zawalM)}`,
+      type: 'nafl',
+      typeLabelUr: 'مستحب نفل وقت',
+      typeLabelEn: 'Mustahabb Nafl Window',
+      isActive: curM >= ishraqM && curM < zawalM
+    },
+    {
+      key: 'zawal',
+      nameEn: 'Zawal / Midday Zenith',
+      nameUr: 'نصف النہار / زوال (استواء)',
+      nameAr: 'نصف النهار / الزوال',
+      icon: 'fa-solid fa-circle-exclamation',
+      time: `${formatMinutesTo12Hour(zawalM)} - ${formatMinutesTo12Hour(t.Dhuhr)}`,
+      type: 'makruh',
+      typeLabelUr: 'مکروہ تحریمی وقت',
+      typeLabelEn: 'Prohibited Time (10 mins)',
+      isActive: curM >= zawalM && curM < t.Dhuhr
+    },
+    {
+      key: 'dhuhr',
+      nameEn: 'Dhuhr',
+      nameUr: 'ظہر',
+      nameAr: 'الظهر',
+      icon: 'fa-solid fa-sun',
+      time: formatMinutesTo12Hour(t.Dhuhr),
+      type: 'farz',
+      typeLabelUr: 'فرض نماز',
+      typeLabelEn: 'Obligatory (Farz)',
+      isActive: curM >= t.Dhuhr && curM < t.Asr
+    },
+    {
+      key: 'asr',
+      nameEn: 'Asr (Hanafi)',
+      nameUr: 'عصر (حنفی مثلِ ثانی)',
+      nameAr: 'العصر',
+      icon: 'fa-solid fa-cloud-sun',
+      time: formatMinutesTo12Hour(t.Asr),
+      type: 'farz',
+      typeLabelUr: 'فرض نماز',
+      typeLabelEn: 'Obligatory (Farz)',
+      isActive: curM >= t.Asr && curM < t.Maghrib
+    },
+    {
+      key: 'sunset_makruh',
+      nameEn: 'Sunset Prohibited Window',
+      nameUr: 'غروبِ آفتاب (مکروہ وقت)',
+      nameAr: 'غروب الشمس',
+      icon: 'fa-solid fa-triangle-exclamation',
+      time: `${formatMinutesTo12Hour(sunsetMakruhM)} - ${formatMinutesTo12Hour(t.Maghrib)}`,
+      type: 'makruh',
+      typeLabelUr: 'مکروہ وقت',
+      typeLabelEn: 'Prohibited (20 mins to sunset)',
+      isActive: curM >= sunsetMakruhM && curM < t.Maghrib
+    },
+    {
+      key: 'maghrib',
+      nameEn: 'Maghrib (Iftar)',
+      nameUr: 'مغرب (افطار کا وقت)',
+      nameAr: 'المغرب',
+      icon: 'fa-solid fa-moon',
+      time: formatMinutesTo12Hour(t.Maghrib),
+      type: 'farz',
+      typeLabelUr: 'فرض نماز',
+      typeLabelEn: 'Obligatory (Farz)',
+      isActive: curM >= t.Maghrib && curM < t.Isha
+    },
+    {
+      key: 'isha',
+      nameEn: 'Isha & Witr',
+      nameUr: 'عشاء و وتر واجب',
+      nameAr: 'العشاء',
+      icon: 'fa-solid fa-star-and-crescent',
+      time: formatMinutesTo12Hour(t.Isha),
+      type: 'farz',
+      typeLabelUr: 'فرض نماز',
+      typeLabelEn: 'Obligatory (Farz)',
+      isActive: curM >= t.Isha || curM < t.Fajr
+    },
+    {
+      key: 'tahajjud',
+      nameEn: 'Tahajjud (Qiyam-ul-Layl)',
+      nameUr: 'تہجد و قیام اللیل',
+      nameAr: 'التهجد',
+      icon: 'fa-solid fa-mosque',
+      time: `${formatMinutesTo12Hour(tahajjudM)} - ${formatMinutesTo12Hour(t.Fajr)}`,
+      type: 'nafl',
+      typeLabelUr: 'مستحب نفل وقت',
+      typeLabelEn: 'Sunnah / Nafl',
+      isActive: curM >= tahajjudM && curM < t.Fajr
+    }
   ];
 
-  container.innerHTML = times.map(t => `
-    <div class="prayer-time-item ${t.active ? 'active-prayer' : ''}">
-      <div class="p-time-name">${t.name} ${t.active ? '<span style="font-size:0.75rem; margin-left:6px; opacity:0.85;">(Now Active)</span>' : ''}</div>
-      <div class="p-time-val">${t.time}</div>
-    </div>
-  `).join('');
+  container.innerHTML = scheduleItems.map(item => {
+    let rowClass = item.isActive ? 'active-prayer' : '';
+    if (item.type === 'makruh') rowClass += ' is-makruh-row';
+    else if (item.type === 'nafl') rowClass += ' is-nafl-row';
+
+    const tagClass = item.type === 'farz' ? 'tag-farz' : (item.type === 'makruh' ? 'tag-makruh' : 'tag-nafl');
+    const tagText = isUr ? item.typeLabelUr : item.typeLabelEn;
+    const nameText = isUr ? item.nameUr : item.nameEn;
+
+    return `
+      <div class="prayer-time-item ${rowClass}">
+        <div class="p-item-left">
+          <div class="p-icon-box">
+            <i class="${item.icon}"></i>
+          </div>
+          <div class="p-meta-box">
+            <div class="p-time-name">
+              <span>${nameText}</span>
+              <span class="p-name-ar">${item.nameAr}</span>
+            </div>
+            <span class="p-type-tag ${tagClass}">${tagText}</span>
+          </div>
+        </div>
+        <div class="p-item-right">
+          <div class="p-time-val">${item.time}</div>
+          ${item.isActive ? `<span class="p-active-badge"><i class="fa-solid fa-circle-dot"></i> ${isUr ? 'جاری وقت' : 'Active'}</span>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
 }
 
 // Fetch Backend REST API Data (PDFs, Videos, Wazaif)
