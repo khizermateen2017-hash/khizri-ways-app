@@ -10480,67 +10480,11 @@ window.filterGoogleReviews = function(category, btnElement) {
   });
 };
 
-window.setReviewRating = function(rating) {
-  const starsContainer = document.getElementById('starRatingSelector');
-  const hiddenInput = document.getElementById('reviewStarValue');
-  if (hiddenInput) hiddenInput.value = rating;
-
-  if (starsContainer) {
-    const stars = starsContainer.querySelectorAll('i');
-    stars.forEach((star, idx) => {
-      if (idx < rating) {
-        star.classList.remove('fa-regular');
-        star.classList.add('fa-solid');
-        star.style.color = '#F59E0B';
-      } else {
-        star.classList.remove('fa-solid');
-        star.classList.add('fa-regular');
-        star.style.color = '#CBD5E1';
-      }
-    });
-  }
-};
+window.setReviewRating = function(rating) {};
 
 window.handleGoogleReviewSubmit = function(event) {
-  event.preventDefault();
-  const name = document.getElementById('reviewAuthorName')?.value.trim() || '';
-  const city = document.getElementById('reviewAuthorCity')?.value.trim() || '';
-  const rating = document.getElementById('reviewStarValue')?.value || '5';
-  const category = document.getElementById('reviewCategorySelect')?.value || 'عمومی تاثرات';
-  const reviewText = document.getElementById('reviewTextContent')?.value.trim() || '';
-
-  if (!name || !reviewText) {
-    alert('براہ کرم تمام لازمی خانے پر فرمائیں۔');
-    return;
-  }
-
-  const starsStr = '⭐'.repeat(parseInt(rating, 10));
-
-  const msg = `*نئے گوگل ریویو / تاثرات (خضری ویز)*\n` +
-              `👤 *نام:* ${name}\n` +
-              `📍 *شہر/ملک:* ${city}\n` +
-              `⭐ *ریٹنگ:* ${starsStr} (${rating}/5)\n` +
-              `🏷️ *زمرہ:* ${category}\n\n` +
-              `📝 *ریویو:* "${reviewText}"\n\n` +
-              `_خضری ویز ایپ کے ذریعے ارسال کیا گیا_`;
-
-  const phone = '923152395969';
-  const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-  
-  if (typeof closeModal === 'function') {
-    closeModal('modalWriteGoogleReview');
-  }
-
-  // Reset form
-  const form = document.getElementById('formSubmitGoogleReview');
-  if (form) form.reset();
-  window.setReviewRating(5);
-
-  window.open(waUrl, '_blank');
+  if (event && event.preventDefault) event.preventDefault();
 };
-
-
-
 
 // ==========================================
 // Islamic Masail Category Filtering & Search Handlers

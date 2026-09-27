@@ -12334,9 +12334,9 @@
               <span class="lang-ur-only">گوگل ریویوز (Google Reviews)</span>
               <span class="lang-en-only">Google Reviews &amp; Ratings</span>
             </h3>
-            <button class="btn-icon-sub" onclick="openModal('modalWriteGoogleReview')" title="Write a Google Review">
-              <i class="fa-solid fa-pen-to-square"></i>
-            </button>
+            <a href="https://g.page/r/CV3MQNbQlkgoEBM/review" target="_blank" rel="noopener" class="btn-icon-sub" title="Google Reviews" style="color: inherit; text-decoration: none; display: flex; align-items: center; justify-content: center;">
+              <i class="fa-brands fa-google" style="color: #EA4335;"></i>
+            </a>
           </div>
           <div class="sub-screen-scroll" style="padding-bottom: 40px;">
 
@@ -12375,18 +12375,14 @@
                 </div>
               </div>
 
-              <!-- Dual Action Buttons (Official Google + In-App Form) -->
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                <a href="https://g.page/r/CV3MQNbQlkgoEBM/review" target="_blank" rel="noopener" style="background: linear-gradient(135deg, #EA4335 0%, #D93025 100%); color: #FFF; border-radius: 10px; padding: 10px 8px; font-size: 0.78rem; font-weight: 800; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 12px rgba(234, 67, 53, 0.3); text-align: center;">
-                  <i class="fa-brands fa-google"></i>
-                  <span class="lang-ur-only">گوگل پر ریویو دیں</span>
-                  <span class="lang-en-only">Review on Google</span>
+              <!-- Official Google Review Action Button -->
+              <div>
+                <a href="https://g.page/r/CV3MQNbQlkgoEBM/review" target="_blank" rel="noopener" style="background: linear-gradient(135deg, #EA4335 0%, #D93025 100%); color: #FFF; border-radius: 10px; padding: 12px 14px; font-size: 0.85rem; font-weight: 800; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(234, 67, 53, 0.35); text-align: center; width: 100%; box-sizing: border-box;">
+                  <i class="fa-brands fa-google" style="font-size: 1.05rem;"></i>
+                  <span class="lang-ur-only">گوگل پر 5 اسٹار ریویو دیں (Review on Google)</span>
+                  <span class="lang-en-only">Review Us on Google (5-Star)</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem; margin-right: 4px;"></i>
                 </a>
-                <button type="button" onclick="openModal('modalWriteGoogleReview')" style="background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%); color: #FFF; border: none; border-radius: 10px; padding: 10px 8px; font-size: 0.78rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); text-align: center;">
-                  <i class="fa-solid fa-pen-to-square"></i>
-                  <span class="lang-ur-only">ایپ میں ریویو لکھیں</span>
-                  <span class="lang-en-only">Write Review</span>
-                </button>
               </div>
             </div>
 
@@ -12651,69 +12647,6 @@
 
           </div>
         </section>
-
-        <!-- ====================================================
-             MODAL: WRITE GOOGLE REVIEW
-             ==================================================== -->
-        <div class="modal-dialog-layer" id="modalWriteGoogleReview">
-          <div class="modal-card-container" style="max-width: 500px; width: 92%; border-radius: 18px; border: 1.5px solid #F59E0B; background: #FFFFFF; box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
-            <div class="modal-card-top-bar" style="background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%); color: #FFF; padding: 12px 16px; border-top-left-radius: 16px; border-top-right-radius: 16px; display: flex; align-items: center; justify-content: space-between;">
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <i class="fa-brands fa-google" style="color: #EA4335; font-size: 1.15rem;"></i>
-                <span style="font-weight: 800; font-size: 0.95rem;">اپنا گوگل ریویو درج فرمائیں</span>
-              </div>
-              <button class="btn-modal-x" onclick="closeModal('modalWriteGoogleReview')" style="color: #FFF; background: rgba(255,255,255,0.15); border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer;">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-            </div>
-
-            <div class="modal-card-body" style="padding: 16px; direction: rtl; text-align: right;">
-              <form id="formSubmitGoogleReview" onsubmit="handleGoogleReviewSubmit(event)">
-                <div style="margin-bottom: 12px;">
-                  <label style="font-size: 0.78rem; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">آپ کا مکمل نام *</label>
-                  <input type="text" id="reviewAuthorName" required placeholder="مثال: محمد احمد" style="width: 100%; padding: 9px 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; box-sizing: border-box;">
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                  <label style="font-size: 0.78rem; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">شہر / ملک *</label>
-                  <input type="text" id="reviewAuthorCity" required placeholder="مثال: لاہور / کراچی / برطانیہ" style="width: 100%; padding: 9px 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; box-sizing: border-box;">
-                </div>
-
-                <div style="margin-bottom: 12px;">
-                  <label style="font-size: 0.78rem; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">ریٹنگ (اسٹارز) *</label>
-                  <div style="display: flex; gap: 8px; font-size: 1.4rem; color: #F59E0B; cursor: pointer;" id="starRatingSelector">
-                    <i class="fa-solid fa-star" onclick="setReviewRating(1)"></i>
-                    <i class="fa-solid fa-star" onclick="setReviewRating(2)"></i>
-                    <i class="fa-solid fa-star" onclick="setReviewRating(3)"></i>
-                    <i class="fa-solid fa-star" onclick="setReviewRating(4)"></i>
-                    <i class="fa-solid fa-star" onclick="setReviewRating(5)"></i>
-                  </div>
-                  <input type="hidden" id="reviewStarValue" value="5">
-                </div>
-
-                <div style="margin-bottom: 12px;">
-                  <label style="font-size: 0.78rem; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">زمرہ (Category) *</label>
-                  <select id="reviewCategorySelect" style="width: 100%; padding: 9px 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; box-sizing: border-box; background: #FFF;">
-                    <option value="تصوف و اسباقِ سلوک">تصوف و اسباقِ سلوک</option>
-                    <option value="روحانی علاج و دم">روحانی علاج و دم</option>
-                    <option value="کورسز و تربیت">کورسز و تربیت</option>
-                    <option value="استخارہ و خواب">استخارہ و خواب</option>
-                    <option value="عمومی تاثرات">عمومی تاثرات</option>
-                  </select>
-                </div>
-
-                <div style="margin-bottom: 14px;">
-                  <label style="font-size: 0.78rem; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">آپ کے تاثرات / ریویو *</label>
-                  <textarea id="reviewTextContent" required rows="4" placeholder="خضری ویز اور مفتی خضر متین کے ساتھ اپنے تجربے کو بیان فرمائیں..." style="width: 100%; padding: 9px 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 0.82rem; box-sizing: border-box; resize: vertical;"></textarea>
-                </div>
-
-                <button type="submit" style="width: 100%; background: #059669; color: #FFF; border: none; border-radius: 10px; padding: 11px; font-size: 0.85rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);">
-                  <i class="fa-solid fa-paper-plane"></i> ریویو جمع کرائیں (Submit Review)
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
 
         <section class="tab-screen" id="tabCustomerStories">
           <div class="sub-screen-header">
