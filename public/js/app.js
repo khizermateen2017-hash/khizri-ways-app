@@ -6241,7 +6241,7 @@ window.openUrgentAppointmentModal = function() {
   const symptomsEl = document.getElementById('tashkheesSymptoms');
   const isEn = (typeof state !== 'undefined' && state.currentLang === 'en');
   if (symptomsEl && !symptomsEl.value) {
-    symptomsEl.value = isEn ? '[Urgent 30-Minute Priority Consultation - Fee: Rs. 3,000] ' : '[فوری ارجنٹ اپائنٹمنٹ ۳۰ منٹ سیشن - ہدیہ ۳,۰۰۰ روپے] ';
+    symptomsEl.value = isEn ? '[Urgent 30-Minute Priority Consultation - Fee: Rs. 3,000] ' : '[فوری ارجنٹ اپائنٹمنٹ 30 منٹ سیشن - ہدیہ 3,000 روپے] ';
   }
 };
 
@@ -7527,14 +7527,14 @@ window.submit40DayCourseOrder = async function() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        itemName: '۴۰ روزہ تعویذات کے ذریعے علاج کا جامع کورس',
+        itemName: '40 روزہ تعویذات کے ذریعے علاج کا جامع کورس',
         customerName: name,
         motherName: mother,
         country: country,
         phone: phone,
         city: city,
         address: address,
-        purpose: '۴۰ روزہ پینے و جلانے کے تعویذات کا کورس: ' + problem,
+        purpose: '40 روزہ پینے و جلانے کے تعویذات کا کورس: ' + problem,
         notes: `مسئلہ: ${problem} | ملک: ${country} | شہر: ${city}`,
         hadya: 7000,
         paymentMethod: 'EasyPaisa / JazzCash / Bank',
@@ -7546,7 +7546,7 @@ window.submit40DayCourseOrder = async function() {
   }
 
   let msg = '*بسم الله الرحمن الرحيم*\n';
-  msg += '*آن لائن آرڈر: ۴۰ روزہ تعویذات کے ذریعے علاج کا جامع کورس*\n';
+  msg += '*آن لائن آرڈر: 40 روزہ تعویذات کے ذریعے علاج کا جامع کورس*\n';
   msg += '----------------------------------------\n';
   msg += '🔖 *آرڈر ریفرنس:* ' + orderId + '\n';
   msg += '👤 *مریض کا نام:* ' + name + '\n';
@@ -7556,10 +7556,10 @@ window.submit40DayCourseOrder = async function() {
   msg += '🏡 *کوریئر ایڈریس:* ' + address + '\n';
   msg += '🌐 *ملک:* ' + country + '\n';
   msg += '📱 *واٹس ایپ نمبر:* ' + phone + '\n';
-  msg += '💰 *ہدیہ کورس:* Rs. 7,000 (پینے و جلانے کے تعویذات کا ۴۰ روزہ سیٹ مع مفت کوریئر)\n';
+  msg += '💰 *ہدیہ کورس:* Rs. 7,000 (پینے و جلانے کے تعویذات کا 40 روزہ سیٹ مع مفت کوریئر)\n';
   msg += '🧾 *ادائیگی سلپ:* ' + (slipImg ? 'رسید منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
   msg += '----------------------------------------\n';
-  msg += 'السلام علیکم مفتی صاحب! میں نے ۴۰ روزہ تعویذات کے کورس کا آرڈر جمع کروا دیا ہے اور ہدیہ کی رقم (Rs. 7,000) ارسال کر دی ہے۔ برائے مہربانی پینے اور جلانے کے تعویذات کا سیٹ تیار کر کے بذریعہ کوریئر ارسال فرما دیں۔ جزاک اللہ خیراً!';
+  msg += 'السلام علیکم مفتی صاحب! میں نے 40 روزہ تعویذات کے کورس کا آرڈر جمع کروا دیا ہے اور ہدیہ کی رقم (Rs. 7,000) ارسال کر دی ہے۔ برائے مہربانی پینے اور جلانے کے تعویذات کا سیٹ تیار کر کے بذریعہ کوریئر ارسال فرما دیں۔ جزاک اللہ خیراً!';
 
   if (typeof window.closeModal === 'function') {
     window.closeModal('modalOrder40DayCourse');
@@ -7568,7 +7568,7 @@ window.submit40DayCourseOrder = async function() {
     window.openWhatsAppConsult(msg);
   }
   if (typeof window.showToast === 'function') {
-    window.showToast('۴۰ روزہ کورس کامیابی سے بک ہو گیا۔ واٹس ایپ کھل رہا ہے...');
+    window.showToast('40 روزہ کورس کامیابی سے بک ہو گیا۔ واٹس ایپ کھل رہا ہے...');
   }
 };
 
@@ -7788,7 +7788,7 @@ window.submitAmalTasweerHubOrder = async function() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        itemName: 'عملِ حب و تسخیر بذریعہ تصاویر (۲۱ روزہ عمل)',
+        itemName: 'عملِ حب و تسخیر بذریعہ تصاویر (21 روزہ عمل)',
         customerName: manName + ' و ' + womanName,
         motherName: manMother,
         country: country,
@@ -7805,7 +7805,7 @@ window.submitAmalTasweerHubOrder = async function() {
   }
 
   let msg = '*بسم الله الرحمن الرحيم*\n';
-  msg += '*آن لائن آرڈر: عملِ حب و تسخیر بذریعہ تصاویر (۲۱ روزہ عمل)*\n';
+  msg += '*آن لائن آرڈر: عملِ حب و تسخیر بذریعہ تصاویر (21 روزہ عمل)*\n';
   msg += '----------------------------------------\n';
   msg += '🔖 *آرڈر ریفرنس:* ' + orderId + '\n';
   msg += '👨 *مرد کا نام:* ' + manName + '\n';
@@ -7817,10 +7817,10 @@ window.submitAmalTasweerHubOrder = async function() {
   msg += '🎯 *مقصد / مسئلہ:* ' + purpose + '\n';
   msg += '🌐 *ملک:* ' + country + '\n';
   msg += '📱 *واٹس ایپ نمبر:* ' + phone + '\n';
-  msg += '💰 *ہدیہ عمل:* Rs. 35,000 (۲۱ روزہ باطنی عمل مع پڑھائی و دفن)\n';
+  msg += '💰 *ہدیہ عمل:* Rs. 35,000 (21 روزہ باطنی عمل مع پڑھائی و دفن)\n';
   msg += '🧾 *ادائیگی سلپ:* ' + (slipImg ? 'رسید منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
   msg += '----------------------------------------\n';
-  msg += 'السلام علیکم مفتی صاحب! میں نے تصاویر کے ذریعے ۲۱ روزہ عملِ حب و تسخیر کا آرڈر جمع کروا دیا ہے اور ہدیہ کی رقم (Rs. 35,000) ارسال کر دی ہے۔ برائے مہربانی دونوں تصاویر پر نقوش تحریر فرما کر ۲۱ دن کی پڑھائی کا عمل شروع فرمائیں۔ جزاک اللہ خیراً!';
+  msg += 'السلام علیکم مفتی صاحب! میں نے تصاویر کے ذریعے 21 روزہ عملِ حب و تسخیر کا آرڈر جمع کروا دیا ہے اور ہدیہ کی رقم (Rs. 35,000) ارسال کر دی ہے۔ برائے مہربانی دونوں تصاویر پر نقوش تحریر فرما کر 21 دن کی پڑھائی کا عمل شروع فرمائیں۔ جزاک اللہ خیراً!';
 
   if (typeof window.closeModal === 'function') {
     window.closeModal('modalOrderAmalTasweerHub');
@@ -7883,13 +7883,13 @@ window.submitAmalTasweerTafreeqOrder = async function() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        itemName: 'عملِ تفریق و جدائی برائے ناجائز تعلقات بذریعہ تصاویر (۲۱ روزہ عمل)',
+        itemName: 'عملِ تفریق و جدائی برائے ناجائز تعلقات بذریعہ تصاویر (21 روزہ عمل)',
         customerName: manName + ' و ' + womanName,
         motherName: manMother,
         country: country,
         phone: phone,
         purpose: 'عملِ تفریق بذریعہ تصاویر: ' + reason,
-        notes: 'فرد ۱: ' + manName + ' ولد ' + (manMother || 'درج نہیں') + ' | فرد ۲: ' + womanName + ' بنت ' + (womanMother || 'حوا') + ' | وجہ: ' + reason + ' | ملک: ' + country,
+        notes: 'فرد 1: ' + manName + ' ولد ' + (manMother || 'درج نہیں') + ' | فرد 2: ' + womanName + ' بنت ' + (womanMother || 'حوا') + ' | وجہ: ' + reason + ' | ملک: ' + country,
         hadya: 35000,
         paymentMethod: 'EasyPaisa / JazzCash / Bank',
         hasSlip: Boolean(slipImg)
@@ -7900,7 +7900,7 @@ window.submitAmalTasweerTafreeqOrder = async function() {
   }
 
   let msg = '*بسم الله الرحمن الرحيم*\n';
-  msg += '*آن لائن آرڈر: عملِ تفریق و جدائی برائے ناجائز تعلقات بذریعہ تصاویر (۲۱ روزہ عمل)*\n';
+  msg += '*آن لائن آرڈر: عملِ تفریق و جدائی برائے ناجائز تعلقات بذریعہ تصاویر (21 روزہ عمل)*\n';
   msg += '----------------------------------------\n';
   msg += '🔖 *آرڈر ریفرنس:* ' + orderId + '\n';
   msg += '👤 *پہلا شخص (مرد):* ' + manName + '\n';
@@ -7912,10 +7912,10 @@ window.submitAmalTasweerTafreeqOrder = async function() {
   msg += '⚡ *وجہِ تفریق / شرعی عذر:* ' + reason + '\n';
   msg += '🌐 *ملک:* ' + country + '\n';
   msg += '📱 *واٹس ایپ نمبر:* ' + phone + '\n';
-  msg += '💰 *ہدیہ عمل:* Rs. 35,000 (۲۱ روزہ باطنی عمل مع نقوش، سوئیاں، دفن و مسلسل پڑھائی)\n';
+  msg += '💰 *ہدیہ عمل:* Rs. 35,000 (21 روزہ باطنی عمل مع نقوش، سوئیاں، دفن و مسلسل پڑھائی)\n';
   msg += '🧾 *ادائیگی سلپ:* ' + (slipImg ? 'رسید منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
   msg += '----------------------------------------\n';
-  msg += 'السلام علیکم مفتی صاحب! میں نے ناجائز و حرام تعلق کے خاتمے کیلئے ۲۱ روزہ عملِ تفریق کا آرڈر جمع کروا دیا ہے اور ہدیہ کی رقم (Rs. 35,000) ارسال کر دی ہے۔ برائے مہربانی دونوں تصاویر پر عمل شروع فرما کر ۲۱ دن کی پڑھائی مکمل فرمائیں۔ جزاک اللہ خیراً!';
+  msg += 'السلام علیکم مفتی صاحب! میں نے ناجائز و حرام تعلق کے خاتمے کیلئے 21 روزہ عملِ تفریق کا آرڈر جمع کروا دیا ہے اور ہدیہ کی رقم (Rs. 35,000) ارسال کر دی ہے۔ برائے مہربانی دونوں تصاویر پر عمل شروع فرما کر 21 دن کی پڑھائی مکمل فرمائیں۔ جزاک اللہ خیراً!';
 
   if (typeof window.closeModal === 'function') {
     window.closeModal('modalOrderAmalTasweerTafreeq');
@@ -7963,7 +7963,7 @@ window.openDailyVIPTaweezView = async function() {
         textEl.textContent = item.arabicText;
       }
       if (instructionsEl) {
-        const text = item.methodInstructions || item.benefits || 'باوضو حالت میں قبلہ رخ بیٹھ کر اول و آخر ۱۱ بار درود شریف اور ۳۱۳ بار ورد کریں۔';
+        const text = item.methodInstructions || item.benefits || 'باوضو حالت میں قبلہ رخ بیٹھ کر اول و آخر 11 بار درود شریف اور 313 بار ورد کریں۔';
         instructionsEl.innerHTML = `<strong>طریقہ کار و باطنی عمل:</strong> ${text}`;
       }
 
@@ -8041,7 +8041,7 @@ window.submitMonthlySubscriptionOrder = async function() {
   msg += '🌐 *ملک:* ' + country + '\n';
   msg += '📱 *واٹس ایپ نمبر:* ' + phone + '\n';
   msg += '🎯 *شعبہ دلچسپی:* ' + focus + '\n';
-  msg += '💰 *ماہانہ فیس / ہدیہ:* Rs. 1,500 (۳۰ روزہ ممبرشپ مع ڈیلی تعویذ و عمل)\n';
+  msg += '💰 *ماہانہ فیس / ہدیہ:* Rs. 1,500 (30 روزہ ممبرشپ مع ڈیلی تعویذ و عمل)\n';
   msg += '🧾 *ادائیگی سلپ:* ' + (slipImg ? 'رسید منسلک ہے' : 'ارسال کر دی گئی ہے') + '\n';
   msg += '----------------------------------------\n';
   msg += 'السلام علیکم مفتی صاحب! میں نے ماہانہ VIP تعویذات و مجرب اعمال سبسکرپشن (Rs. 1,500) کا آرڈر جمع کروا دیا ہے اور فیس ارسال کر دی ہے۔ برائے مہربانی مجھے پرائیویٹ VIP واٹس ایپ گروپ میں شامل فرما کر روزانہ کے تعویذات کا سلسلہ شروع فرمائیں۔ جزاک اللہ خیراً!';
@@ -8353,7 +8353,7 @@ window.submitAgarbattiOrder = function(e) {
 };
 
 // ====================================================
-// DAM SHUDA 2-INCH STEEL NAILS ORDER (۵ دم شدہ کیلیں)
+// DAM SHUDA 2-INCH STEEL NAILS ORDER (5 دم شدہ کیلیں)
 // ====================================================
 window.openSteelNailsOrderModal = function() {
   if (typeof window.initCountryDropdowns === 'function') {
@@ -8383,7 +8383,7 @@ window.submitSteelNailsOrder = function(e) {
   const name = (document.getElementById('steelCustName')?.value || '').trim();
   const country = (document.getElementById('steelCountry')?.value || 'Pakistan').trim();
   const phone = (document.getElementById('steelCustPhone')?.value || '').trim();
-  const qty = (document.getElementById('steelQuantity')?.value || '1 سیٹ (۵ کیلیں) - Rs. 6,000').trim();
+  const qty = (document.getElementById('steelQuantity')?.value || '1 سیٹ (5 کیلیں) - Rs. 6,000').trim();
   const purpose = (document.getElementById('steelPurpose')?.value || 'کمرے سے شدید نیگیٹیوٹی کا خاتمہ').trim();
   const address = (document.getElementById('steelAddress')?.value || '').trim();
   const paymentMethod = (document.getElementById('steelPaymentMethod')?.value || 'ایزی پیسہ / جاز کیش').trim();
@@ -8405,7 +8405,7 @@ window.submitSteelNailsOrder = function(e) {
   }
 
   let text = `*بسم الله الرحمن الرحيم*\n`;
-  text += `*طلبِ دم شدہ ۲ انچ اسٹیل کی کیلیں (آن لائن آرڈر فارم)*\n`;
+  text += `*طلبِ دم شدہ 2 انچ اسٹیل کی کیلیں (آن لائن آرڈر فارم)*\n`;
   text += `----------------------------------------\n`;
   text += `👤 *سائل / خریدار کا نام:* ${name}\n`;
   text += `🌍 *ملک:* ${country}\n`;
@@ -8416,7 +8416,7 @@ window.submitSteelNailsOrder = function(e) {
   text += `📍 *مکمل ڈلیوری ایڈریس:* ${address}\n`;
   text += `----------------------------------------\n`;
   text += `📦 *ڈلیوری:* بذریعہ ٹی سی ایس محفوظ پارسل مع نقشۂ تنصیب\n`;
-  text += `السلام علیکم مفتی خضر متین صاحب! میں دم شدہ ۲ انچ اسٹیل کی ۵ کیلوں کا آرڈر ارسال کر رہا ہوں۔ برائے مہربانی ڈلیوری اور کنفرمیشن کے لیے رہنمائی فرمائیں۔ جزاک اللہ خیراً!`;
+  text += `السلام علیکم مفتی خضر متین صاحب! میں دم شدہ 2 انچ اسٹیل کی 5 کیلوں کا آرڈر ارسال کر رہا ہوں۔ برائے مہربانی ڈلیوری اور کنفرمیشن کے لیے رہنمائی فرمائیں۔ جزاک اللہ خیراً!`;
 
   const encoded = encodeURIComponent(text);
   window.open(`https://wa.me/923317704807?text=${encoded}`, '_blank');
@@ -8425,7 +8425,7 @@ window.submitSteelNailsOrder = function(e) {
 };
 
 // ====================================================
-// DAM SHUDA 18-INCH SARIYE ORDER (۴ بڑے وزنی فولادی سریے)
+// DAM SHUDA 18-INCH SARIYE ORDER (4 بڑے وزنی فولادی سریے)
 // ====================================================
 window.openSariyeOrderModal = function() {
   if (typeof window.initCountryDropdowns === 'function') {
@@ -8456,7 +8456,7 @@ window.submitSariyeOrder = function(e) {
   const country = (document.getElementById('sariyeCountry')?.value || 'Pakistan').trim();
   const phone = (document.getElementById('sariyeCustPhone')?.value || '').trim();
   const propDetail = (document.getElementById('sariyePropertyDetail')?.value || '').trim();
-  const qty = (document.getElementById('sariyeQuantity')?.value || '1 سیٹ (۴ بڑے ۱۸ انچ وزنی سریے) - Rs. 25,000').trim();
+  const qty = (document.getElementById('sariyeQuantity')?.value || '1 سیٹ (4 بڑے 18 انچ وزنی سریے) - Rs. 25,000').trim();
   const purpose = (document.getElementById('sariyePurpose')?.value || 'مکان یا پلاٹ کی جادو و آفات سے مستقل حفاظت').trim();
   const address = (document.getElementById('sariyeAddress')?.value || '').trim();
   const paymentMethod = (document.getElementById('sariyePaymentMethod')?.value || 'میزان بینک آن لائن ٹرانسفر').trim();
@@ -8478,7 +8478,7 @@ window.submitSariyeOrder = function(e) {
   }
 
   let text = `*بسم الله الرحمن الرحيم*\n`;
-  text += `*طلبِ دم شدہ ۱۸ انچ فولادی سریے (آن لائن آرڈر فارم)*\n`;
+  text += `*طلبِ دم شدہ 18 انچ فولادی سریے (آن لائن آرڈر فارم)*\n`;
   text += `----------------------------------------\n`;
   text += `👤 *سائل / خریدار کا نام:* ${name}\n`;
   text += `🌍 *ملک:* ${country}\n`;
@@ -8490,7 +8490,7 @@ window.submitSariyeOrder = function(e) {
   text += `📍 *مکمل ڈلیوری ایڈریس:* ${address}\n`;
   text += `----------------------------------------\n`;
   text += `🚚 *ترسیل:* خصوصی محفوظ کوریئر / کارگو سروس مع شرعی طریقہ تنصیب\n`;
-  text += `السلام علیکم مفتی خضر متین صاحب! میں دم شدہ ۱۸ انچ فولادی سریوں (25,000 روپے) کا آرڈر ارسال کر رہا ہوں۔ برائے مہربانی کارگو ڈلیوری اور کنفرمیشن کے لیے رہنمائی فرمائیں۔ جزاک اللہ خیراً!`;
+  text += `السلام علیکم مفتی خضر متین صاحب! میں دم شدہ 18 انچ فولادی سریوں (25,000 روپے) کا آرڈر ارسال کر رہا ہوں۔ برائے مہربانی کارگو ڈلیوری اور کنفرمیشن کے لیے رہنمائی فرمائیں۔ جزاک اللہ خیراً!`;
 
   const encoded = encodeURIComponent(text);
   window.open(`https://wa.me/923317704807?text=${encoded}`, '_blank');
@@ -8846,7 +8846,7 @@ window.openLataifImageModal = function(type, lang) {
 
   if (type === 'naqshbandi_lataif') {
     if (imgEl) imgEl.src = 'assets/naqshbandi-lataif-diagram.png?v=24_page';
-    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: Naqshbandi Order 7 Subtle Centers (Lata\'if) & Azkar' : 'نقشہ نمبر ۱: سلسلہ عالیہ نقشبندیہ مجددیہ کے سات لطائف اور اذکار کا جدول';
+    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: Naqshbandi Order 7 Subtle Centers (Lata\'if) & Azkar' : 'نقشہ نمبر 1: سلسلہ عالیہ نقشبندیہ مجددیہ کے سات لطائف اور اذکار کا جدول';
     if (descEl) {
       if (lang === 'en') {
         descEl.style.direction = 'ltr';
@@ -8863,20 +8863,20 @@ window.openLataifImageModal = function(type, lang) {
       } else {
         descEl.style.direction = 'rtl';
         descEl.style.textAlign = 'right';
-        descEl.innerHTML = `<strong>سلسلہ عالیہ نقشبندیہ مجددیہ کے سات لطائف اور انوارات کے رنگ (تحفۃ المشائخ، ص ۲۴):</strong><br>
-        ۱. <strong>لطیفہ قلب (بائیں پستان سے ۲ انگل نیچے):</strong> خاکی نور — وقوفِ قلبی اور بے زبان ذکرِ اسمِ ذات کا آغاز۔<br>
-        ۲. <strong>لطیفہ روح (دائیں پستان سے ۲ انگل نیچے):</strong> سرخ نور — سکینہ، اطمینان اور باطنی حیات۔<br>
-        ۳. <strong>لطیفہ سرّ (بائیں چھاتی کے اوپر):</strong> سفید نور — کشف اور اسرارِ الٰہیہ کا مقام۔<br>
-        ۴. <strong>لطیفہ خفی (دائیں چھاتی کے اوپر):</strong> سیاہ نور — باطنی بصیرت اور قربِ غیبی کا مقام۔<br>
-        ۵. <strong>لطیفہ اخفیٰ (سینے کے عین وسط میں):</strong> ہرا / سبز نور — مقامِ قربِ خاص اور شانِ جامع۔<br>
-        ۶. <strong>لطیفہ نفس (پیشانی پر دونوں ابرو کے درمیان):</strong> جامنی نور — تزکیۂ نفسِ امارہ اور مقامِ رضا و تسلیم۔<br>
-        ۷. <strong>سلطان الاذکار / قالب (تمام جسم و سر کی چوٹی):</strong> بے رنگ نور — پورے جسم کے تمام رگ و ریشے سے خودکار ذکر کا جاری ہونا۔<br>
-        <em>اذکارِ نقشبندیہ:</em> ۱۲۰۰۰ مرتبہ اسمِ ذات «اللہ» اور ۷۰۰۰ مرتبہ کلمہ طیبہ «لا الہ الا اللہ»۔`;
+        descEl.innerHTML = `<strong>سلسلہ عالیہ نقشبندیہ مجددیہ کے سات لطائف اور انوارات کے رنگ (تحفۃ المشائخ، ص 24):</strong><br>
+        1. <strong>لطیفہ قلب (بائیں پستان سے 2 انگل نیچے):</strong> خاکی نور — وقوفِ قلبی اور بے زبان ذکرِ اسمِ ذات کا آغاز۔<br>
+        2. <strong>لطیفہ روح (دائیں پستان سے 2 انگل نیچے):</strong> سرخ نور — سکینہ، اطمینان اور باطنی حیات۔<br>
+        3. <strong>لطیفہ سرّ (بائیں چھاتی کے اوپر):</strong> سفید نور — کشف اور اسرارِ الٰہیہ کا مقام۔<br>
+        4. <strong>لطیفہ خفی (دائیں چھاتی کے اوپر):</strong> سیاہ نور — باطنی بصیرت اور قربِ غیبی کا مقام۔<br>
+        5. <strong>لطیفہ اخفیٰ (سینے کے عین وسط میں):</strong> ہرا / سبز نور — مقامِ قربِ خاص اور شانِ جامع۔<br>
+        6. <strong>لطیفہ نفس (پیشانی پر دونوں ابرو کے درمیان):</strong> جامنی نور — تزکیۂ نفسِ امارہ اور مقامِ رضا و تسلیم۔<br>
+        7. <strong>سلطان الاذکار / قالب (تمام جسم و سر کی چوٹی):</strong> بے رنگ نور — پورے جسم کے تمام رگ و ریشے سے خودکار ذکر کا جاری ہونا۔<br>
+        <em>اذکارِ نقشبندیہ:</em> 12000 مرتبہ اسمِ ذات «اللہ» اور 7000 مرتبہ کلمہ طیبہ «لا الہ الا اللہ»۔`;
       }
     }
   } else if (type === 'qadiri_lataif') {
     if (imgEl) imgEl.src = 'assets/qadiri-lataif-diagram.png';
-    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: Qadiri Order 7 Subtle Centers (Lata\'if) & Azkar Table' : 'نقشہ نمبر ۱: سلسلہ عالیہ قادریہ کے سات لطائف اور اذکار کا جدول';
+    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: Qadiri Order 7 Subtle Centers (Lata\'if) & Azkar Table' : 'نقشہ نمبر 1: سلسلہ عالیہ قادریہ کے سات لطائف اور اذکار کا جدول';
     if (descEl) {
       if (lang === 'en') {
         descEl.style.direction = 'ltr';
@@ -8893,18 +8893,18 @@ window.openLataifImageModal = function(type, lang) {
         descEl.style.direction = 'rtl';
         descEl.style.textAlign = 'right';
         descEl.innerHTML = `<strong>سلسلہ عالیہ قادریہ کے سات لطائف، مقامات اور انوارات کے رنگ:</strong><br>
-        ۱. <strong>لطیفہ قلب (بائیں پستان سے ۲ انگل نیچے):</strong> سرخ نور — عشقِ الٰہی، محبتِ رسول ﷺ اور ضربِ ذکر کا مرکز۔<br>
-        ۲. <strong>لطیفہ روح (دائیں پستان سے ۲ انگل نیچے):</strong> سفید نور — روحانی حیات، سکینہ اور اطمینانِ قلب کا مقام۔<br>
-        ۳. <strong>لطیفہ سرّ (سینے کے عین وسط/درمیان میں):</strong> سبز / ہرا نور — باطنی اسرار اور کشفِ حقائق کا مخزن۔<br>
-        ۴. <strong>لطیفہ خفی (پیشانی پر دونوں آنکھوں/ابرو کے درمیان):</strong> نیلا نور — باطنی بصیرت اور روحانی وجدان کا مقام۔<br>
-        ۵. <strong>لطیفہ اخفیٰ (سر کی چوٹی / تالو پر):</strong> سیاہ نور — قربِ خاص اور تجلیاتِ ذات کا اعلیٰ ترین مقام۔<br>
-        ۶. <strong>لطیفہ نفس (ناف سے ۲ انگل نیچے):</strong> زرد / پیلا نور — تزکیۂ نفسِ امارہ اور مقامِ رضا و تسلیم۔<br>
-        ۷. <strong>قالب / سلطان الاذکار (نفس سے ۲ انگل نیچے و تمام رگ و ریشہ):</strong> بے رنگ نور — پورے جسم کے تمام مسامات اور اعصاب کا ہمہ تن ذکرِ الٰہی میں ڈوب جانا۔`;
+        1. <strong>لطیفہ قلب (بائیں پستان سے 2 انگل نیچے):</strong> سرخ نور — عشقِ الٰہی، محبتِ رسول ﷺ اور ضربِ ذکر کا مرکز۔<br>
+        2. <strong>لطیفہ روح (دائیں پستان سے 2 انگل نیچے):</strong> سفید نور — روحانی حیات، سکینہ اور اطمینانِ قلب کا مقام۔<br>
+        3. <strong>لطیفہ سرّ (سینے کے عین وسط/درمیان میں):</strong> سبز / ہرا نور — باطنی اسرار اور کشفِ حقائق کا مخزن۔<br>
+        4. <strong>لطیفہ خفی (پیشانی پر دونوں آنکھوں/ابرو کے درمیان):</strong> نیلا نور — باطنی بصیرت اور روحانی وجدان کا مقام۔<br>
+        5. <strong>لطیفہ اخفیٰ (سر کی چوٹی / تالو پر):</strong> سیاہ نور — قربِ خاص اور تجلیاتِ ذات کا اعلیٰ ترین مقام۔<br>
+        6. <strong>لطیفہ نفس (ناف سے 2 انگل نیچے):</strong> زرد / پیلا نور — تزکیۂ نفسِ امارہ اور مقامِ رضا و تسلیم۔<br>
+        7. <strong>قالب / سلطان الاذکار (نفس سے 2 انگل نیچے و تمام رگ و ریشہ):</strong> بے رنگ نور — پورے جسم کے تمام مسامات اور اعصاب کا ہمہ تن ذکرِ الٰہی میں ڈوب جانا۔`;
       }
     }
   } else if (type === 'qadiri_zikr_path') {
     if (imgEl) imgEl.src = 'assets/qadiri-zikr-path-diagram.jpg';
-    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 2: Qadiri Dhikr Trajectory & Nafi wa Isbat Strike' : 'نقشہ نمبر ۲: سلسلہ قادریہ میں گردشِ ذکر اور ضربِ نفی و اثبات کی باطنی روش';
+    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 2: Qadiri Dhikr Trajectory & Nafi wa Isbat Strike' : 'نقشہ نمبر 2: سلسلہ قادریہ میں گردشِ ذکر اور ضربِ نفی و اثبات کی باطنی روش';
     if (descEl) {
       if (lang === 'en') {
         descEl.style.direction = 'ltr';
@@ -8924,7 +8924,7 @@ window.openLataifImageModal = function(type, lang) {
     }
   } else if (type === 'chishti_lataif') {
     if (imgEl) imgEl.src = 'assets/chishti-lataif-diagram.png';
-    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: Chishti Order 6 Subtle Centers (Lata\'if) & Positions' : 'نقشہ نمبر ۱: سلسلہ عالیہ چشتیہ کے لطائفِ ستہ کے باطنی مقامات';
+    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: Chishti Order 6 Subtle Centers (Lata\'if) & Positions' : 'نقشہ نمبر 1: سلسلہ عالیہ چشتیہ کے لطائفِ ستہ کے باطنی مقامات';
     if (descEl) {
       if (lang === 'en') {
         descEl.style.direction = 'ltr';
@@ -8940,17 +8940,17 @@ window.openLataifImageModal = function(type, lang) {
         descEl.style.direction = 'rtl';
         descEl.style.textAlign = 'right';
         descEl.innerHTML = `<strong>سلسلہ عالیہ چشتیہ کے لطائفِ ستہ اور ان کے باطنی مقامات و انوارات:</strong><br>
-        ۱. <strong>لطیفہ قلب (بائیں پستان سے ۲ انگل نیچے):</strong> سرخ نور — عشقِ الٰہی، محبتِ رسول ﷺ اور ضربِ ذکر کا مرکز۔<br>
-        ۲. <strong>لطیفہ روح (دائیں پستان سے ۲ انگل نیچے):</strong> سفید نور — مقامِ سکینہ، اطمینان اور روحانی حیات۔<br>
-        ۳. <strong>لطیفہ نفس (ناف سے ۲ انگل نیچے):</strong> زرد / پیلا نور — تزکیۂ نفسِ امارہ تا مطمئنہ۔<br>
-        ۴. <strong>لطیفہ سرّ (سینے کے درمیان میں):</strong> سبز / ہرا نور — کشف و باطنی اسرار کا مقام۔<br>
-        ۵. <strong>لطیفہ خفی (پیشانی پر دونوں آنکھوں/ابرو کے درمیان):</strong> نیلا نور — باطنی بصیرت کا مقام۔<br>
-        ۶. <strong>لطیفہ اخفیٰ (سر کی چوٹی / تالو پر مغز میں):</strong> سیاہ نور — قربِ الٰہی اور تجلیاتِ ذات۔`;
+        1. <strong>لطیفہ قلب (بائیں پستان سے 2 انگل نیچے):</strong> سرخ نور — عشقِ الٰہی، محبتِ رسول ﷺ اور ضربِ ذکر کا مرکز۔<br>
+        2. <strong>لطیفہ روح (دائیں پستان سے 2 انگل نیچے):</strong> سفید نور — مقامِ سکینہ، اطمینان اور روحانی حیات۔<br>
+        3. <strong>لطیفہ نفس (ناف سے 2 انگل نیچے):</strong> زرد / پیلا نور — تزکیۂ نفسِ امارہ تا مطمئنہ۔<br>
+        4. <strong>لطیفہ سرّ (سینے کے درمیان میں):</strong> سبز / ہرا نور — کشف و باطنی اسرار کا مقام۔<br>
+        5. <strong>لطیفہ خفی (پیشانی پر دونوں آنکھوں/ابرو کے درمیان):</strong> نیلا نور — باطنی بصیرت کا مقام۔<br>
+        6. <strong>لطیفہ اخفیٰ (سر کی چوٹی / تالو پر مغز میں):</strong> سیاہ نور — قربِ الٰہی اور تجلیاتِ ذات۔`;
       }
     }
   } else if (type === 'chishti_zikr_path') {
     if (imgEl) imgEl.src = 'assets/chishti-zikr-path-diagram.jpg';
-    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 2: Chishti Dawazdah Tasbih & Dhikr Trajectory' : 'نقشہ نمبر ۲: دوازدہ تسبیح و ضربِ ذکر کی گردش (سلسلہ چشتیہ)';
+    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 2: Chishti Dawazdah Tasbih & Dhikr Trajectory' : 'نقشہ نمبر 2: دوازدہ تسبیح و ضربِ ذکر کی گردش (سلسلہ چشتیہ)';
     if (descEl) {
       if (lang === 'en') {
         descEl.style.direction = 'ltr';
@@ -8970,7 +8970,7 @@ window.openLataifImageModal = function(type, lang) {
     }
   } else if (type === 'silsila') {
     if (imgEl) imgEl.src = 'assets/lataif-silsila-diagram.png';
-    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: 6 Subtle Centers (Lata\'if) & Positions' : 'نقشہ نمبر ۱: انسانی جسم میں لطائفِ ستہ کے باطنی مقامات';
+    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 1: 6 Subtle Centers (Lata\'if) & Positions' : 'نقشہ نمبر 1: انسانی جسم میں لطائفِ ستہ کے باطنی مقامات';
     if (descEl) {
       if (lang === 'en') {
         descEl.style.direction = 'ltr';
@@ -8986,17 +8986,17 @@ window.openLataifImageModal = function(type, lang) {
         descEl.style.direction = 'rtl';
         descEl.style.textAlign = 'right';
         descEl.innerHTML = `<strong>لطائفِ ستہ اور ان کے باطنی مقامات و انوارات:</strong><br>
-        ۱. <strong>لطیفہ اخفیٰ (سر کی چوٹی / مغز):</strong> سیاہ نور — اسرارِ ذات کا مرکز۔<br>
-        ۲. <strong>لطیفہ خفی (پیشانی کے وسط میں ابرو کے درمیان):</strong> نیلا نور — باطنی بصیرت کا مقام۔<br>
-        ۳. <strong>لطیفہ سرّ (دل اور سینے کے درمیان):</strong> سبز نور — رازِ الٰہی کا مرکز۔<br>
-        ۴. <strong>لطیفہ روح (دائیں پستان سے ۲ انگل نیچے):</strong> سفید نور — سکینہ و صفائی کا مقام۔<br>
-        ۵. <strong>لطیفہ قلب (بائیں پستان سے ۲ انگل نیچے):</strong> سرخ نور — عشقِ الٰہی اور ضربِ ذکر کا مرکز۔<br>
-        ۶. <strong>لطیفہ نفس (ناف سے ۲ انگل نیچے):</strong> زرد نور — نفسِ امارہ جس کا تزکیہ کر کے مطمئنہ بنایا جاتا ہے۔`;
+        1. <strong>لطیفہ اخفیٰ (سر کی چوٹی / مغز):</strong> سیاہ نور — اسرارِ ذات کا مرکز۔<br>
+        2. <strong>لطیفہ خفی (پیشانی کے وسط میں ابرو کے درمیان):</strong> نیلا نور — باطنی بصیرت کا مقام۔<br>
+        3. <strong>لطیفہ سرّ (دل اور سینے کے درمیان):</strong> سبز نور — رازِ الٰہی کا مرکز۔<br>
+        4. <strong>لطیفہ روح (دائیں پستان سے 2 انگل نیچے):</strong> سفید نور — سکینہ و صفائی کا مقام۔<br>
+        5. <strong>لطیفہ قلب (بائیں پستان سے 2 انگل نیچے):</strong> سرخ نور — عشقِ الٰہی اور ضربِ ذکر کا مرکز۔<br>
+        6. <strong>لطیفہ نفس (ناف سے 2 انگل نیچے):</strong> زرد نور — نفسِ امارہ جس کا تزکیہ کر کے مطمئنہ بنایا جاتا ہے۔`;
       }
     }
   } else {
     if (imgEl) imgEl.src = 'assets/lataif-zikr-path-diagram.jpg';
-    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 2: Flow of Dawazdah Tasbih & Dhikr Trajectory' : 'نقشہ نمبر ۲: دوازدہ تسبیح و ضربِ ذکر کی گردش';
+    if (titleEl) titleEl.textContent = (lang === 'en') ? 'Diagram 2: Flow of Dawazdah Tasbih & Dhikr Trajectory' : 'نقشہ نمبر 2: دوازدہ تسبیح و ضربِ ذکر کی گردش';
     if (descEl) {
       if (lang === 'en') {
         descEl.style.direction = 'ltr';
@@ -9408,9 +9408,9 @@ window.loadQadiriState = function() {
 
 window.sendQadiriReport = function(lang) {
   const lessonNamesUr = [
-    '۲۰۰ مرتبہ "لا الہ الا اللہ" جہراً',
-    '۴۰۰ مرتبہ "الا اللہ" جہراً',
-    '۶۰۰ مرتبہ "اللہ ھو" جہراً',
+    '200 مرتبہ "لا الہ الا اللہ" جہراً',
+    '400 مرتبہ "الا اللہ" جہراً',
+    '600 مرتبہ "اللہ ھو" جہراً',
     'ذکرِ نفسی خفی (اللہ ھو)',
     'اللہ اور ھو کی ایک ایک تسبیح سلطان الاذکار پر جہراً',
     'لطیفۂ قلب (ذکرِ خفی)',
@@ -9498,13 +9498,13 @@ window.sendQadiriReport = function(lang) {
     msg += `Assalamu Alaikum Mufti Khizer Mateen! Here is my progress in the Qadiri Order 26 lessons, 7 Lata\'if, and Muraqabat. Kindly grant guidance, spiritual blessings, and permission for higher spiritual stations.`;
   } else {
     msg += `*بسم اللہ الرحمن الرحیم*\n`;
-    msg += `*پیش رفت رپورٹ برائے ۲۶ اسباقِ سلسلہ عالیہ قادریہ (تحفۃ المشائخ)*\n`;
+    msg += `*پیش رفت رپورٹ برائے 26 اسباقِ سلسلہ عالیہ قادریہ (تحفۃ المشائخ)*\n`;
     msg += `📅 *سلسلہ میں آغاز کی تاریخ:* ${overallDateVal}\n`;
     msg += `📊 *مجموعی تکمیل:* ${doneCount} / 26 اسباق مکمل\n`;
     msg += `----------------------------------------\n`;
     msg += `*اسباق کی تاریخیں و موجودہ کیفیت:*${detailsText}\n`;
     msg += `----------------------------------------\n`;
-    msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ قادریہ کے ۲۶ اسباق، ۷ لطائف و مراقبات کی مشق شروع کی ہوئی ہے اور میری تفصیلی پیش رفت درج بالا ہے۔ برائے مہربانی اگلے اسباق، مراقبات اور معمولات کی اجازت و دعا عنایت فرمائیں۔`;
+    msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ قادریہ کے 26 اسباق، 7 لطائف و مراقبات کی مشق شروع کی ہوئی ہے اور میری تفصیلی پیش رفت درج بالا ہے۔ برائے مہربانی اگلے اسباق، مراقبات اور معمولات کی اجازت و دعا عنایت فرمائیں۔`;
   }
 
   window.open(`https://wa.me/923317704807?text=${encodeURIComponent(msg)}`, '_blank');
@@ -9774,13 +9774,13 @@ window.sendNaqshbandiReport = function(lang) {
     msg += `Assalamu Alaikum Mufti Khizer Mateen! Here is my progress in the Naqshbandi Mujaddidi Order 35 lessons, 7 Lata\'if, and Muraqabat. Kindly grant guidance, spiritual blessings, and permission for higher spiritual stations.`;
   } else {
     msg += `*بسم اللہ الرحمن الرحیم*\n`;
-    msg += `*پیش رفت رپورٹ برائے ۳۵ اسباقِ سلسلہ عالیہ نقشبندیہ مجددیہ (تحفۃ المشائخ)*\n`;
+    msg += `*پیش رفت رپورٹ برائے 35 اسباقِ سلسلہ عالیہ نقشبندیہ مجددیہ (تحفۃ المشائخ)*\n`;
     msg += `📅 *سلسلہ میں آغاز کی تاریخ:* ${overallDateVal}\n`;
     msg += `📊 *مجموعی تکمیل:* ${doneCount} / 35 اسباق مکمل\n`;
     msg += `----------------------------------------\n`;
     msg += `*اسباق کی تاریخیں و موجودہ کیفیت:*${detailsText}\n`;
     msg += `----------------------------------------\n`;
-    msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ نقشبندیہ مجددیہ کے ۳۵ اسباق، ۷ لطائف و مراقبات کی مشق شروع کی ہوئی ہے اور میری تفصیلی پیش رفت درج بالا ہے۔ برائے مہربانی اگلے اسباق، مراقبات اور معمولات کی اجازت و دعا عنایت فرمائیں۔`;
+    msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ نقشبندیہ مجددیہ کے 35 اسباق، 7 لطائف و مراقبات کی مشق شروع کی ہوئی ہے اور میری تفصیلی پیش رفت درج بالا ہے۔ برائے مہربانی اگلے اسباق، مراقبات اور معمولات کی اجازت و دعا عنایت فرمائیں۔`;
   }
 
   window.open(`https://wa.me/923317704807?text=${encodeURIComponent(msg)}`, '_blank');
@@ -9950,10 +9950,10 @@ window.loadChishtiState = function() {
 window.sendChishtiReport = function(lang) {
   const lessonNamesUr = [
     'دوازدہ تسبیح جلی',
-    '۲۰۰ مرتبہ "لا الہ الا اللہ" کا ذکر',
-    '۴۰۰ مرتبہ "الا اللہ" کا ذکر',
-    '۶۰۰ مرتبہ "اللہ، اللہ" کا ذکر لطیفہ قلب پر',
-    '۱۰۰ مرتبہ "اللہ" کا ذکر لطیفہ قلب پر',
+    '200 مرتبہ "لا الہ الا اللہ" کا ذکر',
+    '400 مرتبہ "الا اللہ" کا ذکر',
+    '600 مرتبہ "اللہ، اللہ" کا ذکر لطیفہ قلب پر',
+    '100 مرتبہ "اللہ" کا ذکر لطیفہ قلب پر',
     'لطیفہ قلب (ذکرِ خفی)',
     'لطیفہ روح (ذکرِ خفی)',
     'لطیفہ نفس (ذکرِ خفی)',
@@ -10049,13 +10049,13 @@ window.sendChishtiReport = function(lang) {
     msg += `Assalamu Alaikum Mufti Khizer Mateen! Here is my progress in the Chishti Order 31 lessons, Lata'if, and Muraqabat. Kindly grant guidance, spiritual blessings, and permission for higher spiritual stations.`;
   } else {
     msg += `*بسم اللہ الرحمن الرحیم*\n`;
-    msg += `*پیش رفت رپورٹ برائے ۳۱ اسباقِ سلسلہ عالیہ چشتیہ (تحفۃ المشائخ)*\n`;
+    msg += `*پیش رفت رپورٹ برائے 31 اسباقِ سلسلہ عالیہ چشتیہ (تحفۃ المشائخ)*\n`;
     msg += `📅 *سلسلہ میں آغاز کی تاریخ:* ${overallDateVal}\n`;
     msg += `📊 *مجموعی تکمیل:* ${doneCount} / 31 اسباق مکمل\n`;
     msg += `----------------------------------------\n`;
     msg += `*اسباق کی تاریخیں و موجودہ کیفیت:*${detailsText}\n`;
     msg += `----------------------------------------\n`;
-    msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ چشتیہ کے ۳۱ اسباق، لطائف و مراقبات کی مشق شروع کی ہوئی ہے اور میری تفصیلی پیش رفت درج بالا ہے۔ برائے مہربانی اگلے اسباق، مراقبات اور معمولات کی اجازت و دعا عنایت فرمائیں۔`;
+    msg += `السلام علیکم مفتی خضر متین صاحب! میں نے سلسلہ عالیہ چشتیہ کے 31 اسباق، لطائف و مراقبات کی مشق شروع کی ہوئی ہے اور میری تفصیلی پیش رفت درج بالا ہے۔ برائے مہربانی اگلے اسباق، مراقبات اور معمولات کی اجازت و دعا عنایت فرمائیں۔`;
   }
 
   window.open(`https://wa.me/923317704807?text=${encodeURIComponent(msg)}`, '_blank');
@@ -10346,7 +10346,7 @@ window.updateTasawwufChecklistUI = function() {
     if (completedCount === 6) {
       badgeUr.style.background = '#059669';
       badgeUr.style.color = '#FFFFFF';
-      badgeUr.innerHTML = '<i class="fa-solid fa-circle-check"></i> تمام ۶ وظائف مکمل!';
+      badgeUr.innerHTML = '<i class="fa-solid fa-circle-check"></i> تمام 6 وظائف مکمل!';
     } else {
       badgeUr.style.background = '#ECFDF5';
       badgeUr.style.color = '#047857';
