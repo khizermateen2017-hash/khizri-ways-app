@@ -8435,19 +8435,19 @@ window.switchSilsilaScreenTab = function(orderKey, lang) {
   const currentIdx = allOrders.indexOf(orderKey);
 
   const titlesUr = {
-    suhrawardi: '📁 سلسلہ عالیہ سہروردیہ (اسباق و لطائف)',
-    chishti: '📁 سلسلہ عالیہ چشتیہ (عشقِ الٰہی و اسباق)',
-    qadiri: '📁 سلسلہ عالیہ قادریہ (ہیبت و اسباق)',
-    naqshbandi: '📁 سلسلہ عالیہ نقشبندیہ (ذکرِ خفی و لطائف)',
-    shadhili: '📁 سلسلہ عالیہ شاذلیہ (شکر و حزب البحر)'
+    suhrawardi: '🌟 سلسلہ عالیہ سہروردیہ (اسباق و لطائف)',
+    chishti: '🕊️ سلسلہ عالیہ چشتیہ (عشقِ الٰہی و اسباق)',
+    qadiri: '👑 سلسلہ عالیہ قادریہ (ہیبت و اسباق)',
+    naqshbandi: '💎 سلسلہ عالیہ نقشبندیہ (ذکرِ خفی و لطائف)',
+    shadhili: '🌊 سلسلہ عالیہ شاذلیہ (شکر و حزب البحر)'
   };
 
   const titlesEn = {
-    suhrawardi: '📁 Suhrawardi Order (Lessons & Lata\'if)',
-    chishti: '📁 Chishti Order (Divine Love & Lessons)',
-    qadiri: '📁 Qadiri Order (Spiritual Authority & Lessons)',
-    naqshbandi: '📁 Naqshbandi Order (Silent Dhikr & Lata\'if)',
-    shadhili: '📁 Shadhili Order (Gratitude & Hizb-ul-Bahr)'
+    suhrawardi: '🌟 Suhrawardi Order (Lessons & Lata\'if)',
+    chishti: '🕊️ Chishti Order (Divine Love & Lessons)',
+    qadiri: '👑 Qadiri Order (Spiritual Authority & Lessons)',
+    naqshbandi: '💎 Naqshbandi Order (Silent Dhikr & Lata\'if)',
+    shadhili: '🌊 Shadhili Order (Gratitude & Hizb-ul-Bahr)'
   };
 
   const nextNamesUr = {
@@ -8502,10 +8502,10 @@ window.switchSilsilaScreenTab = function(orderKey, lang) {
   // 3. Update Header Title
   if (lang === 'ur') {
     const titleEl = document.getElementById('silsilaScreenHeaderTitleUr');
-    if (titleEl) titleEl.textContent = titlesUr[orderKey] || '📁 سلاسلِ تصوف';
+    if (titleEl) titleEl.textContent = titlesUr[orderKey] || 'سلاسلِ تصوف';
   } else {
     const titleEl = document.getElementById('silsilaScreenHeaderTitleEn');
-    if (titleEl) titleEl.textContent = titlesEn[orderKey] || '📁 Sufi Orders';
+    if (titleEl) titleEl.textContent = titlesEn[orderKey] || 'Sufi Orders';
   }
 
   // 4. Update Prev / Next Buttons in Footer

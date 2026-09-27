@@ -11294,251 +11294,236 @@ html, body {
 }
 
 /* =========================================================
-   SUFI ORDERS FOLDER CARDS & SCREEN STYLES
+   SUFI ORDERS SMART ICON CARDS SYSTEM
    ========================================================= */
+.sufi-smart-grid,
 .sufi-folders-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 12px;
   margin: 14px 0 18px;
 }
 
 @media (max-width: 640px) {
+  .sufi-smart-grid,
   .sufi-folders-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 }
 
-.sufi-folder-card {
+.sufi-smart-card {
   position: relative;
-  border-radius: 14px;
+  background: #FFFFFF;
+  border-radius: 18px;
+  border: 1.5px solid #E2E8F0;
+  padding: 14px 14px 12px;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-  background: #FFFFFF;
-  border: 1.5px solid #E2E8F0;
-  overflow: hidden;
+  gap: 10px;
   user-select: none;
+  overflow: hidden;
 }
 
-.sufi-folder-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12) !important;
+.sufi-smart-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1) !important;
 }
 
-.sufi-folder-card:active {
+.sufi-smart-card:active {
   transform: scale(0.98);
 }
 
-/* Folder Top Tab */
-.sufi-folder-tab {
-  height: 25px;
+/* Card Top Row */
+.smart-card-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px;
-  font-size: 0.68rem;
+  gap: 6px;
+}
+
+.smart-num-badge {
+  font-size: 0.72rem;
   font-weight: 800;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 2px 8px;
+  border-radius: 20px;
+  line-height: 1.2;
 }
 
-.sufi-folder-tab .folder-badge {
-  padding: 1px 6px;
-  border-radius: 4px;
-  font-size: 0.66rem;
-  font-weight: 900;
-}
-
-.sufi-folder-tab .folder-label {
-  font-size: 0.66rem;
+.smart-tag-pill {
+  font-size: 0.68rem;
   font-weight: 700;
-  opacity: 0.85;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.04);
 }
 
-/* Folder Card Body */
-.sufi-folder-body {
-  padding: 12px 10px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex: 1;
-}
-
-.sufi-folder-card .folder-icon-row {
+/* Card Center with Smart Icon Avatar */
+.smart-card-center {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 3px;
+  gap: 12px;
 }
 
-.sufi-folder-card .folder-main-icon {
-  font-size: 1.6rem;
+.smart-icon-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  flex-shrink: 0;
   transition: transform 0.25s ease;
 }
 
-.sufi-folder-card:hover .folder-main-icon {
-  transform: scale(1.12);
+.sufi-smart-card:hover .smart-icon-avatar {
+  transform: scale(1.08) rotate(3deg);
 }
 
-.sufi-folder-card .folder-symbol {
-  font-size: 1.15rem;
+.smart-card-text {
+  flex: 1;
+  min-width: 0;
 }
 
-.sufi-folder-card .folder-name {
-  font-weight: 900;
-  font-size: 0.88rem;
+.smart-card-title {
+  font-weight: 800;
+  font-size: 0.96rem;
   line-height: 1.3;
+  margin-bottom: 3px;
 }
 
-.sufi-folder-card .folder-sub {
-  font-size: 0.68rem;
+.smart-card-sub {
+  font-size: 0.74rem;
   line-height: 1.35;
-  opacity: 0.85;
-  margin-bottom: 4px;
+  color: #64748B;
 }
 
-.sufi-folder-card .folder-open-action {
-  margin-top: auto;
-  padding-top: 7px;
+/* Card Action Button */
+.smart-card-action {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.68rem;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.08);
+  font-size: 0.72rem;
   font-weight: 800;
-  border-top: 1px dashed rgba(0, 0, 0, 0.1);
 }
 
-/* 1. Suhrawardi Folder (Royal Blue) */
-.sufi-folder-card.folder-suhrawardi {
-  border-color: #93C5FD;
-  background: linear-gradient(165deg, #FFFFFF 0%, #EFF6FF 100%);
-}
-.sufi-folder-card.folder-suhrawardi .sufi-folder-tab {
-  background: #DBEAFE;
-  color: #1E40AF;
-}
-.sufi-folder-card.folder-suhrawardi .sufi-folder-tab .folder-badge {
-  background: #1D4ED8;
-  color: #FFFFFF;
-}
-.sufi-folder-card.folder-suhrawardi .folder-main-icon {
-  color: #2563EB;
-}
-.sufi-folder-card.folder-suhrawardi .folder-name {
-  color: #1E3A8A;
-}
-.sufi-folder-card.folder-suhrawardi .folder-sub {
-  color: #1D4ED8;
-}
-.sufi-folder-card.folder-suhrawardi .folder-open-action {
-  color: #1E40AF;
+.smart-arrow {
+  transition: transform 0.2s ease;
 }
 
-/* 2. Chishti Folder (Amethyst Purple) */
-.sufi-folder-card.folder-chishti {
-  border-color: #C4B5FD;
-  background: linear-gradient(165deg, #FFFFFF 0%, #F5F3FF 100%);
+.sufi-smart-card:hover .smart-arrow {
+  transform: translateX(-4px);
 }
-.sufi-folder-card.folder-chishti .sufi-folder-tab {
+
+.lang-en-only .sufi-smart-card:hover .smart-arrow {
+  transform: translateX(4px);
+}
+
+/* 1. Suhrawardi Smart Card */
+.smart-card-suhrawardi {
+  border-color: #FDE68A;
+  background: linear-gradient(165deg, #FFFFFF 0%, #FFFDF5 100%);
+}
+.smart-card-suhrawardi .smart-num-badge {
+  background: #FEF3C7;
+  color: #B45309;
+}
+.smart-card-suhrawardi .smart-card-title {
+  color: #92400E;
+}
+.smart-card-suhrawardi .smart-card-action {
+  color: #B45309;
+}
+.avatar-suhrawardi {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  box-shadow: 0 8px 18px rgba(245, 158, 11, 0.35);
+}
+
+/* 2. Chishti Smart Card */
+.smart-card-chishti {
+  border-color: #DDD6FE;
+  background: linear-gradient(165deg, #FFFFFF 0%, #FAF5FF 100%);
+}
+.smart-card-chishti .smart-num-badge {
   background: #EDE9FE;
   color: #6D28D9;
 }
-.sufi-folder-card.folder-chishti .sufi-folder-tab .folder-badge {
-  background: #7C3AED;
-  color: #FFFFFF;
-}
-.sufi-folder-card.folder-chishti .folder-main-icon {
-  color: #7C3AED;
-}
-.sufi-folder-card.folder-chishti .folder-name {
+.smart-card-chishti .smart-card-title {
   color: #5B21B6;
 }
-.sufi-folder-card.folder-chishti .folder-sub {
-  color: #7C3AED;
-}
-.sufi-folder-card.folder-chishti .folder-open-action {
+.smart-card-chishti .smart-card-action {
   color: #6D28D9;
 }
+.avatar-chishti {
+  background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+  box-shadow: 0 8px 18px rgba(139, 92, 246, 0.35);
+}
 
-/* 3. Qadiri Folder (Azure Sky) */
-.sufi-folder-card.folder-qadiri {
-  border-color: #7DD3FC;
+/* 3. Qadiri Smart Card */
+.smart-card-qadiri {
+  border-color: #BAE6FD;
   background: linear-gradient(165deg, #FFFFFF 0%, #F0F9FF 100%);
 }
-.sufi-folder-card.folder-qadiri .sufi-folder-tab {
+.smart-card-qadiri .smart-num-badge {
   background: #E0F2FE;
-  color: #0369A1;
-}
-.sufi-folder-card.folder-qadiri .sufi-folder-tab .folder-badge {
-  background: #0284C7;
-  color: #FFFFFF;
-}
-.sufi-folder-card.folder-qadiri .folder-main-icon {
   color: #0284C7;
 }
-.sufi-folder-card.folder-qadiri .folder-name {
+.smart-card-qadiri .smart-card-title {
   color: #075985;
 }
-.sufi-folder-card.folder-qadiri .folder-sub {
+.smart-card-qadiri .smart-card-action {
   color: #0284C7;
 }
-.sufi-folder-card.folder-qadiri .folder-open-action {
-  color: #0369A1;
+.avatar-qadiri {
+  background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+  box-shadow: 0 8px 18px rgba(2, 132, 199, 0.35);
 }
 
-/* 4. Naqshbandi Folder (Emerald Green) */
-.sufi-folder-card.folder-naqshbandi {
-  border-color: #86EFAC;
-  background: linear-gradient(165deg, #FFFFFF 0%, #ECFDF5 100%);
+/* 4. Naqshbandi Smart Card */
+.smart-card-naqshbandi {
+  border-color: #A7F3D0;
+  background: linear-gradient(165deg, #FFFFFF 0%, #F0FDF4 100%);
 }
-.sufi-folder-card.folder-naqshbandi .sufi-folder-tab {
+.smart-card-naqshbandi .smart-num-badge {
   background: #D1FAE5;
-  color: #047857;
-}
-.sufi-folder-card.folder-naqshbandi .sufi-folder-tab .folder-badge {
-  background: #059669;
-  color: #FFFFFF;
-}
-.sufi-folder-card.folder-naqshbandi .folder-main-icon {
   color: #059669;
 }
-.sufi-folder-card.folder-naqshbandi .folder-name {
+.smart-card-naqshbandi .smart-card-title {
   color: #064E3B;
 }
-.sufi-folder-card.folder-naqshbandi .folder-sub {
+.smart-card-naqshbandi .smart-card-action {
   color: #059669;
 }
-.sufi-folder-card.folder-naqshbandi .folder-open-action {
-  color: #047857;
+.avatar-naqshbandi {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  box-shadow: 0 8px 18px rgba(5, 150, 105, 0.35);
 }
 
-/* 5. Shadhili Folder (Warm Amber) */
-.sufi-folder-card.folder-shadhili {
-  border-color: #FDE68A;
-  background: linear-gradient(165deg, #FFFFFF 0%, #FFFBEB 100%);
+/* 5. Shadhili Smart Card */
+.smart-card-shadhili {
+  border-color: #99F6E4;
+  background: linear-gradient(165deg, #FFFFFF 0%, #F0FDFA 100%);
 }
-.sufi-folder-card.folder-shadhili .sufi-folder-tab {
-  background: #FEF3C7;
-  color: #92400E;
+.smart-card-shadhili .smart-num-badge {
+  background: #CCFBF1;
+  color: #0D9488;
 }
-.sufi-folder-card.folder-shadhili .sufi-folder-tab .folder-badge {
-  background: #D97706;
-  color: #FFFFFF;
+.smart-card-shadhili .smart-card-title {
+  color: #115E59;
 }
-.sufi-folder-card.folder-shadhili .folder-main-icon {
-  color: #D97706;
+.smart-card-shadhili .smart-card-action {
+  color: #0D9488;
 }
-.sufi-folder-card.folder-shadhili .folder-name {
-  color: #78350F;
-}
-.sufi-folder-card.folder-shadhili .folder-sub {
-  color: #B45309;
-}
-.sufi-folder-card.folder-shadhili .folder-open-action {
-  color: #92400E;
+.avatar-shadhili {
+  background: linear-gradient(135deg, #0D9488 0%, #0F766E 100%);
+  box-shadow: 0 8px 18px rgba(13, 148, 136, 0.35);
 }
 
 /* --- SILSILA DETAILS SCREEN MODAL --- */
