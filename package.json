@@ -5,7 +5,11 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
-    "dev": "node server/server.js"
+    "dev": "node server/server.js",
+    "cap:sync": "npx cap sync",
+    "cap:android": "npx cap open android",
+    "cap:ios": "npx cap open ios",
+    "cap:copy": "npx cap copy"
   },
   "keywords": [
     "islamic",
@@ -18,6 +22,10 @@
   "author": "Khizri Ways",
   "license": "ISC",
   "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/cli": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/ios": "^8.5.2",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "localtunnel": "^2.0.2",

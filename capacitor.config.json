@@ -1,0 +1,10 @@
+{
+  "appId": "com.khizriways.app",
+  "appName": "Khizri Ways",
+  "webDir": "public",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true
+  }
+}
