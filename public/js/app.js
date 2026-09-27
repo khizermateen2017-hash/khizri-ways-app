@@ -8413,155 +8413,173 @@ window.sendSuhrawardiReport = function(lang) {
   window.open(`https://wa.me/923152395969?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
-/* --- STEP 3: 5 SUFI ORDERS COMPACT CARDS & INTERACTION --- */
-window.selectSilsila = function(orderKey, lang) {
-  const allOrders = ['suhrawardi', 'chishti', 'qadiri', 'naqshbandi', 'shadhili'];
-  const detailEl = document.getElementById('silsilaDetail_' + orderKey + '_' + lang);
-  const thumbEl = document.getElementById('silsilaThumb_' + (orderKey === 'suhrawardi' ? 'suh' : orderKey) + '_' + lang);
-  if (!detailEl) return;
+/* --- STEP 3: 5 SUFI ORDERS FOLDER SCREEN SYSTEM --- */
+window.currentSilsilaOrder = { ur: 'suhrawardi', en: 'suhrawardi' };
 
-  const isCurrentlyOpen = detailEl.style.display !== 'none' && detailEl.style.display !== '';
+window.openSilsilaFolderScreen = function(orderKey, lang) {
+  if (!orderKey) orderKey = 'suhrawardi';
+  if (!lang) lang = 'ur';
+  window.currentSilsilaOrder[lang] = orderKey;
 
-  // Update pills active state
-  allOrders.forEach(k => {
-    const pill = document.getElementById('silsilaPill_' + (k === 'suhrawardi' ? 'suh' : k) + '_' + lang);
-    if (pill) {
-      if (!isCurrentlyOpen && k === orderKey) {
-        pill.classList.add('active');
-      } else {
-        pill.classList.remove('active');
-      }
-    }
-  });
-
-  // If already open, clicking toggles it closed
-  if (isCurrentlyOpen) {
-    detailEl.style.display = 'none';
-    if (thumbEl) {
-      thumbEl.classList.remove('silsila-active');
-      const pill = thumbEl.querySelector('.silsila-status-pill');
-      if (pill) {
-        pill.innerHTML = (lang === 'ur') ? '<span>تفصیل دیکھیں</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>' : '<span>View Lessons</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>';
-      }
-    }
-    return;
+  const modalId = (lang === 'ur') ? 'modalSilsilaScreenUr' : 'modalSilsilaScreenEn';
+  window.switchSilsilaScreenTab(orderKey, lang);
+  if (typeof window.openModal === 'function') {
+    window.openModal(modalId);
   }
+};
 
-  // Close other open details in this lang section
+window.switchSilsilaScreenTab = function(orderKey, lang) {
+  if (!lang) lang = 'ur';
+  const allOrders = ['suhrawardi', 'chishti', 'qadiri', 'naqshbandi', 'shadhili'];
+  window.currentSilsilaOrder[lang] = orderKey;
+  const currentIdx = allOrders.indexOf(orderKey);
+
+  const titlesUr = {
+    suhrawardi: '📁 سلسلہ عالیہ سہروردیہ (اسباق و لطائف)',
+    chishti: '📁 سلسلہ عالیہ چشتیہ (عشقِ الٰہی و اسباق)',
+    qadiri: '📁 سلسلہ عالیہ قادریہ (ہیبت و اسباق)',
+    naqshbandi: '📁 سلسلہ عالیہ نقشبندیہ (ذکرِ خفی و لطائف)',
+    shadhili: '📁 سلسلہ عالیہ شاذلیہ (شکر و حزب البحر)'
+  };
+
+  const titlesEn = {
+    suhrawardi: '📁 Suhrawardi Order (Lessons & Lata\'if)',
+    chishti: '📁 Chishti Order (Divine Love & Lessons)',
+    qadiri: '📁 Qadiri Order (Spiritual Authority & Lessons)',
+    naqshbandi: '📁 Naqshbandi Order (Silent Dhikr & Lata\'if)',
+    shadhili: '📁 Shadhili Order (Gratitude & Hizb-ul-Bahr)'
+  };
+
+  const nextNamesUr = {
+    suhrawardi: 'سلسلہ چشتیہ',
+    chishti: 'سلسلہ قادریہ',
+    qadiri: 'سلسلہ نقشبندیہ',
+    naqshbandi: 'سلسلہ شاذلیہ'
+  };
+
+  const prevNamesUr = {
+    chishti: 'سلسلہ سہروردیہ',
+    qadiri: 'سلسلہ چشتیہ',
+    naqshbandi: 'سلسلہ قادریہ',
+    shadhili: 'سلسلہ نقشبندیہ'
+  };
+
+  const nextNamesEn = {
+    suhrawardi: 'Chishti Order',
+    chishti: 'Qadiri Order',
+    qadiri: 'Naqshbandi Order',
+    naqshbandi: 'Shadhili Order'
+  };
+
+  const prevNamesEn = {
+    chishti: 'Suhrawardi Order',
+    qadiri: 'Chishti Order',
+    naqshbandi: 'Qadiri Order',
+    shadhili: 'Naqshbandi Order'
+  };
+
+  // 1. Show only target detail container
   allOrders.forEach(k => {
     const d = document.getElementById('silsilaDetail_' + k + '_' + lang);
-    if (d) d.style.display = 'none';
-    const th = document.getElementById('silsilaThumb_' + (k === 'suhrawardi' ? 'suh' : k) + '_' + lang);
-    if (th) {
-      th.classList.remove('silsila-active');
-      const p = th.querySelector('.silsila-status-pill');
-      if (p) {
-        p.innerHTML = (lang === 'ur') ? '<span>تفصیل دیکھیں</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>' : '<span>View Lessons</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>';
+    if (d) {
+      d.style.display = (k === orderKey) ? 'block' : 'none';
+    }
+  });
+
+  // 2. Update screen tabs active class
+  allOrders.forEach(k => {
+    const tab = document.getElementById('silsilaTab_' + k + '_' + lang) || document.getElementById('screenTab_' + k + '_' + lang);
+    if (tab) {
+      if (k === orderKey) {
+        tab.classList.add('active');
+        try { tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); } catch(e){}
+      } else {
+        tab.classList.remove('active');
       }
     }
   });
 
-  // Open this detail
-  detailEl.style.display = 'block';
-  if (thumbEl) {
-    thumbEl.classList.add('silsila-active');
-    const pill = thumbEl.querySelector('.silsila-status-pill');
-    if (pill) {
-      pill.innerHTML = (lang === 'ur') ? '<span>اسباق کھلے ہیں</span> <i class="fa-solid fa-chevron-up" style="font-size:0.62rem;"></i>' : '<span>Open</span> <i class="fa-solid fa-chevron-up" style="font-size:0.62rem;"></i>';
-    }
-    // Make sure the thumbnail is scrolled into visible view inside carousel
-    thumbEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  }
-
-  // Smooth scroll so the user sees the lessons
-  detailEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-};
-
-window.jumpToSilsila = function(orderKey, lang) {
-  window.selectSilsila(orderKey, lang);
-  const thumbEl = document.getElementById('silsilaThumb_' + (orderKey === 'suhrawardi' ? 'suh' : orderKey) + '_' + lang);
-  if (thumbEl) {
-    thumbEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  }
-};
-
-window.scrollSilsilaCarousel = function(gridId, direction) {
-  const grid = document.getElementById(gridId);
-  if (!grid) return;
-  const scrollAmount = direction * 165;
-  grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-};
-
-window.toggleSilsilaViewMode = function(lang) {
-  const gridId = lang === 'ur' ? 'silsilaCardsGridUr' : 'silsilaCardsGridEn';
-  const btnId = lang === 'ur' ? 'btnSilsilaViewModeUr' : 'btnSilsilaViewModeEn';
-  const grid = document.getElementById(gridId);
-  const btn = document.getElementById(btnId);
-  if (!grid || !btn) return;
-
-  const isGrid = grid.classList.toggle('mode-grid-view');
-  if (isGrid) {
-    btn.innerHTML = (lang === 'ur') ? '<i class="fa-solid fa-arrows-left-right"></i> سلائیڈر منظر' : '<i class="fa-solid fa-arrows-left-right"></i> Slider View';
-    btn.style.background = '#064E3B';
-    btn.style.color = '#FFFFFF';
-    btn.style.borderColor = '#064E3B';
+  // 3. Update Header Title
+  if (lang === 'ur') {
+    const titleEl = document.getElementById('silsilaScreenHeaderTitleUr');
+    if (titleEl) titleEl.textContent = titlesUr[orderKey] || '📁 سلاسلِ تصوف';
   } else {
-    btn.innerHTML = (lang === 'ur') ? '<i class="fa-solid fa-table-cells-large"></i> گرڈ منظر' : '<i class="fa-solid fa-table-cells-large"></i> Grid View';
-    btn.style.background = '#F1F5F9';
-    btn.style.color = '#334155';
-    btn.style.borderColor = '#CBD5E1';
+    const titleEl = document.getElementById('silsilaScreenHeaderTitleEn');
+    if (titleEl) titleEl.textContent = titlesEn[orderKey] || '📁 Sufi Orders';
   }
-};
 
-window.closeSilsilaDetail = function(orderKey, lang) {
-  const detailEl = document.getElementById('silsilaDetail_' + orderKey + '_' + lang);
-  const thumbEl = document.getElementById('silsilaThumb_' + (orderKey === 'suhrawardi' ? 'suh' : orderKey) + '_' + lang);
-  if (detailEl) detailEl.style.display = 'none';
-  if (thumbEl) {
-    thumbEl.classList.remove('silsila-active');
-    const pill = thumbEl.querySelector('.silsila-status-pill');
-    if (pill) {
-      pill.innerHTML = (lang === 'ur') ? '<span>تفصیل دیکھیں</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>' : '<span>View Lessons</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>';
-    }
-  }
-};
-
-window.toggleAllSilsila = function(lang) {
-  const allOrders = ['suhrawardi', 'chishti', 'qadiri', 'naqshbandi', 'shadhili'];
-  const btn = document.getElementById('btnToggleAllSilsila' + (lang === 'ur' ? 'Ur' : 'En'));
-  const areAnyOpen = allOrders.some(k => {
-    const d = document.getElementById('silsilaDetail_' + k + '_' + lang);
-    return d && d.style.display !== 'none' && d.style.display !== '';
-  });
-
-  const shouldOpenAll = !areAnyOpen;
-
-  allOrders.forEach(k => {
-    const d = document.getElementById('silsilaDetail_' + k + '_' + lang);
-    if (d) d.style.display = shouldOpenAll ? 'block' : 'none';
-    const th = document.getElementById('silsilaThumb_' + (k === 'suhrawardi' ? 'suh' : k) + '_' + lang);
-    if (th) {
-      if (shouldOpenAll) {
-        th.classList.add('silsila-active');
+  // 4. Update Prev / Next Buttons in Footer
+  if (lang === 'ur') {
+    const btnPrev = document.getElementById('btnPrevSilsilaUr');
+    const btnNext = document.getElementById('btnNextSilsilaUr');
+    if (btnPrev) {
+      if (currentIdx > 0) {
+        btnPrev.style.display = 'inline-flex';
+        btnPrev.innerHTML = `<i class="fa-solid fa-arrow-right"></i> پچھلا: ${prevNamesUr[orderKey] || ''}`;
       } else {
-        th.classList.remove('silsila-active');
-      }
-      const p = th.querySelector('.silsila-status-pill');
-      if (p) {
-        p.innerHTML = shouldOpenAll ? 
-          ((lang === 'ur') ? '<span>اسباق کھلے ہیں</span> <i class="fa-solid fa-chevron-up" style="font-size:0.62rem;"></i>' : '<span>Open</span> <i class="fa-solid fa-chevron-up" style="font-size:0.62rem;"></i>') :
-          ((lang === 'ur') ? '<span>تفصیل دیکھیں</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>' : '<span>View Lessons</span> <i class="fa-solid fa-chevron-down" style="font-size:0.62rem;"></i>');
+        btnPrev.style.display = 'none';
       }
     }
-  });
-
-  if (btn) {
-    if (shouldOpenAll) {
-      btn.innerHTML = (lang === 'ur') ? '<i class="fa-solid fa-compress"></i> سب سمیٹیں' : '<i class="fa-solid fa-compress"></i> Collapse All';
-    } else {
-      btn.innerHTML = (lang === 'ur') ? '<i class="fa-solid fa-layer-group"></i> سب دکھائیں' : '<i class="fa-solid fa-layer-group"></i> Expand All';
+    if (btnNext) {
+      if (currentIdx < allOrders.length - 1) {
+        btnNext.style.display = 'inline-flex';
+        btnNext.innerHTML = `<span>اگلا: ${nextNamesUr[orderKey] || ''}</span> <i class="fa-solid fa-arrow-left"></i>`;
+      } else {
+        btnNext.style.display = 'none';
+      }
+    }
+  } else {
+    const btnPrev = document.getElementById('btnPrevSilsilaEn');
+    const btnNext = document.getElementById('btnNextSilsilaEn');
+    if (btnPrev) {
+      if (currentIdx > 0) {
+        btnPrev.style.display = 'inline-flex';
+        btnPrev.innerHTML = `<i class="fa-solid fa-arrow-left"></i> Prev: ${prevNamesEn[orderKey] || ''}`;
+      } else {
+        btnPrev.style.display = 'none';
+      }
+    }
+    if (btnNext) {
+      if (currentIdx < allOrders.length - 1) {
+        btnNext.style.display = 'inline-flex';
+        btnNext.innerHTML = `<span>Next: ${nextNamesEn[orderKey] || ''}</span> <i class="fa-solid fa-arrow-right"></i>`;
+      } else {
+        btnNext.style.display = 'none';
+      }
     }
   }
+
+  // 5. Scroll screen body to top
+  const bodyEl = document.getElementById('silsilaScreenBody' + (lang === 'ur' ? 'Ur' : 'En'));
+  if (bodyEl) bodyEl.scrollTop = 0;
+};
+
+window.stepSilsilaOrder = function(dir, lang) {
+  if (!lang) lang = 'ur';
+  const allOrders = ['suhrawardi', 'chishti', 'qadiri', 'naqshbandi', 'shadhili'];
+  const cur = window.currentSilsilaOrder[lang] || 'suhrawardi';
+  let idx = allOrders.indexOf(cur);
+  idx += dir;
+  if (idx < 0) idx = 0;
+  if (idx >= allOrders.length) idx = allOrders.length - 1;
+  window.switchSilsilaScreenTab(allOrders[idx], lang);
+};
+
+// Compatibility functions
+window.selectSilsila = function(orderKey, lang) {
+  window.openSilsilaFolderScreen(orderKey, lang);
+};
+window.jumpToSilsila = function(orderKey, lang) {
+  window.openSilsilaFolderScreen(orderKey, lang);
+};
+window.closeSilsilaDetail = function(orderKey, lang) {
+  const modalId = (lang === 'ur') ? 'modalSilsilaScreenUr' : 'modalSilsilaScreenEn';
+  if (typeof window.closeModal === 'function') {
+    window.closeModal(modalId);
+  }
+};
+window.toggleAllSilsila = function(lang) {
+  window.openSilsilaFolderScreen('suhrawardi', lang);
 };
 
 /* --- TASAWWUF INTERACTIVE CHECKLIST STORAGE & PROGRESS --- */
