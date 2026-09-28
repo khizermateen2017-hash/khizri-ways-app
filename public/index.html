@@ -9,7 +9,12 @@
   <title>Khizri Ways - خضری ویز | Islamic & Rohani Ilaj App</title>
   
   <meta name="theme-color" content="#22265D">
-  <link rel="icon" type="image/png" href="assets/khizri-ways-logo.png?v=clean-9.0">
+  <link rel="icon" type="image/png" href="assets/icons/icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Khizri Ways">
 
   <!-- Google Fonts: Plus Jakarta Sans for UI, Amiri for Arabic/Urdu -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18926,5 +18931,17 @@
   <script src="js/khawab-data.js?v=20260927_150_dreams_live"></script>
   <script src="js/app.js?v=20260927_150_dreams_live"></script>
   <script src="js/fuyuz-wazaif-data.js?v=20260927_0835_fuyuz_booklet_live"></script>
+  <!-- PWA Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('./sw.js').then(function(reg) {
+          console.log('Khizri Ways Service Worker active:', reg.scope);
+        }).catch(function(err) {
+          console.warn('SW registration issue:', err);
+        });
+      });
+    }
+  </script>
 </body>
 </html>
