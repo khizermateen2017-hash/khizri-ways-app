@@ -1,18 +1,65 @@
 {
+  "id": "/?source=pwa",
   "name": "Khizri Ways - Rohani Ilaj & Islamic App",
   "short_name": "Khizri Ways",
-  "description": "Spiritual Healing, Authentic Wazaif, Durood-e-Khizri, Islamic Articles, Videos and PDF Resources",
-  "start_url": "/",
+  "description": "Spiritual Healing, Authentic Wazaif, Durood-e-Khizri, Islamic Articles, Videos and PDF Resources by Mufti Khizer Mateen",
+  "lang": "ur",
+  "dir": "rtl",
+  "start_url": "/?source=pwa",
+  "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#062319",
-  "theme_color": "#062319",
+  "background_color": "#064E3B",
+  "theme_color": "#064E3B",
+  "categories": [
+    "lifestyle",
+    "education",
+    "books"
+  ],
   "icons": [
     {
-      "src": "/assets/logo.jpg",
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
       "sizes": "512x512",
-      "type": "image/jpeg",
-      "purpose": "any maskable"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "استخارہ آن لائن (Online Istikhara)",
+      "short_name": "Istikhara",
+      "url": "/#tabIstikhara",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "گوگل ریویوز (Google Reviews)",
+      "short_name": "Reviews",
+      "url": "/#tabGoogleReviews",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "روحانی تعویذات (Taweezat)",
+      "short_name": "Taweezat",
+      "url": "/#tabTaweezat",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }
